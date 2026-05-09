@@ -1,0 +1,109 @@
+[
+  {
+    "name": "Nature",
+    "source_group": "Nature",
+    "issn": "0028-0836",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/nature.rss"
+    ]
+  },
+  {
+    "name": "Nature Energy",
+    "source_group": "Nature",
+    "issn": "2058-7546",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/nenergy.rss"
+    ]
+  },
+  {
+    "name": "Nature Climate Change",
+    "source_group": "Nature",
+    "issn": "1758-678X",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/nclimate.rss"
+    ]
+  },
+  {
+    "name": "Nature Sustainability",
+    "source_group": "Nature",
+    "issn": "2398-9629",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natsustain.rss"
+    ]
+  },
+  {
+    "name": "Nature Geoscience",
+    "source_group": "Nature",
+    "issn": "1752-0894",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/ngeo.rss"
+    ]
+  },
+  {
+    "name": "Nature Food",
+    "source_group": "Nature",
+    "issn": "2662-1355",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natfood.rss"
+    ]
+  },
+  {
+    "name": "Nature Cities",
+    "source_group": "Nature",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natcities.rss"
+    ]
+  },
+  {
+    "name": "Nature Communications",
+    "source_group": "Nature",
+    "issn": "2041-1723",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/ncomms.rss"
+    ]
+  },
+  {
+    "name": "Science",
+    "source_group": "Science",
+    "issn": "0036-8075",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Science Advances",
+    "source_group": "Science",
+    "issn": "2375-2548",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "PNAS",
+    "source_group": "PNAS",
+    "issn": "0027-8424",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Joule",
+    "source_group": "Cell",
+    "issn": "2542-4351",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "One Earth",
+    "source_group": "Cell",
+    "issn": "2590-3330",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Energy & Environmental Science",
+    "source_group": "RSC",
+    "issn": "1754-5692",
+    "publisher_strategy": "openalex"
+  }
+]

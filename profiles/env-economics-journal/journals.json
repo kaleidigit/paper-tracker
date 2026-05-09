@@ -1,0 +1,86 @@
+[
+  {
+    "name": "American Economic Review",
+    "source_group": "AER",
+    "issn": "0002-8282",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Econometrica",
+    "source_group": "Econometrica",
+    "issn": "0012-9682",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Political Economy",
+    "source_group": "JPE",
+    "issn": "0022-3808",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Quarterly Journal of Economics",
+    "source_group": "QJE",
+    "issn": "0033-5533",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Review of Economic Studies",
+    "source_group": "REStud",
+    "issn": "0034-6527",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of International Economics",
+    "source_group": "JIE",
+    "issn": "0022-1996",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Development Economics",
+    "source_group": "JDE",
+    "issn": "0304-3878",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Public Economics",
+    "source_group": "JPubE",
+    "issn": "0047-2727",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of the Association of Environmental and Resource Economists",
+    "source_group": "JAERE",
+    "issn": "2328-5634",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Environmental Economics and Management",
+    "source_group": "JEEM",
+    "issn": "0095-0696",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "American Journal of Agricultural Economics",
+    "source_group": "AJAE",
+    "issn": "0002-9092",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Ecological Economics",
+    "source_group": "EcEcon",
+    "issn": "0921-8009",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "The Energy Journal",
+    "source_group": "EnergyJournal",
+    "issn": "0195-6574",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Environmental and Resource Economics",
+    "source_group": "EREc",
+    "issn": "0924-6460",
+    "publisher_strategy": "openalex"
+  }
+]

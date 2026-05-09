@@ -1,0 +1,44 @@
+{
+  "name": "paper-tracker-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cross-platform TypeScript runner for daily paper tracking and push workflow.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "deploy": "bash ./deploy.sh",
+    "manual-push": "bash ./manual-push.sh",
+    "auto-push": "bash ./auto-push.sh",
+    "auto-push:dry-run": "bash ./auto-push.sh --dry-run",
+    "build": "tsc -p tsconfig.build.json",
+    "runner:once": "tsx src/cli.ts run-once",
+    "runner:profile": "tsx src/cli.ts run-once --profile",
+    "runner:llm-check": "tsx src/llm-check.ts",
+    "runner:full": "bash ./manual-push.sh",
+    "runner:daemon": "tsx src/cli.ts daemon",
+    "runner:schedule:print": "tsx src/cli.ts schedule-print",
+    "runner:schedule:install": "tsx src/cli.ts schedule-install",
+    "step:collect": "tsx src/cli.ts --step collect",
+    "step:filter": "tsx src/cli.ts --step filter",
+    "step:enrich": "tsx src/cli.ts --step enrich",
+    "step:digest": "tsx src/cli.ts --step digest",
+    "step:push": "tsx src/cli.ts --step push",
+    "run": "bash ./scripts/run.sh",
+    "test": "vitest run",
+    "lint:md": "markdownlint-cli2"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "fast-xml-parser": "^4.5.3",
+    "p-limit": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.2",
+    "markdownlint-cli2": "^0.18.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

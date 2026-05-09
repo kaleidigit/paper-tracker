@@ -1,0 +1,156 @@
+{
+  "app": {
+    "title": "环境经济学期刊论文追踪系统",
+    "timezone": "Asia/Shanghai"
+  },
+  "pipeline": {
+    "default_days": 2,
+    "schedule": {
+      "hour": 8,
+      "minute": 30,
+      "check_every_hours": 1
+    },
+    "paper_window": {
+      "mode": "since_yesterday_time",
+      "hour": 8,
+      "minute": 0,
+      "timezone": "Asia/Shanghai"
+    },
+    "digest_title_template": "{date} 环境经济学期刊日报"
+  },
+  "runtime": {
+    "mode": "run-once",
+    "state_dir": "data/ts-runner",
+    "logs_dir": "data/ts-runner/logs",
+    "temp_dir": "data/ts-runner/tmp",
+    "command_timeout_ms": 600000,
+    "retry": {
+      "max_attempts": 2,
+      "backoff_ms": 2000
+    }
+  },
+  "ai": {
+    "provider": "siliconflow",
+    "api_style": "openai-compatible",
+    "base_url": "https://api.siliconflow.cn/v1",
+    "model": "deepseek-ai/DeepSeek-V3.2",
+    "api_key_env": "SILICONFLOW_API_KEY",
+    "translation": {
+      "enabled": true,
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "api_key_env": "SILICONFLOW_API_KEY",
+      "required": true
+    },
+    "enrich": {
+      "enabled": true,
+      "concurrency": 3
+    },
+    "temperature": 0.2,
+    "max_tokens": 2000,
+    "filter": {
+      "enabled": true,
+      "mode": "rescue_keyword_miss",
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "temperature": 0.0,
+      "max_tokens": 500,
+      "min_confidence": 0.5,
+      "max_checks_per_run": 300
+    },
+    "prompts": {
+      "classify_system": "你是环境经济学论文分类助手。你的任务是根据论文的主要研究问题进行分类。必须严格输出 JSON，格式为 {\"classification\": {\"domain\": string, \"subdomain\": string, \"tags\": string[]}}。domain 和 subdomain 只能从给定分类树中选择，不允许自造类别。优先依据论文的核心贡献分类。若信息不足，选择最接近的现有类别，并保持 tags 简洁、具体、可检索。分类树如下：{{taxonomy_json}}",
+      "classify_user_template": "请基于以下论文信息完成分类。\n\n英文标题：{{title_en}}\n中文标题：{{title_zh}}\n英文摘要：{{abstract_original}}\n中文摘要：{{abstract_zh}}\n期刊：{{journal_name}}\n日期：{{published_date}}\nDOI：{{doi}}\n链接：{{url}}",
+      "translation_system": "你是学术论文翻译助手。必须严格输出合法 JSON，且只能包含两个字段：title_zh, abstract_zh。要求：1) 忠实翻译，不添加解释，不改写成总结；2) title_zh 必须翻译标题，不能留空，不能原样照抄英文，除非是公认缩写、化学式、专有名词或模型名；3) 如果提供了 abstract_original，则 abstract_zh 必须对其完整翻译，术语准确、语句通顺；4) 如果 abstract_original 为空，则 abstract_zh 返回空字符串；5) 不要输出 Markdown、注释或额外字段。",
+      "translation_user_template": "请翻译以下论文信息，并严格返回 JSON。\n\n英文标题：{{title_en}}\n英文摘要：{{abstract_original}}",
+      "filter_system": "你是环境经济学领域的学术论文筛选专家，负责筛选经济学期刊中与环境经济学相关的论文。必须严格输出 JSON：{\"keep\": boolean, \"confidence\": number(0-1), \"reason\": string, \"suggested_domain\": string, \"suggested_tags\": string[]}。\n\n【接受的论文】——以下任一方向的核心贡献论文应保留：\n1. 环境经济学：污染经济学、环境外部性、环境税/费、环境规制的经济效应、环境信息披露、环境健康经济\n2. 能源经济：能源市场设计、电力市场经济、可再生能源补贴与政策、能源转型成本、化石燃料补贴改革\n3. 气候经济：碳定价（碳税/碳市场）、气候政策评估、社会碳成本、减排成本效益、气候风险的经济影响、气候金融\n4. 资源与生态经济：自然资源管理经济学、生态系统服务估值、水资源经济、渔业/林业经济、生物多样性经济\n5. 绿色金融与ESG：绿色债券、ESG投资、可持续金融、影响力投资、气候信息披露\n6. 国际贸易与环境：碳边境调节（CBAM）、贸易的环境效应、污染天堂假说、环境产品贸易\n7. 循环经济：废物管理经济、延伸生产者责任、资源效率、材料流分析\n8. 发展与环境：环境与发展、资源诅咒、环境正义、环境不平等\n\n【应排除的论文】——即使标题含环境相关术语，以下类型排除：\nA. 纯自然科学（无经济分析维度）：纯物理/化学/生物实验、材料合成、器件性能优化\nB. 纯理论经济（无环境维度）：纯宏观经济理论、纯金融定价模型、纯博弈论（除非应用于环境领域）\nC. 纯技术/工程（无经济评估）：纯工程技术改进、设备优化、工程设计（除非包含成本效益分析）\n\n【判断原则】这些论文来自经济学期刊，大部分与经济相关，重点关注是否与'环境/资源/气候/能源'维度结合。若论文完全没有环境、资源、气候、能源的维度，即使研究方法优秀也应排除。",
+      "filter_user_template": "请判断下列论文是否应纳入环境经济学期刊日报。\n\n英文标题：{{title_en}}\n英文摘要：{{abstract_original}}\n期刊：{{journal_name}}\n日期：{{published_date}}\nDOI：{{doi}}\n链接：{{url}}\n关键词参考：{{keywords_json}}\n分类树参考：{{taxonomy_json}}\n完整论文对象：{{paper_json}}"
+    }
+  },
+  "sources": {
+    "keywords": [
+      "environmental economics",
+      "environmental policy",
+      "environmental regulation",
+      "pollution economics",
+      "environmental externality",
+      "carbon pricing",
+      "carbon tax",
+      "carbon market",
+      "emissions trading",
+      "ets",
+      "cap-and-trade",
+      "climate economics",
+      "climate policy",
+      "climate risk",
+      "climate finance",
+      "climate adaptation",
+      "climate mitigation",
+      "energy economics",
+      "energy market",
+      "electricity market",
+      "renewable energy economics",
+      "energy transition",
+      "decarbonization",
+      "energy policy",
+      "resource economics",
+      "natural resource",
+      "ecosystem service",
+      "ecological economics",
+      "biodiversity economics",
+      "water economics",
+      "water pricing",
+      "green finance",
+      "sustainable finance",
+      "esg",
+      "green bond",
+      "impact investing",
+      "circular economy",
+      "waste economics",
+      "life cycle assessment",
+      "cost-benefit analysis",
+      "willingness to pay",
+      "contingent valuation",
+      "trade and environment",
+      "carbon border adjustment",
+      "cbam",
+      "pollution haven",
+      "environmental health",
+      "social cost of carbon",
+      "net zero",
+      "carbon neutrality",
+      "decarbonization pathway",
+      "emission reduction",
+      "air quality economics",
+      "water pollution",
+      "industrial pollution",
+      "environmental justice",
+      "sustainable development",
+      "sdg"
+    ],
+    "exclude_keywords": [],
+    "openalex_queries": [
+      "environmental economics",
+      "carbon pricing",
+      "climate policy",
+      "energy economics",
+      "environmental regulation",
+      "pollution economics",
+      "green finance",
+      "ecosystem service valuation",
+      "resource economics",
+      "trade environment"
+    ]
+  },
+  "classification": {
+    "file": "classification.json"
+  },
+  "feishu": {
+    "doc_title_prefix": "[每日论文追踪]",
+    "doc_enabled": true,
+    "notify_enabled": true,
+    "notify_chat_id": "oc_0afdf3ac37c13f522ad07ad983db1214",
+    "notify_message_template": "论文日报已生成：{title}\n文档链接：{doc_url}\n若链接为空，请稍后在飞书文档列表查看。",
+    "alert_enabled": true,
+    "alert_chat_id": "oc_4ccb276c17862766a89748817c6f5d3b",
+    "alert_message_template": "未获取到任何论文数据，已终止日报推送，请排查。"
+  }
+}

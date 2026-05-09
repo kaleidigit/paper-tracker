@@ -1,0 +1,71 @@
+{
+  "domains": [
+    {
+      "name": "能源",
+      "subdomains": [
+        {
+          "name": "光伏与太阳能",
+          "keywords": ["solar", "photovoltaic", "pv", "perovskite", "solar cell", "photoelectrochemical", "solar energy", "photothermal"]
+        },
+        {
+          "name": "风能",
+          "keywords": ["wind", "offshore wind", "wind turbine", "wind energy", "wind power"]
+        },
+        {
+          "name": "储能与电池",
+          "keywords": ["battery", "energy storage", "lithium-ion", "sodium-ion", "supercapacitor", "li-ion", "solid-state battery", "battery storage", "grid storage"]
+        },
+        {
+          "name": "氢能与燃料电池",
+          "keywords": ["hydrogen", "electrolysis", "electrolyzer", "fuel cell", "green hydrogen", "h2", "hydrogen production", "hydrogen storage"]
+        },
+        {
+          "name": "电力系统与电网",
+          "keywords": ["grid", "power system", "electricity market", "demand response", "smart grid", "microgrid", "power grid", "transmission", "distribution network"]
+        },
+        {
+          "name": "碳管理与CCUS",
+          "keywords": ["carbon capture", "ccus", "co2 utilization", "decarbonization", "carbon management", "carbon removal", "direct air capture", "carbon sequestration", "net-zero", "net zero"]
+        }
+      ]
+    },
+    {
+      "name": "环境",
+      "subdomains": [
+        {
+          "name": "水环境与水处理",
+          "keywords": ["water treatment", "wastewater", "desalination", "membrane", "water quality", "water pollution", "water resource"]
+        },
+        {
+          "name": "大气污染与空气质量",
+          "keywords": ["air pollution", "pm2.5", "ozone", "aerosol", "air quality", "atmospheric", "greenhouse gas", "ghg emission", "nox", "so2"]
+        },
+        {
+          "name": "生态与生物多样性",
+          "keywords": ["ecosystem", "biodiversity", "ecology", "habitat", "conservation", "nature-based", "NbS"]
+        },
+        {
+          "name": "固废与循环经济",
+          "keywords": ["waste", "recycling", "plastic", "circular economy", "resource recovery", "solid waste", "municipal solid waste"]
+        }
+      ]
+    },
+    {
+      "name": "经济",
+      "subdomains": [
+        {
+          "name": "能源经济与市场",
+          "keywords": ["energy economics", "energy market", "energy pricing", "market design", "energy policy", "renewable energy economics"]
+        },
+        {
+          "name": "气候经济与政策评估",
+          "keywords": ["carbon pricing", "carbon market", "climate policy", "policy evaluation", "cost-benefit", "climate economics", "carbon tax", "emissions trading"]
+        },
+        {
+          "name": "可持续金融与投资",
+          "keywords": ["sustainable finance", "green finance", "esg", "climate investment", "green bond", "impact investing", "divestment"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "domains": [
+    {
+      "name": "环境经济与政策",
+      "subdomains": [
+        {
+          "name": "碳定价与排放交易",
+          "keywords": ["carbon pricing", "carbon tax", "emissions trading", "ets", "cap-and-trade", "carbon allowance", "carbon market", "permit"]
+        },
+        {
+          "name": "环境规制与政策评估",
+          "keywords": ["environmental regulation", "environmental policy", "policy evaluation", "command and control", "incentive-based", "compliance", "enforcement", "policy design"]
+        },
+        {
+          "name": "污染经济学",
+          "keywords": ["pollution", "pollution tax", "pollution abatement", "pollution control", "air pollution economics", "water pollution economics", "industrial pollution", "emission reduction"]
+        },
+        {
+          "name": "环境健康经济",
+          "keywords": ["environmental health", "health impact", "mortality", "morbidity", "air quality health", "valuing statistical life", "willingness to pay", "health cost"]
+        }
+      ]
+    },
+    {
+      "name": "能源经济",
+      "subdomains": [
+        {
+          "name": "能源转型经济",
+          "keywords": ["energy transition", "decarbonization", "fossil fuel phase-out", "coal phase-out", "just transition", "stranded asset", "transition cost"]
+        },
+        {
+          "name": "电力市场",
+          "keywords": ["electricity market", "power market", "renewable energy economics", "feed-in tariff", "renewable portfolio standard", "grid economics", "demand response economics"]
+        },
+        {
+          "name": "可再生能源经济",
+          "keywords": ["renewable energy investment", "solar economics", "wind economics", "renewable cost", "levelized cost", "subsidy", "incentive"]
+        }
+      ]
+    },
+    {
+      "name": "气候经济",
+      "subdomains": [
+        {
+          "name": "气候政策成本效益",
+          "keywords": ["climate policy", "social cost of carbon", "integrated assessment", "damages", "abatement cost", "cost-benefit analysis", "climate model"]
+        },
+        {
+          "name": "气候风险与金融",
+          "keywords": ["climate risk", "climate finance", "physical risk", "transition risk", "tcfd", "climate stress test", "stranded asset", "climate insurance"]
+        },
+        {
+          "name": "减排路径建模",
+          "keywords": ["emission reduction pathway", "net-zero", "carbon neutrality", "mitigation", "abatement curve", "marginal abatement cost"]
+        }
+      ]
+    },
+    {
+      "name": "资源与生态经济",
+      "subdomains": [
+        {
+          "name": "自然资源经济",
+          "keywords": ["natural resource", "resource economics", "extraction", "resource curse", "resource rent", "non-renewable", "fishery", "forest economics"]
+        },
+        {
+          "name": "生态系统服务估值",
+          "keywords": ["ecosystem service", "natural capital", "valuation", "contingent valuation", "choice experiment", "environmental valuation", "biodiversity economics"]
+        },
+        {
+          "name": "水资源经济",
+          "keywords": ["water economics", "water pricing", "water allocation", "water resource", "irrigation", "water scarcity", "water market"]
+        }
+      ]
+    },
+    {
+      "name": "可持续发展",
+      "subdomains": [
+        {
+          "name": "绿色金融与ESG",
+          "keywords": ["green finance", "esg", "sustainable finance", "green bond", "climate bond", "impact investing", "responsible investment", "divestment"]
+        },
+        {
+          "name": "循环经济",
+          "keywords": ["circular economy", "recycling", "waste economics", "extended producer responsibility", "material flow", "resource efficiency"]
+        },
+        {
+          "name": "国际贸易与环境",
+          "keywords": ["trade and environment", "carbon border adjustment", "cbam", "pollution haven", "environmental goods", "trade agreement", "environmental clause"]
+        }
+      ]
+    }
+  ]
+}
