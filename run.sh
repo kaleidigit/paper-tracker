@@ -16,7 +16,9 @@ cd "$ROOT_DIR"
 
 ALL_PROFILES=()
 if command -v python3 &>/dev/null && [[ -f config.json ]]; then
-  mapfile -t ALL_PROFILES < <(python3 -c "import json,sys; print('\n'.join(json.load(open('config.json')).get('profiles',['top-journal-env-energy'])))")
+  while IFS= read -r line; do
+    ALL_PROFILES+=("$line")
+  done < <(python3 -c "import json,sys; print('\n'.join(json.load(open('config.json')).get('profiles',['top-journal-env-energy'])))")
 fi
 if [[ ${#ALL_PROFILES[@]} -eq 0 ]]; then
   ALL_PROFILES=("top-journal-env-energy")

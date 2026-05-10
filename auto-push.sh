@@ -48,7 +48,9 @@ fi
 
 PROFILES=()
 if command -v python3 &>/dev/null && [[ -f config.json ]]; then
-  mapfile -t PROFILES < <(python3 -c "import json,sys; print('\n'.join(json.load(open('config.json')).get('profiles',['top-journal-env-energy'])))")
+  while IFS= read -r line; do
+    PROFILES+=("$line")
+  done < <(python3 -c "import json,sys; print('\n'.join(json.load(open('config.json')).get('profiles',['top-journal-env-energy'])))")
 fi
 if [[ ${#PROFILES[@]} -eq 0 ]]; then
   PROFILES=("top-journal-env-energy")
