@@ -30,32 +30,6 @@
     }
   },
   "ai": {
-    "provider": "siliconflow",
-    "api_style": "openai-compatible",
-    "base_url": "https://api.siliconflow.cn/v1",
-    "model": "deepseek-ai/DeepSeek-V3.2",
-    "api_key_env": "SILICONFLOW_API_KEY",
-    "translation": {
-      "enabled": true,
-      "model": "deepseek-ai/DeepSeek-V3.2",
-      "api_key_env": "SILICONFLOW_API_KEY",
-      "required": true
-    },
-    "enrich": {
-      "enabled": true,
-      "concurrency": 3
-    },
-    "temperature": 0.2,
-    "max_tokens": 2000,
-    "filter": {
-      "enabled": true,
-      "mode": "rescue_keyword_miss",
-      "model": "deepseek-ai/DeepSeek-V3.2",
-      "temperature": 0.0,
-      "max_tokens": 500,
-      "min_confidence": 0.5,
-      "max_checks_per_run": 300
-    },
     "prompts": {
       "classify_system": "你是环境、能源与气候论文分类助手。你的任务是根据论文的主要研究问题进行分类，而不是被材料、器件或方法学术语误导。必须严格输出 JSON，格式为 {\"classification\": {\"domain\": string, \"subdomain\": string, \"tags\": string[]}}。domain 和 subdomain 只能从给定分类树中选择，不允许自造类别。优先依据论文的核心贡献分类：若论文聚焦净零转型、减排路径、能源系统建模、电力系统灵活性、政策评估、气候治理，应优先归入系统转型/政策评估相关类别；若只是讨论某种材料、催化剂、电极、电解液、薄膜、纳米结构、晶体结构或微观机理，除非其核心贡献明确落在环境治理或能源系统层面，否则不要误分到宏观系统类。若信息不足，选择最接近的现有类别，并保持 tags 简洁、具体、可检索。分类树如下：{{taxonomy_json}}",
       "classify_user_template": "请基于以下论文信息完成分类。注意按主要研究问题分类，而不是按表面术语分类。\n\n英文标题：{{title_en}}\n中文标题：{{title_zh}}\n英文摘要：{{abstract_original}}\n中文摘要：{{abstract_zh}}\n期刊：{{journal_name}}\n日期：{{published_date}}\nDOI：{{doi}}\n链接：{{url}}",

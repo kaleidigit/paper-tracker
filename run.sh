@@ -2,7 +2,7 @@
 # run.sh — 手动执行入口（所有 step 顺序执行）
 #
 # 用法：
-#   ./run.sh                           # 运行所有 profile
+#   ./run.sh                           # 运行所有 profile（从 config.json 读取）
 #   ./run.sh --profile economics       # 指定单个 profile
 #   ./run.sh --profile economics --dry-run
 #   ./run.sh --days 7                  # 指定回溯天数（覆盖 config）
@@ -12,7 +12,15 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT_DIR"
 
-ALL_PROFILES=("top-journal-env-energy" "env-economics-journal")
+# ─── 从 config.json 读取 profile 列表 ──────────────────────
+
+ALL_PROFILES=()
+if command -v python3 &>/dev/null && [[ -f config.json ]]; then
+  mapfile -t ALL_PROFILES < <(python3 -c "import json,sys; print('\n'.join(json.load(open('config.json')).get('profiles',['top-journal-env-energy'])))")
+fi
+if [[ ${#ALL_PROFILES[@]} -eq 0 ]]; then
+  ALL_PROFILES=("top-journal-env-energy")
+fi
 
 # ─── 参数解析 ───────────────────────────────────────────────
 
@@ -31,7 +39,7 @@ while [[ $# -gt 0 ]]; do
     -h|--help)
       echo "Usage: $0 [--profile NAME] [--days N] [--dry-run]"
       echo ""
-      echo "  --profile NAME   指定 profile（不指定则运行所有 profile）"
+      echo "  --profile NAME   指定 profile（不指定则运行所有 profile，读取 config.json）"
       echo "  --days N         回溯天数（覆盖 config）"
       echo "  --dry-run        仅生成文件，跳过飞书发布"
       exit 0 ;;

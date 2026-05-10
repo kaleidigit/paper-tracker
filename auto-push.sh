@@ -44,9 +44,17 @@ else
   DAYS=1   # 周二至周五：推送昨天
 fi
 
-# ─── 调用 run.sh（依次运行所有 profile）────────────────────
+# ─── 从 config.json 读取 profile 列表 ──────────────────────
 
-PROFILES=("top-journal-env-energy" "env-economics-journal")
+PROFILES=()
+if command -v python3 &>/dev/null && [[ -f config.json ]]; then
+  mapfile -t PROFILES < <(python3 -c "import json,sys; print('\n'.join(json.load(open('config.json')).get('profiles',['top-journal-env-energy'])))")
+fi
+if [[ ${#PROFILES[@]} -eq 0 ]]; then
+  PROFILES=("top-journal-env-energy")
+fi
+
+# ─── 调用 run.sh（依次运行所有 profile）────────────────────
 EXIT_CODE=0
 
 for PROFILE_NAME in "${PROFILES[@]}"; do

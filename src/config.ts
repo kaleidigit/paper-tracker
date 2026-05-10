@@ -10,7 +10,8 @@ function normalizeText(value: unknown): string {
 }
 
 const ROOT_DIR = process.cwd();
-const CONFIG_PATH = process.env.CONFIG_PATH || path.join(ROOT_DIR, "profiles", "top-journal-env-energy", "config.json");
+const ROOT_CONFIG_PATH = path.join(ROOT_DIR, "config.json");
+const LEGACY_CONFIG_PATH = process.env.CONFIG_PATH || path.join(ROOT_DIR, "profiles", "top-journal-env-energy", "config.json");
 
 function asNumber(input: unknown, fallback: number): number {
   if (typeof input === "number" && Number.isFinite(input)) {
@@ -29,6 +30,45 @@ export function resolvePath(p: string): string {
   return path.isAbsolute(p) ? p : path.join(ROOT_DIR, p);
 }
 
+// ─── 根配置加载 ────────────────────────────────────────────
+
+interface RootConfig {
+  profiles?: string[];
+  ai?: Partial<AppConfig["ai"]>;
+}
+
+async function loadRootConfig(): Promise<RootConfig> {
+  const raw = await fs.readFile(ROOT_CONFIG_PATH, "utf-8");
+  return JSON.parse(raw) as RootConfig;
+}
+
+export async function loadProfilesList(): Promise<string[]> {
+  const root = await loadRootConfig();
+  return root.profiles || ["top-journal-env-energy"];
+}
+
+// ─── 深度合并：用 source 覆盖 target，只合并对象，其他值 source 优先 ──
+
+function deepMerge<T extends Record<string, unknown>>(target: T, source: Partial<T>): T {
+  const result = { ...target };
+  for (const key of Object.keys(source) as (keyof T)[]) {
+    const sVal = source[key];
+    const tVal = result[key];
+    if (
+      sVal !== null && typeof sVal === "object" && !Array.isArray(sVal) &&
+      tVal !== null && typeof tVal === "object" && !Array.isArray(tVal)
+    ) {
+      (result as Record<string, unknown>)[key as string] = deepMerge(
+        tVal as Record<string, unknown>,
+        sVal as Record<string, unknown>
+      );
+    } else if (sVal !== undefined) {
+      (result as Record<string, unknown>)[key as string] = sVal;
+    }
+  }
+  return result;
+}
+
 // ─── Profile 感知的配置加载 ──────────────────────────────────
 
 export async function loadProfileContext(profile?: string): Promise<ProfileContext> {
@@ -36,14 +76,29 @@ export async function loadProfileContext(profile?: string): Promise<ProfileConte
   const profileDir = path.join(ROOT_DIR, "profiles", profileName);
   const configFile = path.join(profileDir, "config.json");
 
+  // 1. 加载根配置（全局 AI 默认值）
+  let rootConfig: RootConfig;
+  try {
+    rootConfig = await loadRootConfig();
+  } catch {
+    rootConfig = {};
+  }
+
+  // 2. 加载 profile 配置
   let raw: string;
   try {
     raw = await fs.readFile(configFile, "utf-8");
   } catch {
-    // Fallback to legacy config path
-    raw = await fs.readFile(CONFIG_PATH, "utf-8");
+    raw = await fs.readFile(LEGACY_CONFIG_PATH, "utf-8");
   }
-  const config = JSON.parse(raw) as AppConfig;
+  const profileConfig = JSON.parse(raw) as AppConfig;
+
+  // 3. 合并：根 ai 配置为底层，profile ai 配置覆盖差异项
+  const mergedAi = deepMerge(
+    (rootConfig.ai || {}) as Record<string, unknown>,
+    (profileConfig.ai || {}) as Record<string, unknown>
+  ) as AppConfig["ai"];
+  const config: AppConfig = { ...profileConfig, ai: mergedAi };
 
   // Resolve relative paths within the profile directory
   if (config.sources?.journals_file && !path.isAbsolute(config.sources.journals_file)) {
@@ -121,10 +176,16 @@ function applyDefaults(parsed: AppConfig): void {
 // ─── Legacy config loader (backward compatible) ──────────────
 
 export async function loadAppConfig(): Promise<AppConfig> {
-  const raw = await fs.readFile(CONFIG_PATH, "utf-8");
-  const parsed = JSON.parse(raw) as AppConfig;
-  applyDefaults(parsed);
-  return parsed;
+  const rootConfig = await loadRootConfig();
+  const raw = await fs.readFile(LEGACY_CONFIG_PATH, "utf-8");
+  const profileConfig = JSON.parse(raw) as AppConfig;
+  const mergedAi = deepMerge(
+    (rootConfig.ai || {}) as Record<string, unknown>,
+    (profileConfig.ai || {}) as Record<string, unknown>
+  ) as AppConfig["ai"];
+  const config = { ...profileConfig, ai: mergedAi };
+  applyDefaults(config);
+  return config;
 }
 
 export const defaultRunState: RunState = {
