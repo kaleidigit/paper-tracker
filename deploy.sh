@@ -429,10 +429,8 @@ if ! has_cmd node || ! has_cmd npm; then
   die "Node.js/npm 未安装。请先安装 Node.js 20+。"
 fi
 
-if ! has_cmd "$LARK_BIN" && [ ! -x "$LARK_BIN" ]; then
-  log "lark-cli 未安装，自动安装 @larksuite/cli..."
-  npm install -g @larksuite/cli
-fi
+log "Ensuring lark-cli is up to date..."
+npm install -g @larksuite/cli@latest
 
 log "Installing npm dependencies..."
 npm install

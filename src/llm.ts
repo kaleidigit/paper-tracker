@@ -86,7 +86,7 @@ export async function chatJson(config: AppConfig, payload: JsonRecord): Promise<
     `${baseUrl.replace(/\/$/, "")}/chat/completions`,
     payload,
     { "Content-Type": "application/json", Authorization: `Bearer ${aiApiKey(config)}` },
-    config.runtime.command_timeout_ms
+    config.ai?.http_timeout_ms || 120_000
   );
   if (!response.ok) {
     const body = normalizeText(await response.text());
@@ -102,7 +102,7 @@ export async function chatJson(config: AppConfig, payload: JsonRecord): Promise<
 
 export async function llmFilter(config: AppConfig, taxonomy: Array<Record<string, unknown>>, candidate: Paper): Promise<JsonRecord> {
   if (!config.ai?.filter?.enabled) {
-    return { used: false, keep: false, confidence: 0 };
+    return { used: false, keep: true, confidence: 1 };
   }
   process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.filter.start", title: candidate.title_en || "" })}\n`);
   const prompts = config.ai?.prompts || {};
@@ -168,7 +168,7 @@ export async function translatePaperFields(config: AppConfig, paper: Paper): Pro
   });
 
   const readTranslated = async (withResponseFormat: boolean): Promise<Pick<Paper, "title_zh" | "abstract_zh">> => {
-    const response = await postJsonWithTimeout(`${baseUrl.replace(/\/$/, "")}/chat/completions`, requestPayload(withResponseFormat), headers, config.runtime.command_timeout_ms);
+    const response = await postJsonWithTimeout(`${baseUrl.replace(/\/$/, "")}/chat/completions`, requestPayload(withResponseFormat), headers, config.ai?.http_timeout_ms || 120_000);
     if (!response.ok) {
       const body = normalizeText(await response.text());
       throw new Error(`translation request failed: HTTP ${response.status}; body=${body}`);

@@ -69,6 +69,7 @@ export interface AppConfig {
     base_url?: string;
     model?: string;
     api_key_env?: string;
+    http_timeout_ms?: number;
     translation?: {
       enabled?: boolean;
       model?: string;

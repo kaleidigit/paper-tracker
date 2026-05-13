@@ -12,7 +12,7 @@
 
 import fs from "node:fs/promises";
 import pLimit from "p-limit";
-import { resolvePath } from "./config.js";
+import { resolvePath, applyDefaults } from "./config.js";
 import type { AppConfig, Paper } from "./types.js";
 import { NatureParser } from "./parsers/nature-parser.js";
 import { OpenAlexParser } from "./parsers/openalex-parser.js";
@@ -72,20 +72,40 @@ async function enrichOne(config: AppConfig, paper: Paper, taxonomy: Array<Record
   }
   let translated: Pick<Paper, "title_zh" | "abstract_zh"> = { title_zh: paper.title_zh || "", abstract_zh: paper.abstract_zh || "" };
   let translationError = "";
-  try {
-    translated = await translatePaperFields(config, paper);
-    if ((Boolean(paper.title_en) && !translated.title_zh) || (Boolean(paper.abstract_original) && !translated.abstract_zh)) {
-      throw new Error("translation_partial_output");
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      translated = await translatePaperFields(config, paper);
+      if ((Boolean(paper.title_en) && !translated.title_zh) || (Boolean(paper.abstract_original) && !translated.abstract_zh)) {
+        throw new Error("translation_partial_output");
+      }
+      translationError = "";
+      break;
+    } catch (error) {
+      translationError = String(error);
+      if (attempt < 2) {
+        const delay = 5_000 * (2 ** attempt) * (0.75 + Math.random() * 0.5);
+        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.enrich.retry", title: paper.title_en, phase: "translation", error: translationError, attempt: attempt + 1 })}\n`);
+        await new Promise((r) => setTimeout(r, delay));
+      }
     }
-  } catch (error) {
-    translationError = String(error);
-    if (config.ai?.translation?.required && !translated.title_zh && Boolean(paper.title_en)) {
-      throw new Error(`translation_required_failed: ${translationError}`);
-    }
+  }
+  if (config.ai?.translation?.required && !translated.title_zh && Boolean(paper.title_en)) {
+    throw new Error(`translation_required_failed: ${translationError}`);
   }
   const merged = { ...paper, title_zh: translated.title_zh || paper.title_zh || "", abstract_zh: translated.abstract_zh || paper.abstract_zh || "" };
   let classification = merged.classification || { domain: "未分类", subdomain: "未分类", tags: [] };
-  try { classification = { ...(await classifyPaper(config, merged, taxonomy)) }; } catch { /* fallback to heuristic */ }
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      classification = { ...(await classifyPaper(config, merged, taxonomy)) };
+      break;
+    } catch (error) {
+      if (attempt < 2) {
+        const delay = 5_000 * (2 ** attempt) * (0.75 + Math.random() * 0.5);
+        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.enrich.retry", title: paper.title_en, phase: "classification", error: String(error), attempt: attempt + 1 })}\n`);
+        await new Promise((r) => setTimeout(r, delay));
+      }
+    }
+  }
   return { ...merged, publication_type: normalizePublicationType(paper.publication_type), translation_error: translationError || undefined, summary_zh: "", novelty_points: [], main_content: [], classification };
 }
 
@@ -127,6 +147,7 @@ async function withRetry<T>(max: number, backoffMs: number, job: () => Promise<T
 }
 
 export async function runWorkflow(config: AppConfig) {
+  applyDefaults(config);
   const attempts = Math.max(1, config.runtime.retry.max_attempts);
   const backoff = Math.max(0, config.runtime.retry.backoff_ms);
   const title = buildDigestTitle(config);

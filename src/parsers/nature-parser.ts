@@ -172,11 +172,24 @@ export class NatureParser {
         continue;
       }
 
-      // LLM筛选
+      // LLM筛选（失败重试一次）
       if (filterBudget.remaining > 0) {
         filterBudget.remaining -= 1;
-        const filterResult = await llmFilter(config, taxonomy, paper);
-        if (!Boolean(filterResult.keep)) {
+        let filterResult: import("../types.js").JsonRecord | undefined;
+        for (let attempt = 0; attempt < 2; attempt++) {
+          try {
+            filterResult = await llmFilter(config, taxonomy, paper);
+            break;
+          } catch (error) {
+            if (attempt === 0) {
+              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.filter.retry", title: paper.title_en, error: String(error) })}\n`);
+              await new Promise((r) => setTimeout(r, 10_000));
+            } else {
+              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.filter.error", title: paper.title_en, error: String(error) })}\n`);
+            }
+          }
+        }
+        if (filterResult && !Boolean(filterResult.keep)) {
           continue;
         }
       }

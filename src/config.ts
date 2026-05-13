@@ -129,13 +129,13 @@ function nowInTimezone(timezone: string): Date {
   return new Date(text);
 }
 
-function applyDefaults(parsed: AppConfig): void {
+export function applyDefaults(parsed: AppConfig): void {
   parsed.runtime = parsed.runtime || ({} as AppConfig["runtime"]);
   parsed.runtime.mode = parsed.runtime.mode || "run-once";
   parsed.runtime.state_dir = parsed.runtime.state_dir || "data/ts-runner";
   parsed.runtime.logs_dir = parsed.runtime.logs_dir || "data/ts-runner/logs";
   parsed.runtime.temp_dir = parsed.runtime.temp_dir || "data/ts-runner/tmp";
-  parsed.runtime.command_timeout_ms = asNumber(parsed.runtime.command_timeout_ms, 300_000);
+  parsed.runtime.command_timeout_ms = asNumber(parsed.runtime.command_timeout_ms, 10_000);
   parsed.runtime.retry = parsed.runtime.retry || { max_attempts: 1, backoff_ms: 1000 };
   parsed.runtime.retry.max_attempts = asNumber(parsed.runtime.retry.max_attempts, 1);
   parsed.runtime.retry.backoff_ms = asNumber(parsed.runtime.retry.backoff_ms, 1000);
@@ -157,6 +157,7 @@ function applyDefaults(parsed: AppConfig): void {
   parsed.ai.translation.model = parsed.ai.translation.model || parsed.ai.model || "";
   parsed.ai.translation.api_key_env = parsed.ai.translation.api_key_env || parsed.ai.api_key_env || "SILICONFLOW_API_KEY";
   parsed.ai.translation.required = Boolean(parsed.ai.translation.required ?? true);
+  parsed.ai.http_timeout_ms = asNumber(parsed.ai.http_timeout_ms, 120_000);
   parsed.ai.temperature = asNumber(parsed.ai.temperature, 0.2);
   parsed.ai.max_tokens = asNumber(parsed.ai.max_tokens, 2000);
   parsed.ai.filter = parsed.ai.filter || {};

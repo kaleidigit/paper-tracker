@@ -8,7 +8,7 @@
 4. **每增加一个领域，只需新增一个 profile 目录**，无需修改任何代码。
 5. **不生成 `summary_zh` / `novelty_points` / `main_content`** —— 避免幻觉和高 token 消耗。
 6. **Profile 隔离** —— 配置在 `profiles/{name}/` 下，通过 `--profile` 参数选择，fallback 到 `top-journal-env-energy`。
-7. **测试必须通过** `npm test` 和 `npm run build`（integration test 的 `EmptyPapersError` 是 pre-existing failure，无需修复）。
+7. **测试必须通过** `npm test` 和 `npm run build`。
 
 ## 架构图
 
@@ -58,7 +58,7 @@ data/{profile}/{YYYY-MM-DD}/
 | `src/llm.ts` | LLM 调用：chatJson / llmFilter / translatePaperFields / classifyPaper | 无 |
 | `src/digest.ts` | buildDigestTitle / buildMarkdown / buildRecords | 无 |
 | `src/publish.ts` | 调用 lark-cli：docs +create / im +messages-send | 无（subprocess 调用） |
-| `src/config.ts` | 根配置加载 + profile 感知配置加载（deepMerge 合并 AI 配置） | 无 |
+| `src/config.ts` | 根配置加载 + profile 感知配置加载（deepMerge 合并 AI 配置）+ `applyDefaults()` | 无 |
 | `src/types.ts` | 所有 TypeScript 类型 | 无 |
 | `src/parsers/nature-parser.ts` | Nature 系列 RSS + JSON-LD 采集 | HTTP + HTML |
 | `src/parsers/openalex-parser.ts` | OpenAlex API 采集 | HTTP |
