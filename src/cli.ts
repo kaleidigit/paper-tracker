@@ -159,6 +159,15 @@ async function main(): Promise<void> {
     await fs.mkdir(ctx.outputDir, { recursive: true });
     const result = await runStep(step, ctx);
     process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
+    if (result.error) {
+      process.stderr.write(`${JSON.stringify({
+        timestamp: new Date().toISOString(),
+        level: "ERROR",
+        event: `step.${step}.error`,
+        error: result.error,
+        profile: ctx.profile
+      })}\n`);
+    }
     return;
   }
 

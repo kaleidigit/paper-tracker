@@ -22,6 +22,7 @@ AUTH_SINGLE_POLL_TIMEOUT_SECONDS="${LARK_AUTH_SINGLE_POLL_TIMEOUT_SECONDS:-8}"
 LARK_BIN="${LARK_CLI_BIN:-lark-cli}"
 KEYCHAIN_FILE="${HOME}/.lark-cli/keychain.json"
 AUTH_DOMAIN_ARGS=()
+NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
 
 usage() {
   cat <<'EOF'
@@ -430,10 +431,10 @@ if ! has_cmd node || ! has_cmd npm; then
 fi
 
 log "Ensuring lark-cli is up to date..."
-npm install -g @larksuite/cli@latest
+npm install -g @larksuite/cli@latest --registry "$NPM_REGISTRY"
 
 log "Installing npm dependencies..."
-npm install
+npm install --registry "$NPM_REGISTRY"
 
 log "Building TypeScript..."
 npm run build

@@ -111,14 +111,21 @@ async function stepPush(ctx: ProfileContext): Promise<StepResult> {
   const papers = await readJson<Paper[]>(papFile);
   const records = await readJson<JsonRecord[]>(recFile).catch(() => buildRecords(papers));
   const markdown = await fs.readFile(mdFile, "utf-8");
-  await publishDigest(ctx.config, { title, markdown, records, papers });
+  const publishResult = await publishDigest(ctx.config, { title, markdown, records, papers });
+  const errors: string[] = [];
+  const docPub = publishResult.doc_publish as JsonRecord | undefined;
+  const notifyPub = publishResult.notify_publish as JsonRecord | undefined;
+  if (docPub?.error) errors.push(`doc_create: ${String(docPub.error)}`);
+  if (notifyPub?.error) errors.push(`notify: ${String(notifyPub.error)}`);
+  if (!publishResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
   return {
     step: "push",
     inputCount: papers.length,
     outputCount: papers.length,
     inputFile: mdFile,
     outputFile: ctx.outputDir,
-    durationMs: Date.now() - t
+    durationMs: Date.now() - t,
+    error: errors.length > 0 ? errors.join("; ") : undefined
   };
 }
 

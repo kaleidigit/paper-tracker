@@ -16,6 +16,14 @@ import { normalizeText } from "./utils.js";
 
 // ─── lark-cli 封装 ─────────────────────────────────────────
 
+function extractDocUrl(docRes: JsonRecord): string {
+  const stdout = String(docRes.stdout || "");
+  const stderr = String(docRes.stderr || "");
+  return stdout.match(/https?:\/\/[^\s"]+/)?.[0]
+    || stderr.match(/https?:\/\/[^\s"]+/)?.[0]
+    || "";
+}
+
 async function larkCreateDoc(
   config: AppConfig,
   docTitle: string,
@@ -32,12 +40,16 @@ async function larkCreateDoc(
       ],
       config.runtime.command_timeout_ms
     );
-    return {
+    const record: JsonRecord = {
       command: "lark-cli docs +create",
       returncode: result.code,
       stdout: result.stdout,
       stderr: result.stderr
     };
+    if (result.code !== 0) {
+      record.error = `lark-cli exited with code ${result.code}: ${result.stderr || result.stdout || "(no output)"}`;
+    }
+    return record;
   } catch (err) {
     return { command: "lark-cli docs +create", error: String(err) };
   }
@@ -60,12 +72,16 @@ async function larkSendMessage(
       ],
       config.runtime.command_timeout_ms
     );
-    return {
+    const record: JsonRecord = {
       command: "lark-cli im +messages-send",
       returncode: result.code,
       stdout: result.stdout,
       stderr: result.stderr
     };
+    if (result.code !== 0) {
+      record.error = `lark-cli exited with code ${result.code}: ${result.stderr || result.stdout || "(no output)"}`;
+    }
+    return record;
   } catch (err) {
     return { command: "lark-cli im +messages-send", error: String(err) };
   }
@@ -164,18 +180,40 @@ export async function publishDigest(
   // 创建飞书文档
   if (Boolean(feishu.doc_enabled)) {
     const markdown = await fs.readFile(mdFile, "utf-8");
-    const docRes = await larkCreateDoc(config, docTitle, markdown);
+    let docRes = await larkCreateDoc(config, docTitle, markdown);
+    let docUrl = extractDocUrl(docRes);
+
+    // 失败时重试一次
+    if (!docUrl && docRes.error) {
+      await new Promise((r) => setTimeout(r, 2000));
+      docRes = await larkCreateDoc(config, docTitle, markdown);
+      docUrl = extractDocUrl(docRes);
+    }
+
     result.doc_publish = docRes;
-    const url = (String(docRes.stdout || "")).match(/https?:\/\/[^\s"]+/)?.[0] || "";
-    if (url) result.doc_url = url;
+    if (docUrl) {
+      result.doc_url = docUrl;
+    }
+    if (docRes.error) {
+      process.stderr.write(`${JSON.stringify({
+        timestamp: new Date().toISOString(),
+        level: "ERROR",
+        event: "workflow.publish.doc_create_failed",
+        error: docRes.error,
+        profile: process.env.PROFILE || "unknown",
+        retried: !docUrl
+      })}\n`);
+    }
   }
 
   // 发送群通知
   const chatId = normalizeText(feishu.notify_chat_id);
   if (Boolean(feishu.notify_enabled) && chatId) {
-    const textTpl =
-      normalizeText(feishu.notify_message_template) ||
-      "论文日报已生成：{title}\n文档链接：{doc_url}";
+    const hasUrl = Boolean(result.doc_url);
+    const defaultTpl = hasUrl
+      ? "论文日报已生成：{title}\n文档链接：{doc_url}"
+      : "论文日报已生成：{title}\n文档创建失败，请手动检查飞书文档列表。";
+    const textTpl = normalizeText(feishu.notify_message_template) || defaultTpl;
     const notifyText = textTpl
       .replaceAll("{title}", docTitle)
       .replaceAll("{doc_url}", String(result.doc_url || ""));
