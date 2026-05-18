@@ -119,9 +119,11 @@ export interface AppConfig {
     alert_enabled?: boolean;
     alert_cmd?: string;
     alert_chat_id?: string;
+    alert_chat_ids?: string[];
     alert_user_id?: string;
     alert_message_template?: string;
     notify_chat_id?: string;
+    notify_chat_ids?: string[];
     notify_user_id?: string;
     notify_user_ids?: string[];
     notify_message_template?: string;

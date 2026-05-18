@@ -15,7 +15,8 @@
 ```
 Shell Scripts (scripts/)
 │
-└─ run.sh ──→ 串行调用 pipeline steps，支持 --dry-run
+├─ run.sh ──→ 串行调用 pipeline steps（collect→filter→enrich→store→digest→push），支持 --dry-run
+└─ auto-push.sh ──→ cron 入口（周一推周刊，周二至周五推日刊）
 
 src/cli.ts
   │
@@ -35,17 +36,25 @@ src/cli.ts
         │     ├── openalex-parser.ts (OpenAlex API)
         │     └── article-parser.ts (通用文章页面)
         │
-        ├── digest.ts (纯能力：buildDigestTitle / buildMarkdown / buildRecords)
+        ├── digest.ts (纯能力：buildMarkdown / buildWeeklyMarkdown / buildRecords)
         │
-        └── publish.ts (纯能力：publishDigest → lark-cli docs +create / im +messages-send)
+        ├── publish.ts (纯能力：publishDigest / pushToFeishu → lark-cli)
+        │
+        └── db.ts (纯能力：upsertPapers / getWeeklyPapers → SQLite)
 
-data/{profile}/{YYYY-MM-DD}/
-  ├── 1-raw-fetched.json   ← collect 输出（采集 + 过滤 + 去重）
-  ├── 3-llm-filtered.json ← filter 输出（透传，当前 collect 已内置）
-  ├── 5-enriched.json      ← enrich 输出（翻译 + 分类）
-  ├── 6-digest.md          ← digest 输出（Markdown）
-  ├── 6-records.json       ← digest 输出（扁平化记录）
-  └── 6-papers.json        ← digest 输出（完整 Paper[]）
+data/{profile}/
+  ├── papers.db              ← SQLite 数据库（所有论文汇总，dedup_key 去重）
+  ├── {YYYY-MM-DD}/
+  │     ├── 1-raw-fetched.json   ← collect 输出（采集 + 过滤 + 去重）
+  │     ├── 3-llm-filtered.json  ← filter 输出（透传，当前 collect 已内置）
+  │     ├── 5-enriched.json      ← enrich 输出（翻译 + 分类）
+  │     ├── 6-digest.md          ← digest 输出（Markdown 日刊）
+  │     ├── 6-records.json       ← digest 输出（扁平化记录）
+  │     └── 6-papers.json        ← digest 输出（完整 Paper[]）
+  └── weekly-{start}~{end}/
+        ├── 6-digest.md          ← weekly 输出（按期刊分组的周刊）
+        ├── 6-records.json
+        └── 6-papers.json
 ```
 
 ## 模块职责表
@@ -56,8 +65,9 @@ data/{profile}/{YYYY-MM-DD}/
 | `src/pipeline.ts` | **唯一的 IO 编排层**：每个 step 读写编号文件 | **文件读写** |
 | `src/modules.ts` | 采集（fetchPapers）、增强（enrichPapers） | **无文件 IO** |
 | `src/llm.ts` | LLM 调用：chatJson / llmFilter / translatePaperFields / classifyPaper | 无 |
-| `src/digest.ts` | buildDigestTitle / buildMarkdown / buildRecords | 无 |
-| `src/publish.ts` | 调用 lark-cli：docs +create / im +messages-send | 无（subprocess 调用） |
+| `src/digest.ts` | buildMarkdown / buildWeeklyMarkdown / buildRecords | 无 |
+| `src/publish.ts` | publishDigest / pushToFeishu：lark-cli docs +create / im +messages-send | 无（subprocess 调用） |
+| `src/db.ts` | SQLite 操作：upsertPapers / getPapersByDateRange / getWeeklyPapers | 数据库读写 |
 | `src/config.ts` | 根配置加载 + profile 感知配置加载（deepMerge 合并 AI 配置）+ `applyDefaults()` | 无 |
 | `src/types.ts` | 所有 TypeScript 类型 | 无 |
 | `src/parsers/nature-parser.ts` | Nature 系列 RSS + JSON-LD 采集 | HTTP + HTML |
@@ -67,12 +77,35 @@ data/{profile}/{YYYY-MM-DD}/
 ## Shell 脚本（项目根目录）
 
 ```
-run.sh              ← 手动执行入口（串行 collect→filter→enrich→digest→push，支持 --dry-run）
-auto-push.sh        ← cron 定时任务入口（周一推3天，其余工作日推1天，依次运行所有 profile），调用 run.sh
+run.sh              ← 手动执行入口（串行 collect→filter→enrich→store→digest→push，支持 --dry-run）
+auto-push.sh        ← cron 定时任务入口（周一周刊、其余工作日日刊，依次运行所有 profile）
 deploy.sh           ← 安装依赖 + lark-cli 授权
 ```
 
 单步执行：`npx tsx src/cli.ts --step <name> --profile <name>`
+
+## Pipeline Steps
+
+| Step | 输入 | 输出 | 说明 |
+|------|------|------|------|
+| `collect` | — | `1-raw-fetched.json` | 采集 + 关键词过滤 + LLM 过滤 + 去重 |
+| `filter` | `1-raw-fetched.json` | `3-llm-filtered.json` | 透传（collect 已内置过滤） |
+| `enrich` | `3-llm-filtered.json` | `5-enriched.json` | 翻译 + 分类 |
+| `store` | `5-enriched.json` | `papers.db` | 写入 SQLite，按 dedup_key 去重 |
+| `digest` | `5-enriched.json` | `6-digest.md` 等 | 生成日刊 Markdown |
+| `push` | `6-digest.md` | 飞书 | 创建文档 + 发送群通知 |
+| `weekly` | `papers.db` | `weekly-*/` | 读取上周论文，按期刊分组生成周刊并推送 |
+
+## 推流逻辑
+
+```
+周一（DAY_OF_WEEK=1）：
+  collect → filter → enrich → store  （采集上周五/六/日，入库）
+  → weekly                           （从 DB 读上周全部论文，按期刊推送周刊）
+
+周二至周五：
+  collect → filter → enrich → store → digest → push  （日刊，采集昨天）
+```
 
 ## Profile 配置
 
@@ -155,13 +188,13 @@ fallback 逻辑：如果 profile 目录下没有对应文件，回退到 `profil
 ## 命令速查
 
 ```bash
-# 完整管道（串行 5 步，运行 config.json 中所有 profile）
+# 完整管道（串行 6 步，运行 config.json 中所有 profile）
 ./run.sh
 ./run.sh --dry-run
 ./run.sh --profile env-economics-journal
 ./run.sh --profile env-economics-journal --dry-run
 
-# 自动推送（cron 入口，从 config.json 读取 profile 列表，周一推3天其余推1天）
+# 自动推送（cron 入口，从 config.json 读取 profile 列表）
 ./auto-push.sh
 ./auto-push.sh --dry-run
 
@@ -169,11 +202,14 @@ fallback 逻辑：如果 profile 目录下没有对应文件，回退到 `profil
 npx tsx src/cli.ts --step collect --profile top-journal-env-energy
 npx tsx src/cli.ts --step filter  --profile top-journal-env-energy
 npx tsx src/cli.ts --step enrich  --profile top-journal-env-energy
+npx tsx src/cli.ts --step store   --profile top-journal-env-energy
 npx tsx src/cli.ts --step digest  --profile top-journal-env-energy
 npx tsx src/cli.ts --step push    --profile top-journal-env-energy
+npx tsx src/cli.ts --step weekly  --profile top-journal-env-energy
 
 npx tsx src/cli.ts --step collect --profile env-economics-journal
 npx tsx src/cli.ts --step enrich  --profile env-economics-journal
+npx tsx src/cli.ts --step store   --profile env-economics-journal
 npx tsx src/cli.ts --step digest  --profile env-economics-journal
 npx tsx src/cli.ts --step push    --profile env-economics-journal
 
@@ -187,7 +223,7 @@ npm run build
 `publish.ts` 中直接调用 subprocess：
 
 ```typescript
-// 创建飞书文档
+// pushToFeishu() 创建飞书文档
 await runCommand("lark-cli", [
   "docs", "+create",
   "--as", "bot",
@@ -195,7 +231,7 @@ await runCommand("lark-cli", [
   "--markdown", markdownContent
 ], config.runtime.command_timeout_ms);
 
-// 发送群通知
+// pushToFeishu() 发送群通知
 await runCommand("lark-cli", [
   "im", "+messages-send",
   "--as", "bot",
@@ -206,6 +242,22 @@ await runCommand("lark-cli", [
 
 配置文件（根 `config.json` + `profiles/{name}/config.json`）中**不需要**存储 shell 命令模板（如 `doc_publish_cmd` / `notify_cmd`），直接用 `--profile` 指定 profile 目录即可。
 
+## 数据库
+
+`data/{profile}/papers.db` — SQLite（WAL 模式）：
+
+- **去重键**：`dedup_key` = DOI > URL > journal::title，与 `itemKey()` 逻辑一致
+- **唯一索引**：`UNIQUE(profile, dedup_key)`
+- **查询索引**：`(profile, published_date)`、`(profile, journal_name)`
+- **入库时机**：每天 enrich 后自动写入（stepStore）
+- **周刊读取**：stepWeekly 调用 `getWeeklyPapers()` 查询上周一至周日
+
+```bash
+# 直接查询数据库
+sqlite3 data/top-journal-env-energy/papers.db "SELECT COUNT(*) FROM papers;"
+sqlite3 data/top-journal-env-energy/papers.db "SELECT journal_name, COUNT(*) FROM papers GROUP BY journal_name ORDER BY 2 DESC;"
+```
+
 ## 数据追溯（质检）
 
 每个 step 的输入输出文件都有编号，可随时查看：
@@ -214,14 +266,18 @@ await runCommand("lark-cli", [
 # 查看采集结果
 cat data/top-journal-env-energy/2026-05-09/1-raw-fetched.json | jq 'length'
 
-# 查看过滤结果（当前透传）
-cat data/top-journal-env-energy/2026-05-09/3-llm-filtered.json | jq 'length'
-
 # 查看翻译+分类结果
 cat data/top-journal-env-energy/2026-05-09/5-enriched.json | jq '.[0] | {title_zh, abstract_zh, classification}'
 
 # 查看最终 Markdown
 cat data/top-journal-env-energy/2026-05-09/6-digest.md | head -30
+
+# 查看周刊
+cat data/top-journal-env-energy/weekly-2026-05-11~2026-05-17/6-digest.md | head -30
+
+# 查看数据库统计
+sqlite3 data/top-journal-env-energy/papers.db "SELECT COUNT(*) FROM papers;"
+sqlite3 data/top-journal-env-energy/papers.db "SELECT journal_name, COUNT(*) as cnt FROM papers GROUP BY journal_name ORDER BY cnt DESC;"
 
 # 质检：对比输入输出数量
 wc -l data/top-journal-env-energy/2026-05-09/*.json

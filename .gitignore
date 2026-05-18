@@ -4,4 +4,5 @@ data/
 node_modules/
 dist/
 .DS_Store
-/环境经济汇报要求及目录.xlsx
+*.xlsx
+.claude

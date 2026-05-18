@@ -30,11 +30,13 @@
     "lint:md": "markdownlint-cli2"
   },
   "dependencies": {
+    "better-sqlite3": "^12.10.0",
     "dotenv": "^16.6.1",
     "fast-xml-parser": "^4.5.3",
     "p-limit": "^3.1.0"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^24.7.2",
     "markdownlint-cli2": "^0.18.1",
     "tsx": "^4.20.6",

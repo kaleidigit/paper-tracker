@@ -69,6 +69,70 @@ export function buildMarkdown(title: string, papers: Paper[]): string {
   return lines.join("\n");
 }
 
+// ─── Weekly digest ──────────────────────────────────────────
+
+export function buildWeeklyDigestTitle(startDate: string, endDate: string): string {
+  return `上周论文周刊：${startDate} ~ ${endDate}`;
+}
+
+/** 按期刊名对论文分组并计数 */
+function groupByJournal(papers: Paper[]): Map<string, Paper[]> {
+  const map = new Map<string, Paper[]>();
+  for (const p of papers) {
+    const name = (p.journal?.name || "").trim() || "其他";
+    const group = map.get(name);
+    if (group) {
+      group.push(p);
+    } else {
+      map.set(name, [p]);
+    }
+  }
+  // 按论文数量降序排列期刊
+  return new Map([...map.entries()].sort((a, b) => b[1].length - a[1].length));
+}
+
+export function buildWeeklyMarkdown(title: string, papers: Paper[]): string {
+  const lines: string[] = [`# ${title}`, ""];
+  const journalMap = groupByJournal(papers);
+  const journalCount = journalMap.size;
+
+  lines.push(`共收录 **${papers.length}** 篇，来自 **${journalCount}** 本期刊。`, "");
+
+  for (const [journalName, group] of journalMap) {
+    lines.push(`## ${journalName}（${group.length} 篇）`, "");
+
+    // 组内按日期降序
+    const sorted = [...group].sort((a, b) =>
+      `${b.published_date}`.localeCompare(`${a.published_date}`)
+    );
+
+    sorted.forEach((paper, idx) => {
+      const paperTitle = paper.title_zh || paper.title_en || `论文 ${idx + 1}`;
+      const englishTitle = (paper.title_en || "").trim();
+      const authors = (paper.authors || []).slice(0, 5).join("，");
+      const moreAuthors = (paper.authors || []).length > 5 ? " et al." : "";
+      const domain = paper.classification?.domain || "";
+      const subdomain = paper.classification?.subdomain || "";
+      const domainText = [domain, subdomain].filter(Boolean).join(" / ");
+      const link = paper.url || paper.doi || "";
+
+      lines.push(`**${idx + 1}. ${paperTitle}**  `);
+      if (englishTitle && englishTitle !== paperTitle) {
+        lines.push(`*${englishTitle}*  `);
+      }
+      lines.push(`- 作者：${authors}${moreAuthors}  `);
+      if (paper.published_date) lines.push(`- 日期：${paper.published_date}  `);
+      if (domainText) lines.push(`- 领域：${domainText}  `);
+      if (link) lines.push(`- [链接](${link})  `);
+      lines.push("");
+    });
+
+    lines.push("---", "");
+  }
+
+  return lines.join("\n");
+}
+
 export function buildRecords(papers: Paper[]): JsonRecord[] {
   return papers.map((paper) => ({
     title_en: paper.title_en || "",

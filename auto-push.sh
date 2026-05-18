@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # auto-push.sh — cron 定时任务入口
 #
-# 周一推送3天（上周五/六/日），周二至周五推送昨天，周末不推送
+# 周一推送周刊（上周所有论文按期刊排列），周二至周五推送日刊，周末不推送
 #
 # 用法：
 #   ./auto-push.sh              正式推送
@@ -21,7 +21,7 @@ for arg in "$@"; do
     -h|--help)
       echo "Usage: $0 [--dry-run]"
       echo ""
-      echo "  自动推送（周一→3天，周二至周五→1天）"
+      echo "  自动推送（周一→周刊，周二至周五→日刊）"
       echo "  --dry-run  仅生成文件，跳过飞书发布"
       exit 0 ;;
   esac
@@ -39,7 +39,7 @@ if [[ "$DAY_OF_WEEK" == "6" || "$DAY_OF_WEEK" == "7" ]]; then
 fi
 
 if [[ "$DAY_OF_WEEK" == "1" ]]; then
-  DAYS=3   # 周一：推送上周五、六、日
+  DAYS=3   # 周一：采集上周五/六/日，然后推送周刊
 else
   DAYS=1   # 周二至周五：推送昨天
 fi
@@ -62,12 +62,40 @@ EXIT_CODE=0
 for PROFILE_NAME in "${PROFILES[@]}"; do
   echo "[auto-push] day_of_week=$DAY_OF_WEEK days=$DAYS dry_run=$DRY_RUN profile=$PROFILE_NAME"
 
-  ARGS=("--profile" "$PROFILE_NAME" "--days" "$DAYS")
-  [[ "$DRY_RUN" == "1" ]] && ARGS+=("--dry-run")
+  if [[ "$DAY_OF_WEEK" == "1" ]]; then
+    # ── 周一：采集+入库，然后推送周刊 ────────────────────
+    export PROFILE="$PROFILE_NAME"
+    export PUSH_DAYS="$DAYS"
+    [[ "$DRY_RUN" == "1" ]] && export PUSH_DRY_RUN="1"
 
-  if ! bash "$ROOT_DIR/run.sh" "${ARGS[@]}"; then
-    echo "[auto-push] ERROR: profile '$PROFILE_NAME' failed" >&2
-    EXIT_CODE=1
+    STEPS="collect filter enrich store"
+    for step in $STEPS; do
+      echo "[auto-push] >>> step: $step"
+      if ! npx tsx src/cli.ts --step "$step" --profile "$PROFILE_NAME"; then
+        echo "[auto-push] ERROR: step '$step' failed for profile '$PROFILE_NAME'" >&2
+        EXIT_CODE=1
+        break
+      fi
+      echo "[auto-push] <<< step: $step done"
+    done
+
+    # 前面步骤都成功，运行周刊
+    if [[ "$EXIT_CODE" -eq 0 ]]; then
+      echo "[auto-push] >>> step: weekly"
+      if ! npx tsx src/cli.ts --step weekly --profile "$PROFILE_NAME"; then
+        echo "[auto-push] ERROR: weekly step failed for profile '$PROFILE_NAME'" >&2
+        EXIT_CODE=1
+      fi
+      echo "[auto-push] <<< step: weekly done"
+    fi
+  else
+    ARGS=("--profile" "$PROFILE_NAME" "--days" "$DAYS")
+    [[ "$DRY_RUN" == "1" ]] && ARGS+=("--dry-run")
+
+    if ! bash "$ROOT_DIR/run.sh" "${ARGS[@]}"; then
+      echo "[auto-push] ERROR: profile '$PROFILE_NAME' failed" >&2
+      EXIT_CODE=1
+    fi
   fi
 done
 

@@ -72,7 +72,7 @@ for PROFILE_NAME in "${PROFILES[@]}"; do
 
   echo "[run] profile=$PROFILE_NAME dry_run=$DRY_RUN days=${DAYS:-from_config}"
 
-  STEPS="collect filter enrich digest"
+  STEPS="collect filter enrich store digest"
   if [[ "$DRY_RUN" != "1" ]]; then
     STEPS="$STEPS push"
   fi

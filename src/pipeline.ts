@@ -18,8 +18,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import type { JsonRecord, Paper, ProfileContext, StepResult } from "./types.js";
 import { fetchPapers, enrichPapers } from "./modules.js";
-import { buildDigestTitle, buildMarkdown, buildRecords } from "./digest.js";
-import { publishDigest } from "./publish.js";
+import { buildDigestTitle, buildMarkdown, buildRecords, buildWeeklyDigestTitle, buildWeeklyMarkdown } from "./digest.js";
+import { publishDigest, pushToFeishu } from "./publish.js";
+import { upsertPapers, getWeeklyPapers } from "./db.js";
 
 // ─── Helpers ───────────────────────────────────────────────
 
@@ -81,6 +82,90 @@ async function stepEnrich(ctx: ProfileContext): Promise<StepResult> {
   };
 }
 
+async function stepStore(ctx: ProfileContext): Promise<StepResult> {
+  const t = Date.now();
+  const in_ = f(ctx.outputDir, "5-enriched.json");
+  const papers = await readJson<Paper[]>(in_);
+  const dbPath = path.join(path.dirname(ctx.outputDir), "papers.db");
+  await fs.mkdir(path.dirname(ctx.outputDir), { recursive: true });
+  const count = upsertPapers(dbPath, ctx.profile, papers);
+  process.stdout.write(`${JSON.stringify({
+    timestamp: new Date().toISOString(), level: "INFO",
+    event: "workflow.store.done", db_path: dbPath, stored: count, total: papers.length
+  })}\n`);
+  return {
+    step: "store",
+    inputCount: papers.length,
+    outputCount: count,
+    inputFile: in_,
+    outputFile: dbPath,
+    durationMs: Date.now() - t
+  };
+}
+
+async function stepWeekly(ctx: ProfileContext): Promise<StepResult> {
+  const t = Date.now();
+  const dbPath = path.join(path.dirname(ctx.outputDir), "papers.db");
+
+  const papers = getWeeklyPapers(dbPath, ctx.profile);
+  if (papers.length === 0) {
+    return {
+      step: "weekly",
+      inputCount: 0,
+      outputCount: 0,
+      inputFile: dbPath,
+      outputFile: "",
+      durationMs: Date.now() - t,
+      error: "上周没有收录任何论文，跳过周刊推送"
+    };
+  }
+
+  const title = buildWeeklyDigestTitle(
+    papers.length > 0 ? (papers[papers.length - 1].published_date || "") : "",
+    papers.length > 0 ? (papers[0].published_date || "") : ""
+  );
+  const markdown = buildWeeklyMarkdown(title, papers);
+  const records = buildRecords(papers);
+
+  // 输出目录：weekly-{start}~{end}
+  const startStr = papers.length > 0 ? papers[papers.length - 1].published_date : "unknown";
+  const endStr = papers.length > 0 ? papers[0].published_date : "unknown";
+  const weeklyDir = path.join(path.dirname(ctx.outputDir), `weekly-${startStr}~${endStr}`);
+  await fs.mkdir(weeklyDir, { recursive: true });
+
+  const mdOut = f(weeklyDir, "6-digest.md");
+  const recOut = f(weeklyDir, "6-records.json");
+  const papOut = f(weeklyDir, "6-papers.json");
+
+  await fs.writeFile(mdOut, markdown, "utf-8");
+  await writeJson(recOut, records);
+  await writeJson(papOut, papers);
+
+  // 推送飞书（不重复写文件，文件已写入 weekly 目录）
+  const prefix = ctx.config.feishu?.doc_title_prefix || "[每日论文追踪]";
+  const docTitle = `${prefix} ${title}`;
+  const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
+  const errors: string[] = [];
+  if (feishuResult.doc_publish && (feishuResult.doc_publish as JsonRecord).error) {
+    errors.push(`doc_create: ${String((feishuResult.doc_publish as JsonRecord).error)}`);
+  }
+  if (feishuResult.notify_publish) {
+    for (const n of (feishuResult.notify_publish as JsonRecord[])) {
+      if (n.error) errors.push(`notify: ${String(n.error)}`);
+    }
+  }
+
+  return {
+    step: "weekly",
+    inputCount: papers.length,
+    outputCount: papers.length,
+    inputFile: dbPath,
+    outputFile: mdOut,
+    durationMs: Date.now() - t,
+    error: errors.length > 0 ? errors.join("; ") : undefined
+  };
+}
+
 async function stepDigest(ctx: ProfileContext): Promise<StepResult> {
   const t = Date.now();
   const in_ = f(ctx.outputDir, "5-enriched.json");
@@ -135,8 +220,10 @@ const STEPS: Record<string, (ctx: ProfileContext) => Promise<StepResult>> = {
   collect: stepCollect,
   filter: stepFilter,
   enrich: stepEnrich,
+  store: stepStore,
   digest: stepDigest,
-  push: stepPush
+  push: stepPush,
+  weekly: stepWeekly
 };
 
 export async function runStep(name: string, ctx: ProfileContext): Promise<StepResult> {
