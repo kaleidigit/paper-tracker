@@ -6,14 +6,13 @@
 
 import fs from "node:fs/promises";
 import type { AppConfig, JsonRecord, Paper } from "../types.js";
-import type { FilterBudget, JournalEntry, ParsedPaper } from "./types.js";
+import type { JournalEntry, ParsedPaper } from "./types.js";
 import {
   normalizeText, dedupeStrings, toArray, resolvePath,
   fetchJson, parseDate, strictWindowStartAt, formatDateInTz,
-  matchesKeywords, shouldSkipLlmRescueByTitle, restoreAbstract,
+  shouldSkipLlmRescueByTitle, restoreAbstract,
   heuristicClassification, normalizePublicationType
 } from "../utils.js";
-import { llmFilter } from "../llm.js";
 import { loadTaxonomy } from "../modules.js";
 
 async function loadJournals(config: AppConfig): Promise<JournalEntry[]> {
@@ -51,18 +50,12 @@ function buildPaper(input: ParsedPaper): Paper {
 }
 
 export class OpenAlexParser {
-  async collect(config: AppConfig, taxonomy: Array<Record<string, unknown>>, filterBudget: FilterBudget): Promise<Paper[]> {
-    // ========== 阶段1：全量采集 ==========
+  async collect(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
     process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase1.start", phase: "full_collection", source: "openalex" })}\n`);
     const rawPapers = await this.collectAllRawPapers(config, taxonomy);
     process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase1.done", collected: rawPapers.length, source: "openalex" })}\n`);
 
-    // ========== 阶段2：逐一筛选 ==========
-    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase2.start", phase: "llm_filtering", source: "openalex" })}\n`);
-    const filteredPapers = await this.filterPapersWithLLM(config, rawPapers, taxonomy, filterBudget);
-    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase2.done", filtered: filteredPapers.length, rejected: rawPapers.length - filteredPapers.length, source: "openalex" })}\n`);
-
-    return filteredPapers;
+    return rawPapers;
   }
 
   private async collectAllRawPapers(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
@@ -76,46 +69,46 @@ export class OpenAlexParser {
 
     if (issns.length === 0) return [];
 
-    const queries = toArray(config.sources?.openalex_queries).length
-      ? (config.sources?.openalex_queries as string[])
-      : ["energy", "climate"];
-
     const windowStart = strictWindowStartAt(config);
     const startDate = formatDateInTz(windowStart, "UTC");
     const select = "id,title,doi,publication_date,type,authorships,primary_location,abstract_inverted_index";
     const papers: Paper[] = [];
     const timeoutMs = 30000;
+    const perPage = 200;
 
-    // OpenAlex 日期窗口放宽到 30 天：Science/PNAS 等每周仅出 1-2 期，
-    // 短窗口会漏掉大量论文，由后端关键词+LLM 过滤精选
-    // 采集后按 windowStart 过滤，确保只保留窗口内的论文
+    // 日期窗口放宽到 30 天（周刊期刊会漏），后端关键词+LLM 精选
     const wideStartDate = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
-    const baseFilters = [`from_publication_date:${wideStartDate}`, "type:article"];
-    if (issns.length > 0) {
-      baseFilters.push(`primary_location.source.issn:${issns.join("|")}`);
-    }
+    const baseFilter = [
+      `from_publication_date:${wideStartDate}`,
+      "type:article",
+      `primary_location.source.issn:${issns.join("|")}`
+    ].join(",");
 
-    for (const query of queries) {
-      const url =
-        "https://api.openalex.org/works?per-page=25&sort=publication_date:desc" +
-        `&filter=${encodeURIComponent(baseFilters.join(","))}` +
-        `&search=${encodeURIComponent(query)}` +
-        `&select=${encodeURIComponent(select)}`;
+    const pageUrl = (page: number) =>
+      `https://api.openalex.org/works?per-page=${perPage}&page=${page}&sort=publication_date:desc` +
+      `&filter=${encodeURIComponent(baseFilter)}` +
+      `&select=${encodeURIComponent(select)}`;
 
+    // 分页拉取全量，直到返回不足一页或空
+    for (let page = 1; ; page++) {
+      const url = pageUrl(page);
       process.stdout.write(
-        `${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.openalex.start", query })}\n`
+        `${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.openalex.page", page, issns: issns.length })}\n`
       );
+
       let payload: JsonRecord = {};
       try {
         payload = await fetchJson(url, timeoutMs);
       } catch {
         process.stdout.write(
-          `${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.openalex.failed", query })}\n`
+          `${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.openalex.failed", page })}\n`
         );
-        continue;
+        break;
       }
 
       const results = toArray(payload.results as JsonRecord[] | undefined);
+      if (results.length === 0) break;
+
       for (const item of results) {
         const source = (item.primary_location as JsonRecord | undefined)?.source as JsonRecord | undefined;
         const journal = normalizeText(source?.display_name);
@@ -123,7 +116,6 @@ export class OpenAlexParser {
         const abstract = normalizeText(restoreAbstract(item.abstract_inverted_index as Record<string, number[]> | undefined));
         const publishedDate = parseDate(item.publication_date);
 
-        // 独立检查：correction/retraction 等特殊内容不进入日报
         if (shouldSkipLlmRescueByTitle(title)) continue;
 
         const authorships = toArray(item.authorships as JsonRecord[] | undefined);
@@ -166,56 +158,16 @@ export class OpenAlexParser {
         );
       }
 
-      process.stdout.write(
-        `${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.openalex.done", query, papers: papers.length })}\n`
-      );
+      if (results.length < perPage) break;
     }
 
     // 按 windowStart 过滤，去掉窗口外的论文
-    const windowCutoff = startDate; // YYYY-MM-DD 格式
+    const windowCutoff = startDate;
     const beforeFilter = papers.length;
     const filtered = papers.filter((p) => !p.published_date || p.published_date >= windowCutoff);
     process.stdout.write(
       `${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.openalex.date_filtered", before: beforeFilter, after: filtered.length, window_start: windowCutoff })}\n`
     );
-
-    return filtered;
-  }
-
-  private async filterPapersWithLLM(config: AppConfig, papers: Paper[], taxonomy: Array<Record<string, unknown>>, filterBudget: FilterBudget): Promise<Paper[]> {
-    const filtered: Paper[] = [];
-
-    for (const paper of papers) {
-      // 关键词匹配检查
-      if (!matchesKeywords(config, paper.title_en || "", paper.abstract_original || "", paper.journal?.name || "")) {
-        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.filter.keyword_reject", title: paper.title_en, source: "openalex" })}\n`);
-        continue;
-      }
-
-      // LLM筛选（失败重试一次）
-      if (filterBudget.remaining > 0) {
-        filterBudget.remaining -= 1;
-        let filterResult: import("../types.js").JsonRecord | undefined;
-        for (let attempt = 0; attempt < 2; attempt++) {
-          try {
-            filterResult = await llmFilter(config, taxonomy, paper);
-            break;
-          } catch (error) {
-            if (attempt === 0) {
-              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.filter.retry", title: paper.title_en, error: String(error) })}\n`);
-              await new Promise((r) => setTimeout(r, 10_000));
-            } else {
-              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.filter.error", title: paper.title_en, error: String(error) })}\n`);
-            }
-          }
-        }
-        if (filterResult && !Boolean(filterResult.keep)) {
-          continue;
-        }
-      }
-
-      filtered.push(paper);
-    }
 
     return filtered;
   }

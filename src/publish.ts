@@ -182,7 +182,6 @@ export async function pushToFeishu(
  * 文件输出：
  *   6-digest.md       Markdown 全文
  *   6-records.json    论文记录（扁平化）
- *   6-papers.json     论文原始结构
  *   latest.json       指向最新输出的指针
  */
 export async function publishDigest(
@@ -204,11 +203,9 @@ export async function publishDigest(
   // ── 写入文件 ─────────────────────────────────────────
   const mdFile = path.join(outputDir, "6-digest.md");
   const recFile = path.join(outputDir, "6-records.json");
-  const papFile = path.join(outputDir, "6-papers.json");
 
   await fs.writeFile(mdFile, payload.markdown, "utf-8");
   await fs.writeFile(recFile, `${JSON.stringify(payload.records, null, 2)}\n`, "utf-8");
-  await fs.writeFile(papFile, `${JSON.stringify(payload.papers, null, 2)}\n`, "utf-8");
 
   const latestPath = path.join(outputDir, "latest.json");
   await fs.writeFile(
@@ -218,7 +215,6 @@ export async function publishDigest(
         title: payload.title,
         markdown_file: mdFile,
         records_file: recFile,
-        papers_file: papFile,
         profile,
         date: dateStr,
         created_at: now.toISOString(),
@@ -246,7 +242,6 @@ export async function publishDigest(
     return {
       saved_markdown: mdFile,
       saved_records: recFile,
-      saved_papers: papFile,
       output_dir: outputDir,
       execution_mode: "dry-run",
       dry_run: true
@@ -260,7 +255,6 @@ export async function publishDigest(
   return {
     saved_markdown: mdFile,
     saved_records: recFile,
-    saved_papers: papFile,
     output_dir: outputDir,
     latest_meta: latestPath,
     dry_run: false,

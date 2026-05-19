@@ -5,20 +5,20 @@
  * 纯能力函数（LLM、采集器）不产生 IO 副作用。
  *
  * 文件布局（data/{profile}/{date}/）：
- *   1-raw-fetched.json    collect 输出（采集 + 关键词过滤 + LLM 过滤 + 去重）
- *   3-llm-filtered.json   filter 输出（透传，当前 collect 已内置过滤）
+ *   1-raw-fetched.json    collect 输出（全量采集 + 去重）
+ *   3-llm-filtered.json   filter 输出（关键词 + LLM 筛选）
  *   5-enriched.json       enrich 输出（翻译 + 分类）
  *   6-digest.md           digest 输出（Markdown）
  *   6-records.json        digest 输出（论文记录，扁平化）
- *   6-papers.json         digest 输出（论文原始结构）
  *   latest.json           指向最新输出的指针（push 后写入）
  */
 
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { JsonRecord, Paper, ProfileContext, StepResult } from "./types.js";
+import type { FilterBudget } from "./parsers/types.js";
 import { loadProfilesList } from "./config.js";
-import { fetchPapers, enrichPapers } from "./modules.js";
+import { collectRawPapers, fetchPapers, enrichPapers, loadTaxonomy, filterPapers } from "./modules.js";
 import { buildDigestTitle, buildMarkdown, buildRecords, buildWeeklyDigestTitle, buildWeeklyMarkdown } from "./digest.js";
 import { publishDigest, pushToFeishu } from "./publish.js";
 import { upsertPapers, getWeeklyPapers } from "./db.js";
@@ -38,7 +38,7 @@ async function stepCollect(ctx: ProfileContext): Promise<StepResult> {
   const t = Date.now();
   const out = f(ctx.outputDir, "1-raw-fetched.json");
   await fs.mkdir(ctx.outputDir, { recursive: true });
-  const papers = await fetchPapers(ctx.config);
+  const papers = await collectRawPapers(ctx.config);
   await writeJson(out, papers);
   return {
     step: "collect",
@@ -54,13 +54,22 @@ async function stepFilter(ctx: ProfileContext): Promise<StepResult> {
   const t = Date.now();
   const in_ = f(ctx.outputDir, "1-raw-fetched.json");
   const out = f(ctx.outputDir, "3-llm-filtered.json");
-  // fetchPapers 已内置 LLM 过滤；此步骤从文件读取并写入透传文件
-  const papers = await readJson<Paper[]>(in_);
-  await writeJson(out, papers);
+  const rawPapers = await readJson<Paper[]>(in_);
+  const taxonomy = await loadTaxonomy(ctx.config);
+  const budget: FilterBudget = {
+    remaining: Math.max(0, Number(ctx.config.ai?.filter?.max_checks_per_run ?? 20))
+  };
+  const filtered = await filterPapers(ctx.config, taxonomy, rawPapers, budget);
+  await writeJson(out, filtered);
+  process.stdout.write(`${JSON.stringify({
+    timestamp: new Date().toISOString(), level: "INFO",
+    event: "workflow.filter.done", input: rawPapers.length, output: filtered.length,
+    rejected: rawPapers.length - filtered.length
+  })}\n`);
   return {
     step: "filter",
-    inputCount: papers.length,
-    outputCount: papers.length,
+    inputCount: rawPapers.length,
+    outputCount: filtered.length,
     inputFile: in_,
     outputFile: out,
     durationMs: Date.now() - t
@@ -173,12 +182,10 @@ async function stepDigest(ctx: ProfileContext): Promise<StepResult> {
   const in_ = f(ctx.outputDir, "5-enriched.json");
   const mdOut = f(ctx.outputDir, "6-digest.md");
   const recOut = f(ctx.outputDir, "6-records.json");
-  const papOut = f(ctx.outputDir, "6-papers.json");
   const papers = await readJson<Paper[]>(in_);
   const title = buildDigestTitle(ctx.config);
   await fs.writeFile(mdOut, buildMarkdown(title, papers), "utf-8");
   await writeJson(recOut, buildRecords(papers));
-  await writeJson(papOut, papers);
   return {
     step: "digest",
     inputCount: papers.length,
@@ -192,7 +199,7 @@ async function stepDigest(ctx: ProfileContext): Promise<StepResult> {
 async function stepPush(ctx: ProfileContext): Promise<StepResult> {
   const t = Date.now();
   const mdFile = f(ctx.outputDir, "6-digest.md");
-  const papFile = f(ctx.outputDir, "6-papers.json");
+  const papFile = f(ctx.outputDir, "5-enriched.json");
   const recFile = f(ctx.outputDir, "6-records.json");
   const title = buildDigestTitle(ctx.config);
   const papers = await readJson<Paper[]>(papFile);

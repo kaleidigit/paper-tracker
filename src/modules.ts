@@ -1,8 +1,10 @@
 /**
  * modules.ts — 采集与增强的原子能力
  *
- * 采集：fetchPapers()   调用采集器，返回去重后的 Paper[]
- * 增强：enrichPapers()  翻译 + 分类，返回 Paper[]
+ * 采集：collectRawPapers()  调用采集器，返回去重后的全量 Paper[]
+ * 筛选：filterPapers()      关键词 + LLM 筛选，返回子集
+ * 采集+筛选：fetchPapers()  collectRawPapers + filterPapers（兼容 run-once 模式）
+ * 增强：enrichPapers()      翻译 + 分类，返回 Paper[]
  *
  * 文件输出、流程编排由 pipeline.ts / cli.ts 负责。
  * 飞书发布由 publish.ts 负责。
@@ -16,11 +18,12 @@ import { resolvePath, applyDefaults } from "./config.js";
 import type { AppConfig, Paper } from "./types.js";
 import { NatureParser } from "./parsers/nature-parser.js";
 import { OpenAlexParser } from "./parsers/openalex-parser.js";
+import type { FilterBudget } from "./parsers/types.js";
 import { llmFilter, translatePaperFields, classifyPaper } from "./llm.js";
 import { buildDigestTitle, buildMarkdown, buildRecords } from "./digest.js";
 import { publishDigest, sendAlert } from "./publish.js";
 import {
-  normalizeText, itemKey, normalizePublicationType, shouldSkipLlmRescueByTitle
+  normalizeText, itemKey, matchesKeywords, normalizePublicationType, shouldSkipLlmRescueByTitle
 } from "./utils.js";
 
 // ─── Taxonomy ──────────────────────────────────────────────
@@ -34,13 +37,12 @@ export async function loadTaxonomy(config: AppConfig): Promise<Array<Record<stri
 
 // ─── Collect ───────────────────────────────────────────────
 
-export async function fetchPapers(config: AppConfig): Promise<Paper[]> {
-  const taxonomy = await loadTaxonomy(config);
-  const filterBudget = { remaining: Math.max(0, Number(config.ai?.filter?.max_checks_per_run ?? 20)) };
-
+/** 阶段1：全量采集（不做筛选），返回去重+排序后的 Paper[] */
+export async function collectRawPapers(config: AppConfig, taxonomy?: Array<Record<string, unknown>>): Promise<Paper[]> {
+  const tax = taxonomy || await loadTaxonomy(config);
   const [naturePapers, openalexPapers] = await Promise.all([
-    new NatureParser().collect(config, taxonomy, filterBudget),
-    new OpenAlexParser().collect(config, taxonomy, filterBudget)
+    new NatureParser().collect(config, tax),
+    new OpenAlexParser().collect(config, tax)
   ]);
 
   const seen = new Set<string>();
@@ -52,6 +54,59 @@ export async function fetchPapers(config: AppConfig): Promise<Paper[]> {
       return true;
     })
     .sort((a, b) => `${b.published_date}`.localeCompare(`${a.published_date}`));
+}
+
+/** 阶段2：关键词预筛 + LLM 精筛，返回通过筛选的 Paper[] 子集 */
+export async function filterPapers(
+  config: AppConfig,
+  taxonomy: Array<Record<string, unknown>>,
+  papers: Paper[],
+  filterBudget: FilterBudget
+): Promise<Paper[]> {
+  const filtered: Paper[] = [];
+
+  for (const paper of papers) {
+    // 关键词匹配检查（排除词优先，包含词至少命中一个）
+    if (!matchesKeywords(config, paper.title_en || "", paper.abstract_original || "", paper.journal?.name || "")) {
+      process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.keyword_reject", title: paper.title_en })}\n`);
+      continue;
+    }
+
+    // LLM 筛选（失败重试一次）
+    if (filterBudget.remaining > 0) {
+      filterBudget.remaining -= 1;
+      let filterResult: import("./types.js").JsonRecord | undefined;
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          filterResult = await llmFilter(config, taxonomy, paper);
+          break;
+        } catch (error) {
+          if (attempt === 0) {
+            process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.llm_retry", title: paper.title_en, error: String(error) })}\n`);
+            await new Promise((r) => setTimeout(r, 10_000));
+          } else {
+            process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.llm_error", title: paper.title_en, error: String(error) })}\n`);
+          }
+        }
+      }
+      if (filterResult && !Boolean(filterResult.keep)) {
+        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.llm_reject", title: paper.title_en })}\n`);
+        continue;
+      }
+    }
+
+    filtered.push(paper);
+  }
+
+  return filtered;
+}
+
+/** 完整采集流程：全量采集 + 筛选（兼容 run-once 模式） */
+export async function fetchPapers(config: AppConfig): Promise<Paper[]> {
+  const taxonomy = await loadTaxonomy(config);
+  const budget: FilterBudget = { remaining: Math.max(0, Number(config.ai?.filter?.max_checks_per_run ?? 20)) };
+  const raw = await collectRawPapers(config, taxonomy);
+  return filterPapers(config, taxonomy, raw, budget);
 }
 
 // ─── Enrich ────────────────────────────────────────────────

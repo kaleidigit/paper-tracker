@@ -101,26 +101,7 @@
       "sdg"
     ],
     "exclude_keywords": [],
-    "openalex_queries": [
-      "environmental economics",
-      "carbon pricing",
-      "climate policy",
-      "energy economics",
-      "environmental regulation",
-      "pollution economics",
-      "green finance",
-      "ecosystem service valuation",
-      "resource economics",
-      "trade environment",
-      "energy transition",
-      "decarbonization",
-      "carbon market",
-      "climate risk",
-      "sustainability",
-      "environmental health",
-      "environmental justice",
-      "energy policy"
-    ]
+    "openalex_queries": []
   },
   "classification": {
     "file": "classification.json"

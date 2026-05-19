@@ -10,13 +10,12 @@ import type { AppConfig, JsonRecord, Paper } from "../types.js";
 import {
   normalizeText, dedupeStrings, toArray, resolvePath,
   fetchText, parseDate, parseDateTime, strictWindowStartAt,
-  matchesKeywords, shouldSkipLlmRescueByTitle, extractImageFromRssItem,
+  shouldSkipLlmRescueByTitle, extractImageFromRssItem,
   extractAffiliationsFromRssItem, normalizePublicationType, heuristicClassification
 } from "../utils.js";
-import { llmFilter } from "../llm.js";
 import { loadTaxonomy } from "../modules.js";
 import { ArticlePageParser } from "./article-parser.js";
-import type { FilterBudget, JournalEntry, ParsedPaper } from "./types.js";
+import type { JournalEntry, ParsedPaper } from "./types.js";
 
 async function loadJournals(config: AppConfig): Promise<JournalEntry[]> {
   const file = resolvePath(config.sources?.journals_file || "profiles/top-journal-env-energy/journals.json");
@@ -64,7 +63,7 @@ function buildPaper(input: ParsedPaper): Paper {
 }
 
 export class NatureParser {
-  async collect(config: AppConfig, taxonomy: Array<Record<string, unknown>>, filterBudget: FilterBudget): Promise<Paper[]> {
+  async collect(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
     const journals = await loadJournals(config);
     const feeds = journals
       .filter((j) => normalizeText(j.publisher_strategy) === "nature-rss")
@@ -72,17 +71,11 @@ export class NatureParser {
 
     if (feeds.length === 0) return [];
 
-    // ========== 阶段1：全量采集 ==========
     process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase1.start", phase: "full_collection" })}\n`);
     const rawPapers = await this.collectAllRawPapers(config, feeds, taxonomy);
     process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase1.done", collected: rawPapers.length })}\n`);
 
-    // ========== 阶段2：逐一筛选 ==========
-    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase2.start", phase: "llm_filtering" })}\n`);
-    const filteredPapers = await this.filterPapersWithLLM(config, rawPapers, taxonomy, filterBudget);
-    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase2.done", filtered: filteredPapers.length, rejected: rawPapers.length - filteredPapers.length })}\n`);
-
-    return filteredPapers;
+    return rawPapers;
   }
 
   private async collectAllRawPapers(config: AppConfig, feeds: string[], taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
@@ -162,43 +155,5 @@ export class NatureParser {
     }
 
     return papers;
-  }
-
-  private async filterPapersWithLLM(config: AppConfig, papers: Paper[], taxonomy: Array<Record<string, unknown>>, filterBudget: FilterBudget): Promise<Paper[]> {
-    const filtered: Paper[] = [];
-
-    for (const paper of papers) {
-      // 关键词匹配检查
-      if (!matchesKeywords(config, paper.title_en || "", paper.abstract_original || "", paper.journal?.name || "")) {
-        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.filter.keyword_reject", title: paper.title_en })}\n`);
-        continue;
-      }
-
-      // LLM筛选（失败重试一次）
-      if (filterBudget.remaining > 0) {
-        filterBudget.remaining -= 1;
-        let filterResult: import("../types.js").JsonRecord | undefined;
-        for (let attempt = 0; attempt < 2; attempt++) {
-          try {
-            filterResult = await llmFilter(config, taxonomy, paper);
-            break;
-          } catch (error) {
-            if (attempt === 0) {
-              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.filter.retry", title: paper.title_en, error: String(error) })}\n`);
-              await new Promise((r) => setTimeout(r, 10_000));
-            } else {
-              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.filter.error", title: paper.title_en, error: String(error) })}\n`);
-            }
-          }
-        }
-        if (filterResult && !Boolean(filterResult.keep)) {
-          continue;
-        }
-      }
-
-      filtered.push(paper);
-    }
-
-    return filtered;
   }
 }

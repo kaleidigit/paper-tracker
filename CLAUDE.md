@@ -24,7 +24,9 @@ src/cli.ts
         │
         ├── modules.ts (纯能力：采集 + LLM 增强)
         │     │
-        │     ├── fetchPapers() ─→ NatureParser + OpenAlexParser
+        │     ├── collectRawPapers() ─→ NatureParser + OpenAlexParser（全量采集）
+        │     ├── filterPapers() ─→ matchesKeywords + llmFilter（筛选）
+        │     ├── fetchPapers() ─→ collectRawPapers + filterPapers（兼容 run-once）
         │     ├── enrichPapers() ─→ translatePaperFields + classifyPaper
         │     ├── loadTaxonomy()
         │     └── (旧) runWorkflow() ← 兼容 legacy run-once 模式
@@ -45,12 +47,12 @@ src/cli.ts
 data/{profile}/
   ├── papers.db              ← SQLite 数据库（所有论文汇总，dedup_key 去重）
   ├── {YYYY-MM-DD}/
-  │     ├── 1-raw-fetched.json   ← collect 输出（采集 + 过滤 + 去重）
-  │     ├── 3-llm-filtered.json  ← filter 输出（透传，当前 collect 已内置）
+  │     ├── 1-raw-fetched.json   ← collect 输出（全量采集 + 去重）
+  │     ├── 3-llm-filtered.json  ← filter 输出（关键词 + LLM 筛选）
   │     ├── 5-enriched.json      ← enrich 输出（翻译 + 分类）
   │     ├── 6-digest.md          ← digest 输出（Markdown 日刊）
   │     ├── 6-records.json       ← digest 输出（扁平化记录）
-  │     └── 6-papers.json        ← digest 输出（完整 Paper[]）
+  │     └── latest.json          ← push 输出（指向最新产物的指针）
   └── weekly-{start}~{end}/
         ├── 6-digest.md          ← weekly 输出（按期刊分组的周刊）
         ├── 6-records.json
@@ -88,14 +90,60 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 
 | Step | 输入 | 输出 | 说明 |
 |------|------|------|------|
-| `collect` | — | `1-raw-fetched.json` | 采集 + 关键词过滤 + LLM 过滤 + 去重 |
-| `filter` | `1-raw-fetched.json` | `3-llm-filtered.json` | 透传（collect 已内置过滤） |
+| `collect` | — | `1-raw-fetched.json` | 全量采集 + 去重 |
+| `filter` | `1-raw-fetched.json` | `3-llm-filtered.json` | 关键词预筛 + LLM 精筛 |
 | `enrich` | `3-llm-filtered.json` | `5-enriched.json` | 翻译 + 分类 |
 | `store` | `5-enriched.json` | `papers.db` | 写入 SQLite，按 dedup_key 去重 |
-| `digest` | `5-enriched.json` | `6-digest.md` 等 | 生成日刊 Markdown |
-| `push` | `6-digest.md` | 飞书 | 创建文档 + 发送群通知 |
+| `digest` | `5-enriched.json` | `6-digest.md` + `6-records.json` | 生成日刊 Markdown + 扁平记录 |
+| `push` | `6-digest.md` + `5-enriched.json` | 飞书 | 创建文档 + 发送群通知 |
 | `weekly` | `papers.db` | `weekly-*/` | 读取单 profile 上周论文，按期刊生成周刊 |
 | `weekly-all` | 所有 profile 的 `papers.db` | `weekly-*/` | 跨 profile 读取上周论文，合并去重，生成一份周刊 |
+
+## 采集策略（全量采集，不做筛选）
+
+**collect 步骤只做一件事：把目标期刊在时间窗口内的所有论文全部拉回来。不做任何筛选。**
+
+三种采集源：
+
+| 来源 | 策略 | 覆盖范围 |
+|------|------|----------|
+| Nature RSS | 逐个 RSS feed 全量拉取，按 `published_date` 过滤时间窗口 | Nature、Nature Energy、Nature Climate Change、Nature Sustainability、Nature Geoscience、Nature Food、Nature Cities、Nature Water、Nature Machine Intelligence、Nature Communications |
+| OpenAlex ISSN | 按 ISSN 过滤 + 时间窗口，per-page=200 分页拉取全量，**不使用 `search` 参数** | Science、Science Advances、PNAS、Joule、One Earth、EES；及经济学期刊 14 种 |
+| 合并去重 | Nature RSS + OpenAlex 合并，`itemKey()` 去重，`published_date` 倒序 | 最终写入 `1-raw-fetched.json` |
+
+**关键约束：**
+- `openalex_queries` 配置项**不再使用**。OpenAlex 采集改为纯 ISSN 过滤，保证不漏论文。空数组 `[]` 即可。
+- 新增期刊只需在 `journals.json` 添加一条记录，无需改代码。
+- Nature 期刊使用 `publisher_strategy: "nature-rss"`，非 Nature 期刊使用 `"openalex"`。
+
+## 筛选策略（宽进严出，两阶段）
+
+```
+论文（来自 1-raw-fetched.json）
+  │
+  ├─→ 黑名单排除词命中？ ──→ 拒绝（词组精确命中，如 catalyst synthesis）
+  │
+  ├─→ 白名单包含词未命中？ ──→ 拒绝（单词/短词组，如 climate, energy）
+  │
+  └─→ 白名单命中 ──→ LLM 审查 ──→ keep? ──→ 通过 → 写入 3-llm-filtered.json
+                                         └─→ 拒绝
+```
+
+**关键词设计原则：白名单用短词广撒网，黑名单用词组精准排除。**
+
+| 名单 | 配置键 | 粒度 | 示例 | 目的 |
+|------|--------|------|------|------|
+| 白名单 | `sources.keywords` | 单词/短词组 | `climate`, `energy`, `carbon`, `biodiversity`, `solar`, `sea level`, `land use` | 尽可能网住相关论文，不遗漏。宁可多放，不可漏网 |
+| 黑名单 | `sources.exclude_keywords` | 多词短语 | `battery cycling performance`, `catalyst synthesis`, `clinical trial`, `molecular dynamics simulation`, `DFT calculation` | 精准排除纯材料科学/临床医学/计算化学论文。只用长词组，避免误伤 |
+
+**LLM 筛选是真正的质量关。** 关键词放行后，由 `filterPapers()` (in `modules.ts`) 调用 LLM 根据核心研究问题判断是否保留（`llmFilter` in `llm.ts`）。LLM 预算由 `ai.filter.max_checks_per_run` 控制（默认 300），预算耗尽后白名单通过的论文不经 LLM 直接放行。
+
+**LLM 筛选原则**（prompt 配置在 `ai.prompts.filter_system`）：
+- 接受：能源/气候/环境/可持续发展/生物多样性/生态/海平面/土地利用/农业/贫困环境关联
+- 拒绝：纯材料器件（电极合成、钙钛矿制备）、纯化学计算（DFT、分子动力学）、临床生物医学（临床试验、药物递送）、纯工程性能优化（无系统视角）
+- 按核心研究问题判断，不按表面术语判断
+
+**env-economics-journal 特殊处理：** 期刊发文量极低，排除列表为空 `[]`，白名单更精简，所有论文直通 LLM 审查。
 
 ## 推流逻辑
 
@@ -116,7 +164,7 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 
 | Profile 名称 | 用途 | 期刊来源 |
 |---|---|---|
-| `top-journal-env-energy` | 顶刊环境能源论文日报 | Nature 系列、Science、PNAS、Joule、EES 等综合顶刊 |
+| `top-journal-env-energy` | 顶刊环境能源论文日报 | Nature 系列（含 Nature Water, Nature Machine Intelligence）、Science、PNAS、Joule、One Earth、EES |
 | `env-economics-journal` | 环境经济学期刊周刊（仅周一采集入库，不发日刊） | AER、QJE、JPE、JEEM、JAERE、Ecological Economics 等经济学期刊 |
 
 ## 项目配置层级

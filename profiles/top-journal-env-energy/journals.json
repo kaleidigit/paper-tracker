@@ -62,6 +62,24 @@
     ]
   },
   {
+    "name": "Nature Water",
+    "source_group": "Nature",
+    "issn": "2731-6084",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natwater.rss"
+    ]
+  },
+  {
+    "name": "Nature Machine Intelligence",
+    "source_group": "Nature",
+    "issn": "2522-5839",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natmachintell.rss"
+    ]
+  },
+  {
     "name": "Nature Communications",
     "source_group": "Nature",
     "issn": "2041-1723",
