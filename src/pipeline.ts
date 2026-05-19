@@ -17,10 +17,12 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { JsonRecord, Paper, ProfileContext, StepResult } from "./types.js";
+import { loadProfilesList } from "./config.js";
 import { fetchPapers, enrichPapers } from "./modules.js";
 import { buildDigestTitle, buildMarkdown, buildRecords, buildWeeklyDigestTitle, buildWeeklyMarkdown } from "./digest.js";
 import { publishDigest, pushToFeishu } from "./publish.js";
 import { upsertPapers, getWeeklyPapers } from "./db.js";
+import { itemKey } from "./utils.js";
 
 // ─── Helpers ───────────────────────────────────────────────
 
@@ -214,6 +216,94 @@ async function stepPush(ctx: ProfileContext): Promise<StepResult> {
   };
 }
 
+async function stepWeeklyAll(ctx: ProfileContext): Promise<StepResult> {
+  const t = Date.now();
+  const dataDir = path.dirname(ctx.outputDir);
+
+  const profiles = await loadProfilesList();
+
+  const allPapers: Paper[] = [];
+  for (const profile of profiles) {
+    const dbPath = path.join(dataDir, profile, "papers.db");
+    try {
+      await fs.access(dbPath);
+    } catch {
+      continue;
+    }
+    const papers = getWeeklyPapers(dbPath, profile);
+    allPapers.push(...papers);
+  }
+
+  // 跨 profile 按 dedup_key 去重
+  const seen = new Map<string, Paper>();
+  for (const paper of allPapers) {
+    const key = itemKey(paper);
+    if (!seen.has(key)) seen.set(key, paper);
+  }
+  const papers = [...seen.values()].sort((a, b) =>
+    `${b.published_date}`.localeCompare(`${a.published_date}`)
+  );
+
+  if (papers.length === 0) {
+    return {
+      step: "weekly-all",
+      inputCount: 0,
+      outputCount: 0,
+      inputFile: "",
+      outputFile: "",
+      durationMs: Date.now() - t,
+      error: "上周没有收录任何论文，跳过周刊推送"
+    };
+  }
+
+  const title = buildWeeklyDigestTitle(
+    papers[papers.length - 1].published_date || "",
+    papers[0].published_date || ""
+  );
+  const markdown = buildWeeklyMarkdown(title, papers);
+
+  const startStr = papers[papers.length - 1].published_date || "unknown";
+  const endStr = papers[0].published_date || "unknown";
+  const weeklyDir = path.join(dataDir, ctx.profile, `weekly-${startStr}~${endStr}`);
+  await fs.mkdir(weeklyDir, { recursive: true });
+
+  const mdOut = path.join(weeklyDir, "6-digest.md");
+  await fs.writeFile(mdOut, markdown, "utf-8");
+
+  const prefix = ctx.config.feishu?.doc_title_prefix || "[每日论文追踪]";
+  const docTitle = `${prefix} ${title}`;
+  const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
+
+  const errors: string[] = [];
+  if (feishuResult.doc_publish && (feishuResult.doc_publish as JsonRecord).error) {
+    errors.push(`doc_create: ${String((feishuResult.doc_publish as JsonRecord).error)}`);
+  }
+  if (feishuResult.notify_publish) {
+    for (const n of (feishuResult.notify_publish as JsonRecord[])) {
+      if (n.error) errors.push(`notify: ${String(n.error)}`);
+    }
+  }
+
+  process.stdout.write(`${JSON.stringify({
+    timestamp: new Date().toISOString(), level: "INFO",
+    event: "weekly-all.done",
+    profiles: profiles.length,
+    total_before_dedup: allPapers.length,
+    after_dedup: papers.length,
+    output_dir: weeklyDir
+  })}\n`);
+
+  return {
+    step: "weekly-all",
+    inputCount: allPapers.length,
+    outputCount: papers.length,
+    inputFile: "",
+    outputFile: mdOut,
+    durationMs: Date.now() - t,
+    error: errors.length > 0 ? errors.join("; ") : undefined
+  };
+}
+
 // ─── Runner ────────────────────────────────────────────────
 
 const STEPS: Record<string, (ctx: ProfileContext) => Promise<StepResult>> = {
@@ -223,7 +313,8 @@ const STEPS: Record<string, (ctx: ProfileContext) => Promise<StepResult>> = {
   store: stepStore,
   digest: stepDigest,
   push: stepPush,
-  weekly: stepWeekly
+  weekly: stepWeekly,
+  "weekly-all": stepWeeklyAll
 };
 
 export async function runStep(name: string, ctx: ProfileContext): Promise<StepResult> {

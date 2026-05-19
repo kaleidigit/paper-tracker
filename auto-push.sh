@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # auto-push.sh — cron 定时任务入口
 #
-# 周一推送周刊（上周所有论文按期刊排列），周二至周五推送日刊，周末不推送
+# 周一：顶刊日报(周末积压) + 经济学期刊入库 + 合并周刊(上周全部)
+# 周二至周五：仅顶刊日报
+# 周末：跳过
 #
 # 用法：
 #   ./auto-push.sh              正式推送
@@ -21,7 +23,7 @@ for arg in "$@"; do
     -h|--help)
       echo "Usage: $0 [--dry-run]"
       echo ""
-      echo "  自动推送（周一→周刊，周二至周五→日刊）"
+      echo "  周一：顶刊日报 + 合并周刊；周二至周五：仅顶刊日报"
       echo "  --dry-run  仅生成文件，跳过飞书发布"
       exit 0 ;;
   esac
@@ -38,65 +40,61 @@ if [[ "$DAY_OF_WEEK" == "6" || "$DAY_OF_WEEK" == "7" ]]; then
   exit 0
 fi
 
-if [[ "$DAY_OF_WEEK" == "1" ]]; then
-  DAYS=3   # 周一：采集上周五/六/日，然后推送周刊
-else
-  DAYS=1   # 周二至周五：推送昨天
-fi
-
-# ─── 从 config.json 读取 profile 列表 ──────────────────────
-
-PROFILES=()
-if command -v python3 &>/dev/null && [[ -f config.json ]]; then
-  while IFS= read -r line; do
-    PROFILES+=("$line")
-  done < <(python3 -c "import json,sys; print('\n'.join(json.load(open('config.json')).get('profiles',['top-journal-env-energy'])))")
-fi
-if [[ ${#PROFILES[@]} -eq 0 ]]; then
-  PROFILES=("top-journal-env-energy")
-fi
-
-# ─── 调用 run.sh（依次运行所有 profile）────────────────────
+# ─── 执行 ────────────────────────────────────────────────
 EXIT_CODE=0
 
-for PROFILE_NAME in "${PROFILES[@]}"; do
-  echo "[auto-push] day_of_week=$DAY_OF_WEEK days=$DAYS dry_run=$DRY_RUN profile=$PROFILE_NAME"
+if [[ "$DAY_OF_WEEK" == "1" ]]; then
+  # ════════════════════════════════════════════════════════
+  # 周一：顶刊日报 + 经济学期刊入库 + 合并周刊
+  # ════════════════════════════════════════════════════════
 
-  if [[ "$DAY_OF_WEEK" == "1" ]]; then
-    # ── 周一：采集+入库，然后推送周刊 ────────────────────
-    export PROFILE="$PROFILE_NAME"
-    export PUSH_DAYS="$DAYS"
-    [[ "$DRY_RUN" == "1" ]] && export PUSH_DRY_RUN="1"
-
-    STEPS="collect filter enrich store"
-    for step in $STEPS; do
-      echo "[auto-push] >>> step: $step"
-      if ! npx tsx src/cli.ts --step "$step" --profile "$PROFILE_NAME"; then
-        echo "[auto-push] ERROR: step '$step' failed for profile '$PROFILE_NAME'" >&2
-        EXIT_CODE=1
-        break
-      fi
-      echo "[auto-push] <<< step: $step done"
-    done
-
-    # 前面步骤都成功，运行周刊
-    if [[ "$EXIT_CODE" -eq 0 ]]; then
-      echo "[auto-push] >>> step: weekly"
-      if ! npx tsx src/cli.ts --step weekly --profile "$PROFILE_NAME"; then
-        echo "[auto-push] ERROR: weekly step failed for profile '$PROFILE_NAME'" >&2
-        EXIT_CODE=1
-      fi
-      echo "[auto-push] <<< step: weekly done"
-    fi
+  # 1. 顶刊日报（DAYS=3，推送周五/六/日顶刊论文）
+  echo "[auto-push] === Monday: top-journal daily digest ==="
+  DAILY_ARGS=("--profile" "top-journal-env-energy" "--days" "3")
+  [[ "$DRY_RUN" == "1" ]] && DAILY_ARGS+=("--dry-run")
+  if bash "$ROOT_DIR/run.sh" "${DAILY_ARGS[@]}"; then
+    echo "[auto-push] top-journal daily done."
   else
-    ARGS=("--profile" "$PROFILE_NAME" "--days" "$DAYS")
-    [[ "$DRY_RUN" == "1" ]] && ARGS+=("--dry-run")
+    echo "[auto-push] ERROR: top-journal daily digest failed" >&2
+    EXIT_CODE=1
+  fi
 
-    if ! bash "$ROOT_DIR/run.sh" "${ARGS[@]}"; then
-      echo "[auto-push] ERROR: profile '$PROFILE_NAME' failed" >&2
+  # 2. 环境经济学期刊采集入库（DAYS=7，覆盖整周，不发日报）
+  echo "[auto-push] === Monday: env-economics collect+store ==="
+  export PROFILE="env-economics-journal"
+  for step in collect filter enrich store; do
+    echo "[auto-push] >>> step: $step (env-economics-journal)"
+    if ! PUSH_DAYS=7 npx tsx src/cli.ts --step "$step" --profile env-economics-journal; then
+      echo "[auto-push] ERROR: step '$step' failed for env-economics-journal" >&2
+      EXIT_CODE=1
+      break
+    fi
+    echo "[auto-push] <<< step: $step done"
+  done
+
+  # 3. 合并周刊（从两个 profile 的 DB 读取上周全部论文，去重后推送一份）
+  if [[ "$EXIT_CODE" -eq 0 ]]; then
+    echo "[auto-push] === Monday: combined weekly ==="
+    if ! npx tsx src/cli.ts --step weekly-all --profile top-journal-env-energy; then
+      echo "[auto-push] ERROR: combined weekly failed" >&2
       EXIT_CODE=1
     fi
+    echo "[auto-push] <<< weekly-all done"
   fi
-done
+
+else
+  # ════════════════════════════════════════════════════════
+  # 周二至周五：仅顶刊日报（DAYS=1）
+  # ════════════════════════════════════════════════════════
+  echo "[auto-push] === Weekday: top-journal daily ==="
+  DAILY_ARGS=("--profile" "top-journal-env-energy" "--days" "1")
+  [[ "$DRY_RUN" == "1" ]] && DAILY_ARGS+=("--dry-run")
+  if bash "$ROOT_DIR/run.sh" "${DAILY_ARGS[@]}"; then
+    echo "[auto-push] top-journal daily done."
+  else
+    echo "[auto-push] ERROR: top-journal daily failed" >&2
+    EXIT_CODE=1
+  fi
+fi
 
 exit $EXIT_CODE
