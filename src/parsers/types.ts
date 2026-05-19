@@ -9,6 +9,8 @@ import type { JsonRecord } from "../types.js";
 export interface ArticleMeta {
   authors: string[];
   affiliations: string[];
+  /** 作者→单位映射：authorAffilMap[i] = [affiliation_index, ...] */
+  authorAffilMap?: number[][];
   imageUrl: string;
   abstract: string;
   publicationType: string;
@@ -33,6 +35,8 @@ export interface ParsedPaper {
   title: string;
   authors: string[];
   authorAffiliations: string[];
+  /** 作者→单位映射：authorAffilMap[i] = [affiliation_index, ...] */
+  authorAffilMap?: number[][];
   journal: string;
   sourceGroup: string;
   publishedDate: string;

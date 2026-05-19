@@ -14,6 +14,36 @@ export function buildDigestTitle(config: AppConfig): string {
   return tpl.replace("{date}", dateText);
 }
 
+// ─── 作者/单位角标渲染 ──────────────────────────────────────
+
+const SUPER_DIGITS: Record<string, string> = {
+  "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴",
+  "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹"
+};
+
+function superscriptNum(n: number): string {
+  return String(n).split("").map((d) => SUPER_DIGITS[d] || d).join("");
+}
+
+/** 当 author_affil_map 可用时，返回带角标的作者行和单位行；否则返回 null */
+function formatAuthorsWithMap(paper: Paper): { authorsLine: string; affilsLine: string } | null {
+  const authors = paper.authors || [];
+  const affiliations = paper.author_affiliations || [];
+  const map = paper.author_affil_map;
+  if (!map || map.length !== authors.length || affiliations.length === 0) return null;
+
+  const authorParts = authors.map((name, i) => {
+    const refs = [...new Set(map[i] || [])].sort((a, b) => a - b);
+    return refs.length > 0 ? name + refs.map((j) => superscriptNum(j + 1)).join("") : name;
+  });
+
+  const affParts = affiliations.map((aff, i) => `${superscriptNum(i + 1)}${aff}`);
+
+  return { authorsLine: authorParts.join(", "), affilsLine: affParts.join("；") };
+}
+
+// ─── 日刊 ──────────────────────────────────────────────────
+
 export function buildMarkdown(title: string, papers: Paper[]): string {
   const lines: string[] = [`# ${title}`, "", `共收录 **${papers.length}** 篇。`, ""];
 
@@ -34,8 +64,14 @@ export function buildMarkdown(title: string, papers: Paper[]): string {
       if (text) target.push(`- **${label}**：${text}`);
     };
 
-    pushMeta(metaLines, "作者", (paper.authors || []).join(", "));
-    pushMeta(metaLines, "作者单位", (paper.author_affiliations || []).join("；"));
+    const authorAffilFormatted = formatAuthorsWithMap(paper);
+    if (authorAffilFormatted) {
+      pushMeta(metaLines, "作者", authorAffilFormatted.authorsLine);
+      pushMeta(metaLines, "作者单位", authorAffilFormatted.affilsLine);
+    } else {
+      pushMeta(metaLines, "作者", (paper.authors || []).join(", "));
+      pushMeta(metaLines, "作者单位", (paper.author_affiliations || []).join("；"));
+    }
     pushMeta(metaLines, "期刊", paper.journal?.name || "");
     pushMeta(metaLines, "日期", paper.published_date || "");
     pushMeta(metaLines, "类型", paper.publication_type || "unknown");
@@ -109,18 +145,27 @@ export function buildWeeklyMarkdown(title: string, papers: Paper[]): string {
     sorted.forEach((paper, idx) => {
       const paperTitle = paper.title_zh || paper.title_en || `论文 ${idx + 1}`;
       const englishTitle = (paper.title_en || "").trim();
-      const authors = (paper.authors || []).slice(0, 5).join("，");
-      const moreAuthors = (paper.authors || []).length > 5 ? " et al." : "";
       const domain = paper.classification?.domain || "";
       const subdomain = paper.classification?.subdomain || "";
       const domainText = [domain, subdomain].filter(Boolean).join(" / ");
       const link = paper.url || paper.doi || "";
 
+      const affilFormatted = formatAuthorsWithMap(paper);
+      let authorLine = "";
+      let affilLine = "";
+      if (affilFormatted) {
+        authorLine = affilFormatted.authorsLine;
+        affilLine = affilFormatted.affilsLine;
+      } else {
+        authorLine = (paper.authors || []).join("，");
+      }
+
       lines.push(`**${idx + 1}. ${paperTitle}**  `);
       if (englishTitle && englishTitle !== paperTitle) {
         lines.push(`*${englishTitle}*  `);
       }
-      lines.push(`- 作者：${authors}${moreAuthors}  `);
+      if (authorLine) lines.push(`- 作者：${authorLine}  `);
+      if (affilLine) lines.push(`- 单位：${affilLine}  `);
       if (paper.published_date) lines.push(`- 日期：${paper.published_date}  `);
       if (domainText) lines.push(`- 领域：${domainText}  `);
       if (link) lines.push(`- [链接](${link})  `);

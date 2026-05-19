@@ -33,6 +33,7 @@ function buildPaper(input: ParsedPaper): Paper {
     title_zh: "",
     authors: dedupeStrings(input.authors),
     author_affiliations: dedupeStrings(input.authorAffiliations),
+    author_affil_map: input.authorAffilMap,
     journal: { name: normalizeText(input.journal), source_group: normalizeText(input.sourceGroup || input.journal) },
     published_date: input.publishedDate,
     doi: normalizeText(input.doi),
@@ -126,17 +127,29 @@ export class OpenAlexParser {
         if (shouldSkipLlmRescueByTitle(title)) continue;
 
         const authorships = toArray(item.authorships as JsonRecord[] | undefined);
-        const authorAffiliations = dedupeStrings(
-          authorships.flatMap((a) =>
-            toArray((a.institutions as JsonRecord[] | undefined)?.map((inst) => normalizeText(inst.display_name))).filter(Boolean)
-          )
-        );
+        const affIndex = new Map<string, number>();
+        const authorAffiliations: string[] = [];
+        const authorAffilMap: number[][] = [];
+        for (const a of authorships) {
+          const authorAffIndices: number[] = [];
+          for (const inst of toArray(a.institutions as JsonRecord[] | undefined)) {
+            const affName = normalizeText(inst.display_name);
+            if (!affName) continue;
+            if (!affIndex.has(affName)) {
+              affIndex.set(affName, authorAffiliations.length);
+              authorAffiliations.push(affName);
+            }
+            authorAffIndices.push(affIndex.get(affName)!);
+          }
+          authorAffilMap.push(authorAffIndices);
+        }
 
         papers.push(
           buildPaper({
             title,
             authors: authorships.map((a) => normalizeText(((a.author as JsonRecord | undefined)?.display_name) || "")),
             authorAffiliations,
+            authorAffilMap,
             journal: journal || "Unknown Journal",
             sourceGroup: normalizeText(source?.host_organization_name || journal),
             publishedDate,

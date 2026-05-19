@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS papers (
   title_zh TEXT DEFAULT '',
   authors TEXT DEFAULT '[]',
   author_affiliations TEXT DEFAULT '[]',
+  author_affil_map TEXT DEFAULT '[]',
   journal_name TEXT DEFAULT '',
   journal_source_group TEXT DEFAULT '',
   published_date TEXT DEFAULT '',
@@ -47,6 +48,11 @@ function openDb(dbPath: string): Database.Database {
   db.pragma("journal_mode = WAL");
   db.pragma("busy_timeout = 5000");
   db.exec(SCHEMA);
+  // 迁移：为旧数据库添加 author_affil_map 列
+  const cols = db.prepare("PRAGMA table_info(papers)").all() as Array<{ name: string }>;
+  if (!cols.some((c) => c.name === "author_affil_map")) {
+    db.exec("ALTER TABLE papers ADD COLUMN author_affil_map TEXT DEFAULT '[]'");
+  }
   return db;
 }
 
@@ -74,6 +80,7 @@ function paperToRow(paper: Paper, profile: string, dateStr: string): Record<stri
     title_zh: paper.title_zh || "",
     authors: JSON.stringify(paper.authors || []),
     author_affiliations: JSON.stringify(paper.author_affiliations || []),
+    author_affil_map: JSON.stringify(paper.author_affil_map || []),
     journal_name: paper.journal?.name || "",
     journal_source_group: paper.journal?.source_group || "",
     published_date: paper.published_date || "",
@@ -95,11 +102,15 @@ function rowToPaper(row: Record<string, unknown>): Paper {
   const parseArr = (v: unknown): string[] => {
     try { return JSON.parse(String(v ?? "[]")) as string[]; } catch { return []; }
   };
+  const parseNumArrArr = (v: unknown): number[][] => {
+    try { return JSON.parse(String(v ?? "[]")) as number[][]; } catch { return []; }
+  };
   return {
     title_en: String(row.title_en || ""),
     title_zh: String(row.title_zh || ""),
     authors: parseArr(row.authors),
     author_affiliations: parseArr(row.author_affiliations),
+    author_affil_map: parseNumArrArr(row.author_affil_map),
     journal: {
       name: String(row.journal_name || ""),
       source_group: String(row.journal_source_group || "")
@@ -139,12 +150,12 @@ export function upsertPapers(dbPath: string, profile: string, papers: Paper[]): 
 
   const stmt = db.prepare(`
     INSERT INTO papers (
-      doi, title_en, title_zh, authors, author_affiliations,
+      doi, title_en, title_zh, authors, author_affiliations, author_affil_map,
       journal_name, journal_source_group, published_date, url, image_url,
       abstract_original, abstract_zh, publication_type, domain, subdomain, tags,
       profile, dedup_key, first_collected_date, updated_at
     ) VALUES (
-      @doi, @title_en, @title_zh, @authors, @author_affiliations,
+      @doi, @title_en, @title_zh, @authors, @author_affiliations, @author_affil_map,
       @journal_name, @journal_source_group, @published_date, @url, @image_url,
       @abstract_original, @abstract_zh, @publication_type, @domain, @subdomain, @tags,
       @profile, @dedup_key, @first_collected_date, datetime('now','localtime')
@@ -155,6 +166,7 @@ export function upsertPapers(dbPath: string, profile: string, papers: Paper[]): 
       title_zh = excluded.title_zh,
       authors = excluded.authors,
       author_affiliations = excluded.author_affiliations,
+	      author_affil_map = excluded.author_affil_map,
       journal_name = excluded.journal_name,
       journal_source_group = excluded.journal_source_group,
       published_date = excluded.published_date,

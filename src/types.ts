@@ -6,6 +6,8 @@ export interface Paper {
   title_zh?: string;
   authors?: string[];
   author_affiliations?: string[];
+  /** 作者→单位映射：author_affil_map[i] = [affiliation_index, ...] */
+  author_affil_map?: number[][];
   journal?: { name?: string; source_group?: string };
   published_date?: string;
   doi?: string;

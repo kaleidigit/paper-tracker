@@ -4,10 +4,20 @@
  * 支持：Nature / Science / PNAS / Cell / RSC 等主流期刊
  */
 
+import type { JsonRecord } from "../types.js";
 import type { ArticleMeta } from "./types.js";
 
 function normalizeText(value: unknown): string {
-  return String(value ?? "").replace(/\s+/g, " ").trim();
+  const raw = String(value ?? "").replace(/\s+/g, " ").trim();
+  return raw
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, " ");
 }
 
 function dedupeStrings(values: string[]): string[] {
@@ -72,60 +82,76 @@ export class ArticlePageParser {
     const ldResult = this.extractFromJsonLd(html, pageUrl);
     const htmlResult = this.extractFromHtmlMeta(html, pageUrl);
 
-    const authors: string[] = (ldResult.authors ?? []).length > 0 ? (ldResult.authors ?? []) : htmlResult.authors ?? [];
-    const affiliations: string[] = (ldResult.affiliations ?? []).length > 0 ? (ldResult.affiliations ?? []) : htmlResult.affiliations ?? [];
-    const imageUrl: string = ldResult.imageUrl || htmlResult.imageUrl || "";
-    const abstractText: string = ldResult.abstract || htmlResult.abstract || "";
-    const publicationType: string = ldResult.publicationType !== "unknown" ? ldResult.publicationType! : htmlResult.publicationType || "unknown";
+    const authors = (ldResult.authors ?? []).length > 0 ? (ldResult.authors ?? []) : htmlResult.authors ?? [];
+    const affiliations = (ldResult.affiliations ?? []).length > 0 ? (ldResult.affiliations ?? []) : htmlResult.affiliations ?? [];
+    const authorAffilMap = ldResult.authorAffilMap ?? htmlResult.authorAffilMap;
+    const imageUrl = ldResult.imageUrl || htmlResult.imageUrl || "";
+    const abstractText = ldResult.abstract || htmlResult.abstract || "";
+    const publicationType = ldResult.publicationType !== "unknown" ? ldResult.publicationType! : htmlResult.publicationType || "unknown";
 
-    return { authors, affiliations, imageUrl, abstract: abstractText, publicationType };
+    return { authors, affiliations, authorAffilMap, imageUrl, abstract: abstractText, publicationType };
   }
 
   private extractFromJsonLd(html: string, pageUrl: string): Partial<ArticleMeta> {
-    const result: Partial<ArticleMeta> = { authors: [], affiliations: [], imageUrl: "", abstract: "", publicationType: "unknown" };
+    const result: Partial<ArticleMeta> = { authors: [], affiliations: [], authorAffilMap: [], imageUrl: "", abstract: "", publicationType: "unknown" };
+    const affIndex = new Map<string, number>();
+    const affilMap: number[][] = [];
 
     const matches = html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi);
     for (const match of matches) {
       try {
         const ld = JSON.parse(match[1]);
-        const entities = Array.isArray(ld) ? ld : [ld];
-        for (const entity of entities) {
-          const type = normalizeText(entity["@type"] || "");
-          // 放宽类型过滤：容纳 NewsArticle / Editorial / Report / WebPage 等内容
-          const articleTypes = ["article", "scholarlyarticle", "newsarticle", "report", "webpage", "creativework"];
-          if (!articleTypes.some((t) => type.includes(t))) {
-            continue;
-          }
 
-          // 作者：处理对象格式 author.name 和纯字符串格式（如编辑部文章 author:"Nature Climate Change"）
+        // 递归收集实体：支持 WebPage.mainEntity、@graph 等嵌套结构
+        const flatEntities: JsonRecord[] = [];
+        const collectEntities = (node: unknown) => {
+          if (Array.isArray(node)) {
+            node.forEach(collectEntities);
+          } else if (node && typeof node === "object") {
+            flatEntities.push(node as JsonRecord);
+            collectEntities((node as JsonRecord).mainEntity);
+            collectEntities((node as JsonRecord)["@graph"]);
+          }
+        };
+        collectEntities(ld);
+
+        for (const entity of flatEntities) {
+          const type = normalizeText(entity["@type"] || "").toLowerCase();
+          const articleTypes = ["article", "scholarlyarticle", "newsarticle", "report", "webpage", "creativework"];
+          if (!articleTypes.some((t) => type.includes(t))) continue;
+
           const cited = entity.author || entity.creator || [];
           const authorList = Array.isArray(cited) ? cited : [cited];
           for (const a of authorList) {
             const name = normalizeText(typeof a === "string" ? a : (a.name || ""));
-            if (name) result.authors!.push(name);
-            if (name) result.authors!.push(name);
+            if (!name) continue;
+            result.authors!.push(name);
 
-            // 单位（JSON-LD 格式：author[].affiliation[]）
+            const authorAffIndices: number[] = [];
             if (Array.isArray(a.affiliation)) {
               for (const aff of a.affiliation) {
-                const affName = normalizeText(typeof aff === "string" ? aff : (aff.name || ""));
-                if (affName) result.affiliations!.push(affName);
+                const addr = typeof aff === "string" ? null : (aff as any).address;
+                const addrName = typeof addr === "string" ? addr : (addr?.name || "");
+                const shortName = typeof aff === "string" ? aff : (aff.name || "");
+                const affName = normalizeText(addrName || shortName);
+                if (!affName) continue;
+                if (!affIndex.has(affName)) {
+                  affIndex.set(affName, result.affiliations!.length);
+                  result.affiliations!.push(affName);
+                }
+                authorAffIndices.push(affIndex.get(affName)!);
               }
             }
+            affilMap.push(authorAffIndices);
           }
 
-          // 摘要
           if (!result.abstract && entity.description) {
             result.abstract = normalizeText(entity.description);
           }
-
-          // 发表类型
           if (result.publicationType === "unknown") {
             const section = normalizeText(entity.articleSection || entity.type || "");
             if (section) result.publicationType = this.normalizePublicationType(section);
           }
-
-          // 图片
           if (!result.imageUrl) {
             const img = entity.image;
             if (typeof img === "string") result.imageUrl = absoluteUrl(img, pageUrl);
@@ -143,6 +169,7 @@ export class ArticlePageParser {
     return {
       authors: dedupeStrings(result.authors || []),
       affiliations: dedupeStrings(result.affiliations || []),
+      authorAffilMap: affilMap.length > 0 ? affilMap : undefined,
       imageUrl: result.imageUrl || "",
       abstract: result.abstract || "",
       publicationType: result.publicationType || "unknown"
