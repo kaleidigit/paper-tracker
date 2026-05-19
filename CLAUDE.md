@@ -16,7 +16,7 @@
 Shell Scripts (scripts/)
 │
 ├─ run.sh ──→ 串行调用 pipeline steps（collect→filter→enrich→store→digest→push），支持 --dry-run
-└─ auto-push.sh ──→ cron 入口（周一推周刊，周二至周五推日刊）
+└─ auto-push.sh ──→ cron 入口（周一：顶刊日报 + 合并周刊；周二至五：仅顶刊日报）
 
 src/cli.ts
   │
@@ -78,7 +78,7 @@ data/{profile}/
 
 ```
 run.sh              ← 手动执行入口（串行 collect→filter→enrich→store→digest→push，支持 --dry-run）
-auto-push.sh        ← cron 定时任务入口（周一周刊、其余工作日日刊，依次运行所有 profile）
+auto-push.sh        ← cron 定时任务入口（周一：顶刊日报+经济学期刊入库+合并周刊；周二至五：仅顶刊日报）
 deploy.sh           ← 安装依赖 + lark-cli 授权
 ```
 
@@ -94,17 +94,20 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 | `store` | `5-enriched.json` | `papers.db` | 写入 SQLite，按 dedup_key 去重 |
 | `digest` | `5-enriched.json` | `6-digest.md` 等 | 生成日刊 Markdown |
 | `push` | `6-digest.md` | 飞书 | 创建文档 + 发送群通知 |
-| `weekly` | `papers.db` | `weekly-*/` | 读取上周论文，按期刊分组生成周刊并推送 |
+| `weekly` | `papers.db` | `weekly-*/` | 读取单 profile 上周论文，按期刊生成周刊 |
+| `weekly-all` | 所有 profile 的 `papers.db` | `weekly-*/` | 跨 profile 读取上周论文，合并去重，生成一份周刊 |
 
 ## 推流逻辑
 
 ```
 周一（DAY_OF_WEEK=1）：
-  collect → filter → enrich → store  （采集上周五/六/日，入库）
-  → weekly                           （从 DB 读上周全部论文，按期刊推送周刊）
+  top-journal-env-energy:  collect → ... → digest → push  日刊（DAYS=3, 周末积压顶刊）
+  env-economics-journal:   collect → filter → enrich → store  （DAYS=7, 仅入库，不发日刊）
+  → weekly-all            合并两个 profile 的 DB → 一份周刊推送
 
 周二至周五：
-  collect → filter → enrich → store → digest → push  （日刊，采集昨天）
+  top-journal-env-energy:  collect → filter → enrich → store → digest → push  日刊（DAYS=1）
+  env-economics-journal:   （不运行）
 ```
 
 ## Profile 配置
@@ -114,7 +117,7 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 | Profile 名称 | 用途 | 期刊来源 |
 |---|---|---|
 | `top-journal-env-energy` | 顶刊环境能源论文日报 | Nature 系列、Science、PNAS、Joule、EES 等综合顶刊 |
-| `env-economics-journal` | 环境经济学期刊日报 | AER、QJE、JPE、JEEM、JAERE、Ecological Economics 等经济学期刊 |
+| `env-economics-journal` | 环境经济学期刊周刊（仅周一采集入库，不发日刊） | AER、QJE、JPE、JEEM、JAERE、Ecological Economics 等经济学期刊 |
 
 ## 项目配置层级
 
@@ -194,7 +197,7 @@ fallback 逻辑：如果 profile 目录下没有对应文件，回退到 `profil
 ./run.sh --profile env-economics-journal
 ./run.sh --profile env-economics-journal --dry-run
 
-# 自动推送（cron 入口，从 config.json 读取 profile 列表）
+# 自动推送（cron 入口）
 ./auto-push.sh
 ./auto-push.sh --dry-run
 
@@ -206,12 +209,11 @@ npx tsx src/cli.ts --step store   --profile top-journal-env-energy
 npx tsx src/cli.ts --step digest  --profile top-journal-env-energy
 npx tsx src/cli.ts --step push    --profile top-journal-env-energy
 npx tsx src/cli.ts --step weekly  --profile top-journal-env-energy
+npx tsx src/cli.ts --step weekly-all --profile top-journal-env-energy
 
 npx tsx src/cli.ts --step collect --profile env-economics-journal
 npx tsx src/cli.ts --step enrich  --profile env-economics-journal
 npx tsx src/cli.ts --step store   --profile env-economics-journal
-npx tsx src/cli.ts --step digest  --profile env-economics-journal
-npx tsx src/cli.ts --step push    --profile env-economics-journal
 
 # 测试
 npm test
@@ -250,7 +252,7 @@ await runCommand("lark-cli", [
 - **唯一索引**：`UNIQUE(profile, dedup_key)`
 - **查询索引**：`(profile, published_date)`、`(profile, journal_name)`
 - **入库时机**：每天 enrich 后自动写入（stepStore）
-- **周刊读取**：stepWeekly 调用 `getWeeklyPapers()` 查询上周一至周日
+- **周刊读取**：`stepWeekly` 调用 `getWeeklyPapers()` 查询上周一至周日；`stepWeeklyAll` 跨所有 profile 聚合后合并去重
 
 ```bash
 # 直接查询数据库
