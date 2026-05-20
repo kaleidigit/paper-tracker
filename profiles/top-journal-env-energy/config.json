@@ -35,8 +35,8 @@
       "classify_user_template": "请基于以下论文信息完成分类。注意按主要研究问题分类，而不是按表面术语分类。\n\n英文标题：{{title_en}}\n中文标题：{{title_zh}}\n英文摘要：{{abstract_original}}\n中文摘要：{{abstract_zh}}\n期刊：{{journal_name}}\n日期：{{published_date}}\nDOI：{{doi}}\n链接：{{url}}",
       "translation_system": "你是学术论文翻译助手。必须严格输出合法 JSON，且只能包含两个字段：title_zh, abstract_zh。要求：1) 忠实翻译，不添加解释，不改写成总结；2) title_zh 必须翻译标题，不能留空，不能原样照抄英文，除非是公认缩写、化学式、专有名词或模型名；3) 如果提供了 abstract_original，则 abstract_zh 必须对其完整翻译，术语准确、语句通顺；4) 如果 abstract_original 为空，则 abstract_zh 返回空字符串；5) 不要输出 Markdown、注释或额外字段。",
       "translation_user_template": "请翻译以下论文信息，并严格返回 JSON。\n\n英文标题：{{title_en}}\n英文摘要：{{abstract_original}}",
-      "filter_system": "你是环境、能源与气候领域的学术论文筛选专家。必须严格输出 JSON：{\"keep\": boolean, \"confidence\": number(0-1), \"reason\": string, \"suggested_domain\": string, \"suggested_tags\": string[]}。\n\n【接受的论文】——以下任一方向的核心贡献论文应保留：\n1. 能源：能源经济、能源市场、能源政策、能源转型、电力市场、可再生能源、能源补贴、化石燃料淘汰\n2. 气候：气候变化、气候政策、气候经济、气候金融、碳定价、碳市场、碳税、减排路径、气候适应\n3. 环境：环境经济学、环境治理、环境监管、环境政策、污染控制、生态系统服务、生物多样性、自然资源\n4. 可持续发展：SDG、可持续转型、行星边界、循环经济、资源效率、绿色金融、ESG、影响力投资\n5. 交叉议题：碳足迹、LCA、碳中和、净零排放、公正转型、气候风险披露、TCFD、环境估值\n\n【应排除的论文】——以下类型即使含有 energy/climate/environment/sustainability 等词也应拒绝：\nA. 纯材料/器件论文：核心是电极材料合成、钙钛矿薄膜制备、催化剂表征、电池循环性能测试、纳米材料制备，缺乏技术经济性或政策分析维度\nB. 纯化学/计算化学：分子动力学模拟、DFT计算、反应机理研究、化合物合成路线，不以环境/能源应用为落脚点\nC. 临床/生物医学：临床试验、药物递送、体内/体外实验、动物模型、疾病分型\nD. 纯工程/性能优化：仅关注机械性能、热稳定性、电化学性能参数调优，不讨论能源/环境系统层面的影响\nE. News/Opinion/Correspondence 类短文：Nature 的新闻、评论、读者来信等非研究性内容\n\n【判断原则】\n- 看核心贡献而非术语：论文的研究问题是什么？解决的是能源/环境/气候问题，还是材料/化学/医学问题？\n- 顶刊论文标准从严：Nature/Science 综合类期刊中常有非相关领域的论文（如 AI、神经科学、材料），不要被期刊名误导\n- 技术论文需有系统视角：如果论文讨论的是技术（solar cell, battery, fuel cell），需判断是否有经济性分析、政策含义、系统建模、或大规模部署讨论。纯实验室优化 → 拒绝\n- 气候/环境相关放宽：气候变化影响、生物多样性、生态系统、海平面上升、土地利用、农业可持续、贫困-环境关联 —— 即使不以经济学/政策为核心方法，只要主题与可持续/环境/气候紧密相关就保留",
-      "filter_user_template": "请判断下列论文是否应纳入日报。不要被单个关键词误导，要根据论文的核心研究问题做判断。\n\n英文标题：{{title_en}}\n英文摘要：{{abstract_original}}\n期刊：{{journal_name}}\n日期：{{published_date}}\nDOI：{{doi}}\n链接：{{url}}\n关键词参考：{{keywords_json}}\n分类树参考：{{taxonomy_json}}\n完整论文对象：{{paper_json}}"
+      "filter_system": "你是环境、能源与气候领域的学术论文筛选专家。必须严格输出 JSON：{\"keep\": boolean, \"confidence\": number(0-1), \"reason\": string, \"suggested_domain\": string, \"suggested_tags\": string[]}。\n\n【接受的论文】——以下任一方向的核心贡献论文应保留：\n1. 能源：能源经济、能源市场、能源政策、能源转型、电力市场、可再生能源、能源补贴、化石燃料淘汰\n2. 气候：气候变化、气候政策、气候经济、气候金融、碳定价、碳市场、碳税、减排路径、气候适应\n3. 环境：环境经济学、环境治理、环境监管、环境政策、污染控制、生态系统服务、生物多样性、自然资源\n4. 可持续发展：SDG、可持续转型、行星边界、循环经济、资源效率、绿色金融、ESG、影响力投资\n5. 交叉议题：碳足迹、LCA、碳中和、净零排放、公正转型、气候风险披露、TCFD、环境估值\n\n【应排除的论文】——以下类型即使含有 energy/climate/environment/sustainability 等词也应拒绝：\nA. 纯材料/器件论文：核心是电极材料合成、钙钛矿薄膜制备、催化剂表征、电池循环性能测试、纳米材料制备，缺乏技术经济性或政策分析维度\nB. 纯化学/计算化学：分子动力学模拟、DFT计算、反应机理研究、化合物合成路线，不以环境/能源应用为落脚点\nC. 临床/生物医学：临床试验、药物递送、体内/体外实验、动物模型、疾病分型\nD. 纯工程/性能优化：仅关注机械性能、热稳定性、电化学性能参数调优，不讨论能源/环境系统层面的影响\nE. 短文需按内容判断（不按格式一刀切）：Research Highlight 总结环境/气候/生态/能源研究的 → 保留；环境能源期刊（Nature Climate Change / Nature Energy / Nature Sustainability / Nature Geoscience / Nature Cities / Nature Water / Nature Food 等）的 Editorial 和 Comment 讨论气候/能源/环境/可持续发展议题的 → 保留；纯新闻（news）、读者来信（correspondence）、不相关领域的 News & Views → 拒绝\n\n【判断原则】\n- 看核心贡献而非术语：论文的研究问题是什么？解决的是能源/环境/气候问题，还是材料/化学/医学问题？\n- 顶刊论文标准从严：Nature/Science 综合类期刊中常有非相关领域的论文（如 AI、神经科学、材料），不要被期刊名误导\n- 技术论文需有系统视角：如果论文讨论的是技术（solar cell, battery, fuel cell），需判断是否有经济性分析、政策含义、系统建模、或大规模部署讨论。纯实验室优化 → 拒绝\n- 气候/环境相关放宽：气候变化影响、生物多样性、生态系统、海平面上升、土地利用、农业可持续、贫困-环境关联 —— 即使不以经济学/政策为核心方法，只要主题与可持续/环境/气候紧密相关就保留",
+      "filter_user_template": "请判断下列论文是否应纳入日报。不要被单个关键词误导，要根据论文的核心研究问题做判断。\n\n英文标题：{{title_en}}\n英文摘要：{{abstract_original}}\n期刊：{{journal_name}}\n日期：{{published_date}}\n文章类型：{{publication_type}}\nDOI：{{doi}}\n链接：{{url}}\n关键词参考：{{keywords_json}}\n分类树参考：{{taxonomy_json}}\n完整论文对象：{{paper_json}}"
     }
   },
   "sources": {
@@ -134,10 +134,19 @@
       "poverty",
       "adaptation policy",
       "lca",
-      "life cycle assessment"
+      "life cycle assessment",
+      "global warming",
+      "warming",
+      "warm",
+      "drought",
+      "wildfire",
+      "heatwave",
+      "extreme weather",
+      "permafrost",
+      "glacier",
+      "flood"
     ],
     "exclude_keywords": [
-      "battery material",
       "battery cycling performance",
       "capacity retention",
       "charge discharge",
@@ -184,7 +193,7 @@
     "doc_title_prefix": "[每日论文追踪]",
     "doc_enabled": true,
     "notify_enabled": true,
-    "notify_chat_ids": ["oc_0afdf3ac37c13f522ad07ad983db1214"],
+    "notify_chat_ids": ["oc_b04483b70f81158fc2752ac2f381ef04"],
     "notify_message_template": "论文日报已生成：{title}\n文档链接：{doc_url}\n若链接为空，请稍后在飞书文档列表查看。",
     "alert_enabled": true,
     "alert_chat_ids": ["oc_4ccb276c17862766a89748817c6f5d3b"],

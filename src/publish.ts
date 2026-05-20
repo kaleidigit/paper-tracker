@@ -39,6 +39,14 @@ function resolveChatIds(...sources: (string | string[] | undefined | null)[]): s
 function extractDocUrl(docRes: JsonRecord): string {
   const stdout = String(docRes.stdout || "");
   const stderr = String(docRes.stderr || "");
+  // Prefer v2 JSON response: data.document.url
+  try {
+    const parsed = JSON.parse(stdout) as JsonRecord;
+    const url = (parsed.data as JsonRecord | undefined)?.document as JsonRecord | undefined;
+    if (typeof url?.url === "string" && url.url) return url.url;
+  } catch {
+    // Fall through to regex extraction
+  }
   return stdout.match(/https?:\/\/[^\s"]+/)?.[0]
     || stderr.match(/https?:\/\/[^\s"]+/)?.[0]
     || "";
@@ -54,11 +62,14 @@ async function larkCreateDoc(
       "lark-cli",
       [
         "docs", "+create",
+        "--api-version", "v2",
+        "--doc-format", "markdown",
         "--as", "bot",
         "--title", docTitle,
-        "--markdown", markdownContent
+        "--content", "-"
       ],
-      config.runtime.command_timeout_ms
+      config.runtime.command_timeout_ms,
+      markdownContent
     );
     const record: JsonRecord = {
       command: "lark-cli docs +create",

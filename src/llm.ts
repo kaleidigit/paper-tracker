@@ -113,6 +113,7 @@ export async function llmFilter(config: AppConfig, taxonomy: Array<Record<string
     title_en: candidate.title_en || "",
     journal_name: candidate.journal?.name || "",
     published_date: candidate.published_date || "",
+    publication_type: candidate.publication_type || "",
     doi: candidate.doi || "",
     url: candidate.url || "",
     abstract_original: candidate.abstract_original || ""
