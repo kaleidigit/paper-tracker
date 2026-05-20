@@ -195,6 +195,7 @@
     "notify_enabled": true,
     "notify_chat_ids": ["oc_b04483b70f81158fc2752ac2f381ef04"],
     "notify_message_template": "论文日报已生成：{title}\n文档链接：{doc_url}\n若链接为空，请稍后在飞书文档列表查看。",
+    "exclude_from_weekly": true,
     "alert_enabled": true,
     "alert_chat_ids": ["oc_4ccb276c17862766a89748817c6f5d3b"],
     "alert_message_template": "未获取到任何论文数据，已终止日报推送，请排查。"

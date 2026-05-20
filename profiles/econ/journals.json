@@ -1,0 +1,214 @@
+[
+  {
+    "name": "American Economic Journal: Applied Economics",
+    "source_group": "AEJ",
+    "issn": "1945-7782",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "American Economic Journal: Economic Policy",
+    "source_group": "AEJ",
+    "issn": "1945-7731",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "American Economic Journal: Macroeconomics",
+    "source_group": "AEJ",
+    "issn": "1945-7707",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "American Economic Journal: Microeconomics",
+    "source_group": "AEJ",
+    "issn": "1945-7669",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "American Economic Review",
+    "source_group": "AER",
+    "issn": "0002-8282",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "American Journal of Agricultural Economics",
+    "source_group": "AJAE",
+    "issn": "0002-9092",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Ecological Economics",
+    "source_group": "EcEcon",
+    "issn": "0921-8009",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Econometrica",
+    "source_group": "Econometrica",
+    "issn": "0012-9682",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Economic Journal",
+    "source_group": "EJ",
+    "issn": "0013-0133",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Environmental and Resource Economics",
+    "source_group": "EREc",
+    "issn": "0924-6460",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Games and Economic Behavior",
+    "source_group": "GEB",
+    "issn": "0899-8256",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "International Economic Review",
+    "source_group": "IER",
+    "issn": "0020-6598",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Development Economics",
+    "source_group": "JDE",
+    "issn": "0304-3878",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Econometrics",
+    "source_group": "JEc",
+    "issn": "0304-4076",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Economic History",
+    "source_group": "JEH",
+    "issn": "0022-0507",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Economic Theory",
+    "source_group": "JET",
+    "issn": "0022-0531",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Environmental Economics and Management",
+    "source_group": "JEEM",
+    "issn": "0095-0696",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of International Economics",
+    "source_group": "JIE",
+    "issn": "0022-1996",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Labor Economics",
+    "source_group": "JLE",
+    "issn": "0734-306X",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Monetary Economics",
+    "source_group": "JME",
+    "issn": "0304-3932",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Political Economy",
+    "source_group": "JPE",
+    "issn": "0022-3808",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Public Economics",
+    "source_group": "JPubE",
+    "issn": "0047-2727",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of the Association of Environmental and Resource Economists",
+    "source_group": "JAERE",
+    "issn": "2333-5955",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of the European Economic Association",
+    "source_group": "JEEA",
+    "issn": "1542-4766",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Quantitative Economics",
+    "source_group": "QE",
+    "issn": "1759-7323",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Quarterly Journal of Economics",
+    "source_group": "QJE",
+    "issn": "0033-5533",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "RAND Journal of Economics",
+    "source_group": "RAND",
+    "issn": "0741-6261",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Resource and Energy Economics",
+    "source_group": "REE",
+    "issn": "0928-7655",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Review of Economic Studies",
+    "source_group": "REStud",
+    "issn": "0034-6527",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Review of Economics and Statistics",
+    "source_group": "REStat",
+    "issn": "0034-6535",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "The Energy Journal",
+    "source_group": "EnergyJournal",
+    "issn": "0195-6574",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Theoretical Economics",
+    "source_group": "TE",
+    "issn": "1933-6837",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "管理世界",
+    "source_group": "CASS",
+    "issn": "2994-3191",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "_note": "中文综合自然科学期刊，暂放econ，待后续独立profile",
+    "name": "科学通报",
+    "source_group": "CAS",
+    "issn": "0023-074X",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "_note": "中文地球科学期刊，暂放econ，待后续独立profile",
+    "name": "中国科学：地球科学",
+    "source_group": "CAS",
+    "issn": "1674-7313",
+    "publisher_strategy": "openalex"
+  }
+]

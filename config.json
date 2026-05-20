@@ -1,7 +1,8 @@
 {
   "profiles": [
-    "top-journal-env-energy",
-    "env-economics-journal"
+    "top",
+    "econ",
+    "law"
   ],
   "ai": {
     "provider": "siliconflow",

@@ -1,0 +1,94 @@
+{
+  "domains": [
+    {
+      "name": "环境法与气候法",
+      "name_en": "Environmental and Climate Law",
+      "subdomains": [
+        {
+          "name": "气候变化法",
+          "name_en": "Climate Change Law",
+          "keywords": ["climate change law", "carbon regulation", "climate legislation", "climate litigation", "climate liability", "climate adaptation law"]
+        },
+        {
+          "name": "环境规制与合规",
+          "name_en": "Environmental Regulation and Compliance",
+          "keywords": ["environmental regulation", "environmental compliance", "environmental permitting", "pollution control law", "environmental enforcement", "regulatory impact"]
+        }
+      ]
+    },
+    {
+      "name": "能源法",
+      "name_en": "Energy Law",
+      "subdomains": [
+        {
+          "name": "可再生能源法",
+          "name_en": "Renewable Energy Law",
+          "keywords": ["renewable energy law", "solar regulation", "wind energy law", "clean energy policy", "feed-in tariff", "renewable portfolio standard"]
+        },
+        {
+          "name": "化石能源规制",
+          "name_en": "Fossil Fuel Regulation",
+          "keywords": ["fossil fuel regulation", "energy transition law", "oil and gas law", "coal regulation", "energy security law", "just transition"]
+        }
+      ]
+    },
+    {
+      "name": "自然资源法",
+      "name_en": "Natural Resources Law",
+      "subdomains": [
+        {
+          "name": "水资源法",
+          "name_en": "Water Law",
+          "keywords": ["water law", "water rights", "water allocation", "groundwater regulation", "transboundary water", "riparian rights"]
+        },
+        {
+          "name": "土地利用与保护",
+          "name_en": "Land Use and Conservation Law",
+          "keywords": ["land use law", "conservation law", "protected areas", "zoning regulation", "public lands", "land tenure"]
+        },
+        {
+          "name": "生物多样性法",
+          "name_en": "Biodiversity Law",
+          "keywords": ["biodiversity law", "wildlife protection", "endangered species act", "habitat conservation", "genetic resources", "bioprospecting"]
+        }
+      ]
+    },
+    {
+      "name": "国际环境法",
+      "name_en": "International Environmental Law",
+      "subdomains": [
+        {
+          "name": "国际气候协定",
+          "name_en": "International Climate Agreements",
+          "keywords": ["Paris Agreement", "UNFCCC", "international climate law", "NDC", "climate treaty", "common but differentiated responsibilities"]
+        },
+        {
+          "name": "跨境环境治理",
+          "name_en": "Transboundary Environmental Governance",
+          "keywords": ["transboundary pollution", "international environmental agreement", "environmental treaty", "transboundary governance", "international water law", "Arctic governance"]
+        }
+      ]
+    },
+    {
+      "name": "环境政策与治理",
+      "name_en": "Environmental Policy and Governance",
+      "subdomains": [
+        {
+          "name": "环境正义",
+          "name_en": "Environmental Justice",
+          "keywords": ["environmental justice", "environmental equity", "environmental racism", "distributive justice", "procedural justice", "indigenous rights"]
+        },
+        {
+          "name": "ESG与可持续金融法",
+          "name_en": "ESG and Sustainable Finance Law",
+          "keywords": ["ESG regulation", "sustainable finance law", "green bond regulation", "climate disclosure", "fiduciary duty", "sustainable investment"]
+        },
+        {
+          "name": "环境诉讼",
+          "name_en": "Environmental Litigation",
+          "keywords": ["environmental litigation", "climate litigation", "citizen suit", "standing", "environmental tort", "public interest litigation"]
+        }
+      ]
+    }
+  ]
+}

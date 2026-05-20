@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # auto-push.sh — cron 定时任务入口
 #
-# 周一：顶刊日报(周末积压) + 经济学期刊入库 + 合并周刊(上周全部)
+# 周一：顶刊日报(周末积压) + 经济学期刊入库 + 法学期刊入库 + 合并周刊(仅经济+法学)
 # 周二至周五：仅顶刊日报
 # 周末：跳过
 #
@@ -50,7 +50,7 @@ if [[ "$DAY_OF_WEEK" == "1" ]]; then
 
   # 1. 顶刊日报（DAYS=3，推送周五/六/日顶刊论文）
   echo "[auto-push] === Monday: top-journal daily digest ==="
-  DAILY_ARGS=("--profile" "top-journal-env-energy" "--days" "3")
+  DAILY_ARGS=("--profile" "top" "--days" "3")
   [[ "$DRY_RUN" == "1" ]] && DAILY_ARGS+=("--dry-run")
   if bash "$ROOT_DIR/run.sh" "${DAILY_ARGS[@]}"; then
     echo "[auto-push] top-journal daily done."
@@ -61,21 +61,35 @@ if [[ "$DAY_OF_WEEK" == "1" ]]; then
 
   # 2. 环境经济学期刊采集入库（DAYS=7，覆盖整周，不发日报）
   echo "[auto-push] === Monday: env-economics collect+store ==="
-  export PROFILE="env-economics-journal"
+  export PROFILE="econ"
   for step in collect filter enrich store; do
-    echo "[auto-push] >>> step: $step (env-economics-journal)"
-    if ! PUSH_DAYS=7 npx tsx src/cli.ts --step "$step" --profile env-economics-journal; then
-      echo "[auto-push] ERROR: step '$step' failed for env-economics-journal" >&2
+    echo "[auto-push] >>> step: $step (econ)"
+    if ! PUSH_DAYS=7 npx tsx src/cli.ts --step "$step" --profile econ; then
+      echo "[auto-push] ERROR: step '$step' failed for econ" >&2
       EXIT_CODE=1
       break
     fi
     echo "[auto-push] <<< step: $step done"
   done
 
-  # 3. 合并周刊（从两个 profile 的 DB 读取上周全部论文，去重后推送一份）
+  # 3. 法学期刊采集入库
+  if [[ "$EXIT_CODE" -eq 0 ]]; then
+    echo "[auto-push] === Monday: law collect+store ==="
+    for step in collect filter enrich store; do
+      echo "[auto-push] >>> step: $step (law)"
+      if ! PUSH_DAYS=7 npx tsx src/cli.ts --step "$step" --profile law; then
+        echo "[auto-push] ERROR: step '$step' failed for law" >&2
+        EXIT_CODE=1
+        break
+      fi
+      echo "[auto-push] <<< step: $step done"
+    done
+  fi
+
+  # 4. 合并周刊（排除顶刊，仅经济+法学）
   if [[ "$EXIT_CODE" -eq 0 ]]; then
     echo "[auto-push] === Monday: combined weekly ==="
-    if ! npx tsx src/cli.ts --step weekly-all --profile top-journal-env-energy; then
+    if ! npx tsx src/cli.ts --step weekly-all --profile top; then
       echo "[auto-push] ERROR: combined weekly failed" >&2
       EXIT_CODE=1
     fi
@@ -87,7 +101,7 @@ else
   # 周二至周五：仅顶刊日报（DAYS=1）
   # ════════════════════════════════════════════════════════
   echo "[auto-push] === Weekday: top-journal daily ==="
-  DAILY_ARGS=("--profile" "top-journal-env-energy" "--days" "1")
+  DAILY_ARGS=("--profile" "top" "--days" "1")
   [[ "$DRY_RUN" == "1" ]] && DAILY_ARGS+=("--dry-run")
   if bash "$ROOT_DIR/run.sh" "${DAILY_ARGS[@]}"; then
     echo "[auto-push] top-journal daily done."

@@ -18,10 +18,10 @@ ALL_PROFILES=()
 if command -v python3 &>/dev/null && [[ -f config.json ]]; then
   while IFS= read -r line; do
     ALL_PROFILES+=("$line")
-  done < <(python3 -c "import json,sys; print('\n'.join(json.load(open('config.json')).get('profiles',['top-journal-env-energy'])))")
+  done < <(python3 -c "import json,sys; print('\n'.join(json.load(open('config.json')).get('profiles',['top'])))")
 fi
 if [[ ${#ALL_PROFILES[@]} -eq 0 ]]; then
-  ALL_PROFILES=("top-journal-env-energy")
+  ALL_PROFILES=("top")
 fi
 
 # ─── 参数解析 ───────────────────────────────────────────────

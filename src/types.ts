@@ -129,6 +129,7 @@ export interface AppConfig {
     notify_user_id?: string;
     notify_user_ids?: string[];
     notify_message_template?: string;
+    exclude_from_weekly?: boolean;
     doc_publish_cmd?: string;
     base_publish_cmd?: string;
   };

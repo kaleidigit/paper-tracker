@@ -89,6 +89,91 @@
     ]
   },
   {
+    "name": "Nature Human Behaviour",
+    "source_group": "Nature",
+    "issn": "2397-3374",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/nathumbehav.rss"
+    ]
+  },
+  {
+    "name": "Nature Ecology & Evolution",
+    "source_group": "Nature",
+    "issn": "2397-334X",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natecolevol.rss"
+    ]
+  },
+  {
+    "name": "Nature Plants",
+    "source_group": "Nature",
+    "issn": "2055-0278",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/nplants.rss"
+    ]
+  },
+  {
+    "name": "Nature Computational Science",
+    "source_group": "Nature",
+    "issn": "2662-8457",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natcomputsci.rss"
+    ]
+  },
+  {
+    "name": "Nature Medicine",
+    "source_group": "Nature",
+    "issn": "1078-8956",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/nm.rss"
+    ]
+  },
+  {
+    "name": "Nature Health",
+    "source_group": "Nature",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/naturehealth.rss"
+    ]
+  },
+  {
+    "name": "Nature Reviews Biodiversity",
+    "source_group": "Nature",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/nrbd.rss"
+    ]
+  },
+  {
+    "name": "Nature Reviews Clean Technology",
+    "source_group": "Nature",
+    "issn": "3005-0685",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Nature Reviews Earth & Environment",
+    "source_group": "Nature",
+    "issn": "2662-138X",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natrevearthenviron.rss"
+    ]
+  },
+  {
+    "name": "Nature Reviews Electrical Engineering",
+    "source_group": "Nature",
+    "issn": "2948-1201",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natrevelectreng.rss"
+    ]
+  },
+  {
     "name": "Science",
     "source_group": "Science",
     "issn": "0036-8075",
@@ -122,6 +207,18 @@
     "name": "Energy & Environmental Science",
     "source_group": "RSC",
     "issn": "1754-5692",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "National Science Review",
+    "source_group": "NSR",
+    "issn": "2053-714X",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "中国社会科学",
+    "source_group": "CASS",
+    "issn": "0252-9203",
     "publisher_strategy": "openalex"
   }
 ]

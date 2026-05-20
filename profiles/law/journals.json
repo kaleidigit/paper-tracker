@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Harvard Law Review",
+    "source_group": "HarvLRev",
+    "issn": "0017-811X",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Yale Law Journal",
+    "source_group": "YaleLJ",
+    "issn": "0044-0094",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Stanford Law Review",
+    "source_group": "StanLRev",
+    "issn": "0038-9765",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Columbia Law Review",
+    "source_group": "ColumLRev",
+    "issn": "0010-1958",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "American Journal of International Law",
+    "source_group": "AJIL",
+    "issn": "0002-9300",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "European Journal of International Law",
+    "source_group": "EJIL",
+    "issn": "0938-5428",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "California Law Review",
+    "source_group": "CaliLRev",
+    "issn": "0008-1221",
+    "publisher_strategy": "openalex"
+  },
+  {
+    "name": "Journal of Law, Economics and Organization",
+    "source_group": "JLEO",
+    "issn": "8756-6222",
+    "publisher_strategy": "openalex"
+  }
+]

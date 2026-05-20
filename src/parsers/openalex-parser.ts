@@ -16,7 +16,7 @@ import {
 import { loadTaxonomy } from "../modules.js";
 
 async function loadJournals(config: AppConfig): Promise<JournalEntry[]> {
-  const file = resolvePath(config.sources?.journals_file || "profiles/top-journal-env-energy/journals.json");
+  const file = resolvePath(config.sources?.journals_file || "profiles/top/journals.json");
   const raw = await fs.readFile(file, "utf-8");
   const parsed = JSON.parse(raw);
   return Array.isArray(parsed) ? parsed : [];

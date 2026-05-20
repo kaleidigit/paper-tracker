@@ -23,13 +23,13 @@ import { llmFilter, translatePaperFields, classifyPaper } from "./llm.js";
 import { buildDigestTitle, buildMarkdown, buildRecords } from "./digest.js";
 import { publishDigest, sendAlert } from "./publish.js";
 import {
-  normalizeText, itemKey, matchesKeywords, normalizePublicationType, shouldSkipLlmRescueByTitle
+  normalizeText, itemKey, matchesKeywords, normalizePublicationType, shouldSkipLlmRescueByTitle, isPrimarilyChinese
 } from "./utils.js";
 
 // ─── Taxonomy ──────────────────────────────────────────────
 
 export async function loadTaxonomy(config: AppConfig): Promise<Array<Record<string, unknown>>> {
-  const file = resolvePath(config.classification?.file || "profiles/top-journal-env-energy/classification.json");
+  const file = resolvePath(config.classification?.file || "profiles/top/classification.json");
   const raw = await fs.readFile(file, "utf-8");
   const parsed = JSON.parse(raw) as { domains?: Array<Record<string, unknown>> };
   return Array.isArray(parsed.domains) ? parsed.domains : [];
@@ -125,6 +125,28 @@ async function enrichOne(config: AppConfig, paper: Paper, taxonomy: Array<Record
       classification: paper.classification || { domain: "未分类", subdomain: "未分类", tags: [] }
     };
   }
+  // 中文期刊无需翻译，直接复用原文
+  if (isPrimarilyChinese(paper.title_en || "") || isPrimarilyChinese(paper.abstract_original || "")) {
+    const merged = {
+      ...paper,
+      title_zh: normalizeText(paper.title_en || ""),
+      abstract_zh: normalizeText(paper.abstract_original || "")
+    };
+    let classification = merged.classification || { domain: "未分类", subdomain: "未分类", tags: [] };
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        classification = { ...(await classifyPaper(config, merged, taxonomy)) };
+        break;
+      } catch (error) {
+        if (attempt < 2) {
+          const delay = 5_000 * (2 ** attempt) * (0.75 + Math.random() * 0.5);
+          await new Promise((r) => setTimeout(r, delay));
+        }
+      }
+    }
+    return { ...merged, publication_type: normalizePublicationType(paper.publication_type), summary_zh: "", novelty_points: [], main_content: [], classification };
+  }
+
   let translated: Pick<Paper, "title_zh" | "abstract_zh"> = { title_zh: paper.title_zh || "", abstract_zh: paper.abstract_zh || "" };
   let translationError = "";
   for (let attempt = 0; attempt < 3; attempt++) {

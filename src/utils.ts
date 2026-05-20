@@ -16,6 +16,14 @@ export function normalizeText(value: unknown): string {
 }
 
 /** 解码 HTML 实体（十进制/十六进制数字实体 + 常用命名实体） */
+/** 检测文本是否主要为中文（CJK 字符占比 > 30%），用于跳过翻译 */
+export function isPrimarilyChinese(text: string): boolean {
+  if (!text) return false;
+  const cjk = (text.match(/[一-鿿㐀-䶿豈-﫿]/g) || []).length;
+  const alpha = (text.match(/[a-zA-Z一-鿿㐀-䶿豈-﫿]/g) || []).length;
+  return alpha > 0 && cjk / alpha > 0.3;
+}
+
 export function decodeHtmlEntities(text: string): string {
   return text
     .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
@@ -46,7 +54,7 @@ export function toArray<T>(value: T | T[] | undefined): T[] {
 }
 
 export async function loadTaxonomy(config: { classification?: { file?: string } }): Promise<Array<Record<string, unknown>>> {
-  const file = resolvePath(config.classification?.file || "profiles/top-journal-env-energy/classification.json");
+  const file = resolvePath(config.classification?.file || "profiles/top/classification.json");
   const raw = await fs.readFile(file, "utf-8");
   const parsed = JSON.parse(raw) as { domains?: Array<Record<string, unknown>> };
   return Array.isArray(parsed.domains) ? parsed.domains : [];
@@ -211,10 +219,11 @@ export function matchesKeywords(
     return false;
   }
 
-  // 包含规则：至少命中一个
+  // 包含规则：至少命中一个；若未配置白名单则全量放行至 LLM
   const includeKeywords = toArray(config.sources?.keywords)
     .map((item) => normalizeText(item).toLowerCase())
     .filter(Boolean);
+  if (includeKeywords.length === 0) return true;
   return includeKeywords.some((kw) => kw && blob.includes(kw));
 }
 

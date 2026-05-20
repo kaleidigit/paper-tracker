@@ -205,7 +205,7 @@ export async function publishDigest(
   const now = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
   const dateStr = now.toISOString().slice(0, 10);
 
-  const profile = (process.env.PROFILE as string) || "top-journal-env-energy";
+  const profile = (process.env.PROFILE as string) || "top";
   const outputDir = path.join(dataDir, profile, dateStr);
   await fs.mkdir(outputDir, { recursive: true });
 

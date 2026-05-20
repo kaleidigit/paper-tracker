@@ -225,12 +225,24 @@ async function stepPush(ctx: ProfileContext): Promise<StepResult> {
 
 async function stepWeeklyAll(ctx: ProfileContext): Promise<StepResult> {
   const t = Date.now();
-  const dataDir = path.dirname(ctx.outputDir);
+  const dataDir = path.join(process.cwd(), "data");
 
   const profiles = await loadProfilesList();
 
   const allPapers: Paper[] = [];
+  let includedProfiles = 0;
   for (const profile of profiles) {
+    // 检查 profile 是否排除在周刊之外
+    const profileConfigPath = path.join(process.cwd(), "profiles", profile, "config.json");
+    try {
+      const raw = await fs.readFile(profileConfigPath, "utf-8");
+      const profileConfig = JSON.parse(raw);
+      if (profileConfig?.feishu?.exclude_from_weekly) continue;
+    } catch {
+      // config 读取失败时默认包含该 profile
+    }
+    includedProfiles++;
+
     const dbPath = path.join(dataDir, profile, "papers.db");
     try {
       await fs.access(dbPath);

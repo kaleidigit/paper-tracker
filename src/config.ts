@@ -11,7 +11,7 @@ function normalizeText(value: unknown): string {
 
 const ROOT_DIR = process.cwd();
 const ROOT_CONFIG_PATH = path.join(ROOT_DIR, "config.json");
-const LEGACY_CONFIG_PATH = process.env.CONFIG_PATH || path.join(ROOT_DIR, "profiles", "top-journal-env-energy", "config.json");
+const LEGACY_CONFIG_PATH = process.env.CONFIG_PATH || path.join(ROOT_DIR, "profiles", "top", "config.json");
 
 function asNumber(input: unknown, fallback: number): number {
   if (typeof input === "number" && Number.isFinite(input)) {
@@ -44,7 +44,7 @@ async function loadRootConfig(): Promise<RootConfig> {
 
 export async function loadProfilesList(): Promise<string[]> {
   const root = await loadRootConfig();
-  return root.profiles || ["top-journal-env-energy"];
+  return root.profiles || ["top"];
 }
 
 // ─── 深度合并：用 source 覆盖 target，只合并对象，其他值 source 优先 ──
@@ -72,7 +72,7 @@ function deepMerge<T extends Record<string, unknown>>(target: T, source: Partial
 // ─── Profile 感知的配置加载 ──────────────────────────────────
 
 export async function loadProfileContext(profile?: string): Promise<ProfileContext> {
-  const profileName = profile || process.env.PROFILE || "top-journal-env-energy";
+  const profileName = profile || process.env.PROFILE || "top";
   const profileDir = path.join(ROOT_DIR, "profiles", profileName);
   const configFile = path.join(profileDir, "config.json");
 

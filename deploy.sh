@@ -447,4 +447,4 @@ if [ "$MANUAL_AUTH" -eq 1 ]; then
 fi
 
 log "Deployment completed with auth domains: ${AUTH_DOMAINS}"
-log "日常推送请执行 ./auto-push.sh 或 ./run.sh --profile top-journal-env-energy"
+log "日常推送请执行 ./auto-push.sh 或 ./run.sh --profile top"
