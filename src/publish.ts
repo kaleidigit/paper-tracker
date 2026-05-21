@@ -135,40 +135,48 @@ export async function pushToFeishu(
 
   if (dryRun) return result;
 
-  // 创建飞书文档
+  // 创建飞书文档（最多 3 次尝试，指数退避）
   if (Boolean(feishu.doc_enabled)) {
-    let docRes = await larkCreateDoc(config, docTitle, markdownContent);
-    let docUrl = extractDocUrl(docRes);
+    let docUrl = "";
+    let lastError = "";
 
-    // 失败时重试一次
-    if (!docUrl && docRes.error) {
-      await new Promise((r) => setTimeout(r, 2000));
-      docRes = await larkCreateDoc(config, docTitle, markdownContent);
+    for (let attempt = 0; attempt < 3 && !docUrl; attempt++) {
+      if (attempt > 0) {
+        const delay = 5_000 * (2 ** (attempt - 1)) * (0.75 + Math.random() * 0.5);
+        await new Promise((r) => setTimeout(r, delay));
+      }
+      const docRes = await larkCreateDoc(config, docTitle, markdownContent);
       docUrl = extractDocUrl(docRes);
-    }
-
-    result.doc_publish = docRes;
-    if (docUrl) result.doc_url = docUrl;
-    if (docRes.error) {
+      result.doc_publish = docRes;
+      if (docUrl) {
+        result.doc_url = docUrl;
+        break;
+      }
+      lastError = String(docRes.error || "no URL returned");
       process.stderr.write(`${JSON.stringify({
         timestamp: new Date().toISOString(),
         level: "ERROR",
         event: "workflow.publish.doc_create_failed",
-        error: docRes.error,
+        error: lastError,
         profile: process.env.PROFILE || "unknown",
-        retried: !docUrl
+        attempt: attempt + 1
       })}\n`);
+    }
+
+    if (!docUrl) {
+      const profile = process.env.PROFILE || "top";
+      throw new Error(
+        `飞书文档创建失败（3 次尝试均失败）: ${lastError}\n` +
+        `请手动重试: npx tsx src/cli.ts --step push --profile ${profile}`
+      );
     }
   }
 
-  // 发送群通知
+  // 发送群通知（仅在文档创建成功后）
   if (Boolean(feishu.notify_enabled)) {
     const chatIds = resolveChatIds(feishu.notify_chat_ids, feishu.notify_chat_id);
     if (chatIds.length > 0) {
-      const hasUrl = Boolean(result.doc_url);
-      const defaultTpl = hasUrl
-        ? "论文日报已生成：{title}\n文档链接：{doc_url}"
-        : "论文日报已生成：{title}\n文档创建失败，请手动检查飞书文档列表。";
+      const defaultTpl = "论文日报已生成：{title}\n文档链接：{doc_url}";
       const textTpl = normalizeText(feishu.notify_message_template) || defaultTpl;
       const notifyText = textTpl
         .replaceAll("{title}", docTitle)

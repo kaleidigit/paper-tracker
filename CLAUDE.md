@@ -186,7 +186,7 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 
 ```
 config.json                ← 根配置：全局 AI 模型配置 + profiles 列表
-.env                       ← 密钥（SILICONFLOW_API_KEY 等），不入 git
+.env                       ← 密钥（OPENAI_COMPATIBLE_API_KEY 等），不入 git
 profiles/{name}/
   config.json              ← 领域配置（app, pipeline, sources, feishu, ai.prompts）
   journals.json            ← 期刊列表（每个期刊的 publisher_strategy 决定用哪个 parser）
@@ -235,12 +235,16 @@ fallback 逻辑：如果 profile 目录下没有对应文件，回退到 `profil
 
 ### LLM（配置在根 `config.json`，profile 只覆盖差异项）
 
+DeepSeek 官方 API（`api.deepseek.com`），`OPENAI_COMPATIBLE_API_KEY` 统一密钥。
+
 ```jsonc
-"ai.model": "deepseek-ai/DeepSeek-V4-Flash"  // 全局模型（根 config.json）
-"ai.filter.max_checks_per_run": 300           // LLM 过滤预算上限（根 config.json）
-"ai.filter.min_confidence": 0.5               // 过滤最低置信度（根 config.json）
-"ai.enrich.concurrency": 3                    // 翻译分类并发数（根 config.json）
-"ai.translation.enabled": true                // 是否翻译（根 config.json）
+"ai.base_url": "https://api.deepseek.com"      // DeepSeek 官方 API
+"ai.model": "deepseek-v4-flash"                // 全局模型（根 config.json）
+"ai.api_key_env": "OPENAI_COMPATIBLE_API_KEY"  // 统一 API key 环境变量名
+"ai.filter.max_checks_per_run": 300            // LLM 过滤预算上限（根 config.json）
+"ai.filter.min_confidence": 0.5                // 过滤最低置信度（根 config.json）
+"ai.enrich.concurrency": 3                     // 翻译分类并发数（根 config.json）
+"ai.translation.enabled": true                 // 是否翻译（根 config.json）
 ```
 
 ### 飞书（publish.ts 直接调用，不走 shell 命令模板）
@@ -288,13 +292,15 @@ npm run build
 `publish.ts` 中直接调用 subprocess：
 
 ```typescript
-// pushToFeishu() 创建飞书文档
+// pushToFeishu() 创建飞书文档（v2 API，Markdown 格式，stdin 传入内容）
 await runCommand("lark-cli", [
   "docs", "+create",
+  "--api-version", "v2",
+  "--doc-format", "markdown",
   "--as", "bot",
   "--title", docTitle,
-  "--markdown", markdownContent
-], config.runtime.command_timeout_ms);
+  "--content", "-"
+], config.runtime.command_timeout_ms, markdownContent);
 
 // pushToFeishu() 发送群通知
 await runCommand("lark-cli", [
@@ -304,6 +310,13 @@ await runCommand("lark-cli", [
   "--text", notifyText
 ], config.runtime.command_timeout_ms);
 ```
+
+## 推送容错
+
+- **doc 创建重试**：最多 3 次，指数退避（首次退避 ~5s，第二次 ~10s，第三次 ~20s，均带随机抖动）
+- **发通知的前提**：doc 创建成功并拿到 URL 后才发群通知。拿不到 URL 则不发票通知
+- **全部失败时抛错**：错误信息包含手动重试命令 `npx tsx src/cli.ts --step push --profile <name>`
+- **手动重试**：push step 可独立重跑，不从零开始
 
 配置文件（根 `config.json` + `profiles/{name}/config.json`）中**不需要**存储 shell 命令模板（如 `doc_publish_cmd` / `notify_cmd`），直接用 `--profile` 指定 profile 目录即可。
 

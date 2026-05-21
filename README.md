@@ -21,7 +21,7 @@ git clone <repo-url> && cd paper-tracker
 
 # 配置环境变量
 cp config/.env.cn.example .env
-# 编辑 .env，填入 SILICONFLOW_API_KEY、LARK_APP_ID、LARK_APP_SECRET
+# 编辑 .env，填入 OPENAI_COMPATIBLE_API_KEY、LARK_APP_ID、LARK_APP_SECRET
 
 # 一键部署（安装依赖 + 构建 + lark-cli 授权）
 ./deploy.sh
@@ -172,9 +172,9 @@ sqlite3 data/top-journal-env-energy/papers.db \
 ```jsonc
 {
   "ai": {
-    "base_url": "https://api.siliconflow.cn/v1",
-    "model": "deepseek-ai/DeepSeek-V4-Flash",
-    "api_key_env": "SILICONFLOW_API_KEY",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-v4-flash",
+    "api_key_env": "OPENAI_COMPATIBLE_API_KEY",
     "filter": {
       "enabled": true,
       "max_checks_per_run": 300,
@@ -266,7 +266,7 @@ TZ=Asia/Shanghai
 LARK_APP_ID=cli_xxx
 LARK_APP_SECRET=xxx
 LARK_BRAND=feishu
-SILICONFLOW_API_KEY=xxx
+OPENAI_COMPATIBLE_API_KEY=xxx
 ```
 
 ---
