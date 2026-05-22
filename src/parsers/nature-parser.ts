@@ -5,6 +5,7 @@
  */
 
 import fs from "node:fs/promises";
+import pLimit from "p-limit";
 import { XMLParser } from "fast-xml-parser";
 import type { AppConfig, JsonRecord, Paper } from "../types.js";
 import {
@@ -90,80 +91,80 @@ export class NatureParser {
   private async collectAllRawPapers(config: AppConfig, feeds: string[], feedSortOrder: Map<string, number>, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
     const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "" });
     const start = strictWindowStartAt(config);
-    const papers: Paper[] = [];
     const timeoutMs = 30000;
     const articleParser = new ArticlePageParser(timeoutMs);
     const authorInfoCache = new Map<string, ReturnType<ArticlePageParser["parse"]>>();
+    const natureLimit = pLimit(4);
 
-    for (const feedUrl of feeds) {
-      process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.rss.start", feed: feedUrl })}\n`);
-      let xml = "";
-      try {
-        xml = await fetchText(feedUrl, timeoutMs);
-      } catch {
-        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.rss.failed", feed: feedUrl })}\n`);
-        continue;
-      }
-
-      let items: JsonRecord[] = [];
-      try {
-        const parsed = parser.parse(xml) as JsonRecord;
-        items = resolveFeedItems(parsed);
-      } catch {
-        continue;
-      }
-
-      for (const item of items) {
-        const publishedAt = parseDateTime(item.pubDate || item.published || item.updated || item["dc:date"]);
-        if (publishedAt && publishedAt < start) continue;
-
-        const title = normalizeText(item.title);
-        const rssAbstract = normalizeText(item.description || item.summary || "");
-        const journal = normalizeText(item["prism:publicationName"] || item.source || "Nature");
-        const publishedDate = parseDate(item.pubDate || item.published || item.updated || item["dc:date"]);
-        const paperUrl = normalizeText(item.link);
-
-        // 独立检查：correction/retraction 等特殊内容不进入日报
-        if (shouldSkipLlmRescueByTitle(title)) continue;
-
-        // 爬取页面详细信息
-        if (!authorInfoCache.has(paperUrl.toLowerCase())) {
-          authorInfoCache.set(paperUrl.toLowerCase(), articleParser.parse(paperUrl));
+    const feedResults = await Promise.all(feeds.map(async (feedUrl) => {
+        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.rss.start", feed: feedUrl })}\n`);
+        let xml = "";
+        try {
+          xml = await natureLimit(() => fetchText(feedUrl, timeoutMs));
+        } catch {
+          process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.rss.failed", feed: feedUrl })}\n`);
+          return [];
         }
-        const authorInfo = (await authorInfoCache.get(paperUrl.toLowerCase())) || { authors: [], affiliations: [], imageUrl: "", abstract: "", publicationType: "unknown" };
 
-        // 优先使用页面提取的 abstract（通常比 RSS 摘要更完整）
-        const resolvedAbstract = authorInfo.abstract || rssAbstract;
-        const pubType = authorInfo.publicationType !== "unknown"
-          ? authorInfo.publicationType
-          : normalizeText(item["dc:type"] || item["prism:publicationType"] || item["prism:section"] || (item.category as string));
+        let items: JsonRecord[] = [];
+        try {
+          const parsed = parser.parse(xml) as JsonRecord;
+          items = resolveFeedItems(parsed);
+        } catch {
+          return [];
+        }
 
-        papers.push(
-          buildPaper({
-            title,
-            authors: authorInfo.authors.length > 0 ? authorInfo.authors : toArray(item.author as string[] | undefined),
-            authorAffiliations: authorInfo.affiliations.length > 0 ? authorInfo.affiliations : extractAffiliationsFromRssItem(item),
-            authorAffilMap: authorInfo.authorAffilMap,
-            journal,
-            sourceGroup: "Nature",
-            publishedDate,
-            doi: normalizeText(item["dc:identifier"]),
-            url: paperUrl,
-            abstractOriginal: resolvedAbstract,
-            imageUrl: authorInfo.imageUrl || extractImageFromRssItem(item),
-            publicationType: pubType,
-            sourceProvider: "nature-rss",
-            rawFeed: feedUrl,
-            rawRecordId: normalizeText(item.guid || item.link),
-            taxonomy,
-            sortOrder: feedSortOrder.get(feedUrl)
-          })
-        );
-      }
+        const feedPapers: Paper[] = [];
+        for (const item of items) {
+          const publishedAt = parseDateTime(item.pubDate || item.published || item.updated || item["dc:date"]);
+          if (publishedAt && publishedAt < start) continue;
 
-      process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.rss.done", feed: feedUrl, papers: papers.length })}\n`);
-    }
+          const title = normalizeText(item.title);
+          const rssAbstract = normalizeText(item.description || item.summary || "");
+          const journal = normalizeText(item["prism:publicationName"] || item.source || "Nature");
+          const publishedDate = parseDate(item.pubDate || item.published || item.updated || item["dc:date"]);
+          const paperUrl = normalizeText(item.link);
 
-    return papers;
+          if (shouldSkipLlmRescueByTitle(title)) continue;
+
+          const cacheKey = paperUrl.toLowerCase();
+          if (!authorInfoCache.has(cacheKey)) {
+            authorInfoCache.set(cacheKey, natureLimit(() => articleParser.parse(paperUrl)));
+          }
+          const authorInfo = (await authorInfoCache.get(cacheKey)) || { authors: [], affiliations: [], imageUrl: "", abstract: "", publicationType: "unknown" };
+
+          const resolvedAbstract = authorInfo.abstract || rssAbstract;
+          const pubType = authorInfo.publicationType !== "unknown"
+            ? authorInfo.publicationType
+            : normalizeText(item["dc:type"] || item["prism:publicationType"] || item["prism:section"] || (item.category as string));
+
+          feedPapers.push(
+            buildPaper({
+              title,
+              authors: authorInfo.authors.length > 0 ? authorInfo.authors : toArray(item.author as string[] | undefined),
+              authorAffiliations: authorInfo.affiliations.length > 0 ? authorInfo.affiliations : extractAffiliationsFromRssItem(item),
+              authorAffilMap: authorInfo.authorAffilMap,
+              journal,
+              sourceGroup: "Nature",
+              publishedDate,
+              doi: normalizeText(item["dc:identifier"]),
+              url: paperUrl,
+              abstractOriginal: resolvedAbstract,
+              imageUrl: authorInfo.imageUrl || extractImageFromRssItem(item),
+              publicationType: pubType,
+              sourceProvider: "nature-rss",
+              rawFeed: feedUrl,
+              rawRecordId: normalizeText(item.guid || item.link),
+              taxonomy,
+              sortOrder: feedSortOrder.get(feedUrl)
+            })
+          );
+        }
+
+        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.rss.done", feed: feedUrl, papers: feedPapers.length })}\n`);
+        return feedPapers;
+    }));
+
+    return feedResults.flat();
   }
 }

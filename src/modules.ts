@@ -65,42 +65,56 @@ export async function filterPapers(
   papers: Paper[],
   filterBudget: FilterBudget
 ): Promise<Paper[]> {
-  const filtered: Paper[] = [];
+  // 第一遍：关键词匹配（同步），分离需 LLM 审查和直通的论文
+  const llmQueue: Paper[] = [];
+  const passThrough: Paper[] = [];
 
   for (const paper of papers) {
-    // 关键词匹配检查（排除词优先，包含词至少命中一个）
     if (!matchesKeywords(config, paper.title_en || "", paper.abstract_original || "", paper.journal?.name || "")) {
       process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.keyword_reject", title: paper.title_en })}\n`);
       continue;
     }
-
-    // LLM 筛选（失败重试一次）
     if (filterBudget.remaining > 0) {
       filterBudget.remaining -= 1;
-      let filterResult: import("./types.js").JsonRecord | undefined;
-      for (let attempt = 0; attempt < 2; attempt++) {
-        try {
-          filterResult = await llmFilter(config, taxonomy, paper);
-          break;
-        } catch (error) {
-          if (attempt === 0) {
-            process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.llm_retry", title: paper.title_en, error: String(error) })}\n`);
-            await new Promise((r) => setTimeout(r, 10_000));
-          } else {
-            process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.llm_error", title: paper.title_en, error: String(error) })}\n`);
-          }
-        }
-      }
-      if (filterResult && !Boolean(filterResult.keep)) {
-        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.llm_reject", title: paper.title_en })}\n`);
-        continue;
-      }
+      llmQueue.push(paper);
+    } else {
+      passThrough.push(paper);
     }
-
-    filtered.push(paper);
   }
 
-  return filtered;
+  // 第二遍：LLM 并发审查
+  const llmPassed: Paper[] = [];
+  if (llmQueue.length > 0) {
+    const limit = pLimit(3);
+    const results = await Promise.all(llmQueue.map((paper) =>
+      limit(async () => {
+        let filterResult: import("./types.js").JsonRecord | undefined;
+        for (let attempt = 0; attempt < 2; attempt++) {
+          try {
+            filterResult = await llmFilter(config, taxonomy, paper);
+            break;
+          } catch (error) {
+            if (attempt === 0) {
+              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.llm_retry", title: paper.title_en, error: String(error) })}\n`);
+              await new Promise((r) => setTimeout(r, 10_000));
+            } else {
+              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.llm_error", title: paper.title_en, error: String(error) })}\n`);
+            }
+          }
+        }
+        if (filterResult && !Boolean(filterResult.keep)) {
+          process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.llm_reject", title: paper.title_en })}\n`);
+          return null;
+        }
+        return paper;
+      })
+    ));
+    for (const r of results) {
+      if (r) llmPassed.push(r);
+    }
+  }
+
+  return [...passThrough, ...llmPassed];
 }
 
 /** 完整采集流程：全量采集 + 筛选（兼容 run-once 模式） */
