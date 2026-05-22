@@ -82,8 +82,14 @@ export function buildMarkdown(title: string, papers: Paper[]): string {
     pushMeta(metaLines, "期刊", paper.journal?.name || "");
     pushMeta(metaLines, "日期", paper.published_date || "");
     pushMeta(metaLines, "类型", paper.publication_type || "unknown");
-    pushMeta(metaLines, "一级领域", cls.domain || "");
-    pushMeta(metaLines, "二级领域", cls.subdomain || "");
+    const groups = (cls.groups || []) as Array<{ group: string; subtopics: string[] }>;
+    if (groups.length > 0) {
+      const groupTexts = groups.map((g) => {
+        const subs = g.subtopics && g.subtopics.length > 0 ? `（${g.subtopics.join("、")}）` : "";
+        return `${g.group}${subs}`;
+      });
+      pushMeta(metaLines, "建议关注", groupTexts.join("；"));
+    }
     pushMeta(metaLines, "标签", (cls.tags || []).join("，"));
     if (metaLines.length > 0) lines.push(...metaLines, "");
 
@@ -155,9 +161,12 @@ export function buildWeeklyMarkdown(title: string, papers: Paper[]): string {
     sorted.forEach((paper, idx) => {
       const paperTitle = paper.title_zh || paper.title_en || `论文 ${idx + 1}`;
       const englishTitle = (paper.title_en || "").trim();
-      const domain = paper.classification?.domain || "";
-      const subdomain = paper.classification?.subdomain || "";
-      const domainText = [domain, subdomain].filter(Boolean).join(" / ");
+      const groups = (paper.classification?.groups || []) as Array<{ group: string; subtopics: string[] }>;
+      const groupTexts = groups.map((g) => {
+        const subs = g.subtopics && g.subtopics.length > 0 ? `(${g.subtopics.join("、")})` : "";
+        return `${g.group}${subs}`;
+      });
+      const domainText = groupTexts.join("；");
       const link = paper.url || paper.doi || "";
 
       const affilFormatted = formatAuthorsWithMap(paper);
@@ -177,7 +186,7 @@ export function buildWeeklyMarkdown(title: string, papers: Paper[]): string {
       if (authorLine) lines.push(`- 作者：${authorLine}  `);
       if (affilLine) lines.push(`- 单位：${affilLine}  `);
       if (paper.published_date) lines.push(`- 日期：${paper.published_date}  `);
-      if (domainText) lines.push(`- 领域：${domainText}  `);
+      if (domainText) lines.push(`- 建议关注：${domainText}  `);
       if (link) lines.push(`- [链接](${link})  `);
       lines.push("");
     });
@@ -198,8 +207,10 @@ export function buildRecords(papers: Paper[]): JsonRecord[] {
     source_group: paper.journal?.source_group || "",
     published_date: paper.published_date || "",
     publication_type: paper.publication_type || "",
-    domain: paper.classification?.domain || "",
-    subdomain: paper.classification?.subdomain || "",
+    groups: (paper.classification?.groups || []).map(
+      (g: { group: string; subtopics: string[] }) =>
+        `${g.group}${g.subtopics && g.subtopics.length > 0 ? ":" + g.subtopics.join(",") : ""}`
+    ).join("; "),
     tags: (paper.classification?.tags || []).join(", "),
     abstract_zh: paper.abstract_zh || "",
     summary_zh: paper.summary_zh || "",

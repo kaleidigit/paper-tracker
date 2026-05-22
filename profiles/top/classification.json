@@ -1,8 +1,8 @@
 {
-  "domains": [
+  "groups": [
     {
-      "name": "能源",
-      "subdomains": [
+      "name": "油气-电力组",
+      "subtopics": [
         {
           "name": "光伏与太阳能",
           "keywords": ["solar", "photovoltaic", "pv", "perovskite", "solar cell", "photoelectrochemical", "solar energy", "photothermal"]
@@ -26,15 +26,19 @@
         {
           "name": "碳管理与CCUS",
           "keywords": ["carbon capture", "ccus", "co2 utilization", "decarbonization", "carbon management", "carbon removal", "direct air capture", "carbon sequestration", "net-zero", "net zero"]
+        },
+        {
+          "name": "化石燃料淘汰与公正转型",
+          "keywords": ["coal phase-out", "coal phaseout", "just transition", "fossil fuel subsidy", "fossil fuel phase", "coal transition", "stranded asset"]
         }
       ]
     },
     {
-      "name": "环境",
-      "subdomains": [
+      "name": "矿产生态组",
+      "subtopics": [
         {
           "name": "水环境与水处理",
-          "keywords": ["water treatment", "wastewater", "desalination", "membrane", "water quality", "water pollution", "water resource"]
+          "keywords": ["water treatment", "wastewater", "desalination", "membrane", "water quality", "water pollution", "water resource", "water scarcity"]
         },
         {
           "name": "大气污染与空气质量",
@@ -42,28 +46,90 @@
         },
         {
           "name": "生态与生物多样性",
-          "keywords": ["ecosystem", "biodiversity", "ecology", "habitat", "conservation", "nature-based", "NbS"]
+          "keywords": ["ecosystem", "biodiversity", "ecology", "habitat", "conservation", "nature-based", "NbS", "species", "restoration"]
         },
         {
-          "name": "固废与循环经济",
-          "keywords": ["waste", "recycling", "plastic", "circular economy", "resource recovery", "solid waste", "municipal solid waste"]
+          "name": "矿产资源与开采",
+          "keywords": ["mineral", "mining", "rare earth", "critical mineral", "resource extraction", "mine", "ore", "tailings", "deep-sea mining", "seabed mining"]
+        },
+        {
+          "name": "土地利用与农业",
+          "keywords": ["land use", "land-use", "agriculture", "cropland", "deforestation", "afforestation", "soil", "land degradation", "food system"]
         }
       ]
     },
     {
-      "name": "经济",
-      "subdomains": [
+      "name": "SDG-建模组",
+      "subtopics": [
+        {
+          "name": "SDG评估与指标",
+          "keywords": ["sdg", "sustainable development goal", "sdg indicator", "sdg assessment", "sdg target", "sustainability indicator", "planetary boundary", "doughnut"]
+        },
+        {
+          "name": "IAM与综合评估模型",
+          "keywords": ["integrated assessment model", "iam", "gcam", "image model", "message model", "remind model", "aim model", "poles model"]
+        },
+        {
+          "name": "能源系统建模",
+          "keywords": ["energy system model", "energy modeling", "times model", "osemosys", "capacity expansion", "energy system optimization", "dispatch model", "power system model"]
+        },
+        {
+          "name": "脱碳路径与情景",
+          "keywords": ["decarbonization pathway", "emission pathway", "abatement curve", "mitigation scenario", "net-zero pathway", "carbon neutrality pathway", "emission scenario", "climate scenario"]
+        },
+        {
+          "name": "LCA与足迹分析",
+          "keywords": ["life cycle assessment", "lca", "carbon footprint", "environmental footprint", "water footprint", "material flow analysis", "mfa", "input-output", "environmentally extended"]
+        }
+      ]
+    },
+    {
+      "name": "资源循环组",
+      "subtopics": [
+        {
+          "name": "固废管理与处理",
+          "keywords": ["waste", "solid waste", "municipal solid waste", "landfill", "incineration", "waste-to-energy", "waste management"]
+        },
+        {
+          "name": "循环经济",
+          "keywords": ["circular economy", "circularity", "reuse", "repair", "remanufacturing", "product life extension", "sharing economy"]
+        },
+        {
+          "name": "资源回收与再利用",
+          "keywords": ["recycling", "resource recovery", "plastic recycling", "metal recycling", "battery recycling", "e-waste", "urban mining", "industrial symbiosis"]
+        },
+        {
+          "name": "塑料污染与治理",
+          "keywords": ["plastic", "microplastic", "plastic pollution", "plastic waste", "single-use plastic", "plastic treaty", "plastic packaging"]
+        },
+        {
+          "name": "资源效率与物质流",
+          "keywords": ["resource efficiency", "material flow", "material efficiency", "resource productivity", "decoupling", "dematerialization"]
+        }
+      ]
+    },
+    {
+      "name": "经济学组",
+      "subtopics": [
         {
           "name": "能源经济与市场",
-          "keywords": ["energy economics", "energy market", "energy pricing", "market design", "energy policy", "renewable energy economics"]
+          "keywords": ["energy economics", "energy market", "energy pricing", "market design", "energy policy", "renewable energy economics", "energy subsidy"]
         },
         {
-          "name": "气候经济与政策评估",
-          "keywords": ["carbon pricing", "carbon market", "climate policy", "policy evaluation", "cost-benefit", "climate economics", "carbon tax", "emissions trading"]
+          "name": "碳定价与碳市场",
+          "keywords": ["carbon pricing", "carbon market", "carbon tax", "emissions trading", "ets", "eu ets", "allowance", "carbon credit", "offset"]
         },
         {
-          "name": "可持续金融与投资",
-          "keywords": ["sustainable finance", "green finance", "esg", "climate investment", "green bond", "impact investing", "divestment"]
+          "name": "气候政策评估",
+          "keywords": ["climate policy", "policy evaluation", "cost-benefit", "climate economics", "policy instrument", "regulation", "environmental regulation", "environmental policy"]
+        },
+        {
+          "name": "可持续金融与ESG",
+          "keywords": ["sustainable finance", "green finance", "esg", "climate investment", "green bond", "impact investing", "divestment", "tcfd", "climate risk", "climate finance"]
+        },
+        {
+          "name": "贸易与环境",
+          "keywords": ["trade", "carbon border", "cbam", "trade policy", "environmental goods", "wto", "global value chain", "embodied carbon", "carbon leakage"]
         }
       ]
     }

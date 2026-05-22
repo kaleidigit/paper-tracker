@@ -53,13 +53,6 @@ export function toArray<T>(value: T | T[] | undefined): T[] {
   return Array.isArray(value) ? value : [value];
 }
 
-export async function loadTaxonomy(config: { classification?: { file?: string } }): Promise<Array<Record<string, unknown>>> {
-  const file = resolvePath(config.classification?.file || "profiles/top/classification.json");
-  const raw = await fs.readFile(file, "utf-8");
-  const parsed = JSON.parse(raw) as { domains?: Array<Record<string, unknown>> };
-  return Array.isArray(parsed.domains) ? parsed.domains : [];
-}
-
 export async function fetchText(url: string, timeoutMs: number): Promise<string> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -273,25 +266,36 @@ export function extractAffiliationsFromRssItem(item: JsonRecord): string[] {
 export function heuristicClassification(
   text: string,
   taxonomy: Array<Record<string, unknown>>
-): { domain: string; subdomain: string; tags: string[] } {
+): { groups: { group: string; subtopics: string[] }[]; tags: string[] } {
   const lowered = text.toLowerCase();
-  for (const domain of taxonomy) {
-    const domainName = normalizeText(domain.name) || "未分类";
-    const subdomains = toArray(domain.subdomains as Array<Record<string, unknown>> | undefined);
-    for (const subdomain of subdomains) {
+  const result: { group: string; subtopics: string[] }[] = [];
+  const allTags: string[] = [];
+
+  for (const group of taxonomy) {
+    const groupName = normalizeText(group.name) || "未分类";
+    const subtopics = toArray(group.subtopics as Array<Record<string, unknown>> | undefined);
+    const matchedSubtopics: string[] = [];
+
+    for (const subtopic of subtopics) {
       const keywords = dedupeStrings(
-        toArray(subdomain.keywords as string[] | undefined).map((k) => normalizeText(k).toLowerCase())
+        toArray(subtopic.keywords as string[] | undefined).map((k) => normalizeText(k).toLowerCase())
       );
-      if (keywords.some((kw) => kw && lowered.includes(kw))) {
-        return {
-          domain: domainName,
-          subdomain: normalizeText(subdomain.name as string) || "未分类",
-          tags: keywords.slice(0, 3)
-        };
+      const matched = keywords.filter((kw) => kw && lowered.includes(kw));
+      if (matched.length > 0) {
+        matchedSubtopics.push(normalizeText(subtopic.name as string) || "");
+        allTags.push(...matched);
       }
     }
+
+    if (matchedSubtopics.length > 0) {
+      result.push({ group: groupName, subtopics: matchedSubtopics });
+    }
   }
-  return { domain: "未分类", subdomain: "未分类", tags: [] };
+
+  if (result.length === 0) {
+    return { groups: [{ group: "未分类", subtopics: [] }], tags: [] };
+  }
+  return { groups: result, tags: dedupeStrings(allTags).slice(0, 5) };
 }
 
 export function itemKey(paper: { doi?: string; url?: string; journal?: { name?: string }; title_en?: string }): string {

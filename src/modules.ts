@@ -31,8 +31,10 @@ import {
 export async function loadTaxonomy(config: AppConfig): Promise<Array<Record<string, unknown>>> {
   const file = resolvePath(config.classification?.file || "profiles/top/classification.json");
   const raw = await fs.readFile(file, "utf-8");
-  const parsed = JSON.parse(raw) as { domains?: Array<Record<string, unknown>> };
-  return Array.isArray(parsed.domains) ? parsed.domains : [];
+  const parsed = JSON.parse(raw) as { groups?: Array<Record<string, unknown>>; domains?: Array<Record<string, unknown>> };
+  if (Array.isArray(parsed.groups) && parsed.groups.length > 0) return parsed.groups;
+  if (Array.isArray(parsed.domains)) return parsed.domains;
+  return [];
 }
 
 // ─── Collect ───────────────────────────────────────────────
@@ -122,7 +124,7 @@ async function enrichOne(config: AppConfig, paper: Paper, taxonomy: Array<Record
       abstract_zh: normalizeText(paper.abstract_zh || paper.abstract_original || ""),
       summary_zh: "", novelty_points: [], main_content: [],
       publication_type: normalizePublicationType(paper.publication_type),
-      classification: paper.classification || { domain: "未分类", subdomain: "未分类", tags: [] }
+      classification: paper.classification || { groups: [{ group: "未分类", subtopics: [] }], tags: [] }
     };
   }
   // 中文期刊无需翻译，直接复用原文
@@ -132,7 +134,7 @@ async function enrichOne(config: AppConfig, paper: Paper, taxonomy: Array<Record
       title_zh: normalizeText(paper.title_en || ""),
       abstract_zh: normalizeText(paper.abstract_original || "")
     };
-    let classification = merged.classification || { domain: "未分类", subdomain: "未分类", tags: [] };
+    let classification = merged.classification || { groups: [{ group: "未分类", subtopics: [] }], tags: [] };
     for (let attempt = 0; attempt < 3; attempt++) {
       try {
         classification = { ...(await classifyPaper(config, merged, taxonomy)) };
@@ -170,7 +172,7 @@ async function enrichOne(config: AppConfig, paper: Paper, taxonomy: Array<Record
     throw new Error(`translation_required_failed: ${translationError}`);
   }
   const merged = { ...paper, title_zh: translated.title_zh || paper.title_zh || "", abstract_zh: translated.abstract_zh || paper.abstract_zh || "" };
-  let classification = merged.classification || { domain: "未分类", subdomain: "未分类", tags: [] };
+  let classification = merged.classification || { groups: [{ group: "未分类", subtopics: [] }], tags: [] };
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       classification = { ...(await classifyPaper(config, merged, taxonomy)) };

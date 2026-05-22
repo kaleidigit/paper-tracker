@@ -21,9 +21,10 @@ export interface Paper {
   novelty_points?: string[];
   main_content?: string[];
   classification?: {
+    groups?: { group: string; subtopics: string[] }[];
+    tags?: string[];
     domain?: string;
     subdomain?: string;
-    tags?: string[];
   };
   [key: string]: unknown;
 }

@@ -119,7 +119,7 @@ export async function llmFilter(config: AppConfig, taxonomy: Array<Record<string
     abstract_original: candidate.abstract_original || ""
   };
   const systemPrompt = renderTemplate(
-    normalizeText(prompts.filter_system) || "你是环境、能源与气候方向的论文筛选器。请只输出 JSON：keep, confidence, reason, suggested_domain, suggested_tags。",
+    normalizeText(prompts.filter_system) || "你是环境、能源与气候方向的论文筛选器。请只输出 JSON：keep, confidence, reason, suggested_group, suggested_tags。",
     values
   ) || "";
   const userPrompt = renderTemplate(normalizeText(prompts.filter_user_template) || values.paper_json, values);
@@ -214,7 +214,7 @@ export async function classifyPaper(config: AppConfig, paper: Paper, taxonomy: A
     url: paper.url || ""
   };
   const systemPrompt = renderTemplate(
-    normalizeText(prompts.classify_system) || "你是环境与能源论文分类助手。请只输出 JSON，字段为 classification(domain, subdomain, tags)。",
+    normalizeText(prompts.classify_system) || "你是环境能源论文分类助手。请只输出 JSON，字段为 classification(groups, tags)。groups 为数组，每项包含 group 和 subtopics。",
     values
   ) || "";
   const userPrompt = renderTemplate(normalizeText(prompts.classify_user_template) || values.paper_json, values);
@@ -226,9 +226,16 @@ export async function classifyPaper(config: AppConfig, paper: Paper, taxonomy: A
     messages: [{ role: "system", content: systemPrompt }, { role: "user", content: userPrompt }]
   });
   const cls = parsed.classification as JsonRecord | undefined;
+  const rawGroups = toArray(cls?.groups as Array<Record<string, unknown>> | undefined);
+  const groups = rawGroups
+    .map((g) => ({
+      group: normalizeText(g.group || g.name) || "未分类",
+      subtopics: dedupeStrings(toArray(g.subtopics as string[] | undefined))
+    }))
+    .filter((g) => g.group !== "未分类" || g.subtopics.length > 0);
+
   return {
-    domain: normalizeText(cls?.domain) || "未分类",
-    subdomain: normalizeText(cls?.subdomain) || "未分类",
+    groups: groups.length > 0 ? groups : [{ group: "未分类", subtopics: [] }],
     tags: dedupeStrings(toArray(cls?.tags as string[] | undefined))
   };
 }

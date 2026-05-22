@@ -19,7 +19,7 @@ beforeAll(async () => {
   );
   await fs.writeFile(
     classificationPath,
-    JSON.stringify({ domains: [{ name: "能源", subdomains: [{ name: "储能", keywords: ["battery"] }] }] }),
+    JSON.stringify({ groups: [{ name: "油气-电力组", subtopics: [{ name: "储能与电池", keywords: ["battery"] }] }] }),
     "utf-8"
   );
 
@@ -44,7 +44,7 @@ beforeAll(async () => {
     if (url.includes("/chat/completions")) {
       return new Response(
         JSON.stringify({
-          choices: [{ message: { content: JSON.stringify({ title_zh: "中文标题", abstract_zh: "中文摘要", classification: { domain: "能源", subdomain: "储能", tags: ["battery"] } }) } }]
+          choices: [{ message: { content: JSON.stringify({ title_zh: "中文标题", abstract_zh: "中文摘要", classification: { groups: [{ group: "油气-电力组", subtopics: ["储能与电池"] }], tags: ["battery"] } }) } }]
         }),
         { status: 200 }
       );

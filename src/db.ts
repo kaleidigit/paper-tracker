@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS papers (
   publication_type TEXT DEFAULT '',
   domain TEXT DEFAULT '',
   subdomain TEXT DEFAULT '',
+  groups TEXT DEFAULT '[]',
   tags TEXT DEFAULT '[]',
   profile TEXT NOT NULL,
   dedup_key TEXT NOT NULL DEFAULT '',
@@ -52,6 +53,9 @@ function openDb(dbPath: string): Database.Database {
   const cols = db.prepare("PRAGMA table_info(papers)").all() as Array<{ name: string }>;
   if (!cols.some((c) => c.name === "author_affil_map")) {
     db.exec("ALTER TABLE papers ADD COLUMN author_affil_map TEXT DEFAULT '[]'");
+  }
+  if (!cols.some((c) => c.name === "groups")) {
+    db.exec("ALTER TABLE papers ADD COLUMN groups TEXT DEFAULT '[]'");
   }
   return db;
 }
@@ -91,6 +95,7 @@ function paperToRow(paper: Paper, profile: string, dateStr: string): Record<stri
     publication_type: paper.publication_type || "",
     domain: paper.classification?.domain || "",
     subdomain: paper.classification?.subdomain || "",
+    groups: JSON.stringify(paper.classification?.groups || []),
     tags: JSON.stringify(paper.classification?.tags || []),
     profile,
     dedup_key: computeDedupKey(paper),
@@ -125,6 +130,10 @@ function rowToPaper(row: Record<string, unknown>): Paper {
     classification: {
       domain: String(row.domain || ""),
       subdomain: String(row.subdomain || ""),
+      groups: (() => {
+        try { return JSON.parse(String(row.groups || "[]")) as Array<{ group: string; subtopics: string[] }>; }
+        catch { return []; }
+      })(),
       tags: parseArr(row.tags)
     }
   };
@@ -152,12 +161,12 @@ export function upsertPapers(dbPath: string, profile: string, papers: Paper[]): 
     INSERT INTO papers (
       doi, title_en, title_zh, authors, author_affiliations, author_affil_map,
       journal_name, journal_source_group, published_date, url, image_url,
-      abstract_original, abstract_zh, publication_type, domain, subdomain, tags,
+      abstract_original, abstract_zh, publication_type, domain, subdomain, groups, tags,
       profile, dedup_key, first_collected_date, updated_at
     ) VALUES (
       @doi, @title_en, @title_zh, @authors, @author_affiliations, @author_affil_map,
       @journal_name, @journal_source_group, @published_date, @url, @image_url,
-      @abstract_original, @abstract_zh, @publication_type, @domain, @subdomain, @tags,
+      @abstract_original, @abstract_zh, @publication_type, @domain, @subdomain, @groups, @tags,
       @profile, @dedup_key, @first_collected_date, datetime('now','localtime')
     )
     ON CONFLICT(profile, dedup_key) DO UPDATE SET
@@ -177,6 +186,7 @@ export function upsertPapers(dbPath: string, profile: string, papers: Paper[]): 
       publication_type = excluded.publication_type,
       domain = excluded.domain,
       subdomain = excluded.subdomain,
+      groups = excluded.groups,
       tags = excluded.tags,
       updated_at = datetime('now','localtime')
   `);
