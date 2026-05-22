@@ -10,7 +10,7 @@ export function buildDigestTitle(config: AppConfig): string {
   const timezone = config.app?.timezone || "Asia/Shanghai";
   const now = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
   const dateText = now.toISOString().slice(0, 10);
-  const tpl = config.pipeline?.digest_title_template || "{date} 顶刊论文日报";
+  const tpl = config.pipeline?.digest_title_template || "{date} 环境能源论文日报";
   return tpl.replace("{date}", dateText);
 }
 
@@ -45,9 +45,16 @@ function formatAuthorsWithMap(paper: Paper): { authorsLine: string; affilsLine: 
 // ─── 日刊 ──────────────────────────────────────────────────
 
 export function buildMarkdown(title: string, papers: Paper[]): string {
-  const lines: string[] = [`# ${title}`, "", `共收录 **${papers.length}** 篇。`, ""];
+  const sorted = [...papers].sort((a, b) => {
+    const orderA = a.journal?.sort_order ?? 999;
+    const orderB = b.journal?.sort_order ?? 999;
+    if (orderA !== orderB) return orderA - orderB;
+    return `${b.published_date}`.localeCompare(`${a.published_date}`);
+  });
 
-  papers.forEach((paper, index) => {
+  const lines: string[] = [`# ${title}`, "", `共收录 **${sorted.length}** 篇。`, ""];
+
+  sorted.forEach((paper, index) => {
     const cls = paper.classification || {};
     const paperTitle = paper.title_zh || paper.title_en || `论文 ${index + 1}`;
     const englishTitle = (paper.title_en || "").trim();
@@ -111,7 +118,7 @@ export function buildWeeklyDigestTitle(startDate: string, endDate: string): stri
   return `上周论文周刊：${startDate} ~ ${endDate}`;
 }
 
-/** 按期刊名对论文分组并计数 */
+/** 按期刊名对论文分组，按 sort_order 升序排列期刊 */
 function groupByJournal(papers: Paper[]): Map<string, Paper[]> {
   const map = new Map<string, Paper[]>();
   for (const p of papers) {
@@ -123,8 +130,11 @@ function groupByJournal(papers: Paper[]): Map<string, Paper[]> {
       map.set(name, [p]);
     }
   }
-  // 按论文数量降序排列期刊
-  return new Map([...map.entries()].sort((a, b) => b[1].length - a[1].length));
+  return new Map([...map.entries()].sort((a, b) => {
+    const orderA = a[1][0]?.journal?.sort_order ?? 999;
+    const orderB = b[1][0]?.journal?.sort_order ?? 999;
+    return orderA - orderB;
+  }));
 }
 
 export function buildWeeklyMarkdown(title: string, papers: Paper[]): string {

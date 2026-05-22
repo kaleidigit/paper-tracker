@@ -23,6 +23,8 @@ export interface JournalEntry {
   issn?: string;
   publisher_strategy?: string;
   rss_feeds?: string[];
+  /** 期刊影响力排序，数字越小越靠前（CNS=0，子刊=10-19，专业期刊=20+） */
+  sort_order?: number;
 }
 
 /** filterBudget：LLM 二次过滤预算池，三个采集器共享 */
@@ -49,4 +51,5 @@ export interface ParsedPaper {
   rawFeed: string;
   rawRecordId: string;
   taxonomy: Array<Record<string, unknown>>;
+  sortOrder?: number;
 }

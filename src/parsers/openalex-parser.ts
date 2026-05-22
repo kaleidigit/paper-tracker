@@ -33,7 +33,7 @@ function buildPaper(input: ParsedPaper): Paper {
     authors: dedupeStrings(input.authors),
     author_affiliations: dedupeStrings(input.authorAffiliations),
     author_affil_map: input.authorAffilMap,
-    journal: { name: normalizeText(input.journal), source_group: normalizeText(input.sourceGroup || input.journal) },
+    journal: { name: normalizeText(input.journal), source_group: normalizeText(input.sourceGroup || input.journal), sort_order: input.sortOrder },
     published_date: input.publishedDate,
     doi: normalizeText(input.doi),
     url: normalizeText(input.url),
@@ -60,12 +60,18 @@ export class OpenAlexParser {
 
   private async collectAllRawPapers(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
     const journals = await loadJournals(config);
+    const oaJournals = journals.filter((j) => normalizeText(j.publisher_strategy) === "openalex");
     const issns = dedupeStrings(
-      journals
-        .filter((j) => normalizeText(j.publisher_strategy) === "openalex")
-        .map((j) => normalizeText(j.issn))
-        .filter(Boolean)
+      oaJournals.map((j) => normalizeText(j.issn)).filter(Boolean)
     );
+
+    // 期刊名 → sort_order 查找表
+    const nameSortOrder = new Map<string, number>();
+    for (const j of oaJournals) {
+      if (j.sort_order !== undefined) {
+        nameSortOrder.set(normalizeText(j.name), j.sort_order);
+      }
+    }
 
     if (issns.length === 0) return [];
 
@@ -153,7 +159,8 @@ export class OpenAlexParser {
             sourceProvider: "openalex",
             rawFeed: "https://api.openalex.org/works",
             rawRecordId: normalizeText(item.id),
-            taxonomy
+            taxonomy,
+            sortOrder: nameSortOrder.get(journal)
           })
         );
       }

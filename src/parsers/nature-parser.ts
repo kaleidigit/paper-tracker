@@ -46,7 +46,7 @@ function buildPaper(input: ParsedPaper): Paper {
     authors: dedupeStrings(input.authors),
     author_affiliations: dedupeStrings(input.authorAffiliations),
     author_affil_map: input.authorAffilMap,
-    journal: { name: normalizeText(input.journal), source_group: normalizeText(input.sourceGroup || input.journal) },
+    journal: { name: normalizeText(input.journal), source_group: normalizeText(input.sourceGroup || input.journal), sort_order: input.sortOrder },
     published_date: input.publishedDate,
     doi: normalizeText(input.doi),
     url: normalizeText(input.url),
@@ -65,20 +65,29 @@ function buildPaper(input: ParsedPaper): Paper {
 export class NatureParser {
   async collect(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
     const journals = await loadJournals(config);
-    const feeds = journals
-      .filter((j) => normalizeText(j.publisher_strategy) === "nature-rss")
-      .flatMap((j) => toArray(j.rss_feeds as string[] | undefined));
+    const natureJournals = journals.filter((j) => normalizeText(j.publisher_strategy) === "nature-rss");
+    const feeds = natureJournals.flatMap((j) => toArray(j.rss_feeds as string[] | undefined));
 
     if (feeds.length === 0) return [];
 
+    // feed URL → sort_order 查找表
+    const feedSortOrder = new Map<string, number>();
+    for (const j of natureJournals) {
+      if (j.sort_order !== undefined) {
+        for (const feed of toArray(j.rss_feeds as string[] | undefined)) {
+          feedSortOrder.set(feed, j.sort_order);
+        }
+      }
+    }
+
     process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase1.start", phase: "full_collection" })}\n`);
-    const rawPapers = await this.collectAllRawPapers(config, feeds, taxonomy);
+    const rawPapers = await this.collectAllRawPapers(config, feeds, feedSortOrder, taxonomy);
     process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase1.done", collected: rawPapers.length })}\n`);
 
     return rawPapers;
   }
 
-  private async collectAllRawPapers(config: AppConfig, feeds: string[], taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
+  private async collectAllRawPapers(config: AppConfig, feeds: string[], feedSortOrder: Map<string, number>, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
     const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "" });
     const start = strictWindowStartAt(config);
     const papers: Paper[] = [];
@@ -146,7 +155,8 @@ export class NatureParser {
             sourceProvider: "nature-rss",
             rawFeed: feedUrl,
             rawRecordId: normalizeText(item.guid || item.link),
-            taxonomy
+            taxonomy,
+            sortOrder: feedSortOrder.get(feedUrl)
           })
         );
       }

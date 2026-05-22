@@ -16,7 +16,7 @@
 Shell Scripts (scripts/)
 │
 ├─ run.sh ──→ 串行调用 pipeline steps（collect→filter→enrich→store→digest→push），支持 --dry-run
-└─ auto-push.sh ──→ cron 入口（周一：顶刊日报 + 合并周刊；周二至五：仅顶刊日报）
+└─ auto-push.sh ──→ cron 入口（周一：环境能源日报 + 合并周刊；周二至五：仅环境能源日报）
 
 src/cli.ts
   │
@@ -80,7 +80,7 @@ data/{profile}/
 
 ```
 run.sh              ← 手动执行入口（串行 collect→filter→enrich→store→digest→push，支持 --dry-run）
-auto-push.sh        ← cron 定时任务入口（周一：顶刊日报+经济+法学入库+周刊(仅经济+法学)；周二至五：仅顶刊日报）
+auto-push.sh        ← cron 定时任务入口（周一：环境能源日报+经济+法学入库+周刊(仅经济+法学)；周二至五：仅环境能源日报）
 deploy.sh           ← 安装依赖 + lark-cli 授权
 ```
 
@@ -157,7 +157,7 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 
 ```
 周一（DAY_OF_WEEK=1）：
-  top:    collect → filter → enrich → store → digest → push  日刊（DAYS=3, 周末积压顶刊）
+  top:    collect → filter → enrich → store → digest → push  日刊（DAYS=3, 周末积压）
   econ:   collect → filter → enrich → store  （DAYS=7, 仅入库，不发日刊）
   law:    collect → filter → enrich → store  （DAYS=7, 仅入库，不发日刊）
   → weekly-all  排除 top（exclude_from_weekly），仅合并 econ + law → 一份周刊推送
@@ -168,7 +168,7 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
   law:    （不运行）
 ```
 
-**周刊排除设计**：`top` profile 的 `feishu.exclude_from_weekly: true` 使 `stepWeeklyAll` 自动跳过。经济和法学推送上周精选，避免顶刊信息重复轰炸。
+**周刊排除设计**：`top` profile 的 `feishu.exclude_from_weekly: true` 使 `stepWeeklyAll` 自动跳过。经济和法学推送上周精选，避免信息重复轰炸。
 
 ## Profile 配置
 
@@ -176,7 +176,7 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 
 | Profile | 用途 | 推送频率 | 筛选模式 | 期刊数 | 来源 |
 |---------|------|---------|---------|--------|------|
-| `top` | 顶刊环境能源论文日报 | 每日推送 | 关键词+LLM 双阶段 | 28 | Nature 系列 20 种 + Science/PNAS/Joule/One Earth/EES/NSR/中国社会科学 |
+| `top` | 高发文量环境能源期刊合集 | 每日推送 | 关键词+LLM 双阶段 | 36 | Nature 系列 20 种 + Science/PNAS/Joule/One Earth/EES/NSR/中国社会科学 + 环境生态 5 种 + The Innovation 系列 3 种 |
 | `econ` | 环境经济学期刊追踪 | 仅周一入库，周刊合并推送 | 纯 LLM 直通 | 32 | SUFE 经济学 Top Tier (5) + First Tier (20) + 环境经济专刊 (7) |
 | `law` | 法学环境能源论文追踪 | 仅周一入库，周刊合并推送 | 纯 LLM 直通 | 8 | 美国 T14  flagship 法律评论 + 国际法/法经济学期刊 |
 

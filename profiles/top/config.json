@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "每日顶刊环境与能源论文追踪系统",
+    "title": "每日环境能源论文追踪系统",
     "timezone": "Asia/Shanghai"
   },
   "pipeline": {
@@ -16,7 +16,7 @@
       "minute": 0,
       "timezone": "Asia/Shanghai"
     },
-    "digest_title_template": "{date} 顶刊环境能源论文日报"
+    "digest_title_template": "{date} 环境能源论文日报"
   },
   "runtime": {
     "mode": "run-once",

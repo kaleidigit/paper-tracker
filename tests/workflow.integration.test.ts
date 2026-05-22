@@ -64,7 +64,7 @@ describe("workflow integration", () => {
   test("runs retrieval -> processor -> publisher", async () => {
     const config: AppConfig = {
       app: { timezone: "UTC" },
-      pipeline: { default_days: 2, digest_title_template: "{date} 顶刊论文日报" },
+      pipeline: { default_days: 2, digest_title_template: "{date} 环境能源论文日报" },
       runtime: {
         mode: "run-once",
         state_dir: tmpDir,
@@ -113,7 +113,7 @@ describe("workflow integration", () => {
 
     const config: AppConfig = {
       app: { timezone: "UTC" },
-      pipeline: { default_days: 2, digest_title_template: "{date} 顶刊论文日报" },
+      pipeline: { default_days: 2, digest_title_template: "{date} 环境能源论文日报" },
       runtime: {
         mode: "run-once",
         state_dir: tmpDir,

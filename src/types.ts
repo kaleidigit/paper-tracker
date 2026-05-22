@@ -8,7 +8,7 @@ export interface Paper {
   author_affiliations?: string[];
   /** 作者→单位映射：author_affil_map[i] = [affiliation_index, ...] */
   author_affil_map?: number[][];
-  journal?: { name?: string; source_group?: string };
+  journal?: { name?: string; source_group?: string; sort_order?: number };
   published_date?: string;
   doi?: string;
   url?: string;

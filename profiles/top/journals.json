@@ -1,12 +1,41 @@
 [
   {
+    "name": "Science",
+    "source_group": "Science",
+    "issn": "0036-8075",
+    "publisher_strategy": "openalex",
+    "sort_order": 0
+  },
+  {
     "name": "Nature",
     "source_group": "Nature",
     "issn": "0028-0836",
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/nature.rss"
-    ]
+    ],
+    "sort_order": 1
+  },
+  {
+    "name": "PNAS",
+    "source_group": "PNAS",
+    "issn": "0027-8424",
+    "publisher_strategy": "openalex",
+    "sort_order": 2
+  },
+  {
+    "name": "中国社会科学",
+    "source_group": "CASS",
+    "issn": "0252-9203",
+    "publisher_strategy": "openalex",
+    "sort_order": 3
+  },
+  {
+    "name": "National Science Review",
+    "source_group": "NSR",
+    "issn": "2053-714X",
+    "publisher_strategy": "openalex",
+    "sort_order": 4
   },
   {
     "name": "Nature Energy",
@@ -15,7 +44,8 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/nenergy.rss"
-    ]
+    ],
+    "sort_order": 10
   },
   {
     "name": "Nature Climate Change",
@@ -24,7 +54,8 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/nclimate.rss"
-    ]
+    ],
+    "sort_order": 11
   },
   {
     "name": "Nature Sustainability",
@@ -33,7 +64,8 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/natsustain.rss"
-    ]
+    ],
+    "sort_order": 12
   },
   {
     "name": "Nature Geoscience",
@@ -42,60 +74,8 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/ngeo.rss"
-    ]
-  },
-  {
-    "name": "Nature Food",
-    "source_group": "Nature",
-    "issn": "2662-1355",
-    "publisher_strategy": "nature-rss",
-    "rss_feeds": [
-      "https://www.nature.com/natfood.rss"
-    ]
-  },
-  {
-    "name": "Nature Cities",
-    "source_group": "Nature",
-    "publisher_strategy": "nature-rss",
-    "rss_feeds": [
-      "https://www.nature.com/natcities.rss"
-    ]
-  },
-  {
-    "name": "Nature Water",
-    "source_group": "Nature",
-    "issn": "2731-6084",
-    "publisher_strategy": "nature-rss",
-    "rss_feeds": [
-      "https://www.nature.com/natwater.rss"
-    ]
-  },
-  {
-    "name": "Nature Machine Intelligence",
-    "source_group": "Nature",
-    "issn": "2522-5839",
-    "publisher_strategy": "nature-rss",
-    "rss_feeds": [
-      "https://www.nature.com/natmachintell.rss"
-    ]
-  },
-  {
-    "name": "Nature Communications",
-    "source_group": "Nature",
-    "issn": "2041-1723",
-    "publisher_strategy": "nature-rss",
-    "rss_feeds": [
-      "https://www.nature.com/ncomms.rss"
-    ]
-  },
-  {
-    "name": "Nature Human Behaviour",
-    "source_group": "Nature",
-    "issn": "2397-3374",
-    "publisher_strategy": "nature-rss",
-    "rss_feeds": [
-      "https://www.nature.com/nathumbehav.rss"
-    ]
+    ],
+    "sort_order": 13
   },
   {
     "name": "Nature Ecology & Evolution",
@@ -104,7 +84,127 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/natecolevol.rss"
-    ]
+    ],
+    "sort_order": 14
+  },
+  {
+    "name": "Science Advances",
+    "source_group": "Science",
+    "issn": "2375-2548",
+    "publisher_strategy": "openalex",
+    "sort_order": 15
+  },
+  {
+    "name": "Nature Communications",
+    "source_group": "Nature",
+    "issn": "2041-1723",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/ncomms.rss"
+    ],
+    "sort_order": 16
+  },
+  {
+    "name": "Joule",
+    "source_group": "Cell",
+    "issn": "2542-4351",
+    "publisher_strategy": "openalex",
+    "sort_order": 17
+  },
+  {
+    "name": "One Earth",
+    "source_group": "Cell",
+    "issn": "2590-3330",
+    "publisher_strategy": "openalex",
+    "sort_order": 20
+  },
+  {
+    "name": "Energy & Environmental Science",
+    "source_group": "RSC",
+    "issn": "1754-5692",
+    "publisher_strategy": "openalex",
+    "sort_order": 21
+  },
+  {
+    "name": "The Innovation",
+    "source_group": "Innovation",
+    "issn": "2666-6758",
+    "publisher_strategy": "openalex",
+    "sort_order": 22
+  },
+  {
+    "name": "Global Environmental Change",
+    "source_group": "EnvSciEcol",
+    "issn": "1872-9495",
+    "publisher_strategy": "openalex",
+    "sort_order": 23
+  },
+  {
+    "name": "Environmental Science & Technology",
+    "source_group": "EnvSciEcol",
+    "issn": "1520-5851",
+    "publisher_strategy": "openalex",
+    "sort_order": 24
+  },
+  {
+    "name": "Global Change Biology",
+    "source_group": "EnvSciEcol",
+    "issn": "1365-2486",
+    "publisher_strategy": "openalex",
+    "sort_order": 25
+  },
+  {
+    "name": "Ecology Letters",
+    "source_group": "EnvSciEcol",
+    "issn": "1461-0248",
+    "publisher_strategy": "openalex",
+    "sort_order": 26
+  },
+  {
+    "name": "Trends in Ecology & Evolution",
+    "source_group": "EnvSciEcol",
+    "issn": "1872-8383",
+    "publisher_strategy": "openalex",
+    "sort_order": 27
+  },
+  {
+    "name": "Nature Food",
+    "source_group": "Nature",
+    "issn": "2662-1355",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natfood.rss"
+    ],
+    "sort_order": 30
+  },
+  {
+    "name": "Nature Cities",
+    "source_group": "Nature",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natcities.rss"
+    ],
+    "sort_order": 31
+  },
+  {
+    "name": "Nature Water",
+    "source_group": "Nature",
+    "issn": "2731-6084",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natwater.rss"
+    ],
+    "sort_order": 32
+  },
+  {
+    "name": "Nature Human Behaviour",
+    "source_group": "Nature",
+    "issn": "2397-3374",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/nathumbehav.rss"
+    ],
+    "sort_order": 33
   },
   {
     "name": "Nature Plants",
@@ -113,7 +213,18 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/nplants.rss"
-    ]
+    ],
+    "sort_order": 34
+  },
+  {
+    "name": "Nature Machine Intelligence",
+    "source_group": "Nature",
+    "issn": "2522-5839",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/natmachintell.rss"
+    ],
+    "sort_order": 35
   },
   {
     "name": "Nature Computational Science",
@@ -122,7 +233,8 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/natcomputsci.rss"
-    ]
+    ],
+    "sort_order": 36
   },
   {
     "name": "Nature Medicine",
@@ -131,7 +243,8 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/nm.rss"
-    ]
+    ],
+    "sort_order": 37
   },
   {
     "name": "Nature Health",
@@ -139,21 +252,8 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/naturehealth.rss"
-    ]
-  },
-  {
-    "name": "Nature Reviews Biodiversity",
-    "source_group": "Nature",
-    "publisher_strategy": "nature-rss",
-    "rss_feeds": [
-      "https://www.nature.com/nrbd.rss"
-    ]
-  },
-  {
-    "name": "Nature Reviews Clean Technology",
-    "source_group": "Nature",
-    "issn": "3005-0685",
-    "publisher_strategy": "openalex"
+    ],
+    "sort_order": 38
   },
   {
     "name": "Nature Reviews Earth & Environment",
@@ -162,7 +262,24 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/natrevearthenviron.rss"
-    ]
+    ],
+    "sort_order": 40
+  },
+  {
+    "name": "Nature Reviews Biodiversity",
+    "source_group": "Nature",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/nrbd.rss"
+    ],
+    "sort_order": 41
+  },
+  {
+    "name": "Nature Reviews Clean Technology",
+    "source_group": "Nature",
+    "issn": "3005-0685",
+    "publisher_strategy": "openalex",
+    "sort_order": 42
   },
   {
     "name": "Nature Reviews Electrical Engineering",
@@ -171,54 +288,21 @@
     "publisher_strategy": "nature-rss",
     "rss_feeds": [
       "https://www.nature.com/natrevelectreng.rss"
-    ]
+    ],
+    "sort_order": 43
   },
   {
-    "name": "Science",
-    "source_group": "Science",
-    "issn": "0036-8075",
-    "publisher_strategy": "openalex"
+    "name": "The Innovation Energy",
+    "source_group": "Innovation",
+    "issn": "3006-418X",
+    "publisher_strategy": "openalex",
+    "sort_order": 44
   },
   {
-    "name": "Science Advances",
-    "source_group": "Science",
-    "issn": "2375-2548",
-    "publisher_strategy": "openalex"
-  },
-  {
-    "name": "PNAS",
-    "source_group": "PNAS",
-    "issn": "0027-8424",
-    "publisher_strategy": "openalex"
-  },
-  {
-    "name": "Joule",
-    "source_group": "Cell",
-    "issn": "2542-4351",
-    "publisher_strategy": "openalex"
-  },
-  {
-    "name": "One Earth",
-    "source_group": "Cell",
-    "issn": "2590-3330",
-    "publisher_strategy": "openalex"
-  },
-  {
-    "name": "Energy & Environmental Science",
-    "source_group": "RSC",
-    "issn": "1754-5692",
-    "publisher_strategy": "openalex"
-  },
-  {
-    "name": "National Science Review",
-    "source_group": "NSR",
-    "issn": "2053-714X",
-    "publisher_strategy": "openalex"
-  },
-  {
-    "name": "中国社会科学",
-    "source_group": "CASS",
-    "issn": "0252-9203",
-    "publisher_strategy": "openalex"
+    "name": "The Innovation Geoscience",
+    "source_group": "Innovation",
+    "issn": "2959-8753",
+    "publisher_strategy": "openalex",
+    "sort_order": 45
   }
 ]

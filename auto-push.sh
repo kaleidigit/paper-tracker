@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # auto-push.sh — cron 定时任务入口
 #
-# 周一：顶刊日报(周末积压) + 经济学期刊入库 + 法学期刊入库 + 合并周刊(仅经济+法学)
-# 周二至周五：仅顶刊日报
+# 周一：环境能源日报(周末积压) + 经济学期刊入库 + 法学期刊入库 + 合并周刊(仅经济+法学)
+# 周二至周五：仅环境能源日报
 # 周末：跳过
 #
 # 用法：
@@ -23,7 +23,7 @@ for arg in "$@"; do
     -h|--help)
       echo "Usage: $0 [--dry-run]"
       echo ""
-      echo "  周一：顶刊日报 + 合并周刊；周二至周五：仅顶刊日报"
+      echo "  周一：环境能源日报 + 合并周刊；周二至周五：仅环境能源日报"
       echo "  --dry-run  仅生成文件，跳过飞书发布"
       exit 0 ;;
   esac
@@ -45,10 +45,10 @@ EXIT_CODE=0
 
 if [[ "$DAY_OF_WEEK" == "1" ]]; then
   # ════════════════════════════════════════════════════════
-  # 周一：顶刊日报 + 经济学期刊入库 + 合并周刊
+  # 周一：top-journal daily digest + 经济学期刊入库 + 合并周刊
   # ════════════════════════════════════════════════════════
 
-  # 1. 顶刊日报（DAYS=3，推送周五/六/日顶刊论文）
+  # 1. 环境能源日报（DAYS=3，推送周五/六/日论文）
   echo "[auto-push] === Monday: top-journal daily digest ==="
   DAILY_ARGS=("--profile" "top" "--days" "3")
   [[ "$DRY_RUN" == "1" ]] && DAILY_ARGS+=("--dry-run")
@@ -86,7 +86,7 @@ if [[ "$DAY_OF_WEEK" == "1" ]]; then
     done
   fi
 
-  # 4. 合并周刊（排除顶刊，仅经济+法学）
+  # 4. 合并周刊（排除 top，仅经济+法学）
   if [[ "$EXIT_CODE" -eq 0 ]]; then
     echo "[auto-push] === Monday: combined weekly ==="
     if ! npx tsx src/cli.ts --step weekly-all --profile top; then
@@ -98,7 +98,7 @@ if [[ "$DAY_OF_WEEK" == "1" ]]; then
 
 else
   # ════════════════════════════════════════════════════════
-  # 周二至周五：仅顶刊日报（DAYS=1）
+  # 周二至周五：仅top-journal daily digest（DAYS=1）
   # ════════════════════════════════════════════════════════
   echo "[auto-push] === Weekday: top-journal daily ==="
   DAILY_ARGS=("--profile" "top" "--days" "1")
