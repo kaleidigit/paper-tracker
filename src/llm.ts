@@ -98,51 +98,151 @@ export async function chatJson(config: AppConfig, payload: JsonRecord): Promise<
   return parseJsonLenient(content);
 }
 
-// ─── 论文筛选 ──────────────────────────────────────────────
 
-export async function llmFilter(config: AppConfig, taxonomy: Array<Record<string, unknown>>, candidate: Paper): Promise<JsonRecord> {
-  if (!config.ai?.filter?.enabled) {
+/**
+ * 合并筛选+翻译：一次 LLM 调用完成判断与翻译。
+ * 输入仅含标题和摘要，不提供期刊名、DOI 等元信息。
+ * 若 reject → 仅返回 { keep: false }，不浪费 token 做翻译。
+ * 若 keep   → 返回 { keep: true, title_zh, abstract_zh }。
+ */
+export async function llmFilterAndTranslate(
+  config: AppConfig,
+  paper: Paper
+): Promise<JsonRecord & { title_zh?: string; abstract_zh?: string }> {
+  // 禁用 filter 时直通，但不做翻译
+  if (config.ai?.filter?.enabled === false) {
     return { used: false, keep: true, confidence: 1 };
   }
-  process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.filter.start", title: candidate.title_en || "" })}\n`);
+  process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.start", title: paper.title_en || "" })}\n`);
+
   const prompts = config.ai?.prompts || {};
   const values = {
-    taxonomy_json: JSON.stringify(taxonomy),
-    paper_json: JSON.stringify({
-      title_en: candidate.title_en || "",
-      abstract_original: candidate.abstract_original || "",
-      journal: candidate.journal || {},
-      published_date: candidate.published_date || "",
-      publication_type: candidate.publication_type || "",
-      doi: candidate.doi || "",
-      url: candidate.url || ""
-    }),
-    keywords_json: JSON.stringify(config.sources?.keywords || []),
-    title_en: candidate.title_en || "",
-    journal_name: candidate.journal?.name || "",
-    published_date: candidate.published_date || "",
-    publication_type: candidate.publication_type || "",
-    doi: candidate.doi || "",
-    url: candidate.url || "",
-    abstract_original: candidate.abstract_original || ""
+    title_en: paper.title_en || "",
+    abstract_original: paper.abstract_original || ""
   };
+
   const systemPrompt = renderTemplate(
-    normalizeText(prompts.filter_system) || "你是环境、能源与气候方向的论文筛选器。请只输出 JSON：keep, confidence, reason, suggested_group, suggested_tags。",
+    normalizeText(prompts.filter_translate_system) || "",
     values
-  ) || "";
-  const userPrompt = renderTemplate(normalizeText(prompts.filter_user_template) || values.paper_json, values);
+  ) || "你是环境、能源与气候领域的论文筛选与翻译助手。输入英文标题和摘要，判断是否保留。若保留请同时翻译标题和摘要为中文。严格输出 JSON。";
+
+  const userPrompt = renderTemplate(
+    normalizeText(prompts.filter_translate_user_template) ||
+    `英文标题：{{title_en}}\n英文摘要：{{abstract_original}}`,
+    values
+  );
+
   const parsed = await chatJson(config, {
     model: config.ai?.filter?.model || config.ai?.model,
     temperature: config.ai?.filter?.temperature ?? 0,
-    max_tokens: config.ai?.filter?.max_tokens ?? 500,
+    max_tokens: Math.max(config.ai?.filter?.max_tokens ?? 500, 1200),
     response_format: { type: "json_object" },
     messages: [{ role: "system", content: systemPrompt }, { role: "user", content: userPrompt }]
   });
+
   const confidence = Number(parsed.confidence ?? 0);
   const min = Number(config.ai?.filter?.min_confidence ?? 0.5);
   const keep = Boolean(parsed.keep) && confidence >= min;
-  process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.filter.done", keep, confidence })}\n`);
-  return { ...parsed, used: true, keep, confidence };
+
+  process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.done", keep, confidence })}\n`);
+
+  const result: JsonRecord & { title_zh?: string; abstract_zh?: string } = {
+    used: true, keep, confidence,
+    reason: normalizeText(parsed.reason),
+    suggested_group: normalizeText(parsed.suggested_group),
+    suggested_tags: Array.isArray(parsed.suggested_tags) ? parsed.suggested_tags.map((t: unknown) => normalizeText(t)).filter(Boolean) : []
+  };
+
+  if (keep) {
+    result.title_zh = normalizeText(parsed.title_zh || "");
+    result.abstract_zh = normalizeText(parsed.abstract_zh || "");
+  }
+
+  return result;
+}
+
+/**
+ * 批量筛选+翻译：一次 LLM 调用处理多篇论文。
+ * 系统 prompt 尾部动态追加批处理输出格式指令。
+ * 若批次调用失败，逐篇回退到 llmFilterAndTranslate。
+ */
+export async function llmFilterAndTranslateBatch(
+  config: AppConfig,
+  papers: Paper[]
+): Promise<Array<JsonRecord & { title_zh?: string; abstract_zh?: string }>> {
+  if (papers.length === 0) return [];
+  if (config.ai?.filter?.enabled === false) {
+    return papers.map(() => ({ used: false, keep: true, confidence: 1 }));
+  }
+  const count = papers.length;
+  process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.batch.start", count })}\n`);
+
+  const prompts = config.ai?.prompts || {};
+  const values: Record<string, string> = {};
+  const baseSystemPrompt = renderTemplate(
+    normalizeText(prompts.filter_translate_system) || "",
+    values
+  ) || "你是环境、能源与气候领域的论文筛选与翻译助手。输入英文标题和摘要，判断是否保留。若保留请同时翻译标题和摘要为中文。严格输出 JSON。";
+
+  const systemPrompt = `${baseSystemPrompt}\n\n你正在处理多篇论文。对每篇论文独立判断。返回格式：\n{"results": [{"index": 0, "keep": true/false, "confidence": 0.0-1.0, "reason": "...", "suggested_group": "...", "suggested_tags": ["..."]}, ...]}\n若 keep=true 还需输出 "title_zh" 和 "abstract_zh"。`;
+
+  const papersList = papers
+    .map((p, i) => `[${i}] 标题：${p.title_en || ""}\n    摘要：${p.abstract_original || ""}`)
+    .join("\n\n");
+
+  const userPrompt = `请对以下 ${count} 篇论文逐一判断是否保留，并翻译保留的论文：\n\n${papersList}`;
+
+  try {
+    const parsed = await chatJson(config, {
+      model: config.ai?.filter?.model || config.ai?.model,
+      temperature: config.ai?.filter?.temperature ?? 0,
+      max_tokens: Math.max(config.ai?.filter?.max_tokens ?? 500, count * 1200),
+      response_format: { type: "json_object" },
+      messages: [{ role: "system", content: systemPrompt }, { role: "user", content: userPrompt }]
+    });
+
+    const results = toArray(parsed.results as Array<Record<string, unknown>> | undefined);
+    const min = Number(config.ai?.filter?.min_confidence ?? 0.5);
+    const out: Array<JsonRecord & { title_zh?: string; abstract_zh?: string }> = [];
+
+    const hasResult = new Set<number>();
+    for (const r of results) {
+      const idx = Number(r.index);
+      if (isNaN(idx) || idx < 0 || idx >= count) continue;
+      hasResult.add(idx);
+      const confidence = Number(r.confidence ?? 0);
+      const keep = Boolean(r.keep) && confidence >= min;
+      const entry: JsonRecord & { title_zh?: string; abstract_zh?: string } = {
+        used: true, keep, confidence,
+        reason: normalizeText(r.reason),
+        suggested_group: normalizeText(r.suggested_group),
+        suggested_tags: Array.isArray(r.suggested_tags) ? (r.suggested_tags as unknown[]).map((t: unknown) => normalizeText(t)).filter(Boolean) : []
+      };
+      if (keep) {
+        entry.title_zh = normalizeText(r.title_zh || "");
+        entry.abstract_zh = normalizeText(r.abstract_zh || "");
+      }
+      out[idx] = entry;
+    }
+
+    // 缺失的论文回退到逐篇调用
+    for (let i = 0; i < count; i++) {
+      if (!hasResult.has(i)) {
+        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.batch.missing", index: i, title: papers[i].title_en })}\n`);
+        try {
+          out[i] = await llmFilterAndTranslate(config, papers[i]);
+        } catch {
+          out[i] = { used: true, keep: false, confidence: 0 };
+        }
+      }
+    }
+
+    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.batch.done", count, kept: out.filter(r => r.keep).length })}\n`);
+    return out;
+  } catch (err) {
+    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.batch.error", error: String(err) })}\n`);
+    throw err;
+  }
 }
 
 // ─── 翻译 ──────────────────────────────────────────────────

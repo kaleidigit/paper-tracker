@@ -34,6 +34,8 @@ cp config/.env.cn.example .env
 ./run.sh --profile top
 
 # Dry-run（仅生成本地文件，跳过飞书推送）
+# 指定回溯天数
+mo|./run.sh --profile top --days 2 --dry-run
 ./run.sh --profile top --dry-run
 
 # 自动推送（cron 入口，周一 DAYS=3 覆盖周末积压）
@@ -67,8 +69,8 @@ deploy.sh                   一键部署
 
 ```
 collect   ──→  1-raw-fetched.json      RSS/OpenAlex 全量采集
-filter    ──→  3-llm-filtered.json     DB查重(跳过已知论文) → 关键词 + LLM 过滤
-enrich    ──→  5-enriched.json         翻译（英→中）+ LLM 分类
+filter    ──→  3-llm-filtered.json     DB查重(跳过已知论文) → LLM 合并筛选+翻译
+enrich    ──→  5-enriched.json         LLM 分类（翻译已在筛选阶段完成）
 store     ──→  papers.db               写入 SQLite（13 列精简模式，仅存原始字段）
 digest    ──→  6-digest.md             生成日刊 Markdown
 push      ──→  飞书文档 + 群消息通知
@@ -121,6 +123,7 @@ sqlite3 data/top/papers.db \
 ```bash
 ./run.sh --profile top                  # 完整管道
 ./run.sh --profile top --dry-run        # dry-run
+gb|./run.sh --profile top --days 2 --dry-run  # 指定回溯天数
 ./auto-push.sh                          # cron 自动推送
 ```
 
@@ -164,7 +167,7 @@ npx tsx src/cli.ts --step combined-push --profile top
   "base_url": "https://api.deepseek.com",
   "model": "deepseek-v4-flash",
   "api_key_env": "OPENAI_COMPATIBLE_API_KEY",
-  "filter": { "max_checks_per_run": 300, "min_confidence": 0.5 },
+  "filter": { "min_confidence": 0.5 },
   "translation": { "enabled": true },
   "enrich": { "concurrency": 5 }
 }
@@ -186,7 +189,7 @@ npx tsx src/cli.ts --step combined-push --profile top
 
 | Profile | 用途 | 筛选模式 | 期刊数 |
 |---------|------|---------|--------|
-| `top` | 环境能源期刊合集 | 关键词+LLM | 36 |
+|| `top` | 环境能源期刊合集 | LLM 合并筛选+翻译 | 36 |
 | `econ` | 环境经济学期刊 | 纯 LLM 直通 | 32 |
 | `law` | 法学环境能源论文 | 纯 LLM 直通 | 8 |
 

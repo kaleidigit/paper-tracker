@@ -201,15 +201,6 @@ export function restoreAbstract(index: Record<string, number[]> | undefined): st
     .join(" ");
 }
 
-export function absoluteUrl(raw: string, base?: string): string {
-  const url = normalizeText(raw);
-  if (!url) return "";
-  try {
-    return base ? new URL(url, base).toString() : new URL(url).toString();
-  } catch {
-    return url;
-  }
-}
 
 export function normalizePublicationType(value: unknown): string {
   const text = normalizeText(value).toLowerCase();
@@ -228,29 +219,7 @@ export function shouldSkipLlmRescueByTitle(title: string): boolean {
   return /\b(author\s*correction|publisher\s*correction|retraction|correction\b|briefing\s*chat|career\s*column|podcast|news\s*&\s*views|research\s*briefing)/i.test(t);
 }
 
-export function matchesKeywords(
-  config: { sources?: { keywords?: unknown[]; exclude_keywords?: unknown[] } },
-  title: string,
-  abstract: string,
-  journal: string
-): boolean {
-  const blob = `${title} ${abstract} ${journal}`.toLowerCase();
 
-  // 排除规则：命中任意一个即拒绝（优先执行）
-  const excludeKeywords = toArray(config.sources?.exclude_keywords)
-    .map((item) => normalizeText(item).toLowerCase())
-    .filter(Boolean);
-  if (excludeKeywords.some((kw) => kw && blob.includes(kw))) {
-    return false;
-  }
-
-  // 包含规则：至少命中一个；若未配置白名单则全量放行至 LLM
-  const includeKeywords = toArray(config.sources?.keywords)
-    .map((item) => normalizeText(item).toLowerCase())
-    .filter(Boolean);
-  if (includeKeywords.length === 0) return true;
-  return includeKeywords.some((kw) => kw && blob.includes(kw));
-}
 
 export function extractImageFromRssItem(item: JsonRecord): string {
   const candidates: unknown[] = [
@@ -294,42 +263,6 @@ export function extractAffiliationsFromRssItem(item: JsonRecord): string[] {
       .filter((s) => Boolean(s) && !DOI_RE.test(s))
   );
 }
-
-export function heuristicClassification(
-  text: string,
-  taxonomy: Array<Record<string, unknown>>
-): { groups: { group: string; subtopics: string[] }[]; tags: string[] } {
-  const lowered = text.toLowerCase();
-  const result: { group: string; subtopics: string[] }[] = [];
-  const allTags: string[] = [];
-
-  for (const group of taxonomy) {
-    const groupName = normalizeText(group.name) || "未分类";
-    const subtopics = toArray(group.subtopics as Array<Record<string, unknown>> | undefined);
-    const matchedSubtopics: string[] = [];
-
-    for (const subtopic of subtopics) {
-      const keywords = dedupeStrings(
-        toArray(subtopic.keywords as string[] | undefined).map((k) => normalizeText(k).toLowerCase())
-      );
-      const matched = keywords.filter((kw) => kw && lowered.includes(kw));
-      if (matched.length > 0) {
-        matchedSubtopics.push(normalizeText(subtopic.name as string) || "");
-        allTags.push(...matched);
-      }
-    }
-
-    if (matchedSubtopics.length > 0) {
-      result.push({ group: groupName, subtopics: matchedSubtopics });
-    }
-  }
-
-  if (result.length === 0) {
-    return { groups: [{ group: "未分类", subtopics: [] }], tags: [] };
-  }
-  return { groups: result, tags: dedupeStrings(allTags).slice(0, 5) };
-}
-
 export function itemKey(paper: { doi?: string; url?: string; journal?: { name?: string }; title_en?: string }): string {
   return (
     normalizeText(paper.doi) ||

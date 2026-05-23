@@ -12,7 +12,7 @@ import {
   normalizeText, dedupeStrings, toArray, resolvePath,
   fetchText, parseDate, parseDateTime, strictWindowStartAt,
   shouldSkipLlmRescueByTitle, extractImageFromRssItem,
-  extractAffiliationsFromRssItem, normalizePublicationType, heuristicClassification
+  extractAffiliationsFromRssItem, normalizePublicationType
 } from "../utils.js";
 import { loadTaxonomy } from "../modules.js";
 import { ArticlePageParser } from "./article-parser.js";
@@ -38,7 +38,7 @@ function resolveFeedItems(parsed: JsonRecord): JsonRecord[] {
 function buildPaper(input: ParsedPaper): Paper {
   const titleEn = normalizeText(input.title);
   const abs = normalizeText(input.abstractOriginal);
-  const cls = heuristicClassification(`${titleEn} ${abs} ${input.journal}`, input.taxonomy);
+  const cls = { groups: [] as { group: string; subtopics: string[] }[], tags: [] as string[] };
 
   return {
     id: normalizeText(input.doi) || normalizeText(input.url) || `${normalizeText(input.journal)}::${titleEn}`,

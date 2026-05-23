@@ -13,6 +13,8 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT_DIR"
+# 加载环境变量
+set -a && source .env && set +a
 
 # ─── 参数解析 ───────────────────────────────────────────────
 

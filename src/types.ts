@@ -94,6 +94,7 @@ export interface AppConfig {
       max_tokens?: number;
       min_confidence?: number;
       max_checks_per_run?: number;
+      batch_size?: number;
     };
     prompts?: {
       classify_system?: string;
@@ -102,12 +103,12 @@ export interface AppConfig {
       translation_user_template?: string;
       filter_system?: string;
       filter_user_template?: string;
+      filter_translate_system?: string;
+      filter_translate_user_template?: string;
     };
   };
   sources?: {
-    keywords?: string[];
     journals_file?: string;
-    openalex_queries?: string[];
   };
   classification?: {
     file?: string;

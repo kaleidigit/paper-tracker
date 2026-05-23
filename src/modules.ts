@@ -15,17 +15,18 @@
 import fs from "node:fs/promises";
 import pLimit from "p-limit";
 import { resolvePath, applyDefaults } from "./config.js";
-import type { AppConfig, Paper } from "./types.js";
+import type { AppConfig, JsonRecord, Paper } from "./types.js";
 import { NatureParser } from "./parsers/nature-parser.js";
 import { OpenAlexParser } from "./parsers/openalex-parser.js";
-import type { FilterBudget } from "./parsers/types.js";
-import { llmFilter, translatePaperFields, classifyPaper } from "./llm.js";
+import { llmFilterAndTranslate, llmFilterAndTranslateBatch, translatePaperFields, classifyPaper } from "./llm.js";
 import { buildDigestTitle, buildMarkdown, buildRecords } from "./digest.js";
+
 import { publishDigest, sendAlert } from "./publish.js";
 import {
-  normalizeText, itemKey, matchesKeywords, normalizePublicationType, shouldSkipLlmRescueByTitle, isPrimarilyChinese
+  normalizeText, itemKey, normalizePublicationType, shouldSkipLlmRescueByTitle, isPrimarilyChinese
 } from "./utils.js";
 
+const FALLBACK_CLASSIFICATION = { groups: [{ group: "未分类", subtopics: [] as string[] }], tags: [] as string[] } as Paper["classification"];
 // ─── Taxonomy ──────────────────────────────────────────────
 
 export async function loadTaxonomy(config: AppConfig): Promise<Array<Record<string, unknown>>> {
@@ -58,71 +59,80 @@ export async function collectRawPapers(config: AppConfig, taxonomy?: Array<Recor
     .sort((a, b) => `${b.published_date}`.localeCompare(`${a.published_date}`));
 }
 
-/** 阶段2：关键词预筛 + LLM 精筛，返回通过筛选的 Paper[] 子集 */
+/** 阶段2：LLM 筛选，返回通过筛选的 Paper[] 子集 */
 export async function filterPapers(
   config: AppConfig,
   taxonomy: Array<Record<string, unknown>>,
-  papers: Paper[],
-  filterBudget: FilterBudget
+  papers: Paper[]
 ): Promise<Paper[]> {
-  // 第一遍：关键词匹配（同步），分离需 LLM 审查和直通的论文
-  const llmQueue: Paper[] = [];
-  const passThrough: Paper[] = [];
+  const llmQueue: Paper[] = [...papers];
 
-  for (const paper of papers) {
-    if (!matchesKeywords(config, paper.title_en || "", paper.abstract_original || "", paper.journal?.name || "")) {
-      process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.keyword_reject", title: paper.title_en })}\n`);
-      continue;
-    }
-    if (filterBudget.remaining > 0) {
-      filterBudget.remaining -= 1;
-      llmQueue.push(paper);
-    } else {
-      passThrough.push(paper);
-    }
+  const llmPassed: Paper[] = [];
+  if (llmQueue.length === 0) return llmPassed;
+
+  const batchSize = Math.max(1, (config.ai?.filter?.batch_size as number) ?? 3);
+  const batches: Paper[][] = [];
+  for (let i = 0; i < llmQueue.length; i += batchSize) {
+    batches.push(llmQueue.slice(i, i + batchSize));
   }
 
-  // 第二遍：LLM 并发审查
-  const llmPassed: Paper[] = [];
-  if (llmQueue.length > 0) {
-    const limit = pLimit(3);
-    const results = await Promise.all(llmQueue.map((paper) =>
-      limit(async () => {
-        let filterResult: import("./types.js").JsonRecord | undefined;
+  const limit = pLimit(3);
+
+  const processBatch = async (batch: Paper[]): Promise<Array<JsonRecord & { title_zh?: string; abstract_zh?: string }>> => {
+    try {
+      return await llmFilterAndTranslateBatch(config, batch);
+    } catch {
+      process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.batch_fallback", size: batch.length })}\n`);
+      const fallbackResults: Array<JsonRecord & { title_zh?: string; abstract_zh?: string }> = [];
+      for (const p of batch) {
+        let result: JsonRecord & { title_zh?: string; abstract_zh?: string } | undefined;
         for (let attempt = 0; attempt < 2; attempt++) {
           try {
-            filterResult = await llmFilter(config, taxonomy, paper);
+            result = await llmFilterAndTranslate(config, p);
             break;
-          } catch (error) {
+          } catch (err) {
             if (attempt === 0) {
-              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.llm_retry", title: paper.title_en, error: String(error) })}\n`);
+              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.llm_retry", title: p.title_en, error: String(err) })}\n`);
               await new Promise((r) => setTimeout(r, 10_000));
             } else {
-              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.llm_error", title: paper.title_en, error: String(error) })}\n`);
+              process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.llm_error", title: p.title_en, error: String(err) })}\n`);
             }
           }
         }
-        if (filterResult && !Boolean(filterResult.keep)) {
-          process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.llm_reject", title: paper.title_en })}\n`);
-          return null;
+        if (result && !Boolean(result.keep)) {
+          process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.llm_reject", title: p.title_en })}\n`);
         }
-        return paper;
-      })
-    ));
-    for (const r of results) {
-      if (r) llmPassed.push(r);
+        fallbackResults.push(result || { used: true, keep: false, confidence: 0 });
+      }
+      return fallbackResults;
+    }
+  };
+
+  const batchResults = await Promise.all(batches.map((batch) => limit(() => processBatch(batch))));
+
+  for (let bi = 0; bi < batches.length; bi++) {
+    const batch = batches[bi];
+    const batchRes = batchResults[bi];
+    for (let pi = 0; pi < batchRes.length; pi++) {
+      const filterResult = batchRes[pi];
+      if (filterResult && !Boolean(filterResult.keep)) continue;
+      const paper = batch[pi];
+      llmPassed.push({
+        ...paper,
+        title_zh: filterResult?.title_zh || "",
+        abstract_zh: filterResult?.abstract_zh || ""
+      });
     }
   }
 
-  return [...passThrough, ...llmPassed];
+  return llmPassed;
 }
 
 /** 完整采集流程：全量采集 + 筛选（兼容 run-once 模式） */
 export async function fetchPapers(config: AppConfig): Promise<Paper[]> {
   const taxonomy = await loadTaxonomy(config);
-  const budget: FilterBudget = { remaining: Math.max(0, Number(config.ai?.filter?.max_checks_per_run ?? 20)) };
   const raw = await collectRawPapers(config, taxonomy);
-  return filterPapers(config, taxonomy, raw, budget);
+  return filterPapers(config, taxonomy, raw);
 }
 
 // ─── Enrich ────────────────────────────────────────────────
@@ -138,7 +148,7 @@ async function enrichOne(config: AppConfig, paper: Paper, taxonomy: Array<Record
       abstract_zh: normalizeText(paper.abstract_zh || paper.abstract_original || ""),
       summary_zh: "", novelty_points: [], main_content: [],
       publication_type: normalizePublicationType(paper.publication_type),
-      classification: paper.classification || { groups: [{ group: "未分类", subtopics: [] }], tags: [] }
+      classification: FALLBACK_CLASSIFICATION
     };
   }
   // 中文期刊无需翻译，直接复用原文
@@ -148,7 +158,7 @@ async function enrichOne(config: AppConfig, paper: Paper, taxonomy: Array<Record
       title_zh: normalizeText(paper.title_en || ""),
       abstract_zh: normalizeText(paper.abstract_original || "")
     };
-    let classification = merged.classification || { groups: [{ group: "未分类", subtopics: [] }], tags: [] };
+    let classification: Paper["classification"] = FALLBACK_CLASSIFICATION;
     for (let attempt = 0; attempt < 3; attempt++) {
       try {
         classification = { ...(await classifyPaper(config, merged, taxonomy)) };
@@ -161,6 +171,23 @@ async function enrichOne(config: AppConfig, paper: Paper, taxonomy: Array<Record
       }
     }
     return { ...merged, publication_type: normalizePublicationType(paper.publication_type), summary_zh: "", novelty_points: [], main_content: [], classification };
+  }
+  // 如果筛选阶段已合并完成翻译，跳过翻译直接分类
+  const hasTranslation = Boolean(paper.title_zh) && Boolean(paper.abstract_zh);
+  if (hasTranslation) {
+    let classification: Paper["classification"] = FALLBACK_CLASSIFICATION;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        classification = { ...(await classifyPaper(config, paper, taxonomy)) };
+        break;
+      } catch (error) {
+        if (attempt < 2) {
+          const delay = 5_000 * (2 ** attempt) * (0.75 + Math.random() * 0.5);
+          await new Promise((r) => setTimeout(r, delay));
+        }
+      }
+    }
+    return { ...paper, publication_type: normalizePublicationType(paper.publication_type), summary_zh: "", novelty_points: [], main_content: [], classification };
   }
 
   let translated: Pick<Paper, "title_zh" | "abstract_zh"> = { title_zh: paper.title_zh || "", abstract_zh: paper.abstract_zh || "" };
@@ -186,7 +213,7 @@ async function enrichOne(config: AppConfig, paper: Paper, taxonomy: Array<Record
     throw new Error(`translation_required_failed: ${translationError}`);
   }
   const merged = { ...paper, title_zh: translated.title_zh || paper.title_zh || "", abstract_zh: translated.abstract_zh || paper.abstract_zh || "" };
-  let classification = merged.classification || { groups: [{ group: "未分类", subtopics: [] }], tags: [] };
+  let classification: Paper["classification"] = FALLBACK_CLASSIFICATION;
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       classification = { ...(await classifyPaper(config, merged, taxonomy)) };

@@ -166,9 +166,8 @@ export function applyDefaults(parsed: AppConfig): void {
   parsed.ai.filter.temperature = asNumber(parsed.ai.filter.temperature, 0);
   parsed.ai.filter.max_tokens = asNumber(parsed.ai.filter.max_tokens, 500);
   parsed.ai.filter.min_confidence = asNumber(parsed.ai.filter.min_confidence, 0.5);
+  parsed.ai.filter.batch_size = asNumber(parsed.ai.filter.batch_size, 3);
   parsed.sources = parsed.sources || {};
-  parsed.sources.keywords = Array.isArray(parsed.sources.keywords) ? parsed.sources.keywords : [];
-  parsed.sources.openalex_queries = Array.isArray(parsed.sources.openalex_queries) ? parsed.sources.openalex_queries : [];
   parsed.feishu = parsed.feishu || {};
   parsed.feishu.alert_enabled = Boolean(parsed.feishu.alert_enabled ?? true);
   parsed.feishu.alert_message_template =

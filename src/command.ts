@@ -59,8 +59,3 @@ export async function runCommand(
   });
 }
 
-export function runShell(command: string, timeoutMs: number): Promise<CommandResult> {
-  const shellExec = process.platform === "win32" ? "cmd" : "sh";
-  const shellArgs = process.platform === "win32" ? ["/c", command] : ["-lc", command];
-  return runCommand(shellExec, shellArgs, timeoutMs);
-}

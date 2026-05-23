@@ -25,13 +25,13 @@ src/cli.ts
         ├── modules.ts (纯能力：采集 + LLM 增强)
         │     │
         │     ├── collectRawPapers() ─→ NatureParser + OpenAlexParser（全量采集）
-        │     ├── filterPapers() ─→ matchesKeywords + llmFilter（筛选）
+        │     ├── filterPapers() ─→ llmFilterAndTranslateBatch（批量合并筛选+翻译，默认每批 3 篇）
         │     ├── fetchPapers() ─→ collectRawPapers + filterPapers（兼容 run-once）
         │     ├── enrichPapers() ─→ translatePaperFields + classifyPaper
         │     ├── loadTaxonomy()
         │     └── (旧) runWorkflow() ← 兼容 legacy run-once 模式
         │
-        ├── llm.ts (LLM 客户端：chatJson / llmFilter / translatePaperFields / classifyPaper)
+        ├── llm.ts (LLM 客户端：chatJson / llmFilterAndTranslate / llmFilterAndTranslateBatch / translatePaperFields / classifyPaper)
         │
         ├── parsers/
         │     ├── nature-parser.ts (RSS + JSON-LD)
@@ -48,10 +48,12 @@ data/{profile}/
   ├── papers.db              ← SQLite 数据库（所有论文汇总，dedup_key 去重）
   ├── {YYYY-MM-DD}/
   │     ├── 1-raw-fetched.json   ← collect 输出（全量采集 + 去重）
-  │     ├── 3-llm-filtered.json  ← filter 输出（关键词 + LLM 筛选）
+  │     ├── 3-llm-filtered.json  ← filter 输出（LLM 筛选+翻译）
   │     ├── 5-enriched.json      ← enrich 输出（翻译 + 分类）
   │     ├── 6-digest.md          ← digest 输出（Markdown 日刊）
   │     ├── 6-records.json       ← digest 输出（扁平化记录）
+  │
+  │     所有 JSON 中间文件均为紧凑格式（无 pretty-print），jq 仍可正常读取。
 ```
 
 ## 模块职责表
@@ -61,7 +63,7 @@ data/{profile}/
 | `src/cli.ts` | CLI 入口，解析 `--profile` / `--step` / `--dry-run`，编排日志和状态 | 无业务逻辑 |
 | `src/pipeline.ts` | **唯一的 IO 编排层**：每个 step 读写编号文件 | **文件读写** |
 | `src/modules.ts` | 采集（fetchPapers）、增强（enrichPapers） | **无文件 IO** |
-| `src/llm.ts` | LLM 调用：chatJson / llmFilter / translatePaperFields / classifyPaper | 无 |
+| `src/llm.ts` | LLM 调用：chatJson / llmFilterAndTranslate / llmFilterAndTranslateBatch / translatePaperFields / classifyPaper | 无 |
 | `src/digest.ts` | buildMarkdown / buildCombinedMarkdown / buildRecords | 无 |
 | `src/publish.ts` | publishDigest / pushToFeishu：lark-cli docs +create / im +messages-send | 无（subprocess 调用） |
 | `src/db.ts` | SQLite 去重缓存：upsertPapers / getKnownDedupKeys（仅存原始字段，不含 LLM 派生数据） | 数据库读写 |
@@ -85,8 +87,8 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 | Step | 输入 | 输出 | 说明 |
 |------|------|------|------|
 | `collect` | — | `1-raw-fetched.json` | 全量采集 + 去重 |
-| `filter` | `1-raw-fetched.json` | `3-llm-filtered.json` | 关键词预筛 + LLM 精筛 |
-| `enrich` | `3-llm-filtered.json` | `5-enriched.json` | 翻译 + 分类 |
+| `filter` | `1-raw-fetched.json` | `3-llm-filtered.json` | LLM 批量筛选+翻译（`batch_size` 篇/批，失败逐篇回退） |
+| `enrich` | `3-llm-filtered.json` | `5-enriched.json` | 分类（翻译已在筛选阶段完成）；归类失败仍有 `"未分类"` 标记，不再丢弃 |
 | `store` | `5-enriched.json` | `papers.db` | 写入 SQLite，按 dedup_key 去重 |
 | `digest` | `5-enriched.json` | `6-digest.md` + `6-records.json` | 生成日刊 Markdown + 扁平记录 |
 | `push` | `6-digest.md` + `5-enriched.json` | 飞书 | 创建文档 + 发送群通知 |
@@ -107,43 +109,23 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 - `openalex_queries` 配置项**不再使用**。OpenAlex 采集改为纯 ISSN 过滤，保证不漏论文。空数组 `[]` 即可。
 - 新增期刊只需在 `journals.json` 添加一条记录，无需改代码。
 - Nature 期刊使用 `publisher_strategy: "nature-rss"`，非 Nature 期刊使用 `"openalex"`。
+- 采集阶段不使用 `heuristicClassification()`（关键词匹配），所有论文 `classification` 初始为 `{ groups: [], tags: [] }`，最终分类由 enrich 阶段的 LLM 完成。
 
-## 筛选策略（宽进严出，两阶段）
 
-```
-论文（来自 1-raw-fetched.json）
-  │
-  ├─→ 黑名单排除词命中？ ──→ 拒绝（词组精确命中，如 catalyst synthesis）
-  │
-  ├─→ 白名单包含词未命中？ ──→ 拒绝（单词/短词组，如 climate, energy）
-  │
-  └─→ 白名单命中 ──→ LLM 审查 ──→ keep? ──→ 通过 → 写入 3-llm-filtered.json
-                                         └─→ 拒绝
-```
+## 筛选策略（LLM 批量 + 逐篇回退）
 
-**关键词设计原则：白名单用短词广撒网，黑名单用词组精准排除。**
+所有论文全量送 LLM 筛选，不做关键词预筛。`llmFilterAndTranslateBatch()` 一次 LLM 调用处理多篇论文（默认 `batch_size: 3`）：
+- 构造编号列表 prompt：每篇论文标为 `[0]`, `[1]`, ...，独立判断
+- 返回 `{ results: [{ index, keep, confidence, reason, suggested_group, suggested_tags, title_zh?, abstract_zh? }] }`
+- LLM 遗漏的论文回退到 `llmFilterAndTranslate()` 逐篇处理
+- 整批调用失败 → 逐篇回退（双重容错）
+- 禁用 filter 时（`filter.enabled: false`）全部直通，不做任何筛选和翻译
 
-| 名单 | 配置键 | 粒度 | 示例 | 目的 |
-|------|--------|------|------|------|
-| 白名单 | `sources.keywords` | 单词/短词组 | `climate`, `energy`, `carbon`, `biodiversity`, `solar`, `sea level`, `land use` | 尽可能网住相关论文，不遗漏。宁可多放，不可漏网 |
-| 黑名单 | `sources.exclude_keywords` | 多词短语 | `battery cycling performance`, `catalyst synthesis`, `clinical trial`, `molecular dynamics simulation`, `DFT calculation` | 精准排除纯材料科学/临床医学/计算化学论文。只用长词组，避免误伤 |
-
-**筛选策略分两种模式，按 profile 特性选择：**
-
-| 模式 | 适用 Profile | 机制 | 配置 |
-|------|-------------|------|------|
-| **关键词 + LLM 双阶段** | `top`（发文量大，~28 刊） | 白名单关键词预筛 → 黑名单排除 → LLM 精筛 | `keywords: [...]`, `exclude_keywords: [...]` |
-| **纯 LLM 直通** | `econ`、`law`（发文量小，合计 ~40 刊） | 采集全量直接送 LLM，由 LLM 独立判断相关性 | `keywords: []`, `exclude_keywords: []` |
-
-**纯 LLM 直通原理**：`matchesKeywords()` 在 `utils.ts:218` 检查白名单，若白名单为空则直接返回 `true`，所有论文跳过关键词关直通 LLM。这是有意设计，不是遗漏。
-
-**LLM 筛选是真正的质量关。** 关键词放行后，由 `filterPapers()` (in `modules.ts`) 调用 LLM 根据核心研究问题判断是否保留（`llmFilter` in `llm.ts`）。LLM 预算由 `ai.filter.max_checks_per_run` 控制（默认 300），预算耗尽后白名单通过的论文不经 LLM 直接放行。
-
-**LLM 筛选原则**（prompt 配置在 `ai.prompts.filter_system`）：
+LLM 筛选 prompt（`filter_translate_system`）：
 - 接受：能源/气候/环境/可持续发展/生物多样性/生态/海平面/土地利用/农业/贫困环境关联
-- 拒绝：纯材料器件（电极合成、钙钛矿制备）、纯化学计算（DFT、分子动力学）、临床生物医学（临床试验、药物递送）、纯工程性能优化（无系统视角）
+- 拒绝（A-F 六类）：纯材料器件、纯化学计算、临床生物医学、纯工程性能、短文体裁、环境化学/污染物化学
 - 按核心研究问题判断，不按表面术语判断
-- 对于 econ/law profile：只要与环境、能源、可持续发展弱相关即放行
+
 
 ## 推流逻辑
 
@@ -161,9 +143,9 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 
 | Profile | 用途 | 推送频率 | 筛选模式 | 期刊数 | 来源 |
 |---------|------|---------|---------|--------|------|
-| `top` | 高发文量环境能源期刊合集 | 每日推送 | 关键词+LLM 双阶段 | 36 | Nature 系列 20 种 + Science/PNAS/Joule/One Earth/EES/NSR/中国社会科学 + 环境生态 5 种 + The Innovation 系列 3 种 |
-| `econ` | 环境经济学期刊追踪 | 每日推送 | 纯 LLM 直通 | 32 | SUFE 经济学 Top Tier (5) + First Tier (20) + 环境经济专刊 (7) |
-| `law` | 法学环境能源论文追踪 | 每日推送 | 纯 LLM 直通 | 8 | 美国 T14 flagship 法律评论 + 国际法/法经济学期刊 |
+| `top` | 高发文量环境能源期刊合集 | 每日推送 | LLM 合并筛选+翻译 | 36 | Nature 系列 20 种 + Science/PNAS/Joule/One Earth/EES/NSR/中国社会科学 + 环境生态 5 种 + The Innovation 系列 3 种 |
+| `econ` | 环境经济学期刊追踪 | 每日推送 | LLM 合并筛选+翻译 | 32 | SUFE 经济学 Top Tier (5) + First Tier (20) + 环境经济专刊 (7) |
+| `law` | 法学环境能源论文追踪 | 每日推送 | LLM 合并筛选+翻译 | 8 | 美国 T14 flagship 法律评论 + 国际法/法经济学期刊 |
 
 ## 项目配置层级
 
@@ -234,8 +216,9 @@ DeepSeek 官方 API（`api.deepseek.com`），`OPENAI_COMPATIBLE_API_KEY` 统一
 "ai.base_url": "https://api.deepseek.com"      // DeepSeek 官方 API
 "ai.model": "deepseek-v4-flash"                // 全局模型（根 config.json）
 "ai.api_key_env": "OPENAI_COMPATIBLE_API_KEY"  // 统一 API key 环境变量名
-"ai.filter.max_checks_per_run": 300            // LLM 过滤预算上限（根 config.json）
 "ai.filter.min_confidence": 0.5                // 过滤最低置信度（根 config.json）
+"ai.filter.batch_size": 3                      // 批处理大小，每批送审论文数（默认 3）
+"ai.filter.enabled": true                      // 是否启用 LLM 筛选（false 时全量直通）
 "ai.enrich.concurrency": 3                     // 翻译分类并发数（根 config.json）
 "ai.translation.enabled": true                 // 是否翻译（根 config.json）
 ```
@@ -256,6 +239,7 @@ DeepSeek 官方 API（`api.deepseek.com`），`OPENAI_COMPATIBLE_API_KEY` 统一
 ./run.sh --dry-run
 ./run.sh --profile econ
 ./run.sh --profile econ --dry-run
+./run.sh --profile top --days 2 --dry-run  # 指定回溯天数
 
 # 自动推送（cron 入口）
 ./auto-push.sh

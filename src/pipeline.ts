@@ -16,7 +16,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { JsonRecord, Paper, ProfileContext, StepResult } from "./types.js";
-import type { FilterBudget } from "./parsers/types.js";
 import { loadProfilesList } from "./config.js";
 import { collectRawPapers, fetchPapers, enrichPapers, loadTaxonomy, filterPapers } from "./modules.js";
 import { buildDigestTitle, buildMarkdown, buildRecords, buildCombinedMarkdown } from "./digest.js";
@@ -30,7 +29,7 @@ const f = (dir: string, name: string) => path.join(dir, name);
 const readJson = async <T = Paper[]>(p: string): Promise<T> =>
   JSON.parse(await fs.readFile(p, "utf-8")) as T;
 const writeJson = async (p: string, d: unknown) =>
-  fs.writeFile(p, `${JSON.stringify(d, null, 2)}\n`, "utf-8");
+  fs.writeFile(p, `${JSON.stringify(d)}\n`, "utf-8");
 
 // ─── Steps ─────────────────────────────────────────────────
 
@@ -75,10 +74,7 @@ async function stepFilter(ctx: ProfileContext): Promise<StepResult> {
   }
 
   const taxonomy = await loadTaxonomy(ctx.config);
-  const budget: FilterBudget = {
-    remaining: Math.max(0, Number(ctx.config.ai?.filter?.max_checks_per_run ?? 20))
-  };
-  const filtered = await filterPapers(ctx.config, taxonomy, newPapers, budget);
+  const filtered = await filterPapers(ctx.config, taxonomy, newPapers);
   await writeJson(out, filtered);
   process.stdout.write(`${JSON.stringify({
     timestamp: new Date().toISOString(), level: "INFO",

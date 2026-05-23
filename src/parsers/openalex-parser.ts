@@ -11,7 +11,7 @@ import {
   normalizeText, dedupeStrings, toArray, resolvePath,
   fetchJson, parseDate, strictWindowStartAt, graceWindowStartAt, formatDateInTz,
   shouldSkipLlmRescueByTitle, restoreAbstract,
-  heuristicClassification, normalizePublicationType
+  normalizePublicationType
 } from "../utils.js";
 import { loadTaxonomy } from "../modules.js";
 
@@ -25,7 +25,7 @@ async function loadJournals(config: AppConfig): Promise<JournalEntry[]> {
 function buildPaper(input: ParsedPaper): Paper {
   const titleEn = normalizeText(input.title);
   const abs = normalizeText(input.abstractOriginal);
-  const cls = heuristicClassification(`${titleEn} ${abs} ${input.journal}`, input.taxonomy);
+  const cls = { groups: [] as { group: string; subtopics: string[] }[], tags: [] as string[] };
   return {
     id: normalizeText(input.doi) || normalizeText(input.url) || `${normalizeText(input.journal)}::${titleEn}`,
     title_en: titleEn,
@@ -65,11 +65,12 @@ export class OpenAlexParser {
       oaJournals.map((j) => normalizeText(j.issn)).filter(Boolean)
     );
 
-    // 期刊名 → sort_order 查找表
-    const nameSortOrder = new Map<string, number>();
+    // ISSN → sort_order 查找表（OpenAlex 返回 source.issn = ISSN-L，精确匹配）
+    const issnSortOrder = new Map<string, number>();
     for (const j of oaJournals) {
-      if (j.sort_order !== undefined) {
-        nameSortOrder.set(normalizeText(j.name), j.sort_order);
+      const issn = normalizeText(j.issn);
+      if (issn && j.sort_order !== undefined) {
+        issnSortOrder.set(issn, j.sort_order);
       }
     }
 
@@ -161,7 +162,7 @@ export class OpenAlexParser {
             rawFeed: "https://api.openalex.org/works",
             rawRecordId: normalizeText(item.id),
             taxonomy,
-            sortOrder: nameSortOrder.get(journal)
+            sortOrder: issnSortOrder.get(normalizeText(source?.issn))
           })
         );
       }
