@@ -22,6 +22,16 @@ async function loadJournals(config: AppConfig): Promise<JournalEntry[]> {
   return Array.isArray(parsed) ? parsed : [];
 }
 
+/** Resolve sort_order from an ISSN that may be a string or string[] (OpenAlex returns arrays) */
+function resolveSortOrder(issnMap: Map<string, number>, rawIssn: unknown): number | undefined {
+  const issns: unknown[] = Array.isArray(rawIssn) ? rawIssn : [rawIssn];
+  for (const issn of issns) {
+    const key = normalizeText(issn);
+    if (key && issnMap.has(key)) return issnMap.get(key);
+  }
+  return undefined;
+}
+
 function buildPaper(input: ParsedPaper): Paper {
   const titleEn = normalizeText(input.title);
   const abs = normalizeText(input.abstractOriginal);
@@ -162,7 +172,7 @@ export class OpenAlexParser {
             rawFeed: "https://api.openalex.org/works",
             rawRecordId: normalizeText(item.id),
             taxonomy,
-            sortOrder: issnSortOrder.get(normalizeText(source?.issn))
+            sortOrder: resolveSortOrder(issnSortOrder, source?.issn)
           })
         );
       }
