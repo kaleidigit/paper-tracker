@@ -223,16 +223,26 @@ fallback 逻辑：如果 profile 目录下没有对应文件，回退到 `profil
 
 ## 关键配置字段
 
-### 时间窗口（不随意修改，会导致重复推送）
+
+### 时间窗口
+
+`strictWindowStartAt()` 计算每日采集的严格窗口起点（如昨日 08:00）。
+`graceWindowStartAt()` 在此基础上往前推移 `grace_days` 天，补偿 OpenAlex 索引延迟。
 
 ```jsonc
 "pipeline.paper_window": {
   "mode": "since_yesterday_time",
   "hour": 8,
-  "minute": 0
+  "minute": 0,
+  "grace_days": 3      // 索引延迟宽限天数，本地过滤推移到此
 }
 ```
 
+**grace_days 说明**：
+- OpenAlex 从论文发表到 API 可查有数小时到数天延迟。API 层用 30 天宽窗口采集（不会漏），但本地过滤若用严格窗口会丢弃延迟索引的论文。
+- `grace_days` 使本地过滤截止日期从 `strictWindowStart` 往前推 N 天，让晚到的论文通过过滤。
+- DB 的 `dedup_key ON CONFLICT DO UPDATE` 幂等去重兜底，重复论文被覆盖更新，不会产生重复记录。
+- 副作用：每天多处理少量已入库论文的 LLM 调用，在可接受范围内。
 ### LLM（配置在根 `config.json`，profile 只覆盖差异项）
 
 DeepSeek 官方 API（`api.deepseek.com`），`OPENAI_COMPATIBLE_API_KEY` 统一密钥。

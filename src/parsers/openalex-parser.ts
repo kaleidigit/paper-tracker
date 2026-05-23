@@ -9,7 +9,7 @@ import type { AppConfig, JsonRecord, Paper } from "../types.js";
 import type { JournalEntry, ParsedPaper } from "./types.js";
 import {
   normalizeText, dedupeStrings, toArray, resolvePath,
-  fetchJson, parseDate, strictWindowStartAt, formatDateInTz,
+  fetchJson, parseDate, strictWindowStartAt, graceWindowStartAt, formatDateInTz,
   shouldSkipLlmRescueByTitle, restoreAbstract,
   heuristicClassification, normalizePublicationType
 } from "../utils.js";
@@ -75,8 +75,9 @@ export class OpenAlexParser {
 
     if (issns.length === 0) return [];
 
-    const windowStart = strictWindowStartAt(config);
-    const startDate = formatDateInTz(windowStart, "UTC");
+    // 带 grace 缓冲的窗口起始，补偿 OpenAlex 索引延迟
+    const graceStart = graceWindowStartAt(config);
+    const startDate = formatDateInTz(graceStart, "UTC");
     const select = "id,title,doi,publication_date,type,authorships,primary_location,abstract_inverted_index";
     const papers: Paper[] = [];
     const timeoutMs = 30000;
@@ -168,7 +169,7 @@ export class OpenAlexParser {
       if (results.length < perPage) break;
     }
 
-    // 按 windowStart 过滤，去掉窗口外的论文
+    // 按带 grace 缓冲的窗口过滤（允许延迟索引的论文通过）
     const windowCutoff = startDate;
     const beforeFilter = papers.length;
     const filtered = papers.filter((p) => !p.published_date || p.published_date >= windowCutoff);

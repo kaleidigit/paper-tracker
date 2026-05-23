@@ -65,6 +65,7 @@ export interface AppConfig {
       hour?: number;
       minute?: number;
       timezone?: string;
+      grace_days?: number;
     };
     digest_title_template?: string;
   };

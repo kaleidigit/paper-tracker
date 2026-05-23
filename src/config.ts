@@ -151,6 +151,7 @@ export function applyDefaults(parsed: AppConfig): void {
   parsed.pipeline.paper_window.minute = asNumber(parsed.pipeline.paper_window.minute, 0);
   parsed.pipeline.paper_window.timezone =
     parsed.pipeline.paper_window.timezone || parsed.app?.timezone || "Asia/Shanghai";
+  parsed.pipeline.paper_window.grace_days = asNumber(parsed.pipeline.paper_window.grace_days, 3);
   parsed.ai = parsed.ai || {};
   parsed.ai.translation = parsed.ai.translation || {};
   parsed.ai.translation.enabled = Boolean(parsed.ai.translation.enabled ?? true);

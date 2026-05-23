@@ -156,6 +156,23 @@ export function strictWindowStartAt(config: { pipeline?: { paper_window?: { time
   return startAt;
 }
 
+/**
+ * 返回带索引延迟宽限期的窗口起始时间。
+ * 在 strictWindowStartAt() 的基础上向前推移 grace_days 天（默认 2 天），
+ * 使 OpenAlex 延迟索引的论文不会因本地严格过滤而遗漏。
+ */
+export function graceWindowStartAt(config: {
+  pipeline?: { paper_window?: { timezone?: string; grace_days?: number } };
+  app?: { timezone?: string }
+}): Date {
+  const strictStart = strictWindowStartAt(config);
+  const graceDays = config.pipeline?.paper_window?.grace_days ?? 2;
+  const graceStart = new Date(strictStart);
+  graceStart.setDate(strictStart.getDate() - graceDays);
+  return graceStart;
+}
+
+
 export function restoreAbstract(index: Record<string, number[]> | undefined): string {
   if (!index || typeof index !== "object") return "";
   const map: Record<number, string> = {};
