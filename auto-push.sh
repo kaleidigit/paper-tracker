@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # auto-push.sh — cron 定时任务入口
 #
-# 周一：环境能源日报(周末积压) + 经济学期刊入库 + 法学期刊入库 + 合并周刊(仅经济+法学)
-# 周二至周五：仅环境能源日报
-# 周末：跳过
+# 每天运行所有 profile 的完整 pipeline，合并推送一份日报。
+# 周一 DAYS=3（周末积压），周二至五 DAYS=1。
+# 周末跳过。
 #
 # 用法：
-#   ./auto-push.sh              正式推送
-#   ./auto-push.sh --dry-run   仅生成文件，不发飞书
+#   ./auto-push.sh               正式推送
+#   ./auto-push.sh --dry-run     仅生成文件，不发飞书
 
 set -euo pipefail
 
@@ -23,7 +23,8 @@ for arg in "$@"; do
     -h|--help)
       echo "Usage: $0 [--dry-run]"
       echo ""
-      echo "  周一：环境能源日报 + 合并周刊；周二至周五：仅环境能源日报"
+      echo "  每天运行所有 profile，合并推一份日报"
+      echo "  周一 DAYS=3（覆盖周末），周二至五 DAYS=1"
       echo "  --dry-run  仅生成文件，跳过飞书发布"
       exit 0 ;;
   esac
@@ -40,73 +41,51 @@ if [[ "$DAY_OF_WEEK" == "6" || "$DAY_OF_WEEK" == "7" ]]; then
   exit 0
 fi
 
-# ─── 执行 ────────────────────────────────────────────────
-EXIT_CODE=0
+# ─── 天数 ──────────────────────────────────────────────────
 
 if [[ "$DAY_OF_WEEK" == "1" ]]; then
-  # ════════════════════════════════════════════════════════
-  # 周一：top-journal daily digest + 经济学期刊入库 + 合并周刊
-  # ════════════════════════════════════════════════════════
-
-  # 1. 环境能源日报（DAYS=3，推送周五/六/日论文）
-  echo "[auto-push] === Monday: top-journal daily digest ==="
-  DAILY_ARGS=("--profile" "top" "--days" "3")
-  [[ "$DRY_RUN" == "1" ]] && DAILY_ARGS+=("--dry-run")
-  if bash "$ROOT_DIR/run.sh" "${DAILY_ARGS[@]}"; then
-    echo "[auto-push] top-journal daily done."
-  else
-    echo "[auto-push] ERROR: top-journal daily digest failed" >&2
-    EXIT_CODE=1
-  fi
-
-  # 2. 环境经济学期刊采集入库（DAYS=7，覆盖整周，不发日报）
-  echo "[auto-push] === Monday: env-economics collect+store ==="
-  export PROFILE="econ"
-  for step in collect filter enrich store; do
-    echo "[auto-push] >>> step: $step (econ)"
-    if ! PUSH_DAYS=7 npx tsx src/cli.ts --step "$step" --profile econ; then
-      echo "[auto-push] ERROR: step '$step' failed for econ" >&2
-      EXIT_CODE=1
-      break
-    fi
-    echo "[auto-push] <<< step: $step done"
-  done
-
-  # 3. 法学期刊采集入库
-  if [[ "$EXIT_CODE" -eq 0 ]]; then
-    echo "[auto-push] === Monday: law collect+store ==="
-    for step in collect filter enrich store; do
-      echo "[auto-push] >>> step: $step (law)"
-      if ! PUSH_DAYS=7 npx tsx src/cli.ts --step "$step" --profile law; then
-        echo "[auto-push] ERROR: step '$step' failed for law" >&2
-        EXIT_CODE=1
-        break
-      fi
-      echo "[auto-push] <<< step: $step done"
-    done
-  fi
-
-  # 4. 合并周刊（排除 top，仅经济+法学）
-  if [[ "$EXIT_CODE" -eq 0 ]]; then
-    echo "[auto-push] === Monday: combined weekly ==="
-    if ! npx tsx src/cli.ts --step weekly-all --profile top; then
-      echo "[auto-push] ERROR: combined weekly failed" >&2
-      EXIT_CODE=1
-    fi
-    echo "[auto-push] <<< weekly-all done"
-  fi
-
+  DAYS=3
 else
-  # ════════════════════════════════════════════════════════
-  # 周二至周五：仅top-journal daily digest（DAYS=1）
-  # ════════════════════════════════════════════════════════
-  echo "[auto-push] === Weekday: top-journal daily ==="
-  DAILY_ARGS=("--profile" "top" "--days" "1")
-  [[ "$DRY_RUN" == "1" ]] && DAILY_ARGS+=("--dry-run")
-  if bash "$ROOT_DIR/run.sh" "${DAILY_ARGS[@]}"; then
-    echo "[auto-push] top-journal daily done."
-  else
-    echo "[auto-push] ERROR: top-journal daily failed" >&2
+  DAYS=1
+fi
+
+# ─── 执行 ──────────────────────────────────────────────────
+
+EXIT_CODE=0
+DRY_FLAG=""
+[[ "$DRY_RUN" == "1" ]] && DRY_FLAG="--dry-run"
+
+echo "[auto-push] day=$DAY_OF_WEEK days=$DAYS dry_run=$DRY_RUN"
+
+# 读取 profile 列表
+PROFILES=()
+if command -v python3 &>/dev/null && [[ -f config.json ]]; then
+  while IFS= read -r line; do
+    PROFILES+=("$line")
+  done < <(python3 -c "import json,sys; print('\n'.join(json.load(open('config.json')).get('profiles',['top'])))")
+fi
+if [[ ${#PROFILES[@]} -eq 0 ]]; then
+  PROFILES=("top")
+fi
+
+echo "[auto-push] profiles: ${PROFILES[*]}"
+
+# 1. 逐 profile 跑 pipeline（不 push）
+for PROFILE_NAME in "${PROFILES[@]}"; do
+  echo "[auto-push] === $PROFILE_NAME pipeline ==="
+  if ! bash "$ROOT_DIR/run.sh" --profile "$PROFILE_NAME" --days "$DAYS" --no-push $DRY_FLAG; then
+    echo "[auto-push] ERROR: pipeline failed for $PROFILE_NAME" >&2
+    EXIT_CODE=1
+    break
+  fi
+  echo "[auto-push] $PROFILE_NAME done."
+done
+
+# 2. 合并推送
+if [[ "$EXIT_CODE" -eq 0 ]]; then
+  echo "[auto-push] === combined-push ==="
+  if ! npx tsx src/cli.ts --step combined-push --profile top $DRY_FLAG; then
+    echo "[auto-push] ERROR: combined-push failed" >&2
     EXIT_CODE=1
   fi
 fi

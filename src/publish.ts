@@ -52,38 +52,103 @@ function extractDocUrl(docRes: JsonRecord): string {
     || "";
 }
 
+function extractDocId(stdout: string): string {
+  try {
+    const parsed = JSON.parse(stdout) as JsonRecord;
+    const data = parsed.data as JsonRecord | undefined;
+    const doc = data?.document as JsonRecord | undefined;
+    return String(doc?.document_id || "");
+  } catch { return ""; }
+}
+
+/** Maximum bytes per markdown chunk for append. --doc-format markdown has ~6KB server timeout threshold; stay safe at 4500. */
+const MD_CHUNK_BYTES = 4500;
+
+function splitMarkdown(content: string): string[] {
+  const lines = content.split("\n");
+  const chunks: string[] = [];
+  let buf: string[] = [];
+  let sz = 0;
+  for (const line of lines) {
+    const n = Buffer.byteLength(line, "utf-8") + 1;
+    if (sz + n > MD_CHUNK_BYTES && buf.length > 0) {
+      chunks.push(buf.join("\n"));
+      buf = [];
+      sz = 0;
+    }
+    buf.push(line);
+    sz += n;
+  }
+  if (buf.length > 0) chunks.push(buf.join("\n"));
+  return chunks;
+}
+
 async function larkCreateDoc(
   config: AppConfig,
   docTitle: string,
   markdownContent: string
 ): Promise<JsonRecord> {
+  const timeout = config.runtime.command_timeout_ms;
   try {
-    const result = await runCommand(
+    // Step 1: create doc with title only (XML, small → never times out)
+    const createResult = await runCommand(
       "lark-cli",
-      [
-        "docs", "+create",
-        "--api-version", "v2",
-        "--doc-format", "markdown",
-        "--as", "bot",
-        "--title", docTitle,
-        "--content", "-"
-      ],
-      config.runtime.command_timeout_ms,
-      markdownContent
+      ["docs", "+create", "--api-version", "v2", "--as", "bot",
+       "--content", docTitleToXml(docTitle)],
+      timeout
     );
-    const record: JsonRecord = {
-      command: "lark-cli docs +create",
-      returncode: result.code,
-      stdout: result.stdout,
-      stderr: result.stderr
-    };
-    if (result.code !== 0) {
-      record.error = `lark-cli exited with code ${result.code}: ${result.stderr || result.stdout || "(no output)"}`;
+
+    if (createResult.code !== 0) {
+      return {
+        command: "lark-cli docs +create",
+        returncode: createResult.code,
+        stdout: createResult.stdout,
+        stderr: createResult.stderr,
+        error: `lark-cli exited with code ${createResult.code}: ${createResult.stderr || createResult.stdout || "(no output)"}`
+      };
     }
-    return record;
+
+    const docId = extractDocId(createResult.stdout);
+    if (!docId) {
+      return { command: "lark-cli docs +create", stdout: createResult.stdout, stderr: createResult.stderr, error: "Failed to extract document_id from response" };
+    }
+
+    // Step 2: split markdown into chunks and append each (avoids server timeout on large --doc-format markdown)
+    const chunks = splitMarkdown(markdownContent);
+    for (let i = 0; i < chunks.length; i++) {
+      if (i > 0) await new Promise(r => setTimeout(r, 200));
+      const appendResult = await runCommand(
+        "lark-cli",
+        ["docs", "+update", "--api-version", "v2", "--as", "bot",
+         "--doc", docId, "--command", "append", "--doc-format", "markdown",
+         "--content", chunks[i]],
+        timeout
+      );
+      if (appendResult.code !== 0) {
+        return {
+          command: "lark-cli docs +create",
+          returncode: appendResult.code,
+          stdout: createResult.stdout,
+          stderr: appendResult.stderr,
+          error: `Chunk ${i + 1}/${chunks.length} append failed: ${appendResult.stderr || appendResult.stdout}`
+        };
+      }
+    }
+
+    return {
+      command: "lark-cli docs +create",
+      returncode: 0,
+      stdout: createResult.stdout,
+      stderr: ""
+    };
   } catch (err) {
     return { command: "lark-cli docs +create", error: String(err) };
   }
+}
+
+function docTitleToXml(title: string): string {
+  const escaped = title.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return `<title>${escaped}</title>`;
 }
 
 async function larkSendMessage(

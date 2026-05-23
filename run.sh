@@ -38,12 +38,15 @@ while [[ $# -gt 0 ]]; do
       DRY_RUN=1; shift ;;
     --days)
       DAYS="$2"; shift 2 ;;
+    --no-push)
+      NO_PUSH=1; shift ;;
     -h|--help)
-      echo "Usage: $0 [--profile NAME] [--days N] [--dry-run]"
+      echo "Usage: $0 [--profile NAME] [--days N] [--dry-run] [--no-push]"
       echo ""
       echo "  --profile NAME   指定 profile（不指定则运行所有 profile，读取 config.json）"
       echo "  --days N         回溯天数（覆盖 config）"
       echo "  --dry-run        仅生成文件，跳过飞书发布"
+      echo "  --no-push        仅运行 collect→filter→enrich→store→digest，跳过 push"
       exit 0 ;;
     *)
       echo "Unknown option: $1"; exit 1 ;;
@@ -73,7 +76,7 @@ for PROFILE_NAME in "${PROFILES[@]}"; do
   echo "[run] profile=$PROFILE_NAME dry_run=$DRY_RUN days=${DAYS:-from_config}"
 
   STEPS="collect filter enrich store digest"
-  if [[ "$DRY_RUN" != "1" ]]; then
+  if [[ "$DRY_RUN" != "1" && "$NO_PUSH" != "1" ]]; then
     STEPS="$STEPS push"
   fi
 

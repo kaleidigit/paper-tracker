@@ -19,7 +19,7 @@ import type { JsonRecord, Paper, ProfileContext, StepResult } from "./types.js";
 import type { FilterBudget } from "./parsers/types.js";
 import { loadProfilesList } from "./config.js";
 import { collectRawPapers, fetchPapers, enrichPapers, loadTaxonomy, filterPapers } from "./modules.js";
-import { buildDigestTitle, buildMarkdown, buildRecords, buildWeeklyDigestTitle, buildWeeklyMarkdown } from "./digest.js";
+import { buildDigestTitle, buildMarkdown, buildRecords, buildCombinedMarkdown, buildWeeklyDigestTitle, buildWeeklyMarkdown } from "./digest.js";
 import { publishDigest, pushToFeishu } from "./publish.js";
 import { upsertPapers, getWeeklyPapers } from "./db.js";
 import { itemKey } from "./utils.js";
@@ -323,6 +323,87 @@ async function stepWeeklyAll(ctx: ProfileContext): Promise<StepResult> {
   };
 }
 
+// ─── Combined push（跨 profile 合并推送）────────────────────
+
+async function stepCombinedPush(ctx: ProfileContext): Promise<StepResult> {
+  const t = Date.now();
+  const feishu = ctx.config.feishu || {};
+  const dataDir = feishu.data_dir || "data";
+  const timezone = ctx.config.app?.timezone || "Asia/Shanghai";
+  const dateStr = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }))
+    .toISOString().slice(0, 10);
+
+  const isDryRun = process.env.PUSH_DRY_RUN === "1";
+
+  const profiles = await loadProfilesList();
+  const profilePapers: Array<{ profile: string; papers: Paper[] }> = [];
+  const seen = new Set<string>();
+  let totalRaw = 0;
+
+  for (const profile of profiles) {
+    const enrichedFile = path.join(dataDir, profile, dateStr, "5-enriched.json");
+    try {
+      await fs.access(enrichedFile);
+    } catch {
+      continue; // profile has no data for today
+    }
+    const enriched = await readJson<Paper[]>(enrichedFile);
+    totalRaw += enriched.length;
+
+    // Cross-profile dedup
+    const unique: Paper[] = [];
+    for (const paper of enriched) {
+      const key = itemKey(paper);
+      if (!seen.has(key)) {
+        seen.add(key);
+        unique.push(paper);
+      }
+    }
+    if (unique.length > 0) profilePapers.push({ profile, papers: unique });
+  }
+
+  if (profilePapers.length === 0) {
+    return { step: "combined-push", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: "没有论文可推送" };
+  }
+
+  const totalAfterDedup = profilePapers.reduce((sum, p) => sum + p.papers.length, 0);
+  const title = `${dateStr} 论文日报`;
+  const markdown = buildCombinedMarkdown(title, profilePapers);
+
+  // Write combined digest
+  const combinedDir = path.join(dataDir, "combined", dateStr);
+  const mdFile = path.join(combinedDir, "6-digest-combined.md");
+  await fs.mkdir(combinedDir, { recursive: true });
+  await fs.writeFile(mdFile, markdown, "utf-8");
+
+  const prefix = feishu.doc_title_prefix || "[每日论文追踪]";
+  const docTitle = `${prefix} ${title}`;
+  const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
+
+  const errors: string[] = [];
+  const docPub = feishuResult.doc_publish as JsonRecord | undefined;
+  if (docPub?.error) errors.push(`doc_create: ${String(docPub.error)}`);
+  if (!feishuResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
+
+  process.stdout.write(`${JSON.stringify({
+    timestamp: new Date().toISOString(), level: "INFO",
+    event: "combined-push.done",
+    profiles: profilePapers.map((p) => p.profile),
+    total_before_dedup: totalRaw,
+    after_dedup: totalAfterDedup
+  })}\n`);
+
+  return {
+    step: "combined-push",
+    inputCount: totalRaw,
+    outputCount: totalAfterDedup,
+    inputFile: "",
+    outputFile: mdFile,
+    durationMs: Date.now() - t,
+    error: errors.length > 0 ? errors.join("; ") : undefined
+  };
+}
+
 // ─── Runner ────────────────────────────────────────────────
 
 const STEPS: Record<string, (ctx: ProfileContext) => Promise<StepResult>> = {
@@ -332,6 +413,7 @@ const STEPS: Record<string, (ctx: ProfileContext) => Promise<StepResult>> = {
   store: stepStore,
   digest: stepDigest,
   push: stepPush,
+  "combined-push": stepCombinedPush,
   weekly: stepWeekly,
   "weekly-all": stepWeeklyAll
 };
