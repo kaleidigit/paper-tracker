@@ -16,7 +16,7 @@
 Shell Scripts (scripts/)
 │
 ├─ run.sh ──→ 串行调用 pipeline steps（collect→filter→enrich→store→digest→push），支持 --dry-run
-└─ auto-push.sh ──→ cron 入口（周一：环境能源日报 + 合并周刊；周二至五：仅环境能源日报）
+└─ auto-push.sh ──→ cron 入口（周一 DAYS=3，周二至五 DAYS=1；全 profile 合并推送一份日报）
 
 src/cli.ts
   │
@@ -38,11 +38,11 @@ src/cli.ts
         │     ├── openalex-parser.ts (OpenAlex API)
         │     └── article-parser.ts (通用文章页面)
         │
-        ├── digest.ts (纯能力：buildMarkdown / buildWeeklyMarkdown / buildRecords)
+        ├── digest.ts (纯能力：buildMarkdown / buildCombinedMarkdown / buildRecords)
         │
         ├── publish.ts (纯能力：publishDigest / pushToFeishu → lark-cli)
         │
-        └── db.ts (纯能力：upsertPapers / getWeeklyPapers → SQLite)
+        └── db.ts (纯能力：upsertPapers / getKnownDedupKeys → SQLite 去重缓存)
 
 data/{profile}/
   ├── papers.db              ← SQLite 数据库（所有论文汇总，dedup_key 去重）
@@ -52,11 +52,6 @@ data/{profile}/
   │     ├── 5-enriched.json      ← enrich 输出（翻译 + 分类）
   │     ├── 6-digest.md          ← digest 输出（Markdown 日刊）
   │     ├── 6-records.json       ← digest 输出（扁平化记录）
-  │     └── latest.json          ← push 输出（指向最新产物的指针）
-  └── weekly-{start}~{end}/
-        ├── 6-digest.md          ← weekly 输出（按期刊分组的周刊）
-        ├── 6-records.json
-        └── 6-papers.json
 ```
 
 ## 模块职责表
@@ -67,9 +62,9 @@ data/{profile}/
 | `src/pipeline.ts` | **唯一的 IO 编排层**：每个 step 读写编号文件 | **文件读写** |
 | `src/modules.ts` | 采集（fetchPapers）、增强（enrichPapers） | **无文件 IO** |
 | `src/llm.ts` | LLM 调用：chatJson / llmFilter / translatePaperFields / classifyPaper | 无 |
-| `src/digest.ts` | buildMarkdown / buildWeeklyMarkdown / buildRecords | 无 |
+| `src/digest.ts` | buildMarkdown / buildCombinedMarkdown / buildRecords | 无 |
 | `src/publish.ts` | publishDigest / pushToFeishu：lark-cli docs +create / im +messages-send | 无（subprocess 调用） |
-| `src/db.ts` | SQLite 操作：upsertPapers / getPapersByDateRange / getWeeklyPapers | 数据库读写 |
+| `src/db.ts` | SQLite 去重缓存：upsertPapers / getKnownDedupKeys（仅存原始字段，不含 LLM 派生数据） | 数据库读写 |
 | `src/config.ts` | 根配置加载 + profile 感知配置加载（deepMerge 合并 AI 配置）+ `applyDefaults()` | 无 |
 | `src/types.ts` | 所有 TypeScript 类型 | 无 |
 | `src/parsers/nature-parser.ts` | Nature 系列 RSS + JSON-LD 采集 | HTTP + HTML |
@@ -80,7 +75,6 @@ data/{profile}/
 
 ```
 run.sh              ← 手动执行入口（串行 collect→filter→enrich→store→digest→push，支持 --dry-run）
-auto-push.sh        ← cron 定时任务入口（周一：环境能源日报+经济+法学入库+周刊(仅经济+法学)；周二至五：仅环境能源日报）
 deploy.sh           ← 安装依赖 + lark-cli 授权
 ```
 
@@ -96,8 +90,6 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 | `store` | `5-enriched.json` | `papers.db` | 写入 SQLite，按 dedup_key 去重 |
 | `digest` | `5-enriched.json` | `6-digest.md` + `6-records.json` | 生成日刊 Markdown + 扁平记录 |
 | `push` | `6-digest.md` + `5-enriched.json` | 飞书 | 创建文档 + 发送群通知 |
-| `weekly` | `papers.db` | `weekly-*/` | 读取单 profile 上周论文，按期刊生成周刊 |
-| `weekly-all` | 所有 profile 的 `papers.db` | `weekly-*/` | 跨 profile 读取上周论文，合并去重，生成一份周刊 |
 
 ## 采集策略（全量采集，不做筛选）
 
@@ -156,19 +148,12 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 ## 推流逻辑
 
 ```
-周一（DAY_OF_WEEK=1）：
-  top:    collect → filter → enrich → store → digest → push  日刊（DAYS=3, 周末积压）
-  econ:   collect → filter → enrich → store  （DAYS=7, 仅入库，不发日刊）
-  law:    collect → filter → enrich → store  （DAYS=7, 仅入库，不发日刊）
-  → weekly-all  排除 top（exclude_from_weekly），仅合并 econ + law → 一份周刊推送
-
-周二至周五：
-  top:    collect → filter → enrich → store → digest → push  日刊（DAYS=1）
-  econ:   （不运行）
-  law:    （不运行）
+周一（DAY_OF_WEEK=1）：DAYS=3（覆盖周末积压）
+周二至周五：DAYS=1
+周末：跳过
+所有 profile 跑完后合并推送一份 combined 日报。
 ```
 
-**周刊排除设计**：`top` profile 的 `feishu.exclude_from_weekly: true` 使 `stepWeeklyAll` 自动跳过。经济和法学推送上周精选，避免信息重复轰炸。
 
 ## Profile 配置
 
@@ -177,10 +162,8 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 | Profile | 用途 | 推送频率 | 筛选模式 | 期刊数 | 来源 |
 |---------|------|---------|---------|--------|------|
 | `top` | 高发文量环境能源期刊合集 | 每日推送 | 关键词+LLM 双阶段 | 36 | Nature 系列 20 种 + Science/PNAS/Joule/One Earth/EES/NSR/中国社会科学 + 环境生态 5 种 + The Innovation 系列 3 种 |
-| `econ` | 环境经济学期刊追踪 | 仅周一入库，周刊合并推送 | 纯 LLM 直通 | 32 | SUFE 经济学 Top Tier (5) + First Tier (20) + 环境经济专刊 (7) |
-| `law` | 法学环境能源论文追踪 | 仅周一入库，周刊合并推送 | 纯 LLM 直通 | 8 | 美国 T14  flagship 法律评论 + 国际法/法经济学期刊 |
-
-**econ 期刊来源**：以上海财经大学国际期刊分类目录（2024年修订）经济学 Top Tier + First Tier 为基础，补充环境经济学专刊（JEEM、JAERE、Ecological Economics、Environmental and Resource Economics、Resource and Energy Economics、The Energy Journal、AJAE）。
+| `econ` | 环境经济学期刊追踪 | 每日推送 | 纯 LLM 直通 | 32 | SUFE 经济学 Top Tier (5) + First Tier (20) + 环境经济专刊 (7) |
+| `law` | 法学环境能源论文追踪 | 每日推送 | 纯 LLM 直通 | 8 | 美国 T14 flagship 法律评论 + 国际法/法经济学期刊 |
 
 ## 项目配置层级
 
@@ -285,8 +268,6 @@ npx tsx src/cli.ts --step enrich  --profile top
 npx tsx src/cli.ts --step store   --profile top
 npx tsx src/cli.ts --step digest  --profile top
 npx tsx src/cli.ts --step push    --profile top
-npx tsx src/cli.ts --step weekly  --profile top
-npx tsx src/cli.ts --step weekly-all --profile top
 
 npx tsx src/cli.ts --step collect --profile econ
 npx tsx src/cli.ts --step enrich  --profile econ
@@ -338,7 +319,6 @@ await runCommand("lark-cli", [
 - **唯一索引**：`UNIQUE(profile, dedup_key)`
 - **查询索引**：`(profile, published_date)`、`(profile, journal_name)`
 - **入库时机**：每天 enrich 后自动写入（stepStore）
-- **周刊读取**：`stepWeekly` 调用 `getWeeklyPapers()` 查询上周一至周日；`stepWeeklyAll` 跨所有 profile 聚合后合并去重
 
 ```bash
 # 直接查询数据库
@@ -360,8 +340,6 @@ cat data/top/2026-05-09/5-enriched.json | jq '.[0] | {title_zh, abstract_zh, cla
 # 查看最终 Markdown
 cat data/top/2026-05-09/6-digest.md | head -30
 
-# 查看周刊
-cat data/top/weekly-2026-05-11~2026-05-17/6-digest.md | head -30
 
 # 查看数据库统计
 sqlite3 data/top/papers.db "SELECT COUNT(*) FROM papers;"

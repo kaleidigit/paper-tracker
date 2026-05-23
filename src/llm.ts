@@ -108,7 +108,15 @@ export async function llmFilter(config: AppConfig, taxonomy: Array<Record<string
   const prompts = config.ai?.prompts || {};
   const values = {
     taxonomy_json: JSON.stringify(taxonomy),
-    paper_json: JSON.stringify(candidate),
+    paper_json: JSON.stringify({
+      title_en: candidate.title_en || "",
+      abstract_original: candidate.abstract_original || "",
+      journal: candidate.journal || {},
+      published_date: candidate.published_date || "",
+      publication_type: candidate.publication_type || "",
+      doi: candidate.doi || "",
+      url: candidate.url || ""
+    }),
     keywords_json: JSON.stringify(config.sources?.keywords || []),
     title_en: candidate.title_en || "",
     journal_name: candidate.journal?.name || "",

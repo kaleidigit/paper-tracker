@@ -105,7 +105,7 @@ export class OpenAlexParser {
 
       let payload: JsonRecord = {};
       try {
-        payload = await fetchJson(url, timeoutMs);
+        payload = await fetchJson(url, timeoutMs, 3);
       } catch {
         process.stdout.write(
           `${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.openalex.failed", page })}\n`

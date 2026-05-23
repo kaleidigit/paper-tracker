@@ -28,6 +28,7 @@ fi
 
 PROFILE=""
 DRY_RUN=0
+NO_PUSH=0
 DAYS=""
 
 while [[ $# -gt 0 ]]; do
@@ -76,7 +77,7 @@ for PROFILE_NAME in "${PROFILES[@]}"; do
   echo "[run] profile=$PROFILE_NAME dry_run=$DRY_RUN days=${DAYS:-from_config}"
 
   STEPS="collect filter enrich store digest"
-  if [[ "$DRY_RUN" != "1" && "$NO_PUSH" != "1" ]]; then
+  if [[ "$NO_PUSH" != "1" ]]; then
     STEPS="$STEPS push"
   fi
 
@@ -93,6 +94,16 @@ for PROFILE_NAME in "${PROFILES[@]}"; do
   echo "[run] Profile '$PROFILE_NAME' complete."
   echo ""
 done
+
+# ─── 合并推送 ──────────────────────────────────────────────
+
+if [[ "$EXIT_CODE" -eq 0 && "$NO_PUSH" != "1" ]]; then
+  echo "[run] === combined-push ==="
+  if ! npx tsx src/cli.ts --step combined-push --profile "${PROFILES[0]}"; then
+    echo "[run] ERROR: combined-push failed" >&2
+    EXIT_CODE=1
+  fi
+fi
 
 if [[ "$EXIT_CODE" -eq 0 ]]; then
   echo "[run] All profiles complete."

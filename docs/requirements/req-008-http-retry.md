@@ -57,6 +57,26 @@ A + B：最小改动，两个 parser 中的关键 HTTP 调用加 2-3 次 retry�
 | `src/parsers/nature-parser.ts:102-107` | Nature RSS fetch |
 | `src/parsers/article-parser.ts` | Article page parser |
 
+## 实现
+
+2026-05-23 实施方案 A+B+（含 article parser 重试）。
+
+变更文件：
+
+| 文件 | 变更 |
+|------|------|
+| `src/utils.ts:56-93` | `fetchText` 新增 `retries=3` 参数；`fetchJson`/`fetchText` 退避从线性改为指数+抖动（~1s→~2s→~4s，±25% 抖动） |
+| `src/parsers/openalex-parser.ts:108` | 显式传入 `retries=3` |
+| `src/parsers/nature-parser.ts:103` | 显式传入 `retries=2`（20 个 feed 并发，避免惊群） |
+| `src/parsers/article-parser.ts:9,51-63` | 裸 `fetch()` → `fetchText(url, timeoutMs, 2)`，import `fetchText` |
+
+退避策略：
+
+```
+之前 (fetchJson):  500ms → 1000ms → 1500ms (线性)
+之后 (全部):       ~1000ms → ~2000ms → ~4000ms (指数+抖动)
+```
+
 ## 状态
 
-待决策方案
+已实现（方案 A+B+，含 article parser 修复）。dry-run 验证通过。

@@ -100,7 +100,7 @@ export class NatureParser {
         process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.rss.start", feed: feedUrl })}\n`);
         let xml = "";
         try {
-          xml = await natureLimit(() => fetchText(feedUrl, timeoutMs));
+          xml = await natureLimit(() => fetchText(feedUrl, timeoutMs, 2));
         } catch {
           process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.rss.failed", feed: feedUrl })}\n`);
           return [];

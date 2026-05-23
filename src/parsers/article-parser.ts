@@ -6,6 +6,7 @@
 
 import type { JsonRecord } from "../types.js";
 import type { ArticleMeta } from "./types.js";
+import { fetchText } from "../utils.js";
 
 function normalizeText(value: unknown): string {
   const raw = String(value ?? "").replace(/\s+/g, " ").trim();
@@ -54,20 +55,11 @@ export class ArticlePageParser {
       return this.empty();
     }
 
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), this.timeoutMs);
     try {
-      const response = await fetch(articleUrl, {
-        signal: controller.signal,
-        headers: { "user-agent": "paper-tracker/1.0 (+https://local)" }
-      });
-      if (!response.ok) return this.empty();
-      const html = await response.text();
+      const html = await fetchText(articleUrl, this.timeoutMs, 2);
       return this.parseHtml(html, articleUrl);
     } catch {
       return this.empty();
-    } finally {
-      clearTimeout(timer);
     }
   }
 

@@ -53,19 +53,34 @@ export function toArray<T>(value: T | T[] | undefined): T[] {
   return Array.isArray(value) ? value : [value];
 }
 
-export async function fetchText(url: string, timeoutMs: number): Promise<string> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: { "user-agent": "paper-tracker/1.0 (+https://local)" }
-    });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return await response.text();
-  } finally {
-    clearTimeout(timer);
+function backoffDelay(attempt: number, baseMs = 1000): number {
+  const exp = baseMs * Math.pow(2, attempt - 1);
+  const jitter = exp * (0.5 + Math.random() * 0.5); // ±25%
+  return Math.round(jitter);
+}
+
+export async function fetchText(url: string, timeoutMs: number, retries = 3): Promise<string> {
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= retries; attempt += 1) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: { "user-agent": "paper-tracker/1.0 (+https://local)" }
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      clearTimeout(timer);
+      return await response.text();
+    } catch (error) {
+      lastError = error;
+      clearTimeout(timer);
+      if (attempt < retries) {
+        await new Promise((resolve) => setTimeout(resolve, backoffDelay(attempt)));
+      }
+    }
   }
+  throw lastError;
 }
 
 export async function fetchJson(url: string, timeoutMs: number, retries = 3): Promise<JsonRecord> {
@@ -85,7 +100,7 @@ export async function fetchJson(url: string, timeoutMs: number, retries = 3): Pr
       lastError = error;
       clearTimeout(timer);
       if (attempt < retries) {
-        await new Promise((resolve) => setTimeout(resolve, 500 * attempt));
+        await new Promise((resolve) => setTimeout(resolve, backoffDelay(attempt)));
       }
     }
   }

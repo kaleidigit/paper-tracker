@@ -19,9 +19,9 @@ import type { JsonRecord, Paper, ProfileContext, StepResult } from "./types.js";
 import type { FilterBudget } from "./parsers/types.js";
 import { loadProfilesList } from "./config.js";
 import { collectRawPapers, fetchPapers, enrichPapers, loadTaxonomy, filterPapers } from "./modules.js";
-import { buildDigestTitle, buildMarkdown, buildRecords, buildCombinedMarkdown, buildWeeklyDigestTitle, buildWeeklyMarkdown } from "./digest.js";
+import { buildDigestTitle, buildMarkdown, buildRecords, buildCombinedMarkdown } from "./digest.js";
 import { publishDigest, pushToFeishu } from "./publish.js";
-import { upsertPapers, getWeeklyPapers } from "./db.js";
+import { upsertPapers, getKnownDedupKeys } from "./db.js";
 import { itemKey } from "./utils.js";
 
 // ─── Helpers ───────────────────────────────────────────────
@@ -55,16 +55,35 @@ async function stepFilter(ctx: ProfileContext): Promise<StepResult> {
   const in_ = f(ctx.outputDir, "1-raw-fetched.json");
   const out = f(ctx.outputDir, "3-llm-filtered.json");
   const rawPapers = await readJson<Paper[]>(in_);
+
+  // ── DB 查重：已知论文直接跳过（省 LLM filter token）────────
+  const dbPath = path.join(path.dirname(ctx.outputDir), "papers.db");
+  const allKeys = rawPapers.map((p) => itemKey(p));
+  let knownKeys: Set<string> = new Set();
+  try {
+    knownKeys = getKnownDedupKeys(dbPath, ctx.profile, allKeys);
+  } catch {
+    // DB 不存在或损坏时，全部当作新论文处理
+  }
+  const newPapers = rawPapers.filter((p) => !knownKeys.has(itemKey(p)));
+  const skipped = rawPapers.length - newPapers.length;
+  if (skipped > 0) {
+    process.stdout.write(`${JSON.stringify({
+      timestamp: new Date().toISOString(), level: "INFO",
+      event: "workflow.filter.db_skip", skipped, remaining: newPapers.length
+    })}\n`);
+  }
+
   const taxonomy = await loadTaxonomy(ctx.config);
   const budget: FilterBudget = {
     remaining: Math.max(0, Number(ctx.config.ai?.filter?.max_checks_per_run ?? 20))
   };
-  const filtered = await filterPapers(ctx.config, taxonomy, rawPapers, budget);
+  const filtered = await filterPapers(ctx.config, taxonomy, newPapers, budget);
   await writeJson(out, filtered);
   process.stdout.write(`${JSON.stringify({
     timestamp: new Date().toISOString(), level: "INFO",
-    event: "workflow.filter.done", input: rawPapers.length, output: filtered.length,
-    rejected: rawPapers.length - filtered.length
+    event: "workflow.filter.done", input: rawPapers.length, skipped, new: newPapers.length, output: filtered.length,
+    rejected: newPapers.length - filtered.length
   })}\n`);
   return {
     step: "filter",
@@ -114,69 +133,6 @@ async function stepStore(ctx: ProfileContext): Promise<StepResult> {
   };
 }
 
-async function stepWeekly(ctx: ProfileContext): Promise<StepResult> {
-  const t = Date.now();
-  const dbPath = path.join(path.dirname(ctx.outputDir), "papers.db");
-
-  const papers = getWeeklyPapers(dbPath, ctx.profile);
-  if (papers.length === 0) {
-    return {
-      step: "weekly",
-      inputCount: 0,
-      outputCount: 0,
-      inputFile: dbPath,
-      outputFile: "",
-      durationMs: Date.now() - t,
-      error: "上周没有收录任何论文，跳过周刊推送"
-    };
-  }
-
-  const title = buildWeeklyDigestTitle(
-    papers.length > 0 ? (papers[papers.length - 1].published_date || "") : "",
-    papers.length > 0 ? (papers[0].published_date || "") : ""
-  );
-  const markdown = buildWeeklyMarkdown(title, papers);
-  const records = buildRecords(papers);
-
-  // 输出目录：weekly-{start}~{end}
-  const startStr = papers.length > 0 ? papers[papers.length - 1].published_date : "unknown";
-  const endStr = papers.length > 0 ? papers[0].published_date : "unknown";
-  const weeklyDir = path.join(path.dirname(ctx.outputDir), `weekly-${startStr}~${endStr}`);
-  await fs.mkdir(weeklyDir, { recursive: true });
-
-  const mdOut = f(weeklyDir, "6-digest.md");
-  const recOut = f(weeklyDir, "6-records.json");
-  const papOut = f(weeklyDir, "6-papers.json");
-
-  await fs.writeFile(mdOut, markdown, "utf-8");
-  await writeJson(recOut, records);
-  await writeJson(papOut, papers);
-
-  // 推送飞书（不重复写文件，文件已写入 weekly 目录）
-  const prefix = ctx.config.feishu?.doc_title_prefix || "[每日论文追踪]";
-  const docTitle = `${prefix} ${title}`;
-  const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
-  const errors: string[] = [];
-  if (feishuResult.doc_publish && (feishuResult.doc_publish as JsonRecord).error) {
-    errors.push(`doc_create: ${String((feishuResult.doc_publish as JsonRecord).error)}`);
-  }
-  if (feishuResult.notify_publish) {
-    for (const n of (feishuResult.notify_publish as JsonRecord[])) {
-      if (n.error) errors.push(`notify: ${String(n.error)}`);
-    }
-  }
-
-  return {
-    step: "weekly",
-    inputCount: papers.length,
-    outputCount: papers.length,
-    inputFile: dbPath,
-    outputFile: mdOut,
-    durationMs: Date.now() - t,
-    error: errors.length > 0 ? errors.join("; ") : undefined
-  };
-}
-
 async function stepDigest(ctx: ProfileContext): Promise<StepResult> {
   const t = Date.now();
   const in_ = f(ctx.outputDir, "5-enriched.json");
@@ -218,106 +174,6 @@ async function stepPush(ctx: ProfileContext): Promise<StepResult> {
     outputCount: papers.length,
     inputFile: mdFile,
     outputFile: ctx.outputDir,
-    durationMs: Date.now() - t,
-    error: errors.length > 0 ? errors.join("; ") : undefined
-  };
-}
-
-async function stepWeeklyAll(ctx: ProfileContext): Promise<StepResult> {
-  const t = Date.now();
-  const dataDir = path.join(process.cwd(), "data");
-
-  const profiles = await loadProfilesList();
-
-  const allPapers: Paper[] = [];
-  let includedProfiles = 0;
-  for (const profile of profiles) {
-    // 检查 profile 是否排除在周刊之外
-    const profileConfigPath = path.join(process.cwd(), "profiles", profile, "config.json");
-    try {
-      const raw = await fs.readFile(profileConfigPath, "utf-8");
-      const profileConfig = JSON.parse(raw);
-      if (profileConfig?.feishu?.exclude_from_weekly) continue;
-    } catch {
-      // config 读取失败时默认包含该 profile
-    }
-    includedProfiles++;
-
-    const dbPath = path.join(dataDir, profile, "papers.db");
-    try {
-      await fs.access(dbPath);
-    } catch {
-      continue;
-    }
-    const papers = getWeeklyPapers(dbPath, profile);
-    allPapers.push(...papers);
-  }
-
-  // 跨 profile 按 dedup_key 去重
-  const seen = new Map<string, Paper>();
-  for (const paper of allPapers) {
-    const key = itemKey(paper);
-    if (!seen.has(key)) seen.set(key, paper);
-  }
-  const papers = [...seen.values()].sort((a, b) =>
-    `${b.published_date}`.localeCompare(`${a.published_date}`)
-  );
-
-  if (papers.length === 0) {
-    return {
-      step: "weekly-all",
-      inputCount: 0,
-      outputCount: 0,
-      inputFile: "",
-      outputFile: "",
-      durationMs: Date.now() - t,
-      error: "上周没有收录任何论文，跳过周刊推送"
-    };
-  }
-
-  const title = buildWeeklyDigestTitle(
-    papers[papers.length - 1].published_date || "",
-    papers[0].published_date || ""
-  );
-  const markdown = buildWeeklyMarkdown(title, papers);
-
-  const startStr = papers[papers.length - 1].published_date || "unknown";
-  const endStr = papers[0].published_date || "unknown";
-  const weeklyDir = path.join(dataDir, ctx.profile, `weekly-${startStr}~${endStr}`);
-  await fs.mkdir(weeklyDir, { recursive: true });
-
-  const mdOut = path.join(weeklyDir, "6-digest.md");
-  await fs.writeFile(mdOut, markdown, "utf-8");
-
-  const prefix = ctx.config.feishu?.doc_title_prefix || "[每日论文追踪]";
-  const docTitle = `${prefix} ${title}`;
-  const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
-
-  const errors: string[] = [];
-  if (feishuResult.doc_publish && (feishuResult.doc_publish as JsonRecord).error) {
-    errors.push(`doc_create: ${String((feishuResult.doc_publish as JsonRecord).error)}`);
-  }
-  if (feishuResult.notify_publish) {
-    for (const n of (feishuResult.notify_publish as JsonRecord[])) {
-      if (n.error) errors.push(`notify: ${String(n.error)}`);
-    }
-  }
-
-  process.stdout.write(`${JSON.stringify({
-    timestamp: new Date().toISOString(), level: "INFO",
-    event: "weekly-all.done",
-    profiles: profiles.length,
-    total_before_dedup: allPapers.length,
-    after_dedup: papers.length,
-    output_dir: weeklyDir
-  })}\n`);
-
-  return {
-    step: "weekly-all",
-    inputCount: allPapers.length,
-    outputCount: papers.length,
-    inputFile: "",
-    outputFile: mdOut,
     durationMs: Date.now() - t,
     error: errors.length > 0 ? errors.join("; ") : undefined
   };
@@ -413,9 +269,7 @@ const STEPS: Record<string, (ctx: ProfileContext) => Promise<StepResult>> = {
   store: stepStore,
   digest: stepDigest,
   push: stepPush,
-  "combined-push": stepCombinedPush,
-  weekly: stepWeekly,
-  "weekly-all": stepWeeklyAll
+  "combined-push": stepCombinedPush
 };
 
 export async function runStep(name: string, ctx: ProfileContext): Promise<StepResult> {
