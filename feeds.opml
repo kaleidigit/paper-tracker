@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>Paper Tracker — 环境能源论文追踪（全部期刊 RSS）</title>
+    <dateCreated>2026-05-23T00:00:00+08:00</dateCreated>
+  </head>
+  <body>
+    <outline text="Nature 系列 (20)" title="Nature 系列">
+      <outline type="rss" text="Nature" title="Nature" xmlUrl="https://www.nature.com/nature.rss" htmlUrl="https://www.nature.com/nature"/>
+      <outline type="rss" text="Nature Energy" title="Nature Energy" xmlUrl="https://www.nature.com/nenergy.rss" htmlUrl="https://www.nature.com/nenergy"/>
+      <outline type="rss" text="Nature Climate Change" title="Nature Climate Change" xmlUrl="https://www.nature.com/nclimate.rss" htmlUrl="https://www.nature.com/nclimate"/>
+      <outline type="rss" text="Nature Sustainability" title="Nature Sustainability" xmlUrl="https://www.nature.com/natsustain.rss" htmlUrl="https://www.nature.com/natsustain"/>
+      <outline type="rss" text="Nature Geoscience" title="Nature Geoscience" xmlUrl="https://www.nature.com/ngeo.rss" htmlUrl="https://www.nature.com/ngeo"/>
+      <outline type="rss" text="Nature Ecology &amp; Evolution" title="Nature Ecology &amp; Evolution" xmlUrl="https://www.nature.com/natecolevol.rss" htmlUrl="https://www.nature.com/natecolevol"/>
+      <outline type="rss" text="Nature Communications" title="Nature Communications" xmlUrl="https://www.nature.com/ncomms.rss" htmlUrl="https://www.nature.com/ncomms"/>
+      <outline type="rss" text="Nature Food" title="Nature Food" xmlUrl="https://www.nature.com/natfood.rss" htmlUrl="https://www.nature.com/natfood"/>
+      <outline type="rss" text="Nature Cities" title="Nature Cities" xmlUrl="https://www.nature.com/natcities.rss" htmlUrl="https://www.nature.com/natcities"/>
+      <outline type="rss" text="Nature Water" title="Nature Water" xmlUrl="https://www.nature.com/natwater.rss" htmlUrl="https://www.nature.com/natwater"/>
+      <outline type="rss" text="Nature Human Behaviour" title="Nature Human Behaviour" xmlUrl="https://www.nature.com/nathumbehav.rss" htmlUrl="https://www.nature.com/nathumbehav"/>
+      <outline type="rss" text="Nature Plants" title="Nature Plants" xmlUrl="https://www.nature.com/nplants.rss" htmlUrl="https://www.nature.com/nplants"/>
+      <outline type="rss" text="Nature Machine Intelligence" title="Nature Machine Intelligence" xmlUrl="https://www.nature.com/natmachintell.rss" htmlUrl="https://www.nature.com/natmachintell"/>
+      <outline type="rss" text="Nature Computational Science" title="Nature Computational Science" xmlUrl="https://www.nature.com/natcomputsci.rss" htmlUrl="https://www.nature.com/natcomputsci"/>
+      <outline type="rss" text="Nature Medicine" title="Nature Medicine" xmlUrl="https://www.nature.com/nm.rss" htmlUrl="https://www.nature.com/nm"/>
+      <outline type="rss" text="Nature Health" title="Nature Health" xmlUrl="https://www.nature.com/naturehealth.rss" htmlUrl="https://www.nature.com/naturehealth"/>
+      <outline type="rss" text="Nature Reviews Earth &amp; Environment" title="Nature Reviews Earth &amp; Environment" xmlUrl="https://www.nature.com/natrevearthenviron.rss" htmlUrl="https://www.nature.com/natrevearthenviron"/>
+      <outline type="rss" text="Nature Reviews Biodiversity" title="Nature Reviews Biodiversity" xmlUrl="https://www.nature.com/nrbd.rss" htmlUrl="https://www.nature.com/nrbd"/>
+      <outline type="rss" text="Nature Reviews Electrical Engineering" title="Nature Reviews Electrical Engineering" xmlUrl="https://www.nature.com/natrevelectreng.rss" htmlUrl="https://www.nature.com/natrevelectreng"/>
+      <outline type="rss" text="Nature Reviews Clean Technology" title="Nature Reviews Clean Technology" xmlUrl="https://www.nature.com/nrct.rss" htmlUrl="https://www.nature.com/nrct"/>
+    </outline>
+
+    <outline text="Science / PNAS (3)" title="Science / PNAS">
+      <outline type="rss" text="Science" title="Science" xmlUrl="https://www.science.org/rss/current.xml" htmlUrl="https://www.science.org/journal/science"/>
+      <outline type="rss" text="Science Advances" title="Science Advances" xmlUrl="https://www.science.org/action/showFeed?type=etoc&amp;feed=rss&amp;ra=2375-2548" htmlUrl="https://www.science.org/journal/sciadv"/>
+      <outline type="rss" text="PNAS" title="PNAS" xmlUrl="https://www.pnas.org/rss/current.xml" htmlUrl="https://www.pnas.org"/>
+    </outline>
+
+    <outline text="Cell Press (4)" title="Cell Press">
+      <outline type="rss" text="Joule" title="Joule" xmlUrl="https://www.cell.com/joule/inpress.rss" htmlUrl="https://www.cell.com/joule"/>
+      <outline type="rss" text="One Earth" title="One Earth" xmlUrl="https://www.cell.com/one-earth/inpress.rss" htmlUrl="https://www.cell.com/one-earth"/>
+      <outline type="rss" text="Trends in Ecology &amp; Evolution" title="Trends in Ecology &amp; Evolution" xmlUrl="https://www.cell.com/trends/ecology-evolution/inpress.rss" htmlUrl="https://www.cell.com/trends/ecology-evolution"/>
+      <outline type="rss" text="The Innovation" title="The Innovation" xmlUrl="https://www.cell.com/the-innovation/inpress.rss" htmlUrl="https://www.cell.com/the-innovation"/>
+    </outline>
+
+    <outline text="RSC / ACS / Wiley / Elsevier (5)" title="RSC / ACS / Wiley / Elsevier">
+      <outline type="rss" text="Energy &amp; Environmental Science" title="Energy &amp; Environmental Science" xmlUrl="http://feeds.rsc.org/rss/ee" htmlUrl="https://pubs.rsc.org/en/journals/journalissues/ee"/>
+      <outline type="rss" text="Environmental Science &amp; Technology" title="Environmental Science &amp; Technology" xmlUrl="https://pubs.acs.org/action/showFeed?type=etoc&amp;feed=rss&amp;jc=esthag" htmlUrl="https://pubs.acs.org/journal/esthag"/>
+      <outline type="rss" text="Global Environmental Change" title="Global Environmental Change" xmlUrl="https://rss.sciencedirect.com/publication/science/09593780" htmlUrl="https://www.sciencedirect.com/journal/global-environmental-change"/>
+      <outline type="rss" text="Global Change Biology" title="Global Change Biology" xmlUrl="https://onlinelibrary.wiley.com/feed/13652486/most-recent" htmlUrl="https://onlinelibrary.wiley.com/journal/13652486"/>
+      <outline type="rss" text="Ecology Letters" title="Ecology Letters" xmlUrl="https://onlinelibrary.wiley.com/feed/14610248/most-recent" htmlUrl="https://onlinelibrary.wiley.com/journal/14610248"/>
+    </outline>
+
+    <outline text="The Innovation 子刊 (2)" title="The Innovation 子刊">
+      <outline type="rss" text="The Innovation Energy" title="The Innovation Energy" xmlUrl="https://www.the-innovation.org/energy/rss" htmlUrl="https://www.the-innovation.org/energy"/>
+      <outline type="rss" text="The Innovation Geoscience" title="The Innovation Geoscience" xmlUrl="https://www.the-innovation.org/geoscience/rss" htmlUrl="https://www.the-innovation.org/geoscience"/>
+    </outline>
+
+    <outline text="⚠ 无 RSS (2)" title="无 RSS 的期刊">
+      <outline text="⚠ National Science Review — Oxford 无公开 RSS" title="National Science Review" htmlUrl="https://academic.oup.com/nsr"/>
+      <outline text="⚠ 中国社会科学 — 无 RSS 订阅" title="中国社会科学" htmlUrl="https://www.cssn.cn"/>
+    </outline>
+  </body>
+</opml>
