@@ -1,4 +1,5 @@
 # CLAUDE.md
+> 最后更新：2026-05-24，反映 opt-001~008 + enrich 批量分类
 
 ## 核心原则
 
@@ -9,14 +10,16 @@
 5. **不生成 `summary_zh` / `novelty_points` / `main_content`** —— 避免幻觉和高 token 消耗。
 6. **Profile 隔离** —— 配置在 `profiles/{name}/` 下，通过 `--profile` 参数选择，fallback 到 `top`。
 7. **测试必须通过** `npm test` 和 `npm run build`。
+8. **结构化日志统一使用 `logEvent()`**（`src/logger.ts`），不直接写 `process.stdout.write(JSON.stringify(...))`。
+9. **重试统一使用 `retry()`**（`src/utils.ts`），指数退避 + 25% 抖动。
+10. **配置文件有 Zod schema 验证**，加载时即失败，友好错误信息。
 
 ## 架构图
 
 ```
-Shell Scripts (scripts/)
-│
-├─ run.sh ──→ 串行调用 pipeline steps（collect→filter→enrich→store→digest→push），支持 --dry-run
-└─ auto-push.sh ──→ cron 入口（周一 DAYS=3，周二至五 DAYS=1；全 profile 合并推送一份日报）
+Shell Scripts:
+  run.sh ──→ 串行 pipeline steps（collect→filter→enrich→store→digest→push），--dry-run
+  auto-push.sh ──→ cron 入口（周一 DAYS=3，全 profile 合并推送）
 
 src/cli.ts
   │
@@ -24,59 +27,68 @@ src/cli.ts
         │
         ├── modules.ts (纯能力：采集 + LLM 增强)
         │     │
-        │     ├── collectRawPapers() ─→ NatureParser + OpenAlexParser（全量采集）
-        │     ├── filterPapers() ─→ llmFilterAndTranslateBatch（批量合并筛选+翻译，默认每批 3 篇）
-        │     ├── fetchPapers() ─→ collectRawPapers + filterPapers（兼容 run-once）
+        │     ├── collectRawPapers() ─→ NatureParser + OpenAlexParser
+        │     ├── filterPapers() ─→ llmFilterAndTranslateBatch
+        │     ├── fetchPapers() ─→ collect + filter（兼容 run-once）
         │     ├── enrichPapers() ─→ translatePaperFields + classifyPaper
-        │     ├── loadTaxonomy()
-        │     └── (旧) runWorkflow() ← 兼容 legacy run-once 模式
+        │     ├── loadTaxonomy() ─→ Zod 校验 classification.json
+        │     └── runWorkflow() ← 兼容 legacy run-once 模式
         │
-        ├── llm.ts (LLM 客户端：chatJson / llmFilterAndTranslate / llmFilterAndTranslateBatch / translatePaperFields / classifyPaper)
+        ├── llm.ts (LLM 客户端)
         │
         ├── parsers/
+        │     ├── shared.ts ─── 共享：buildPaper + loadJournals（Zod 校验）
         │     ├── nature-parser.ts (RSS + JSON-LD)
         │     ├── openalex-parser.ts (OpenAlex API)
         │     └── article-parser.ts (通用文章页面)
         │
         ├── digest.ts (纯能力：buildMarkdown / buildCombinedMarkdown / buildRecords)
         │
-        ├── publish.ts (纯能力：publishDigest / pushToFeishu → lark-cli)
+        ├── publish.ts (pushToFeishu → lark-cli；publishDigest 保留供 runWorkflow 兼容)
         │
-        └── db.ts (纯能力：upsertPapers / getKnownDedupKeys → SQLite 去重缓存)
+        ├── db.ts (openDb / getKnownDedupKeys / upsertPapers → 调用者管理连接)
+        │
+        ├── config.ts (根配置加载 + profile deepMerge + applyDefaults；Zod 校验 config.json)
+        │
+        ├── logger.ts (logEvent / Logger 类)
+        │
+        └── utils.ts (retry / normalizeText / dedupeStrings / itemKey / 等)
 
 data/{profile}/
-  ├── papers.db              ← SQLite 数据库（所有论文汇总，dedup_key 去重）
+  ├── papers.db              ← SQLite（WAL 模式，dedup_key 去重）
   ├── {YYYY-MM-DD}/
-  │     ├── 1-raw-fetched.json   ← collect 输出（全量采集 + 去重）
-  │     ├── 3-llm-filtered.json  ← filter 输出（LLM 筛选+翻译）
-  │     ├── 5-enriched.json      ← enrich 输出（翻译 + 分类）
-  │     ├── 6-digest.md          ← digest 输出（Markdown 日刊）
-  │     ├── 6-records.json       ← digest 输出（扁平化记录）
-  │
-  │     所有 JSON 中间文件均为紧凑格式（无 pretty-print），jq 仍可正常读取。
+  │     ├── 1-raw-fetched.json
+  │     ├── 3-llm-filtered.json
+  │     ├── 5-enriched.json
+  │     ├── 6-digest.md
+  │     ├── 6-records.json
 ```
 
 ## 模块职责表
 
 | 文件 | 职责 | IO |
 |------|------|-----|
-| `src/cli.ts` | CLI 入口，解析 `--profile` / `--step` / `--dry-run`，编排日志和状态 | 无业务逻辑 |
-| `src/pipeline.ts` | **唯一的 IO 编排层**：每个 step 读写编号文件 | **文件读写** |
-| `src/modules.ts` | 采集（fetchPapers）、增强（enrichPapers） | **无文件 IO** |
-| `src/llm.ts` | LLM 调用：chatJson / llmFilterAndTranslate / llmFilterAndTranslateBatch / translatePaperFields / classifyPaper | 无 |
+| `src/cli.ts` | CLI 入口，`--profile`/`--step`/`--dry-run` | 无 |
+| `src/pipeline.ts` | **唯一 IO 编排层**：stepFilter/stepStore 管理 DB 连接生命周期（try/finally） | 文件 + DB |
+| `src/modules.ts` | 采集、筛选、增强；重试统一用 `utils.retry()` | 无 |
+| `src/llm.ts` | LLM 调用；日志用 `logEvent()` | 无 |
 | `src/digest.ts` | buildMarkdown / buildCombinedMarkdown / buildRecords | 无 |
-| `src/publish.ts` | publishDigest / pushToFeishu：lark-cli docs +create / im +messages-send | 无（subprocess 调用） |
-| `src/db.ts` | SQLite 去重缓存：upsertPapers / getKnownDedupKeys（仅存原始字段，不含 LLM 派生数据） | 数据库读写 |
-| `src/config.ts` | 根配置加载 + profile 感知配置加载（deepMerge 合并 AI 配置）+ `applyDefaults()` | 无 |
+| `src/publish.ts` | pushToFeishu → lark-cli；publishDigest 保留供 runWorkflow | subprocess |
+| `src/db.ts` | openDb(exported) / getKnownDedupKeys / upsertPapers；调用者管理关闭 | DB |
+| `src/config.ts` | 根配置 + profile deepMerge + applyDefaults；Zod 校验 config.json | 无 |
 | `src/types.ts` | 所有 TypeScript 类型 | 无 |
-| `src/parsers/nature-parser.ts` | Nature 系列 RSS + JSON-LD 采集 | HTTP + HTML |
+| `src/utils.ts` | retry / normalizeText / dedupeStrings / normalizePublicationType / itemKey | 无 |
+| `src/logger.ts` | logEvent() 无状态 helper + Logger 类（按日分文件） | 文件追加 |
+| `src/parsers/shared.ts` | buildPaper + loadJournals（Zod 校验 journals.json） | 无 |
+| `src/parsers/nature-parser.ts` | Nature RSS + JSON-LD 采集 | HTTP + HTML |
 | `src/parsers/openalex-parser.ts` | OpenAlex API 采集 | HTTP |
 | `src/parsers/article-parser.ts` | 通用文章页面解析器 | HTTP + HTML |
 
-## Shell 脚本（项目根目录）
+## Shell 脚本
 
 ```
-run.sh              ← 手动执行入口（串行 collect→filter→enrich→store→digest→push，支持 --dry-run）
+run.sh              ← 手动入口（串行 6 步，--dry-run）
+auto-push.sh        ← cron 入口（周一 DAYS=3，全 profile 合并推送）
 deploy.sh           ← 安装依赖 + lark-cli 授权
 ```
 
@@ -87,165 +99,137 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 | Step | 输入 | 输出 | 说明 |
 |------|------|------|------|
 | `collect` | — | `1-raw-fetched.json` | 全量采集 + 去重 |
-| `filter` | `1-raw-fetched.json` | `3-llm-filtered.json` | LLM 批量筛选+翻译（`batch_size` 篇/批，失败逐篇回退） |
-| `enrich` | `3-llm-filtered.json` | `5-enriched.json` | 分类（翻译已在筛选阶段完成）；归类失败仍有 `"未分类"` 标记，不再丢弃 |
-| `store` | `5-enriched.json` | `papers.db` | 写入 SQLite，按 dedup_key 去重 |
-| `digest` | `5-enriched.json` | `6-digest.md` + `6-records.json` | 生成日刊 Markdown + 扁平记录 |
-| `push` | `6-digest.md` + `5-enriched.json` | 飞书 | 创建文档 + 发送群通知 |
+| `filter` | `1-raw-fetched.json` | `3-llm-filtered.json` | LLM 批量筛选+翻译（`batch_size` 篇/批，并发 3 批）；DB 查重跳过已知论文 |
+| `enrich` | `3-llm-filtered.json` | `5-enriched.json` | 预处理（翻译/归一化，并发 5）+ **批量分类**（`batch_size` 篇/批，并发 2 批，失败逐篇回退） |
 
-## 采集策略（全量采集，不做筛选）
+| `store` | `5-enriched.json` | `papers.db` | SQLite 写入（try/finally 确保连接关闭） |
+| `digest` | `5-enriched.json` | `6-digest.md` + `6-records.json` | 日刊 Markdown + 扁平记录 |
+| `push` | `6-digest.md` | 飞书 | 直接调用 `pushToFeishu`（不重复写文件） |
 
-**collect 步骤只做一件事：把目标期刊在时间窗口内的所有论文全部拉回来。不做任何筛选。**
+## 采集策略
 
-三种采集源：
+**collect 步骤全量拉回，不做筛选。**
 
-| 来源 | 策略 | 覆盖范围 |
-|------|------|----------|
-| Nature RSS | 逐个 RSS feed 全量拉取，按 `published_date` 过滤时间窗口 | Nature 及其 19 种子刊（含 Nature Reviews 系列、Nature Human Behaviour、Nature Plants 等） |
-| OpenAlex ISSN | 按 ISSN 过滤 + 时间窗口，per-page=200 分页拉取全量，**不使用 `search` 参数** | Science、Science Advances、PNAS、Joule、One Earth、EES、National Science Review、中国社会科学；及 32 种经济学期刊、8 种法学期刊 |
-| 合并去重 | Nature RSS + OpenAlex 合并，`itemKey()` 去重，`published_date` 倒序 | 最终写入 `1-raw-fetched.json` |
+| 来源 | 策略 | 覆盖 |
+|------|------|------|
+| Nature RSS | RSS feed 全量拉取，时间窗口过滤 | Nature 及其 19 种子刊 |
+| OpenAlex ISSN | ISSN 过滤 + 30 天宽窗口 + 分页（per-page=200）| Science/PNAS/Joule/EES 等 |
+| 合并去重 | Nature RSS + OpenAlex 合并，`itemKey()` 去重 | 最终写入 `1-raw-fetched.json` |
 
-**关键约束：**
-- `openalex_queries` 配置项**不再使用**。OpenAlex 采集改为纯 ISSN 过滤，保证不漏论文。空数组 `[]` 即可。
-- 新增期刊只需在 `journals.json` 添加一条记录，无需改代码。
-- Nature 期刊使用 `publisher_strategy: "nature-rss"`，非 Nature 期刊使用 `"openalex"`。
-- 采集阶段不使用 `heuristicClassification()`（关键词匹配），所有论文 `classification` 初始为 `{ groups: [], tags: [] }`，最终分类由 enrich 阶段的 LLM 完成。
+新增期刊只需在 `journals.json` 添加一条记录，无需改代码。
 
+## 筛选策略
 
-## 筛选策略（LLM 批量 + 逐篇回退）
+全量送 LLM 筛选，不做关键词预筛。`llmFilterAndTranslateBatch()` 批量处理（默认 `batch_size: 3`）：
+- 批处理失败 → 逐篇 `retry()` 回退（2 次，10s 间隔）
+- LLM 遗漏 → 回退到逐篇处理
+- `filter.enabled: false` → 全部直通
 
-所有论文全量送 LLM 筛选，不做关键词预筛。`llmFilterAndTranslateBatch()` 一次 LLM 调用处理多篇论文（默认 `batch_size: 3`）：
-- 构造编号列表 prompt：每篇论文标为 `[0]`, `[1]`, ...，独立判断
-- 返回 `{ results: [{ index, keep, confidence, reason, suggested_group, suggested_tags, title_zh?, abstract_zh? }] }`
-- LLM 遗漏的论文回退到 `llmFilterAndTranslate()` 逐篇处理
-- 整批调用失败 → 逐篇回退（双重容错）
-- 禁用 filter 时（`filter.enabled: false`）全部直通，不做任何筛选和翻译
-
-LLM 筛选 prompt（`filter_translate_system`）：
-- 接受：能源/气候/环境/可持续发展/生物多样性/生态/海平面/土地利用/农业/贫困环境关联
-- 拒绝（A-F 六类）：纯材料器件、纯化学计算、临床生物医学、纯工程性能、短文体裁、环境化学/污染物化学
-- 按核心研究问题判断，不按表面术语判断
-
-
-## 推流逻辑
+## 推送逻辑
 
 ```
-周一（DAY_OF_WEEK=1）：DAYS=3（覆盖周末积压）
-周二至周五：DAYS=1
+周一：DAYS=3（覆盖周末积压）
+周二至五：DAYS=1
 周末：跳过
-所有 profile 跑完后合并推送一份 combined 日报。
+全 profile 跑完后合并推送一份 combined 日报。
 ```
-
 
 ## Profile 配置
 
-### 现有 Profile
+| Profile | 用途 | 期刊数 | 来源 |
+|---------|------|:---:|------|
+| `top` | 环境能源期刊 | 36 | Nature 系列 20 + Science/PNAS/Joule 等 |
+| `econ` | 环境经济学 | 32 | SUFE Tier 1-2 + 环境经济专刊 |
+| `law` | 法学 | 8 | T14 flagship 法律评论 |
 
-| Profile | 用途 | 推送频率 | 筛选模式 | 期刊数 | 来源 |
-|---------|------|---------|---------|--------|------|
-| `top` | 高发文量环境能源期刊合集 | 每日推送 | LLM 合并筛选+翻译 | 36 | Nature 系列 20 种 + Science/PNAS/Joule/One Earth/EES/NSR/中国社会科学 + 环境生态 5 种 + The Innovation 系列 3 种 |
-| `econ` | 环境经济学期刊追踪 | 每日推送 | LLM 合并筛选+翻译 | 32 | SUFE 经济学 Top Tier (5) + First Tier (20) + 环境经济专刊 (7) |
-| `law` | 法学环境能源论文追踪 | 每日推送 | LLM 合并筛选+翻译 | 8 | 美国 T14 flagship 法律评论 + 国际法/法经济学期刊 |
-
-## 项目配置层级
+### 配置层级
 
 ```
-config.json                ← 根配置：全局 AI 模型配置 + profiles 列表
-.env                       ← 密钥（OPENAI_COMPATIBLE_API_KEY 等），不入 git
+config.json                ← 根配置：profiles 列表 + 全局 AI 默认值
+.env                       ← 密钥（OPENAI_COMPATIBLE_API_KEY）
 profiles/{name}/
-  config.json              ← 领域配置（app, pipeline, sources, feishu, ai.prompts）
-  journals.json            ← 期刊列表（每个期刊的 publisher_strategy 决定用哪个 parser）
-  classification.json      ← 分类树（domains → subdomains → keywords）
+  config.json              ← 领域配置
+  journals.json            ← 期刊列表
+  classification.json      ← 分类树
 ```
 
-**AI 配置合并规则**：根 `config.json` 提供全局默认值（model、base_url、temperature 等），profile 里的 `ai` 只保留各自独有的覆盖项（prompts、filter 差异等），加载时自动深度合并。
-
-**Profile 列表**：SH 脚本（`run.sh`、`auto-push.sh`）从根 `config.json` 的 `profiles` 数组读取，新增 profile 只需编辑 `config.json`。
-
-fallback 逻辑：如果 profile 目录下没有对应文件，回退到 `profiles/top/`。
-
-## 扩展到新领域
-
-只需三步：
-
-1. **创建 profile 目录**：
-   ```bash
-   mkdir -p profiles/new-domain
-   cp profiles/top/*.json profiles/new-domain/
-   ```
-
-2. **修改配置**：
-   - `config.json`（根目录）→ 在 `profiles` 数组中添加新 profile 名
-   - `profiles/new-domain/config.json` → 修改 `ai.prompts`（筛选/翻译/分类 prompt）
-   - `profiles/new-domain/journals.json` → 修改期刊列表
-   - `profiles/new-domain/classification.json` → 修改分类树
-   - `profiles/new-domain/config.json` 中 `feishu.notify_chat_id` → 修改飞书群 ID
-
-3. **运行**：
-   ```bash
-   ./run.sh --profile new-domain
-   ```
+AI 配置合并：根 `config.json` 提供默认值，profile 只覆盖差异项，加载时 `deepMerge`。
 
 ## 关键配置字段
 
-
 ### 时间窗口
 
-`strictWindowStartAt()` 计算每日采集的严格窗口起点（如昨日 08:00）。
-`graceWindowStartAt()` 在此基础上往前推移 `grace_days` 天，补偿 OpenAlex 索引延迟。
+`strictWindowStartAt()` 计算严格窗口起点。`graceWindowStartAt()` 往前推 `grace_days` 天（默认 3），补偿 OpenAlex 索引延迟。
+
+### LLM
 
 ```jsonc
-"pipeline.paper_window": {
-  "mode": "since_yesterday_time",
-  "hour": 8,
-  "minute": 0,
-  "grace_days": 3      // 索引延迟宽限天数，本地过滤推移到此
-}
+"ai.base_url": "https://api.deepseek.com"
+"ai.model": "deepseek-v4-flash"
+"ai.api_key_env": "OPENAI_COMPATIBLE_API_KEY"
+"ai.filter.min_confidence": 0.5
+"ai.filter.batch_size": 3
+"ai.enrich.concurrency": 5
 ```
 
-**grace_days 说明**：
-- OpenAlex 从论文发表到 API 可查有数小时到数天延迟。API 层用 30 天宽窗口采集（不会漏），但本地过滤若用严格窗口会丢弃延迟索引的论文。
-- `grace_days` 使本地过滤截止日期从 `strictWindowStart` 往前推 N 天，让晚到的论文通过过滤。
-- DB 的 `dedup_key ON CONFLICT DO UPDATE` 幂等去重兜底，重复论文被覆盖更新，不会产生重复记录。
-- 副作用：每天多处理少量已入库论文的 LLM 调用，在可接受范围内。
-### LLM（配置在根 `config.json`，profile 只覆盖差异项）
-
-DeepSeek 官方 API（`api.deepseek.com`），`OPENAI_COMPATIBLE_API_KEY` 统一密钥。
+### 飞书
 
 ```jsonc
-"ai.base_url": "https://api.deepseek.com"      // DeepSeek 官方 API
-"ai.model": "deepseek-v4-flash"                // 全局模型（根 config.json）
-"ai.api_key_env": "OPENAI_COMPATIBLE_API_KEY"  // 统一 API key 环境变量名
-"ai.filter.min_confidence": 0.5                // 过滤最低置信度（根 config.json）
-"ai.filter.batch_size": 3                      // 批处理大小，每批送审论文数（默认 3）
-"ai.filter.enabled": true                      // 是否启用 LLM 筛选（false 时全量直通）
-"ai.enrich.concurrency": 3                     // 翻译分类并发数（根 config.json）
-"ai.translation.enabled": true                 // 是否翻译（根 config.json）
+"feishu.doc_enabled": true
+"feishu.notify_chat_id": "oc_xxx"
+"feishu.alert_chat_id": "oc_xxx"
 ```
 
-### 飞书（publish.ts 直接调用，不走 shell 命令模板）
+## 重试机制
 
-```jsonc
-"feishu.doc_enabled": true           // 创建飞书文档
-"feishu.notify_chat_id": "oc_xxx"    // 群通知 chat_id
-"feishu.alert_chat_id": "oc_xxx"     // 告警 chat_id
+所有重试统一使用 `src/utils.ts` 的 `retry()`：
+
+```typescript
+retry(fn, { maxAttempts: 3, baseDelayMs: 5000, onRetry: (attempt, delay, err) => logEvent(...) })
+```
+
+- 退避：指数 + 25% 抖动
+- filter 逐篇：2 次，10s 间隔
+- enrich 翻译/分类：3 次，5s 指数退避，失败用 FALLBACK_CLASSIFICATION
+
+## 配置校验
+
+所有 JSON 配置文件加载时通过 Zod schema 验证：
+- `config.json` → `RootConfigSchema`
+- `journals.json` → `JournalEntrySchema`（name/源群必填，issn/rss_feeds/sort_order 可选）
+- `classification.json` → `ClassificationSchema`（groups/domains，含 subtopics.keywords）
+
+## 日志
+
+`src/logger.ts` 两条路径：
+- `logEvent(level, event, data?)` — 无状态，输出 stdout（ERROR→stderr），所有模块通用
+- `Logger` 类 — 按日分文件 + stdout，仅在 `cli.ts` 用于 run 级别事件
+
+## 数据库
+
+`data/{profile}/papers.db` — SQLite（WAL 模式）：
+- 去重键：`dedup_key` = DOI > URL > journal::title
+- 唯一索引：`UNIQUE(profile, dedup_key)`
+- `openDb()` 已 exported，调用者用 try/finally 管理关闭
+
+```bash
+sqlite3 data/top/papers.db "SELECT COUNT(*) FROM papers;"
 ```
 
 ## 命令速查
 
 ```bash
-# 完整管道（串行 6 步，运行 config.json 中所有 profile）
+# 完整管道
 ./run.sh
 ./run.sh --dry-run
 ./run.sh --profile econ
-./run.sh --profile econ --dry-run
-./run.sh --profile top --days 2 --dry-run  # 指定回溯天数
+./run.sh --profile top --days 2 --dry-run
 
-# 自动推送（cron 入口）
+# 自动推送
 ./auto-push.sh
 ./auto-push.sh --dry-run
 
-# 单步（每步可独立运行，从上一步读取文件）
+# 单步
 npx tsx src/cli.ts --step collect --profile top
 npx tsx src/cli.ts --step filter  --profile top
 npx tsx src/cli.ts --step enrich  --profile top
@@ -253,82 +237,41 @@ npx tsx src/cli.ts --step store   --profile top
 npx tsx src/cli.ts --step digest  --profile top
 npx tsx src/cli.ts --step push    --profile top
 
-npx tsx src/cli.ts --step collect --profile econ
-npx tsx src/cli.ts --step enrich  --profile econ
-npx tsx src/cli.ts --step store   --profile econ
-
 # 测试
-npm test
-npm run build
+npm test        # vitest run（6 文件 56 用例）
+npm run build   # tsc --noEmit（零错误）
 ```
 
 ## lark-cli 使用方式
 
-`publish.ts` 中直接调用 subprocess：
+`publish.ts:pushToFeishu` 直接调用 subprocess：
+- `lark-cli docs +create` — 创建飞书文档（v2 API，先建空文档再分块 append Markdown，每块 ≤4500 字节）
+- `lark-cli im +messages-send` — 发送群通知
+- 文档创建最多重试 3 次（指数退避 + 抖动）
 
-```typescript
-// pushToFeishu() 创建飞书文档（v2 API，Markdown 格式，stdin 传入内容）
-await runCommand("lark-cli", [
-  "docs", "+create",
-  "--api-version", "v2",
-  "--doc-format", "markdown",
-  "--as", "bot",
-  "--title", docTitle,
-  "--content", "-"
-], config.runtime.command_timeout_ms, markdownContent);
+## 优化历史
 
-// pushToFeishu() 发送群通知
-await runCommand("lark-cli", [
-  "im", "+messages-send",
-  "--as", "bot",
-  "--chat-id", chatId,
-  "--text", notifyText
-], config.runtime.command_timeout_ms);
-```
+| 批次 | 日期 | 内容 |
+|------|------|------|
+| opt-001~003 | 2026-05-23 | 消除重复函数（normalizeText 4→1 等），提取 shared.ts，统一 retry() |
+| opt-006~007 | 2026-05-23 | DB 连接 try/finally，stepPush 消除重复文件 IO |
+| opt-008 | 2026-05-24 | Zod 配置校验（3 种配置文件） |
+| opt-005 | 2026-05-24 | 结构化日志统一为 logEvent()（27 处替换） |
+| opt-004 | 2026-05-24 | 测试 5→56 用例（utils 20 + digest 9 + db 7，零错误） |
+| enrich-batch | 2026-05-24 | 分类逐篇→批量+并发，enrich 214s→107s（2x 加速） |
 
-## 推送容错
-
-- **doc 创建重试**：最多 3 次，指数退避（首次退避 ~5s，第二次 ~10s，第三次 ~20s，均带随机抖动）
-- **发通知的前提**：doc 创建成功并拿到 URL 后才发群通知。拿不到 URL 则不发票通知
-- **全部失败时抛错**：错误信息包含手动重试命令 `npx tsx src/cli.ts --step push --profile <name>`
-- **手动重试**：push step 可独立重跑，不从零开始
-
-配置文件（根 `config.json` + `profiles/{name}/config.json`）中**不需要**存储 shell 命令模板（如 `doc_publish_cmd` / `notify_cmd`），直接用 `--profile` 指定 profile 目录即可。
-
-## 数据库
-
-`data/{profile}/papers.db` — SQLite（WAL 模式）：
-
-- **去重键**：`dedup_key` = DOI > URL > journal::title，与 `itemKey()` 逻辑一致
-- **唯一索引**：`UNIQUE(profile, dedup_key)`
-- **查询索引**：`(profile, published_date)`、`(profile, journal_name)`
-- **入库时机**：每天 enrich 后自动写入（stepStore）
+## 数据追溯
 
 ```bash
-# 直接查询数据库
-sqlite3 data/top/papers.db "SELECT COUNT(*) FROM papers;"
-sqlite3 data/top/papers.db "SELECT journal_name, COUNT(*) FROM papers GROUP BY journal_name ORDER BY 2 DESC;"
-```
+# 采集结果
+cat data/top/YYYY-MM-DD/1-raw-fetched.json | jq 'length'
 
-## 数据追溯（质检）
+# 翻译+分类
+cat data/top/YYYY-MM-DD/5-enriched.json | jq '.[0] | {title_zh, abstract_zh, classification}'
 
-每个 step 的输入输出文件都有编号，可随时查看：
+# Markdown
+cat data/top/YYYY-MM-DD/6-digest.md | head -30
 
-```bash
-# 查看采集结果
-cat data/top/2026-05-09/1-raw-fetched.json | jq 'length'
-
-# 查看翻译+分类结果
-cat data/top/2026-05-09/5-enriched.json | jq '.[0] | {title_zh, abstract_zh, classification}'
-
-# 查看最终 Markdown
-cat data/top/2026-05-09/6-digest.md | head -30
-
-
-# 查看数据库统计
-sqlite3 data/top/papers.db "SELECT COUNT(*) FROM papers;"
+# 数据库
 sqlite3 data/top/papers.db "SELECT journal_name, COUNT(*) as cnt FROM papers GROUP BY journal_name ORDER BY cnt DESC;"
-
-# 质检：对比输入输出数量
-wc -l data/top/2026-05-09/*.json
 ```

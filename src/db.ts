@@ -8,6 +8,8 @@
 
 import Database from "better-sqlite3";
 import type { Paper } from "./types.js";
+import { normalizeText } from "./utils.js";
+import { logEvent } from "./logger.js";
 
 // ─── Schema ──────────────────────────────────────────────────
 
@@ -33,7 +35,7 @@ CREATE INDEX IF NOT EXISTS idx_papers_published ON papers(profile, published_dat
 
 // ─── DB 连接 ─────────────────────────────────────────────────
 
-function openDb(dbPath: string): Database.Database {
+export function openDb(dbPath: string): Database.Database {
   const db = new Database(dbPath);
   db.pragma("journal_mode = WAL");
   db.pragma("busy_timeout = 5000");
@@ -44,9 +46,7 @@ function openDb(dbPath: string): Database.Database {
 // ─── 去重键 ─────────────────────────────────────────────────
 // 与 utils.ts 中 itemKey() 逻辑一致：DOI > URL > journal::title
 
-function normalizeText(value: unknown): string {
-  return String(value ?? "").replace(/\s+/g, " ").trim();
-}
+
 
 function computeDedupKey(paper: Paper): string {
   return (
@@ -79,21 +79,18 @@ function paperToRow(paper: Paper, profile: string, dateStr: string): Record<stri
 // ─── Public API ──────────────────────────────────────────────
 
 /** 返回已在 DB 中的 dedup_key 集合（用于采集后跳过已知论文） */
-export function getKnownDedupKeys(dbPath: string, profile: string, keys: string[]): Set<string> {
+export function getKnownDedupKeys(db: Database.Database, profile: string, keys: string[]): Set<string> {
   if (keys.length === 0) return new Set();
-  const db = openDb(dbPath);
   const placeholders = keys.map(() => "?").join(",");
   const rows = db.prepare(
     `SELECT dedup_key FROM papers WHERE profile = ? AND dedup_key IN (${placeholders})`
   ).all(profile, ...keys) as Array<{ dedup_key: string }>;
-  db.close();
   return new Set(rows.map((r) => r.dedup_key));
 }
 
 /** 写入论文（仅原始字段），ON CONFLICT 时更新已有记录 */
-export function upsertPapers(dbPath: string, profile: string, papers: Paper[]): number {
+export function upsertPapers(db: Database.Database, profile: string, papers: Paper[]): number {
   if (papers.length === 0) return 0;
-  const db = openDb(dbPath);
   const dateStr = new Date().toISOString().slice(0, 10);
 
   // 批次内去重
@@ -138,12 +135,8 @@ export function upsertPapers(dbPath: string, profile: string, papers: Paper[]): 
     }
   });
   upsert();
-  db.close();
 
-  process.stdout.write(`${JSON.stringify({
-    timestamp: new Date().toISOString(), level: "INFO",
-    event: "db.upsert.done", total_input: papers.length, deduped: unique.length, stored: count
-  })}\n`);
+  logEvent("INFO", "db.upsert.done", { total_input: papers.length, deduped: unique.length, stored: count });
 
   return count;
 }

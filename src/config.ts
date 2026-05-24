@@ -1,13 +1,16 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import dotenv from "dotenv";
+import { z } from "zod";
 import type { AppConfig, ProfileContext, RunState, MetricsState } from "./types.js";
+import { normalizeText, resolvePath as resolvePathRaw } from "./utils.js";
 
 dotenv.config();
 
-function normalizeText(value: unknown): string {
-  return String(value ?? "").replace(/\s+/g, " ").trim();
-}
+const RootConfigSchema = z.object({
+  profiles: z.array(z.string()).optional(),
+  ai: z.record(z.string(), z.unknown()).optional(),
+});
 
 const ROOT_DIR = process.cwd();
 const ROOT_CONFIG_PATH = path.join(ROOT_DIR, "config.json");
@@ -26,9 +29,7 @@ function asNumber(input: unknown, fallback: number): number {
   return fallback;
 }
 
-export function resolvePath(p: string): string {
-  return path.isAbsolute(p) ? p : path.join(ROOT_DIR, p);
-}
+export const resolvePath = (p: string) => resolvePathRaw(p, ROOT_DIR);
 
 // ─── 根配置加载 ────────────────────────────────────────────
 
@@ -39,8 +40,9 @@ interface RootConfig {
 
 async function loadRootConfig(): Promise<RootConfig> {
   const raw = await fs.readFile(ROOT_CONFIG_PATH, "utf-8");
-  return JSON.parse(raw) as RootConfig;
+  return RootConfigSchema.parse(JSON.parse(raw)) as RootConfig;
 }
+
 
 export async function loadProfilesList(): Promise<string[]> {
   const root = await loadRootConfig();

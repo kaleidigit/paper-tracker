@@ -6,32 +6,8 @@
 
 import type { JsonRecord } from "../types.js";
 import type { ArticleMeta } from "./types.js";
-import { fetchText } from "../utils.js";
+import { fetchText, normalizeText, dedupeStrings, normalizePublicationType } from "../utils.js";
 
-function normalizeText(value: unknown): string {
-  const raw = String(value ?? "").replace(/\s+/g, " ").trim();
-  return raw
-    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'")
-    .replace(/&nbsp;/g, " ");
-}
-
-function dedupeStrings(values: string[]): string[] {
-  const seen = new Set<string>();
-  const result: string[] = [];
-  values.forEach((value) => {
-    const item = normalizeText(value);
-    if (!item || seen.has(item)) return;
-    seen.add(item);
-    result.push(item);
-  });
-  return result;
-}
 
 function absoluteUrl(raw: string, base?: string): string {
   const url = normalizeText(raw);
@@ -142,7 +118,7 @@ export class ArticlePageParser {
           }
           if (result.publicationType === "unknown") {
             const section = normalizeText(entity.articleSection || entity.type || "");
-            if (section) result.publicationType = this.normalizePublicationType(section);
+            if (section) result.publicationType = normalizePublicationType(section);
           }
           if (!result.imageUrl) {
             const img = entity.image;
@@ -223,7 +199,7 @@ export class ArticlePageParser {
     ];
     for (const pattern of patterns) {
       const match = html.match(pattern);
-      if (match?.[1]) return this.normalizePublicationType(match[1]);
+      if (match?.[1]) return normalizePublicationType(match[1]);
     }
     return "unknown";
   }
@@ -241,14 +217,4 @@ export class ArticlePageParser {
     return "";
   }
 
-  normalizePublicationType(value: string): string {
-    const text = normalizeText(value).toLowerCase();
-    if (!text) return "unknown";
-    if (text.includes("review")) return "review";
-    if (text.includes("editorial") || text.includes("news & view") || text.includes("research briefing")) return "editorial";
-    if (text.includes("letter") || text.includes("brief communication")) return "letter";
-    if (text.includes("comment") || text.includes("perspective") || text.includes("news & views")) return "comment";
-    if (text.includes("article") || text.includes("research article") || text.includes("original research")) return "article";
-    return text;
-  }
 }

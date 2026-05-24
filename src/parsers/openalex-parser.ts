@@ -4,23 +4,17 @@
  * 优势：完整作者列表、单位、摘要；免费公开 API
  */
 
-import fs from "node:fs/promises";
+import { logEvent } from "../logger.js";
 import type { AppConfig, JsonRecord, Paper } from "../types.js";
 import type { JournalEntry, ParsedPaper } from "./types.js";
 import {
-  normalizeText, dedupeStrings, toArray, resolvePath,
-  fetchJson, parseDate, strictWindowStartAt, graceWindowStartAt, formatDateInTz,
-  shouldSkipLlmRescueByTitle, restoreAbstract,
-  normalizePublicationType
+  normalizeText, dedupeStrings, toArray,
+  fetchJson, parseDate, graceWindowStartAt, formatDateInTz,
+  shouldSkipLlmRescueByTitle, restoreAbstract
 } from "../utils.js";
-import { loadTaxonomy } from "../modules.js";
+import { loadJournals, buildPaper } from "./shared.js";
 
-async function loadJournals(config: AppConfig): Promise<JournalEntry[]> {
-  const file = resolvePath(config.sources?.journals_file || "profiles/top/journals.json");
-  const raw = await fs.readFile(file, "utf-8");
-  const parsed = JSON.parse(raw);
-  return Array.isArray(parsed) ? parsed : [];
-}
+
 
 /** Resolve sort_order from an ISSN that may be a string or string[] (OpenAlex returns arrays) */
 function resolveSortOrder(issnMap: Map<string, number>, rawIssn: unknown): number | undefined {
@@ -32,38 +26,13 @@ function resolveSortOrder(issnMap: Map<string, number>, rawIssn: unknown): numbe
   return undefined;
 }
 
-function buildPaper(input: ParsedPaper): Paper {
-  const titleEn = normalizeText(input.title);
-  const abs = normalizeText(input.abstractOriginal);
-  const cls = { groups: [] as { group: string; subtopics: string[] }[], tags: [] as string[] };
-  return {
-    id: normalizeText(input.doi) || normalizeText(input.url) || `${normalizeText(input.journal)}::${titleEn}`,
-    title_en: titleEn,
-    title_zh: "",
-    authors: dedupeStrings(input.authors),
-    author_affiliations: dedupeStrings(input.authorAffiliations),
-    author_affil_map: input.authorAffilMap,
-    journal: { name: normalizeText(input.journal), source_group: normalizeText(input.sourceGroup || input.journal), sort_order: input.sortOrder },
-    published_date: input.publishedDate,
-    doi: normalizeText(input.doi),
-    url: normalizeText(input.url),
-    image_url: normalizeText(input.imageUrl),
-    abstract_original: abs,
-    abstract_zh: "",
-    publication_type: normalizePublicationType(input.publicationType),
-    summary_zh: "",
-    novelty_points: [],
-    main_content: [],
-    classification: cls,
-    source: { provider: input.sourceProvider, raw_feed: input.rawFeed, raw_record_id: input.rawRecordId }
-  };
-}
+
 
 export class OpenAlexParser {
   async collect(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
-    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase1.start", phase: "full_collection", source: "openalex" })}\n`);
+    logEvent("INFO", "workflow.fetch.phase1.start", { phase: "full_collection", source: "openalex" });
     const rawPapers = await this.collectAllRawPapers(config, taxonomy);
-    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase1.done", collected: rawPapers.length, source: "openalex" })}\n`);
+    logEvent("INFO", "workflow.fetch.phase1.done", { collected: rawPapers.length, source: "openalex" });
 
     return rawPapers;
   }
@@ -110,17 +79,13 @@ export class OpenAlexParser {
     // 分页拉取全量，直到返回不足一页或空
     for (let page = 1; ; page++) {
       const url = pageUrl(page);
-      process.stdout.write(
-        `${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.openalex.page", page, issns: issns.length })}\n`
-      );
+      logEvent("INFO", "workflow.fetch.openalex.page", { page, issns: issns.length });
 
       let payload: JsonRecord = {};
       try {
         payload = await fetchJson(url, timeoutMs, 3);
       } catch {
-        process.stdout.write(
-          `${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.openalex.failed", page })}\n`
-        );
+        logEvent("WARN", "workflow.fetch.openalex.failed", { page });
         break;
       }
 
@@ -184,9 +149,7 @@ export class OpenAlexParser {
     const windowCutoff = startDate;
     const beforeFilter = papers.length;
     const filtered = papers.filter((p) => !p.published_date || p.published_date >= windowCutoff);
-    process.stdout.write(
-      `${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.openalex.date_filtered", before: beforeFilter, after: filtered.length, window_start: windowCutoff })}\n`
-    );
+    logEvent("INFO", "workflow.fetch.openalex.date_filtered", { before: beforeFilter, after: filtered.length, window_start: windowCutoff });
 
     return filtered;
   }

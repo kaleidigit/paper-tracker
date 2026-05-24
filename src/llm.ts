@@ -8,6 +8,7 @@
  *   - classifyPaper(): 论文分类
  */
 
+import { logEvent } from "./logger.js";
 import type { AppConfig, JsonRecord, Paper } from "./types.js";
 import {
   normalizeText, dedupeStrings, toArray
@@ -113,7 +114,7 @@ export async function llmFilterAndTranslate(
   if (config.ai?.filter?.enabled === false) {
     return { used: false, keep: true, confidence: 1 };
   }
-  process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.start", title: paper.title_en || "" })}\n`);
+  logEvent("INFO", "workflow.filter.start", { title: paper.title_en || "" });
 
   const prompts = config.ai?.prompts || {};
   const values = {
@@ -144,7 +145,7 @@ export async function llmFilterAndTranslate(
   const min = Number(config.ai?.filter?.min_confidence ?? 0.5);
   const keep = Boolean(parsed.keep) && confidence >= min;
 
-  process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.done", keep, confidence })}\n`);
+  logEvent("INFO", "workflow.filter.done", { keep, confidence });
 
   const result: JsonRecord & { title_zh?: string; abstract_zh?: string } = {
     used: true, keep, confidence,
@@ -175,7 +176,7 @@ export async function llmFilterAndTranslateBatch(
     return papers.map(() => ({ used: false, keep: true, confidence: 1 }));
   }
   const count = papers.length;
-  process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.batch.start", count })}\n`);
+  logEvent("INFO", "workflow.filter.batch.start", { count });
 
   const prompts = config.ai?.prompts || {};
   const values: Record<string, string> = {};
@@ -228,7 +229,7 @@ export async function llmFilterAndTranslateBatch(
     // 缺失的论文回退到逐篇调用
     for (let i = 0; i < count; i++) {
       if (!hasResult.has(i)) {
-        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.batch.missing", index: i, title: papers[i].title_en })}\n`);
+        logEvent("WARN", "workflow.filter.batch.missing", { index: i, title: papers[i].title_en });
         try {
           out[i] = await llmFilterAndTranslate(config, papers[i]);
         } catch {
@@ -237,10 +238,10 @@ export async function llmFilterAndTranslateBatch(
       }
     }
 
-    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.filter.batch.done", count, kept: out.filter(r => r.keep).length })}\n`);
+    logEvent("INFO", "workflow.filter.batch.done", { count, kept: out.filter(r => r.keep).length });
     return out;
   } catch (err) {
-    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.filter.batch.error", error: String(err) })}\n`);
+    logEvent("WARN", "workflow.filter.batch.error", { error: String(err) });
     throw err;
   }
 }
@@ -346,4 +347,70 @@ export async function classifyPaper(config: AppConfig, paper: Paper, taxonomy: A
     groups: groups.length > 0 ? groups : [{ group: "未分类", subtopics: [] }],
     tags: dedupeStrings(toArray(cls?.tags as string[] | undefined))
   };
+}
+
+// ─── 批量分类 ──────────────────────────────────────────────
+
+export async function classifyPapersBatch(
+  config: AppConfig,
+  papers: Paper[],
+  taxonomy: Array<Record<string, unknown>>
+): Promise<Paper["classification"][]> {
+  if (papers.length === 0) return [];
+
+  const prompts = config.ai?.prompts || {};
+  const baseSystemPrompt = renderTemplate(
+    normalizeText(prompts.classify_system) || "你是环境能源论文分类助手。请只输出 JSON，字段为 classification(groups, tags)。groups 为数组，每项包含 group 和 subtopics。",
+    {}
+  ) || "";
+
+  const systemPrompt = `${baseSystemPrompt}\n\n你正在处理多篇论文。对每篇独立分类。返回格式：\n{"results": [{"index": 0, "classification": {"groups": [{"group": "...", "subtopics": ["..."]}], "tags": ["..."]}}, ...]}`;
+
+  const papersList = papers
+    .map((p, i) => `[${i}] 标题：${p.title_zh || p.title_en || ""}\n    期刊：${p.journal?.name || ""}\n    日期：${p.published_date || ""}\n    摘要：${(p.abstract_zh || p.abstract_original || "").slice(0, 300)}`)
+    .join("\n\n");
+
+  const userPrompt = `分类体系：${JSON.stringify(taxonomy)}\n\n请对以下 ${papers.length} 篇论文逐一分类：\n\n${papersList}`;
+
+  const count = papers.length;
+  logEvent("INFO", "workflow.enrich.batch_classify.start", { count });
+
+  const parsed = await chatJson(config, {
+    model: config.ai?.model,
+    temperature: 0,
+    max_tokens: Math.max(config.ai?.max_tokens ?? 2000, count * 800),
+    response_format: { type: "json_object" },
+    messages: [{ role: "system", content: systemPrompt }, { role: "user", content: userPrompt }]
+  });
+  const results = toArray(parsed.results as Array<Record<string, unknown>> | undefined);
+  const out: Paper["classification"][] = new Array(count);
+
+  for (const r of results) {
+    const idx = Number(r.index);
+    if (isNaN(idx) || idx < 0 || idx >= count) continue;
+    const cls = (r.classification || r) as JsonRecord;
+    const rawGroups = toArray(cls?.groups as Array<Record<string, unknown>> | undefined);
+    const groups = rawGroups
+      .map((g) => ({
+        group: normalizeText(g.group || g.name) || "未分类",
+        subtopics: dedupeStrings(toArray(g.subtopics as string[] | undefined))
+      }))
+      .filter((g) => g.group !== "未分类" || g.subtopics.length > 0);
+    out[idx] = {
+      groups: groups.length > 0 ? groups : [{ group: "未分类", subtopics: [] }],
+      tags: dedupeStrings(toArray(cls?.tags as string[] | undefined))
+    };
+  }
+
+  // Missing papers: log and leave undefined for caller to handle
+  for (let i = 0; i < count; i++) {
+    if (!out[i]) {
+      logEvent("WARN", "workflow.enrich.batch_classify.missing", { index: i, title: papers[i].title_en });
+    }
+  }
+
+  const kept = out.filter(Boolean).length;
+  logEvent("INFO", "workflow.enrich.batch_classify.done", { count, kept });
+
+  return out;
 }

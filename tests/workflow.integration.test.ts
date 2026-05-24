@@ -3,8 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterAll, beforeAll, describe, expect, test, vi } from "vitest";
 import type { AppConfig } from "../src/types.js";
-import { EmptyPapersError, runWorkflow } from "../src/workflow.js";
-
+import { EmptyPapersError, runWorkflow } from "../src/modules.js";
 let tmpDir = "";
 const originalFetch = globalThis.fetch;
 
@@ -74,9 +73,7 @@ describe("workflow integration", () => {
         retry: { max_attempts: 1, backoff_ms: 0 }
       },
       sources: {
-        journals_file: path.join(tmpDir, "journals.json"),
-        keywords: ["battery"],
-        openalex_queries: ["battery"]
+        journals_file: path.join(tmpDir, "journals.json")
       },
       classification: {
         file: path.join(tmpDir, "classification.json")
@@ -123,9 +120,7 @@ describe("workflow integration", () => {
         retry: { max_attempts: 1, backoff_ms: 0 }
       },
       sources: {
-        journals_file: path.join(tmpDir, "journals.json"),
-        keywords: ["battery"],
-        openalex_queries: ["battery"]
+        journals_file: path.join(tmpDir, "journals.json")
       },
       classification: {
         file: path.join(tmpDir, "classification.json")

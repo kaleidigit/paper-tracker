@@ -4,26 +4,20 @@
  * 数据来源：Nature RSS feed + 文章页面 JSON-LD/HTML
  */
 
-import fs from "node:fs/promises";
 import pLimit from "p-limit";
 import { XMLParser } from "fast-xml-parser";
+import { logEvent } from "../logger.js";
 import type { AppConfig, JsonRecord, Paper } from "../types.js";
 import {
-  normalizeText, dedupeStrings, toArray, resolvePath,
+  normalizeText, dedupeStrings, toArray,
   fetchText, parseDate, parseDateTime, strictWindowStartAt,
   shouldSkipLlmRescueByTitle, extractImageFromRssItem,
   extractAffiliationsFromRssItem, normalizePublicationType
 } from "../utils.js";
-import { loadTaxonomy } from "../modules.js";
+import { loadJournals, buildPaper } from "./shared.js";
 import { ArticlePageParser } from "./article-parser.js";
 import type { JournalEntry, ParsedPaper } from "./types.js";
 
-async function loadJournals(config: AppConfig): Promise<JournalEntry[]> {
-  const file = resolvePath(config.sources?.journals_file || "profiles/top/journals.json");
-  const raw = await fs.readFile(file, "utf-8");
-  const parsed = JSON.parse(raw);
-  return Array.isArray(parsed) ? parsed : [];
-}
 
 function resolveFeedItems(parsed: JsonRecord): JsonRecord[] {
   const rdf = parsed["rdf:RDF"] as JsonRecord | undefined;
@@ -35,33 +29,7 @@ function resolveFeedItems(parsed: JsonRecord): JsonRecord[] {
   return [];
 }
 
-function buildPaper(input: ParsedPaper): Paper {
-  const titleEn = normalizeText(input.title);
-  const abs = normalizeText(input.abstractOriginal);
-  const cls = { groups: [] as { group: string; subtopics: string[] }[], tags: [] as string[] };
 
-  return {
-    id: normalizeText(input.doi) || normalizeText(input.url) || `${normalizeText(input.journal)}::${titleEn}`,
-    title_en: titleEn,
-    title_zh: "",
-    authors: dedupeStrings(input.authors),
-    author_affiliations: dedupeStrings(input.authorAffiliations),
-    author_affil_map: input.authorAffilMap,
-    journal: { name: normalizeText(input.journal), source_group: normalizeText(input.sourceGroup || input.journal), sort_order: input.sortOrder },
-    published_date: input.publishedDate,
-    doi: normalizeText(input.doi),
-    url: normalizeText(input.url),
-    image_url: normalizeText(input.imageUrl),
-    abstract_original: abs,
-    abstract_zh: "",
-    publication_type: normalizePublicationType(input.publicationType),
-    summary_zh: "",
-    novelty_points: [],
-    main_content: [],
-    classification: cls,
-    source: { provider: input.sourceProvider, raw_feed: input.rawFeed, raw_record_id: input.rawRecordId }
-  };
-}
 
 export class NatureParser {
   async collect(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
@@ -81,9 +49,9 @@ export class NatureParser {
       }
     }
 
-    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase1.start", phase: "full_collection" })}\n`);
+    logEvent("INFO", "workflow.fetch.phase1.start", { phase: "full_collection" });
     const rawPapers = await this.collectAllRawPapers(config, feeds, feedSortOrder, taxonomy);
-    process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.phase1.done", collected: rawPapers.length })}\n`);
+    logEvent("INFO", "workflow.fetch.phase1.done", { collected: rawPapers.length });
 
     return rawPapers;
   }
@@ -97,12 +65,12 @@ export class NatureParser {
     const natureLimit = pLimit(4);
 
     const feedResults = await Promise.all(feeds.map(async (feedUrl) => {
-        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.rss.start", feed: feedUrl })}\n`);
+        logEvent("INFO", "workflow.fetch.rss.start", { feed: feedUrl });
         let xml = "";
         try {
           xml = await natureLimit(() => fetchText(feedUrl, timeoutMs, 2));
         } catch {
-          process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "WARN", event: "workflow.fetch.rss.failed", feed: feedUrl })}\n`);
+          logEvent("WARN", "workflow.fetch.rss.failed", { feed: feedUrl });
           return [];
         }
 
@@ -161,7 +129,7 @@ export class NatureParser {
           );
         }
 
-        process.stdout.write(`${JSON.stringify({ timestamp: new Date().toISOString(), level: "INFO", event: "workflow.fetch.rss.done", feed: feedUrl, papers: feedPapers.length })}\n`);
+        logEvent("INFO", "workflow.fetch.rss.done", { feed: feedUrl, papers: feedPapers.length });
         return feedPapers;
     }));
 

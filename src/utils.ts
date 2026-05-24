@@ -59,6 +59,36 @@ function backoffDelay(attempt: number, baseMs = 1000): number {
   return Math.round(jitter);
 }
 
+/**
+ * 通用重试函数：指数退避 + 25% 抖动。
+ * 全部尝试失败后抛出最后一次的错误。
+ */
+export async function retry<T>(
+  fn: () => Promise<T>,
+  opts?: {
+    maxAttempts?: number;
+    baseDelayMs?: number;
+    onRetry?: (attempt: number, delayMs: number, error: unknown) => void;
+  }
+): Promise<T> {
+  const max = opts?.maxAttempts ?? 3;
+  const base = opts?.baseDelayMs ?? 1000;
+  let last: unknown;
+  for (let i = 0; i < max; i++) {
+    try {
+      return await fn();
+    } catch (e) {
+      last = e;
+      if (i < max - 1) {
+        const delay = backoffDelay(i + 1, base);
+        opts?.onRetry?.(i + 1, delay, e);
+        await new Promise((r) => setTimeout(r, delay));
+      }
+    }
+  }
+  throw last;
+}
+
 export async function fetchText(url: string, timeoutMs: number, retries = 3): Promise<string> {
   let lastError: unknown;
   for (let attempt = 1; attempt <= retries; attempt += 1) {
@@ -206,7 +236,7 @@ export function normalizePublicationType(value: unknown): string {
   const text = normalizeText(value).toLowerCase();
   if (!text) return "unknown";
   if (text.includes("review")) return "review";
-  if (text.includes("editorial") || text.includes("news & views") || text.includes("research briefing")) return "editorial";
+  if (text.includes("editorial") || text.includes("news & view") || text.includes("news & views") || text.includes("research briefing")) return "editorial";
   if (text.includes("letter") || text.includes("brief communication")) return "letter";
   if (text.includes("comment") || text.includes("perspective")) return "comment";
   if (text.includes("article") || text.includes("original research") || text.includes("research article")) return "article";

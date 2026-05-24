@@ -20,8 +20,9 @@ import { loadProfilesList } from "./config.js";
 import { collectRawPapers, fetchPapers, enrichPapers, loadTaxonomy, filterPapers } from "./modules.js";
 import { buildDigestTitle, buildMarkdown, buildRecords, buildCombinedMarkdown } from "./digest.js";
 import { publishDigest, pushToFeishu } from "./publish.js";
-import { upsertPapers, getKnownDedupKeys } from "./db.js";
+import { upsertPapers, getKnownDedupKeys, openDb } from "./db.js";
 import { itemKey } from "./utils.js";
+import { logEvent } from "./logger.js";
 
 // ─── Helpers ───────────────────────────────────────────────
 
@@ -60,27 +61,25 @@ async function stepFilter(ctx: ProfileContext): Promise<StepResult> {
   const allKeys = rawPapers.map((p) => itemKey(p));
   let knownKeys: Set<string> = new Set();
   try {
-    knownKeys = getKnownDedupKeys(dbPath, ctx.profile, allKeys);
+    const db = openDb(dbPath);
+    try {
+      knownKeys = getKnownDedupKeys(db, ctx.profile, allKeys);
+    } finally {
+      db.close();
+    }
   } catch {
     // DB 不存在或损坏时，全部当作新论文处理
   }
   const newPapers = rawPapers.filter((p) => !knownKeys.has(itemKey(p)));
   const skipped = rawPapers.length - newPapers.length;
   if (skipped > 0) {
-    process.stdout.write(`${JSON.stringify({
-      timestamp: new Date().toISOString(), level: "INFO",
-      event: "workflow.filter.db_skip", skipped, remaining: newPapers.length
-    })}\n`);
+    logEvent("INFO", "workflow.filter.db_skip", { skipped, remaining: newPapers.length });
   }
 
   const taxonomy = await loadTaxonomy(ctx.config);
   const filtered = await filterPapers(ctx.config, taxonomy, newPapers);
   await writeJson(out, filtered);
-  process.stdout.write(`${JSON.stringify({
-    timestamp: new Date().toISOString(), level: "INFO",
-    event: "workflow.filter.done", input: rawPapers.length, skipped, new: newPapers.length, output: filtered.length,
-    rejected: newPapers.length - filtered.length
-  })}\n`);
+  logEvent("INFO", "workflow.filter.done", { input: rawPapers.length, skipped, new: newPapers.length, output: filtered.length, rejected: newPapers.length - filtered.length });
   return {
     step: "filter",
     inputCount: rawPapers.length,
@@ -114,11 +113,14 @@ async function stepStore(ctx: ProfileContext): Promise<StepResult> {
   const papers = await readJson<Paper[]>(in_);
   const dbPath = path.join(path.dirname(ctx.outputDir), "papers.db");
   await fs.mkdir(path.dirname(ctx.outputDir), { recursive: true });
-  const count = upsertPapers(dbPath, ctx.profile, papers);
-  process.stdout.write(`${JSON.stringify({
-    timestamp: new Date().toISOString(), level: "INFO",
-    event: "workflow.store.done", db_path: dbPath, stored: count, total: papers.length
-  })}\n`);
+  const db = openDb(dbPath);
+  let count = 0;
+  try {
+    count = upsertPapers(db, ctx.profile, papers);
+  } finally {
+    db.close();
+  }
+  logEvent("INFO", "workflow.store.done", { db_path: dbPath, stored: count, total: papers.length });
   return {
     step: "store",
     inputCount: papers.length,
@@ -152,18 +154,16 @@ async function stepPush(ctx: ProfileContext): Promise<StepResult> {
   const t = Date.now();
   const mdFile = f(ctx.outputDir, "6-digest.md");
   const papFile = f(ctx.outputDir, "5-enriched.json");
-  const recFile = f(ctx.outputDir, "6-records.json");
   const title = buildDigestTitle(ctx.config);
   const papers = await readJson<Paper[]>(papFile);
-  const records = await readJson<JsonRecord[]>(recFile).catch(() => buildRecords(papers));
   const markdown = await fs.readFile(mdFile, "utf-8");
-  const publishResult = await publishDigest(ctx.config, { title, markdown, records, papers });
+  const prefix = ctx.config.feishu?.doc_title_prefix || "[每日论文追踪]";
+  const docTitle = `${prefix} ${title}`;
+  const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
   const errors: string[] = [];
-  const docPub = publishResult.doc_publish as JsonRecord | undefined;
-  const notifyPub = publishResult.notify_publish as JsonRecord | undefined;
+  const docPub = feishuResult.doc_publish as JsonRecord | undefined;
   if (docPub?.error) errors.push(`doc_create: ${String(docPub.error)}`);
-  if (notifyPub?.error) errors.push(`notify: ${String(notifyPub.error)}`);
-  if (!publishResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
+  if (!feishuResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
   return {
     step: "push",
     inputCount: papers.length,
@@ -237,13 +237,11 @@ async function stepCombinedPush(ctx: ProfileContext): Promise<StepResult> {
   if (docPub?.error) errors.push(`doc_create: ${String(docPub.error)}`);
   if (!feishuResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
 
-  process.stdout.write(`${JSON.stringify({
-    timestamp: new Date().toISOString(), level: "INFO",
-    event: "combined-push.done",
+  logEvent("INFO", "combined-push.done", {
     profiles: profilePapers.map((p) => p.profile),
     total_before_dedup: totalRaw,
     after_dedup: totalAfterDedup
-  })}\n`);
+  });
 
   return {
     step: "combined-push",

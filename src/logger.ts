@@ -3,6 +3,14 @@ import path from "node:path";
 
 type LogLevel = "INFO" | "WARN" | "ERROR";
 
+/** Stateless structured log to stdout (ERROR goes to stderr). No file persistence. */
+export function logEvent(level: LogLevel, event: string, data?: Record<string, unknown>): void {
+  const payload: Record<string, unknown> = { timestamp: new Date().toISOString(), level, event, ...data };
+  const line = `${JSON.stringify(payload)}\n`;
+  if (level === "ERROR") process.stderr.write(line);
+  else process.stdout.write(line);
+}
+
 export class Logger {
   constructor(private readonly logsDir: string) {}
 
