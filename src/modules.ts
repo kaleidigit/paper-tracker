@@ -2,30 +2,24 @@
  * modules.ts — 采集与增强的原子能力
  *
  * 采集：collectRawPapers()  调用采集器，返回去重后的全量 Paper[]
- * 筛选：filterPapers()      关键词 + LLM 筛选，返回子集
- * 采集+筛选：fetchPapers()  collectRawPapers + filterPapers（兼容 run-once 模式）
- * 增强：enrichPapers()      翻译 + 分类，返回 Paper[]
+ * 筛选：filterPapers()      LLM 筛选+翻译，返回子集
+ * 增强：enrichPapers()      文章页面抓取 + 翻译 + 分类，返回 Paper[]
  *
  * 文件输出、流程编排由 pipeline.ts / cli.ts 负责。
- * 飞书发布由 publish.ts 负责。
  * LLM 调用由 llm.ts 负责。
- * Markdown 生成由 digest.ts 负责。
  */
 
 import fs from "node:fs/promises";
 import pLimit from "p-limit";
 import { z } from "zod";
 import { logEvent } from "./logger.js";
-import { resolvePath, applyDefaults } from "./config.js";
+import { resolvePath } from "./config.js";
 import type { AppConfig, JsonRecord, Paper } from "./types.js";
-
 
 import { NatureParser } from "./parsers/nature-parser.js";
 import { OpenAlexParser } from "./parsers/openalex-parser.js";
+import { enrichRssPaper } from "./parsers/nature-parser.js";
 import { llmFilterAndTranslate, llmFilterAndTranslateBatch, translatePaperFields, classifyPaper, classifyPapersBatch } from "./llm.js";
-import { buildDigestTitle, buildMarkdown, buildRecords } from "./digest.js";
-
-import { publishDigest, sendAlert } from "./publish.js";
 import {
   normalizeText, itemKey, normalizePublicationType, shouldSkipLlmRescueByTitle, isPrimarilyChinese,
   retry
@@ -50,6 +44,7 @@ const ClassificationSchema = z.object({
 });
 
 const FALLBACK_CLASSIFICATION = { groups: [{ group: "未分类", subtopics: [] as string[] }], tags: [] as string[] } as Paper["classification"];
+
 // ─── Taxonomy ──────────────────────────────────────────────
 
 export async function loadTaxonomy(config: AppConfig): Promise<Array<Record<string, unknown>>> {
@@ -63,7 +58,6 @@ export async function loadTaxonomy(config: AppConfig): Promise<Array<Record<stri
 
 // ─── Collect ───────────────────────────────────────────────
 
-/** 阶段1：全量采集（不做筛选），返回去重+排序后的 Paper[] */
 export async function collectRawPapers(config: AppConfig, taxonomy?: Array<Record<string, unknown>>): Promise<Paper[]> {
   const tax = taxonomy || await loadTaxonomy(config);
   const [naturePapers, openalexPapers] = await Promise.all([
@@ -82,7 +76,8 @@ export async function collectRawPapers(config: AppConfig, taxonomy?: Array<Recor
     .sort((a, b) => `${b.published_date}`.localeCompare(`${a.published_date}`));
 }
 
-/** 阶段2：LLM 筛选，返回通过筛选的 Paper[] 子集 */
+// ─── Filter ────────────────────────────────────────────────
+
 export async function filterPapers(
   config: AppConfig,
   taxonomy: Array<Record<string, unknown>>,
@@ -99,7 +94,8 @@ export async function filterPapers(
     batches.push(llmQueue.slice(i, i + batchSize));
   }
 
-  const limit = pLimit(3);
+  const filterConcurrency = Math.max(1, (config.ai?.filter?.concurrency as number) ?? 3);
+  const limit = pLimit(filterConcurrency);
 
   const processBatch = async (batch: Paper[]): Promise<Array<JsonRecord & { title_zh?: string; abstract_zh?: string }>> => {
     try {
@@ -149,13 +145,6 @@ export async function filterPapers(
   return llmPassed;
 }
 
-/** 完整采集流程：全量采集 + 筛选（兼容 run-once 模式） */
-export async function fetchPapers(config: AppConfig): Promise<Paper[]> {
-  const taxonomy = await loadTaxonomy(config);
-  const raw = await collectRawPapers(config, taxonomy);
-  return filterPapers(config, taxonomy, raw);
-}
-
 // ─── Enrich ────────────────────────────────────────────────
 
 async function enrichOne(config: AppConfig, paper: Paper): Promise<Paper> {
@@ -172,7 +161,6 @@ async function enrichOne(config: AppConfig, paper: Paper): Promise<Paper> {
       classification: FALLBACK_CLASSIFICATION
     };
   }
-  // 中文期刊无需翻译，直接复用原文
   if (isPrimarilyChinese(paper.title_en || "") || isPrimarilyChinese(paper.abstract_original || "")) {
     return {
       ...paper,
@@ -183,7 +171,6 @@ async function enrichOne(config: AppConfig, paper: Paper): Promise<Paper> {
       classification: undefined
     };
   }
-  // 如果筛选阶段已合并完成翻译，跳过翻译
   const hasTranslation = Boolean(paper.title_zh) && Boolean(paper.abstract_zh);
   if (hasTranslation) {
     return { ...paper, publication_type: normalizePublicationType(paper.publication_type), summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
@@ -216,13 +203,24 @@ async function enrichOne(config: AppConfig, paper: Paper): Promise<Paper> {
 
 export async function enrichPapers(config: AppConfig, papers: Paper[]): Promise<Paper[]> {
   const taxonomy = await loadTaxonomy(config);
-  const concurrency = Math.max(1, config.ai?.enrich?.concurrency ?? 3);
+  const concurrency = Math.max(1, config.ai?.enrich?.concurrency ?? 5);
   const limit = pLimit(concurrency);
 
-  // Phase 1: preprocess (translate/normalize) — concurrent
-  const preprocessed: Paper[] = new Array(papers.length);
+  // Phase 0: Scrape article pages for RSS papers (deferred from collect to after filter)
+  const scraped: Paper[] = new Array(papers.length);
   for (let i = 0; i < papers.length; i++) {
     const paper = papers[i];
+    if (paper.source?.provider === "nature-rss") {
+      scraped[i] = await limit(() => enrichRssPaper(paper));
+    } else {
+      scraped[i] = paper;
+    }
+  }
+
+  // Phase 1: preprocess (translate/normalize) — concurrent
+  const preprocessed: Paper[] = new Array(scraped.length);
+  for (let i = 0; i < scraped.length; i++) {
+    const paper = scraped[i];
     if (shouldSkipLlmRescueByTitle(paper.title_en)) {
       preprocessed[i] = { ...paper, title_zh: "", abstract_zh: "", summary_zh: "", novelty_points: [], main_content: [] };
       continue;
@@ -240,7 +238,7 @@ export async function enrichPapers(config: AppConfig, papers: Paper[]): Promise<
     if (!preprocessed[i].classification) toClassify.push(i);
   }
   if (toClassify.length > 0) {
-    const batchSize = Math.max(1, (config.ai?.filter?.batch_size as number) ?? 3);
+    const batchSize = Math.max(1, (config.ai?.enrich?.classify_batch_size as number) ?? (config.ai?.filter?.batch_size as number) ?? 3);
     const classifyConcurrency = Math.max(1, Math.floor(concurrency / 2)) || 1;
     const classifyLimit = pLimit(classifyConcurrency);
     const batches: Array<{ indices: number[]; papers: Paper[] }> = [];
@@ -277,31 +275,4 @@ export async function enrichPapers(config: AppConfig, papers: Paper[]): Promise<
   }
 
   return preprocessed;
-}
-
-// ─── Workflow（兼容 cli.ts run-once 模式） ──────────────────
-
-export class EmptyPapersError extends Error {
-  constructor(message = "未获取到任何论文数据") {
-    super(message);
-    this.name = "EmptyPapersError";
-  }
-
-}
-export async function runWorkflow(config: AppConfig) {
-  applyDefaults(config);
-  const maxAttempts = Math.max(1, config.runtime.retry.max_attempts);
-  const backoffMs = Math.max(0, config.runtime.retry.backoff_ms);
-  const title = buildDigestTitle(config);
-
-  const papers = await retry(() => fetchPapers(config), { maxAttempts, baseDelayMs: backoffMs });
-  if (papers.length === 0) throw new EmptyPapersError();
-
-  const enriched = await retry(() => enrichPapers(config, papers), { maxAttempts, baseDelayMs: backoffMs });
-  const payload = { title, markdown: buildMarkdown(title, enriched), records: buildRecords(enriched), papers: enriched };
-  const publishResult = await retry(() => publishDigest(config, payload), { maxAttempts, baseDelayMs: backoffMs });
-  return { payload, publishResult };
-}
-export async function sendEmptyPapersAlert(config: AppConfig): Promise<void> {
-  await sendAlert(config, "未获取到任何论文数据，已终止日报推送，请排查抓取源、时间窗口与过滤配置。");
 }

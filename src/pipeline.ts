@@ -17,9 +17,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import type { JsonRecord, Paper, ProfileContext, StepResult } from "./types.js";
 import { loadProfilesList } from "./config.js";
-import { collectRawPapers, fetchPapers, enrichPapers, loadTaxonomy, filterPapers } from "./modules.js";
+import { collectRawPapers, enrichPapers, loadTaxonomy, filterPapers } from "./modules.js";
 import { buildDigestTitle, buildMarkdown, buildRecords, buildCombinedMarkdown } from "./digest.js";
-import { publishDigest, pushToFeishu } from "./publish.js";
+import { pushToFeishu } from "./publish.js";
 import { upsertPapers, getKnownDedupKeys, openDb } from "./db.js";
 import { itemKey } from "./utils.js";
 import { logEvent } from "./logger.js";
@@ -182,8 +182,8 @@ async function stepCombinedPush(ctx: ProfileContext): Promise<StepResult> {
   const feishu = ctx.config.feishu || {};
   const dataDir = feishu.data_dir || "data";
   const timezone = ctx.config.app?.timezone || "Asia/Shanghai";
-  const dateStr = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }))
-    .toISOString().slice(0, 10);
+  const nowInTz = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
+  const dateStr = nowInTz.toISOString().slice(0, 10);
 
   const isDryRun = process.env.PUSH_DRY_RUN === "1";
 
@@ -219,7 +219,29 @@ async function stepCombinedPush(ctx: ProfileContext): Promise<StepResult> {
   }
 
   const totalAfterDedup = profilePapers.reduce((sum, p) => sum + p.papers.length, 0);
-  const title = `${dateStr} 论文日报`;
+
+  // Title: use PUSH_DAYS (strict window, no grace) when available, fall back to actual paper date range
+  const pushDaysEnv = parseInt(process.env.PUSH_DAYS || "", 10);
+  let title: string;
+  if (pushDaysEnv > 1) {
+    const startDate = new Date(nowInTz);
+    startDate.setDate(startDate.getDate() - (pushDaysEnv - 1));
+    const startDateStr = startDate.toISOString().slice(0, 10);
+    title = `${startDateStr}~${dateStr} 论文日报（${pushDaysEnv}天）`;
+  } else if (pushDaysEnv === 1) {
+    title = `${dateStr} 论文日报（1天）`;
+  } else {
+    // Fallback: compute from actual paper dates
+    const allDates = profilePapers.flatMap((pp) => pp.papers.map((p) => p.published_date)).filter(Boolean) as string[];
+    const actualStart = allDates.length > 0 ? allDates.reduce((a, b) => (a < b ? a : b)) : dateStr;
+    const actualEnd = allDates.length > 0 ? allDates.reduce((a, b) => (a > b ? a : b)) : dateStr;
+    const spanDays = actualStart !== actualEnd
+      ? Math.ceil((new Date(actualEnd).getTime() - new Date(actualStart).getTime()) / 86400000) + 1
+      : 1;
+    title = actualStart !== actualEnd
+      ? `${actualStart}~${actualEnd} 论文日报（${spanDays}天）`
+      : `${actualEnd} 论文日报（1天）`;
+  }
   const markdown = buildCombinedMarkdown(title, profilePapers);
 
   // Write combined digest
@@ -230,12 +252,16 @@ async function stepCombinedPush(ctx: ProfileContext): Promise<StepResult> {
 
   const prefix = feishu.doc_title_prefix || "[每日论文追踪]";
   const docTitle = `${prefix} ${title}`;
-  const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
 
   const errors: string[] = [];
-  const docPub = feishuResult.doc_publish as JsonRecord | undefined;
-  if (docPub?.error) errors.push(`doc_create: ${String(docPub.error)}`);
-  if (!feishuResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
+  if (isDryRun) {
+    logEvent("INFO", "combined-push.dry-run", { profiles: profilePapers.map((p) => p.profile), total: totalAfterDedup });
+  } else {
+    const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
+    const docPub = feishuResult.doc_publish as JsonRecord | undefined;
+    if (docPub?.error) errors.push(`doc_create: ${String(docPub.error)}`);
+    if (!feishuResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
+  }
 
   logEvent("INFO", "combined-push.done", {
     profiles: profilePapers.map((p) => p.profile),

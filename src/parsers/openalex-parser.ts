@@ -26,7 +26,27 @@ function resolveSortOrder(issnMap: Map<string, number>, rawIssn: unknown): numbe
   return undefined;
 }
 
+/**
+ * Refine OpenAlex type using heuristics when the API type is unreliable.
+ * A single-page article without abstract in a general journal is likely a Letter/Correspondence.
+ */
+function refineOpenAlexType(item: JsonRecord, originalType: unknown, abstract: string): string {
+  const t = normalizeText(originalType);
+  const isArticle = t.includes("article");
 
+  if (!isArticle) return t;
+
+  const biblio = item.biblio as JsonRecord | undefined;
+  const firstPage = normalizeText(biblio?.first_page);
+  const lastPage = normalizeText(biblio?.last_page);
+
+  // Single page + no abstract → not a full research article (likely Letter/Comment/Editorial/News)
+  if (firstPage && lastPage && firstPage === lastPage && !abstract) {
+    return "comment";
+  }
+
+  return t;
+}
 
 export class OpenAlexParser {
   async collect(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
@@ -58,7 +78,7 @@ export class OpenAlexParser {
     // 带 grace 缓冲的窗口起始，补偿 OpenAlex 索引延迟
     const graceStart = graceWindowStartAt(config);
     const startDate = formatDateInTz(graceStart, "UTC");
-    const select = "id,title,doi,publication_date,type,authorships,primary_location,abstract_inverted_index";
+    const select = "id,title,doi,publication_date,type,biblio,authorships,primary_location,abstract_inverted_index";
     const papers: Paper[] = [];
     const timeoutMs = 30000;
     const perPage = 200;
@@ -132,7 +152,7 @@ export class OpenAlexParser {
             url: normalizeText(item.doi || item.id),
             abstractOriginal: abstract,
             imageUrl: "",
-            publicationType: normalizeText(item.type),
+            publicationType: refineOpenAlexType(item, item.type, abstract),
             sourceProvider: "openalex",
             rawFeed: "https://api.openalex.org/works",
             rawRecordId: normalizeText(item.id),

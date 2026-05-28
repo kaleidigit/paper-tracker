@@ -246,7 +246,7 @@ export function normalizePublicationType(value: unknown): string {
 export function shouldSkipLlmRescueByTitle(title: string): boolean {
   const t = normalizeText(title).toLowerCase();
   if (!t) return true;
-  return /\b(author\s*correction|publisher\s*correction|retraction|correction\b|briefing\s*chat|career\s*column|podcast|news\s*&\s*views|research\s*briefing)/i.test(t);
+  return /\b(author\s*correction|publisher\s*correction|retraction|correction\b|briefing\s*chat|career\s*column|podcast|news\s*&\s*views|research\s*briefing|issue\s*(editorial\s*)?masthead|issue\s*publication\s*information)/i.test(t);
 }
 
 

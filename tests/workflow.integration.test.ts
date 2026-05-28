@@ -3,7 +3,8 @@ import os from "node:os";
 import path from "node:path";
 import { afterAll, beforeAll, describe, expect, test, vi } from "vitest";
 import type { AppConfig } from "../src/types.js";
-import { EmptyPapersError, runWorkflow } from "../src/modules.js";
+import { collectRawPapers, filterPapers, enrichPapers } from "../src/modules.js";
+
 let tmpDir = "";
 const originalFetch = globalThis.fetch;
 
@@ -26,12 +27,12 @@ beforeAll(async () => {
     const url = String(input);
     if (url.includes("example.com/feed.xml")) {
       return new Response(
-        `<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><item><title>Battery paper</title><description>battery systems for clean energy</description><dc:type>research article</dc:type><pubDate>${new Date().toUTCString()}</pubDate><link>https://paper.test/1</link><guid>https://paper.test/1</guid></item></channel></rss>`,
+        `<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><item><title>Battery paper</title><description>battery systems for clean energy</description><dc:creator>Li Wei, Zhang San</dc:creator><dc:type>research article</dc:type><pubDate>${new Date().toUTCString()}</pubDate><link>https://paper.test/1</link><guid>https://paper.test/1</guid></item></channel></rss>`,
         { status: 200 }
       );
     }
+    // Article page scraping (deferred to enrich step)
     if (url.includes("paper.test/1")) {
-      // Nature article page mock — JSON-LD data
       return new Response(
         `<html><head><script type="application/ld+json">{"@type":"ScholarlyArticle","author":[{"@type":"Person","name":"Li Wei"},{"@type":"Person","name":"Zhang San"}],"description":"Battery systems provide critical storage for renewable energy integration."}</script></head></html>`,
         { status: 200 }
@@ -59,44 +60,62 @@ afterAll(async () => {
   }
 });
 
-describe("workflow integration", () => {
-  test("runs retrieval -> processor -> publisher", async () => {
-    const config: AppConfig = {
-      app: { timezone: "UTC" },
-      pipeline: { default_days: 2, digest_title_template: "{date} 环境能源论文日报" },
-      runtime: {
-        mode: "run-once",
-        state_dir: tmpDir,
-        logs_dir: tmpDir,
-        temp_dir: tmpDir,
-        command_timeout_ms: 10000,
-        retry: { max_attempts: 1, backoff_ms: 0 }
-      },
-      sources: {
-        journals_file: path.join(tmpDir, "journals.json")
-      },
-      classification: {
-        file: path.join(tmpDir, "classification.json")
-      },
-      ai: {
-        base_url: "https://mock-ai.test/v1",
-        model: "mock-model",
-        api_key_env: "SILICONFLOW_API_KEY"
-      },
-      feishu: {
-        execution_mode: "host",
-        data_dir: tmpDir
-      }
-    };
+function makeConfig(): AppConfig {
+  return {
+    app: { timezone: "UTC" },
+    pipeline: { default_days: 2 },
+    runtime: {
+      mode: "run-once",
+      state_dir: tmpDir,
+      logs_dir: tmpDir,
+      temp_dir: tmpDir,
+      command_timeout_ms: 10000,
+      retry: { max_attempts: 1, backoff_ms: 0 }
+    },
+    sources: {
+      journals_file: path.join(tmpDir, "journals.json")
+    },
+    classification: {
+      file: path.join(tmpDir, "classification.json")
+    },
+    ai: {
+      base_url: "https://mock-ai.test/v1",
+      model: "mock-model",
+      api_key_env: "SILICONFLOW_API_KEY"
+    },
+    feishu: {
+      execution_mode: "host",
+      data_dir: tmpDir
+    }
+  };
+}
+
+describe("pipeline steps", () => {
+  test("collect → filter → enrich produces papers with translations and classification", async () => {
     process.env.SILICONFLOW_API_KEY = "mock-key";
-    const result = await runWorkflow(config);
-    expect(result.payload.papers).toHaveLength(1);
-    expect(result.payload.papers[0].title_zh).toBe("中文标题");
-    expect(result.payload.papers[0].publication_type).toBe("article");
-    expect(typeof result.publishResult.saved_markdown).toBe("string");
+    const config = makeConfig();
+
+    // Step 1: Collect
+    const collected = await collectRawPapers(config);
+    expect(collected).toHaveLength(1);
+    expect(collected[0].title_en).toBe("Battery paper");
+
+    // Step 2: Filter (LLM filter + translate)
+    const taxonomy = [{ name: "油气-电力组", subtopics: [{ name: "储能与电池", keywords: ["battery"] }] }];
+    const filtered = await filterPapers(config, taxonomy, collected);
+    expect(filtered).toHaveLength(1);
+    expect(filtered[0].title_zh).toBe("中文标题");
+
+    // Step 3: Enrich (article scraping + normalize + classify)
+    const enriched = await enrichPapers(config, filtered);
+    expect(enriched).toHaveLength(1);
+    expect(enriched[0].publication_type).toBe("article");
+    expect(enriched[0].classification).toBeDefined();
+    // Article scraping should have enriched authors from JSON-LD
+    expect(enriched[0].authors).toContain("Li Wei");
   });
 
-  test("fails fast when papers is empty", async () => {
+  test("empty collection skips filter and enrich cleanly", async () => {
     globalThis.fetch = vi.fn(async (input: URL | RequestInfo) => {
       const url = String(input);
       if (url.includes("example.com/feed.xml")) {
@@ -108,33 +127,14 @@ describe("workflow integration", () => {
       return new Response("not found", { status: 404 });
     }) as typeof globalThis.fetch;
 
-    const config: AppConfig = {
-      app: { timezone: "UTC" },
-      pipeline: { default_days: 2, digest_title_template: "{date} 环境能源论文日报" },
-      runtime: {
-        mode: "run-once",
-        state_dir: tmpDir,
-        logs_dir: tmpDir,
-        temp_dir: tmpDir,
-        command_timeout_ms: 10000,
-        retry: { max_attempts: 1, backoff_ms: 0 }
-      },
-      sources: {
-        journals_file: path.join(tmpDir, "journals.json")
-      },
-      classification: {
-        file: path.join(tmpDir, "classification.json")
-      },
-      ai: {
-        base_url: "https://mock-ai.test/v1",
-        model: "mock-model",
-        api_key_env: "SILICONFLOW_API_KEY"
-      },
-      feishu: {
-        execution_mode: "host",
-        data_dir: tmpDir
-      }
-    };
-    await expect(runWorkflow(config)).rejects.toBeInstanceOf(EmptyPapersError);
+    const config = makeConfig();
+    const collected = await collectRawPapers(config);
+    expect(collected).toHaveLength(0);
+
+    const filtered = await filterPapers(config, [], collected);
+    expect(filtered).toHaveLength(0);
+
+    const enriched = await enrichPapers(config, filtered);
+    expect(enriched).toHaveLength(0);
   });
 });

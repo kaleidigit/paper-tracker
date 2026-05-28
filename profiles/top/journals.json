@@ -3,7 +3,10 @@
     "name": "Science",
     "source_group": "Science",
     "issn": "0036-8075",
-    "publisher_strategy": "openalex",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.science.org/action/showFeed?type=etoc&feed=rss&jc=science"
+    ],
     "sort_order": 0
   },
   {
@@ -91,7 +94,10 @@
     "name": "Science Advances",
     "source_group": "Science",
     "issn": "2375-2548",
-    "publisher_strategy": "openalex",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.science.org/action/showFeed?type=etoc&feed=rss&jc=sciadv"
+    ],
     "sort_order": 15
   },
   {
@@ -278,7 +284,10 @@
     "name": "Nature Reviews Clean Technology",
     "source_group": "Nature",
     "issn": "3005-0685",
-    "publisher_strategy": "openalex",
+    "publisher_strategy": "nature-rss",
+    "rss_feeds": [
+      "https://www.nature.com/nrct.rss"
+    ],
     "sort_order": 42
   },
   {

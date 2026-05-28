@@ -1,17 +1,11 @@
 /**
- * publish.ts
- *
- * 职责：飞书发布
- *   - publishDigest(): 将 digest 文件保存到 profile/date 目录 + 发布到飞书
- *   - sendAlert(): 发送告警消息
+ * publish.ts — 飞书发布
  *
  * 所有 lark-cli 调用均直接调用 subprocess，不走 shell 模板字符串。
  */
 
-import fs from "node:fs/promises";
-import path from "node:path";
 import { runCommand } from "./command.js";
-import type { AppConfig, JsonRecord, PublishPayload } from "./types.js";
+import type { AppConfig, JsonRecord } from "./types.js";
 import { normalizeText } from "./utils.js";
 
 // ─── 工具函数 ──────────────────────────────────────────────
@@ -61,8 +55,8 @@ function extractDocId(stdout: string): string {
   } catch { return ""; }
 }
 
-/** Maximum bytes per markdown chunk for append. --doc-format markdown has ~6KB server timeout threshold; stay safe at 4500. */
-const MD_CHUNK_BYTES = 4500;
+/** Maximum bytes per markdown chunk for append. Reduced to 3000 to stay well under server timeout threshold. */
+const MD_CHUNK_BYTES = 3000;
 
 function splitMarkdown(content: string): string[] {
   const lines = content.split("\n");
@@ -116,21 +110,30 @@ async function larkCreateDoc(
     // Step 2: split markdown into chunks and append each (avoids server timeout on large --doc-format markdown)
     const chunks = splitMarkdown(markdownContent);
     for (let i = 0; i < chunks.length; i++) {
-      if (i > 0) await new Promise(r => setTimeout(r, 200));
-      const appendResult = await runCommand(
-        "lark-cli",
-        ["docs", "+update", "--api-version", "v2", "--as", "bot",
-         "--doc", docId, "--command", "append", "--doc-format", "markdown",
-         "--content", chunks[i]],
-        timeout
-      );
-      if (appendResult.code !== 0) {
+      let lastError = "";
+      let success = false;
+      for (let attempt = 0; attempt < 3 && !success; attempt++) {
+        if (i > 0 || attempt > 0) await new Promise(r => setTimeout(r, attempt > 0 ? 1000 * (2 ** attempt) : 200));
+        const appendResult = await runCommand(
+          "lark-cli",
+          ["docs", "+update", "--api-version", "v2", "--as", "bot",
+           "--doc", docId, "--command", "append", "--doc-format", "markdown",
+           "--content", chunks[i]],
+          timeout
+        );
+        if (appendResult.code === 0) {
+          success = true;
+        } else {
+          lastError = `Chunk ${i + 1}/${chunks.length} attempt ${attempt + 1} failed: ${appendResult.stderr || appendResult.stdout}`;
+        }
+      }
+      if (!success) {
         return {
           command: "lark-cli docs +create",
-          returncode: appendResult.code,
+          returncode: 1,
           stdout: createResult.stdout,
-          stderr: appendResult.stderr,
-          error: `Chunk ${i + 1}/${chunks.length} append failed: ${appendResult.stderr || appendResult.stdout}`
+          stderr: lastError,
+          error: lastError
         };
       }
     }
@@ -258,102 +261,4 @@ export async function pushToFeishu(
   }
 
   return result;
-}
-
-/**
- * 将 digest 文件保存到 data/{profile}/{date}/，然后发布到飞书。
- *
- * 文件输出：
- *   6-digest.md       Markdown 全文
- *   6-records.json    论文记录（扁平化）
- *   latest.json       指向最新输出的指针
- */
-export async function publishDigest(
-  config: AppConfig,
-  payload: PublishPayload
-): Promise<JsonRecord> {
-  const feishu = config.feishu || {};
-  const dataDir = config.feishu?.data_dir || "data";
-  const timezone = config.app?.timezone || "Asia/Shanghai";
-  const now = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
-  const dateStr = now.toISOString().slice(0, 10);
-
-  const profile = (process.env.PROFILE as string) || "top";
-  const outputDir = path.join(dataDir, profile, dateStr);
-  await fs.mkdir(outputDir, { recursive: true });
-
-  const dryRun = process.env.PUSH_DRY_RUN === "1";
-
-  // ── 写入文件 ─────────────────────────────────────────
-  const mdFile = path.join(outputDir, "6-digest.md");
-  const recFile = path.join(outputDir, "6-records.json");
-
-  await fs.writeFile(mdFile, payload.markdown, "utf-8");
-  await fs.writeFile(recFile, `${JSON.stringify(payload.records, null, 2)}\n`, "utf-8");
-
-  const latestPath = path.join(outputDir, "latest.json");
-  await fs.writeFile(
-    latestPath,
-    `${JSON.stringify(
-      {
-        title: payload.title,
-        markdown_file: mdFile,
-        records_file: recFile,
-        profile,
-        date: dateStr,
-        created_at: now.toISOString(),
-        dry_run: dryRun
-      },
-      null,
-      2
-    )}\n`,
-    "utf-8"
-  );
-
-  process.stdout.write(
-    `${JSON.stringify({
-      timestamp: new Date().toISOString(),
-      level: "INFO",
-      event: "workflow.publish.files_written",
-      output_dir: outputDir,
-      markdown: mdFile,
-      dry_run: dryRun
-    })}\n`
-  );
-
-  // ── Dry-run：跳过飞书发布 ─────────────────────────────
-  if (dryRun) {
-    return {
-      saved_markdown: mdFile,
-      saved_records: recFile,
-      output_dir: outputDir,
-      execution_mode: "dry-run",
-      dry_run: true
-    };
-  }
-
-  // ── 正式发布 ─────────────────────────────────────────
-  const prefix = feishu.doc_title_prefix || "[每日论文追踪]";
-  const docTitle = `${prefix} ${payload.title}`;
-  const feishuResult = await pushToFeishu(config, docTitle, payload.markdown);
-  return {
-    saved_markdown: mdFile,
-    saved_records: recFile,
-    output_dir: outputDir,
-    latest_meta: latestPath,
-    dry_run: false,
-    ...feishuResult
-  };
-}
-
-// ─── 告警 ──────────────────────────────────────────────────
-
-export async function sendAlert(config: AppConfig, message: string): Promise<void> {
-  const feishu = config.feishu || {};
-  if (!Boolean(feishu.alert_enabled)) return;
-  const chatIds = resolveChatIds(feishu.alert_chat_ids, feishu.alert_chat_id, feishu.notify_chat_ids, feishu.notify_chat_id);
-  if (chatIds.length === 0) return;
-  await Promise.allSettled(
-    chatIds.map((id) => larkSendMessage(config, id, message))
-  );
 }

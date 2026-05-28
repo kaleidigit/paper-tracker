@@ -26,6 +26,7 @@ export interface Paper {
     domain?: string;
     subdomain?: string;
   };
+  source?: { provider?: string; raw_feed?: string; raw_record_id?: string };
   [key: string]: unknown;
 }
 
@@ -83,6 +84,7 @@ export interface AppConfig {
     enrich?: {
       enabled?: boolean;
       concurrency?: number;
+      classify_batch_size?: number;
     };
     temperature?: number;
     max_tokens?: number;
@@ -95,6 +97,7 @@ export interface AppConfig {
       min_confidence?: number;
       max_checks_per_run?: number;
       batch_size?: number;
+      concurrency?: number;
     };
     prompts?: {
       classify_system?: string;

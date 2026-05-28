@@ -304,23 +304,11 @@ export async function classifyPaper(config: AppConfig, paper: Paper, taxonomy: A
   const values = {
     taxonomy_json: JSON.stringify(taxonomy),
     paper_json: JSON.stringify({
-      title_en: paper.title_en || "",
-      title_zh: paper.title_zh || "",
-      abstract_original: paper.abstract_original || "",
-      abstract_zh: paper.abstract_zh || "",
-      journal: paper.journal || {},
-      published_date: paper.published_date || "",
-      doi: paper.doi || "",
-      url: paper.url || ""
+      title_zh: paper.title_zh || paper.title_en || "",
+      abstract_zh: paper.abstract_zh || paper.abstract_original || ""
     }),
-    title_en: paper.title_en || "",
-    title_zh: paper.title_zh || "",
-    abstract_original: paper.abstract_original || "",
-    abstract_zh: paper.abstract_zh || "",
-    journal_name: paper.journal?.name || "",
-    published_date: paper.published_date || "",
-    doi: paper.doi || "",
-    url: paper.url || ""
+    title_zh: paper.title_zh || paper.title_en || "",
+    abstract_zh: paper.abstract_zh || paper.abstract_original || ""
   };
   const systemPrompt = renderTemplate(
     normalizeText(prompts.classify_system) || "你是环境能源论文分类助手。请只输出 JSON，字段为 classification(groups, tags)。groups 为数组，每项包含 group 和 subtopics。",
@@ -361,16 +349,16 @@ export async function classifyPapersBatch(
   const prompts = config.ai?.prompts || {};
   const baseSystemPrompt = renderTemplate(
     normalizeText(prompts.classify_system) || "你是环境能源论文分类助手。请只输出 JSON，字段为 classification(groups, tags)。groups 为数组，每项包含 group 和 subtopics。",
-    {}
+    { taxonomy_json: JSON.stringify(taxonomy) }
   ) || "";
 
   const systemPrompt = `${baseSystemPrompt}\n\n你正在处理多篇论文。对每篇独立分类。返回格式：\n{"results": [{"index": 0, "classification": {"groups": [{"group": "...", "subtopics": ["..."]}], "tags": ["..."]}}, ...]}`;
 
   const papersList = papers
-    .map((p, i) => `[${i}] 标题：${p.title_zh || p.title_en || ""}\n    期刊：${p.journal?.name || ""}\n    日期：${p.published_date || ""}\n    摘要：${(p.abstract_zh || p.abstract_original || "").slice(0, 300)}`)
+    .map((p, i) => `[${i}] 标题：${p.title_zh || p.title_en || ""}\n    摘要：${(p.abstract_zh || p.abstract_original || "").slice(0, 300)}`)
     .join("\n\n");
 
-  const userPrompt = `分类体系：${JSON.stringify(taxonomy)}\n\n请对以下 ${papers.length} 篇论文逐一分类：\n\n${papersList}`;
+  const userPrompt = `请对以下 ${papers.length} 篇论文逐一分类：\n\n${papersList}`;
 
   const count = papers.length;
   logEvent("INFO", "workflow.enrich.batch_classify.start", { count });
