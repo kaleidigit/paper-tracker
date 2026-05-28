@@ -13,13 +13,16 @@
 8. **结构化日志统一使用 `logEvent()`**（`src/logger.ts`），不直接写 `process.stdout.write(JSON.stringify(...))`。
 9. **重试统一使用 `retry()`**（`src/utils.ts`），指数退避 + 25% 抖动。
 10. **配置文件有 Zod schema 验证**，加载时即失败，友好错误信息。
+11. **昂贵操作延迟到筛选后** —— 文章页抓取、LLM 翻译等高开销操作在 filter 之后执行，只处理通过筛选的论文。
+12. **采集策略由配置驱动** —— `journals.json` 的 `publisher_strategy` 字段决定采集方式（`nature-rss` / `openalex`），代码不硬编码策略映射。
+13. **管道执行单一入口** —— `auto-push.sh` 委托 `run.sh`，不重复实现管道逻辑；所有 profile 串行执行后统一 combined-push。
 
 ## 架构图
 
 ```
 Shell Scripts:
-  run.sh ──→ 串行 pipeline steps（collect→filter→enrich→store→digest→push），--dry-run
-  auto-push.sh ──→ cron 入口（周一 DAYS=3，全 profile 合并推送）
+  run.sh ──→ 串行 pipeline steps（collect→filter→enrich→store→digest→combined-push），--dry-run/--no-push
+  auto-push.sh ──→ cron 入口（周一 DAYS=3，委托 run.sh 执行）
 
 src/cli.ts
   │
@@ -29,10 +32,8 @@ src/cli.ts
         │     │
         │     ├── collectRawPapers() ─→ NatureParser + OpenAlexParser
         │     ├── filterPapers() ─→ llmFilterAndTranslateBatch
-        │     ├── fetchPapers() ─→ collect + filter（兼容 run-once）
-        │     ├── enrichPapers() ─→ translatePaperFields + classifyPaper
-        │     ├── loadTaxonomy() ─→ Zod 校验 classification.json
-        │     └── runWorkflow() ← 兼容 legacy run-once 模式
+        │     ├── enrichPapers() ─→ scrapeRSS + translate + classifyBatch
+        │     └── loadTaxonomy() ─→ Zod 校验 classification.json
         │
         ├── llm.ts (LLM 客户端)
         │
@@ -44,7 +45,7 @@ src/cli.ts
         │
         ├── digest.ts (纯能力：buildMarkdown / buildCombinedMarkdown / buildRecords)
         │
-        ├── publish.ts (pushToFeishu → lark-cli；publishDigest 保留供 runWorkflow 兼容)
+        ├── publish.ts (pushToFeishu → lark-cli + tenant_editable 权限)
         │
         ├── db.ts (openDb / getKnownDedupKeys / upsertPapers → 调用者管理连接)
         │
@@ -70,10 +71,10 @@ data/{profile}/
 |------|------|-----|
 | `src/cli.ts` | CLI 入口，`--profile`/`--step`/`--dry-run` | 无 |
 | `src/pipeline.ts` | **唯一 IO 编排层**：stepFilter/stepStore 管理 DB 连接生命周期（try/finally） | 文件 + DB |
-| `src/modules.ts` | 采集、筛选、增强；重试统一用 `utils.retry()` | 无 |
+| `src/modules.ts` | 采集、筛选、增强（含延迟抓取）；重试统一用 `utils.retry()` | 无 |
 | `src/llm.ts` | LLM 调用；日志用 `logEvent()` | 无 |
 | `src/digest.ts` | buildMarkdown / buildCombinedMarkdown / buildRecords | 无 |
-| `src/publish.ts` | pushToFeishu → lark-cli；publishDigest 保留供 runWorkflow | subprocess |
+| `src/publish.ts` | pushToFeishu → lark-cli + tenant_editable 权限设置 | subprocess |
 | `src/db.ts` | openDb(exported) / getKnownDedupKeys / upsertPapers；调用者管理关闭 | DB |
 | `src/config.ts` | 根配置 + profile deepMerge + applyDefaults；Zod 校验 config.json | 无 |
 | `src/types.ts` | 所有 TypeScript 类型 | 无 |
@@ -87,8 +88,8 @@ data/{profile}/
 ## Shell 脚本
 
 ```
-run.sh              ← 手动入口（串行 6 步，--dry-run）
-auto-push.sh        ← cron 入口（周一 DAYS=3，全 profile 合并推送）
+run.sh              ← 手动入口（串行 6 步 + combined-push，--dry-run/--no-push）
+auto-push.sh        ← cron 入口（周一 DAYS=3，委托 run.sh）
 deploy.sh           ← 安装依赖 + lark-cli 授权
 ```
 
@@ -100,7 +101,7 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 |------|------|------|------|
 | `collect` | — | `1-raw-fetched.json` | 全量采集 + 去重 |
 | `filter` | `1-raw-fetched.json` | `3-llm-filtered.json` | LLM 批量筛选+翻译（`batch_size` 篇/批，并发 3 批）；DB 查重跳过已知论文 |
-| `enrich` | `3-llm-filtered.json` | `5-enriched.json` | 预处理（翻译/归一化，并发 5）+ **批量分类**（`batch_size` 篇/批，并发 2 批，失败逐篇回退） |
+| `enrich` | `3-llm-filtered.json` | `5-enriched.json` | Phase 0: RSS 文章页抓取（延迟到筛选后）→ Phase 1: 翻译/归一化（并发 5）→ Phase 2: **批量分类**（`classify_batch_size` 篇/批，并发 ≈concurrency/2，失败逐篇回退） |
 
 | `store` | `5-enriched.json` | `papers.db` | SQLite 写入（try/finally 确保连接关闭） |
 | `digest` | `5-enriched.json` | `6-digest.md` + `6-records.json` | 日刊 Markdown + 扁平记录 |
@@ -112,11 +113,11 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 
 | 来源 | 策略 | 覆盖 |
 |------|------|------|
-| Nature RSS | RSS feed 全量拉取，时间窗口过滤 | Nature 及其 19 种子刊 |
-| OpenAlex ISSN | ISSN 过滤 + 30 天宽窗口 + 分页（per-page=200）| Science/PNAS/Joule/EES 等 |
+| Nature RSS | `publisher_strategy: "nature-rss"` 的期刊，RSS feed 全量拉取 + 时间窗口过滤 | Nature 及其子刊 + Science/SciAdv |
+| OpenAlex ISSN | `publisher_strategy: "openalex"` 的期刊，ISSN 过滤 + 30 天宽窗口 + 分页 | PNAS/Joule/EES 等 |
 | 合并去重 | Nature RSS + OpenAlex 合并，`itemKey()` 去重 | 最终写入 `1-raw-fetched.json` |
 
-新增期刊只需在 `journals.json` 添加一条记录，无需改代码。
+新增期刊只需在 `journals.json` 添加一条记录（含 `publisher_strategy` 字段指定采集策略），无需改代码。
 
 ## 筛选策略
 
@@ -138,8 +139,8 @@ deploy.sh           ← 安装依赖 + lark-cli 授权
 
 | Profile | 用途 | 期刊数 | 来源 |
 |---------|------|:---:|------|
-| `top` | 环境能源期刊 | 36 | Nature 系列 20 + Science/PNAS/Joule 等 |
-| `econ` | 环境经济学 | 32 | SUFE Tier 1-2 + 环境经济专刊 |
+| `top` | 环境能源期刊 | 36 | Nature 系列 + Science/SciAdv/PNAS/Joule 等 |
+| `econ` | 环境经济学 | 35 | SUFE Tier 1-2 + 环境经济专刊 |
 | `law` | 法学 | 8 | T14 flagship 法律评论 |
 
 ### 配置层级
@@ -246,6 +247,7 @@ npm run build   # tsc --noEmit（零错误）
 
 `publish.ts:pushToFeishu` 直接调用 subprocess：
 - `lark-cli docs +create` — 创建飞书文档（v2 API，先建空文档再分块 append Markdown，每块 ≤4500 字节）
+- `lark-cli drive permission.public patch` — 创建后自动设置 `tenant_editable` 权限（非阻塞，失败仅告警）
 - `lark-cli im +messages-send` — 发送群通知
 - 文档创建最多重试 3 次（指数退避 + 抖动）
 
@@ -259,6 +261,9 @@ npm run build   # tsc --noEmit（零错误）
 | opt-005 | 2026-05-24 | 结构化日志统一为 logEvent()（27 处替换） |
 | opt-004 | 2026-05-24 | 测试 5→56 用例（utils 20 + digest 9 + db 7，零错误） |
 | enrich-batch | 2026-05-24 | 分类逐篇→批量+并发，enrich 214s→107s（2x 加速） |
+| defer-scrape | 2026-05-28 | 文章页抓取从 collect 延迟到 enrich（141→~28 页，省 ~5min） |
+| pipeline-simplify | 2026-05-28 | 删除 workflow.ts/fetchPapers/publishDigest（-270 行），auto-push 委托 run.sh |
+| feishu-perm | 2026-05-28 | 文档创建后自动设置 tenant_editable 权限 |
 
 ## 数据追溯
 

@@ -35,7 +35,7 @@ cp config/.env.cn.example .env
 
 # Dry-run（仅生成本地文件，跳过飞书推送）
 # 指定回溯天数
-mo|./run.sh --profile top --days 2 --dry-run
+./run.sh --profile top --days 2 --dry-run
 ./run.sh --profile top --dry-run
 
 # 自动推送（cron 入口，周一 DAYS=3 覆盖周末积压）
@@ -50,27 +50,27 @@ mo|./run.sh --profile top --days 2 --dry-run
 profiles/{domain}/          领域配置（config.json, journals.json, classification.json）
 src/
   llm.ts                    LLM 客户端（筛选、翻译、分类）
-  publish.ts                飞书发布（lark-cli 直接调用）
+  publish.ts                飞书发布（lark-cli 直接调用 + 自动设置 tenant_editable 权限）
   digest.ts                 Markdown / JSON 记录生成
   pipeline.ts               分步编排器（含 DB 查重跳过逻辑）
-  modules.ts                采集与增强入口（fetchPapers, enrichPapers）
+  modules.ts                采集与增强入口（collectRawPapers, filterPapers, enrichPapers）
   db.ts                     SQLite 去重缓存（仅存原始字段，不含 LLM 派生数据）
   config.ts                 Profile 感知配置加载
   parsers/
     nature-parser.ts        Nature 系列 RSS + JSON-LD
     openalex-parser.ts      OpenAlex API（Science, PNAS, Joule, EES 等）
     article-parser.ts       通用文章页面解析
-run.sh                      完整管道编排（日刊 + 合并推送）
-auto-push.sh                cron 入口（每日合并推送）
+run.sh                      完整管道编排（逐 profile 串行 + combined-push）
+auto-push.sh                cron 入口（计算 DAYS，委托 run.sh）
 deploy.sh                   一键部署
 ```
 
 ### 管道流程
 
 ```
-collect   ──→  1-raw-fetched.json      RSS/OpenAlex 全量采集
+collect   ──→  1-raw-fetched.json      RSS/OpenAlex 全量采集（不抓文章页）
 filter    ──→  3-llm-filtered.json     DB查重(跳过已知论文) → LLM 合并筛选+翻译
-enrich    ──→  5-enriched.json         LLM 分类（翻译已在筛选阶段完成）
+enrich    ──→  5-enriched.json         RSS文章页抓取(延迟) → LLM 翻译 → 批量分类
 store     ──→  papers.db               写入 SQLite（13 列精简模式，仅存原始字段）
 digest    ──→  6-digest.md             生成日刊 Markdown
 push      ──→  飞书文档 + 群消息通知
@@ -123,7 +123,7 @@ sqlite3 data/top/papers.db \
 ```bash
 ./run.sh --profile top                  # 完整管道
 ./run.sh --profile top --dry-run        # dry-run
-gb|./run.sh --profile top --days 2 --dry-run  # 指定回溯天数
+./run.sh --profile top --days 2 --dry-run  # 指定回溯天数
 ./auto-push.sh                          # cron 自动推送
 ```
 
@@ -190,7 +190,7 @@ npx tsx src/cli.ts --step combined-push --profile top
 | Profile | 用途 | 筛选模式 | 期刊数 |
 |---------|------|---------|--------|
 || `top` | 环境能源期刊合集 | LLM 合并筛选+翻译 | 36 |
-| `econ` | 环境经济学期刊 | 纯 LLM 直通 | 32 |
+| `econ` | 环境经济学期刊 | 纯 LLM 直通 | 35 |
 | `law` | 法学环境能源论文 | 纯 LLM 直通 | 8 |
 
 新增 profile：创建 `profiles/{name}/` 目录，放入 `config.json`、`journals.json`、`classification.json`，无需改代码。
