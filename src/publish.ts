@@ -138,6 +138,35 @@ async function larkCreateDoc(
       }
     }
 
+    // Step 3: set tenant-editable permission (non-blocking)
+    try {
+      const permResult = await runCommand(
+        "lark-cli",
+        ["drive", "permission.public", "patch",
+         "--params", JSON.stringify({ token: docId, type: "docx" }),
+         "--data", JSON.stringify({ link_share_entity: "tenant_editable" }),
+         "--yes"],
+        timeout
+      );
+      if (permResult.code !== 0) {
+        process.stderr.write(`${JSON.stringify({
+          timestamp: new Date().toISOString(),
+          level: "WARN",
+          event: "feishu.permission_failed",
+          doc_id: docId,
+          error: permResult.stderr || permResult.stdout
+        })}\n`);
+      }
+    } catch (err) {
+      process.stderr.write(`${JSON.stringify({
+        timestamp: new Date().toISOString(),
+        level: "WARN",
+        event: "feishu.permission_failed",
+        doc_id: docId,
+        error: String(err)
+      })}\n`);
+    }
+
     return {
       command: "lark-cli docs +create",
       returncode: 0,
