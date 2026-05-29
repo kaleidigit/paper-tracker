@@ -441,6 +441,69 @@ npm run build
 
 bootstrap_lark_auth
 
+# ─── Bot 权限校验 ──────────────────────────────────────────────
+REQUIRED_BOT_SCOPES=(
+  "docs:permission.setting:write_only"
+  "docs:permission.setting:read"
+)
+SCOPE_CONSOLE_URL="https://open.feishu.cn/page/scope-apply?clientID=cli_a9596e31b4b8dceb"
+
+check_bot_scope() {
+  local scope="$1"
+  local tmp_out
+  tmp_out="$(mktemp)"
+
+  # 使用 permission.public.get 探测 scope 是否已开通：
+  #   - 返回 "App scope not enabled" → scope 未开通
+  #   - 返回其他错误（如 token 无效）→ scope 已开通
+  set +e
+  run_lark drive permission.public get \
+    --params '{"token":"doxcn0000000000000000000000","type":"docx"}' \
+    --as bot 2>"$tmp_out" >/dev/null
+  set -e
+
+  if grep -q "App scope not enabled\|99991672" "$tmp_out" 2>/dev/null; then
+    rm -f "$tmp_out"
+    return 1
+  fi
+  rm -f "$tmp_out"
+  return 0
+}
+
+verify_bot_scopes() {
+  local missing=()
+  local scope=""
+
+  log "验证 Bot 应用权限..."
+
+  for scope in "${REQUIRED_BOT_SCOPES[@]}"; do
+    if check_bot_scope "$scope"; then
+      log "  ✓ ${scope}"
+    else
+      log "  ✗ ${scope} — 未开通"
+      missing+=("$scope")
+    fi
+  done
+
+  if [ "${#missing[@]}" -gt 0 ]; then
+    echo ""
+    log "=============================================="
+    log "⚠️  Bot 应用缺少以下权限，文档权限设置将无法生效："
+    for scope in "${missing[@]}"; do
+      log "  - ${scope}"
+    done
+    log ""
+    log "请在飞书开发者后台开通权限（一次性操作）："
+    log "  ${SCOPE_CONSOLE_URL}&scopes=$(printf '%s' "${missing[@]}" | tr ' ' '%20')"
+    log "=============================================="
+    echo ""
+  else
+    log "Bot 应用权限完整。"
+  fi
+}
+
+verify_bot_scopes
+
 if [ "$MANUAL_AUTH" -eq 1 ]; then
   log "manual mode finished. 请扫码授权后再次执行 ./deploy.sh 完成后续部署。"
   exit 0

@@ -50,7 +50,7 @@ cp config/.env.cn.example .env
 profiles/{domain}/          领域配置（config.json, journals.json, classification.json）
 src/
   llm.ts                    LLM 客户端（筛选、翻译、分类）
-  publish.ts                飞书发布（lark-cli 直接调用 + 自动设置 tenant_editable 权限）
+  publish.ts                飞书发布（lark-cli 直接调用 + 自动设置 tenant_editable 权限，所有调用统一 --as bot）
   digest.ts                 Markdown / JSON 记录生成
   pipeline.ts               分步编排器（含 DB 查重跳过逻辑）
   modules.ts                采集与增强入口（collectRawPapers, filterPapers, enrichPapers）
@@ -62,7 +62,7 @@ src/
     article-parser.ts       通用文章页面解析
 run.sh                      完整管道编排（逐 profile 串行 + combined-push）
 auto-push.sh                cron 入口（计算 DAYS，委托 run.sh）
-deploy.sh                   一键部署
+deploy.sh                   一键部署（含 bot scope 校验：docs:permission.setting:write_only / read）
 ```
 
 ### 管道流程
@@ -175,6 +175,8 @@ npx tsx src/cli.ts --step combined-push --profile top
 
 ### 飞书推送
 
+> **前置条件**：Bot 应用需在飞书开发者后台开通 `docs:permission.setting:write_only` 权限，文档才能自动设为「租户内可编辑」。`./deploy.sh` 会自动校验。
+
 ```jsonc
 "feishu": {
   "doc_title_prefix": "[每日论文追踪]",
@@ -215,6 +217,6 @@ cat data/combined/2026-05-23/6-digest-combined.md | head -30
 ## 测试
 
 ```bash
-npm test          # vitest (6 tests)
+npm test          # vitest (6 文件 56 用例)
 npm run build     # tsc 类型检查
 ```

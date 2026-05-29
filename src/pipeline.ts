@@ -163,6 +163,7 @@ async function stepPush(ctx: ProfileContext): Promise<StepResult> {
   const errors: string[] = [];
   const docPub = feishuResult.doc_publish as JsonRecord | undefined;
   if (docPub?.error) errors.push(`doc_create: ${String(docPub.error)}`);
+  if (docPub?.permission_error) errors.push(`permission: ${String(docPub.permission_error)}`);
   if (!feishuResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
   return {
     step: "push",
@@ -251,6 +252,7 @@ async function stepCombinedPush(ctx: ProfileContext): Promise<StepResult> {
     const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
     const docPub = feishuResult.doc_publish as JsonRecord | undefined;
     if (docPub?.error) errors.push(`doc_create: ${String(docPub.error)}`);
+    if (docPub?.permission_error) errors.push(`permission: ${String(docPub.permission_error)}`);
     if (!feishuResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
   }
 

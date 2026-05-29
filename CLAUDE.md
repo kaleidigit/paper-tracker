@@ -1,5 +1,5 @@
 # CLAUDE.md
-> 最后更新：2026-05-24，反映 opt-001~008 + enrich 批量分类
+> 最后更新：2026-05-29，反映 feishu-perm 权限修复 + deploy.sh bot scope 校验
 
 ## 核心原则
 
@@ -74,7 +74,7 @@ data/{profile}/
 | `src/modules.ts` | 采集、筛选、增强（含延迟抓取）；重试统一用 `utils.retry()` | 无 |
 | `src/llm.ts` | LLM 调用；日志用 `logEvent()` | 无 |
 | `src/digest.ts` | buildMarkdown / buildCombinedMarkdown / buildRecords | 无 |
-| `src/publish.ts` | pushToFeishu → lark-cli + tenant_editable 权限设置 | subprocess |
+| `src/publish.ts` | pushToFeishu → lark-cli（所有调用统一 `--as bot`）+ tenant_editable 权限（错误传播到管道） | subprocess |
 | `src/db.ts` | openDb(exported) / getKnownDedupKeys / upsertPapers；调用者管理关闭 | DB |
 | `src/config.ts` | 根配置 + profile deepMerge + applyDefaults；Zod 校验 config.json | 无 |
 | `src/types.ts` | 所有 TypeScript 类型 | 无 |
@@ -90,7 +90,7 @@ data/{profile}/
 ```
 run.sh              ← 手动入口（串行 6 步 + combined-push，--dry-run/--no-push）
 auto-push.sh        ← cron 入口（周一 DAYS=3，委托 run.sh）
-deploy.sh           ← 安装依赖 + lark-cli 授权
+deploy.sh           ← 安装依赖 + lark-cli 授权 + bot scope 校验（verify_bot_scopes）
 ```
 
 单步执行：`npx tsx src/cli.ts --step <name> --profile <name>`
@@ -245,11 +245,13 @@ npm run build   # tsc --noEmit（零错误）
 
 ## lark-cli 使用方式
 
-`publish.ts:pushToFeishu` 直接调用 subprocess：
-- `lark-cli docs +create` — 创建飞书文档（v2 API，先建空文档再分块 append Markdown，每块 ≤4500 字节）
-- `lark-cli drive permission.public patch` — 创建后自动设置 `tenant_editable` 权限（非阻塞，失败仅告警）
+`publish.ts:pushToFeishu` 直接调用 subprocess（所有 lark-cli 调用统一 `--as bot`）：
+- `lark-cli docs +create` — 创建飞书文档（v2 API，先建空文档再分块 append Markdown，每块 ≤3000 字节）
+- `lark-cli docs +update` — 分块追加 Markdown 内容（每块重试 3 次）
+- `lark-cli drive permission.public patch` — 创建后自动设置 `tenant_editable` 权限（非阻塞，失败传播到管道 errors）
 - `lark-cli im +messages-send` — 发送群通知
 - 文档创建最多重试 3 次（指数退避 + 抖动）
+- Bot 需开通 `docs:permission.setting:write_only` scope 才能设置权限
 
 ## 优化历史
 
@@ -264,6 +266,7 @@ npm run build   # tsc --noEmit（零错误）
 | defer-scrape | 2026-05-28 | 文章页抓取从 collect 延迟到 enrich（141→~28 页，省 ~5min） |
 | pipeline-simplify | 2026-05-28 | 删除 workflow.ts/fetchPapers/publishDigest（-270 行），auto-push 委托 run.sh |
 | feishu-perm | 2026-05-28 | 文档创建后自动设置 tenant_editable 权限 |
+| feishu-perm-fix | 2026-05-29 | 修复权限命令缺少 `--as bot` 导致 scope 错误；权限失败传播到管道；deploy.sh 新增 bot scope 校验 |
 
 ## 数据追溯
 
