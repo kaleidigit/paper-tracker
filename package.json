@@ -26,8 +26,7 @@
     "step:digest": "tsx src/cli.ts --step digest",
     "step:push": "tsx src/cli.ts --step push",
     "run": "bash ./scripts/run.sh",
-    "test": "vitest run",
-    "lint:md": "markdownlint-cli2"
+    "test": "vitest run"
   },
   "dependencies": {
     "better-sqlite3": "^12.10.0",
@@ -39,7 +38,6 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^24.7.2",
-    "markdownlint-cli2": "^0.18.1",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"
