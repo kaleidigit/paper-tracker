@@ -231,16 +231,7 @@ async function stepCombinedPush(ctx: ProfileContext): Promise<StepResult> {
   } else if (pushDaysEnv === 1) {
     title = `${dateStr} 论文日报（1天）`;
   } else {
-    // Fallback: compute from actual paper dates
-    const allDates = profilePapers.flatMap((pp) => pp.papers.map((p) => p.published_date)).filter(Boolean) as string[];
-    const actualStart = allDates.length > 0 ? allDates.reduce((a, b) => (a < b ? a : b)) : dateStr;
-    const actualEnd = allDates.length > 0 ? allDates.reduce((a, b) => (a > b ? a : b)) : dateStr;
-    const spanDays = actualStart !== actualEnd
-      ? Math.ceil((new Date(actualEnd).getTime() - new Date(actualStart).getTime()) / 86400000) + 1
-      : 1;
-    title = actualStart !== actualEnd
-      ? `${actualStart}~${actualEnd} 论文日报（${spanDays}天）`
-      : `${actualEnd} 论文日报（1天）`;
+    title = `${dateStr} 论文日报（1天）`;
   }
   const markdown = buildCombinedMarkdown(title, profilePapers);
 
