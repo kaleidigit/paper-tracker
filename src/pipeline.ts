@@ -17,7 +17,7 @@ import path from "node:path";
 import type { Paper, ProfileContext, StepResult } from "./types.js";
 import { loadProfilesList } from "./config.js";
 import { collectRawPapers, enrichPapers, loadTaxonomy, filterPapers } from "./modules.js";
-import { buildDigestTitle, buildMarkdown, buildRecords } from "./digest.js";
+import { buildDigestTitle, buildMarkdown, buildRecords, buildCombinedMarkdown } from "./digest.js";
 import { upsertPapers, getKnownDedupKeys, openDb } from "./db.js";
 import { buildRssXml } from "./rss.js";
 import { digestToHtmlPage } from "./publishers/render-html.js";
@@ -286,6 +286,86 @@ async function stepCombinedRss(ctx: ProfileContext): Promise<StepResult> {
   return { step: "combined-rss", inputCount: allPapers.length, outputCount: allPapers.length, inputFile: "", outputFile: out, durationMs: Date.now() - t };
 }
 
+// ─── Combined Notify（跨 profile 合并发送一封邮件）─────────
+
+async function stepCombinedNotify(ctx: ProfileContext): Promise<StepResult> {
+  const t = Date.now();
+  const emailCfg = ctx.config.email || {};
+
+  if (!emailCfg.enabled) {
+    return { step: "combined-notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t };
+  }
+
+  const host = emailCfg.smtp_host || "smtp.126.com";
+  const port = emailCfg.smtp_port || 465;
+  const secure = emailCfg.smtp_secure !== false;
+  const userEnv = emailCfg.user_env || "EMAIL_USER";
+  const passEnv = emailCfg.pass_env || "EMAIL_PASS";
+  const user = process.env[userEnv] || "";
+  const pass = process.env[passEnv] || "";
+  if (!user || !pass) {
+    return { step: "combined-notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: `Missing SMTP credentials` };
+  }
+
+  const toEnv = emailCfg.to_env || "EMAIL_RECIPIENTS";
+  const toRaw = process.env[toEnv] || "";
+  const to = toRaw.split(",").map((s) => s.trim()).filter(Boolean);
+  if (to.length === 0) {
+    return { step: "combined-notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: "No recipients" };
+  }
+
+  const dataDir = "data";
+  const profiles = await loadProfilesList();
+  const profilePapers: Array<{ profile: string; papers: Paper[] }> = [];
+  const seen = new Set<string>();
+  let totalRaw = 0;
+
+  for (const profile of profiles) {
+    try {
+      const enrichedFile = path.join(dataDir, profile, ctx.dateStr, "5-enriched.json");
+      const enriched = await readJson<Paper[]>(enrichedFile);
+      totalRaw += enriched.length;
+      const unique: Paper[] = [];
+      for (const paper of enriched) {
+        const key = itemKey(paper);
+        if (!seen.has(key)) {
+          seen.add(key);
+          unique.push(paper);
+        }
+      }
+      if (unique.length > 0) profilePapers.push({ profile, papers: unique });
+    } catch {
+      // profile has no data for today
+    }
+  }
+
+  const totalPapers = profilePapers.reduce((sum, p) => sum + p.papers.length, 0);
+  if (totalPapers === 0) {
+    logEvent("INFO", "email.skip", { reason: "no papers" });
+    return { step: "combined-notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t };
+  }
+
+  const mdTitle = `${ctx.dateStr} 论文日报`;
+  const markdownContent = buildCombinedMarkdown(mdTitle, profilePapers);
+
+  const rssCfg = ctx.config.rss || {};
+  const htmlTitle = `${ctx.dateStr} ${rssCfg.title || "论文日报"}`;
+  const html = digestToHtmlPage(htmlTitle, markdownContent);
+  const from = emailCfg.from || "noreply@126.com";
+  const subjTpl = emailCfg.subject_template || "论文日报 {date}";
+  const subject = `${subjTpl.replace("{date}", ctx.dateStr)}（${totalPapers}篇）`;
+
+  try {
+    await sendResendEmail(host, port, secure, user, pass, from, to, subject, html);
+    logEvent("INFO", "email.sent", { to: to.length, papers: totalPapers });
+  } catch (err) {
+    logEvent("ERROR", "email.failed", { error: String(err) });
+    return { step: "combined-notify", inputCount: totalRaw, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: String(err) };
+  }
+
+  return { step: "combined-notify", inputCount: totalRaw, outputCount: to.length, inputFile: "", outputFile: "", durationMs: Date.now() - t };
+}
+
 // ─── Runner ────────────────────────────────────────────────
 
 const STEPS: Record<string, (ctx: ProfileContext) => Promise<StepResult>> = {
@@ -296,7 +376,8 @@ const STEPS: Record<string, (ctx: ProfileContext) => Promise<StepResult>> = {
   digest: stepDigest,
   rss: stepRss,
   notify: stepNotify,
-  "combined-rss": stepCombinedRss
+  "combined-rss": stepCombinedRss,
+  "combined-notify": stepCombinedNotify
 };
 
 export async function runStep(name: string, ctx: ProfileContext): Promise<StepResult> {

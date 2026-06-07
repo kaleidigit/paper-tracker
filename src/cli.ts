@@ -107,7 +107,7 @@ async function main(): Promise<void> {
 
   process.stderr.write("Usage: npx tsx src/cli.ts --step <name> [--profile <name>] [--dry-run]\n");
   process.stderr.write("       If --profile is omitted, runs for all profiles.\n");
-  process.stderr.write("Steps: collect, filter, enrich, store, digest, rss, notify, combined-rss\n");
+  process.stderr.write("Steps: collect, filter, enrich, store, digest, rss, notify, combined-rss, combined-notify\n");
   process.exitCode = 1;
 }
 

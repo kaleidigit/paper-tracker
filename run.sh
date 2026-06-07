@@ -82,7 +82,7 @@ for PROFILE_NAME in "${PROFILES[@]}"; do
 
   echo "[run] profile=$PROFILE_NAME dry_run=$DRY_RUN days=${DAYS:-from_config}"
 
-  STEPS="collect filter enrich store digest rss notify"
+  STEPS="collect filter enrich store digest rss"
 
 
   for step in $STEPS; do
@@ -105,6 +105,11 @@ if [[ "$EXIT_CODE" -eq 0 && "$NO_PUSH" != "1" ]]; then
   echo "[run] === combined-rss ==="
   if ! npx tsx src/cli.ts --step combined-rss --profile "${PROFILES[0]}"; then
     echo "[run] WARNING: combined-rss failed" >&2
+  fi
+
+  echo "[run] === combined-notify ==="
+  if ! npx tsx src/cli.ts --step combined-notify --profile "${PROFILES[0]}"; then
+    echo "[run] WARNING: combined-notify failed" >&2
   fi
 fi
 
