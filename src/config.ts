@@ -171,7 +171,7 @@ export function applyDefaults(parsed: AppConfig): void {
   parsed.ai.filter.batch_size = asNumber(parsed.ai.filter.batch_size, 3);
   parsed.sources = parsed.sources || {};
   parsed.rss = { enabled: true, language: "zh-CN", max_items: 100, ...parsed.rss };
-  parsed.email = { enabled: false, provider: "smtp", smtp_host: "smtp.163.com", smtp_port: 465, smtp_secure: true, subject_template: "论文日报 {date}", ...parsed.email };
+  parsed.email = { enabled: false, provider: "smtp", smtp_host: "smtp.126.com", smtp_port: 465, smtp_secure: true, subject_template: "论文日报 {date}", ...parsed.email };
 }
 
 // ─── Legacy config loader (backward compatible) ──────────────

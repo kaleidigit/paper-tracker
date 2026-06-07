@@ -14,13 +14,13 @@
   "email": {
     "enabled": true,
     "provider": "smtp",
-    "smtp_host": "smtp.163.com",
+    "smtp_host": "smtp.126.com",
     "smtp_port": 465,
     "smtp_secure": true,
     "user_env": "EMAIL_USER",
     "pass_env": "EMAIL_PASS",
     "to_env": "EMAIL_RECIPIENTS",
-    "from": "Paper Tracker <paper-tracker@163.com>"
+    "from": "Paper Tracker <paper_tracker@126.com>"
   },
   "ai": {
     "provider": "deepseek",
