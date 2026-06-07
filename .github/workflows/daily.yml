@@ -25,6 +25,18 @@ jobs:
 
       - run: npm ci
 
+      # Restore SQLite DB from cache (preserves dedup history across runs)
+      - name: Restore DB cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/top/papers.db
+            data/econ/papers.db
+            data/law/papers.db
+          key: papers-db-${{ github.run_id }}
+          restore-keys: |
+            papers-db-
+
       - name: Configure secrets
         run: |
           DAY_OF_WEEK=$(TZ=Asia/Shanghai date +%u)  # 1=Mon ... 7=Sun
@@ -51,3 +63,14 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
+
+      # Save updated DB for next run (always runs, even if pipeline failed)
+      - name: Save DB cache
+        if: always()
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/top/papers.db
+            data/econ/papers.db
+            data/law/papers.db
+          key: papers-db-${{ github.run_id }}
