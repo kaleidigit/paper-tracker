@@ -84,7 +84,7 @@ combined-notify   ──→  邮件（SMTP）                 发送一封 HTML 
 
 每步输出保存到 `data/{profile}/{date}/`，RSS/HTML 输出到 `public/`。
 
-HTML 浏览页左侧有**固定侧边目录**，可点击跳转到任意论文；邮件客户端中目录显示为顶部列表。移动端侧边栏自动隐藏。
+HTML 浏览页采用 **table 双栏布局**（左侧目录 + 右侧正文），可点击跳转到任意论文；邮件客户端中目录显示为顶部列表。移动端自动隐藏侧边栏。
 
 ### 推送方式
 
@@ -313,6 +313,6 @@ cat public/feeds/combined.xml | head -30
 ## 测试
 
 ```bash
-npm test          # vitest (6 文件 56 用例)
+npm test          # vitest (9 文件 81 用例)
 npm run build     # tsc 类型检查
 ```

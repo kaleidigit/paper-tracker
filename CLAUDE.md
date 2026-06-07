@@ -1,5 +1,5 @@
 # CLAUDE.md
-> 最后更新：2026-06-07，移除 lark-cli 依赖，新增 RSS Feed + Resend 邮件推送
+> 最后更新：2026-06-08，7 天滚动 RSS 窗口 + table 双栏布局 + 81 项测试
 
 ## 核心原则
 
@@ -20,7 +20,7 @@
 
 ```
 Shell Scripts:
-  run.sh ──→ 串行 pipeline steps（collect→filter→enrich→store→digest→rss→notify），--dry-run
+  run.sh ──→ 串行 pipeline steps（collect→filter→enrich→store→digest→rss→notify）+ combined-rss→combined-notify，--dry-run
   auto-push.sh ──→ cron 入口（周一 DAYS=3，委托 run.sh 执行）
 
 src/cli.ts
@@ -121,8 +121,8 @@ auto-push.sh        ← cron 入口（周一 DAYS=3，委托 run.sh）
 
 **RSS Feed（主力）+ SMTP 邮件（辅助）**
 
-- RSS 2.0 + `<content:encoded>` HTML，托管 GitHub Pages
-- HTML 浏览页左侧固定侧边目录，点击跳转到论文，移动端自动隐藏
+- RSS 2.0 + `<content:encoded>` HTML，托管 GitHub Pages，7 天滚动窗口自动清理旧条目
+- HTML 浏览页 table 双栏布局（左侧目录 + 右侧正文），点击跳转到论文，移动端自动隐藏
 - 邮件发送合并 HTML 日报（所有 profile 一封邮件）
 - QQ 邮箱绑定微信后有新邮件提醒，间接实现微信通知
 - GitHub Actions 定时运行（工作日 08:37 CST），支持手动清缓存重跑
@@ -206,8 +206,9 @@ AI 配置合并：根 `config.json` 提供默认值，profile 只覆盖差异项
 ```jsonc
 "rss.site_url": "https://<user>.github.io/paper-tracker"
 "rss.language": "zh-CN"
-"email.provider": "resend"
-"email.api_key_env": "RESEND_API_KEY"
+"email.provider": "smtp"
+"email.smtp_host": "smtp.126.com"
+"email.smtp_port": 465
 "email.to_env": "EMAIL_RECIPIENTS"
 ```
 
@@ -276,7 +277,7 @@ npx tsx src/cli.ts --step combined-notify
 npx tsx src/cli.ts --step digest --profile top   # 指定单个
 
 # 测试
-npm test        # vitest run（6 文件 56 用例）
+npm test        # vitest run（9 文件 81 用例）
 npm run build   # tsc --noEmit（零错误）
 ```
 
@@ -306,6 +307,9 @@ npm run build   # tsc --noEmit（零错误）
 | feishu-perm | 2026-05-28 | 文档创建后自动设置 tenant_editable 权限 |
 | feishu-perm-fix | 2026-05-29 | 修复权限命令缺少 `--as bot` 导致 scope 错误 |
 | remove-lark | 2026-06-07 | 移除 lark-cli 全部依赖（publish.ts / deploy.sh / feishu 配置），新增 RSS + Resend 邮件 |
+| rss-rolling | 2026-06-08 | 7 天滚动 RSS 窗口 + 自动清理旧条目，避免 feed 无限增长 |
+| layout-table | 2026-06-08 | HTML 布局从 fixed sidebar 改为 table 双栏（左侧目录 + 右侧正文），移动端自动隐藏 |
+| test-expand | 2026-06-08 | 测试 56→81 用例（新增 rss/render-html/resend 模块 25 项测试） |
 
 ## 数据追溯
 
