@@ -251,19 +251,51 @@ async function stepCombinedRss(ctx: ProfileContext): Promise<StepResult> {
   const allPapers: Paper[] = [];
   const seen = new Set<string>();
 
+  // 滚动 7 天窗口：合并去重生成 RSS
+  const timezone = ctx.config.app?.timezone || "Asia/Shanghai";
+  const nowInTz = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
+  const dateStrs: string[] = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(nowInTz);
+    d.setDate(d.getDate() - i);
+    dateStrs.push(d.toISOString().slice(0, 10));
+  }
+
+  // 清理 7 天前的数据目录
+  const cutOffDate = new Date(nowInTz);
+  cutOffDate.setDate(cutOffDate.getDate() - 7);
+  const cutOffStr = cutOffDate.toISOString().slice(0, 10);
+
   for (const profile of profiles) {
+    const profileDir = path.join(dataDir, profile);
     try {
-      const enrichedFile = path.join(dataDir, profile, ctx.dateStr, "5-enriched.json");
-      const enriched = await readJson<Paper[]>(enrichedFile);
-      for (const paper of enriched) {
-        const key = itemKey(paper);
-        if (!seen.has(key)) {
-          seen.add(key);
-          allPapers.push(paper);
+      const entries = await fs.readdir(profileDir);
+      for (const entry of entries) {
+        if (/^\d{4}-\d{2}-\d{2}$/.test(entry) && entry < cutOffStr) {
+          await fs.rm(path.join(profileDir, entry), { recursive: true, force: true });
         }
       }
     } catch {
-      // profile has no data for today
+      // directory doesn't exist yet
+    }
+  }
+
+  // 收集最近 7 天论文
+  for (const dateStr of dateStrs) {
+    for (const profile of profiles) {
+      try {
+        const enrichedFile = path.join(dataDir, profile, dateStr, "5-enriched.json");
+        const enriched = await readJson<Paper[]>(enrichedFile);
+        for (const paper of enriched) {
+          const key = itemKey(paper);
+          if (!seen.has(key)) {
+            seen.add(key);
+            allPapers.push(paper);
+          }
+        }
+      } catch {
+        // no data for this date/profile
+      }
     }
   }
 
@@ -282,7 +314,7 @@ async function stepCombinedRss(ctx: ProfileContext): Promise<StepResult> {
   const out = path.join(pubDir, "combined.xml");
   await fs.writeFile(out, xml, "utf-8");
 
-  logEvent("INFO", "workflow.combined-rss.done", { profiles, items: allPapers.length });
+  logEvent("INFO", "workflow.combined-rss.done", { profiles, days: 7, items: allPapers.length });
   return { step: "combined-rss", inputCount: allPapers.length, outputCount: allPapers.length, inputFile: "", outputFile: out, durationMs: Date.now() - t };
 }
 
