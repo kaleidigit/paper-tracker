@@ -106,7 +106,6 @@ if [[ "$EXIT_CODE" -eq 0 && "$NO_PUSH" != "1" ]]; then
   if ! npx tsx src/cli.ts --step combined-rss --profile "${PROFILES[0]}"; then
     echo "[run] WARNING: combined-rss failed" >&2
   fi
-  fi
 fi
 
 if [[ "$EXIT_CODE" -eq 0 ]]; then
