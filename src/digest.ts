@@ -86,14 +86,6 @@ export function renderPaperCard(paper: Paper, index: number, headingLevel: numbe
     if (text) target.push(`- **${label}**：${text}`);
   };
 
-  const authorAffilFormatted = formatAuthorsWithMap(paper);
-  if (authorAffilFormatted) {
-    pushMeta(metaLines, "作者", authorAffilFormatted.authorsLine);
-    pushMeta(metaLines, "作者单位", authorAffilFormatted.affilsLine);
-  } else {
-    pushMeta(metaLines, "作者", (paper.authors || []).join(", "));
-    pushMeta(metaLines, "作者单位", (paper.author_affiliations || []).join("；"));
-  }
   pushMeta(metaLines, "期刊", paper.journal?.name || "");
   pushMeta(metaLines, "日期", paper.published_date || "");
   pushMeta(metaLines, "类型", paper.publication_type || "unknown");
@@ -107,6 +99,28 @@ export function renderPaperCard(paper: Paper, index: number, headingLevel: numbe
   }
   pushMeta(metaLines, "标签", (cls.tags || []).join("，"));
   if (metaLines.length > 0) lines.push(...metaLines, "");
+
+  // Authors — collapsible via <details>
+  const authorAffilFormatted = formatAuthorsWithMap(paper);
+  const authorLines: string[] = [];
+  if (authorAffilFormatted) {
+    pushMeta(authorLines, "作者", authorAffilFormatted.authorsLine);
+    pushMeta(authorLines, "作者单位", authorAffilFormatted.affilsLine);
+  } else {
+    pushMeta(authorLines, "作者", (paper.authors || []).join(", "));
+    pushMeta(authorLines, "作者单位", (paper.author_affiliations || []).join("；"));
+  }
+  if (authorLines.length > 0) {
+    lines.push(
+      "<details>",
+      `<summary>**作者及单位**</summary>`,
+      "",
+      ...authorLines,
+      "",
+      "</details>",
+      ""
+    );
+  }
 
   if (paper.abstract_zh) {
     lines.push(`**中文摘要**  `, paper.abstract_zh.trim(), "");
