@@ -10,7 +10,9 @@ dotenv.config();
 const RootConfigSchema = z.object({
   profiles: z.array(z.string()).optional(),
   ai: z.record(z.string(), z.unknown()).optional(),
-});
+  rss: z.record(z.string(), z.unknown()).optional(),
+  email: z.record(z.string(), z.unknown()).optional(),
+}).passthrough();
 
 const ROOT_DIR = process.cwd();
 const ROOT_CONFIG_PATH = path.join(ROOT_DIR, "config.json");
@@ -36,6 +38,8 @@ export const resolvePath = (p: string) => resolvePathRaw(p, ROOT_DIR);
 interface RootConfig {
   profiles?: string[];
   ai?: Partial<AppConfig["ai"]>;
+  rss?: Partial<AppConfig["rss"]>;
+  email?: Partial<AppConfig["email"]>;
 }
 
 async function loadRootConfig(): Promise<RootConfig> {
@@ -100,7 +104,12 @@ export async function loadProfileContext(profile?: string): Promise<ProfileConte
     (rootConfig.ai || {}) as Record<string, unknown>,
     (profileConfig.ai || {}) as Record<string, unknown>
   ) as AppConfig["ai"];
-  const config: AppConfig = { ...profileConfig, ai: mergedAi };
+  const config: AppConfig = {
+    ...profileConfig,
+    ai: mergedAi,
+    rss: { ...rootConfig.rss, ...profileConfig.rss },
+    email: { ...rootConfig.email, ...profileConfig.email }
+  };
 
   // Resolve relative paths within the profile directory
   if (config.sources?.journals_file && !path.isAbsolute(config.sources.journals_file)) {
