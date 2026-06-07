@@ -113,19 +113,19 @@ auto-push.sh        ← cron 入口（周一 DAYS=3，委托 run.sh）
 | `enrich` | `3-llm-filtered.json` | `5-enriched.json` | Phase 0: RSS 文章页抓取（延迟到筛选后）→ Phase 1: 翻译/归一化（并发 5）→ Phase 2: 批量分类 |
 | `store` | `5-enriched.json` | `papers.db` | SQLite 写入（try/finally 确保连接关闭） |
 | `digest` | `5-enriched.json` | `6-digest.md` + `6-records.json` | 日刊 Markdown + 扁平记录 |
-| `rss` | `5-enriched.json` | `public/feeds/{profile}.xml` | RSS 2.0 XML + HTML 页面 |
-| `notify` | `5-enriched.json` | — | Resend 发送 HTML 邮件 |
-| `combined-rss` | 全 profile 的 `5-enriched.json` | `public/feeds/combined.xml` | 跨 profile 合并 RSS |
+| `rss` | `5-enriched.json` | `public/feeds/{profile}.xml` + `public/index.html` | RSS 2.0 XML + HTML 页面（含侧边目录 TOC） |
+| `combined-rss` | 全 profile 的 `5-enriched.json` | `public/feeds/combined.xml` + `public/index.html` | 跨 profile 合并 RSS |
+| `combined-notify` | 全 profile 的 `5-enriched.json` | — | SMTP 发送合并 HTML 日报（一封邮件） |
 
 ## 推送方案
 
-**RSS Feed（主力）+ Resend 邮件（辅助）**
+**RSS Feed（主力）+ SMTP 邮件（辅助）**
 
 - RSS 2.0 + `<content:encoded>` HTML，托管 GitHub Pages
-- 用户订阅 RSS 阅读器（Reeder/NetNewsWire/Feedly）自动获取更新
-- 邮件发送完整 HTML 日报（Resend 100封/天免费）
+- HTML 浏览页左侧固定侧边目录，点击跳转到论文，移动端自动隐藏
+- 邮件发送合并 HTML 日报（所有 profile 一封邮件）
 - QQ 邮箱绑定微信后有新邮件提醒，间接实现微信通知
-- GitHub Actions 定时运行（工作日 08:37 CST）
+- GitHub Actions 定时运行（工作日 08:37 CST），支持手动清缓存重跑
 
 ```bash
 # 本地生成 RSS
@@ -160,7 +160,7 @@ npx tsx src/cli.ts --step notify --profile top
 周一：DAYS=3（覆盖周末积压）
 周二至五：DAYS=1
 周末：跳过
-各 profile 串行执行，最后合并生成 combined RSS。
+各 profile 串行执行（collect→filter→enrich→store→digest→rss），最后 combined-rss + combined-notify 合并发送。
 ```
 
 ## Profile 配置
@@ -230,7 +230,7 @@ retry(fn, { maxAttempts: 3, baseDelayMs: 5000, onRetry: (attempt, delay, err) =>
 - 退避：指数 + 25% 抖动
 - filter 逐篇：2 次，10s 间隔
 - enrich 翻译/分类：3 次，5s 指数退避，失败用 FALLBACK_CLASSIFICATION
-- SMTP 邮件：3 次，5s 指数退避
+- SMTP 邮件（combined-notify）：3 次，5s 指数退避
 
 ## 配置校验
 
@@ -272,7 +272,7 @@ sqlite3 data/top/papers.db "SELECT COUNT(*) FROM papers;"
 # 单步（省略 --profile 则跑所有 profile）
 npx tsx src/cli.ts --step collect
 npx tsx src/cli.ts --step rss
-npx tsx src/cli.ts --step notify
+npx tsx src/cli.ts --step combined-notify
 npx tsx src/cli.ts --step digest --profile top   # 指定单个
 
 # 测试

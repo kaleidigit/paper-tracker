@@ -75,13 +75,16 @@ filter    ──→  3-llm-filtered.json     DB查重(跳过已知论文) → LL
 enrich    ──→  5-enriched.json         RSS文章页抓取(延迟) → LLM 翻译 → 批量分类
 store     ──→  papers.db               写入 SQLite（13 列精简模式，仅存原始字段）
 digest    ──→  6-digest.md             生成日刊 Markdown
-rss       ──→  public/feeds/*.xml      生成 RSS 2.0 XML（HTML 全文）+ HTML 浏览页
-notify    ──→  邮件（SMTP）            发送完整 HTML 日报
+rss       ──→  public/feeds/*.xml      生成 RSS 2.0 XML + HTML 浏览页（含侧边目录）
 
-所有 profile 跑完后通过 combined-rss 合并生成 combined.xml。
+每个 profile 跑完后，合并步骤：
+combined-rss      ──→  public/feeds/combined.xml   跨领域合并 RSS
+combined-notify   ──→  邮件（SMTP）                 发送一封 HTML 日报
 ```
 
 每步输出保存到 `data/{profile}/{date}/`，RSS/HTML 输出到 `public/`。
+
+HTML 浏览页左侧有**固定侧边目录**，可点击跳转到任意论文；邮件客户端中目录显示为顶部列表。移动端侧边栏自动隐藏。
 
 ### 推送方式
 
@@ -199,7 +202,7 @@ sqlite3 data/top/papers.db \
 # 所有 profile（默认）
 npx tsx src/cli.ts --step collect
 npx tsx src/cli.ts --step rss
-npx tsx src/cli.ts --step notify
+npx tsx src/cli.ts --step combined-notify
 
 # 指定单个 profile
 npx tsx src/cli.ts --step digest --profile top
