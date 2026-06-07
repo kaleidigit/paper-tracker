@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>论文日报</title>
+    <link>https://kaleidigit.github.io/paper-tracker</link>
+    <description>每日环境能源、经济、法学论文追踪</description>
+    <language>zh-CN</language>
+    <ttl>60</ttl>
+    <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/top.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>将CO₂固定映射到两个有效参数：一个面向数据驱动的物种和模型比较框架</title>
+    <link>https://doi.org/10.1073/pnas.2609915123</link>
+    <guid isPermaLink="false">https://doi.org/10.1073/pnas.2609915123</guid>
+    <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Andreas Stillits</dc:creator>
+    <description>为了提高作物产量和韧性，识别限制植物叶片CO₂同化速率的步骤至关重要。多种性状的联合效应可以通过扩散、生物化学和几何学的机理模型来解析。然而，广泛使用的简单串联阻力模型忽略了组织几何结构，而详细的解剖模型计算量大且依赖难以测量的参数。在此，我们开发了一个用于系统物种和模型比较的框架，并发现所需的模型分辨率水平是物种特异性的。我们应用一个最小反应-扩散模型，将叶片中的CO₂固定简化为两个关键参数。这</description>
+    <category>CO2 fixation</category>
+    <category>photosynthesis</category>
+    <category>leaf model</category>
+    <category>plant physiology</category>
+    <content:encoded><![CDATA[<h2>1. 将CO₂固定映射到两个有效参数：一个面向数据驱动的物种和模型比较框架</h2>
+<p><em>Mapping <i>CO</i> <sub>2</sub> fixation to two effective parameters: A framework toward data-informed species and model comparison</em></p>
+<ul>
+<li><strong>作者</strong>：Andreas Stillits¹, Teresa E. Knudsen¹, Ala Trusina¹</li>
+<li><strong>作者单位</strong>：¹Biocom</li>
+<li><strong>期刊</strong>：Proceedings of the National Academy of Sciences</li>
+<li><strong>日期</strong>：2026-06-05</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+<li><strong>标签</strong>：CO2 fixation，photosynthesis，leaf model，plant physiology</li>
+</ul>
+<p><strong>中文摘要</strong><br>为了提高作物产量和韧性，识别限制植物叶片CO₂同化速率的步骤至关重要。多种性状的联合效应可以通过扩散、生物化学和几何学的机理模型来解析。然而，广泛使用的简单串联阻力模型忽略了组织几何结构，而详细的解剖模型计算量大且依赖难以测量的参数。在此，我们开发了一个用于系统物种和模型比较的框架，并发现所需的模型分辨率水平是物种特异性的。我们应用一个最小反应-扩散模型，将叶片中的CO₂固定简化为两个关键参数。这些参数构成一个紧凑的相空间，在其中自然出现三个限速状态：气孔吸收、细胞间扩散和细胞内过程。将多样植物物种映射到这个相空间揭示了：1）气孔和细胞内过程的主导协同限制，2）需要空间分辨叶片尺度模型的物种与细胞内模型足够的物种之间相等分配。总之，我们提出了一条可扩展的路径，用于解释复杂性状数据并在模型之间建立桥梁。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1073/pnas.2609915123">https://doi.org/10.1073/pnas.2609915123</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1073/pnas.2609915123">https://doi.org/10.1073/pnas.2609915123</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>上海自给农作下根茎类和叶菜类蔬菜中PFAS积累的影响因素</title>
+    <link>https://doi.org/10.1021/acs.est.5c13805</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.5c13805</guid>
+    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Beibei Ye</dc:creator>
+    <description>饮食特别是蔬菜消费被认为是全氟和多氟烷基酸类物质（PFAS）的主要人体暴露途径之一，但自给农作下普通居民通过蔬菜摄入PFAS的程度及来源尚不明确。本研究分析了上海自给农田中31种可电离PFAS，发现叶菜类PFAS总浓度（32–64 ng/g dw）显著高于根茎类（23–29 ng/g dw），大气沉降可能是重要原因，叶面吸收比根部吸收更有效，并通过质谱成像揭示了PFAS在叶片中的表面吸收与转运机制</description>
+    <category>PFAS</category>
+    <category>vegetable</category>
+    <category>accumulation</category>
+    <category>atmospheric deposition</category>
+    <content:encoded><![CDATA[<h2>2. 上海自给农作下根茎类和叶菜类蔬菜中PFAS积累的影响因素</h2>
+<p><em>Factors Influencing PFAS Accumulation in Root and Leafy Vegetables under Subsistence Farming in Shanghai, China</em></p>
+<ul>
+<li><strong>作者</strong>：Beibei Ye¹², Yì Wáng¹²³, Liping Chen¹², Xia Yu¹²³, Ruiqi Yan¹²³, Weidong Zhao⁴⁵, Qian Sui¹²³</li>
+<li><strong>作者单位</strong>：¹East China University of Science and Technology；²Ministry of Ecology and Environment；³Shanghai Institute of Pollution Control and Ecological Security；⁴Tongji University；⁵State Key Laboratory of Pollution Control and Resource Reuse</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-04</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（大气污染与空气质量）</li>
+<li><strong>标签</strong>：PFAS，vegetable，accumulation，atmospheric deposition</li>
+</ul>
+<p><strong>中文摘要</strong><br>饮食特别是蔬菜消费被认为是全氟和多氟烷基酸类物质（PFAS）的主要人体暴露途径之一，但自给农作下普通居民通过蔬菜摄入PFAS的程度及来源尚不明确。本研究分析了上海自给农田中31种可电离PFAS，发现叶菜类PFAS总浓度（32–64 ng/g dw）显著高于根茎类（23–29 ng/g dw），大气沉降可能是重要原因，叶面吸收比根部吸收更有效，并通过质谱成像揭示了PFAS在叶片中的表面吸收与转运机制。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.5c13805">https://doi.org/10.1021/acs.est.5c13805</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.5c13805">https://doi.org/10.1021/acs.est.5c13805</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>理解残疾人的气候脆弱性与韧性：来自印度喀拉拉邦案例研究的启示</title>
+    <link>https://doi.org/10.1016/j.gloenvcha.2026.103183</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.gloenvcha.2026.103183</guid>
+    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Katherine Lofts</dc:creator>
+    <description>该研究通过印度喀拉拉邦的案例，探讨了残疾人在气候变化下的脆弱性与适应能力，为包容性气候政策提供见解。</description>
+    <category>climate vulnerability</category>
+    <category>disability</category>
+    <category>resilience</category>
+    <category>climate adaptation</category>
+    <content:encoded><![CDATA[<h2>3. 理解残疾人的气候脆弱性与韧性：来自印度喀拉拉邦案例研究的启示</h2>
+<p><em>Understanding the climate vulnerability and resilience of people with disabilities: insights from a case study in Kerala, India</em></p>
+<ul>
+<li><strong>作者</strong>：Katherine Lofts, Filzah Belal, Sébastien Jodoin, Binitha V. Thampi, Matthew Hunt, Raphael Lencucha, Alexandra Lesnikowski, Nandini Ramanujam</li>
+<li><strong>期刊</strong>：Global Environmental Change</li>
+<li><strong>日期</strong>：2026-06-04</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：经济学组（气候政策评估）</li>
+<li><strong>标签</strong>：climate vulnerability，disability，resilience，climate adaptation</li>
+</ul>
+<p><strong>中文摘要</strong><br>该研究通过印度喀拉拉邦的案例，探讨了残疾人在气候变化下的脆弱性与适应能力，为包容性气候政策提供见解。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.gloenvcha.2026.103183">https://doi.org/10.1016/j.gloenvcha.2026.103183</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1016/j.gloenvcha.2026.103183">https://doi.org/10.1016/j.gloenvcha.2026.103183</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>中国大规模迁移带来的显著PM2.5相关健康收益</title>
+    <link>https://doi.org/10.1021/acs.est.6c00289</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c00289</guid>
+    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Dong Xie</dc:creator>
+    <description>城市化驱动的中国大规模农村向城市迁移显著现代化了家庭能源使用并重塑了空气污染暴露途径。然而，由此产生的室内外空气污染综合健康结果的程度、潜在驱动因素和时间演变仍未充分解决。通过将七十年（1949-2021）迁移数据与全国家庭能源调查相结合，我们量化了迁移导致的综合（室内+室外）PM2.5暴露和死亡率变化。相对于1949年以来无迁移的反事实，2019年迁移使综合PM2.5暴露减少27.6 μg·m–</description>
+    <category>人口迁移</category>
+    <category>PM2.5</category>
+    <category>健康收益</category>
+    <category>室内空气污染</category>
+    <category>城市化</category>
+    <content:encoded><![CDATA[<h2>4. 中国大规模迁移带来的显著PM2.5相关健康收益</h2>
+<p><em>Substantial PM <sub>2.5</sub> -Related Health Gains from Large-Scale Migration in China</em></p>
+<ul>
+<li><strong>作者</strong>：Dong Xie¹²³, Huizhong Shen²³, Ruixin Zhang²³, Zelin Mai²³, Tianjia Guan⁴⁵, Peng Guo²³, Zi Wang²³, Yilin Chen⁶, Guofeng Shen⁷, Shu Tao²³⁷</li>
+<li><strong>作者单位</strong>：¹Harbin Institute of Technology；²Southern University of Science and Technology；³State Key Laboratory of Pollution Control and Resource Reuse；⁴Chinese Academy of Medical Sciences &amp; Peking Union Medical College；⁵Peking Union Medical College Hospital；⁶Peking University Shenzhen Hospital；⁷Peking University</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-04</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（大气污染与空气质量）；SDG-建模组（SDG评估与指标）</li>
+<li><strong>标签</strong>：人口迁移，PM2.5，健康收益，室内空气污染，城市化</li>
+</ul>
+<p><strong>中文摘要</strong><br>城市化驱动的中国大规模农村向城市迁移显著现代化了家庭能源使用并重塑了空气污染暴露途径。然而，由此产生的室内外空气污染综合健康结果的程度、潜在驱动因素和时间演变仍未充分解决。通过将七十年（1949-2021）迁移数据与全国家庭能源调查相结合，我们量化了迁移导致的综合（室内+室外）PM2.5暴露和死亡率变化。相对于1949年以来无迁移的反事实，2019年迁移使综合PM2.5暴露减少27.6 μg·m–3（95%置信区间：15.7-39.4），并自1949年以来累计避免了230万（190-260万）例死亡，其中室内暴露减少贡献最大。这些健康收益源于城乡家庭能源使用的差异，即使在中等社会发展阶段也很显著，并可能在其他转型经济体中发生。因此，我们的研究挑战了发展中国家快速城市化对环境健康严格有害的传统观点。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c00289">https://doi.org/10.1021/acs.est.6c00289</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c00289">https://doi.org/10.1021/acs.est.6c00289</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>数据驱动的能源正面污水处理约束与可行路径识别</title>
+    <link>https://doi.org/10.1021/acs.est.6c01273</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c01273</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Zi Zhang</dc:creator>
+    <description>污水行业约占全球电力消耗的1%，随着各国扩大处理以实现可持续发展目标6，需求将上升。因此，将污水处理厂从能源消费者转变为净生产者至关重要，但能源正面运行的系统级可行性仍不清楚。利用2961个污水处理厂的国家清单，我们通过随机前沿分析（70%的工厂存在运营偏差）消除运营偏差，并建立效率调整后的能源基线。能源平衡模型显示，在常规情景下，能源正面处理仅适用于高浓度废水（COD 334-426 mg/L，</description>
+    <category>污水处理</category>
+    <category>能源正面</category>
+    <category>能源效率</category>
+    <category>厌氧氨氧化</category>
+    <category>碳重定向</category>
+    <content:encoded><![CDATA[<h2>5. 数据驱动的能源正面污水处理约束与可行路径识别</h2>
+<p><em>Data-Driven Identification of Constraints and Enabling Pathways for Energy-Positive Wastewater Treatment</em></p>
+<ul>
+<li><strong>作者</strong>：Zi Zhang¹, Yuqing Yan¹, Xiatong Li¹, Emily Mayo¹, Zhiyong Jason Ren¹</li>
+<li><strong>作者单位</strong>：¹Princeton University</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）；SDG-建模组（能源系统建模）</li>
+<li><strong>标签</strong>：污水处理，能源正面，能源效率，厌氧氨氧化，碳重定向</li>
+</ul>
+<p><strong>中文摘要</strong><br>污水行业约占全球电力消耗的1%，随着各国扩大处理以实现可持续发展目标6，需求将上升。因此，将污水处理厂从能源消费者转变为净生产者至关重要，但能源正面运行的系统级可行性仍不清楚。利用2961个污水处理厂的国家清单，我们通过随机前沿分析（70%的工厂存在运营偏差）消除运营偏差，并建立效率调整后的能源基线。能源平衡模型显示，在常规情景下，能源正面处理仅适用于高浓度废水（COD 334-426 mg/L，COD/TN比8.5-11.9），排除了大多数全球设施。然而，在评估两种结合增强初级处理与主流厌氧氨氧化的碳重定向路径时，我们发现这些路径可以将入门门槛降低至COD 153-198 mg/L和COD/TN 4.9-5.7，使低强度系统接近能源正面。中型设施是最有利的候选者。这种特征驱动的框架为旨在扩大能源正面污水处理前沿的未来研究和试点示范提供了动力。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c01273">https://doi.org/10.1021/acs.est.6c01273</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c01273">https://doi.org/10.1021/acs.est.6c01273</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>干旱加剧可降解微塑料多样性对土壤细菌和病毒生态的影响</title>
+    <link>https://doi.org/10.1021/acs.est.6c01941</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c01941</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Tian-Gui Cai</dc:creator>
+    <description>微塑料污染和干旱是威胁土壤生态系统稳定性的全球性压力因素。然而，微塑料多样性与干旱对土壤微生物和病毒生态的联合效应尚不清楚。本研究通过微观实验，探讨了在干旱胁迫下，增加微塑料多样性（0、1、3、5种）如何影响土壤细菌和病毒群落、生物地球化学循环以及生态风险。可降解微塑料的影响强于不可降解微塑料，改变了微生物组成和功能基因谱。与水分充足相比，干旱显著改变了细菌和病毒群落组成，增强了与碳氮固定相关的功</description>
+    <category>微塑料</category>
+    <category>干旱</category>
+    <category>土壤微生物</category>
+    <category>病毒</category>
+    <category>生物地球化学循环</category>
+    <content:encoded><![CDATA[<h2>6. 干旱加剧可降解微塑料多样性对土壤细菌和病毒生态的影响</h2>
+<p><em>Drought Amplifies Degradable Microplastic Diversity Effects on Soil Bacterial and Viral Ecology</em></p>
+<ul>
+<li><strong>作者</strong>：Tian-Gui Cai, Da Lin, Lijuan Ma, Ya-Ning Wang, Bang Ni, Mao Ye, Yi-Fei Wang, Dong Zhu</li>
+<li><strong>作者单位</strong>：Ningbo University；Chinese Academy of Sciences；Huazhong Agricultural University；Institute of Urban Environment；University of Chinese Academy of Sciences；National University of Civil Protection of Ukraine；Institute of Soil Science</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）；资源循环组（塑料污染与治理）</li>
+<li><strong>标签</strong>：微塑料，干旱，土壤微生物，病毒，生物地球化学循环</li>
+</ul>
+<p><strong>中文摘要</strong><br>微塑料污染和干旱是威胁土壤生态系统稳定性的全球性压力因素。然而，微塑料多样性与干旱对土壤微生物和病毒生态的联合效应尚不清楚。本研究通过微观实验，探讨了在干旱胁迫下，增加微塑料多样性（0、1、3、5种）如何影响土壤细菌和病毒群落、生物地球化学循环以及生态风险。可降解微塑料的影响强于不可降解微塑料，改变了微生物组成和功能基因谱。与水分充足相比，干旱显著改变了细菌和病毒群落组成，增强了与碳氮固定相关的功能基因丰度，并随着可降解微塑料多样性的增加，提高了抗生素抗性基因和毒力因子基因的流行率。在干旱条件下，随着可降解微塑料多样性的增加，病毒群落表现出辅助代谢基因丰度增加和溶原生活方式流行率升高的适应策略。关键宿主根瘤菌缺乏注释的抗病毒防御系统，携带大量抗生素抗性基因和毒力因子基因，并与病毒丰度呈强正相关，表明它可能是水平基因转移的关键热点。这些发现揭示了干旱下可降解微塑料多样性的增加改变了微生物组成，可能加速养分周转并放大生态风险，强调了在环境风险评估中考虑多胁迫因子相互作用的必要性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c01941">https://doi.org/10.1021/acs.est.6c01941</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c01941">https://doi.org/10.1021/acs.est.6c01941</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>情绪改变的水体：受污水影响水道中抗抑郁药的多维剖析和对映体表征</title>
+    <link>https://doi.org/10.1021/acs.est.6c02538</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c02538</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>E. Vincent</dc:creator>
+    <description>抗抑郁药及其代谢物由于在废水处理过程中去除不完全，在废水出水和受污水影响的水道中被广泛报道。这些化学物质已知会影响暴露生物的行为和生理，引起人们对这种污染生态影响的担忧。然而，尽管美国食品药品监督管理局批准了28种抗抑郁药，但环境研究通常只针对这些化学物质的一小部分，因为传统的分析方法受到共洗脱异构体和结构相似性的阻碍。在这里，我们开发了一个多维工作流程，整合了液相色谱、漂移管离子迁移谱、质谱和碎</description>
+    <category>抗抑郁药</category>
+    <category>废水</category>
+    <category>水污染</category>
+    <category>对映体</category>
+    <category>环境监测</category>
+    <content:encoded><![CDATA[<h2>7. 情绪改变的水体：受污水影响水道中抗抑郁药的多维剖析和对映体表征</h2>
+<p><em>Mood Altering Waters: Multidimensional Profiling and Chiral Characterization of Antidepressants in Effluent-Impacted Waterways</em></p>
+<ul>
+<li><strong>作者</strong>：E. Vincent¹, Mark W. Sumarah²³, Justin B. Renaud²³, Natasha DesRochers²³, Haley C. Jostes¹, Allison N. Fry¹, Jack P. Ryan¹, James N. Dodds¹, J Zhang⁴⁵, P. A. Thiessen⁴⁵, Evan Bolton⁴⁵, Emma L. Schymanski⁶, Erin S. Baker¹</li>
+<li><strong>作者单位</strong>：¹University of North Carolina at Chapel Hill；²Agriculture and Agri-Food Canada；³London International Development Centre；⁴National Institutes of Health；⁵National Center for Biotechnology Information；⁶University of Luxembourg</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）</li>
+<li><strong>标签</strong>：抗抑郁药，废水，水污染，对映体，环境监测</li>
+</ul>
+<p><strong>中文摘要</strong><br>抗抑郁药及其代谢物由于在废水处理过程中去除不完全，在废水出水和受污水影响的水道中被广泛报道。这些化学物质已知会影响暴露生物的行为和生理，引起人们对这种污染生态影响的担忧。然而，尽管美国食品药品监督管理局批准了28种抗抑郁药，但环境研究通常只针对这些化学物质的一小部分，因为传统的分析方法受到共洗脱异构体和结构相似性的阻碍。在这里，我们开发了一个多维工作流程，整合了液相色谱、漂移管离子迁移谱、质谱和碎裂分析，以实现环境样品中26种母体抗抑郁药和8种代谢物的高置信度鉴定和靶向定量，同时建立了一个公开可用的参考库以支持未来的研究。进一步用对映体色谱表征选定的化合物，以评估具有不同生物活性的对映体抗抑郁药。该工作流程应用于受污水影响的水道，在五个地点实现了17种抗抑郁药的鉴定和定量。这些发现强调了抗抑郁药污染的普遍性，以及改进监测和废水处理策略以减轻生态和人类健康风险的必要性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c02538">https://doi.org/10.1021/acs.est.6c02538</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c02538">https://doi.org/10.1021/acs.est.6c02538</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>在低bCOD/NH4+–N比例增加下部分亚硝化反应器中N2O排放加剧的机制</title>
+    <link>https://doi.org/10.1021/acs.est.5c18188</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.5c18188</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Shenghao Ji</dc:creator>
+    <description>部分亚硝化（PN）是氧化亚氮（N2O）排放的重要来源，而低可生物降解化学需氧量与氨氮比（bCOD/NH4+–N）倾向于加剧N2O排放。然而，在低比例范围内随着bCOD/NH4+–N增加的具体释放特征和潜在机制尚未阐明。本研究采用连续流PN反应器，处理具有波动低bCOD/NH4+–N比例的食物垃圾消化液。当比例从0.12升至1.36时，气态N2O排放因子从3.2%增至25.8%。推断三种机制与此增加</description>
+    <category>N2O排放</category>
+    <category>部分亚硝化</category>
+    <category>废水处理</category>
+    <category>温室气体</category>
+    <category>生物反应器</category>
+    <content:encoded><![CDATA[<h2>8. 在低bCOD/NH4+–N比例增加下部分亚硝化反应器中N2O排放加剧的机制</h2>
+<p><em>The Mechanism of Aggravating N <b> <sub>2</sub> </b> O Emission in a Partial Nitritation Reactor with Increasing bCOD/NH <b> <sub>4</sub> <sup>+</sup> </b> –N</em></p>
+<ul>
+<li><strong>作者</strong>：Shenghao Ji¹, Shen Cui¹, Hongjun Zhao¹, Yujie Chen¹, Tianyi Zhang¹, Yu Qin¹, J Z Liu², Yu-You Li¹</li>
+<li><strong>作者单位</strong>：¹Tohoku University；²Shanghai University</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）</li>
+<li><strong>标签</strong>：N2O排放，部分亚硝化，废水处理，温室气体，生物反应器</li>
+</ul>
+<p><strong>中文摘要</strong><br>部分亚硝化（PN）是氧化亚氮（N2O）排放的重要来源，而低可生物降解化学需氧量与氨氮比（bCOD/NH4+–N）倾向于加剧N2O排放。然而，在低比例范围内随着bCOD/NH4+–N增加的具体释放特征和潜在机制尚未阐明。本研究采用连续流PN反应器，处理具有波动低bCOD/NH4+–N比例的食物垃圾消化液。当比例从0.12升至1.36时，气态N2O排放因子从3.2%增至25.8%。推断三种机制与此增加相关：（1）为在较高bCOD/NH4+–N下维持亚硝酸盐与氨的比例，氨氧化效率（AOE）从57.7%升至75.1%，增加了用于亚硝酸盐还原的电子通量；（2）为维持亚硝酸盐与氨的比例，曝气系数增加，使N2O传质系数（KLa）从32 d–1升至705 d–1，从而增强N2O排放；（3）bCOD/NH4+–N增加导致功能基因非均匀上调，(nirK+nirS)/nosZ从2.62升至3.14，增强了N2O产生能力。总体而言，AOE驱动的电子通量富集、曝气系数驱动的KLa增强以及功能基因的不均匀促进可能共同导致了随bCOD/NH4+–N增加N2O排放的增加。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.5c18188">https://doi.org/10.1021/acs.est.5c18188</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.5c18188">https://doi.org/10.1021/acs.est.5c18188</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>正在出现的南极放大效应</title>
+    <link>https://doi.org/10.1093/nsr/nwag343</link>
+    <guid isPermaLink="false">https://doi.org/10.1093/nsr/nwag343</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Qigang Wu</dc:creator>
+    <description>本文探讨了南极地区正在出现的放大效应，即南极温度变化幅度大于全球平均的现象，并分析其潜在影响。</description>
+    <category>南极</category>
+    <category>放大效应</category>
+    <category>气候变化</category>
+    <category>温度</category>
+    <content:encoded><![CDATA[<h2>9. 正在出现的南极放大效应</h2>
+<p><em>The emerging antarctic amplification</em></p>
+<ul>
+<li><strong>作者</strong>：Qigang Wu¹²³, JiKai Tian¹³, Qianyi Yu¹³, Shizuo Li⁴, Yang Chang¹³, Aixue Hu⁵, Lei Zhang⁶</li>
+<li><strong>作者单位</strong>：¹Fudan University；²Ministry of Education；³Shanghai Ocean University；⁴Duke University；⁵NSF National Center for Atmospheric Research；⁶South China Sea Institute Of Oceanology</li>
+<li><strong>期刊</strong>：National Science Review</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
+<li><strong>标签</strong>：南极，放大效应，气候变化，温度</li>
+</ul>
+<p><strong>中文摘要</strong><br>本文探讨了南极地区正在出现的放大效应，即南极温度变化幅度大于全球平均的现象，并分析其潜在影响。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1093/nsr/nwag343">https://doi.org/10.1093/nsr/nwag343</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1093/nsr/nwag343">https://doi.org/10.1093/nsr/nwag343</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>营养传递中的生物放大：老化纳米颗粒与TBP共污染在土壤-黑麦-粘虫系统中的跨营养毒性机制</title>
+    <link>https://doi.org/10.1021/acs.est.6c01984</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c01984</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>J M Hu</dc:creator>
+    <description>纳米塑料与有机污染物的共污染对农业生态系统和食物链安全构成潜在威胁。为系统揭示老化羧基化纳米塑料（NPs-COOH）与阻燃剂磷酸三丁酯（TBP）的单独及联合毒性及其沿食物链的传递机制，本研究建立了“黑麦-粘虫”模型，整合分子对接、多组学和传统毒理学方法进行多尺度研究。结果表明，NPs-COOH与TBP通过静电和范德华相互作用形成复合物，协同增强其在黑麦根部的积累并转运至维管系统。联合暴露对黑麦产生</description>
+    <category>纳米塑料</category>
+    <category>有机污染物</category>
+    <category>食物链传递</category>
+    <category>土壤污染</category>
+    <category>毒性机制</category>
+    <content:encoded><![CDATA[<h2>10. 营养传递中的生物放大：老化纳米颗粒与TBP共污染在土壤-黑麦-粘虫系统中的跨营养毒性机制</h2>
+<p><em>Biomagnification in Trophic Transfer: Mechanisms of Trans-Trophic Toxicity from Co-Contamination of Aged NPs and TBP in a Soil–Rye–Armyworm System</em></p>
+<ul>
+<li><strong>作者</strong>：J M Hu¹²³, Guozhang Bao¹²³, Muhammad Nawaz⁴, Wenjie Ma⁵, Ningning Xing¹²³, Yue Yuan¹²³, Lan Bao¹²³</li>
+<li><strong>作者单位</strong>：¹Ministry of Natural Resources and Environment；²Jilin University；³Jilin Medical University；⁴Bahauddin Zakariya University；⁵Zhejiang Lab</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
+<li><strong>标签</strong>：纳米塑料，有机污染物，食物链传递，土壤污染，毒性机制</li>
+</ul>
+<p><strong>中文摘要</strong><br>纳米塑料与有机污染物的共污染对农业生态系统和食物链安全构成潜在威胁。为系统揭示老化羧基化纳米塑料（NPs-COOH）与阻燃剂磷酸三丁酯（TBP）的单独及联合毒性及其沿食物链的传递机制，本研究建立了“黑麦-粘虫”模型，整合分子对接、多组学和传统毒理学方法进行多尺度研究。结果表明，NPs-COOH与TBP通过静电和范德华相互作用形成复合物，协同增强其在黑麦根部的积累并转运至维管系统。联合暴露对黑麦产生协同毒性，表现为光合作用抑制、氧化胁迫加剧以及产量和营养品质显著下降。转录组和微生物组分析进一步揭示，黑麦通过系统性激活应激反应和解毒代谢途径来应对胁迫，同时伴随有益根际微生物群落的破坏。污染物沿食物链传递，TBP从黑麦到粘虫发生生物放大（BMF=1.57），导致生长抑制、中肠结构损伤、关键解毒酶活性抑制及肠道菌群失调。本研究阐明了NPs-COOH与TBP在土壤-植物-昆虫系统中“载体效应”和协同毒性产生的多维生态风险，为全面评估此类共污染对农产品安全和食物链健康的威胁提供了进一步见解。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c01984">https://doi.org/10.1021/acs.est.6c01984</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c01984">https://doi.org/10.1021/acs.est.6c01984</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>环境浓度的除草剂扑草净增加造礁珊瑚对硝酸盐胁迫的敏感性</title>
+    <link>https://doi.org/10.1021/acs.est.6c06486</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c06486</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Qiuli Li</dc:creator>
+    <description>除草剂和硝酸盐污染经常在沿海水域共存，但它们对珊瑚的联合效应一直是一个关键的知识空白。尽管珊瑚可以表现出对硝酸盐富集的适应，但这种适应是否在同时暴露于PSII除草剂下仍然存在尚不清楚。在这里，我们通过整合生理学、超微结构和宿主-共生体多组学，研究了硝酸盐和PSII除草剂扑草净对造礁珊瑚Acropora hyacinthus的联合效应。结果表明，在共同胁迫下，扑草净是共生虫黄藻光损伤和光合毒性的主要</description>
+    <category>除草剂</category>
+    <category>硝酸盐</category>
+    <category>珊瑚</category>
+    <category>光毒性</category>
+    <category>联合效应</category>
+    <content:encoded><![CDATA[<h2>11. 环境浓度的除草剂扑草净增加造礁珊瑚对硝酸盐胁迫的敏感性</h2>
+<p><em>Environmental Concentrations of Herbicide Prometryn Increase the Susceptibility of Reef-Building Corals to Nitrate Stress</em></p>
+<ul>
+<li><strong>作者</strong>：Qiuli Li¹², Yanyu Zhou¹², Weilu Kang¹², Xianming Tang³⁴, Bo Hu¹², Zhi Tang⁵, Fengchang Wu⁵, Craig A. Downs⁶, Hongwei Zhao¹²</li>
+<li><strong>作者单位</strong>：¹Hainan University；²Department of Ecology and Environment of Hainan Province；³Hainan Provincial Academy of Marine Fisheries and Aquaculture；⁴Tropical Crops Genetic Resources Institute；⁵Chinese Research Academy of Environmental Sciences；⁶National White Collar Crime Center</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
+<li><strong>标签</strong>：除草剂，硝酸盐，珊瑚，光毒性，联合效应</li>
+</ul>
+<p><strong>中文摘要</strong><br>除草剂和硝酸盐污染经常在沿海水域共存，但它们对珊瑚的联合效应一直是一个关键的知识空白。尽管珊瑚可以表现出对硝酸盐富集的适应，但这种适应是否在同时暴露于PSII除草剂下仍然存在尚不清楚。在这里，我们通过整合生理学、超微结构和宿主-共生体多组学，研究了硝酸盐和PSII除草剂扑草净对造礁珊瑚Acropora hyacinthus的联合效应。结果表明，在共同胁迫下，扑草净是共生虫黄藻光损伤和光合毒性的主要驱动因素。透射电子显微镜显示，扑草净诱导了活化的共生自噬和叶绿体降解，虫黄藻中叶绿体类囊体松散堆积。转录组学和蛋白质组学分析预测，硝酸盐富集刺激了宿主谷胱甘肽基抗氧化反应。然而，扑草净诱导的光毒性损害了光合产物的供应，并破坏了这种硝酸盐适应机制。此外，光合产物的转移减少进一步损害了宿主的能量平衡并加剧了氧化应激。这些发现表明，PSII除草剂可以覆盖对硝酸盐富集的短期适应，强调了在珊瑚礁生态系统中联合调控除草剂和营养盐输入的必要性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c06486">https://doi.org/10.1021/acs.est.6c06486</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c06486">https://doi.org/10.1021/acs.est.6c06486</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  </channel>
+</rss>
