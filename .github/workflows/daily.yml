@@ -5,6 +5,12 @@ on:
     # 工作日 08:37 CST = 00:37 UTC
     - cron: '37 0 * * 1-5'
   workflow_dispatch:
+    inputs:
+      clear_cache:
+        description: 'Clear DB cache (skip dedup, re-process all papers)'
+        type: boolean
+        default: false
+        required: false
 
 jobs:
   pipeline:
@@ -26,7 +32,9 @@ jobs:
       - run: npm ci
 
       # Restore SQLite DB from cache (preserves dedup history across runs)
+      # Skip when manually triggered with "Clear DB cache" checked
       - name: Restore DB cache
+        if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.clear_cache) }}
         uses: actions/cache@v4
         with:
           path: |
