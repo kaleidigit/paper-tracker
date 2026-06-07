@@ -1,7 +1,7 @@
 # Paper-Tracker
 
 自动化顶刊论文追踪系统。每日从 Nature、Science、PNAS 等顶刊采集论文，经 LLM 筛选、翻译、分类后生成中文日报，
-通过 **RSS Feed（含 HTML 全文）** 和 **Resend 邮件** 分发。
+通过 **RSS Feed（含 HTML 全文）** 和 **邮件** 分发。
 
 支持**多领域 profile 切换**：通过替换 `profiles/` 下的配置，即可追踪经济、法学等其他领域的文献。
 
@@ -54,7 +54,7 @@ src/
   rss.ts                    RSS 2.0 XML 生成（content:encoded 内嵌 HTML）
   publishers/
     render-html.ts          Markdown → HTML 渲染（marked）
-    resend.ts               Resend 邮件发送
+    resend.ts               SMTP 邮件发送
   pipeline.ts               分步编排器（含 DB 查重跳过逻辑）
   modules.ts                采集与增强入口（collectRawPapers, filterPapers, enrichPapers）
   db.ts                     SQLite 去重缓存（仅存原始字段，不含 LLM 派生数据）
@@ -76,7 +76,7 @@ enrich    ──→  5-enriched.json         RSS文章页抓取(延迟) → LLM 
 store     ──→  papers.db               写入 SQLite（13 列精简模式，仅存原始字段）
 digest    ──→  6-digest.md             生成日刊 Markdown
 rss       ──→  public/feeds/*.xml      生成 RSS 2.0 XML（HTML 全文）+ HTML 浏览页
-notify    ──→  邮件（Resend API）       发送完整 HTML 日报到 QQ 邮箱
+notify    ──→  邮件（SMTP）            发送完整 HTML 日报
 
 所有 profile 跑完后通过 combined-rss 合并生成 combined.xml。
 ```
@@ -87,11 +87,63 @@ notify    ──→  邮件（Resend API）       发送完整 HTML 日报到 QQ
 
 | 方式 | 说明 |
 |------|------|
-| **RSS Feed** | 托管 GitHub Pages，RSS 阅读器（Reeder/NetNewsWire/Feedly）自动订阅 |
-| **邮件** | Resend API 发送 HTML 日报，QQ 邮箱绑定微信后有新邮件提醒 |
+| **RSS Feed** | 托管 GitHub Pages，RSS 阅读器自动订阅 |
+| **邮件** | SMTP 发送 HTML 日报，QQ 邮箱绑定微信后有新邮件提醒 |
 | **Web 浏览** | GitHub Pages 托管 `public/index.html` 可在浏览器直接查看 |
 
-部署通过 `.github/workflows/daily.yml`（GitHub Actions 定时触发，工作日 08:37 CST）。
+---
+
+## GitHub Actions 部署
+
+### 1. 添加 Secrets
+
+打开仓库 Settings → Secrets and variables → Actions → New repository secret：
+
+| Name | 内容 |
+|------|------|
+| `OPENAI_COMPATIBLE_API_KEY` | DeepSeek API key |
+| `EMAIL_USER` | SMTP 发件邮箱地址（如 `paper_tracker@126.com`） |
+| `EMAIL_PASS` | SMTP 授权码（非登录密码） |
+| `EMAIL_RECIPIENTS` | 收件人列表，逗号分隔（如 `a@qq.com,b@163.com`） |
+
+### 2. 启用 GitHub Pages
+
+Settings → Pages → Source 选 **GitHub Actions** → Save。
+
+### 3. 触发运行
+
+Actions → Daily Paper Digest → Run workflow。之后每天工作日 08:37 CST 自动运行。
+
+---
+
+## RSS 订阅指南
+
+### 订阅地址
+
+推送代码并完成 GitHub Pages 部署后，RSS 地址为：
+
+```
+https://kaleidigit.github.io/paper-tracker/feeds/combined.xml
+```
+
+### 各平台 RSS 阅读器
+
+| 平台 | 推荐阅读器 | 添加方式 |
+|------|-----------|---------|
+| **iOS / macOS** | Reeder、NetNewsWire | App 内 → Add Feed → 粘贴 URL |
+| **Android** | Feedly、Inoreader | App 内 → 搜索/添加 URL |
+| **Windows** | Fluent Reader | Settings → Add Source → 粘贴 URL |
+| **浏览器** | 直接访问 `public/index.html` | 无需额外软件 |
+
+### 工作原理
+
+1. GitHub Actions 每天自动运行管道，生成 `public/feeds/combined.xml`
+2. 自动部署到 GitHub Pages
+3. RSS 阅读器定期检查 feed URL，发现新内容后显示未读标记
+4. 点击即可阅读 HTML 全文（支持图片、表格、链接）
+5. 同时邮件用户会收到完整 HTML 日报
+
+RSS 不需要注册任何账号，不需要安装推送 APP，阅读器本身就会通知你。
 
 ---
 
@@ -198,11 +250,17 @@ npx tsx src/cli.ts --step combined-rss
 },
 "email": {
   "enabled": true,
-  "provider": "resend",
-  "api_key_env": "RESEND_API_KEY",
-  "to_env": "EMAIL_RECIPIENTS"
+  "provider": "smtp",
+  "smtp_host": "smtp.126.com",
+  "smtp_port": 465,
+  "user_env": "EMAIL_USER",
+  "pass_env": "EMAIL_PASS",
+  "to_env": "EMAIL_RECIPIENTS",
+  "from": "Paper Tracker <paper_tracker@126.com>"
 }
 ```
+
+SMTP 邮箱支持 126/163/QQ 等，需在邮箱设置中开启 SMTP 服务并获取授权码。
 
 ---
 
@@ -225,7 +283,7 @@ npx tsx src/cli.ts --step combined-rss
 | 数据 | 存储 | 措施 |
 |------|------|------|
 | LLM API key | GitHub Secret | 从未进入仓库 |
-| Resend API key | GitHub Secret | 从未进入仓库 |
+| SMTP 授权码 | GitHub Secret | 从未进入仓库 |
 | 邮件收件人 | GitHub Secret `EMAIL_RECIPIENTS` | env var 注入 |
 | public/ 输出 | GitHub Pages（公开） | 仅论文元数据（公开学术信息） |
 
