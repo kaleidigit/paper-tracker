@@ -47,13 +47,14 @@ img { max-width: 100%; height: auto; border-radius: 4px; }
   .toc-sidebar .toc-group { font-weight: 500; color: #3d3d3a; margin-top: 8px; list-style: none; }
   .toc-sidebar .toc-group::before { content: "▸ "; font-size: 0.8em; }
   body {
-    margin: 0 0 0 260px;
-    max-width: min(720px, calc(100vw - 300px));
+    margin-left: 280px;
+    max-width: calc(100vw - 320px);
+    padding-right: 24px;
   }
 }
 @media screen and (max-width: 900px) {
   .toc-sidebar { display: none; }
-  body { margin: 0 auto; max-width: 720px; }
+  body { margin: 0 auto; max-width: 720px; padding: 24px 16px; }
 }
 
 @media (prefers-color-scheme: dark) {
