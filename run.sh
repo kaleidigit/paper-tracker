@@ -54,6 +54,7 @@ while [[ $# -gt 0 ]]; do
       echo "  --profile NAME   指定 profile（不指定则运行所有 profile，读取 config.json）"
       echo "  --days N         回溯天数（覆盖 config，必须为正整数）"
       echo "  --dry-run        仅生成文件，跳过邮件发送"
+      echo "  --no-push        跳过 combined-rss 和 combined-notify"
       exit 0 ;;
     *)
       echo "Unknown option: $1"; exit 1 ;;

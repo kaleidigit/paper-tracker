@@ -25,9 +25,9 @@ for arg in "$@"; do
     -h|--help)
       echo "Usage: $0 [--dry-run]"
       echo ""
-      echo "  每天运行所有 profile，合并推一份日报"
+      echo "  每天运行所有 profile，合并生成 RSS 和发送邮件"
       echo "  周一 DAYS=3（覆盖周末），周二至五 DAYS=1"
-      echo "  --dry-run  仅生成文件，跳过飞书发布"
+      echo "  --dry-run  仅生成文件，跳过邮件发送"
       exit 0 ;;
   esac
 done
