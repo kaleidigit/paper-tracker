@@ -137,10 +137,12 @@ function buildTocHtml(toc: TocEntry[]): string {
   return html;
 }
 
-/** 单篇论文 → 带内联样式的 HTML 卡片 */
-export function paperToHtml(paper: Paper, index: number): string {
-  const md = renderPaperCard(paper, index, 2);
-  return marked.parse(md, { async: false }) as string;
+/** 单篇论文 → 带内联样式的 HTML 卡片（无编号，供 RSS 使用） */
+export function paperToHtml(paper: Paper): string {
+  const md = renderPaperCard(paper, 0, 2);
+  // Remove heading number ("## 1. Title" → "## Title") since RSS items are standalone
+  const clean = md.replace(/^(#{2,3}) \d+\.\s+/m, "$1 ");
+  return marked.parse(clean, { async: false }) as string;
 }
 
 function escapeHtml(text: string): string {

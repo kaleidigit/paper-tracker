@@ -16,16 +16,20 @@ export function buildRssXml(
   feedUrl: string,
   maxItems = 100
 ): string {
-  const items = papers.slice(0, maxItems);
+  // Sort by date descending so RSS readers show newest first
+  const sorted = [...papers].sort((a, b) =>
+    `${b.published_date}`.localeCompare(`${a.published_date}`)
+  );
+  const items = sorted.slice(0, maxItems);
 
   const itemXml = items
-    .map((paper, i) => {
-      const html = paperToHtml(paper, i);
+    .map((paper) => {
+      const html = paperToHtml(paper);
       const guid = itemKey(paper);
       const link = paper.url || paper.doi || `${siteUrl}`;
       const pubDate = paper.published_date ? formatRfc2822(paper.published_date) : "";
       const author = (paper.authors && paper.authors.length > 0) ? paper.authors[0] : "";
-      const paperTitle = paper.title_zh || paper.title_en || `论文 ${i + 1}`;
+      const paperTitle = paper.title_zh || paper.title_en || "论文";
       const categories = paper.classification?.tags || [];
       const catXml = categories.map((c) => `    <category>${escapeXml(c)}</category>`).join("\n");
 
