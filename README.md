@@ -111,11 +111,14 @@ HTML 浏览页左侧有**固定侧边目录**，可点击跳转到任意论文�
 
 ### 2. 启用 GitHub Pages
 
-Settings → Pages → Source 选 **GitHub Actions** → Save。
+Settings → Pages:
+- Source: **Deploy from a branch**
+- Branch: **gh-pages**，目录 `/ (root)`
+- Save
 
 ### 3. 触发运行
 
-Actions → Daily Paper Digest → Run workflow。之后每天工作日 08:37 CST 自动运行。
+Actions → Daily Paper Digest → Run workflow。部署成功后访问 `https://<user>.github.io/paper-tracker/` 即可看到 HTML 日报，RSS 地址为 `https://<user>.github.io/paper-tracker/feeds/combined.xml`。之后每天工作日 08:37 CST 自动运行。
 
 ---
 
