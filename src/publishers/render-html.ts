@@ -16,15 +16,17 @@ body {
 }
 h1 { font-size: 1.5em; border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; }
 h2 { font-size: 1.2em; margin-top: 28px; }
-h3 { font-size: 1.05em; margin-top: 24px; color: #333; }
+h3 { font-size: 1.05em; margin-top: 24px; }
 hr { border: none; border-top: 1px solid #eee; margin: 16px 0; }
 a { color: #2563eb; text-decoration: none; }
 blockquote { border-left: 3px solid #e0e0e0; margin: 8px 0; padding: 4px 12px; color: #555; }
 img { max-width: 100%; height: auto; border-radius: 4px; }
 @media (prefers-color-scheme: dark) {
   body { background: #1a1a2e; color: #e0e0e0; }
+  h1, h2, h3 { color: #e0e0e0; }
   a { color: #60a5fa; }
   blockquote { color: #aaa; border-left-color: #444; }
+  hr { border-top-color: #444; }
 }
 `.trim();
 
