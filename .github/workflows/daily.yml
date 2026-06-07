@@ -37,7 +37,7 @@ jobs:
           restore-keys: |
             papers-db-
 
-      - name: Configure secrets
+      - name: Run pipeline
         run: |
           DAY_OF_WEEK=$(TZ=Asia/Shanghai date +%u)  # 1=Mon ... 7=Sun
           if [ "$DAY_OF_WEEK" = "1" ]; then
@@ -53,9 +53,7 @@ jobs:
           EMAIL_RECIPIENTS=${{ secrets.EMAIL_RECIPIENTS }}
           PUSH_DAYS=${PUSH_DAYS}
           EOF
-
-      - name: Run pipeline
-        run: bash run.sh --days ${PUSH_DAYS}
+          bash run.sh --days "${PUSH_DAYS}"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

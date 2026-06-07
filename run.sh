@@ -36,11 +36,11 @@ DAYS=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --profile)
-      PROFILE="$2"; shift 2 ;;
+      PROFILE="${2:-}"; shift 2 ;;
     --dry-run)
       DRY_RUN=1; shift ;;
     --days)
-      DAYS="$2";
+      DAYS="${2:-}";
       if ! [[ "$DAYS" =~ ^[1-9][0-9]*$ ]]; then
         echo "[run] ERROR: --days 要求的值为正整数，收到: '$DAYS'" >&2
         exit 1
