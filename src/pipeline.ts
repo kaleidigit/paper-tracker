@@ -200,18 +200,24 @@ async function stepNotify(ctx: ProfileContext): Promise<StepResult> {
     return { step: "notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t };
   }
 
-  const apiKeyEnv = emailCfg.api_key_env || "RESEND_API_KEY";
-  const apiKey = process.env[apiKeyEnv];
-  if (!apiKey) {
-    const err = `Missing env var ${apiKeyEnv}`;
-    logEvent("ERROR", "email.missing_key", { env: apiKeyEnv });
+  const host = emailCfg.smtp_host || "smtp.163.com";
+  const port = emailCfg.smtp_port || 465;
+  const secure = emailCfg.smtp_secure !== false;
+
+  const userEnv = emailCfg.user_env || "EMAIL_USER";
+  const passEnv = emailCfg.pass_env || "EMAIL_PASS";
+  const user = process.env[userEnv] || "";
+  const pass = process.env[passEnv] || "";
+  if (!user || !pass) {
+    const err = `Missing SMTP credentials: ${userEnv}/${passEnv}`;
+    logEvent("ERROR", "email.missing_creds", { userEnv, passEnv });
     return { step: "notify", inputCount: papers.length, outputCount: 0, inputFile: in_, outputFile: "", durationMs: Date.now() - t, error: err };
   }
 
   const toEnv = emailCfg.to_env || "EMAIL_RECIPIENTS";
   const toRaw = process.env[toEnv] || "";
   const to = toRaw.split(",").map((s) => s.trim()).filter(Boolean);
-  const from = emailCfg.from || "noreply@example.com";
+  const from = emailCfg.from || "noreply@163.com";
   const subjTpl = emailCfg.subject_template || "论文日报 {date}";
   const subject = subjTpl.replace("{date}", ctx.dateStr);
 
@@ -221,7 +227,7 @@ async function stepNotify(ctx: ProfileContext): Promise<StepResult> {
   const html = digestToHtmlPage(htmlTitle, markdownContent);
 
   try {
-    await sendResendEmail(apiKey, from, to, subject, html);
+    await sendResendEmail(host, port, secure, user, pass, from, to, subject, html);
     logEvent("INFO", "email.sent", { to: to.length, papers: papers.length });
   } catch (err) {
     logEvent("ERROR", "email.failed", { error: String(err) });

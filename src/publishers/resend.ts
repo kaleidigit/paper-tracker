@@ -1,17 +1,21 @@
 /**
- * resend.ts — Resend 邮件发送（HTTP client，无文件 IO）
+ * resend.ts — SMTP 邮件发送（HTTP-free，走 SMTP 协议）
  *
- * POST https://api.resend.com/emails
+ * 使用 nodemailer 连接 SMTP 服务器（默认 163 邮箱）。
+ * 无文件 IO。
  */
 
+import { createTransport } from "nodemailer";
 import type { JsonRecord } from "../types.js";
 import { retry } from "../utils.js";
 import { logEvent } from "../logger.js";
 
-const RESEND_API = "https://api.resend.com/emails";
-
 export async function sendResendEmail(
-  apiKey: string,
+  host: string,
+  port: number,
+  secure: boolean,
+  user: string,
+  pass: string,
   from: string,
   to: string[],
   subject: string,
@@ -24,21 +28,10 @@ export async function sendResendEmail(
 
   return retry(
     async () => {
-      const res = await fetch(RESEND_API, {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${apiKey}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ from, to, subject, html: htmlContent }),
-        signal: AbortSignal.timeout(15_000)
-      });
-
-      const body = await res.json() as JsonRecord;
-      if (!res.ok) {
-        throw new Error(`Resend HTTP ${res.status}: ${JSON.stringify(body)}`);
-      }
-      return body as JsonRecord;
+      const transporter = createTransport({ host, port, secure, auth: { user, pass } });
+      const info = await transporter.sendMail({ from, to: to.join(", "), subject, html: htmlContent });
+      logEvent("INFO", "email.sent", { messageId: info.messageId, to: to.length });
+      return { sent: true, messageId: info.messageId } as unknown as JsonRecord;
     },
     {
       maxAttempts: 3,

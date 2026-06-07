@@ -127,7 +127,11 @@ export interface AppConfig {
   email?: {
     enabled?: boolean;
     provider?: string;
-    api_key_env?: string;
+    smtp_host?: string;
+    smtp_port?: number;
+    smtp_secure?: boolean;
+    user_env?: string;
+    pass_env?: string;
     from?: string;
     to_env?: string;
     subject_template?: string;

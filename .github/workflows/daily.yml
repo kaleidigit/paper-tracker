@@ -26,7 +26,8 @@ jobs:
           cat > .env << 'EOF'
           TZ=Asia/Shanghai
           OPENAI_COMPATIBLE_API_KEY=${{ secrets.OPENAI_COMPATIBLE_API_KEY }}
-          RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+          EMAIL_USER=${{ secrets.EMAIL_USER }}
+          EMAIL_PASS=${{ secrets.EMAIL_PASS }}
           EMAIL_RECIPIENTS=${{ secrets.EMAIL_RECIPIENTS }}
           PUSH_DAYS=1
           EOF
