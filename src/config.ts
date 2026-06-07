@@ -170,10 +170,8 @@ export function applyDefaults(parsed: AppConfig): void {
   parsed.ai.filter.min_confidence = asNumber(parsed.ai.filter.min_confidence, 0.5);
   parsed.ai.filter.batch_size = asNumber(parsed.ai.filter.batch_size, 3);
   parsed.sources = parsed.sources || {};
-  parsed.feishu = parsed.feishu || {};
-  parsed.feishu.alert_enabled = Boolean(parsed.feishu.alert_enabled ?? true);
-  parsed.feishu.alert_message_template =
-    parsed.feishu.alert_message_template || "未获取到任何论文数据，已终止日报推送，请立即排查数据源与过滤配置。";
+  parsed.rss = { enabled: true, language: "zh-CN", max_items: 100, ...parsed.rss };
+  parsed.email = { enabled: false, provider: "resend", subject_template: "论文日报 {date}", ...parsed.email };
 }
 
 // ─── Legacy config loader (backward compatible) ──────────────

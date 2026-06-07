@@ -1,27 +1,26 @@
 # CLAUDE.md
-> 最后更新：2026-05-29，反映 feishu-perm 权限修复 + deploy.sh bot scope 校验
+> 最后更新：2026-06-07，移除 lark-cli 依赖，新增 RSS Feed + Resend 邮件推送
 
 ## 核心原则
 
-1. **JSON 是核心产品**，Markdown/飞书文档只是展示层。所有数据处理以 `Paper[]` 为中心。
+1. **JSON 是核心产品**，RSS/HTML/邮件只是展示层。所有数据处理以 `Paper[]` 为中心。
 2. **`src/` 下所有函数不允许文件 IO** —— 不写文件、不读文件、不调 shell。文件读写统一在 `pipeline.ts` 中。
-3. **`publish.ts` 直接调用 lark-cli**（`runCommand`），不走 shell 模板字符串。
-4. **每增加一个领域，只需新增一个 profile 目录**，无需修改任何代码。
-5. **不生成 `summary_zh` / `novelty_points` / `main_content`** —— 避免幻觉和高 token 消耗。
-6. **Profile 隔离** —— 配置在 `profiles/{name}/` 下，通过 `--profile` 参数选择，fallback 到 `top`。
-7. **测试必须通过** `npm test` 和 `npm run build`。
-8. **结构化日志统一使用 `logEvent()`**（`src/logger.ts`），不直接写 `process.stdout.write(JSON.stringify(...))`。
-9. **重试统一使用 `retry()`**（`src/utils.ts`），指数退避 + 25% 抖动。
-10. **配置文件有 Zod schema 验证**，加载时即失败，友好错误信息。
-11. **昂贵操作延迟到筛选后** —— 文章页抓取、LLM 翻译等高开销操作在 filter 之后执行，只处理通过筛选的论文。
-12. **采集策略由配置驱动** —— `journals.json` 的 `publisher_strategy` 字段决定采集方式（`nature-rss` / `openalex`），代码不硬编码策略映射。
-13. **管道执行单一入口** —— `auto-push.sh` 委托 `run.sh`，不重复实现管道逻辑；所有 profile 串行执行后统一 combined-push。
+3. **每增加一个领域，只需新增一个 profile 目录**，无需修改任何代码。
+4. **不生成 `summary_zh` / `novelty_points` / `main_content`** —— 避免幻觉和高 token 消耗。
+5. **Profile 隔离** —— 配置在 `profiles/{name}/` 下，通过 `--profile` 参数选择，fallback 到 `top`。
+6. **测试必须通过** `npm test` 和 `npm run build`。
+7. **结构化日志统一使用 `logEvent()`**（`src/logger.ts`），不直接写 `process.stdout.write(JSON.stringify(...))`。
+8. **重试统一使用 `retry()`**（`src/utils.ts`），指数退避 + 25% 抖动。
+9. **配置文件有 Zod schema 验证**，加载时即失败，友好错误信息。
+10. **昂贵操作延迟到筛选后** —— 文章页抓取、LLM 翻译等高开销操作在 filter 之后执行，只处理通过筛选的论文。
+11. **采集策略由配置驱动** —— `journals.json` 的 `publisher_strategy` 字段决定采集方式（`nature-rss` / `openalex`），代码不硬编码策略映射。
+12. **管道执行单一入口** —— `auto-push.sh` 委托 `run.sh`，不重复实现管道逻辑；所有 profile 串行执行后统一合并 RSS。
 
 ## 架构图
 
 ```
 Shell Scripts:
-  run.sh ──→ 串行 pipeline steps（collect→filter→enrich→store→digest→combined-push），--dry-run/--no-push
+  run.sh ──→ 串行 pipeline steps（collect→filter→enrich→store→digest→rss→notify），--dry-run
   auto-push.sh ──→ cron 入口（周一 DAYS=3，委托 run.sh 执行）
 
 src/cli.ts
@@ -43,9 +42,13 @@ src/cli.ts
         │     ├── openalex-parser.ts (OpenAlex API)
         │     └── article-parser.ts (通用文章页面)
         │
-        ├── digest.ts (纯能力：buildMarkdown / buildCombinedMarkdown / buildRecords)
+        ├── digest.ts (纯能力：buildMarkdown / buildCombinedMarkdown / buildRecords / renderPaperCard)
         │
-        ├── publish.ts (pushToFeishu → lark-cli + tenant_editable 权限)
+        ├── rss.ts (纯能力：buildRssXml → RSS 2.0 XML，content:encoded 内嵌 HTML)
+        │
+        ├── publishers/
+        │     ├── render-html.ts (纯能力：paperToHtml / digestToHtmlPage，marked 转换)
+        │     └── resend.ts (HTTP client：sendResendEmail → Resend API)
         │
         ├── db.ts (openDb / getKnownDedupKeys / upsertPapers → 调用者管理连接)
         │
@@ -63,6 +66,11 @@ data/{profile}/
   │     ├── 5-enriched.json
   │     ├── 6-digest.md
   │     ├── 6-records.json
+
+public/                       ← GitHub Pages 部署（gitignored）
+  ├── feeds/combined.xml      ← 合并 RSS Feed
+  ├── feeds/{profile}.xml     ← 单领域 RSS Feed
+  └── index.html              ← HTML 日报浏览页
 ```
 
 ## 模块职责表
@@ -73,8 +81,10 @@ data/{profile}/
 | `src/pipeline.ts` | **唯一 IO 编排层**：stepFilter/stepStore 管理 DB 连接生命周期（try/finally） | 文件 + DB |
 | `src/modules.ts` | 采集、筛选、增强（含延迟抓取）；重试统一用 `utils.retry()` | 无 |
 | `src/llm.ts` | LLM 调用；日志用 `logEvent()` | 无 |
-| `src/digest.ts` | buildMarkdown / buildCombinedMarkdown / buildRecords | 无 |
-| `src/publish.ts` | pushToFeishu → lark-cli（所有调用统一 `--as bot`）+ tenant_editable 权限（错误传播到管道） | subprocess |
+| `src/digest.ts` | buildMarkdown / buildCombinedMarkdown / buildRecords / renderPaperCard | 无 |
+| `src/rss.ts` | buildRssXml → RSS 2.0 XML，内嵌 HTML | 无 |
+| `src/publishers/render-html.ts` | paperToHtml / digestToHtmlPage（marked 转换） | 无 |
+| `src/publishers/resend.ts` | sendResendEmail → Resend API（fetch） | HTTP |
 | `src/db.ts` | openDb(exported) / getKnownDedupKeys / upsertPapers；调用者管理关闭 | DB |
 | `src/config.ts` | 根配置 + profile deepMerge + applyDefaults；Zod 校验 config.json | 无 |
 | `src/types.ts` | 所有 TypeScript 类型 | 无 |
@@ -88,9 +98,8 @@ data/{profile}/
 ## Shell 脚本
 
 ```
-run.sh              ← 手动入口（串行 6 步 + combined-push，--dry-run/--no-push）
+run.sh              ← 手动入口（串行 8 步 + combined-rss，--dry-run）
 auto-push.sh        ← cron 入口（周一 DAYS=3，委托 run.sh）
-deploy.sh           ← 安装依赖 + lark-cli 授权 + bot scope 校验（verify_bot_scopes）
 ```
 
 单步执行：`npx tsx src/cli.ts --step <name> --profile <name>`
@@ -101,11 +110,30 @@ deploy.sh           ← 安装依赖 + lark-cli 授权 + bot scope 校验（veri
 |------|------|------|------|
 | `collect` | — | `1-raw-fetched.json` | 全量采集 + 去重 |
 | `filter` | `1-raw-fetched.json` | `3-llm-filtered.json` | LLM 批量筛选+翻译（`batch_size` 篇/批，并发 3 批）；DB 查重跳过已知论文 |
-| `enrich` | `3-llm-filtered.json` | `5-enriched.json` | Phase 0: RSS 文章页抓取（延迟到筛选后）→ Phase 1: 翻译/归一化（并发 5）→ Phase 2: **批量分类**（`classify_batch_size` 篇/批，并发 ≈concurrency/2，失败逐篇回退） |
-
+| `enrich` | `3-llm-filtered.json` | `5-enriched.json` | Phase 0: RSS 文章页抓取（延迟到筛选后）→ Phase 1: 翻译/归一化（并发 5）→ Phase 2: 批量分类 |
 | `store` | `5-enriched.json` | `papers.db` | SQLite 写入（try/finally 确保连接关闭） |
 | `digest` | `5-enriched.json` | `6-digest.md` + `6-records.json` | 日刊 Markdown + 扁平记录 |
-| `push` | `6-digest.md` | 飞书 | 直接调用 `pushToFeishu`（不重复写文件） |
+| `rss` | `5-enriched.json` | `public/feeds/{profile}.xml` | RSS 2.0 XML + HTML 页面 |
+| `notify` | `5-enriched.json` | — | Resend 发送 HTML 邮件 |
+| `combined-rss` | 全 profile 的 `5-enriched.json` | `public/feeds/combined.xml` | 跨 profile 合并 RSS |
+
+## 推送方案
+
+**RSS Feed（主力）+ Resend 邮件（辅助）**
+
+- RSS 2.0 + `<content:encoded>` HTML，托管 GitHub Pages
+- 用户订阅 RSS 阅读器（Reeder/NetNewsWire/Feedly）自动获取更新
+- 邮件发送完整 HTML 日报（Resend 100封/天免费）
+- QQ 邮箱绑定微信后有新邮件提醒，间接实现微信通知
+- GitHub Actions 定时运行（工作日 08:37 CST）
+
+```bash
+# 本地生成 RSS
+npx tsx src/cli.ts --step rss --profile top
+
+# 本地发送邮件
+npx tsx src/cli.ts --step notify --profile top
+```
 
 ## 采集策略
 
@@ -132,7 +160,7 @@ deploy.sh           ← 安装依赖 + lark-cli 授权 + bot scope 校验（veri
 周一：DAYS=3（覆盖周末积压）
 周二至五：DAYS=1
 周末：跳过
-全 profile 跑完后合并推送一份 combined 日报。
+各 profile 串行执行，最后合并生成 combined RSS。
 ```
 
 ## Profile 配置
@@ -146,8 +174,8 @@ deploy.sh           ← 安装依赖 + lark-cli 授权 + bot scope 校验（veri
 ### 配置层级
 
 ```
-config.json                ← 根配置：profiles 列表 + 全局 AI 默认值
-.env                       ← 密钥（OPENAI_COMPATIBLE_API_KEY）
+config.json                ← 根配置：profiles 列表 + 全局 AI 默认值 + RSS/Email 配置
+.env                       ← 密钥（OPENAI_COMPATIBLE_API_KEY, RESEND_API_KEY, EMAIL_RECIPIENTS）
 profiles/{name}/
   config.json              ← 领域配置
   journals.json            ← 期刊列表
@@ -173,12 +201,22 @@ AI 配置合并：根 `config.json` 提供默认值，profile 只覆盖差异项
 "ai.enrich.concurrency": 5
 ```
 
-### 飞书
+### RSS & Email
 
 ```jsonc
-"feishu.doc_enabled": true
-"feishu.notify_chat_id": "oc_xxx"
-"feishu.alert_chat_id": "oc_xxx"
+"rss.site_url": "https://<user>.github.io/paper-tracker"
+"rss.language": "zh-CN"
+"email.provider": "resend"
+"email.api_key_env": "RESEND_API_KEY"
+"email.to_env": "EMAIL_RECIPIENTS"
+```
+
+### GitHub Actions
+
+```jsonc
+// .github/workflows/daily.yml
+// cron: '37 0 * * 1-5'  → 工作日 08:37 CST
+// deploys public/ to gh-pages branch via peaceiris/actions-gh-pages@v4
 ```
 
 ## 重试机制
@@ -192,6 +230,7 @@ retry(fn, { maxAttempts: 3, baseDelayMs: 5000, onRetry: (attempt, delay, err) =>
 - 退避：指数 + 25% 抖动
 - filter 逐篇：2 次，10s 间隔
 - enrich 翻译/分类：3 次，5s 指数退避，失败用 FALLBACK_CLASSIFICATION
+- Resend 邮件：3 次，5s 指数退避
 
 ## 配置校验
 
@@ -236,22 +275,24 @@ npx tsx src/cli.ts --step filter  --profile top
 npx tsx src/cli.ts --step enrich  --profile top
 npx tsx src/cli.ts --step store   --profile top
 npx tsx src/cli.ts --step digest  --profile top
-npx tsx src/cli.ts --step push    --profile top
+npx tsx src/cli.ts --step rss     --profile top
+npx tsx src/cli.ts --step notify  --profile top
 
 # 测试
 npm test        # vitest run（6 文件 56 用例）
 npm run build   # tsc --noEmit（零错误）
 ```
 
-## lark-cli 使用方式
+## 安全设计
 
-`publish.ts:pushToFeishu` 直接调用 subprocess（所有 lark-cli 调用统一 `--as bot`）：
-- `lark-cli docs +create` — 创建飞书文档（v2 API，先建空文档再分块 append Markdown，每块 ≤3000 字节）
-- `lark-cli docs +update` — 分块追加 Markdown 内容（每块重试 3 次）
-- `lark-cli drive permission.public patch` — 创建后自动设置 `tenant_editable` 权限（非阻塞，失败传播到管道 errors）
-- `lark-cli im +messages-send` — 发送群通知
-- 文档创建最多重试 3 次（指数退避 + 抖动）
-- Bot 需开通 `docs:permission.setting:write_only` scope 才能设置权限
+密钥通过 GitHub Secrets → `.env`（gitignored）→ `process.env` 链路注入，从未进入仓库。
+
+| 数据 | 存储位置 | 措施 |
+|------|------|------|
+| LLM API key | GitHub Secret → .env | 从未进入仓库 |
+| Resend API key | GitHub Secret → .env | 从未进入仓库 |
+| 邮件收件人 | GitHub Secret `EMAIL_RECIPIENTS` | env var 注入，不写死地址 |
+| public/ 输出 | GitHub Pages（公开） | 仅论文元数据（公开学术信息） |
 
 ## 优化历史
 
@@ -266,7 +307,8 @@ npm run build   # tsc --noEmit（零错误）
 | defer-scrape | 2026-05-28 | 文章页抓取从 collect 延迟到 enrich（141→~28 页，省 ~5min） |
 | pipeline-simplify | 2026-05-28 | 删除 workflow.ts/fetchPapers/publishDigest（-270 行），auto-push 委托 run.sh |
 | feishu-perm | 2026-05-28 | 文档创建后自动设置 tenant_editable 权限 |
-| feishu-perm-fix | 2026-05-29 | 修复权限命令缺少 `--as bot` 导致 scope 错误；权限失败传播到管道；deploy.sh 新增 bot scope 校验 |
+| feishu-perm-fix | 2026-05-29 | 修复权限命令缺少 `--as bot` 导致 scope 错误 |
+| remove-lark | 2026-06-07 | 移除 lark-cli 全部依赖（publish.ts / deploy.sh / feishu 配置），新增 RSS + Resend 邮件 |
 
 ## 数据追溯
 
@@ -279,6 +321,9 @@ cat data/top/YYYY-MM-DD/5-enriched.json | jq '.[0] | {title_zh, abstract_zh, cla
 
 # Markdown
 cat data/top/YYYY-MM-DD/6-digest.md | head -30
+
+# RSS Feed
+cat public/feeds/combined.xml | head -30
 
 # 数据库
 sqlite3 data/top/papers.db "SELECT journal_name, COUNT(*) as cnt FROM papers GROUP BY journal_name ORDER BY cnt DESC;"

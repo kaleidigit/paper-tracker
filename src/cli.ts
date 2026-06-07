@@ -97,7 +97,7 @@ async function main(): Promise<void> {
   }
 
   process.stderr.write("Usage: npx tsx src/cli.ts --step <name> --profile <name> [--dry-run]\n");
-  process.stderr.write("Steps: collect, filter, enrich, store, digest, push, combined-push\n");
+  process.stderr.write("Steps: collect, filter, enrich, store, digest, rss, notify, combined-rss\n");
   process.exitCode = 1;
 }
 

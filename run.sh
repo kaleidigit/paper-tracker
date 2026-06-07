@@ -53,8 +53,7 @@ while [[ $# -gt 0 ]]; do
       echo ""
       echo "  --profile NAME   指定 profile（不指定则运行所有 profile，读取 config.json）"
       echo "  --days N         回溯天数（覆盖 config，必须为正整数）"
-      echo "  --dry-run        仅生成文件，跳过飞书发布"
-      echo "  --no-push        跳过 combined-push"
+      echo "  --dry-run        仅生成文件，跳过邮件发送"
       exit 0 ;;
     *)
       echo "Unknown option: $1"; exit 1 ;;
@@ -83,7 +82,7 @@ for PROFILE_NAME in "${PROFILES[@]}"; do
 
   echo "[run] profile=$PROFILE_NAME dry_run=$DRY_RUN days=${DAYS:-from_config}"
 
-  STEPS="collect filter enrich store digest"
+  STEPS="collect filter enrich store digest rss notify"
 
 
   for step in $STEPS; do
@@ -103,10 +102,10 @@ done
 # ─── 合并推送 ──────────────────────────────────────────────
 
 if [[ "$EXIT_CODE" -eq 0 && "$NO_PUSH" != "1" ]]; then
-  echo "[run] === combined-push ==="
-  if ! npx tsx src/cli.ts --step combined-push --profile "${PROFILES[0]}"; then
-    echo "[run] ERROR: combined-push failed" >&2
-    EXIT_CODE=1
+  echo "[run] === combined-rss ==="
+  if ! npx tsx src/cli.ts --step combined-rss --profile "${PROFILES[0]}"; then
+    echo "[run] WARNING: combined-rss failed" >&2
+  fi
   fi
 fi
 

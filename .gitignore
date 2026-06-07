@@ -1,6 +1,7 @@
 .env
 .venv/
 data/
+public/
 node_modules/
 dist/
 .DS_Store

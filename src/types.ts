@@ -116,27 +116,21 @@ export interface AppConfig {
   classification?: {
     file?: string;
   };
-  feishu?: {
-    execution_mode?: string;
-    data_dir?: string;
-    doc_title_prefix?: string;
-    doc_enabled?: boolean;
-    base_enabled?: boolean;
-    notify_enabled?: boolean;
-    notify_cmd?: string;
-    alert_enabled?: boolean;
-    alert_cmd?: string;
-    alert_chat_id?: string;
-    alert_chat_ids?: string[];
-    alert_user_id?: string;
-    alert_message_template?: string;
-    notify_chat_id?: string;
-    notify_chat_ids?: string[];
-    notify_user_id?: string;
-    notify_user_ids?: string[];
-    notify_message_template?: string;
-    doc_publish_cmd?: string;
-    base_publish_cmd?: string;
+  rss?: {
+    enabled?: boolean;
+    site_url?: string;
+    title?: string;
+    description?: string;
+    language?: string;
+    max_items?: number;
+  };
+  email?: {
+    enabled?: boolean;
+    provider?: string;
+    api_key_env?: string;
+    from?: string;
+    to_env?: string;
+    subject_template?: string;
   };
   runtime: RuntimeConfig;
 }

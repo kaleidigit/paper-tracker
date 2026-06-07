@@ -4,6 +4,20 @@
     "econ",
     "law"
   ],
+  "rss": {
+    "enabled": true,
+    "title": "论文日报",
+    "description": "每日环境能源、经济、法学论文追踪",
+    "site_url": "https://kaleidigit.github.io/paper-tracker",
+    "language": "zh-CN"
+  },
+  "email": {
+    "enabled": true,
+    "provider": "resend",
+    "api_key_env": "RESEND_API_KEY",
+    "to_env": "EMAIL_RECIPIENTS",
+    "from": "Paper Tracker <noreply@resend.dev>"
+  },
   "ai": {
     "provider": "deepseek",
     "api_style": "openai-compatible",

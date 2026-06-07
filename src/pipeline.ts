@@ -10,17 +10,18 @@
  *   5-enriched.json       enrich 输出（翻译 + 分类）
  *   6-digest.md           digest 输出（Markdown）
  *   6-records.json        digest 输出（论文记录，扁平化）
- *   latest.json           指向最新输出的指针（push 后写入）
  */
 
 import fs from "node:fs/promises";
 import path from "node:path";
-import type { JsonRecord, Paper, ProfileContext, StepResult } from "./types.js";
+import type { Paper, ProfileContext, StepResult } from "./types.js";
 import { loadProfilesList } from "./config.js";
 import { collectRawPapers, enrichPapers, loadTaxonomy, filterPapers } from "./modules.js";
-import { buildDigestTitle, buildMarkdown, buildRecords, buildCombinedMarkdown } from "./digest.js";
-import { pushToFeishu } from "./publish.js";
+import { buildDigestTitle, buildMarkdown, buildRecords } from "./digest.js";
 import { upsertPapers, getKnownDedupKeys, openDb } from "./db.js";
+import { buildRssXml } from "./rss.js";
+import { digestToHtmlPage } from "./publishers/render-html.js";
+import { sendResendEmail } from "./publishers/resend.js";
 import { itemKey } from "./utils.js";
 import { logEvent } from "./logger.js";
 
@@ -150,127 +151,133 @@ async function stepDigest(ctx: ProfileContext): Promise<StepResult> {
   };
 }
 
-async function stepPush(ctx: ProfileContext): Promise<StepResult> {
+// ─── RSS 步骤 ──────────────────────────────────────────────
+
+async function stepRss(ctx: ProfileContext): Promise<StepResult> {
   const t = Date.now();
-  const mdFile = f(ctx.outputDir, "6-digest.md");
-  const papFile = f(ctx.outputDir, "5-enriched.json");
-  const title = buildDigestTitle(ctx.config);
-  const papers = await readJson<Paper[]>(papFile);
-  const markdown = await fs.readFile(mdFile, "utf-8");
-  const prefix = ctx.config.feishu?.doc_title_prefix || "[每日论文追踪]";
-  const docTitle = `${prefix} ${title}`;
-  const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
-  const errors: string[] = [];
-  const docPub = feishuResult.doc_publish as JsonRecord | undefined;
-  if (docPub?.error) errors.push(`doc_create: ${String(docPub.error)}`);
-  if (docPub?.permission_error) errors.push(`permission: ${String(docPub.permission_error)}`);
-  if (!feishuResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
-  return {
-    step: "push",
-    inputCount: papers.length,
-    outputCount: papers.length,
-    inputFile: mdFile,
-    outputFile: ctx.outputDir,
-    durationMs: Date.now() - t,
-    error: errors.length > 0 ? errors.join("; ") : undefined
-  };
+  const in_ = f(ctx.outputDir, "5-enriched.json");
+  const rssCfg = ctx.config.rss || {};
+  if (!rssCfg.enabled) {
+    return { step: "rss", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t };
+  }
+  const papers = await readJson<Paper[]>(in_);
+  const siteUrl = rssCfg.site_url || "https://example.github.io/paper-tracker";
+  const feedPath = `feeds/${ctx.profile}.xml`;
+  const feedUrl = `${siteUrl.replace(/\/$/, "")}/${feedPath}`;
+  const title = rssCfg.title || "论文日报";
+  const desc = rssCfg.description || "每日论文追踪";
+  const xml = buildRssXml(title, desc, papers, siteUrl, feedUrl, rssCfg.max_items || 100);
+
+  const pubDir = path.join(path.dirname(ctx.outputDir), "..", "..", "public", "feeds");
+  await fs.mkdir(pubDir, { recursive: true });
+  const out = path.join(pubDir, `${ctx.profile}.xml`);
+  await fs.writeFile(out, xml, "utf-8");
+
+  // Optional HTML page
+  const htmlTitle = `${ctx.dateStr} ${title}`;
+  const htmlOut = path.join(pubDir, "..", "index.html");
+  const markdownContent = await fs.readFile(f(ctx.outputDir, "6-digest.md"), "utf-8");
+  await fs.writeFile(htmlOut, digestToHtmlPage(htmlTitle, markdownContent), "utf-8");
+
+  logEvent("INFO", "workflow.rss.done", { profile: ctx.profile, feed: out, items: papers.length });
+  return { step: "rss", inputCount: papers.length, outputCount: papers.length, inputFile: in_, outputFile: out, durationMs: Date.now() - t };
 }
 
-// ─── Combined push（跨 profile 合并推送）────────────────────
+// ─── 邮件通知步骤 ──────────────────────────────────────────
 
-async function stepCombinedPush(ctx: ProfileContext): Promise<StepResult> {
+async function stepNotify(ctx: ProfileContext): Promise<StepResult> {
   const t = Date.now();
-  const feishu = ctx.config.feishu || {};
-  const dataDir = feishu.data_dir || "data";
-  const timezone = ctx.config.app?.timezone || "Asia/Shanghai";
-  const nowInTz = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
-  const dateStr = nowInTz.toISOString().slice(0, 10);
+  const in_ = f(ctx.outputDir, "5-enriched.json");
+  const emailCfg = ctx.config.email || {};
 
-  const isDryRun = process.env.PUSH_DRY_RUN === "1";
+  if (!emailCfg.enabled) {
+    return { step: "notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t };
+  }
 
+  const papers = await readJson<Paper[]>(in_);
+  if (papers.length === 0) {
+    logEvent("INFO", "email.skip", { reason: "no papers" });
+    return { step: "notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t };
+  }
+
+  const apiKeyEnv = emailCfg.api_key_env || "RESEND_API_KEY";
+  const apiKey = process.env[apiKeyEnv];
+  if (!apiKey) {
+    const err = `Missing env var ${apiKeyEnv}`;
+    logEvent("ERROR", "email.missing_key", { env: apiKeyEnv });
+    return { step: "notify", inputCount: papers.length, outputCount: 0, inputFile: in_, outputFile: "", durationMs: Date.now() - t, error: err };
+  }
+
+  const toEnv = emailCfg.to_env || "EMAIL_RECIPIENTS";
+  const toRaw = process.env[toEnv] || "";
+  const to = toRaw.split(",").map((s) => s.trim()).filter(Boolean);
+  const from = emailCfg.from || "noreply@example.com";
+  const subjTpl = emailCfg.subject_template || "论文日报 {date}";
+  const subject = subjTpl.replace("{date}", ctx.dateStr);
+
+  const markdownContent = await fs.readFile(f(ctx.outputDir, "6-digest.md"), "utf-8");
+  const rssCfg = ctx.config.rss || {};
+  const htmlTitle = `${ctx.dateStr} ${rssCfg.title || "论文日报"}`;
+  const html = digestToHtmlPage(htmlTitle, markdownContent);
+
+  try {
+    await sendResendEmail(apiKey, from, to, subject, html);
+    logEvent("INFO", "email.sent", { to: to.length, papers: papers.length });
+  } catch (err) {
+    logEvent("ERROR", "email.failed", { error: String(err) });
+    return { step: "notify", inputCount: papers.length, outputCount: 0, inputFile: in_, outputFile: "", durationMs: Date.now() - t, error: String(err) };
+  }
+
+  return { step: "notify", inputCount: papers.length, outputCount: to.length, inputFile: in_, outputFile: "", durationMs: Date.now() - t };
+}
+
+// ─── Combined RSS（跨 profile 合并）────────────────────────
+
+async function stepCombinedRss(ctx: ProfileContext): Promise<StepResult> {
+  const t = Date.now();
+  const rssCfg = ctx.config.rss || {};
+  if (!rssCfg.enabled) {
+    return { step: "combined-rss", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t };
+  }
+
+  const dataDir = "data";
   const profiles = await loadProfilesList();
-  const profilePapers: Array<{ profile: string; papers: Paper[] }> = [];
+  const allPapers: Paper[] = [];
   const seen = new Set<string>();
-  let totalRaw = 0;
 
   for (const profile of profiles) {
-    const enrichedFile = path.join(dataDir, profile, dateStr, "5-enriched.json");
     try {
-      await fs.access(enrichedFile);
-    } catch {
-      continue; // profile has no data for today
-    }
-    const enriched = await readJson<Paper[]>(enrichedFile);
-    totalRaw += enriched.length;
-
-    // Cross-profile dedup
-    const unique: Paper[] = [];
-    for (const paper of enriched) {
-      const key = itemKey(paper);
-      if (!seen.has(key)) {
-        seen.add(key);
-        unique.push(paper);
+      const enrichedFile = path.join(dataDir, profile, ctx.dateStr, "5-enriched.json");
+      const enriched = await readJson<Paper[]>(enrichedFile);
+      for (const paper of enriched) {
+        const key = itemKey(paper);
+        if (!seen.has(key)) {
+          seen.add(key);
+          allPapers.push(paper);
+        }
       }
+    } catch {
+      // profile has no data for today
     }
-    if (unique.length > 0) profilePapers.push({ profile, papers: unique });
   }
 
-  if (profilePapers.length === 0) {
-    return { step: "combined-push", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: "没有论文可推送" };
+  if (allPapers.length === 0) {
+    return { step: "combined-rss", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: "没有论文可生成 RSS" };
   }
 
-  const totalAfterDedup = profilePapers.reduce((sum, p) => sum + p.papers.length, 0);
+  const siteUrl = rssCfg.site_url || "https://example.github.io/paper-tracker";
+  const feedUrl = `${siteUrl.replace(/\/$/, "")}/feeds/combined.xml`;
+  const title = rssCfg.title || "论文日报";
+  const desc = rssCfg.description || "每日论文追踪";
+  const xml = buildRssXml(title, desc, allPapers, siteUrl, feedUrl, rssCfg.max_items || 100);
 
-  // Title: use PUSH_DAYS (strict window, no grace) when available, fall back to actual paper date range
-  const pushDaysEnv = parseInt(process.env.PUSH_DAYS || "", 10);
-  let title: string;
-  if (pushDaysEnv > 1) {
-    const startDate = new Date(nowInTz);
-    startDate.setDate(startDate.getDate() - (pushDaysEnv - 1));
-    const startDateStr = startDate.toISOString().slice(0, 10);
-    title = `${startDateStr}~${dateStr} 论文日报（${pushDaysEnv}天）`;
-  } else if (pushDaysEnv === 1) {
-    title = `${dateStr} 论文日报（1天）`;
-  } else {
-    title = `${dateStr} 论文日报（1天）`;
-  }
-  const markdown = buildCombinedMarkdown(title, profilePapers);
+  const pubDir = path.join(dataDir, "..", "public", "feeds");
+  await fs.mkdir(pubDir, { recursive: true });
+  const out = path.join(pubDir, "combined.xml");
+  await fs.writeFile(out, xml, "utf-8");
 
-  // Write combined digest
-  const combinedDir = path.join(dataDir, "combined", dateStr);
-  const mdFile = path.join(combinedDir, "6-digest-combined.md");
-  await fs.mkdir(combinedDir, { recursive: true });
-  await fs.writeFile(mdFile, markdown, "utf-8");
-
-  const prefix = feishu.doc_title_prefix || "[每日论文追踪]";
-  const docTitle = `${prefix} ${title}`;
-
-  const errors: string[] = [];
-  if (isDryRun) {
-    logEvent("INFO", "combined-push.dry-run", { profiles: profilePapers.map((p) => p.profile), total: totalAfterDedup });
-  } else {
-    const feishuResult = await pushToFeishu(ctx.config, docTitle, markdown);
-    const docPub = feishuResult.doc_publish as JsonRecord | undefined;
-    if (docPub?.error) errors.push(`doc_create: ${String(docPub.error)}`);
-    if (docPub?.permission_error) errors.push(`permission: ${String(docPub.permission_error)}`);
-    if (!feishuResult.doc_url && !docPub?.error) errors.push("doc_create: no URL returned");
-  }
-
-  logEvent("INFO", "combined-push.done", {
-    profiles: profilePapers.map((p) => p.profile),
-    total_before_dedup: totalRaw,
-    after_dedup: totalAfterDedup
-  });
-
-  return {
-    step: "combined-push",
-    inputCount: totalRaw,
-    outputCount: totalAfterDedup,
-    inputFile: "",
-    outputFile: mdFile,
-    durationMs: Date.now() - t,
-    error: errors.length > 0 ? errors.join("; ") : undefined
-  };
+  logEvent("INFO", "workflow.combined-rss.done", { profiles, items: allPapers.length });
+  return { step: "combined-rss", inputCount: allPapers.length, outputCount: allPapers.length, inputFile: "", outputFile: out, durationMs: Date.now() - t };
 }
 
 // ─── Runner ────────────────────────────────────────────────
@@ -281,8 +288,9 @@ const STEPS: Record<string, (ctx: ProfileContext) => Promise<StepResult>> = {
   enrich: stepEnrich,
   store: stepStore,
   digest: stepDigest,
-  push: stepPush,
-  "combined-push": stepCombinedPush
+  rss: stepRss,
+  notify: stepNotify,
+  "combined-rss": stepCombinedRss
 };
 
 export async function runStep(name: string, ctx: ProfileContext): Promise<StepResult> {

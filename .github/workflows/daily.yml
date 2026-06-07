@@ -1,0 +1,42 @@
+name: Daily Paper Digest
+
+on:
+  schedule:
+    # 工作日 08:37 CST = 00:37 UTC
+    - cron: '37 0 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Configure secrets
+        run: |
+          cat > .env << 'EOF'
+          TZ=Asia/Shanghai
+          OPENAI_COMPATIBLE_API_KEY=${{ secrets.OPENAI_COMPATIBLE_API_KEY }}
+          RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+          EMAIL_RECIPIENTS=${{ secrets.EMAIL_RECIPIENTS }}
+          PUSH_DAYS=1
+          EOF
+
+      - name: Run pipeline
+        run: bash run.sh
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages

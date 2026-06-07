@@ -69,7 +69,7 @@ const PROFILE_LABELS: Record<string, string> = {
   law: "法学"
 };
 
-function renderPaperCard(paper: Paper, index: number, headingLevel: number): string {
+export function renderPaperCard(paper: Paper, index: number, headingLevel: number): string {
   const prefix = "#".repeat(headingLevel);
   const cls = paper.classification || {};
   const paperTitle = paper.title_zh || paper.title_en || `论文 ${index + 1}`;

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # auto-push.sh — cron 定时任务入口
 #
-# 每天运行所有 profile 的完整 pipeline，合并推送一份日报。
+# 每天运行所有 profile 的完整 pipeline，合并生成 RSS。
 # 周一 DAYS=3（周末积压），周二至五 DAYS=1。
 # 周末跳过。
 #
 # 用法：
-#   ./auto-push.sh               正式推送
-#   ./auto-push.sh --dry-run     仅生成文件，不发飞书
+#   ./auto-push.sh               正式运行
+#   ./auto-push.sh --dry-run     仅生成文件，不发邮件
 
 set -euo pipefail
 

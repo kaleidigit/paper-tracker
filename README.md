@@ -1,6 +1,7 @@
 # Paper-Tracker
 
-自动化顶刊论文追踪系统。每日从 Nature、Science、PNAS 等顶刊采集论文，经 LLM 筛选、翻译、分类后生成中文日报，推送到飞书群和飞书文档。**DB 去重缓存**可自动跳过已知论文，节省 LLM token 消耗。
+自动化顶刊论文追踪系统。每日从 Nature、Science、PNAS 等顶刊采集论文，经 LLM 筛选、翻译、分类后生成中文日报，
+通过 **RSS Feed（含 HTML 全文）** 和 **Resend 邮件** 分发。
 
 支持**多领域 profile 切换**：通过替换 `profiles/` 下的配置，即可追踪经济、法学等其他领域的文献。
 
@@ -12,31 +13,30 @@
 
 - Node.js 20+
 - npm 9+
-- `lark-cli`（部署脚本会自动安装）
 
-### 2. 安装与部署
+### 2. 安装
 
 ```bash
 git clone <repo-url> && cd paper-tracker
 
 # 配置环境变量
 cp config/.env.cn.example .env
-# 编辑 .env，填入 OPENAI_COMPATIBLE_API_KEY、LARK_APP_ID、LARK_APP_SECRET
+# 编辑 .env，填入 OPENAI_COMPATIBLE_API_KEY（DeepSeek API key）
 
-# 一键部署（安装依赖 + 构建 + lark-cli 授权）
-./deploy.sh
+npm install
 ```
 
 ### 3. 运行
 
 ```bash
-# 完整管道（采集 → 筛选 → 翻译分类 → 入库 → 日报 → 推送飞书）
+# 完整管道（采集 → 筛选 → 翻译分类 → 入库 → 日报 → RSS + 邮件）
 ./run.sh --profile top
 
-# Dry-run（仅生成本地文件，跳过飞书推送）
+# Dry-run（仅生成本地文件，跳过邮件发送）
+./run.sh --profile top --dry-run
+
 # 指定回溯天数
 ./run.sh --profile top --days 2 --dry-run
-./run.sh --profile top --dry-run
 
 # 自动推送（cron 入口，周一 DAYS=3 覆盖周末积压）
 ./auto-push.sh
@@ -50,8 +50,11 @@ cp config/.env.cn.example .env
 profiles/{domain}/          领域配置（config.json, journals.json, classification.json）
 src/
   llm.ts                    LLM 客户端（筛选、翻译、分类）
-  publish.ts                飞书发布（lark-cli 直接调用 + 自动设置 tenant_editable 权限，所有调用统一 --as bot）
   digest.ts                 Markdown / JSON 记录生成
+  rss.ts                    RSS 2.0 XML 生成（content:encoded 内嵌 HTML）
+  publishers/
+    render-html.ts          Markdown → HTML 渲染（marked）
+    resend.ts               Resend 邮件发送
   pipeline.ts               分步编排器（含 DB 查重跳过逻辑）
   modules.ts                采集与增强入口（collectRawPapers, filterPapers, enrichPapers）
   db.ts                     SQLite 去重缓存（仅存原始字段，不含 LLM 派生数据）
@@ -60,9 +63,8 @@ src/
     nature-parser.ts        Nature 系列 RSS + JSON-LD
     openalex-parser.ts      OpenAlex API（Science, PNAS, Joule, EES 等）
     article-parser.ts       通用文章页面解析
-run.sh                      完整管道编排（逐 profile 串行 + combined-push）
+run.sh                      完整管道编排（逐 profile 串行 + combined-rss）
 auto-push.sh                cron 入口（计算 DAYS，委托 run.sh）
-deploy.sh                   一键部署（含 bot scope 校验：docs:permission.setting:write_only / read）
 ```
 
 ### 管道流程
@@ -73,12 +75,23 @@ filter    ──→  3-llm-filtered.json     DB查重(跳过已知论文) → LL
 enrich    ──→  5-enriched.json         RSS文章页抓取(延迟) → LLM 翻译 → 批量分类
 store     ──→  papers.db               写入 SQLite（13 列精简模式，仅存原始字段）
 digest    ──→  6-digest.md             生成日刊 Markdown
-push      ──→  飞书文档 + 群消息通知
+rss       ──→  public/feeds/*.xml      生成 RSS 2.0 XML（HTML 全文）+ HTML 浏览页
+notify    ──→  邮件（Resend API）       发送完整 HTML 日报到 QQ 邮箱
 
-所有 profile 跑完后合并推送一份 combined 日报。
+所有 profile 跑完后通过 combined-rss 合并生成 combined.xml。
 ```
 
-每步输出保存到 `data/{profile}/{date}/`，支持质检追溯。
+每步输出保存到 `data/{profile}/{date}/`，RSS/HTML 输出到 `public/`。
+
+### 推送方式
+
+| 方式 | 说明 |
+|------|------|
+| **RSS Feed** | 托管 GitHub Pages，RSS 阅读器（Reeder/NetNewsWire/Feedly）自动订阅 |
+| **邮件** | Resend API 发送 HTML 日报，QQ 邮箱绑定微信后有新邮件提醒 |
+| **Web 浏览** | GitHub Pages 托管 `public/index.html` 可在浏览器直接查看 |
+
+部署通过 `.github/workflows/daily.yml`（GitHub Actions 定时触发，工作日 08:37 CST）。
 
 ---
 
@@ -90,7 +103,7 @@ push      ──→  飞书文档 + 群消息通知
 | 周二至周五 | 1 | 仅昨天 |
 | 周末 | — | 跳过 |
 
-所有 profile 跑完后通过 `combined-push` 合并为一份日报推送。
+各 profile 串行执行，最后合并生成 combined RSS。
 
 ---
 
@@ -135,8 +148,9 @@ npx tsx src/cli.ts --step filter    --profile top
 npx tsx src/cli.ts --step enrich    --profile top
 npx tsx src/cli.ts --step store     --profile top
 npx tsx src/cli.ts --step digest    --profile top
-npx tsx src/cli.ts --step push      --profile top
-npx tsx src/cli.ts --step combined-push --profile top
+npx tsx src/cli.ts --step rss       --profile top
+npx tsx src/cli.ts --step notify    --profile top
+npx tsx src/cli.ts --step combined-rss --profile top
 ```
 
 ---
@@ -173,15 +187,19 @@ npx tsx src/cli.ts --step combined-push --profile top
 }
 ```
 
-### 飞书推送
-
-> **前置条件**：Bot 应用需在飞书开发者后台开通 `docs:permission.setting:write_only` 权限，文档才能自动设为「租户内可编辑」。`./deploy.sh` 会自动校验。
+### RSS & Email
 
 ```jsonc
-"feishu": {
-  "doc_title_prefix": "[每日论文追踪]",
-  "notify_chat_id": "oc_xxx",
-  "alert_chat_id": "oc_xxx"
+"rss": {
+  "enabled": true,
+  "site_url": "https://<user>.github.io/paper-tracker",
+  "language": "zh-CN"
+},
+"email": {
+  "enabled": true,
+  "provider": "resend",
+  "api_key_env": "RESEND_API_KEY",
+  "to_env": "EMAIL_RECIPIENTS"
 }
 ```
 
@@ -190,12 +208,25 @@ npx tsx src/cli.ts --step combined-push --profile top
 ## Profile 配置
 
 | Profile | 用途 | 筛选模式 | 期刊数 |
-|---------|------|---------|--------|
-|| `top` | 环境能源期刊合集 | LLM 合并筛选+翻译 | 36 |
+|---------|------|---------|:---:|
+| `top` | 环境能源期刊合集 | LLM 合并筛选+翻译 | 36 |
 | `econ` | 环境经济学期刊 | 纯 LLM 直通 | 35 |
 | `law` | 法学环境能源论文 | 纯 LLM 直通 | 8 |
 
 新增 profile：创建 `profiles/{name}/` 目录，放入 `config.json`、`journals.json`、`classification.json`，无需改代码。
+
+---
+
+## 安全设计
+
+所有密钥通过 GitHub Secrets → `.env`（gitignored）→ `process.env` 链路注入，从未进入仓库。
+
+| 数据 | 存储 | 措施 |
+|------|------|------|
+| LLM API key | GitHub Secret | 从未进入仓库 |
+| Resend API key | GitHub Secret | 从未进入仓库 |
+| 邮件收件人 | GitHub Secret `EMAIL_RECIPIENTS` | env var 注入 |
+| public/ 输出 | GitHub Pages（公开） | 仅论文元数据（公开学术信息） |
 
 ---
 
@@ -208,8 +239,8 @@ cat data/top/2026-05-23/1-raw-fetched.json | jq 'length'
 cat data/top/2026-05-23/5-enriched.json | jq '.[0] | {title_zh, abstract_zh}'
 # 查看最终 Markdown
 cat data/top/2026-05-23/6-digest.md | head -30
-# 查看合并日报
-cat data/combined/2026-05-23/6-digest-combined.md | head -30
+# 查看 RSS Feed
+cat public/feeds/combined.xml | head -30
 ```
 
 ---

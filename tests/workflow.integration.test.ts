@@ -83,10 +83,6 @@ function makeConfig(): AppConfig {
       model: "mock-model",
       api_key_env: "SILICONFLOW_API_KEY"
     },
-    feishu: {
-      execution_mode: "host",
-      data_dir: tmpDir
-    }
   };
 }
 
