@@ -55,19 +55,28 @@ async function main(): Promise<void> {
 
   if (step) {
     const { runStep } = await import("./pipeline.js");
-    const ctx = await loadProfileContext(profile);
-    await fs.mkdir(ctx.outputDir, { recursive: true });
-    const result = await runStep(step, ctx);
-    process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
-    if (result.error) {
-      process.stderr.write(`${JSON.stringify({
-        timestamp: new Date().toISOString(),
-        level: "ERROR",
-        event: `step.${step}.error`,
-        error: result.error,
-        profile: ctx.profile
-      })}\n`);
+    const { loadProfilesList } = await import("./config.js");
+
+    const profiles = profile ? [profile] : await loadProfilesList();
+    let firstError: string | undefined;
+
+    for (const p of profiles) {
+      const ctx = await loadProfileContext(p);
+      await fs.mkdir(ctx.outputDir, { recursive: true });
+      const result = await runStep(step, ctx);
+      process.stdout.write(`[${p}] ${JSON.stringify(result)}\n`);
+      if (result.error) {
+        firstError = firstError || result.error;
+        process.stderr.write(`${JSON.stringify({
+          timestamp: new Date().toISOString(),
+          level: "ERROR",
+          event: `step.${step}.error`,
+          error: result.error,
+          profile: p
+        })}\n`);
+      }
     }
+    if (firstError) process.exitCode = 1;
     return;
   }
 
@@ -96,7 +105,8 @@ async function main(): Promise<void> {
     return;
   }
 
-  process.stderr.write("Usage: npx tsx src/cli.ts --step <name> --profile <name> [--dry-run]\n");
+  process.stderr.write("Usage: npx tsx src/cli.ts --step <name> [--profile <name>] [--dry-run]\n");
+  process.stderr.write("       If --profile is omitted, runs for all profiles.\n");
   process.stderr.write("Steps: collect, filter, enrich, store, digest, rss, notify, combined-rss\n");
   process.exitCode = 1;
 }
