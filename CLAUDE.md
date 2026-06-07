@@ -230,7 +230,7 @@ retry(fn, { maxAttempts: 3, baseDelayMs: 5000, onRetry: (attempt, delay, err) =>
 - 退避：指数 + 25% 抖动
 - filter 逐篇：2 次，10s 间隔
 - enrich 翻译/分类：3 次，5s 指数退避，失败用 FALLBACK_CLASSIFICATION
-- Resend 邮件：3 次，5s 指数退避
+- SMTP 邮件：3 次，5s 指数退避
 
 ## 配置校验
 
@@ -259,7 +259,7 @@ sqlite3 data/top/papers.db "SELECT COUNT(*) FROM papers;"
 ## 命令速查
 
 ```bash
-# 完整管道
+# 完整管道（默认所有 profile）
 ./run.sh
 ./run.sh --dry-run
 ./run.sh --profile econ
@@ -269,14 +269,11 @@ sqlite3 data/top/papers.db "SELECT COUNT(*) FROM papers;"
 ./auto-push.sh
 ./auto-push.sh --dry-run
 
-# 单步
-npx tsx src/cli.ts --step collect --profile top
-npx tsx src/cli.ts --step filter  --profile top
-npx tsx src/cli.ts --step enrich  --profile top
-npx tsx src/cli.ts --step store   --profile top
-npx tsx src/cli.ts --step digest  --profile top
-npx tsx src/cli.ts --step rss     --profile top
-npx tsx src/cli.ts --step notify  --profile top
+# 单步（省略 --profile 则跑所有 profile）
+npx tsx src/cli.ts --step collect
+npx tsx src/cli.ts --step rss
+npx tsx src/cli.ts --step notify
+npx tsx src/cli.ts --step digest --profile top   # 指定单个
 
 # 测试
 npm test        # vitest run（6 文件 56 用例）

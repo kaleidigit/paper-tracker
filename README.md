@@ -134,8 +134,9 @@ sqlite3 data/top/papers.db \
 ### Shell 脚本
 
 ```bash
-./run.sh --profile top                  # 完整管道
-./run.sh --profile top --dry-run        # dry-run
+./run.sh                                # 所有 profile（默认）
+./run.sh --profile top                  # 指定单个 profile
+./run.sh --dry-run                      # dry-run（不发送邮件）
 ./run.sh --profile top --days 2 --dry-run  # 指定回溯天数
 ./auto-push.sh                          # cron 自动推送
 ```
@@ -143,14 +144,14 @@ sqlite3 data/top/papers.db \
 ### TypeScript CLI 单步
 
 ```bash
-npx tsx src/cli.ts --step collect   --profile top
-npx tsx src/cli.ts --step filter    --profile top
-npx tsx src/cli.ts --step enrich    --profile top
-npx tsx src/cli.ts --step store     --profile top
-npx tsx src/cli.ts --step digest    --profile top
-npx tsx src/cli.ts --step rss       --profile top
-npx tsx src/cli.ts --step notify    --profile top
-npx tsx src/cli.ts --step combined-rss --profile top
+# 所有 profile（默认）
+npx tsx src/cli.ts --step collect
+npx tsx src/cli.ts --step rss
+npx tsx src/cli.ts --step notify
+
+# 指定单个 profile
+npx tsx src/cli.ts --step digest --profile top
+npx tsx src/cli.ts --step combined-rss
 ```
 
 ---
