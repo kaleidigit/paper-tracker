@@ -8,81 +8,197 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/top.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>持续氯消毒医院表面重塑微生物组和病毒组并多样化耐药基因</title>
-    <link>https://doi.org/10.1021/acs.est.6c01505</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c01505</guid>
+    <title>芳香氮通过微生物异化铁还原介导溶解性黑碳的矿化增强</title>
+    <link>https://doi.org/10.1021/acs.est.5c18731</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.5c18731</guid>
     <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Huaxin Lei</dc:creator>
-    <description>常规消毒可在短期内减少医院表面的微生物负荷，但其对表面微生物组和抗菌素耐药性动态的长期影响仍不清楚。我们进行了一项为期一年的宏基因组研究，对197个经过持续氯消毒的医院现场表面样本进行了分析，以研究微生物组、耐药组和噬菌体-宿主互作的变化。微生物α多样性在早期月份增加，优势肠杆菌科减少，丙酸杆菌科和微球菌科等分类群富集，表明生态位替代。随着时间的推移，多样性和先前被抑制的分类群趋近于基线水平，表明</description>
-    <category>chlorine disinfection</category>
-    <category>hospital surfaces</category>
-    <category>microbiome</category>
-    <category>resistome</category>
-    <category>bacteriophage</category>
-    <category>antimicrobial resistance</category>
-    <content:encoded><![CDATA[<h2>1. 持续氯消毒医院表面重塑微生物组和病毒组并多样化耐药基因</h2>
-<p><em>Sustained Chlorination of Hospital Surfaces Restructures the Microbiome and Virome and Diversifies Resistance Genes</em></p>
+    <dc:creator>Zhiyuan Zhang</dc:creator>
+    <description>微生物异化铁还原（DIR）关键影响溶解性有机质转化，但其分子机制，特别是氮的作用尚不清楚。本文比较了溶解性黑碳（DBC，热成因）和淋溶溶解性有机碳（LDOC，生物成因）作为DIR中唯一电子供体的行为。DBC产生的亚铁离子是LDOC的3倍，并实现了更高的含氮化合物矿化率（41%对23%），仅以铵形式释放。傅里叶变换离子回旋共振质谱结合氮近边X射线吸收精细结构分析表明，DBC降解靶向富含芳香氮的多环芳</description>
+    <category>dissolved black carbon</category>
+    <category>microbial iron reduction</category>
+    <category>nitrogen mineralization</category>
+    <category>organic carbon</category>
+    <content:encoded><![CDATA[<h2>1. 芳香氮通过微生物异化铁还原介导溶解性黑碳的矿化增强</h2>
+<p><em>Aromatic Nitrogen-Mediated Enhanced Mineralization of Dissolved Black Carbon through Microbial Dissimilatory Iron Reduction</em></p>
 <ul>
-<li><strong>作者</strong>：Huaxin Lei¹, Shicong Du¹, C W. LI¹, Louise Yung²³, Peihua Wang³, Ling Yan Leung⁴⁵, Colin A. Graham⁴⁵⁶, Hui‐Ling Yen²³, Y Li³, Alexander G. Lucaci⁷⁸, Christopher E. Mason⁷⁸⁹, Patrick K. H. Lee¹¹⁰</li>
-<li><strong>作者单位</strong>：¹City University of Hong Kong；²Faculty of Public Health；³University of Hong Kong；⁴Chinese University of Hong Kong；⁵Prince of Wales Hospital；⁶Hospital Authority；⁷Cornell University；⁸Weill Cornell Medicine；⁹MIND Research Institute；¹⁰Center for Climate and Resilience Research</li>
+<li><strong>作者</strong>：Zhiyuan Zhang¹², Xiurui Cui¹², Shujun Yin³⁴, Langsha Yi⁵⁶, Shu Tao¹², Dongqiang Zhu¹²</li>
+<li><strong>作者单位</strong>：¹Peking University；²Ministry of Education；³Ministry of Natural Resources；⁴Jiangxi Agricultural University；⁵Institute for Advanced Study；⁶University of Chinese Academy of Sciences</li>
 <li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
 <li><strong>日期</strong>：2026-06-04</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：未分类</li>
-<li><strong>标签</strong>：chlorine disinfection，hospital surfaces，microbiome，resistome，bacteriophage，antimicrobial resistance</li>
+<li><strong>标签</strong>：dissolved black carbon，microbial iron reduction，nitrogen mineralization，organic carbon</li>
 </ul>
-<p><strong>中文摘要</strong><br>常规消毒可在短期内减少医院表面的微生物负荷，但其对表面微生物组和抗菌素耐药性动态的长期影响仍不清楚。我们进行了一项为期一年的宏基因组研究，对197个经过持续氯消毒的医院现场表面样本进行了分析，以研究微生物组、耐药组和噬菌体-宿主互作的变化。微生物α多样性在早期月份增加，优势肠杆菌科减少，丙酸杆菌科和微球菌科等分类群富集，表明生态位替代。随着时间的推移，多样性和先前被抑制的分类群趋近于基线水平，表明对持续消毒的适应，并存在功能转移的证据。病毒群落表现出类似的时间动态，组成和相对丰度发生明显变化。同时，耐药组经历了显著且基本不可逆的重组，抗生素抗性基因（ARG）的总相对丰度降低，多样性增加。氯消毒还降低了ARG的移动性和致病潜力，表现为与移动遗传元件和毒力因子基因的共现减弱，以及预测的耐药组风险降低。噬菌体和宿主的相对丰度仍保持强相关，但发生了向裂解性病毒生活方式的转变，这可能限制了噬菌体介导的ARG传播。这些发现强调了消毒既是一种微生物控制措施，也是一种生态压力，突出了需要基于生态学策略来管理临床抗菌素耐药性。</p>
+<p><strong>中文摘要</strong><br>微生物异化铁还原（DIR）关键影响溶解性有机质转化，但其分子机制，特别是氮的作用尚不清楚。本文比较了溶解性黑碳（DBC，热成因）和淋溶溶解性有机碳（LDOC，生物成因）作为DIR中唯一电子供体的行为。DBC产生的亚铁离子是LDOC的3倍，并实现了更高的含氮化合物矿化率（41%对23%），仅以铵形式释放。傅里叶变换离子回旋共振质谱结合氮近边X射线吸收精细结构分析表明，DBC降解靶向富含芳香氮的多环芳烃组分，尤其是五元环，占溶解性有机氮损失近一半。来自吡咯型氮降解的电子通量估算贡献了DBC总亚铁产量的至少11%。LDOC优先去除木质素类组分中的不稳定酰胺氮。DBC中含氮分子式减少51.6%，而LDOC仅减少10.2%。热力学计算证实芳香氮主导了DBC的降解。这些富电子的路易斯碱结构形成稳定的铁配位络合物，促进电子转移并活化相邻碳键以进行氧化开环。相比之下，LDOC的矿化遵循常规的碳中心厌氧途径。本研究强调了先前被忽视的DBC在DIR中的高反应活性，该反应由以芳香氮为中心的氮介导途径驱动。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c01505">https://doi.org/10.1021/acs.est.6c01505</a></li>
-<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c01505">https://doi.org/10.1021/acs.est.6c01505</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.5c18731">https://doi.org/10.1021/acs.est.5c18731</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.5c18731">https://doi.org/10.1021/acs.est.5c18731</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>重新思考微塑料和纳米塑料毒理学中的“对照”：走向暴露定义的参考状态</title>
-    <link>https://doi.org/10.1021/acs.est.6c05960</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c05960</guid>
-    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
-    <dc:creator>V. C. Shruti</dc:creator>
-    <description>本文批判性审视微塑料和纳米塑料毒理学研究中对照设置的问题，提出基于暴露定义参考状态的方法论改进，以提升研究可比性和可靠性。</description>
-    <category>microplastics</category>
-    <category>nanoplastics</category>
-    <category>toxicology</category>
-    <category>control</category>
-    <category>reference state</category>
-    <content:encoded><![CDATA[<h2>2. 重新思考微塑料和纳米塑料毒理学中的“对照”：走向暴露定义的参考状态</h2>
-<p><em>Rethinking “Control” in Micro- and Nanoplastic Toxicology: Toward Exposure-Defined Reference States</em></p>
+    <title>理解残疾人的气候脆弱性与韧性：来自印度喀拉拉邦案例研究的见解</title>
+    <link>https://doi.org/10.1016/j.gloenvcha.2026.103183</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.gloenvcha.2026.103183</guid>
+    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Katherine Lofts</dc:creator>
+    <description>该研究通过印度喀拉拉邦的案例，探讨了残疾人在气候变化中的脆弱性和韧性，为制定包容性气候适应策略提供依据。</description>
+    <category>climate vulnerability</category>
+    <category>disability</category>
+    <category>climate adaptation</category>
+    <category>inclusive policy</category>
+    <content:encoded><![CDATA[<h2>2. 理解残疾人的气候脆弱性与韧性：来自印度喀拉拉邦案例研究的见解</h2>
+<p><em>Understanding the climate vulnerability and resilience of people with disabilities: insights from a case study in Kerala, India</em></p>
 <ul>
-<li><strong>作者</strong>：V. C. Shruti¹, Gurusamy Kutralam-Muniasamy¹²</li>
-<li><strong>作者单位</strong>：¹Instituto Politécnico Nacional；²Centro de Investigación Docencia y Consultoria Administrativa</li>
+<li><strong>作者</strong>：Katherine Lofts, Filzah Belal, Sébastien Jodoin, Binitha V. Thampi, Matthew Hunt, Raphael Lencucha, Alexandra Lesnikowski, Nandini Ramanujam</li>
+<li><strong>期刊</strong>：Global Environmental Change</li>
+<li><strong>日期</strong>：2026-06-04</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：经济学组（气候政策评估）</li>
+<li><strong>标签</strong>：climate vulnerability，disability，climate adaptation，inclusive policy</li>
+</ul>
+<p><strong>中文摘要</strong><br>该研究通过印度喀拉拉邦的案例，探讨了残疾人在气候变化中的脆弱性和韧性，为制定包容性气候适应策略提供依据。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.gloenvcha.2026.103183">https://doi.org/10.1016/j.gloenvcha.2026.103183</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1016/j.gloenvcha.2026.103183">https://doi.org/10.1016/j.gloenvcha.2026.103183</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>中国大规模迁移带来的显著PM2.5相关健康效益</title>
+    <link>https://doi.org/10.1021/acs.est.6c00289</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c00289</guid>
+    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Dong Xie</dc:creator>
+    <description>城市化驱动的中国大规模农村到城市迁移显著改变了家庭能源使用并重塑了空气污染暴露途径。然而，由室内外空气污染共同导致的健康结果的程度、驱动因素和时间演变仍不明确。通过将七十年迁移历史（1949-2021）与全国家庭能源调查相结合，我们量化了迁移引起的综合PM2.5暴露和死亡率变化。相对于1949年以来无迁移的反事实情景，迁移使2019年的综合PM2.5暴露降低了27.6 μg·m⁻³（95%置信区间</description>
+    <category>PM2.5</category>
+    <category>migration</category>
+    <category>air pollution</category>
+    <category>health benefits</category>
+    <category>household energy</category>
+    <content:encoded><![CDATA[<h2>3. 中国大规模迁移带来的显著PM2.5相关健康效益</h2>
+<p><em>Substantial PM <sub>2.5</sub> -Related Health Gains from Large-Scale Migration in China</em></p>
+<ul>
+<li><strong>作者</strong>：Dong Xie¹²³, Huizhong Shen²³, Ruixin Zhang²³, Zelin Mai²³, Tianjia Guan⁴⁵, Peng Guo²³, Zi Wang²³, Yilin Chen⁶, Guofeng Shen⁷, Shu Tao²³⁷</li>
+<li><strong>作者单位</strong>：¹Harbin Institute of Technology；²Southern University of Science and Technology；³State Key Laboratory of Pollution Control and Resource Reuse；⁴Chinese Academy of Medical Sciences &amp; Peking Union Medical College；⁵Peking Union Medical College Hospital；⁶Peking University Shenzhen Hospital；⁷Peking University</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-04</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（大气污染与空气质量）</li>
+<li><strong>标签</strong>：PM2.5，migration，air pollution，health benefits，household energy</li>
+</ul>
+<p><strong>中文摘要</strong><br>城市化驱动的中国大规模农村到城市迁移显著改变了家庭能源使用并重塑了空气污染暴露途径。然而，由室内外空气污染共同导致的健康结果的程度、驱动因素和时间演变仍不明确。通过将七十年迁移历史（1949-2021）与全国家庭能源调查相结合，我们量化了迁移引起的综合PM2.5暴露和死亡率变化。相对于1949年以来无迁移的反事实情景，迁移使2019年的综合PM2.5暴露降低了27.6 μg·m⁻³（95%置信区间：15.7-39.4），并自1949年以来累计避免了230万（190-260万）死亡，其中室内暴露减少贡献最大。这些健康效益源于城乡家庭能源使用的差异，在社会发展的中期阶段就已显著，并可能在其他转型经济体中发生。因此，我们的研究挑战了快速发展经济体城市化严格有害于环境健康的传统观点。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c00289">https://doi.org/10.1021/acs.est.6c00289</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c00289">https://doi.org/10.1021/acs.est.6c00289</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>数据驱动的能量正向废水处理约束与可行路径识别</title>
+    <link>https://doi.org/10.1021/acs.est.6c01273</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c01273</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Zi Zhang</dc:creator>
+    <description>废水处理行业约占全球电力使用的1%，随着各国扩大处理以满足可持续发展目标6，需求将上升。将污水处理厂从能源消费者转变为净生产者至关重要，但能源正向运行的系统级可行性仍不清楚。利用2961个污水处理厂的国家清单，通过随机前沿分析消除运营偏差（存在于70%的工厂中），并建立了效率调整后的能源基线。能源平衡模型显示，在常规情景下，只有高浓度废水（COD 334-426 mg/L，COD/TN比8.5-1</description>
+    <category>wastewater treatment</category>
+    <category>energy-positive</category>
+    <category>energy efficiency</category>
+    <category>carbon redirection</category>
+    <content:encoded><![CDATA[<h2>4. 数据驱动的能量正向废水处理约束与可行路径识别</h2>
+<p><em>Data-Driven Identification of Constraints and Enabling Pathways for Energy-Positive Wastewater Treatment</em></p>
+<ul>
+<li><strong>作者</strong>：Zi Zhang¹, Yuqing Yan¹, Xiatong Li¹, Emily Mayo¹, Zhiyong Jason Ren¹</li>
+<li><strong>作者单位</strong>：¹Princeton University</li>
 <li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
 <li><strong>日期</strong>：2026-06-03</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：资源循环组（塑料污染与治理）</li>
-<li><strong>标签</strong>：microplastics，nanoplastics，toxicology，control，reference state</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）；SDG-建模组（能源系统建模）</li>
+<li><strong>标签</strong>：wastewater treatment，energy-positive，energy efficiency，carbon redirection</li>
 </ul>
-<p><strong>中文摘要</strong><br>本文批判性审视微塑料和纳米塑料毒理学研究中对照设置的问题，提出基于暴露定义参考状态的方法论改进，以提升研究可比性和可靠性。</p>
+<p><strong>中文摘要</strong><br>废水处理行业约占全球电力使用的1%，随着各国扩大处理以满足可持续发展目标6，需求将上升。将污水处理厂从能源消费者转变为净生产者至关重要，但能源正向运行的系统级可行性仍不清楚。利用2961个污水处理厂的国家清单，通过随机前沿分析消除运营偏差（存在于70%的工厂中），并建立了效率调整后的能源基线。能源平衡模型显示，在常规情景下，只有高浓度废水（COD 334-426 mg/L，COD/TN比8.5-11.9）才能实现能源正向处理，排除了大多数全球设施。然而，评估两种结合强化初级处理与主流厌氧氨氧化的碳重定向路径时，发现这些路径可将门槛降低至COD 153-198 mg/L和COD/TN 4.9-5.7，使低浓度系统接近能源正向。中型设施被认为是最有利的候选者。这一特征驱动的框架为旨在扩大能源正向废水处理前沿的未来研究和试点示范提供了动力。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c05960">https://doi.org/10.1021/acs.est.6c05960</a></li>
-<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c05960">https://doi.org/10.1021/acs.est.6c05960</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c01273">https://doi.org/10.1021/acs.est.6c01273</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c01273">https://doi.org/10.1021/acs.est.6c01273</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>现场采集的非水相液体和地下水中全氟和多氟烷基物质及总有机氟比率</title>
+    <title>干旱加剧可降解微塑料多样性对土壤细菌和病毒生态的影响</title>
+    <link>https://doi.org/10.1021/acs.est.6c01941</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c01941</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Tian-Gui Cai</dc:creator>
+    <description>微塑料污染和干旱是威胁土壤生态系统稳定性的全球性压力因素。然而，微塑料多样性与干旱对土壤微生物和病毒生态的综合影响尚不清楚。本研究通过控制微宇宙实验，考察在干旱胁迫下，增加微塑料多样性（0、1、3和5种）如何影响土壤细菌和病毒群落、生物地球化学循环和生态风险。可降解微塑料的影响强于不可降解微塑料，改变了微生物组成和功能基因谱。与充足水分相比，干旱显著改变了细菌和病毒群落组成，增强碳氮固定相关功能基</description>
+    <category>microplastic</category>
+    <category>drought</category>
+    <category>soil bacteria</category>
+    <category>virus</category>
+    <category>ecological risk</category>
+    <content:encoded><![CDATA[<h2>5. 干旱加剧可降解微塑料多样性对土壤细菌和病毒生态的影响</h2>
+<p><em>Drought Amplifies Degradable Microplastic Diversity Effects on Soil Bacterial and Viral Ecology</em></p>
+<ul>
+<li><strong>作者</strong>：Tian-Gui Cai, Da Lin, Lijuan Ma, Ya-Ning Wang, Bang Ni, Mao Ye, Yi-Fei Wang, Dong Zhu</li>
+<li><strong>作者单位</strong>：Ningbo University；Chinese Academy of Sciences；Huazhong Agricultural University；Institute of Urban Environment；University of Chinese Academy of Sciences；National University of Civil Protection of Ukraine；Institute of Soil Science</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
+<li><strong>标签</strong>：microplastic，drought，soil bacteria，virus，ecological risk</li>
+</ul>
+<p><strong>中文摘要</strong><br>微塑料污染和干旱是威胁土壤生态系统稳定性的全球性压力因素。然而，微塑料多样性与干旱对土壤微生物和病毒生态的综合影响尚不清楚。本研究通过控制微宇宙实验，考察在干旱胁迫下，增加微塑料多样性（0、1、3和5种）如何影响土壤细菌和病毒群落、生物地球化学循环和生态风险。可降解微塑料的影响强于不可降解微塑料，改变了微生物组成和功能基因谱。与充足水分相比，干旱显著改变了细菌和病毒群落组成，增强碳氮固定相关功能基因丰度，并随着可降解微塑料多样性增加，提高了抗生素抗性基因和毒力因子基因的流行度。在干旱条件下，应对可降解微塑料多样性增加，病毒群落表现出辅助代谢基因丰度增加和溶原性生活策略更普遍，作为环境胁迫的适应策略。关键宿主Rhizobacter缺乏注释的抗病毒防御系统，携带丰富的ARGs和VFGs，并与病毒丰度呈强正相关，表明它可能是水平基因转移的关键热点。这些发现揭示了干旱下可降解微塑料多样性增加改变了微生物组成，可能加速养分周转并放大生态风险，强调在环境风险评估中需考虑多胁迫因子相互作用。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c01941">https://doi.org/10.1021/acs.est.6c01941</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c01941">https://doi.org/10.1021/acs.est.6c01941</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>情绪改变水域：受污水影响水道中抗抑郁药的多维剖析和手性表征</title>
+    <link>https://doi.org/10.1021/acs.est.6c02538</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c02538</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>E. Vincent</dc:creator>
+    <description>由于废水处理过程中去除不完全，抗抑郁药及其代谢物在废水出水及受污水影响的水道中广泛存在。这些化学物质已知会影响暴露生物的行为和生理，引发人们对这种污染生态影响的担忧。然而，尽管美国食品药品监督管理局批准了28种抗抑郁药，环境研究通常只针对其中一小部分，因为传统分析方法受共洗脱异构体和结构相似性阻碍。我们开发了一种结合液相色谱、漂移管离子迁移谱、质谱和碎片分析的多维工作流程，能够对环境样品中的26种</description>
+    <category>antidepressants</category>
+    <category>pharmaceutical pollution</category>
+    <category>water contamination</category>
+    <category>chiral characterization</category>
+    <content:encoded><![CDATA[<h2>6. 情绪改变水域：受污水影响水道中抗抑郁药的多维剖析和手性表征</h2>
+<p><em>Mood Altering Waters: Multidimensional Profiling and Chiral Characterization of Antidepressants in Effluent-Impacted Waterways</em></p>
+<ul>
+<li><strong>作者</strong>：E. Vincent¹, Mark W. Sumarah²³, Justin B. Renaud²³, Natasha DesRochers²³, Haley C. Jostes¹, Allison N. Fry¹, Jack P. Ryan¹, James N. Dodds¹, J Zhang⁴⁵, P. A. Thiessen⁴⁵, Evan Bolton⁴⁵, Emma L. Schymanski⁶, Erin S. Baker¹</li>
+<li><strong>作者单位</strong>：¹University of North Carolina at Chapel Hill；²Agriculture and Agri-Food Canada；³London International Development Centre；⁴National Institutes of Health；⁵National Center for Biotechnology Information；⁶University of Luxembourg</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）</li>
+<li><strong>标签</strong>：antidepressants，pharmaceutical pollution，water contamination，chiral characterization</li>
+</ul>
+<p><strong>中文摘要</strong><br>由于废水处理过程中去除不完全，抗抑郁药及其代谢物在废水出水及受污水影响的水道中广泛存在。这些化学物质已知会影响暴露生物的行为和生理，引发人们对这种污染生态影响的担忧。然而，尽管美国食品药品监督管理局批准了28种抗抑郁药，环境研究通常只针对其中一小部分，因为传统分析方法受共洗脱异构体和结构相似性阻碍。我们开发了一种结合液相色谱、漂移管离子迁移谱、质谱和碎片分析的多维工作流程，能够对环境样品中的26种母体抗抑郁药和8种代谢物进行高置信度鉴定和定量，同时建立公开参考库以支持后续研究。通过手性色谱进一步表征所选化合物，以评估具有不同生物活性的对映体抗抑郁药。该工作流程应用于受污水影响的水道，在五个地点鉴定并定量了17种抗抑郁药。这些发现凸显了抗抑郁药污染的普遍性，以及改进监测和废水处理策略以减轻生态和人类健康风险的必要性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c02538">https://doi.org/10.1021/acs.est.6c02538</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c02538">https://doi.org/10.1021/acs.est.6c02538</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>现场采集的非水相液体和地下水中全氟和多氟烷基物质及总有机氟比例</title>
     <link>https://doi.org/10.1021/acs.est.5c16011</link>
     <guid isPermaLink="false">https://doi.org/10.1021/acs.est.5c16011</guid>
     <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
     <dc:creator>Mireia Roig-Paul</dc:creator>
-    <description>该研究分析了从现场采集的非水相液体和地下水中全氟和多氟烷基物质（PFAS）及总有机氟的比率，揭示了变量间的多重共线性问题，并指出需要进一步开展受控实验室研究。</description>
+    <description>摘要：对现场采集的非水相液体和地下水中的全氟和多氟烷基物质（PFAS）及总有机氟比例进行分析，发现当考虑PFAS类别和链长时，比例上升至72.0%。变量间的多重共线性限制了识别单一主导因素的能力，因此需要受控实验室研究。</description>
     <category>PFAS</category>
-    <category>groundwater</category>
-    <category>non-aqueous phase liquids</category>
-    <category>total organic fluorine</category>
-    <category>multicollinearity</category>
-    <content:encoded><![CDATA[<h2>3. 现场采集的非水相液体和地下水中全氟和多氟烷基物质及总有机氟比率</h2>
+    <category>地下水污染</category>
+    <category>总有机氟</category>
+    <content:encoded><![CDATA[<h2>7. 现场采集的非水相液体和地下水中全氟和多氟烷基物质及总有机氟比例</h2>
 <p><em>Per- and Polyfluoroalkyl Substances and Total Organic Fluorine Ratios from Field-Collected Light Nonaqueous Phase Liquids and Groundwater</em></p>
 <ul>
 <li><strong>作者</strong>：Mireia Roig-Paul¹, Jeff Ford², Chris G. Heron³, Sid Park², Patrick N. Reardon¹, Isabelle E. Logan¹, Esteban E. Hernandez¹, Shae Hubbard¹, Mitchell Kim-Fu¹, Ansel Moll¹, Gerrad D. Jones¹, Jennifer A. Field¹</li>
@@ -91,13 +207,133 @@
 <li><strong>日期</strong>：2026-06-03</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：矿产生态组（水环境与水处理）</li>
-<li><strong>标签</strong>：PFAS，groundwater，non-aqueous phase liquids，total organic fluorine，multicollinearity</li>
+<li><strong>标签</strong>：PFAS，地下水污染，总有机氟</li>
 </ul>
-<p><strong>中文摘要</strong><br>该研究分析了从现场采集的非水相液体和地下水中全氟和多氟烷基物质（PFAS）及总有机氟的比率，揭示了变量间的多重共线性问题，并指出需要进一步开展受控实验室研究。</p>
+<p><strong>中文摘要</strong><br>摘要：对现场采集的非水相液体和地下水中的全氟和多氟烷基物质（PFAS）及总有机氟比例进行分析，发现当考虑PFAS类别和链长时，比例上升至72.0%。变量间的多重共线性限制了识别单一主导因素的能力，因此需要受控实验室研究。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
 <li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.5c16011">https://doi.org/10.1021/acs.est.5c16011</a></li>
 <li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.5c16011">https://doi.org/10.1021/acs.est.5c16011</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>新兴的南极放大效应</title>
+    <link>https://doi.org/10.1093/nsr/nwag343</link>
+    <guid isPermaLink="false">https://doi.org/10.1093/nsr/nwag343</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Qigang Wu</dc:creator>
+    <description>该论文探讨南极变暖速度超过全球平均水平的放大效应及其可能机制。</description>
+    <category>南极</category>
+    <category>气候变暖</category>
+    <category>放大效应</category>
+    <content:encoded><![CDATA[<h2>8. 新兴的南极放大效应</h2>
+<p><em>The emerging antarctic amplification</em></p>
+<ul>
+<li><strong>作者</strong>：Qigang Wu¹²³, JiKai Tian¹³, Qianyi Yu¹³, Shizuo Li⁴, Yang Chang¹³, Aixue Hu⁵, Lei Zhang⁶</li>
+<li><strong>作者单位</strong>：¹Fudan University；²Ministry of Education；³Shanghai Ocean University；⁴Duke University；⁵NSF National Center for Atmospheric Research；⁶South China Sea Institute Of Oceanology</li>
+<li><strong>期刊</strong>：National Science Review</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（大气污染与空气质量）</li>
+<li><strong>标签</strong>：南极，气候变暖，放大效应</li>
+</ul>
+<p><strong>中文摘要</strong><br>该论文探讨南极变暖速度超过全球平均水平的放大效应及其可能机制。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1093/nsr/nwag343">https://doi.org/10.1093/nsr/nwag343</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1093/nsr/nwag343">https://doi.org/10.1093/nsr/nwag343</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>有机质腐殖化的分子演化调控水铁矿转化：界面电子转移机制及碳保存意义</title>
+    <link>https://doi.org/10.1021/acs.est.5c15760</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.5c15760</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Wenfeng Huang</dc:creator>
+    <description>在土壤腐殖化过程中，有机质在不同阶段形成独特的组成和化学特征。然而，这些演化的有机质特征如何影响铁（氢）氧化物转化并最终调控碳保存尚不清楚。通过可控厌氧培养实验，研究了在Fe(II)介导条件下，不同腐殖化阶段的秸秆源有机质对水铁矿转化影响。发现腐殖化程度越高，水铁矿结晶被抑制越强，从降解阶段的45.3%转化率降至成熟阶段的21.5%。这种阶段性抑制与高不饱和酚类化合物的积累密切相关，这些化合物破坏</description>
+    <category>腐殖化</category>
+    <category>水铁矿</category>
+    <category>碳保存</category>
+    <category>电子转移</category>
+    <content:encoded><![CDATA[<h2>9. 有机质腐殖化的分子演化调控水铁矿转化：界面电子转移机制及碳保存意义</h2>
+<p><em>Molecular Evolution of Organic Matter Humification Governs Ferrihydrite Transformation: Interfacial Electron Transfer Mechanisms and Carbon Preservation Implications</em></p>
+<ul>
+<li><strong>作者</strong>：Wenfeng Huang¹, B Chen¹, Jingyi Zhang¹, Chengpeng Yuan¹, Zehong Zhang¹, Quan Qian¹, Kexin Chen¹, Qi Liu¹, Xiangyang Gui¹, Liyang Hu¹, Xinde Cao¹², Xiaoyun Xu¹</li>
+<li><strong>作者单位</strong>：¹Shanghai Jiao Tong University；²Shanghai Institute of Pollution Control and Ecological Security</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（土地利用与农业）</li>
+<li><strong>标签</strong>：腐殖化，水铁矿，碳保存，电子转移</li>
+</ul>
+<p><strong>中文摘要</strong><br>在土壤腐殖化过程中，有机质在不同阶段形成独特的组成和化学特征。然而，这些演化的有机质特征如何影响铁（氢）氧化物转化并最终调控碳保存尚不清楚。通过可控厌氧培养实验，研究了在Fe(II)介导条件下，不同腐殖化阶段的秸秆源有机质对水铁矿转化影响。发现腐殖化程度越高，水铁矿结晶被抑制越强，从降解阶段的45.3%转化率降至成熟阶段的21.5%。这种阶段性抑制与高不饱和酚类化合物的积累密切相关，这些化合物破坏了界面电子转移和矿物成核。机制上，高不饱和酚类通过C-O-Fe键促进三元水铁矿-有机质-Fe(II)复合物形成，增强Fe(II)吸附同时缩小Fe(II)-水铁矿氧化还原电位差，从而抑制界面电子转移。此外，高不饱和酚类降低矿物表面电位并阻碍颗粒团聚，破坏成核前驱体结晶。因此，抑制的水铁矿转化促进了高不饱和酚类的选择性吸附及其向缩合芳烃的分子转化，从而优先保存腐殖化后期的有机碳。这些发现揭示了腐殖化有机质对水铁矿转化的阶段性调控及其对碳保存的意义，增进了对土壤碳-铁耦合生物地球化学的理解。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.5c15760">https://doi.org/10.1021/acs.est.5c15760</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.5c15760">https://doi.org/10.1021/acs.est.5c15760</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>纳米Fe3O4长期运行中增强低浓度甲烷的生物去除</title>
+    <link>https://doi.org/10.1021/acs.est.6c00879</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c00879</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Lishan Niu</dc:creator>
+    <description>低浓度甲烷排放的缓解仍是气候变化减缓中的重要挑战。利用甲烷氧化细菌去除低浓度甲烷是一种可持续方法，但其性能受限于甲烷氧化细菌的缓慢生长和疏水甲烷的传质限制。本文提出通过添加纳米Fe3O4构建甲烷氧化细菌-Fe3O4杂交系统来增强生物滤池中甲烷去除的策略。在稳定的纳米Fe3O4刺激下，生物滤池在各种操作条件下的甲烷去除率提高了1.8至3.0倍。具体而言，来自甲烷的碳优先重定向至疏水生物质合成，改善了</description>
+    <category>methane removal</category>
+    <category>climate change mitigation</category>
+    <category>biofiltration</category>
+    <category>nanoparticles</category>
+    <content:encoded><![CDATA[<h2>10. 纳米Fe3O4长期运行中增强低浓度甲烷的生物去除</h2>
+<p><em>Nano-Fe <sub>3</sub> O <sub>4</sub> Enhances the Biological Removal of Low-Concentration Methane during Long-Term Operation</em></p>
+<ul>
+<li><strong>作者</strong>：Lishan Niu¹, Tipei Jia¹, Zheng Qi¹, Jinying Xi¹</li>
+<li><strong>作者单位</strong>：¹Tsinghua University</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：油气-电力组（decarbonization）</li>
+<li><strong>标签</strong>：methane removal，climate change mitigation，biofiltration，nanoparticles</li>
+</ul>
+<p><strong>中文摘要</strong><br>低浓度甲烷排放的缓解仍是气候变化减缓中的重要挑战。利用甲烷氧化细菌去除低浓度甲烷是一种可持续方法，但其性能受限于甲烷氧化细菌的缓慢生长和疏水甲烷的传质限制。本文提出通过添加纳米Fe3O4构建甲烷氧化细菌-Fe3O4杂交系统来增强生物滤池中甲烷去除的策略。在稳定的纳米Fe3O4刺激下，生物滤池在各种操作条件下的甲烷去除率提高了1.8至3.0倍。具体而言，来自甲烷的碳优先重定向至疏水生物质合成，改善了界面甲烷传质，同时甲烷氧化细菌表现出增强的趋化潜力。同时，编码颗粒甲烷单加氧酶和可溶性甲烷单加氧酶的基因转录增强，表明甲烷氧化代谢全面强化。因此，优势甲烷氧化细菌丰度增加超过2.0倍，净CO2产量从78.3%降至45.8%，伴随群落水平细胞内ATP浓度增加2.6倍。总体而言，该研究表明纳米Fe3O4提高了生物滤池去除低浓度甲烷的性能和稳定性，为甲烷减排提供了实用有效的策略。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c00879">https://doi.org/10.1021/acs.est.6c00879</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c00879">https://doi.org/10.1021/acs.est.6c00879</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>环境浓度的除草剂扑草净增加造礁珊瑚对硝酸盐胁迫的敏感性</title>
+    <link>https://doi.org/10.1021/acs.est.6c06486</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c06486</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Qiuli Li</dc:creator>
+    <description>除草剂和硝酸盐污染在沿海水域经常共存，但它们对珊瑚的联合效应一直是一个关键的知识空白。尽管珊瑚可以表现出对硝酸盐富集的适应，但在与PSII除草剂共同暴露时，这种适应是否持续尚不清楚。本文通过整合生理学、超微结构和宿主-共生体多组学，研究了硝酸盐和PSII除草剂扑草净对造礁珊瑚Acropora hyacinthus的联合效应。结果表明，在共胁迫下，扑草净是共生虫黄藻光损伤和光合毒性的主要驱动因素。透</description>
+    <category>coral reefs</category>
+    <category>herbicide</category>
+    <category>nitrate stress</category>
+    <category>ecotoxicology</category>
+    <category>symbiosis</category>
+    <content:encoded><![CDATA[<h2>11. 环境浓度的除草剂扑草净增加造礁珊瑚对硝酸盐胁迫的敏感性</h2>
+<p><em>Environmental Concentrations of Herbicide Prometryn Increase the Susceptibility of Reef-Building Corals to Nitrate Stress</em></p>
+<ul>
+<li><strong>作者</strong>：Qiuli Li¹², Yanyu Zhou¹², Weilu Kang¹², Xianming Tang³⁴, Bo Hu¹², Zhi Tang⁵, Fengchang Wu⁵, Craig A. Downs⁶, Hongwei Zhao¹²</li>
+<li><strong>作者单位</strong>：¹Hainan University；²Department of Ecology and Environment of Hainan Province；³Hainan Provincial Academy of Marine Fisheries and Aquaculture；⁴Tropical Crops Genetic Resources Institute；⁵Chinese Research Academy of Environmental Sciences；⁶National White Collar Crime Center</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-06-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
+<li><strong>标签</strong>：coral reefs，herbicide，nitrate stress，ecotoxicology，symbiosis</li>
+</ul>
+<p><strong>中文摘要</strong><br>除草剂和硝酸盐污染在沿海水域经常共存，但它们对珊瑚的联合效应一直是一个关键的知识空白。尽管珊瑚可以表现出对硝酸盐富集的适应，但在与PSII除草剂共同暴露时，这种适应是否持续尚不清楚。本文通过整合生理学、超微结构和宿主-共生体多组学，研究了硝酸盐和PSII除草剂扑草净对造礁珊瑚Acropora hyacinthus的联合效应。结果表明，在共胁迫下，扑草净是共生虫黄藻光损伤和光合毒性的主要驱动因素。透射电镜显示，扑草净诱导了虫黄藻的活化自噬和叶绿体降解，类囊体松散堆叠。转录组学和蛋白质组学分析预测，硝酸盐富集刺激了宿主基于谷胱甘肽的抗氧化反应。然而，扑草净诱导的光毒性损害了光合产物的供应，并破坏了这种硝酸盐适应机制。此外，光合产物转移的减少进一步损害了宿主的能量平衡并加剧了氧化应激。这些发现表明，PSII除草剂可以覆盖对硝酸盐富集的短期适应，强调了在珊瑚礁生态系统中联合调控除草剂和营养盐输入的必要性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c06486">https://doi.org/10.1021/acs.est.6c06486</a></li>
+<li><strong>链接</strong>：<a href="https://doi.org/10.1021/acs.est.6c06486">https://doi.org/10.1021/acs.est.6c06486</a></li>
 </ul>
 ]]></content:encoded>
   </item>
