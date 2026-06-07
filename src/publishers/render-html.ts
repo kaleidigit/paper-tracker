@@ -10,30 +10,41 @@ import { renderPaperCard } from "../digest.js";
 
 const INLINE_CSS = `
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: Charter, Georgia, Palatino, "Times New Roman",
+               "Songti SC", "Noto Serif CJK SC", "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   max-width: 720px; margin: 0 auto; padding: 24px 16px;
-  color: #1a1a1a; line-height: 1.7; background: #fff;
+  color: #141413; line-height: 1.55; background: #f5f4ed;
 }
-h1 { font-size: 1.5em; border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; }
-h2 { font-size: 1.2em; margin-top: 28px; }
-h3 { font-size: 1.05em; margin-top: 24px; }
-hr { border: none; border-top: 1px solid #eee; margin: 16px 0; }
-a { color: #2563eb; text-decoration: none; }
-blockquote { border-left: 3px solid #e0e0e0; margin: 8px 0; padding: 4px 12px; color: #555; }
+h1 {
+  font-size: 1.5em; font-weight: 500;
+  border-bottom: 1px solid #e8e6dc; padding-bottom: 8px; color: #1B365D;
+}
+h2 {
+  font-size: 1.2em; font-weight: 500; margin-top: 28px;
+  border-left: 2px solid #1B365D; padding-left: 12px;
+}
+h3 { font-size: 1.05em; font-weight: 500; margin-top: 24px; }
+hr { border: none; border-top: 1px solid #e5e3d8; margin: 16px 0; }
+a { color: #1B365D; text-decoration: none; }
+blockquote {
+  border-left: 2px solid #1B365D; margin: 8px 0;
+  padding: 4px 12px; color: #504e49;
+}
 img { max-width: 100%; height: auto; border-radius: 4px; }
 
 /* ── 侧边目录（仅在 screen 介质下生效，邮件客户端忽略）── */
 @media screen {
   .toc-sidebar {
     position: fixed; left: 0; top: 0; width: 260px; height: 100vh;
-    overflow-y: auto; background: #f8f9fa; border-right: 1px solid #e0e0e0;
+    overflow-y: auto; background: #faf9f5; border-right: 1px solid #e8e6dc;
     padding: 20px 16px; box-sizing: border-box; z-index: 10;
   }
-  .toc-sidebar h2 { font-size: 1em; margin: 0 0 12px 0; color: #666; }
+  .toc-sidebar h2 { font-size: 1em; margin: 0 0 12px 0; color: #6b6a64; font-weight: 500; }
   .toc-sidebar ol { padding-left: 20px; margin: 0; font-size: 0.85em; line-height: 1.8; }
-  .toc-sidebar a { color: #555; }
-  .toc-sidebar a:hover { color: #2563eb; }
-  .toc-sidebar .toc-group { font-weight: 600; color: #333; margin-top: 8px; list-style: none; }
+  .toc-sidebar a { color: #504e49; }
+  .toc-sidebar a:hover { color: #1B365D; }
+  .toc-sidebar .toc-group { font-weight: 500; color: #3d3d3a; margin-top: 8px; list-style: none; }
   .toc-sidebar .toc-group::before { content: "▸ "; font-size: 0.8em; }
   body { margin-left: 260px; max-width: calc(100vw - 300px); }
 }
@@ -43,15 +54,19 @@ img { max-width: 100%; height: auto; border-radius: 4px; }
 }
 
 @media (prefers-color-scheme: dark) {
-  body { background: #1a1a2e; color: #e0e0e0; }
-  h1, h2, h3 { color: #e0e0e0; }
-  a { color: #60a5fa; }
-  blockquote { color: #aaa; border-left-color: #444; }
-  hr { border-top-color: #444; }
+  body { background: #141413; color: #e0e0e0; }
+  h1 { color: #e0e0e0; border-bottom-color: #3d3d3a; }
+  h2, h3 { color: #e0e0e0; }
+  h2 { border-left-color: #2D5A8A; }
+  a { color: #2D5A8A; }
+  blockquote { color: #b0b0ad; border-left-color: #2D5A8A; }
+  hr { border-top-color: #3d3d3a; }
   @media screen {
-    .toc-sidebar { background: #1e1e36; border-right-color: #333; }
-    .toc-sidebar a { color: #aaa; }
-    .toc-sidebar a:hover { color: #60a5fa; }
+    .toc-sidebar { background: #30302e; border-right-color: #3d3d3a; }
+    .toc-sidebar h2 { color: #b0b0ad; }
+    .toc-sidebar a { color: #b0b0ad; }
+    .toc-sidebar a:hover { color: #2D5A8A; }
+    .toc-sidebar .toc-group { color: #e0e0e0; }
   }
 }
 `.trim();
