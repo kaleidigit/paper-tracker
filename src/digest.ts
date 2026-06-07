@@ -133,8 +133,15 @@ export function renderPaperCard(paper: Paper, index: number, headingLevel: numbe
     );
   }
 
-  pushMeta(resourceLines, "DOI", paper.doi || "");
-  pushMeta(resourceLines, "链接", paper.url || "");
+  const doiText = (paper.doi || "").trim();
+  const urlText = (paper.url || "").trim();
+  const sameLink = doiText && doiText === urlText;
+  if (sameLink) {
+    pushMeta(resourceLines, "DOI", doiText);
+  } else {
+    pushMeta(resourceLines, "DOI", doiText);
+    pushMeta(resourceLines, "链接", urlText);
+  }
   if (resourceLines.length > 0) {
     lines.push("**资源信息**  ", ...resourceLines, "");
   }
