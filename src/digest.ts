@@ -113,7 +113,7 @@ export function renderPaperCard(paper: Paper, index: number, headingLevel: numbe
   if (authorLines.length > 0) {
     lines.push(
       "<details>",
-      `<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">▸ 点击展开</span></summary>`,
+      `<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary>`,
       "",
       ...authorLines,
       "",

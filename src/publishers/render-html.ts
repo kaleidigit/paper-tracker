@@ -13,7 +13,7 @@ body {
   font-family: Charter, Georgia, Palatino, "Times New Roman",
                "Songti SC", "Noto Serif CJK SC", "PingFang SC",
                "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  max-width: 720px; margin: 0 auto; padding: 24px 16px;
+  max-width: 720px; padding: 24px 16px; margin: 0 auto;
   color: #141413; line-height: 1.55; background: #f5f4ed;
 }
 h1 {
@@ -46,11 +46,14 @@ img { max-width: 100%; height: auto; border-radius: 4px; }
   .toc-sidebar a:hover { color: #1B365D; }
   .toc-sidebar .toc-group { font-weight: 500; color: #3d3d3a; margin-top: 8px; list-style: none; }
   .toc-sidebar .toc-group::before { content: "▸ "; font-size: 0.8em; }
-  body { margin-left: 260px; max-width: calc(100vw - 300px); }
+  body {
+    margin: 0 0 0 260px;
+    max-width: min(720px, calc(100vw - 300px));
+  }
 }
 @media screen and (max-width: 900px) {
   .toc-sidebar { display: none; }
-  body { margin-left: 0; max-width: 100%; }
+  body { margin: 0 auto; max-width: 720px; }
 }
 
 @media (prefers-color-scheme: dark) {
