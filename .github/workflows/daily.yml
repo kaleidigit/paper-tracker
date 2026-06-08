@@ -53,7 +53,7 @@ jobs:
           node -e "
           const {createTransport} = require('nodemailer');
           const t = createTransport({
-            host: 'smtp.126.com', port: 465, secure: true,
+            host: 'smtp.gmail.com', port: 465, secure: true,
             auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
           });
           t.verify().then(r => { console.log('SMTP OK'); process.exit(0); })
