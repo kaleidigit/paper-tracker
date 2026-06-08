@@ -51,9 +51,11 @@ jobs:
           SMTP_USER: ${{ secrets.EMAIL_USER }}
           SMTP_PASS: ${{ secrets.EMAIL_PASS }}
         run: |
-          echo "=== TCP connectivity ==="
-          timeout 5 bash -c 'echo > /dev/tcp/smtp.126.com/465 && echo "port 465: OK" || echo "port 465: FAIL"' || echo "port 465: FAIL"
-          timeout 5 bash -c 'echo > /dev/tcp/smtp.126.com/587 && echo "port 587: OK" || echo "port 587: FAIL"' || echo "port 587: FAIL"
+          echo "=== credential diagnostics ==="
+          echo "EMAIL_USER length: ${#SMTP_USER}"
+          echo "EMAIL_PASS length: ${#SMTP_PASS}"
+          echo "EMAIL_USER first 4 chars: ${SMTP_USER:0:4}"
+          echo "EMAIL_PASS chars 1-2: ${SMTP_PASS:0:2}"
 
           echo "=== SMTP auth test (465 SSL) ==="
           node -e "
@@ -65,31 +67,7 @@ jobs:
           });
           t.verify().then(r => { console.log('SMTP OK:', r); process.exit(0); })
            .catch(e => { console.error('SMTP 465 FAIL:', e.message); });
-          " || true
-
-          echo "=== SMTP auth test (587 STARTTLS) ==="
-          node -e "
-          const {createTransport} = require('nodemailer');
-          const t = createTransport({
-            host: 'smtp.126.com', port: 587, secure: false,
-            auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-            requireTLS: true, logger: true, debug: true
-          });
-          t.verify().then(r => { console.log('SMTP OK:', r); process.exit(0); })
-           .catch(e => { console.error('SMTP 587 FAIL:', e.message); });
-          " || true
-
-          echo "=== auth method test (forcing LOGIN) ==="
-          node -e "
-          const {createTransport} = require('nodemailer');
-          const t = createTransport({
-            host: 'smtp.126.com', port: 465, secure: true,
-            auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS, method: 'LOGIN' },
-            logger: true, debug: true
-          });
-          t.verify().then(r => { console.log('SMTP OK:', r); process.exit(0); })
-           .catch(e => { console.error('SMTP LOGIN FAIL:', e.message); });
-          " || true
+          "
 
       - name: Run pipeline
         run: |
