@@ -54,20 +54,68 @@ jobs:
           echo "=== credential diagnostics ==="
           echo "EMAIL_USER length: ${#SMTP_USER}"
           echo "EMAIL_PASS length: ${#SMTP_PASS}"
-          echo "EMAIL_USER first 4 chars: ${SMTP_USER:0:4}"
-          echo "EMAIL_PASS chars 1-2: ${SMTP_PASS:0:2}"
+          echo "EMAIL_USER: ${SMTP_USER:0:4}...${SMTP_USER: -4}"
+          echo "EMAIL_PASS prefix: ${SMTP_PASS:0:2}"
 
-          echo "=== SMTP auth test (465 SSL) ==="
-          node -e "
-          const {createTransport} = require('nodemailer');
-          const t = createTransport({
-            host: 'smtp.126.com', port: 465, secure: true,
-            auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-            logger: true, debug: true
-          });
-          t.verify().then(r => { console.log('SMTP OK:', r); process.exit(0); })
-           .catch(e => { console.error('SMTP 465 FAIL:', e.message); process.exit(1); });
-          "
+          echo "=== raw SMTP auth via openssl (LOGIN method) ==="
+          python3 -c "
+          import base64, socket, ssl, sys, os
+          user = os.environ['SMTP_USER']
+          pwd = os.environ['SMTP_PASS']
+
+          ctx = ssl.create_default_context()
+          sock = socket.create_connection(('smtp.126.com', 465), timeout=10)
+          ssock = ctx.wrap_socket(sock, server_hostname='smtp.126.com')
+
+          def cmd(s, expect=''):
+              if s:
+                  ssock.send((s + '\r\n').encode())
+              resp = b''
+              while True:
+                  chunk = ssock.recv(4096)
+                  resp += chunk
+                  if b'\r\n' in resp:
+                      break
+              text = resp.decode('utf-8', errors='replace').strip()
+              print(f'  {text[:200]}')
+              return text
+
+          # Read greeting
+          greeting = cmd(None)
+          if not greeting.startswith('220'):
+              print('FATAL: no SMTP greeting'); sys.exit(1)
+
+          # EHLO
+          ehlo = cmd('EHLO github-actions')
+
+          # AUTH LOGIN
+          auth = cmd('AUTH LOGIN')
+          if not auth.startswith('334'):
+              print('FATAL: AUTH LOGIN rejected'); sys.exit(1)
+
+          # Username
+          user_b64 = base64.b64encode(user.encode()).decode()
+          resp = cmd(user_b64)
+          if not resp.startswith('334'):
+              print(f'FATAL: username rejected ({resp})'); sys.exit(1)
+
+          # Password
+          pass_b64 = base64.b64encode(pwd.encode()).decode()
+          resp = cmd(pass_b64)
+          if resp.startswith('235'):
+              print('AUTH SUCCESS!')
+          elif '535' in resp:
+              print('AUTH FAILED: 535 - credentials rejected by server')
+              print('The 126.com SMTP server is rejecting the authorization code.')
+              print('The account may be locked or the auth code is invalid.')
+              sys.exit(1)
+          else:
+              print(f'UNEXPECTED: {resp}')
+              sys.exit(1)
+
+          cmd('QUIT')
+          ssock.close()
+          " 2>&1
 
       - name: Run pipeline
         run: |
