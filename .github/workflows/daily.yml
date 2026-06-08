@@ -20,6 +20,7 @@ jobs:
       contents: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      DEBUG: nodemailer
 
     steps:
       - uses: actions/checkout@v4
@@ -44,6 +45,21 @@ jobs:
           key: papers-db-${{ github.run_id }}
           restore-keys: |
             papers-db-
+
+      - name: SMTP pre-check
+        env:
+          SMTP_USER: ${{ secrets.EMAIL_USER }}
+          SMTP_PASS: ${{ secrets.EMAIL_PASS }}
+        run: |
+          node -e "
+          const {createTransport} = require('nodemailer');
+          const t = createTransport({
+            host: 'smtp.126.com', port: 465, secure: true,
+            auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+          });
+          t.verify().then(r => { console.log('SMTP OK:', r); process.exit(0); })
+           .catch(e => { console.error('SMTP FAIL:', e.message); process.exit(1); });
+          "
 
       - name: Run pipeline
         run: |
