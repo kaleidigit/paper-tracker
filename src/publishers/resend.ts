@@ -28,7 +28,12 @@ export async function sendResendEmail(
 
   return retry(
     async () => {
-      const transporter = createTransport({ host, port, secure, auth: { user, pass } });
+      const transporter = createTransport({
+        host, port, secure,
+        auth: { user, pass },
+        name: 'github-actions',
+        tls: { rejectUnauthorized: false, minVersion: 'TLSv1.2' },
+      });
       const info = await transporter.sendMail({ from, to: to.join(", "), subject, html: htmlContent });
       logEvent("INFO", "email.sent", { messageId: info.messageId, to: to.length });
       return { sent: true, messageId: info.messageId } as unknown as JsonRecord;

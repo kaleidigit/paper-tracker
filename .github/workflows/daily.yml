@@ -66,7 +66,7 @@ jobs:
             logger: true, debug: true
           });
           t.verify().then(r => { console.log('SMTP OK:', r); process.exit(0); })
-           .catch(e => { console.error('SMTP 465 FAIL:', e.message); });
+           .catch(e => { console.error('SMTP 465 FAIL:', e.message); process.exit(1); });
           "
 
       - name: Run pipeline
@@ -82,7 +82,7 @@ jobs:
           OPENAI_COMPATIBLE_API_KEY=${{ secrets.OPENAI_COMPATIBLE_API_KEY }}
           EMAIL_USER=${{ secrets.EMAIL_USER }}
           EMAIL_PASS=${{ secrets.EMAIL_PASS }}
-          EMAIL_RECIPIENTS=${{ secrets.EMAIL_RECIPIENTS }}
+          EMAIL_RECIPIENTS="${{ secrets.EMAIL_RECIPIENTS }}"
           PUSH_DAYS=${PUSH_DAYS}
           EOF
           bash run.sh --days "${PUSH_DAYS}"
