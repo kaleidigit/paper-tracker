@@ -55,7 +55,9 @@ jobs:
           echo "EMAIL_USER length: ${#SMTP_USER}"
           echo "EMAIL_PASS length: ${#SMTP_PASS}"
           echo "EMAIL_USER: ${SMTP_USER:0:4}...${SMTP_USER: -4}"
-          echo "EMAIL_PASS prefix: ${SMTP_PASS:0:2}"
+          echo "EMAIL_PASS char_len=${#SMTP_PASS} byte_len=$(echo -n "$SMTP_PASS" | wc -c | tr -d ' ')"
+          echo "EMAIL_PASS has_nonascii=$([ "$(echo -n "$SMTP_PASS" | LC_ALL=C tr -d '[:print:]' | wc -c | tr -d ' ')" -gt 0 ] && echo YES || echo NO)"
+          echo "EMAIL_PASS char_0_ascii=$(printf '%d' "'${SMTP_PASS:0:1}") char_1_ascii=$(printf '%d' "'${SMTP_PASS:1:1}")"
 
           echo "=== raw SMTP auth via openssl (LOGIN method) ==="
           python3 -c "
