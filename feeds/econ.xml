@@ -8,36 +8,38 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>后增长与南北分歧：存量流量一致的情景分析</title>
+    <title>后增长与南北鸿沟：一个存量-流量一致的情景分析</title>
     <link>https://doi.org/10.1016/j.ecolecon.2026.109095</link>
     <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109095</guid>
     <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
     <dc:creator>Dario Leoni</dc:creator>
-    <description></description>
+    <description>本文通过构建一个存量-流量一致的模型，探讨了后增长情景对全球南北经济差异的影响。我们分析在经济增长放缓或停滞的条件下，北方（发达经济体）与南方（发展中经济体）之间贸易、金融和生态依赖关系如何演变。结果表明，后增长政策可能加剧或缓解南北鸿沟，具体取决于国际转移支付、技术扩散和生态债务消减机制的设计。</description>
     <category>后增长</category>
-    <category>南北分歧</category>
-    <category>存量流量一致</category>
-    <content:encoded><![CDATA[<h2>后增长与南北分歧：存量流量一致的情景分析</h2>
+    <category>南北鸿沟</category>
+    <category>存量-流量一致模型</category>
+    <category>生态债务</category>
+    <content:encoded><![CDATA[<h2>后增长与南北鸿沟：一个存量-流量一致的情景分析</h2>
 <p><em>Post-growth and the North-South divide: A stock-flow consistent scenario analysis</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
 <li><strong>日期</strong>：2026-06-05</li>
 <li><strong>类型</strong>：comment</li>
 <li><strong>建议关注</strong>：可持续发展</li>
-<li><strong>标签</strong>：后增长，南北分歧，存量流量一致</li>
+<li><strong>标签</strong>：后增长，南北鸿沟，存量-流量一致模型，生态债务</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
 <li><strong>作者</strong>：Dario Leoni, Andrew Jackson, Tim Jackson</li>
 </ul>
-</details><p><strong>资源信息</strong>  </p>
+</details><p><strong>中文摘要</strong><br>本文通过构建一个存量-流量一致的模型，探讨了后增长情景对全球南北经济差异的影响。我们分析在经济增长放缓或停滞的条件下，北方（发达经济体）与南方（发展中经济体）之间贸易、金融和生态依赖关系如何演变。结果表明，后增长政策可能加剧或缓解南北鸿沟，具体取决于国际转移支付、技术扩散和生态债务消减机制的设计。</p>
+<p><strong>资源信息</strong>  </p>
 <ul>
 <li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109095">https://doi.org/10.1016/j.ecolecon.2026.109095</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>全球供应链中的虚拟水：贸易结构、产业构成和政策杠杆</title>
+    <title>全球供应链中的虚拟水：贸易结构、产业构成与政策杠杆</title>
     <link>https://doi.org/10.1016/j.ecolecon.2026.109068</link>
     <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109068</guid>
     <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
@@ -45,15 +47,17 @@
     <description></description>
     <category>虚拟水</category>
     <category>全球供应链</category>
+    <category>贸易结构</category>
+    <category>产业构成</category>
     <category>政策杠杆</category>
-    <content:encoded><![CDATA[<h2>全球供应链中的虚拟水：贸易结构、产业构成和政策杠杆</h2>
+    <content:encoded><![CDATA[<h2>全球供应链中的虚拟水：贸易结构、产业构成与政策杠杆</h2>
 <p><em>Virtual water in global supply chains: Trade structure, industrial composition, and policy levers</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
 <li><strong>日期</strong>：2026-06-05</li>
 <li><strong>类型</strong>：comment</li>
 <li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：虚拟水，全球供应链，政策杠杆</li>
+<li><strong>标签</strong>：虚拟水，全球供应链，贸易结构，产业构成，政策杠杆</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
@@ -66,31 +70,32 @@
 ]]></content:encoded>
   </item>
   <item>
-    <title>自然灾害与农业跨代职业选择：来自美国沙尘暴的证据</title>
+    <title>自然灾害与农业中的代际职业选择：来自美国尘暴的证据</title>
     <link>https://doi.org/10.1002/ajae.70081</link>
     <guid isPermaLink="false">https://doi.org/10.1002/ajae.70081</guid>
     <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
     <dc:creator>Jhih‐Yun Liu</dc:creator>
-    <description>本文研究自然灾害——沙尘暴如何影响农业家庭的跨代职业选择。利用全美人口普查数据，我发现年轻成年儿子在沙尘暴后从自雇农业转向雇佣农业和非农业部门。父母受影响的年幼子女更可能离开农业并获得更高收入。迁移和教育是作用机制，新政救济支出减轻了沙尘暴的影响。总体而言，沙尘暴加速了农民年轻子女的职业再分配，并促进了20世纪中期美国的结构性变革。</description>
+    <description>本文考察了自然灾害——尘暴——如何影响农场家庭跨代的职业选择。利用美国全量人口普查数据，我发现尘暴后年轻成年儿子从自营农场转向雇佣农业劳动和非农部门。父母受影响的年幼子女更可能离开农业并获得更高收入。迁移和就学是作用机制，新政救济支出减轻了尘暴的影响。总体而言，尘暴加速了农民年幼子女的职业再分配，并推动了20世纪中叶美国的结构变迁。</description>
     <category>自然灾害</category>
-    <category>沙尘暴</category>
+    <category>尘暴</category>
+    <category>代际职业选择</category>
     <category>农业</category>
-    <category>职业选择</category>
-    <content:encoded><![CDATA[<h2>自然灾害与农业跨代职业选择：来自美国沙尘暴的证据</h2>
+    <category>结构变迁</category>
+    <content:encoded><![CDATA[<h2>自然灾害与农业中的代际职业选择：来自美国尘暴的证据</h2>
 <p><em>Natural disaster and intergenerational occupational choice in agriculture: Evidence from the <scp>US</scp> Dust Bowl</em></p>
 <ul>
 <li><strong>期刊</strong>：American Journal of Agricultural Economics</li>
 <li><strong>日期</strong>：2026-06-05</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：自然灾害，沙尘暴，农业，职业选择</li>
+<li><strong>标签</strong>：自然灾害，尘暴，代际职业选择，农业，结构变迁</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
 <li><strong>作者</strong>：Jhih‐Yun Liu¹</li>
 <li><strong>作者单位</strong>：¹University of Connecticut</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>本文研究自然灾害——沙尘暴如何影响农业家庭的跨代职业选择。利用全美人口普查数据，我发现年轻成年儿子在沙尘暴后从自雇农业转向雇佣农业和非农业部门。父母受影响的年幼子女更可能离开农业并获得更高收入。迁移和教育是作用机制，新政救济支出减轻了沙尘暴的影响。总体而言，沙尘暴加速了农民年轻子女的职业再分配，并促进了20世纪中期美国的结构性变革。</p>
+</details><p><strong>中文摘要</strong><br>本文考察了自然灾害——尘暴——如何影响农场家庭跨代的职业选择。利用美国全量人口普查数据，我发现尘暴后年轻成年儿子从自营农场转向雇佣农业劳动和非农部门。父母受影响的年幼子女更可能离开农业并获得更高收入。迁移和就学是作用机制，新政救济支出减轻了尘暴的影响。总体而言，尘暴加速了农民年幼子女的职业再分配，并推动了20世纪中叶美国的结构变迁。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
 <li><strong>DOI</strong>：<a href="https://doi.org/10.1002/ajae.70081">https://doi.org/10.1002/ajae.70081</a></li>
@@ -98,87 +103,88 @@
 ]]></content:encoded>
   </item>
   <item>
-    <title>从信念到结果：人类自然观念如何塑造环境轨迹</title>
+    <title>从信念到结果：人类对自然的观念如何塑造环境轨迹</title>
     <link>https://doi.org/10.1016/j.ecolecon.2026.109099</link>
     <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109099</guid>
     <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
     <dc:creator>Laura Recuero Virto</dc:creator>
-    <description>从信念到结果：人类自然观念如何塑造环境轨迹</description>
-    <category>人类自然观念</category>
+    <description></description>
+    <category>环境观念</category>
     <category>环境轨迹</category>
-    <content:encoded><![CDATA[<h2>从信念到结果：人类自然观念如何塑造环境轨迹</h2>
+    <category>人类态度</category>
+    <content:encoded><![CDATA[<h2>从信念到结果：人类对自然的观念如何塑造环境轨迹</h2>
 <p><em>From beliefs to outcomes: How human conceptions of nature shape environmental trajectories</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
 <li><strong>日期</strong>：2026-06-04</li>
 <li><strong>类型</strong>：comment</li>
 <li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：人类自然观念，环境轨迹</li>
+<li><strong>标签</strong>：环境观念，环境轨迹，人类态度</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
 <li><strong>作者</strong>：Laura Recuero Virto, Chloe Pryce, Frederic Ducarme, Denis Couvet</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>从信念到结果：人类自然观念如何塑造环境轨迹</p>
-<p><strong>资源信息</strong>  </p>
+</details><p><strong>资源信息</strong>  </p>
 <ul>
 <li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109099">https://doi.org/10.1016/j.ecolecon.2026.109099</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>当监管者回家时：环境检查与执法的有效性</title>
+    <title>当监管者回家：环境检查与执法的有效性</title>
     <link>https://doi.org/10.1086/742583</link>
     <guid isPermaLink="false">https://doi.org/10.1086/742583</guid>
     <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
     <dc:creator>Zach Raff</dc:creator>
-    <description></description>
-    <category>环境检查</category>
-    <category>执法有效性</category>
-    <content:encoded><![CDATA[<h2>当监管者回家时：环境检查与执法的有效性</h2>
+    <description>当监管者回家：环境检查与执法的有效性</description>
+    <category>环境执法</category>
+    <category>监管有效性</category>
+    <content:encoded><![CDATA[<h2>当监管者回家：环境检查与执法的有效性</h2>
 <p><em>When the Regulator Goes Home: The Effectiveness of Environmental Inspections and Enforcement</em></p>
 <ul>
 <li><strong>期刊</strong>：Journal of the Association of Environmental and Resource Economists</li>
 <li><strong>日期</strong>：2026-06-04</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：环境检查，执法有效性</li>
+<li><strong>标签</strong>：环境执法，监管有效性</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
 <li><strong>作者</strong>：Zach Raff, Jason M. Walter, Dietrich Earnhart</li>
 </ul>
-</details><p><strong>资源信息</strong>  </p>
+</details><p><strong>中文摘要</strong><br>当监管者回家：环境检查与执法的有效性</p>
+<p><strong>资源信息</strong>  </p>
 <ul>
 <li><strong>DOI</strong>：<a href="https://doi.org/10.1086/742583">https://doi.org/10.1086/742583</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>生态宏观经济学遇上社区主导建模：通过参与式系统动力学本地化生态宏观经济学</title>
+    <title>生态宏观经济学遇上社区主导建模：通过参与式系统动力学本土化生态宏观经济学</title>
     <link>https://doi.org/10.1016/j.ecolecon.2026.109097</link>
     <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109097</guid>
     <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
     <dc:creator>Katrina Szetey</dc:creator>
-    <description>理解地方经济和福祉如何在生态约束下演变是生态宏观经济建模的核心，但地方尺度的应用仍然有限。我们与澳大利亚东南部一个小型农村社区共同开发了一个参与式系统动力学模型，以探索替代性的地方未来。六个情景（地方社会经济路径）通过合作开发，将社区优先事项和价值观整合到定性叙事和定量模型参数中。我们的方法结合了参与式情景开发、社区主导建模和定量路径分析，包括敏感性和不确定性评估。这使得能够系统探索替代性未来以及</description>
+    <description>理解地方经济和福祉如何在生态约束下演变是生态宏观经济建模的核心，但地方尺度的应用仍然有限。我们与澳大利亚东南部的一个小型农村社区共同开发了一个参与式系统动力学模型，以探索替代的地方未来。通过协作方式，我们开发了六种情景（地方社会经济路径），将社区优先事项和价值观整合到定性叙事和定量模型参数中。我们的方法结合了参与式情景开发、社区主导建模和定量路径分析，包括敏感性和不确定性评估。这使得能够系统探索替</description>
     <category>生态宏观经济学</category>
     <category>参与式系统动力学</category>
-    <category>社区建模</category>
-    <content:encoded><![CDATA[<h2>生态宏观经济学遇上社区主导建模：通过参与式系统动力学本地化生态宏观经济学</h2>
+    <category>社区模型</category>
+    <content:encoded><![CDATA[<h2>生态宏观经济学遇上社区主导建模：通过参与式系统动力学本土化生态宏观经济学</h2>
 <p><em>Ecological macroeconomics meets community-led modelling: localising ecological macroeconomics through participatory system dynamics</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
 <li><strong>日期</strong>：2026-06-04</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：生态宏观经济学，参与式系统动力学，社区建模</li>
+<li><strong>标签</strong>：生态宏观经济学，参与式系统动力学，社区模型</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
 <li><strong>作者</strong>：Katrina Szetey¹², Enayat A. Moallemi¹², Brett A. Bryan³</li>
 <li><strong>作者单位</strong>：¹Commonwealth Scientific and Industrial Research Organisation；²Plant Industry；³Deakin University</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>理解地方经济和福祉如何在生态约束下演变是生态宏观经济建模的核心，但地方尺度的应用仍然有限。我们与澳大利亚东南部一个小型农村社区共同开发了一个参与式系统动力学模型，以探索替代性的地方未来。六个情景（地方社会经济路径）通过合作开发，将社区优先事项和价值观整合到定性叙事和定量模型参数中。我们的方法结合了参与式情景开发、社区主导建模和定量路径分析，包括敏感性和不确定性评估。这使得能够系统探索替代性未来以及社会、环境和经济维度之间的权衡。结果表明，优先考虑经济增长的情景表现出更大的不确定性，而强调社会和环境维度的情景，特别是低增长路径，为社区带来了更稳健和更理想的可持续性成果。社区主导的建模过程增强了结果的合法性、透明度和相关性，支持知情决策，并使利益相关者能够应对复杂的权衡和不确定性。这项研究证明了将参与式和定量方法结合用于地方规划的价值，并强调了社区尺度建模如何通过使分配结果、约束和稳健性在地方决策中可见，来扩展生态宏观经济思维。</p>
+</details><p><strong>中文摘要</strong><br>理解地方经济和福祉如何在生态约束下演变是生态宏观经济建模的核心，但地方尺度的应用仍然有限。我们与澳大利亚东南部的一个小型农村社区共同开发了一个参与式系统动力学模型，以探索替代的地方未来。通过协作方式，我们开发了六种情景（地方社会经济路径），将社区优先事项和价值观整合到定性叙事和定量模型参数中。我们的方法结合了参与式情景开发、社区主导建模和定量路径分析，包括敏感性和不确定性评估。这使得能够系统探索替代未来以及社会、环境和经济维度之间的权衡。结果表明，优先经济增长的情景显示出更大的不确定性，而强调社会和环境维度的情景，特别是低增长路径，为社区带来了更稳健和理想的可持续性结果。社区主导的建模过程增强了结果的合法性、透明度和相关性，支持知情决策，并使利益相关者能够应对复杂的权衡和不确定性。本研究证明了将参与式和定量方法用于地方规划的价值，并强调了社区尺度建模如何通过使分配结果、约束和稳健性在地方决策中可见来扩展生态宏观经济思维。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
 <li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109097">https://doi.org/10.1016/j.ecolecon.2026.109097</a></li>
@@ -186,31 +192,31 @@
 ]]></content:encoded>
   </item>
   <item>
-    <title>挪威城市固体废物产生：检验废物库兹涅茨曲线的面板分析</title>
+    <title>挪威城市固体废弃物产生：检验废弃物库兹涅茨曲线的面板分析</title>
     <link>https://doi.org/10.1016/j.ecolecon.2026.109101</link>
     <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109101</guid>
     <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
     <dc:creator>Kim Rainer Mattson</dc:creator>
-    <description>城市固体废物（MSW）的产生在环境污染方面是一个重大问题，并且与家庭消费密不可分。为了识别经济活动与废物的潜在脱钩，研究检验了废物库兹涅茨曲线（WKC）假说，探究各国及国家内部影响人均MSW产生量增减的因素。我们分析了挪威344个城市在2006年至2023年间的面板数据集，识别了在总体和单个城市层面影响MSW产生的变量。我们估计了三个面板回归模型：固定效应、混合普通最小二乘法和系统广义矩估计。我们</description>
-    <category>废物库兹涅茨曲线</category>
-    <category>城市固体废物</category>
-    <category>脱钩</category>
+    <description>城市固体废弃物（MSW）的产生在环境污染方面是一个重大问题，且与家庭消费密不可分。为识别经济活动与废弃物之间可能的脱钩，研究检验了废弃物库兹涅茨曲线（WKC）假说，探讨在国家间和国家内部增加或减少人均MSW产生的因素。我们分析了挪威344个市镇2006年至2023年间的面板数据集，识别出在一般市镇层面和个体市镇层面影响MSW产生的变量。估计了三个面板回归模型：固定效应、混合普通最小二乘法和系统广义</description>
+    <category>城市固体废弃物</category>
+    <category>库兹涅茨曲线</category>
+    <category>面板分析</category>
     <category>挪威</category>
-    <content:encoded><![CDATA[<h2>挪威城市固体废物产生：检验废物库兹涅茨曲线的面板分析</h2>
+    <content:encoded><![CDATA[<h2>挪威城市固体废弃物产生：检验废弃物库兹涅茨曲线的面板分析</h2>
 <p><em>Municipal solid waste generation in Norway: A panel analysis investigating the waste Kuznets curve</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
 <li><strong>日期</strong>：2026-06-03</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：废物库兹涅茨曲线，城市固体废物，脱钩，挪威</li>
+<li><strong>标签</strong>：城市固体废弃物，库兹涅茨曲线，面板分析，挪威</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
 <li><strong>作者</strong>：Kim Rainer Mattson¹, Julia Sborz¹, Elisa Henning², Juudit Ottelin¹</li>
 <li><strong>作者单位</strong>：¹Norwegian University of Science and Technology；²Universidade do Estado de Santa Catarina</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>城市固体废物（MSW）的产生在环境污染方面是一个重大问题，并且与家庭消费密不可分。为了识别经济活动与废物的潜在脱钩，研究检验了废物库兹涅茨曲线（WKC）假说，探究各国及国家内部影响人均MSW产生量增减的因素。我们分析了挪威344个城市在2006年至2023年间的面板数据集，识别了在总体和单个城市层面影响MSW产生的变量。我们估计了三个面板回归模型：固定效应、混合普通最小二乘法和系统广义矩估计。我们发现收入与人均MSW之间存在相对脱钩的证据，然而，在所考虑的收入水平和时间框架下，在当前消费模式下实际脱钩不太可能。我们发现度假屋实践是导致更高MSW产生的重要驱动因素，而加息时期减少了MSW产生，这表明了关注特定社会文化背景的重要性。我们还观察到在我们的研究设计中包含的国家政策实施工具在研究期间没有显著影响。尽管我们的模型方法和选择是稳健的，考虑了面板数据的内生性和未观测异质性，但在区域层面系统性地未报告城市家庭之外的MSW产生带来了挑战，模糊了城乡环境之间可能的质性差异。这对大部分WKC文献来说是一个重要问题，也为未来研究提供了明确的研究空白。</p>
+</details><p><strong>中文摘要</strong><br>城市固体废弃物（MSW）的产生在环境污染方面是一个重大问题，且与家庭消费密不可分。为识别经济活动与废弃物之间可能的脱钩，研究检验了废弃物库兹涅茨曲线（WKC）假说，探讨在国家间和国家内部增加或减少人均MSW产生的因素。我们分析了挪威344个市镇2006年至2023年间的面板数据集，识别出在一般市镇层面和个体市镇层面影响MSW产生的变量。估计了三个面板回归模型：固定效应、混合普通最小二乘法和系统广义矩估计法。我们发现收入与人均MSW之间存在相对脱钩的证据，但在当前的消费模式下，该收入水平和时间框架使得实际脱钩不太可能发生。我们发现度假房产实践是导致MSW产生增加的重要驱动因素，而加息时期会减少MSW产生，这表明需要关注特定的社会文化背景。我们还观察到，研究设计中包含的国家政策实施工具在研究期间没有显著影响。尽管我们的模型方法和选择是稳健的，考虑了面板数据的内生性和未观测异质性，但区域层面市政家庭之外MSW的系统性不报告构成了挑战，掩盖了城乡环境之间可能的质量差异。这对大部分WKC文献来说是一个重要问题，并为未来研究提供了一个明确的研究空白。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
 <li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109101">https://doi.org/10.1016/j.ecolecon.2026.109101</a></li>
@@ -218,31 +224,31 @@
 ]]></content:encoded>
   </item>
   <item>
-    <title>土地退休政策对农业劳动力和土地所有权的后果：来自美国历史保护区计划的证据</title>
+    <title>土地休耕政策对农业劳动力和土地保有的影响：来自美国历史保护储备计划的证据</title>
     <link>https://doi.org/10.1002/ajae.70082</link>
     <guid isPermaLink="false">https://doi.org/10.1002/ajae.70082</guid>
     <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
     <dc:creator>Aparna Howlader</dc:creator>
-    <description>自愿性农业土地退休计划因其环境效益而广受认可，但其经济效应，特别是对劳动力市场和土地所有权的影响，仍知之甚少。本文考察了美国首次大规模土地退休计划——历史保护区计划（根据1956年《预留法案》推出）的短期和长期影响。1957年至1960年间，该计划以3年、5年或10年合同形式登记了超过3000万英亩土地，这些合同在1970年前逐渐到期。利用新数字化的保护区计划注册数据库，并结合1950年代至197</description>
-    <category>土地退休政策</category>
-    <category>劳动力市场</category>
-    <category>土地所有权</category>
-    <category>美国历史保护区计划</category>
-    <content:encoded><![CDATA[<h2>土地退休政策对农业劳动力和土地所有权的后果：来自美国历史保护区计划的证据</h2>
+    <description>自愿农业土地休耕计划因其环境效益而被广泛认可，但其经济影响，特别是对劳动力和土地保有的影响，仍较少被了解。本文研究了美国首个大规模土地休耕计划——根据1956年《休耕法案》引入的历史保护储备计划的短期和长期影响。在1957年至1960年间，该计划以3年、5年或10年合同形式纳入了超过3000万英亩土地，这些合同随后在1970年前逐步到期。利用新数字化的保护储备计划注册数据库，并结合20世纪50年代</description>
+    <category>土地休耕</category>
+    <category>保护储备计划</category>
+    <category>农业劳动力</category>
+    <category>土地保有</category>
+    <content:encoded><![CDATA[<h2>土地休耕政策对农业劳动力和土地保有的影响：来自美国历史保护储备计划的证据</h2>
 <p><em>Consequences of land retirement policies on agricultural labor and land tenure: Evidence from the historical Conservation Reserve Program in the United States</em></p>
 <ul>
 <li><strong>期刊</strong>：American Journal of Agricultural Economics</li>
 <li><strong>日期</strong>：2026-06-02</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：土地退休政策，劳动力市场，土地所有权，美国历史保护区计划</li>
+<li><strong>标签</strong>：土地休耕，保护储备计划，农业劳动力，土地保有</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
 <li><strong>作者</strong>：Aparna Howlader¹, Liqing Li²</li>
 <li><strong>作者单位</strong>：¹Chatham University；²Agricultural &amp; Applied Economics Association</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>自愿性农业土地退休计划因其环境效益而广受认可，但其经济效应，特别是对劳动力市场和土地所有权的影响，仍知之甚少。本文考察了美国首次大规模土地退休计划——历史保护区计划（根据1956年《预留法案》推出）的短期和长期影响。1957年至1960年间，该计划以3年、5年或10年合同形式登记了超过3000万英亩土地，这些合同在1970年前逐渐到期。利用新数字化的保护区计划注册数据库，并结合1950年代至1970年代的农业普查数据，我们发现，在计划活跃期间，中等和高强度登记县相对于低登记县，租户耕种土地数量出现统计显著的下降。在中等登记县，租户经营土地比例下降约0.6个百分点，而高登记县全国范围内下降约1.6个百分点。中等和高登记县的租户农场经营者比例也有所下降。这些效应在南方更大且更持久，特别是在非白人农场经营者和分成佃农比例较高的县。</p>
+</details><p><strong>中文摘要</strong><br>自愿农业土地休耕计划因其环境效益而被广泛认可，但其经济影响，特别是对劳动力和土地保有的影响，仍较少被了解。本文研究了美国首个大规模土地休耕计划——根据1956年《休耕法案》引入的历史保护储备计划的短期和长期影响。在1957年至1960年间，该计划以3年、5年或10年合同形式纳入了超过3000万英亩土地，这些合同随后在1970年前逐步到期。利用新数字化的保护储备计划注册数据库，并结合20世纪50年代至70年代的农业普查数据，我们发现，在计划活跃期间，中度和高度注册强度的县相对于低注册强度的县，租户耕种的土地出现了统计上显著的下降。在中等注册县，租户经营的土地下降了约0.6个百分点，而高度注册县在全国范围内下降了约1.6个百分点。中度和高度注册县中租户农场经营者的比例也有所下降。这些影响在南部更大且更持久，尤其是在非白人农场经营者和分成制比例较高的县。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
 <li><strong>DOI</strong>：<a href="https://doi.org/10.1002/ajae.70082">https://doi.org/10.1002/ajae.70082</a></li>
