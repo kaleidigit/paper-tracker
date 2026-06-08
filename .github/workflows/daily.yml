@@ -117,6 +117,29 @@ jobs:
 
           cmd('QUIT')
           ssock.close()
+
+          # Try with bare username (no domain)
+          print('=== try bare username (no @domain) ===')
+          sock2 = socket.create_connection(('smtp.126.com', 465), timeout=10)
+          ssock2 = ctx.wrap_socket(sock2, server_hostname='smtp.126.com')
+          cmd2 = lambda s: (ssock2.send((s + '\r\n').encode()), print(f'  {ssock2.recv(4096).decode("utf-8", errors="replace").strip()[:200]}'))
+          cmd2(None)
+          cmd2('EHLO gh')
+          cmd2('AUTH LOGIN')
+          bare_user = user.split('@')[0] if '@' in user else user
+          cmd2(base64.b64encode(bare_user.encode()).decode())
+          resp = ssock2.recv(4096).decode()
+          if '334' in resp:
+              cmd2(base64.b64encode(pwd.encode()).decode())
+              resp2 = ssock2.recv(4096).decode()
+              if '235' in resp2:
+                  print('AUTH SUCCESS with bare username!')
+              else:
+                  print(f'Still failed: {resp2.strip()[:100]}')
+          else:
+              print(f'Bare username rejected: {resp.strip()[:100]}')
+          cmd2('QUIT')
+          ssock2.close()
           " 2>&1
 
       - name: Run pipeline
