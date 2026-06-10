@@ -89,7 +89,12 @@ export async function retry<T>(
   throw last;
 }
 
-export async function fetchText(url: string, timeoutMs: number, retries = 3): Promise<string> {
+async function fetchWithRetry<T>(
+  url: string,
+  timeoutMs: number,
+  retries: number,
+  parser: (r: Response) => Promise<T>
+): Promise<T> {
   let lastError: unknown;
   for (let attempt = 1; attempt <= retries; attempt += 1) {
     const controller = new AbortController();
@@ -97,11 +102,11 @@ export async function fetchText(url: string, timeoutMs: number, retries = 3): Pr
     try {
       const response = await fetch(url, {
         signal: controller.signal,
-        headers: { "user-agent": "paper-tracker/1.0 (+https://local)" }
+        headers: { "user-agent": "paper-tracker/1.0" }
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       clearTimeout(timer);
-      return await response.text();
+      return await parser(response);
     } catch (error) {
       lastError = error;
       clearTimeout(timer);
@@ -113,28 +118,12 @@ export async function fetchText(url: string, timeoutMs: number, retries = 3): Pr
   throw lastError;
 }
 
+export async function fetchText(url: string, timeoutMs: number, retries = 3): Promise<string> {
+  return fetchWithRetry(url, timeoutMs, retries, (r) => r.text());
+}
+
 export async function fetchJson(url: string, timeoutMs: number, retries = 3): Promise<JsonRecord> {
-  let lastError: unknown;
-  for (let attempt = 1; attempt <= retries; attempt += 1) {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeoutMs);
-    try {
-      const response = await fetch(url, {
-        signal: controller.signal,
-        headers: { "user-agent": "paper-tracker/1.0 (+https://local)" }
-      });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      clearTimeout(timer);
-      return (await response.json()) as JsonRecord;
-    } catch (error) {
-      lastError = error;
-      clearTimeout(timer);
-      if (attempt < retries) {
-        await new Promise((resolve) => setTimeout(resolve, backoffDelay(attempt)));
-      }
-    }
-  }
-  throw lastError;
+  return fetchWithRetry(url, timeoutMs, retries, (r) => r.json());
 }
 
 export function parseDate(value: unknown): string {

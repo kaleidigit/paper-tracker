@@ -8,7 +8,7 @@
 
 import Database from "better-sqlite3";
 import type { Paper } from "./types.js";
-import { normalizeText } from "./utils.js";
+import { itemKey } from "./utils.js";
 import { logEvent } from "./logger.js";
 
 // ─── Schema ──────────────────────────────────────────────────
@@ -48,19 +48,12 @@ export function openDb(dbPath: string): Database.Database {
 
 
 
-function computeDedupKey(paper: Paper): string {
-  return (
-    normalizeText(paper.doi) ||
-    normalizeText(paper.url) ||
-    `${normalizeText(paper.journal?.name)}::${paper.title_en}`
-  );
-}
 
 // ─── Paper → DB row ──────────────────────────────────────────
 
 function paperToRow(paper: Paper, profile: string, dateStr: string): Record<string, unknown> {
   return {
-    dedup_key: computeDedupKey(paper),
+    dedup_key: itemKey(paper),
     title_en: paper.title_en || "",
     abstract_original: paper.abstract_original || "",
     journal_name: paper.journal?.name || "",
@@ -97,7 +90,7 @@ export function upsertPapers(db: Database.Database, profile: string, papers: Pap
   const seen = new Set<string>();
   const unique: Paper[] = [];
   for (const paper of papers) {
-    const key = computeDedupKey(paper);
+    const key = itemKey(paper);
     if (!seen.has(key)) {
       seen.add(key);
       unique.push(paper);

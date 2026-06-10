@@ -14,7 +14,7 @@ import pLimit from "p-limit";
 import { z } from "zod";
 import { logEvent } from "./logger.js";
 import { resolvePath } from "./config.js";
-import type { AppConfig, JsonRecord, Paper } from "./types.js";
+import type { AppConfig, JsonRecord, Paper, TaxonomyGroup } from "./types.js";
 
 import { NatureParser } from "./parsers/nature-parser.js";
 import { OpenAlexParser } from "./parsers/openalex-parser.js";
@@ -47,18 +47,18 @@ const FALLBACK_CLASSIFICATION = { groups: [{ group: "未分类", subtopics: [] a
 
 // ─── Taxonomy ──────────────────────────────────────────────
 
-export async function loadTaxonomy(config: AppConfig): Promise<Array<Record<string, unknown>>> {
+export async function loadTaxonomy(config: AppConfig): Promise<TaxonomyGroup[]> {
   const file = resolvePath(config.classification?.file || "profiles/top/classification.json");
   const raw = await fs.readFile(file, "utf-8");
   const parsed = ClassificationSchema.parse(JSON.parse(raw));
-  if (Array.isArray(parsed.groups) && parsed.groups.length > 0) return parsed.groups as Array<Record<string, unknown>>;
-  if (Array.isArray(parsed.domains)) return parsed.domains as Array<Record<string, unknown>>;
+  if (Array.isArray(parsed.groups) && parsed.groups.length > 0) return parsed.groups as TaxonomyGroup[];
+  if (Array.isArray(parsed.domains)) return parsed.domains as TaxonomyGroup[];
   return [];
 }
 
 // ─── Collect ───────────────────────────────────────────────
 
-export async function collectRawPapers(config: AppConfig, taxonomy?: Array<Record<string, unknown>>): Promise<Paper[]> {
+export async function collectRawPapers(config: AppConfig, taxonomy?: TaxonomyGroup[]): Promise<Paper[]> {
   const tax = taxonomy || await loadTaxonomy(config);
   const [naturePapers, openalexPapers] = await Promise.all([
     new NatureParser().collect(config, tax),
@@ -80,7 +80,7 @@ export async function collectRawPapers(config: AppConfig, taxonomy?: Array<Recor
 
 export async function filterPapers(
   config: AppConfig,
-  taxonomy: Array<Record<string, unknown>>,
+  taxonomy: TaxonomyGroup[],
   papers: Paper[]
 ): Promise<Paper[]> {
   const llmQueue: Paper[] = [...papers];

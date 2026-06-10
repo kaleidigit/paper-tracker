@@ -9,7 +9,7 @@
 import pLimit from "p-limit";
 import { XMLParser } from "fast-xml-parser";
 import { logEvent } from "../logger.js";
-import type { AppConfig, JsonRecord, Paper } from "../types.js";
+import type { AppConfig, JsonRecord, Paper, TaxonomyGroup } from "../types.js";
 import {
   normalizeText, toArray,
   fetchText, parseDate, parseDateTime, strictWindowStartAt,
@@ -63,12 +63,18 @@ export async function enrichRssPaper(paper: Paper): Promise<Paper> {
 
   try {
     const meta = await articleParser.parse(url);
+    const oldAbstract = (paper.abstract_original || "").trim();
+    const newAbstract = meta.abstract || "";
+    // 若抓取到的摘要比 RSS teaser 长，清空 abstract_zh 强制 enrich 阶段重新翻译
+    const abstractUpdated = newAbstract.length > oldAbstract.length;
     return {
       ...paper,
       authors: meta.authors.length > 0 ? meta.authors : paper.authors,
       author_affiliations: meta.affiliations.length > 0 ? meta.affiliations : paper.author_affiliations,
       author_affil_map: meta.authorAffilMap || paper.author_affil_map,
-      abstract_original: meta.abstract || paper.abstract_original,
+      abstract_original: newAbstract || paper.abstract_original,
+      abstract_zh: abstractUpdated ? "" : paper.abstract_zh,
+      title_zh: abstractUpdated ? "" : paper.title_zh,
       image_url: meta.imageUrl || paper.image_url,
       publication_type: meta.publicationType !== "unknown" ? meta.publicationType : paper.publication_type,
     };
@@ -80,7 +86,7 @@ export async function enrichRssPaper(paper: Paper): Promise<Paper> {
 // ─── Parser ─────────────────────────────────────────────────
 
 export class NatureParser {
-  async collect(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
+  async collect(config: AppConfig, taxonomy: TaxonomyGroup[]): Promise<Paper[]> {
     const journals = await loadJournals(config);
     const natureJournals = journals.filter((j) => normalizeText(j.publisher_strategy) === "nature-rss");
     const feeds = natureJournals.flatMap((j) => toArray(j.rss_feeds as string[] | undefined));
@@ -107,7 +113,7 @@ export class NatureParser {
   private async collectAllRawPapers(
     config: AppConfig, feeds: string[],
     feedSortOrder: Map<string, number>, feedSourceGroup: Map<string, string>,
-    taxonomy: Array<Record<string, unknown>>
+    taxonomy: TaxonomyGroup[]
   ): Promise<Paper[]> {
     const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "" });
     const start = strictWindowStartAt(config);

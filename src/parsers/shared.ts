@@ -8,7 +8,7 @@
 
 import fs from "node:fs/promises";
 import { z } from "zod";
-import type { AppConfig, Paper } from "../types.js";
+import type { AppConfig, Paper, TaxonomyGroup } from "../types.js";
 import type { JournalEntry, ParsedPaper } from "./types.js";
 import { normalizeText, dedupeStrings, resolvePath, normalizePublicationType } from "../utils.js";
 

@@ -72,13 +72,14 @@ export class ArticlePageParser {
 
         // 递归收集实体：支持 WebPage.mainEntity、@graph 等嵌套结构
         const flatEntities: JsonRecord[] = [];
-        const collectEntities = (node: unknown) => {
+        const collectEntities = (node: unknown, depth = 0) => {
+          if (depth > 5) return;
           if (Array.isArray(node)) {
-            node.forEach(collectEntities);
+            node.forEach((n) => collectEntities(n, depth + 1));
           } else if (node && typeof node === "object") {
             flatEntities.push(node as JsonRecord);
-            collectEntities((node as JsonRecord).mainEntity);
-            collectEntities((node as JsonRecord)["@graph"]);
+            collectEntities((node as JsonRecord).mainEntity, depth + 1);
+            collectEntities((node as JsonRecord)["@graph"], depth + 1);
           }
         };
         collectEntities(ld);

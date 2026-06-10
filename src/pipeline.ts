@@ -25,6 +25,40 @@ import { sendResendEmail } from "./publishers/resend.js";
 import { itemKey } from "./utils.js";
 import { logEvent } from "./logger.js";
 
+// ─── Shared SMTP config ─────────────────────────────────────
+
+interface SmtpConfig {
+  host: string; port: number; secure: boolean;
+  user: string; pass: string; from: string; to: string[]; subject: string;
+}
+
+function resolveSmtpConfig(emailCfg: Record<string, unknown>, dateStr: string): SmtpConfig | { error: string } {
+  const host = (emailCfg.smtp_host as string) || "smtp.gmail.com";
+  const port = Number(emailCfg.smtp_port) || 465;
+  const secure = emailCfg.smtp_secure !== false;
+
+  const userEnv = (emailCfg.user_env as string) || "EMAIL_USER";
+  const passEnv = (emailCfg.pass_env as string) || "EMAIL_PASS";
+  const user = process.env[userEnv] || "";
+  const pass = process.env[passEnv] || "";
+  if (!user || !pass) {
+    return { error: `Missing SMTP credentials: ${userEnv}/${passEnv}` };
+  }
+
+  const toEnv = (emailCfg.to_env as string) || "EMAIL_RECIPIENTS";
+  const toRaw = process.env[toEnv] || "";
+  const to = toRaw.split(",").map((s: string) => s.trim()).filter(Boolean);
+  if (to.length === 0) {
+    return { error: "No recipients" };
+  }
+
+  const from = (emailCfg.from as string) || "noreply@gmail.com";
+  const subjTpl = (emailCfg.subject_template as string) || "论文日报 {date}";
+  const subject = subjTpl.replace("{date}", dateStr);
+
+  return { host, port, secure, user, pass, from, to, subject };
+}
+
 // ─── Helpers ───────────────────────────────────────────────
 
 const f = (dir: string, name: string) => path.join(dir, name);
@@ -200,26 +234,11 @@ async function stepNotify(ctx: ProfileContext): Promise<StepResult> {
     return { step: "notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t };
   }
 
-  const host = emailCfg.smtp_host || "smtp.163.com";
-  const port = emailCfg.smtp_port || 465;
-  const secure = emailCfg.smtp_secure !== false;
-
-  const userEnv = emailCfg.user_env || "EMAIL_USER";
-  const passEnv = emailCfg.pass_env || "EMAIL_PASS";
-  const user = process.env[userEnv] || "";
-  const pass = process.env[passEnv] || "";
-  if (!user || !pass) {
-    const err = `Missing SMTP credentials: ${userEnv}/${passEnv}`;
-    logEvent("ERROR", "email.missing_creds", { userEnv, passEnv });
-    return { step: "notify", inputCount: papers.length, outputCount: 0, inputFile: in_, outputFile: "", durationMs: Date.now() - t, error: err };
+  const smtp = resolveSmtpConfig(emailCfg, ctx.dateStr);
+  if ("error" in smtp) {
+    logEvent("ERROR", "email.missing_creds", { error: smtp.error });
+    return { step: "notify", inputCount: papers.length, outputCount: 0, inputFile: in_, outputFile: "", durationMs: Date.now() - t, error: smtp.error };
   }
-
-  const toEnv = emailCfg.to_env || "EMAIL_RECIPIENTS";
-  const toRaw = process.env[toEnv] || "";
-  const to = toRaw.split(",").map((s) => s.trim()).filter(Boolean);
-  const from = emailCfg.from || "noreply@163.com";
-  const subjTpl = emailCfg.subject_template || "论文日报 {date}";
-  const subject = subjTpl.replace("{date}", ctx.dateStr);
 
   const markdownContent = await fs.readFile(f(ctx.outputDir, "6-digest.md"), "utf-8");
   const rssCfg = ctx.config.rss || {};
@@ -227,14 +246,14 @@ async function stepNotify(ctx: ProfileContext): Promise<StepResult> {
   const html = digestToHtmlPage(htmlTitle, markdownContent);
 
   try {
-    await sendResendEmail(host, port, secure, user, pass, from, to, subject, html);
-    logEvent("INFO", "email.sent", { to: to.length, papers: papers.length });
+    await sendResendEmail(smtp.host, smtp.port, smtp.secure, smtp.user, smtp.pass, smtp.from, smtp.to, smtp.subject, html);
+    logEvent("INFO", "email.sent", { to: smtp.to.length, papers: papers.length });
   } catch (err) {
     logEvent("ERROR", "email.failed", { error: String(err) });
     return { step: "notify", inputCount: papers.length, outputCount: 0, inputFile: in_, outputFile: "", durationMs: Date.now() - t, error: String(err) };
   }
 
-  return { step: "notify", inputCount: papers.length, outputCount: to.length, inputFile: in_, outputFile: "", durationMs: Date.now() - t };
+  return { step: "notify", inputCount: papers.length, outputCount: smtp.to.length, inputFile: in_, outputFile: "", durationMs: Date.now() - t };
 }
 
 // ─── Combined RSS（跨 profile 合并）────────────────────────
@@ -328,22 +347,9 @@ async function stepCombinedNotify(ctx: ProfileContext): Promise<StepResult> {
     return { step: "combined-notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t };
   }
 
-  const host = emailCfg.smtp_host || "smtp.126.com";
-  const port = emailCfg.smtp_port || 465;
-  const secure = emailCfg.smtp_secure !== false;
-  const userEnv = emailCfg.user_env || "EMAIL_USER";
-  const passEnv = emailCfg.pass_env || "EMAIL_PASS";
-  const user = process.env[userEnv] || "";
-  const pass = process.env[passEnv] || "";
-  if (!user || !pass) {
-    return { step: "combined-notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: `Missing SMTP credentials` };
-  }
-
-  const toEnv = emailCfg.to_env || "EMAIL_RECIPIENTS";
-  const toRaw = process.env[toEnv] || "";
-  const to = toRaw.split(",").map((s) => s.trim()).filter(Boolean);
-  if (to.length === 0) {
-    return { step: "combined-notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: "No recipients" };
+  const smtp = resolveSmtpConfig(emailCfg, ctx.dateStr);
+  if ("error" in smtp) {
+    return { step: "combined-notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: smtp.error };
   }
 
   const dataDir = "data";
@@ -383,19 +389,17 @@ async function stepCombinedNotify(ctx: ProfileContext): Promise<StepResult> {
   const rssCfg = ctx.config.rss || {};
   const htmlTitle = `${ctx.dateStr} ${rssCfg.title || "论文日报"}`;
   const html = digestToHtmlPage(htmlTitle, markdownContent);
-  const from = emailCfg.from || "noreply@126.com";
-  const subjTpl = emailCfg.subject_template || "论文日报 {date}";
-  const subject = `${subjTpl.replace("{date}", ctx.dateStr)}（${totalPapers}篇）`;
+  const subject = `${smtp.subject}（${totalPapers}篇）`;
 
   try {
-    await sendResendEmail(host, port, secure, user, pass, from, to, subject, html);
-    logEvent("INFO", "email.sent", { to: to.length, papers: totalPapers });
+    await sendResendEmail(smtp.host, smtp.port, smtp.secure, smtp.user, smtp.pass, smtp.from, smtp.to, subject, html);
+    logEvent("INFO", "email.sent", { to: smtp.to.length, papers: totalPapers });
   } catch (err) {
     logEvent("ERROR", "email.failed", { error: String(err) });
     return { step: "combined-notify", inputCount: totalRaw, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: String(err) };
   }
 
-  return { step: "combined-notify", inputCount: totalRaw, outputCount: to.length, inputFile: "", outputFile: "", durationMs: Date.now() - t };
+  return { step: "combined-notify", inputCount: totalRaw, outputCount: smtp.to.length, inputFile: "", outputFile: "", durationMs: Date.now() - t };
 }
 
 // ─── Runner ────────────────────────────────────────────────

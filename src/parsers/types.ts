@@ -3,7 +3,7 @@
  * 所有采集器（Nature / OpenAlex）共享这些类型
  */
 
-import type { JsonRecord } from "../types.js";
+import type { TaxonomyGroup } from "../types.js";
 
 /** 从文章页面解析出的元数据 */
 export interface ArticleMeta {
@@ -50,6 +50,6 @@ export interface ParsedPaper {
   sourceProvider: string;
   rawFeed: string;
   rawRecordId: string;
-  taxonomy: Array<Record<string, unknown>>;
+  taxonomy: TaxonomyGroup[];
   sortOrder?: number;
 }

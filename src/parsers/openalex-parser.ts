@@ -5,7 +5,7 @@
  */
 
 import { logEvent } from "../logger.js";
-import type { AppConfig, JsonRecord, Paper } from "../types.js";
+import type { AppConfig, JsonRecord, Paper, TaxonomyGroup } from "../types.js";
 import type { JournalEntry, ParsedPaper } from "./types.js";
 import {
   normalizeText, dedupeStrings, toArray,
@@ -49,7 +49,7 @@ function refineOpenAlexType(item: JsonRecord, originalType: unknown, abstract: s
 }
 
 export class OpenAlexParser {
-  async collect(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
+  async collect(config: AppConfig, taxonomy: TaxonomyGroup[]): Promise<Paper[]> {
     logEvent("INFO", "workflow.fetch.phase1.start", { phase: "full_collection", source: "openalex" });
     const rawPapers = await this.collectAllRawPapers(config, taxonomy);
     logEvent("INFO", "workflow.fetch.phase1.done", { collected: rawPapers.length, source: "openalex" });
@@ -57,7 +57,7 @@ export class OpenAlexParser {
     return rawPapers;
   }
 
-  private async collectAllRawPapers(config: AppConfig, taxonomy: Array<Record<string, unknown>>): Promise<Paper[]> {
+  private async collectAllRawPapers(config: AppConfig, taxonomy: TaxonomyGroup[]): Promise<Paper[]> {
     const journals = await loadJournals(config);
     const oaJournals = journals.filter((j) => normalizeText(j.publisher_strategy) === "openalex");
     const issns = dedupeStrings(

@@ -9,7 +9,7 @@
  */
 
 import { logEvent } from "./logger.js";
-import type { AppConfig, JsonRecord, Paper } from "./types.js";
+import type { AppConfig, JsonRecord, Paper, TaxonomyGroup } from "./types.js";
 import {
   normalizeText, dedupeStrings, toArray
 } from "./utils.js";
@@ -32,9 +32,29 @@ export function parseJsonLenient(text: string): JsonRecord {
     if (codeBlock?.[1]) {
       try { return JSON.parse(codeBlock[1]) as JsonRecord; } catch { /* continue */ }
     }
-    const obj = raw.match(/\{[\s\S]*\}/);
-    if (obj?.[0]) {
-      try { return JSON.parse(obj[0]) as JsonRecord; } catch { /* ignore */ }
+    // Bracket-counting extraction: find the first '{' then match balanced braces.
+    // Avoids the greedy /{[\s\S]*}/ regex which can span past the JSON object
+    // when the LLM appends explanatory text containing braces.
+    const firstBrace = raw.indexOf("{");
+    if (firstBrace !== -1) {
+      let depth = 0;
+      let inString = false;
+      let escaped = false;
+      for (let i = firstBrace; i < raw.length; i++) {
+        const ch = raw[i];
+        if (escaped) { escaped = false; continue; }
+        if (ch === "\\" && inString) { escaped = true; continue; }
+        if (ch === '"') { inString = !inString; continue; }
+        if (inString) continue;
+        if (ch === "{") depth++;
+        else if (ch === "}") {
+          depth--;
+          if (depth === 0) {
+            const candidate = raw.slice(firstBrace, i + 1);
+            try { return JSON.parse(candidate) as JsonRecord; } catch { /* continue scanning */ }
+          }
+        }
+      }
     }
   }
   return {};
@@ -299,7 +319,7 @@ export async function translatePaperFields(config: AppConfig, paper: Paper): Pro
 
 // ─── 分类 ──────────────────────────────────────────────────
 
-export async function classifyPaper(config: AppConfig, paper: Paper, taxonomy: Array<Record<string, unknown>>): Promise<Paper["classification"]> {
+export async function classifyPaper(config: AppConfig, paper: Paper, taxonomy: TaxonomyGroup[]): Promise<Paper["classification"]> {
   const prompts = config.ai?.prompts || {};
   const values = {
     taxonomy_json: JSON.stringify(taxonomy),
@@ -342,7 +362,7 @@ export async function classifyPaper(config: AppConfig, paper: Paper, taxonomy: A
 export async function classifyPapersBatch(
   config: AppConfig,
   papers: Paper[],
-  taxonomy: Array<Record<string, unknown>>
+  taxonomy: TaxonomyGroup[]
 ): Promise<Paper["classification"][]> {
   if (papers.length === 0) return [];
 

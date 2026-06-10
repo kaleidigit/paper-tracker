@@ -17,6 +17,7 @@ export interface Paper {
   abstract_zh?: string;
   publication_type?: string;
   translation_error?: string;
+  enrich_error?: string;
   summary_zh?: string;
   novelty_points?: string[];
   main_content?: string[];
@@ -27,7 +28,6 @@ export interface Paper {
     subdomain?: string;
   };
   source?: { provider?: string; raw_feed?: string; raw_record_id?: string };
-  [key: string]: unknown;
 }
 
 export interface PublishPayload {
@@ -153,6 +153,11 @@ export interface MetricsState {
   avg_duration_ms: number;
   last_error: string;
   updated_at: string;
+}
+
+export interface TaxonomyGroup {
+  name: string;
+  subtopics?: { name: string; keywords?: string[] }[];
 }
 
 export interface ProfileContext {
