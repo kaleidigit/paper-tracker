@@ -1,5 +1,5 @@
 # CLAUDE.md
-> 最后更新：2026-06-08，7 天滚动 RSS 窗口 + table 双栏布局 + 81 项测试
+> 最后更新：2026-06-13，策略重命名 + Cell Press RSS + Crossref 回退 + 无摘要不翻译
 
 ## 核心原则
 
@@ -13,8 +13,9 @@
 8. **重试统一使用 `retry()`**（`src/utils.ts`），指数退避 + 25% 抖动。
 9. **配置文件有 Zod schema 验证**，加载时即失败，友好错误信息。
 10. **昂贵操作延迟到筛选后** —— 文章页抓取、LLM 翻译等高开销操作在 filter 之后执行，只处理通过筛选的论文。
-11. **采集策略由配置驱动** —— `journals.json` 的 `publisher_strategy` 字段决定采集方式（`nature-rss` / `openalex`），代码不硬编码策略映射。
+11. **采集策略由配置驱动** —— `journals.json` 的 `publisher_strategy` 字段决定采集方式（`rss` / `openalex`），代码不硬编码策略映射。详见下方「采集策略」章节。
 12. **管道执行单一入口** —— `auto-push.sh` 委托 `run.sh`，不重复实现管道逻辑；所有 profile 串行执行后统一合并 RSS。
+13. **无摘要不翻译** —— 若 `abstract_original` 不足 60 字符（editorial/comment/letter 等无摘要文章），代码层面丢弃 LLM 生成的 `abstract_zh`，不调翻译。避免模型根据标题编造内容。
 
 ## 架构图
 
@@ -29,7 +30,7 @@ src/cli.ts
         │
         ├── modules.ts (纯能力：采集 + LLM 增强)
         │     │
-        │     ├── collectRawPapers() ─→ NatureParser + OpenAlexParser
+        │     ├── collectRawPapers() ─→ RssParser + OpenAlexParser
         │     ├── filterPapers() ─→ llmFilterAndTranslateBatch
         │     ├── enrichPapers() ─→ scrapeRSS + translate + classifyBatch
         │     └── loadTaxonomy() ─→ Zod 校验 classification.json
@@ -38,7 +39,7 @@ src/cli.ts
         │
         ├── parsers/
         │     ├── shared.ts ─── 共享：buildPaper + loadJournals（Zod 校验）
-        │     ├── nature-parser.ts (RSS + JSON-LD)
+        │     ├── rss-parser.ts (RSS feed 采集 + Crossref 摘要回退)
         │     ├── openalex-parser.ts (OpenAlex API)
         │     └── article-parser.ts (通用文章页面)
         │
@@ -91,7 +92,7 @@ public/                       ← GitHub Pages 部署（gitignored）
 | `src/utils.ts` | retry / normalizeText / dedupeStrings / normalizePublicationType / itemKey | 无 |
 | `src/logger.ts` | logEvent() 无状态 helper + Logger 类（按日分文件） | 文件追加 |
 | `src/parsers/shared.ts` | buildPaper + loadJournals（Zod 校验 journals.json） | 无 |
-| `src/parsers/nature-parser.ts` | Nature RSS + JSON-LD 采集 | HTTP + HTML |
+| `src/parsers/nature-parser.ts` | RSS feed 采集（RDF/RSS/Atom）+ Crossref 摘要回退 | HTTP + HTML |
 | `src/parsers/openalex-parser.ts` | OpenAlex API 采集 | HTTP |
 | `src/parsers/article-parser.ts` | 通用文章页面解析器 | HTTP + HTML |
 
@@ -139,13 +140,62 @@ npx tsx src/cli.ts --step notify --profile top
 
 **collect 步骤全量拉回，不做筛选。**
 
-| 来源 | 策略 | 覆盖 |
-|------|------|------|
-| Nature RSS | `publisher_strategy: "nature-rss"` 的期刊，RSS feed 全量拉取 + 时间窗口过滤 | Nature 及其子刊 + Science/SciAdv |
-| OpenAlex ISSN | `publisher_strategy: "openalex"` 的期刊，ISSN 过滤 + 30 天宽窗口 + 分页 | PNAS/Joule/EES 等 |
-| 合并去重 | Nature RSS + OpenAlex 合并，`itemKey()` 去重 | 最终写入 `1-raw-fetched.json` |
+### 策略一览
 
-新增期刊只需在 `journals.json` 添加一条记录（含 `publisher_strategy` 字段指定采集策略），无需改代码。
+| 策略 | `publisher_strategy` | 原理 | 摘要来源 |
+|------|---------------------|------|---------|
+| RSS 采集 | `rss` | RSS feed 全量拉取 + 时间窗口过滤 | RSS `<description>`，若无则 enrich 阶段 Crossref 回退 |
+| OpenAlex ISSN | `openalex` | ISSN 过滤 + 30 天宽窗口 + 分页 | OpenAlex `abstract_inverted_index` |
+
+### RSS 摘要回退链路
+
+RSS 期刊在 enrich 阶段通过 `enrichRssPaper()` 增强摘要：
+
+1. **文章页面抓取**：对非 Cloudflare 域名（nature.com 等）抓取 HTML 页面，提取 JSON-LD / meta 摘要
+2. **Crossref API 回退**：对 Cloudflare 保护域名（science.org / cell.com / pnas.org / pubs.acs.org），通过 DOI 调用 `api.crossref.org/works/{doi}` 获取摘要（含 JATS 标签剥离）
+3. **RSS 优先**：若 RSS feed 本身已包含完整摘要（Cell Press 系列），即使页面抓取失败也不影响质量
+
+```
+RSS feed ─→ paper (abstract_original = RSS description)
+  │
+  └── enrichRssPaper()
+        ├── Cloudflare 域名? ──→ Crossref API (DOI lookup) ──→ 补全摘要
+        └── 可访问域名? ──→ 抓取文章页面 ──→ 提取 JSON-LD/meta 摘要
+```
+
+### 各期刊采集策略明细
+
+| 期刊 | 策略 | RSS URL | 摘要来源 | 备注 |
+|------|------|---------|---------|------|
+| Science | `rss` | science.org/action/showFeed | Crossref（RSS 无摘要）| Cloudflare 保护 |
+| Science Advances | `rss` | science.org/action/showFeed | Crossref（RSS 无摘要）| Cloudflare 保护 |
+| Nature 系列（20 本）| `rss` | nature.com/*.rss | RSS 自带（完整）| 页面可抓取 |
+| Joule | `rss` | cell.com/action/showFeed?jc=joule | RSS 自带（完整）| Cloudflare 保护页面 |
+| One Earth | `rss` | cell.com/action/showFeed?jc=one-earth | RSS 自带（完整）| Cloudflare 保护页面 |
+| The Innovation | `rss` | cell.com/action/showFeed?jc=the-innovation | RSS 自带（完整）| Cloudflare 保护页面 |
+| PNAS | `openalex` | — | OpenAlex | 摘要覆盖率好 |
+| 中国社会科学 | `openalex` | — | OpenAlex | — |
+| Natl Sci Rev | `openalex` | — | OpenAlex | 部分缺失 |
+| EES | `openalex` | — | OpenAlex | 部分缺失 |
+| Global Env Change | `openalex` | — | OpenAlex | 部分缺失 |
+| Env Sci Tech | `openalex` | — | OpenAlex | 部分缺失 |
+| 其他（5 本）| `openalex` | — | OpenAlex | 覆盖率参差 |
+
+**当前 RSS 域名 Cloudflare 防护清单**（`CLOUDFLARE_DOMAINS`）：
+`science.org`, `cell.com`, `pnas.org`, `pubs.acs.org`
+
+### 无摘要不翻译
+
+**代码层面强制执行**（非 prompt 层面），防止 LLM 对 editorial/comment/letter 等无摘要文章编造内容：
+
+1. **filter 阶段**：LLM 批量筛选后，若论文 `abstract_original < 60` 字符，丢弃 LLM 返回的 `abstract_zh`（设为 `""`）
+2. **enrich 阶段**：Crossref 回退后再次检查，若仍无有效摘要：
+   - 标题已有翻译 → 直接返回，不调 LLM
+   - 标题无翻译 → 调 LLM 仅翻译标题，丢弃可能返回的虚假 `abstract_zh`
+
+阈值 60 字符：能过滤掉纯书目信息（"Journal, Volume X, Issue Y, June 2026." ~55 chars），同时不会误伤任何真实摘要（最短的 Significance 声明也有 ~250 chars）。
+
+新增期刊只需在 `journals.json` 添加一条记录（含 `publisher_strategy` 字段），无需改代码。若新 RSS 来源的域名被 Cloudflare 保护，加入 `CLOUDFLARE_DOMAINS` 即可自动启用 Crossref 回退。
 
 ## 筛选策略
 
@@ -310,6 +360,8 @@ npm run build   # tsc --noEmit（零错误）
 | rss-rolling | 2026-06-08 | 7 天滚动 RSS 窗口 + 自动清理旧条目，避免 feed 无限增长 |
 | layout-table | 2026-06-08 | HTML 布局从 fixed sidebar 改为 table 双栏（左侧目录 + 右侧正文），移动端自动隐藏 |
 | test-expand | 2026-06-08 | 测试 56→81 用例（新增 rss/render-html/resend 模块 25 项测试） |
+| strategy-rename | 2026-06-13 | `nature-rss`→`rss` 策略重命名，`NatureParser`→`RssParser`；Joule/One Earth/Innovation 从 openalex 切换到 RSS；Cloudflare 域名新增 `cell.com`；Crossref 摘要回退（science.org / cell.com）；enrichOne 增加通用 Crossref 摘要补全（OpenAlex 期刊 < 200 字符摘要自动补全）|
+| no-abstract-guard | 2026-06-13 | 代码层面强制执行「无摘要不翻译」：filter/enrich 阶段 abstract_original < 60 字符时丢弃 LLM 生成的 abstract_zh，无摘要时不调 LLM 翻译，避免模型根据标题编造 editorial/comment/letter 的内容 |
 
 ## 数据追溯
 

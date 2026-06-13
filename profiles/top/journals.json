@@ -3,7 +3,7 @@
     "name": "Science",
     "source_group": "Science",
     "issn": "0036-8075",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.science.org/action/showFeed?type=etoc&feed=rss&jc=science"
     ],
@@ -13,7 +13,7 @@
     "name": "Nature",
     "source_group": "Nature",
     "issn": "0028-0836",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/nature.rss"
     ],
@@ -44,7 +44,7 @@
     "name": "Nature Energy",
     "source_group": "Nature",
     "issn": "2058-7546",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/nenergy.rss"
     ],
@@ -54,7 +54,7 @@
     "name": "Nature Climate Change",
     "source_group": "Nature",
     "issn": "1758-678X",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/nclimate.rss"
     ],
@@ -64,7 +64,7 @@
     "name": "Nature Sustainability",
     "source_group": "Nature",
     "issn": "2398-9629",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/natsustain.rss"
     ],
@@ -74,7 +74,7 @@
     "name": "Nature Geoscience",
     "source_group": "Nature",
     "issn": "1752-0894",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/ngeo.rss"
     ],
@@ -84,7 +84,7 @@
     "name": "Nature Ecology & Evolution",
     "source_group": "Nature",
     "issn": "2397-334X",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/natecolevol.rss"
     ],
@@ -94,7 +94,7 @@
     "name": "Science Advances",
     "source_group": "Science",
     "issn": "2375-2548",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.science.org/action/showFeed?type=etoc&feed=rss&jc=sciadv"
     ],
@@ -104,7 +104,7 @@
     "name": "Nature Communications",
     "source_group": "Nature",
     "issn": "2041-1723",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/ncomms.rss"
     ],
@@ -114,14 +114,20 @@
     "name": "Joule",
     "source_group": "Cell",
     "issn": "2542-4351",
-    "publisher_strategy": "openalex",
+    "publisher_strategy": "rss",
+    "rss_feeds": [
+      "https://www.cell.com/action/showFeed?type=etoc&feed=rss&jc=joule"
+    ],
     "sort_order": 17
   },
   {
     "name": "One Earth",
     "source_group": "Cell",
     "issn": "2590-3330",
-    "publisher_strategy": "openalex",
+    "publisher_strategy": "rss",
+    "rss_feeds": [
+      "https://www.cell.com/action/showFeed?type=etoc&feed=rss&jc=one-earth"
+    ],
     "sort_order": 20
   },
   {
@@ -135,7 +141,10 @@
     "name": "The Innovation",
     "source_group": "Innovation",
     "issn": "2666-6758",
-    "publisher_strategy": "openalex",
+    "publisher_strategy": "rss",
+    "rss_feeds": [
+      "https://www.cell.com/action/showFeed?type=etoc&feed=rss&jc=the-innovation"
+    ],
     "sort_order": 22
   },
   {
@@ -177,7 +186,7 @@
     "name": "Nature Food",
     "source_group": "Nature",
     "issn": "2662-1355",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/natfood.rss"
     ],
@@ -186,7 +195,7 @@
   {
     "name": "Nature Cities",
     "source_group": "Nature",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/natcities.rss"
     ],
@@ -196,7 +205,7 @@
     "name": "Nature Water",
     "source_group": "Nature",
     "issn": "2731-6084",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/natwater.rss"
     ],
@@ -206,7 +215,7 @@
     "name": "Nature Human Behaviour",
     "source_group": "Nature",
     "issn": "2397-3374",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/nathumbehav.rss"
     ],
@@ -216,7 +225,7 @@
     "name": "Nature Plants",
     "source_group": "Nature",
     "issn": "2055-0278",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/nplants.rss"
     ],
@@ -226,7 +235,7 @@
     "name": "Nature Machine Intelligence",
     "source_group": "Nature",
     "issn": "2522-5839",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/natmachintell.rss"
     ],
@@ -236,7 +245,7 @@
     "name": "Nature Computational Science",
     "source_group": "Nature",
     "issn": "2662-8457",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/natcomputsci.rss"
     ],
@@ -246,7 +255,7 @@
     "name": "Nature Medicine",
     "source_group": "Nature",
     "issn": "1078-8956",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/nm.rss"
     ],
@@ -255,7 +264,7 @@
   {
     "name": "Nature Health",
     "source_group": "Nature",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/naturehealth.rss"
     ],
@@ -265,7 +274,7 @@
     "name": "Nature Reviews Earth & Environment",
     "source_group": "Nature",
     "issn": "2662-138X",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/natrevearthenviron.rss"
     ],
@@ -274,7 +283,7 @@
   {
     "name": "Nature Reviews Biodiversity",
     "source_group": "Nature",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/nrbd.rss"
     ],
@@ -284,7 +293,7 @@
     "name": "Nature Reviews Clean Technology",
     "source_group": "Nature",
     "issn": "3005-0685",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/nrct.rss"
     ],
@@ -294,7 +303,7 @@
     "name": "Nature Reviews Electrical Engineering",
     "source_group": "Nature",
     "issn": "2948-1201",
-    "publisher_strategy": "nature-rss",
+    "publisher_strategy": "rss",
     "rss_feeds": [
       "https://www.nature.com/natrevelectreng.rss"
     ],

@@ -1,9 +1,9 @@
 /**
- * nature-parser.ts
- * RSS 采集器：Nature / Science / PNAS 等 RDF/RSS/Atom feed
+ * rss-parser.ts
+ * RSS 采集器：支持 RDF (Science/Cell Press) / RSS 2.0 (Nature) / Atom 格式
  *
  * 采集阶段仅解析 RSS，不做文章页面抓取。
- * 筛选后通过 enrichRssPaper() 按需抓取文章页面（跳过 Cloudflare 保护域名）。
+ * 筛选后通过 enrichRssPaper() 抓取文章页面（Cloudflare 保护域名走 Crossref 回退）。
  */
 
 import pLimit from "p-limit";
@@ -42,7 +42,7 @@ function parseDcCreator(raw: unknown): string[] {
 const articleParser = new ArticlePageParser(30000);
 
 /** Domains where Cloudflare blocks all non-browser requests */
-const CLOUDFLARE_DOMAINS = ["science.org", "pnas.org", "pubs.acs.org"];
+const CLOUDFLARE_DOMAINS = ["science.org", "cell.com", "pnas.org", "pubs.acs.org"];
 
 function isCloudflareBlocked(url: string): boolean {
   try {
@@ -53,13 +53,48 @@ function isCloudflareBlocked(url: string): boolean {
   }
 }
 
+/** Strip JATS/HTML tags and normalize whitespace. */
+function stripJats(raw: string): string {
+  return normalizeText(raw.replace(/<[^>]*>/g, ""));
+}
+
+/** Fetch abstract from Crossref API by DOI. Returns empty string on failure. */
+export async function fetchCrossrefAbstract(doi: string): Promise<string> {
+  const cleanDoi = normalizeText(doi);
+  if (!cleanDoi) return "";
+  try {
+    const url = `https://api.crossref.org/works/${encodeURIComponent(cleanDoi)}`;
+    const resp = await fetchText(url, 15000, 1);
+    const data = JSON.parse(resp) as JsonRecord;
+    const abstract = (data?.message as JsonRecord | undefined)?.abstract as string | undefined;
+    return abstract ? stripJats(abstract) : "";
+  } catch {
+    return "";
+  }
+}
+
 /**
  * Scrape article page and merge metadata into the paper.
- * Skips Cloudflare-protected domains (uses RSS data as-is).
+ * For Cloudflare-protected domains, falls back to Crossref API for abstract.
  */
 export async function enrichRssPaper(paper: Paper): Promise<Paper> {
   const url = paper.url;
-  if (!url || isCloudflareBlocked(url)) return paper;
+  if (!url) return paper;
+
+  if (isCloudflareBlocked(url)) {
+    const doi = paper.doi || paper.id;
+    if (!doi) return paper;
+    const crossrefAbstract = await fetchCrossrefAbstract(doi);
+    if (!crossrefAbstract) return paper;
+    const oldAbstract = (paper.abstract_original || "").trim();
+    const abstractUpdated = crossrefAbstract.length > oldAbstract.length;
+    return {
+      ...paper,
+      abstract_original: abstractUpdated ? crossrefAbstract : paper.abstract_original,
+      abstract_zh: abstractUpdated ? "" : paper.abstract_zh,
+      title_zh: abstractUpdated ? "" : paper.title_zh,
+    };
+  }
 
   try {
     const meta = await articleParser.parse(url);
@@ -85,17 +120,17 @@ export async function enrichRssPaper(paper: Paper): Promise<Paper> {
 
 // ─── Parser ─────────────────────────────────────────────────
 
-export class NatureParser {
+export class RssParser {
   async collect(config: AppConfig, taxonomy: TaxonomyGroup[]): Promise<Paper[]> {
     const journals = await loadJournals(config);
-    const natureJournals = journals.filter((j) => normalizeText(j.publisher_strategy) === "nature-rss");
-    const feeds = natureJournals.flatMap((j) => toArray(j.rss_feeds as string[] | undefined));
+    const rssJournals = journals.filter((j) => normalizeText(j.publisher_strategy) === "rss");
+    const feeds = rssJournals.flatMap((j) => toArray(j.rss_feeds as string[] | undefined));
 
     if (feeds.length === 0) return [];
 
     const feedSortOrder = new Map<string, number>();
     const feedSourceGroup = new Map<string, string>();
-    for (const j of natureJournals) {
+    for (const j of rssJournals) {
       const sg = normalizeText(j.source_group || j.name);
       for (const feed of toArray(j.rss_feeds as string[] | undefined)) {
         if (j.sort_order !== undefined) feedSortOrder.set(feed, j.sort_order);
@@ -144,7 +179,7 @@ export class NatureParser {
         if (publishedAt && publishedAt < start) continue;
 
         const title = normalizeText(item.title);
-        const rssAbstract = normalizeText(item.description || item.summary || "");
+        const rssAbstract = normalizeText(item["content:encoded"] || item.description || item.summary || "");
         const journal = normalizeText(item["prism:publicationName"] || item.source || "");
         const publishedDate = parseDate(item.pubDate || item.published || item.updated || item["dc:date"]);
         const paperUrl = normalizeText(item.link);
@@ -170,7 +205,7 @@ export class NatureParser {
             abstractOriginal: rssAbstract,
             imageUrl: extractImageFromRssItem(item),
             publicationType: pubType,
-            sourceProvider: "nature-rss",
+            sourceProvider: "rss",
             rawFeed: feedUrl,
             rawRecordId: normalizeText(item.guid || item.link),
             taxonomy,

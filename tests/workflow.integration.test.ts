@@ -14,7 +14,7 @@ beforeAll(async () => {
   const classificationPath = path.join(tmpDir, "classification.json");
   await fs.writeFile(
     journalsPath,
-    JSON.stringify([{ name: "Nature", source_group: "Nature", rss_feeds: ["https://example.com/feed.xml"], issn: "0028-0836", publisher_strategy: "nature-rss" }]),
+    JSON.stringify([{ name: "Nature", source_group: "Nature", rss_feeds: ["https://example.com/feed.xml"], issn: "0028-0836", publisher_strategy: "rss" }]),
     "utf-8"
   );
   await fs.writeFile(

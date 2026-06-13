@@ -16,9 +16,9 @@ import { logEvent } from "./logger.js";
 import { resolvePath } from "./config.js";
 import type { AppConfig, JsonRecord, Paper, TaxonomyGroup } from "./types.js";
 
-import { NatureParser } from "./parsers/nature-parser.js";
+import { RssParser } from "./parsers/nature-parser.js";
 import { OpenAlexParser } from "./parsers/openalex-parser.js";
-import { enrichRssPaper } from "./parsers/nature-parser.js";
+import { enrichRssPaper, fetchCrossrefAbstract } from "./parsers/nature-parser.js";
 import { llmFilterAndTranslate, llmFilterAndTranslateBatch, translatePaperFields, classifyPaper, classifyPapersBatch } from "./llm.js";
 import {
   normalizeText, itemKey, normalizePublicationType, shouldSkipLlmRescueByTitle, isPrimarilyChinese,
@@ -61,7 +61,7 @@ export async function loadTaxonomy(config: AppConfig): Promise<TaxonomyGroup[]> 
 export async function collectRawPapers(config: AppConfig, taxonomy?: TaxonomyGroup[]): Promise<Paper[]> {
   const tax = taxonomy || await loadTaxonomy(config);
   const [naturePapers, openalexPapers] = await Promise.all([
-    new NatureParser().collect(config, tax),
+    new RssParser().collect(config, tax),
     new OpenAlexParser().collect(config, tax)
   ]);
 
@@ -134,10 +134,12 @@ export async function filterPapers(
       const filterResult = batchRes[pi];
       if (filterResult && !Boolean(filterResult.keep)) continue;
       const paper = batch[pi];
+      // 无有效摘要时不采用 LLM 生成的 abstract_zh（避免模型根据标题编造）
+      const hasAbstract = (paper.abstract_original || "").trim().length >= 60;
       llmPassed.push({
         ...paper,
         title_zh: filterResult?.title_zh || "",
-        abstract_zh: filterResult?.abstract_zh || ""
+        abstract_zh: hasAbstract ? (filterResult?.abstract_zh || "") : ""
       });
     }
   }
@@ -171,34 +173,57 @@ async function enrichOne(config: AppConfig, paper: Paper): Promise<Paper> {
       classification: undefined
     };
   }
-  const hasTranslation = Boolean(paper.title_zh) && Boolean(paper.abstract_zh);
-  if (hasTranslation) {
-    return { ...paper, publication_type: normalizePublicationType(paper.publication_type), summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
+
+  // 摘要过短时尝试外部数据源补全（Crossref API）
+  let enriched = paper;
+  const abstractLen = (paper.abstract_original || "").trim().length;
+  if (abstractLen < 200 && paper.doi) {
+    const crossrefAbstract = await fetchCrossrefAbstract(paper.doi);
+    if (crossrefAbstract.length > abstractLen) {
+      enriched = { ...paper, abstract_original: crossrefAbstract, abstract_zh: "", title_zh: "" };
+      logEvent("INFO", "workflow.enrich.crossref_abstract", { title: paper.title_en, old_len: abstractLen, new_len: crossrefAbstract.length });
+    }
   }
 
-  let translated: Pick<Paper, "title_zh" | "abstract_zh"> = { title_zh: paper.title_zh || "", abstract_zh: paper.abstract_zh || "" };
+  // 无有效摘要（< 60 字符，如 editorial/comment 或仅有书目信息）→ 不做摘要翻译，避免 LLM 根据标题编造
+  const effectiveAbsLen = (enriched.abstract_original || "").trim().length;
+  const hasEffectiveAbstract = effectiveAbsLen >= 60;
+
+  const hasTranslation = Boolean(enriched.title_zh) && Boolean(enriched.abstract_zh);
+  if (hasTranslation) {
+    return { ...enriched, publication_type: normalizePublicationType(enriched.publication_type), summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
+  }
+
+  // 无有效摘要 + 标题已有翻译 → 直接返回，不调 LLM
+  if (!hasEffectiveAbstract && enriched.title_zh) {
+    return { ...enriched, abstract_zh: "", publication_type: normalizePublicationType(enriched.publication_type), summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
+  }
+
+  let translated: Pick<Paper, "title_zh" | "abstract_zh"> = { title_zh: enriched.title_zh || "", abstract_zh: "" };
   let translationError = "";
   try {
     translated = await retry(
-      () => translatePaperFields(config, paper),
+      () => translatePaperFields(config, enriched),
       {
         maxAttempts: 3, baseDelayMs: 5000,
         onRetry: (_attempt, _delay, error) => {
-          logEvent("WARN", "workflow.enrich.retry", { title: paper.title_en, phase: "translation", error: String(error), attempt: _attempt });
+          logEvent("WARN", "workflow.enrich.retry", { title: enriched.title_en, phase: "translation", error: String(error), attempt: _attempt });
         }
       }
     );
-    if ((Boolean(paper.title_en) && !translated.title_zh) || (Boolean(paper.abstract_original) && !translated.abstract_zh)) {
-      throw new Error("translation_partial_output");
+    if (Boolean(enriched.title_en) && !translated.title_zh) {
+      throw new Error("translation_title_missing");
     }
   } catch (error) {
     translationError = String(error);
   }
-  if (config.ai?.translation?.required && !translated.title_zh && Boolean(paper.title_en)) {
+  if (config.ai?.translation?.required && !translated.title_zh && Boolean(enriched.title_en)) {
     throw new Error(`translation_required_failed: ${translationError}`);
   }
-  const merged = { ...paper, title_zh: translated.title_zh || paper.title_zh || "", abstract_zh: translated.abstract_zh || paper.abstract_zh || "" };
-  return { ...merged, publication_type: normalizePublicationType(paper.publication_type), translation_error: translationError || undefined, summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
+  // 无有效摘要时丢弃 LLM 可能返回的虚假 abstract_zh
+  const finalAbstractZh = hasEffectiveAbstract ? (translated.abstract_zh || enriched.abstract_zh || "") : "";
+  const merged = { ...enriched, title_zh: translated.title_zh || enriched.title_zh || "", abstract_zh: finalAbstractZh };
+  return { ...merged, publication_type: normalizePublicationType(enriched.publication_type), translation_error: translationError || undefined, summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
 }
 
 export async function enrichPapers(config: AppConfig, papers: Paper[]): Promise<Paper[]> {
@@ -210,7 +235,7 @@ export async function enrichPapers(config: AppConfig, papers: Paper[]): Promise<
   const scraped: Paper[] = new Array(papers.length);
   for (let i = 0; i < papers.length; i++) {
     const paper = papers[i];
-    if (paper.source?.provider === "nature-rss") {
+    if (paper.source?.provider === "rss") {
       scraped[i] = await limit(() => enrichRssPaper(paper));
     } else {
       scraped[i] = paper;
