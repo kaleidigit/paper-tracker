@@ -24,6 +24,11 @@ body {
   background: #faf9f5; border-right: 1px solid #e8e6dc;
   padding: 20px 16px;
 }
+/* 浏览器中目录吸附常驻；邮件客户端忽略 sticky，行为不变 */
+.toc-inner {
+  position: -webkit-sticky; position: sticky; top: 0;
+  max-height: 100vh; overflow-y: auto;
+}
 .spacer { width: 0; padding: 0; }
 .content-cell {
   vertical-align: top; padding: 24px 24px;
@@ -53,6 +58,7 @@ img { max-width: 100%; height: auto; border-radius: 4px; }
 @media only screen and (max-width: 700px) {
   .toc-cell { display: block; width: auto; border-right: none;
               border-bottom: 1px solid #e8e6dc; padding: 12px 16px; }
+  .toc-inner { position: static; max-height: none; overflow: visible; }
   .content-cell { display: block; padding: 16px; }
   .spacer { display: none; }
 }
@@ -88,7 +94,7 @@ export function digestToHtmlPage(title: string, markdown: string): string {
 <body>
 <table class="layout" cellpadding="0" cellspacing="0" border="0">
 <tr>
-  <td class="toc-cell">${tocHtml}</td>
+  <td class="toc-cell"><div class="toc-inner">${tocHtml}</div></td>
   <td class="spacer">&nbsp;</td>
   <td class="content-cell">${bodyHtml}</td>
 </tr>
