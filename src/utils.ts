@@ -3,7 +3,6 @@
  * 各模块共享的工具函数，避免循环依赖
  */
 
-import fs from "node:fs/promises";
 import path from "node:path";
 import type { JsonRecord } from "./types.js";
 

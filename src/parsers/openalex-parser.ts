@@ -6,7 +6,6 @@
 
 import { logEvent } from "../logger.js";
 import type { AppConfig, JsonRecord, Paper, TaxonomyGroup } from "../types.js";
-import type { JournalEntry, ParsedPaper } from "./types.js";
 import {
   normalizeText, dedupeStrings, toArray,
   fetchJson, parseDate, graceWindowStartAt, formatDateInTz,
