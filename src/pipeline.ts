@@ -16,6 +16,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import type { Paper, ProfileContext, StepResult } from "./types.js";
 import { loadProfilesList, loadTaxonomy } from "./config.js";
+import { RSS_ROLLING_WINDOW_DAYS } from "./constants.js";
 import { collectRawPapers, enrichPapers, filterPapers } from "./modules.js";
 import { buildDigestTitle, buildMarkdown, buildRecords, buildCombinedMarkdown } from "./digest.js";
 import { upsertPapers, getKnownDedupKeys, openDb } from "./db.js";
@@ -112,8 +113,7 @@ async function stepFilter(ctx: ProfileContext): Promise<StepResult> {
     logEvent("INFO", "workflow.filter.db_skip", { skipped, remaining: newPapers.length });
   }
 
-  const taxonomy = await loadTaxonomy(ctx.config);
-  const filtered = await filterPapers(ctx.config, taxonomy, newPapers);
+  const filtered = await filterPapers(ctx.config, newPapers);
   await writeJson(out, filtered);
   logEvent("INFO", "workflow.filter.done", { input: rawPapers.length, skipped, new: newPapers.length, output: filtered.length, rejected: newPapers.length - filtered.length });
   return {
@@ -322,7 +322,7 @@ async function stepCombinedRss(ctx: ProfileContext): Promise<StepResult> {
 
   // Build 7-day window date strings
   const dateStrs: string[] = [];
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < RSS_ROLLING_WINDOW_DAYS; i++) {
     const d = new Date(nowInTz);
     d.setDate(d.getDate() - i);
     dateStrs.push(d.toISOString().slice(0, 10));
@@ -330,7 +330,7 @@ async function stepCombinedRss(ctx: ProfileContext): Promise<StepResult> {
 
   // Clean up data dirs older than 7 days
   const cutOffDate = new Date(nowInTz);
-  cutOffDate.setDate(cutOffDate.getDate() - 7);
+  cutOffDate.setDate(cutOffDate.getDate() - RSS_ROLLING_WINDOW_DAYS);
   const cutOffStr = cutOffDate.toISOString().slice(0, 10);
 
   const profiles = await loadProfilesList();

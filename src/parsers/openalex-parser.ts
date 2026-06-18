@@ -14,6 +14,7 @@ import {
 } from "../utils.js";
 import { buildPaper } from "./shared.js";
 import { loadJournals } from "../config.js";
+import { FETCH_TIMEOUT_MS, OPENALEX_WIDE_WINDOW_DAYS, OPENALEX_PAGE_SIZE } from "../constants.js";
 
 
 
@@ -81,11 +82,10 @@ export class OpenAlexParser {
     const startDate = formatDateInTz(graceStart, "UTC");
     const select = "id,title,doi,publication_date,type,biblio,authorships,primary_location,abstract_inverted_index";
     const papers: Paper[] = [];
-    const timeoutMs = 30000;
-    const perPage = 200;
+    const perPage = OPENALEX_PAGE_SIZE;
 
-    // 日期窗口放宽到 30 天（周刊期刊会漏），后端关键词+LLM 精选
-    const wideStartDate = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
+    // 日期窗口放宽（周刊期刊会漏），后端关键词+LLM 精选
+    const wideStartDate = new Date(Date.now() - OPENALEX_WIDE_WINDOW_DAYS * 86400000).toISOString().slice(0, 10);
     const baseFilter = [
       `from_publication_date:${wideStartDate}`,
       "type:article",
@@ -104,7 +104,7 @@ export class OpenAlexParser {
 
       let payload: JsonRecord = {};
       try {
-        payload = await fetchJson(url, timeoutMs, 3);
+        payload = await fetchJson(url, FETCH_TIMEOUT_MS, 3);
       } catch {
         logEvent("WARN", "workflow.fetch.openalex.failed", { page });
         break;

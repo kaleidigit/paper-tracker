@@ -18,6 +18,7 @@ import {
 } from "../utils.js";
 import { buildPaper } from "./shared.js";
 import { loadJournals } from "../config.js";
+import { FETCH_TIMEOUT_MS, RSS_CONCURRENCY } from "../constants.js";
 import { ArticlePageParser } from "./article-parser.js";
 
 // ─── RSS helpers ────────────────────────────────────────────
@@ -40,7 +41,7 @@ function parseDcCreator(raw: unknown): string[] {
 
 // ─── Article page enrichment (post-filter) ──────────────────
 
-const articleParser = new ArticlePageParser(30000);
+const articleParser = new ArticlePageParser(FETCH_TIMEOUT_MS);
 
 /** Domains where Cloudflare blocks all non-browser requests */
 const CLOUDFLARE_DOMAINS = ["science.org", "cell.com", "pnas.org", "pubs.acs.org"];
@@ -153,14 +154,13 @@ export class RssParser {
   ): Promise<Paper[]> {
     const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "" });
     const start = strictWindowStartAt(config);
-    const timeoutMs = 30000;
-    const rssLimit = pLimit(8);
+    const rssLimit = pLimit(RSS_CONCURRENCY);
 
     const feedResults = await Promise.all(feeds.map(async (feedUrl) => {
       logEvent("INFO", "workflow.fetch.rss.start", { feed: feedUrl });
       let xml = "";
       try {
-        xml = await rssLimit(() => fetchText(feedUrl, timeoutMs, 2));
+        xml = await rssLimit(() => fetchText(feedUrl, FETCH_TIMEOUT_MS, 2));
       } catch {
         logEvent("WARN", "workflow.fetch.rss.failed", { feed: feedUrl });
         return [];

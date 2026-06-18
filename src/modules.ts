@@ -11,6 +11,7 @@
 
 import pLimit from "p-limit";
 import { logEvent } from "./logger.js";
+import { MIN_ABSTRACT_LENGTH, CROSSREF_FALLBACK_THRESHOLD } from "./constants.js";
 import type { AppConfig, JsonRecord, Paper, TaxonomyGroup } from "./types.js";
 
 import { RssParser } from "./parsers/rss-parser.js";
@@ -48,7 +49,6 @@ export async function collectRawPapers(config: AppConfig, taxonomy: TaxonomyGrou
 
 export async function filterPapers(
   config: AppConfig,
-  taxonomy: TaxonomyGroup[],
   papers: Paper[]
 ): Promise<Paper[]> {
   const llmQueue: Paper[] = [...papers];
@@ -103,7 +103,7 @@ export async function filterPapers(
       if (filterResult && !Boolean(filterResult.keep)) continue;
       const paper = batch[pi];
       // 无有效摘要时不采用 LLM 生成的 abstract_zh（避免模型根据标题编造）
-      const hasAbstract = (paper.abstract_original || "").trim().length >= 60;
+      const hasAbstract = (paper.abstract_original || "").trim().length >= MIN_ABSTRACT_LENGTH;
       llmPassed.push({
         ...paper,
         title_zh: filterResult?.title_zh || "",
@@ -117,7 +117,87 @@ export async function filterPapers(
 
 // ─── Enrich ────────────────────────────────────────────────
 
+/** Phase 1: Attempt Crossref API fallback when the abstract is too short. */
+async function resolveAbstract(paper: Paper): Promise<Paper> {
+  const abstractLen = (paper.abstract_original || "").trim().length;
+  if (abstractLen >= CROSSREF_FALLBACK_THRESHOLD || !paper.doi) return paper;
+
+  const crossrefAbstract = await fetchCrossrefAbstract(paper.doi);
+  if (crossrefAbstract.length <= abstractLen) return paper;
+
+  logEvent("INFO", "workflow.enrich.crossref_abstract", {
+    title: paper.title_en,
+    old_len: abstractLen,
+    new_len: crossrefAbstract.length
+  });
+  return { ...paper, abstract_original: crossrefAbstract, abstract_zh: "", title_zh: "" };
+}
+
+/** Phase 2: Translate title/abstract via LLM, with retry and no-abstract guard. */
+async function resolveTranslation(config: AppConfig, paper: Paper): Promise<Paper> {
+  const hasEffectiveAbstract = (paper.abstract_original || "").trim().length >= MIN_ABSTRACT_LENGTH;
+
+  // Already translated → normalize and return
+  if (Boolean(paper.title_zh) && Boolean(paper.abstract_zh)) {
+    return {
+      ...paper,
+      publication_type: normalizePublicationType(paper.publication_type),
+      summary_zh: "", novelty_points: [], main_content: [],
+      classification: undefined
+    };
+  }
+
+  // No effective abstract + title already translated → skip LLM, discard fake abstract_zh
+  if (!hasEffectiveAbstract && paper.title_zh) {
+    return {
+      ...paper, abstract_zh: "",
+      publication_type: normalizePublicationType(paper.publication_type),
+      summary_zh: "", novelty_points: [], main_content: [],
+      classification: undefined
+    };
+  }
+
+  // Call LLM for translation
+  let translated: Pick<Paper, "title_zh" | "abstract_zh"> = { title_zh: paper.title_zh || "", abstract_zh: "" };
+  let translationError = "";
+  try {
+    translated = await retry(
+      () => translatePaperFields(config, paper),
+      {
+        maxAttempts: 3, baseDelayMs: 5000,
+        onRetry: (_attempt, _delay, error) => {
+          logEvent("WARN", "workflow.enrich.retry", { title: paper.title_en, phase: "translation", error: String(error), attempt: _attempt });
+        }
+      }
+    );
+    if (Boolean(paper.title_en) && !translated.title_zh) {
+      throw new Error("translation_title_missing");
+    }
+  } catch (error) {
+    translationError = String(error);
+  }
+  if (config.ai?.translation?.required && !translated.title_zh && Boolean(paper.title_en)) {
+    throw new Error(`translation_required_failed: ${translationError}`);
+  }
+
+  // Discard LLM-generated abstract_zh when there's no effective abstract
+  const finalAbstractZh = hasEffectiveAbstract
+    ? (translated.abstract_zh || paper.abstract_zh || "")
+    : "";
+
+  return {
+    ...paper,
+    title_zh: translated.title_zh || paper.title_zh || "",
+    abstract_zh: finalAbstractZh,
+    publication_type: normalizePublicationType(paper.publication_type),
+    translation_error: translationError || undefined,
+    summary_zh: "", novelty_points: [], main_content: [],
+    classification: undefined
+  };
+}
+
 async function enrichOne(config: AppConfig, paper: Paper): Promise<Paper> {
+  // Early exits: papers that don't need LLM processing
   if (shouldSkipLlmRescueByTitle(paper.title_en)) {
     return { ...paper, title_zh: "", abstract_zh: "", summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
   }
@@ -142,56 +222,8 @@ async function enrichOne(config: AppConfig, paper: Paper): Promise<Paper> {
     };
   }
 
-  // 摘要过短时尝试外部数据源补全（Crossref API）
-  let enriched = paper;
-  const abstractLen = (paper.abstract_original || "").trim().length;
-  if (abstractLen < 200 && paper.doi) {
-    const crossrefAbstract = await fetchCrossrefAbstract(paper.doi);
-    if (crossrefAbstract.length > abstractLen) {
-      enriched = { ...paper, abstract_original: crossrefAbstract, abstract_zh: "", title_zh: "" };
-      logEvent("INFO", "workflow.enrich.crossref_abstract", { title: paper.title_en, old_len: abstractLen, new_len: crossrefAbstract.length });
-    }
-  }
-
-  // 无有效摘要（< 60 字符，如 editorial/comment 或仅有书目信息）→ 不做摘要翻译，避免 LLM 根据标题编造
-  const effectiveAbsLen = (enriched.abstract_original || "").trim().length;
-  const hasEffectiveAbstract = effectiveAbsLen >= 60;
-
-  const hasTranslation = Boolean(enriched.title_zh) && Boolean(enriched.abstract_zh);
-  if (hasTranslation) {
-    return { ...enriched, publication_type: normalizePublicationType(enriched.publication_type), summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
-  }
-
-  // 无有效摘要 + 标题已有翻译 → 直接返回，不调 LLM
-  if (!hasEffectiveAbstract && enriched.title_zh) {
-    return { ...enriched, abstract_zh: "", publication_type: normalizePublicationType(enriched.publication_type), summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
-  }
-
-  let translated: Pick<Paper, "title_zh" | "abstract_zh"> = { title_zh: enriched.title_zh || "", abstract_zh: "" };
-  let translationError = "";
-  try {
-    translated = await retry(
-      () => translatePaperFields(config, enriched),
-      {
-        maxAttempts: 3, baseDelayMs: 5000,
-        onRetry: (_attempt, _delay, error) => {
-          logEvent("WARN", "workflow.enrich.retry", { title: enriched.title_en, phase: "translation", error: String(error), attempt: _attempt });
-        }
-      }
-    );
-    if (Boolean(enriched.title_en) && !translated.title_zh) {
-      throw new Error("translation_title_missing");
-    }
-  } catch (error) {
-    translationError = String(error);
-  }
-  if (config.ai?.translation?.required && !translated.title_zh && Boolean(enriched.title_en)) {
-    throw new Error(`translation_required_failed: ${translationError}`);
-  }
-  // 无有效摘要时丢弃 LLM 可能返回的虚假 abstract_zh
-  const finalAbstractZh = hasEffectiveAbstract ? (translated.abstract_zh || enriched.abstract_zh || "") : "";
-  const merged = { ...enriched, title_zh: translated.title_zh || enriched.title_zh || "", abstract_zh: finalAbstractZh };
-  return { ...merged, publication_type: normalizePublicationType(enriched.publication_type), translation_error: translationError || undefined, summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
+  const withAbstract = await resolveAbstract(paper);
+  return await resolveTranslation(config, withAbstract);
 }
 
 export async function enrichPapers(config: AppConfig, papers: Paper[], taxonomy: TaxonomyGroup[]): Promise<Paper[]> {

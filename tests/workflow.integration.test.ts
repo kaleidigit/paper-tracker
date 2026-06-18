@@ -98,7 +98,7 @@ describe("pipeline steps", () => {
     expect(collected[0].title_en).toBe("Battery paper");
 
     // Step 2: Filter (LLM filter + translate)
-    const filtered = await filterPapers(config, taxonomy, collected);
+    const filtered = await filterPapers(config, collected);
     expect(filtered).toHaveLength(1);
     expect(filtered[0].title_zh).toBe("中文标题");
 
@@ -127,7 +127,7 @@ describe("pipeline steps", () => {
     const collected = await collectRawPapers(config, []);
     expect(collected).toHaveLength(0);
 
-    const filtered = await filterPapers(config, [], collected);
+    const filtered = await filterPapers(config, collected);
     expect(filtered).toHaveLength(0);
 
     const enriched = await enrichPapers(config, filtered, []);
