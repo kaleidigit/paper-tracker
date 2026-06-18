@@ -1,34 +1,15 @@
 /**
- * shared.ts — 采集器共享基础设施
+ * shared.ts — 采集器共享基础设施（纯函数，无 IO）
  *
- * 供 openalex-parser / nature-parser 共享：
- *   - loadJournals(): 加载期刊配置
+ * 供 openalex-parser / rss-parser 共享：
  *   - buildPaper():   ParsedPaper → Paper 工厂函数
+ *
+ * 期刊配置加载（loadJournals）已移至 config.ts。
  */
 
-import fs from "node:fs/promises";
-import { z } from "zod";
-import type { AppConfig, Paper, TaxonomyGroup } from "../types.js";
-import type { JournalEntry, ParsedPaper } from "./types.js";
-import { normalizeText, dedupeStrings, resolvePath, normalizePublicationType } from "../utils.js";
-
-const JournalEntrySchema = z.object({
-  name: z.string(),
-  source_group: z.string(),
-  issn: z.string().optional(),
-  publisher_strategy: z.string().optional(),
-  rss_feeds: z.array(z.string()).optional(),
-  sort_order: z.number().optional(),
-});
-
-/** 从 config.sources.journals_file 加载期刊列表 */
-export async function loadJournals(config: AppConfig): Promise<JournalEntry[]> {
-  const file = resolvePath(config.sources?.journals_file || "profiles/top/journals.json");
-  const raw = await fs.readFile(file, "utf-8");
-  const parsed = JSON.parse(raw);
-  if (!Array.isArray(parsed)) throw new Error(`journals file is not an array: ${file}`);
-  return z.array(JournalEntrySchema).parse(parsed);
-}
+import type { Paper } from "../types.js";
+import type { ParsedPaper } from "./types.js";
+import { normalizeText, dedupeStrings, normalizePublicationType } from "../utils.js";
 
 /** 将采集器标准输出 ParsedPaper 转为内部 Paper 对象 */
 export function buildPaper(input: ParsedPaper): Paper {

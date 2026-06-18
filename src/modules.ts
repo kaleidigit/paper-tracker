@@ -1,24 +1,21 @@
 /**
- * modules.ts — 采集与增强的原子能力
+ * modules.ts — 采集与增强的原子能力（纯函数，无 IO）
  *
  * 采集：collectRawPapers()  调用采集器，返回去重后的全量 Paper[]
  * 筛选：filterPapers()      LLM 筛选+翻译，返回子集
  * 增强：enrichPapers()      文章页面抓取 + 翻译 + 分类，返回 Paper[]
  *
- * 文件输出、流程编排由 pipeline.ts / cli.ts 负责。
+ * 所有文件 IO、分类/期刊配置加载统一由 pipeline.ts / config.ts 负责。
  * LLM 调用由 llm.ts 负责。
  */
 
-import fs from "node:fs/promises";
 import pLimit from "p-limit";
-import { z } from "zod";
 import { logEvent } from "./logger.js";
-import { resolvePath } from "./config.js";
 import type { AppConfig, JsonRecord, Paper, TaxonomyGroup } from "./types.js";
 
-import { RssParser } from "./parsers/nature-parser.js";
+import { RssParser } from "./parsers/rss-parser.js";
 import { OpenAlexParser } from "./parsers/openalex-parser.js";
-import { enrichRssPaper, fetchCrossrefAbstract } from "./parsers/nature-parser.js";
+import { enrichRssPaper, fetchCrossrefAbstract } from "./parsers/rss-parser.js";
 import { llmFilterAndTranslate, llmFilterAndTranslateBatch, translatePaperFields, classifyPaper, classifyPapersBatch } from "./llm.js";
 import {
   normalizeText, itemKey, normalizePublicationType, shouldSkipLlmRescueByTitle, isPrimarilyChinese,
@@ -26,43 +23,14 @@ import {
 } from "./utils.js";
 
 
-const ClassificationSchema = z.object({
-  groups: z.array(z.object({
-    name: z.string(),
-    subtopics: z.array(z.object({
-      name: z.string(),
-      keywords: z.array(z.string()).optional().default([])
-    })).optional().default([])
-  })).optional(),
-  domains: z.array(z.object({
-    name: z.string(),
-    subtopics: z.array(z.object({
-      name: z.string(),
-      keywords: z.array(z.string()).optional().default([])
-    })).optional().default([])
-  })).optional(),
-});
-
 const FALLBACK_CLASSIFICATION = { groups: [{ group: "未分类", subtopics: [] as string[] }], tags: [] as string[] } as Paper["classification"];
-
-// ─── Taxonomy ──────────────────────────────────────────────
-
-export async function loadTaxonomy(config: AppConfig): Promise<TaxonomyGroup[]> {
-  const file = resolvePath(config.classification?.file || "profiles/top/classification.json");
-  const raw = await fs.readFile(file, "utf-8");
-  const parsed = ClassificationSchema.parse(JSON.parse(raw));
-  if (Array.isArray(parsed.groups) && parsed.groups.length > 0) return parsed.groups as TaxonomyGroup[];
-  if (Array.isArray(parsed.domains)) return parsed.domains as TaxonomyGroup[];
-  return [];
-}
 
 // ─── Collect ───────────────────────────────────────────────
 
-export async function collectRawPapers(config: AppConfig, taxonomy?: TaxonomyGroup[]): Promise<Paper[]> {
-  const tax = taxonomy || await loadTaxonomy(config);
+export async function collectRawPapers(config: AppConfig, taxonomy: TaxonomyGroup[]): Promise<Paper[]> {
   const [naturePapers, openalexPapers] = await Promise.all([
-    new RssParser().collect(config, tax),
-    new OpenAlexParser().collect(config, tax)
+    new RssParser().collect(config, taxonomy),
+    new OpenAlexParser().collect(config, taxonomy)
   ]);
 
   const seen = new Set<string>();
@@ -226,8 +194,7 @@ async function enrichOne(config: AppConfig, paper: Paper): Promise<Paper> {
   return { ...merged, publication_type: normalizePublicationType(enriched.publication_type), translation_error: translationError || undefined, summary_zh: "", novelty_points: [], main_content: [], classification: undefined };
 }
 
-export async function enrichPapers(config: AppConfig, papers: Paper[]): Promise<Paper[]> {
-  const taxonomy = await loadTaxonomy(config);
+export async function enrichPapers(config: AppConfig, papers: Paper[], taxonomy: TaxonomyGroup[]): Promise<Paper[]> {
   const concurrency = Math.max(1, config.ai?.enrich?.concurrency ?? 5);
   const limit = pLimit(concurrency);
 

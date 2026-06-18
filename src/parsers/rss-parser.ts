@@ -16,7 +16,8 @@ import {
   shouldSkipLlmRescueByTitle, extractImageFromRssItem,
   extractAffiliationsFromRssItem
 } from "../utils.js";
-import { loadJournals, buildPaper } from "./shared.js";
+import { buildPaper } from "./shared.js";
+import { loadJournals } from "../config.js";
 import { ArticlePageParser } from "./article-parser.js";
 
 // ─── RSS helpers ────────────────────────────────────────────

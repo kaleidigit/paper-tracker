@@ -15,8 +15,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { Paper, ProfileContext, StepResult } from "./types.js";
-import { loadProfilesList } from "./config.js";
-import { collectRawPapers, enrichPapers, loadTaxonomy, filterPapers } from "./modules.js";
+import { loadProfilesList, loadTaxonomy } from "./config.js";
+import { collectRawPapers, enrichPapers, filterPapers } from "./modules.js";
 import { buildDigestTitle, buildMarkdown, buildRecords, buildCombinedMarkdown } from "./digest.js";
 import { upsertPapers, getKnownDedupKeys, openDb } from "./db.js";
 import { buildRssXml } from "./rss.js";
@@ -73,7 +73,8 @@ async function stepCollect(ctx: ProfileContext): Promise<StepResult> {
   const t = Date.now();
   const out = f(ctx.outputDir, "1-raw-fetched.json");
   await fs.mkdir(ctx.outputDir, { recursive: true });
-  const papers = await collectRawPapers(ctx.config);
+  const taxonomy = await loadTaxonomy(ctx.config);
+  const papers = await collectRawPapers(ctx.config, taxonomy);
   await writeJson(out, papers);
   return {
     step: "collect",
@@ -130,7 +131,8 @@ async function stepEnrich(ctx: ProfileContext): Promise<StepResult> {
   const in_ = f(ctx.outputDir, "3-llm-filtered.json");
   const out = f(ctx.outputDir, "5-enriched.json");
   const papers = await readJson<Paper[]>(in_);
-  const enriched = await enrichPapers(ctx.config, papers);
+  const taxonomy = await loadTaxonomy(ctx.config);
+  const enriched = await enrichPapers(ctx.config, papers, taxonomy);
   await writeJson(out, enriched);
   return {
     step: "enrich",
@@ -256,6 +258,55 @@ async function stepNotify(ctx: ProfileContext): Promise<StepResult> {
   return { step: "notify", inputCount: papers.length, outputCount: smtp.to.length, inputFile: in_, outputFile: "", durationMs: Date.now() - t };
 }
 
+// ─── Combined helpers ───────────────────────────────────────
+
+interface CollectedPapers {
+  /** Deduplicated papers across all profiles and dates (flat list). */
+  all: Paper[];
+  /** Per-profile deduplicated papers, only for profiles with results. */
+  byProfile: Array<{ profile: string; papers: Paper[] }>;
+  /** Sum of enriched.json lengths before dedup, across all profiles/dates. */
+  totalRaw: number;
+}
+
+/**
+ * Collect deduplicated papers from enriched.json across profiles and date strings.
+ * Used by both combined-rss (7-day window) and combined-notify (single-day).
+ */
+async function collectProfilePapers(dateStrs: string[], dataDir: string): Promise<CollectedPapers> {
+  const profiles = await loadProfilesList();
+  const all: Paper[] = [];
+  const byProfile: Array<{ profile: string; papers: Paper[] }> = [];
+  const seen = new Set<string>();
+  let totalRaw = 0;
+
+  for (const dateStr of dateStrs) {
+    for (const profile of profiles) {
+      try {
+        const enrichedFile = path.join(dataDir, profile, dateStr, "5-enriched.json");
+        const enriched = await readJson<Paper[]>(enrichedFile);
+        totalRaw += enriched.length;
+        const deduped: Paper[] = [];
+        for (const paper of enriched) {
+          const key = itemKey(paper);
+          if (!seen.has(key)) {
+            seen.add(key);
+            deduped.push(paper);
+          }
+        }
+        if (deduped.length > 0) {
+          all.push(...deduped);
+          byProfile.push({ profile, papers: deduped });
+        }
+      } catch {
+        // no data for this date/profile
+      }
+    }
+  }
+
+  return { all, byProfile, totalRaw };
+}
+
 // ─── Combined RSS（跨 profile 合并）────────────────────────
 
 async function stepCombinedRss(ctx: ProfileContext): Promise<StepResult> {
@@ -266,13 +317,10 @@ async function stepCombinedRss(ctx: ProfileContext): Promise<StepResult> {
   }
 
   const dataDir = "data";
-  const profiles = await loadProfilesList();
-  const allPapers: Paper[] = [];
-  const seen = new Set<string>();
-
-  // 滚动 7 天窗口：合并去重生成 RSS
   const timezone = ctx.config.app?.timezone || "Asia/Shanghai";
   const nowInTz = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
+
+  // Build 7-day window date strings
   const dateStrs: string[] = [];
   for (let i = 0; i < 7; i++) {
     const d = new Date(nowInTz);
@@ -280,11 +328,12 @@ async function stepCombinedRss(ctx: ProfileContext): Promise<StepResult> {
     dateStrs.push(d.toISOString().slice(0, 10));
   }
 
-  // 清理 7 天前的数据目录
+  // Clean up data dirs older than 7 days
   const cutOffDate = new Date(nowInTz);
   cutOffDate.setDate(cutOffDate.getDate() - 7);
   const cutOffStr = cutOffDate.toISOString().slice(0, 10);
 
+  const profiles = await loadProfilesList();
   for (const profile of profiles) {
     const profileDir = path.join(dataDir, profile);
     try {
@@ -299,24 +348,7 @@ async function stepCombinedRss(ctx: ProfileContext): Promise<StepResult> {
     }
   }
 
-  // 收集最近 7 天论文
-  for (const dateStr of dateStrs) {
-    for (const profile of profiles) {
-      try {
-        const enrichedFile = path.join(dataDir, profile, dateStr, "5-enriched.json");
-        const enriched = await readJson<Paper[]>(enrichedFile);
-        for (const paper of enriched) {
-          const key = itemKey(paper);
-          if (!seen.has(key)) {
-            seen.add(key);
-            allPapers.push(paper);
-          }
-        }
-      } catch {
-        // no data for this date/profile
-      }
-    }
-  }
+  const { all: allPapers } = await collectProfilePapers(dateStrs, dataDir);
 
   if (allPapers.length === 0) {
     return { step: "combined-rss", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: "没有论文可生成 RSS" };
@@ -352,32 +384,9 @@ async function stepCombinedNotify(ctx: ProfileContext): Promise<StepResult> {
     return { step: "combined-notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t, error: smtp.error };
   }
 
-  const dataDir = "data";
-  const profiles = await loadProfilesList();
-  const profilePapers: Array<{ profile: string; papers: Paper[] }> = [];
-  const seen = new Set<string>();
-  let totalRaw = 0;
+  const { all, byProfile: profilePapers, totalRaw } = await collectProfilePapers([ctx.dateStr], "data");
 
-  for (const profile of profiles) {
-    try {
-      const enrichedFile = path.join(dataDir, profile, ctx.dateStr, "5-enriched.json");
-      const enriched = await readJson<Paper[]>(enrichedFile);
-      totalRaw += enriched.length;
-      const unique: Paper[] = [];
-      for (const paper of enriched) {
-        const key = itemKey(paper);
-        if (!seen.has(key)) {
-          seen.add(key);
-          unique.push(paper);
-        }
-      }
-      if (unique.length > 0) profilePapers.push({ profile, papers: unique });
-    } catch {
-      // profile has no data for today
-    }
-  }
-
-  const totalPapers = profilePapers.reduce((sum, p) => sum + p.papers.length, 0);
+  const totalPapers = all.length;
   if (totalPapers === 0) {
     logEvent("INFO", "email.skip", { reason: "no papers" });
     return { step: "combined-notify", inputCount: 0, outputCount: 0, inputFile: "", outputFile: "", durationMs: Date.now() - t };

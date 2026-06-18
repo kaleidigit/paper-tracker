@@ -319,6 +319,20 @@ export async function translatePaperFields(config: AppConfig, paper: Paper): Pro
 
 // ─── 分类 ──────────────────────────────────────────────────
 
+function normalizeClassification(raw: JsonRecord | undefined): Paper["classification"] {
+  const rawGroups = toArray(raw?.groups as Array<Record<string, unknown>> | undefined);
+  const groups = rawGroups
+    .map((g) => ({
+      group: normalizeText(g.group || g.name) || "未分类",
+      subtopics: dedupeStrings(toArray(g.subtopics as string[] | undefined))
+    }))
+    .filter((g) => g.group !== "未分类" || g.subtopics.length > 0);
+  return {
+    groups: groups.length > 0 ? groups : [{ group: "未分类", subtopics: [] }],
+    tags: dedupeStrings(toArray(raw?.tags as string[] | undefined))
+  };
+}
+
 export async function classifyPaper(config: AppConfig, paper: Paper, taxonomy: TaxonomyGroup[]): Promise<Paper["classification"]> {
   const prompts = config.ai?.prompts || {};
   const values = {
@@ -342,19 +356,7 @@ export async function classifyPaper(config: AppConfig, paper: Paper, taxonomy: T
     response_format: { type: "json_object" },
     messages: [{ role: "system", content: systemPrompt }, { role: "user", content: userPrompt }]
   });
-  const cls = parsed.classification as JsonRecord | undefined;
-  const rawGroups = toArray(cls?.groups as Array<Record<string, unknown>> | undefined);
-  const groups = rawGroups
-    .map((g) => ({
-      group: normalizeText(g.group || g.name) || "未分类",
-      subtopics: dedupeStrings(toArray(g.subtopics as string[] | undefined))
-    }))
-    .filter((g) => g.group !== "未分类" || g.subtopics.length > 0);
-
-  return {
-    groups: groups.length > 0 ? groups : [{ group: "未分类", subtopics: [] }],
-    tags: dedupeStrings(toArray(cls?.tags as string[] | undefined))
-  };
+  return normalizeClassification(parsed.classification as JsonRecord | undefined);
 }
 
 // ─── 批量分类 ──────────────────────────────────────────────
@@ -397,17 +399,7 @@ export async function classifyPapersBatch(
     const idx = Number(r.index);
     if (isNaN(idx) || idx < 0 || idx >= count) continue;
     const cls = (r.classification || r) as JsonRecord;
-    const rawGroups = toArray(cls?.groups as Array<Record<string, unknown>> | undefined);
-    const groups = rawGroups
-      .map((g) => ({
-        group: normalizeText(g.group || g.name) || "未分类",
-        subtopics: dedupeStrings(toArray(g.subtopics as string[] | undefined))
-      }))
-      .filter((g) => g.group !== "未分类" || g.subtopics.length > 0);
-    out[idx] = {
-      groups: groups.length > 0 ? groups : [{ group: "未分类", subtopics: [] }],
-      tags: dedupeStrings(toArray(cls?.tags as string[] | undefined))
-    };
+    out[idx] = normalizeClassification(cls);
   }
 
   // Missing papers: log and leave undefined for caller to handle

@@ -2,8 +2,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import dotenv from "dotenv";
 import { z } from "zod";
-import type { AppConfig, ProfileContext, RunState, MetricsState } from "./types.js";
-import { normalizeText, resolvePath as resolvePathRaw } from "./utils.js";
+import type { AppConfig, ProfileContext, RunState, MetricsState, TaxonomyGroup } from "./types.js";
+import type { JournalEntry } from "./parsers/types.js";
+import { resolvePath as resolvePathRaw } from "./utils.js";
 
 dotenv.config();
 
@@ -32,6 +33,51 @@ function asNumber(input: unknown, fallback: number): number {
 }
 
 export const resolvePath = (p: string) => resolvePathRaw(p, ROOT_DIR);
+
+// ─── 分类 / 期刊配置加载 ──────────────────────────────────────
+
+const ClassificationSchema = z.object({
+  groups: z.array(z.object({
+    name: z.string(),
+    subtopics: z.array(z.object({
+      name: z.string(),
+      keywords: z.array(z.string()).optional().default([])
+    })).optional().default([])
+  })).optional(),
+  domains: z.array(z.object({
+    name: z.string(),
+    subtopics: z.array(z.object({
+      name: z.string(),
+      keywords: z.array(z.string()).optional().default([])
+    })).optional().default([])
+  })).optional(),
+});
+
+export async function loadTaxonomy(config: AppConfig): Promise<TaxonomyGroup[]> {
+  const file = resolvePath(config.classification?.file || "profiles/top/classification.json");
+  const raw = await fs.readFile(file, "utf-8");
+  const parsed = ClassificationSchema.parse(JSON.parse(raw));
+  if (Array.isArray(parsed.groups) && parsed.groups.length > 0) return parsed.groups as TaxonomyGroup[];
+  if (Array.isArray(parsed.domains)) return parsed.domains as TaxonomyGroup[];
+  return [];
+}
+
+const JournalEntrySchema = z.object({
+  name: z.string(),
+  source_group: z.string(),
+  issn: z.string().optional(),
+  publisher_strategy: z.string().optional(),
+  rss_feeds: z.array(z.string()).optional(),
+  sort_order: z.number().optional(),
+});
+
+export async function loadJournals(config: AppConfig): Promise<JournalEntry[]> {
+  const file = resolvePath(config.sources?.journals_file || "profiles/top/journals.json");
+  const raw = await fs.readFile(file, "utf-8");
+  const parsed = JSON.parse(raw);
+  if (!Array.isArray(parsed)) throw new Error(`journals file is not an array: ${file}`);
+  return z.array(JournalEntrySchema).parse(parsed);
+}
 
 // ─── 根配置加载 ────────────────────────────────────────────
 

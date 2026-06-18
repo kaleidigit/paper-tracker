@@ -92,18 +92,18 @@ describe("pipeline steps", () => {
     const config = makeConfig();
 
     // Step 1: Collect
-    const collected = await collectRawPapers(config);
+    const taxonomy = [{ name: "油气-电力组", subtopics: [{ name: "储能与电池", keywords: ["battery"] }] }];
+    const collected = await collectRawPapers(config, taxonomy);
     expect(collected).toHaveLength(1);
     expect(collected[0].title_en).toBe("Battery paper");
 
     // Step 2: Filter (LLM filter + translate)
-    const taxonomy = [{ name: "油气-电力组", subtopics: [{ name: "储能与电池", keywords: ["battery"] }] }];
     const filtered = await filterPapers(config, taxonomy, collected);
     expect(filtered).toHaveLength(1);
     expect(filtered[0].title_zh).toBe("中文标题");
 
     // Step 3: Enrich (article scraping + normalize + classify)
-    const enriched = await enrichPapers(config, filtered);
+    const enriched = await enrichPapers(config, filtered, taxonomy);
     expect(enriched).toHaveLength(1);
     expect(enriched[0].publication_type).toBe("article");
     expect(enriched[0].classification).toBeDefined();
@@ -124,13 +124,13 @@ describe("pipeline steps", () => {
     }) as typeof globalThis.fetch;
 
     const config = makeConfig();
-    const collected = await collectRawPapers(config);
+    const collected = await collectRawPapers(config, []);
     expect(collected).toHaveLength(0);
 
     const filtered = await filterPapers(config, [], collected);
     expect(filtered).toHaveLength(0);
 
-    const enriched = await enrichPapers(config, filtered);
+    const enriched = await enrichPapers(config, filtered, []);
     expect(enriched).toHaveLength(0);
   });
 });

@@ -42,15 +42,20 @@ function formatAuthorsWithMap(paper: Paper): { authorsLine: string; affilsLine: 
   return { authorsLine: authorParts.join(", "), affilsLine: affParts.join("；") };
 }
 
-// ─── 日刊 ──────────────────────────────────────────────────
-
-export function buildMarkdown(title: string, papers: Paper[]): string {
-  const sorted = [...papers].sort((a, b) => {
+/** Sort papers by journal sort_order (ascending), then by published_date (descending). */
+export function sortPapers(papers: Paper[]): Paper[] {
+  return [...papers].sort((a, b) => {
     const orderA = a.journal?.sort_order ?? 999;
     const orderB = b.journal?.sort_order ?? 999;
     if (orderA !== orderB) return orderA - orderB;
     return `${b.published_date}`.localeCompare(`${a.published_date}`);
   });
+}
+
+// ─── 日刊 ──────────────────────────────────────────────────
+
+export function buildMarkdown(title: string, papers: Paper[]): string {
+  const sorted = sortPapers(papers);
 
   const lines: string[] = [`# ${title}`, "", `共收录 **${sorted.length}** 篇。`, ""];
   sorted.forEach((paper, i) => {
@@ -167,13 +172,7 @@ export function buildCombinedMarkdown(
     const label = PROFILE_LABELS[profile] || profile;
     lines.push(`---`, "", `## ${label}（${papers.length} 篇）`, "");
 
-    // Sort by journal order then date (same as buildMarkdown)
-    const sorted = [...papers].sort((a, b) => {
-      const orderA = a.journal?.sort_order ?? 999;
-      const orderB = b.journal?.sort_order ?? 999;
-      if (orderA !== orderB) return orderA - orderB;
-      return `${b.published_date}`.localeCompare(`${a.published_date}`);
-    });
+    const sorted = sortPapers(papers);
 
     sorted.forEach((paper, i) => {
       lines.push(renderPaperCard(paper, i, 3));

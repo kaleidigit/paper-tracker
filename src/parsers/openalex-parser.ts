@@ -12,7 +12,8 @@ import {
   fetchJson, parseDate, graceWindowStartAt, formatDateInTz,
   shouldSkipLlmRescueByTitle, restoreAbstract
 } from "../utils.js";
-import { loadJournals, buildPaper } from "./shared.js";
+import { buildPaper } from "./shared.js";
+import { loadJournals } from "../config.js";
 
 
 
