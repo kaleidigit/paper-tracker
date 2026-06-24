@@ -104,10 +104,7 @@
     "name": "Nature Communications",
     "source_group": "Nature",
     "issn": "2041-1723",
-    "publisher_strategy": "rss",
-    "rss_feeds": [
-      "https://www.nature.com/ncomms.rss"
-    ],
+    "publisher_strategy": "openalex",
     "sort_order": 16
   },
   {
