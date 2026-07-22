@@ -8,170 +8,643 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/top.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>欧洲湿地详细地图揭示被忽视的生态系统斑块</title>
-    <link>https://www.nature.com/articles/d41586-026-02211-2</link>
-    <guid isPermaLink="false">doi:10.1038/d41586-026-02211-2</guid>
-    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Andrew Mitchinson</dc:creator>
-    <description>通过机器学习算法分析卫星图像，生成了高分辨率的湿地环境地图——这对保护工作是一大福音。</description>
-    <category>湿地</category>
-    <category>机器学习</category>
-    <category>卫星图像</category>
-    <category>保护</category>
-    <content:encoded><![CDATA[<h2>欧洲湿地详细地图揭示被忽视的生态系统斑块</h2>
-<p><em>Detailed maps of European wetlands reveal overlooked patches of ecosystems</em></p>
+    <title>石油和天然气钻探正转向深海——这其中利害攸关</title>
+    <link>https://www.nature.com/articles/d41586-026-02232-x</link>
+    <guid isPermaLink="false">doi:10.1038/d41586-026-02232-x</guid>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Yuxin Zhao</dc:creator>
+    <description>技术正将化石燃料的勘探推向海洋最深处，工程师必须将生态风险控制在可管理范围内。</description>
+    <category>deep-sea drilling</category>
+    <category>fossil fuel</category>
+    <category>ecological risk</category>
+    <content:encoded><![CDATA[<h2>石油和天然气钻探正转向深海——这其中利害攸关</h2>
+<p><em>Oil and gas drilling is shifting to the deep sea — here’s what is at stake</em></p>
 <ul>
 <li><strong>期刊</strong>：Nature</li>
-<li><strong>日期</strong>：2026-07-20</li>
-<li><strong>类型</strong>：news and views</li>
-<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
-<li><strong>标签</strong>：湿地，机器学习，卫星图像，保护</li>
+<li><strong>日期</strong>：2026-07-21</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：矿产生态组（矿产资源与开采、生态与生物多样性）</li>
+<li><strong>标签</strong>：deep-sea drilling，fossil fuel，ecological risk</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Andrew Mitchinson</li>
+<li><strong>作者</strong>：Yuxin Zhao</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>通过机器学习算法分析卫星图像，生成了高分辨率的湿地环境地图——这对保护工作是一大福音。</p>
+</details><p><strong>中文摘要</strong><br>技术正将化石燃料的勘探推向海洋最深处，工程师必须将生态风险控制在可管理范围内。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：doi:10.1038/d41586-026-02211-2</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/d41586-026-02211-2">https://www.nature.com/articles/d41586-026-02211-2</a></li>
+<li><strong>DOI</strong>：doi:10.1038/d41586-026-02232-x</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/d41586-026-02232-x">https://www.nature.com/articles/d41586-026-02232-x</a></li>
 </ul>
-<p><strong>主图</strong><br><img src="https://media.nature.com/lw1200/magazine-assets/d41586-026-02211-2/d41586-026-02211-2_52981588.jpg" alt=""></p>
+<p><strong>主图</strong><br><img src="https://media.nature.com/lw1200/magazine-assets/d41586-026-02232-x/d41586-026-02232-x_52982016.jpg" alt=""></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>认识海洋热浪对人类健康的影响</title>
-    <link>https://www.nature.com/articles/s41893-026-01892-x</link>
-    <guid isPermaLink="false">doi:10.1038/s41893-026-01892-x</guid>
-    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Laura J. Falkenberg</dc:creator>
-    <description>尽管海洋热浪的物理和生态影响已得到充分认识，但其对人类健康的级联后果仍知之甚少。我们认为海洋热浪构成了日益增长的身心健康风险，必须将其视为一个独特的核心气候问题，需要采取前瞻性行动。</description>
-    <category>海洋热浪</category>
-    <category>人类健康</category>
-    <category>气候风险</category>
-    <category>前瞻性行动</category>
-    <content:encoded><![CDATA[<h2>认识海洋热浪对人类健康的影响</h2>
-<p><em>Recognizing the human health impacts of marine heatwaves</em></p>
+    <title>走向技术智能的绿色工业政策</title>
+    <link>https://www.nature.com/articles/s41560-026-02110-w</link>
+    <guid isPermaLink="false">doi:10.1038/s41560-026-02110-w</guid>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Tobias S. Schmidt</dc:creator>
+    <description>随着政府制定绿色工业政策，识别未来获胜的能源技术变得越来越重要。通过评估技术特性，政策制定者可以战略性地选择既能实现全球成本竞争力又能带来国内经济回报的获胜技术。</description>
+    <category>green industrial policy</category>
+    <category>energy technology</category>
+    <category>competitiveness</category>
+    <content:encoded><![CDATA[<h2>走向技术智能的绿色工业政策</h2>
+<p><em>Towards technology-smart green industrial policy</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Energy</li>
+<li><strong>日期</strong>：2026-07-21</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：经济学组（气候政策评估、能源经济与市场）</li>
+<li><strong>标签</strong>：green industrial policy，energy technology，competitiveness</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Tobias S. Schmidt¹²</li>
+<li><strong>作者单位</strong>：¹Energy and Technology Policy Group, ETH Zurich, Zurich, Switzerland；²Albert Einstein School of Public Policy, ETH Zurich, Zurich, Switzerland</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>随着政府制定绿色工业政策，识别未来获胜的能源技术变得越来越重要。通过评估技术特性，政策制定者可以战略性地选择既能实现全球成本竞争力又能带来国内经济回报的获胜技术。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s41560-026-02110-w</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41560-026-02110-w">https://www.nature.com/articles/s41560-026-02110-w</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41560-026-02110-w/MediaObjects/41560_2026_2110_Fig1_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>美国气候变化新闻中的时间视域</title>
+    <link>https://www.nature.com/articles/s41558-026-02716-8</link>
+    <guid isPermaLink="false">doi:10.1038/s41558-026-02716-8</guid>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Antal Wozniak</dc:creator>
+    <description>新闻是否将气候变化描述为当下正在发生或未来发生的事件，会影响公众的风险认知和气候行动。一项近期研究表明，在美国新闻中，预期气候影响的时间点已越来越近，但协调一致的气候行动却一再被推迟到未来。</description>
+    <category>climate change</category>
+    <category>news framing</category>
+    <category>public perception</category>
+    <content:encoded><![CDATA[<h2>美国气候变化新闻中的时间视域</h2>
+<p><em>Temporal horizons in US climate change news</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Climate Change</li>
+<li><strong>日期</strong>：2026-07-21</li>
+<li><strong>类型</strong>：editorial</li>
+<li><strong>建议关注</strong>：经济学组（气候政策评估）</li>
+<li><strong>标签</strong>：climate change，news framing，public perception</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Antal Wozniak¹</li>
+<li><strong>作者单位</strong>：¹Department of Communication and Media, University of Liverpool, Liverpool, UK</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>新闻是否将气候变化描述为当下正在发生或未来发生的事件，会影响公众的风险认知和气候行动。一项近期研究表明，在美国新闻中，预期气候影响的时间点已越来越近，但协调一致的气候行动却一再被推迟到未来。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s41558-026-02716-8</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41558-026-02716-8">https://www.nature.com/articles/s41558-026-02716-8</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41558-026-02716-8/MediaObjects/41558_2026_2716_Figa_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>UNFCCC进程中关键行为体的改革偏好</title>
+    <link>https://www.nature.com/articles/s41558-026-02723-9</link>
+    <guid isPermaLink="false">doi:10.1038/s41558-026-02723-9</guid>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Faradj Koliev</dc:creator>
+    <description>要求改革联合国气候变化框架公约缔约方会议（COP）气候谈判的呼声日益高涨，但关于关键参与者改革偏好的系统性实证证据仍然有限。本文通过对国家和非国家精英受访者进行联合调查实验，比较成对假设的改革方案，发现受访者普遍支持增强透明度并加强实施导向以推动气候行动的改革。我们看到，非国家行为体更支持限制化石燃料公司参与和扩大观察员参与机会的改革。此外，大多数其他机构改革方案并未获得实质性支持。这些结果指出了</description>
+    <category>UNFCCC</category>
+    <category>COP改革</category>
+    <category>气候治理</category>
+    <content:encoded><![CDATA[<h2>UNFCCC进程中关键行为体的改革偏好</h2>
+<p><em>Reform preferences of key actors in the UNFCCC process</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Climate Change</li>
+<li><strong>日期</strong>：2026-07-21</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：经济学组（气候政策评估）</li>
+<li><strong>标签</strong>：UNFCCC，COP改革，气候治理</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Faradj Koliev¹, Naghmeh Nasiritousi²³, Alexandra Buylova³, Björn-Ola Linnér²</li>
+<li><strong>作者单位</strong>：¹Department of Political Science, Stockholm University, Stockholm, Sweden；²Department of Thematic Studies – Environmental Change and Centre for Climate Science and Policy Research, Linköping University, Linköping, Sweden；³Swedish Institute of International Affairs, Stockholm, Sweden</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>要求改革联合国气候变化框架公约缔约方会议（COP）气候谈判的呼声日益高涨，但关于关键参与者改革偏好的系统性实证证据仍然有限。本文通过对国家和非国家精英受访者进行联合调查实验，比较成对假设的改革方案，发现受访者普遍支持增强透明度并加强实施导向以推动气候行动的改革。我们看到，非国家行为体更支持限制化石燃料公司参与和扩大观察员参与机会的改革。此外，大多数其他机构改革方案并未获得实质性支持。这些结果指出了两条可能的改革路径：加强透明度与问责制，或重新定位COP以加强现有承诺的实施。更具争议性的改革，包括改变共识规则、COP主席国和利益攸关方代表权，成功的可能性较低。COP会议面临批评和改革呼声，但关于改革选择的证据仍然有限。本文对COP参与者的调查显示，普遍支持增强透明度和实施，而改变共识规则或COP主席国的提案则不太受欢迎。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s41558-026-02723-9</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41558-026-02723-9">https://www.nature.com/articles/s41558-026-02723-9</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41558-026-02723-9/MediaObjects/41558_2026_2723_Fig1_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>建筑环境的真实影响</title>
+    <link>https://www.nature.com/articles/s41893-026-01910-y</link>
+    <guid isPermaLink="false">doi:10.1038/s41893-026-01910-y</guid>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+    <description>水泥和混凝土支撑着现代社会，然而它们真正的资源需求以及控制其高效使用的动态仍鲜为人知。两项最新研究表明，变革的最有力杠杆可能根本不在水泥厂内部。</description>
+    <category>水泥</category>
+    <category>混凝土</category>
+    <category>建筑环境</category>
+    <category>资源需求</category>
+    <content:encoded><![CDATA[<h2>建筑环境的真实影响</h2>
+<p><em>The true impacts of the built environment</em></p>
 <ul>
 <li><strong>期刊</strong>：Nature Sustainability</li>
-<li><strong>日期</strong>：2026-07-20</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：经济学组（气候政策评估）</li>
-<li><strong>标签</strong>：海洋热浪，人类健康，气候风险，前瞻性行动</li>
+<li><strong>日期</strong>：2026-07-21</li>
+<li><strong>类型</strong>：editorial</li>
+<li><strong>建议关注</strong>：资源循环组（资源效率与物质流）</li>
+<li><strong>标签</strong>：水泥，混凝土，建筑环境，资源需求</li>
 </ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Laura J. Falkenberg¹, Bayden D. Russell²³</li>
-<li><strong>作者单位</strong>：¹School of Physics, Chemistry and Earth Sciences, College of Science, Adelaide University, Adelaide, Australia；²Swire Institute of Marine Science and Area of Ecology and Biodiversity, School of Biological Sciences, The University of Hong Kong, Hong Kong, China；³Institute for Climate and Carbon Neutrality, The University of Hong Kong, Hong Kong, China</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>尽管海洋热浪的物理和生态影响已得到充分认识，但其对人类健康的级联后果仍知之甚少。我们认为海洋热浪构成了日益增长的身心健康风险，必须将其视为一个独特的核心气候问题，需要采取前瞻性行动。</p>
+<p><strong>中文摘要</strong><br>水泥和混凝土支撑着现代社会，然而它们真正的资源需求以及控制其高效使用的动态仍鲜为人知。两项最新研究表明，变革的最有力杠杆可能根本不在水泥厂内部。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：doi:10.1038/s41893-026-01892-x</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41893-026-01892-x">https://www.nature.com/articles/s41893-026-01892-x</a></li>
+<li><strong>DOI</strong>：doi:10.1038/s41893-026-01910-y</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41893-026-01910-y">https://www.nature.com/articles/s41893-026-01910-y</a></li>
 </ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41893-026-01892-x/MediaObjects/41893_2026_1892_Fig1_HTML.png" alt=""></p>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41893-026-01910-y/MediaObjects/41893_2026_1910_Figa_HTML.png" alt=""></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>生物相互作用塑造有毒蓝藻的实际生态位</title>
-    <link>https://www.nature.com/articles/s41559-026-03131-0</link>
-    <guid isPermaLink="false">doi:10.1038/s41559-026-03131-0</guid>
-    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Pinelopi Ntetsika</dc:creator>
-    <description>蓝藻水华日益威胁着重要的淡水生态系统，气候变化和富营养化加剧了其有害影响。蓝藻产生有毒代谢物，其浓度随生物量积累而增加，对饮用水、水生生态系统和娱乐用途构成直接风险，并产生巨大的经济成本。尽管对温度和营养盐效应进行了广泛研究，但我们的解释和预测能力仍然有限。我们认为，这种局限性源于对生物和非生物因素如何相互作用以改变蓝藻净生长进而影响生物量积累的理解不足。在这里，我们利用富营养化湖泊五年的每日监测</description>
-    <category>蓝藻水华</category>
-    <category>有毒代谢物</category>
-    <category>富营养化</category>
-    <category>生态位</category>
-    <category>因果推断</category>
-    <content:encoded><![CDATA[<h2>生物相互作用塑造有毒蓝藻的实际生态位</h2>
-<p><em>Biotic interactions shape the realized niche of toxic cyanobacteria</em></p>
+    <title>超越冲突与匮乏叙事的非洲水研究</title>
+    <link>https://www.nature.com/articles/s41893-026-01895-8</link>
+    <guid isPermaLink="false">doi:10.1038/s41893-026-01895-8</guid>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Essam Heggy</dc:creator>
+    <description>可重复、可复制且稳健的非洲水研究在高影响力科学期刊中仍然代表性不足，导致区域政策制定者转向咨询公司和利益团体。我们呼吁期刊编辑更积极地参与非洲水研究，以发挥其对于跨边界冲突解决的贡献。</description>
+    <category>非洲水研究</category>
+    <category>水安全</category>
+    <category>跨边界冲突</category>
+    <content:encoded><![CDATA[<h2>超越冲突与匮乏叙事的非洲水研究</h2>
+<p><em>African water research beyond the narratives of conflict and scarcity</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Sustainability</li>
+<li><strong>日期</strong>：2026-07-21</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）</li>
+<li><strong>标签</strong>：非洲水研究，水安全，跨边界冲突</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Essam Heggy¹², Jongeun You³, Abotalib Z. Abotalib⁴, Sara S. Fouad⁵, Mohamed Ramah⁶⁷</li>
+<li><strong>作者单位</strong>：¹Institut de Physique du Globe de Paris, Université Paris Cité, CNRS, Paris, France；²Viterbi School of Engineering, University of Southern California, Los Angeles, USA；³Department of Political Science and Public Administration, Northern Michigan University, Marquette, USA；⁴Division of Geological Applications and Mineral Resources, National Authority for Remote Sensing and Space Sciences, Cairo, Egypt；⁵Chair of Landscape Architecture and Transformation, School of Engineering and Design, Technical University of Munich, Freising, Germany；⁶Earth and Life Institute, Université Catholique de Louvain, Louvain-la-Neuve, Belgium；⁷Geophysical Sciences Department, National Research Centre, Giza, Egypt</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>可重复、可复制且稳健的非洲水研究在高影响力科学期刊中仍然代表性不足，导致区域政策制定者转向咨询公司和利益团体。我们呼吁期刊编辑更积极地参与非洲水研究，以发挥其对于跨边界冲突解决的贡献。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s41893-026-01895-8</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41893-026-01895-8">https://www.nature.com/articles/s41893-026-01895-8</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41893-026-01895-8/MediaObjects/41893_2026_1895_Fig1_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>极端变暖在大灭绝中火上浇油</title>
+    <link>https://www.nature.com/articles/s41561-026-02058-2</link>
+    <guid isPermaLink="false">doi:10.1038/s41561-026-02058-2</guid>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Chris Mays</dc:creator>
+    <description>地球历史上大多数重大生物灭绝事件与导致气候变暖和干燥的温室气体排放有关。研究表明，在三叠纪末期最严重的事件中，这些扰动还导致了广泛的野火和蕨类稀树草原的扩张，这可能为未来提供教训。</description>
+    <category>古气候</category>
+    <category>生物灭绝</category>
+    <category>野火</category>
+    <category>温室气体</category>
+    <content:encoded><![CDATA[<h2>极端变暖在大灭绝中火上浇油</h2>
+<p><em>Extreme warming fans the flames during mass extinctions</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Geoscience</li>
+<li><strong>日期</strong>：2026-07-21</li>
+<li><strong>类型</strong>：editorial</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性、大气污染与空气质量）</li>
+<li><strong>标签</strong>：古气候，生物灭绝，野火，温室气体</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Chris Mays¹²³</li>
+<li><strong>作者单位</strong>：¹Geology-Palaeontology Department, Natural History Museum Vienna, Vienna, Austria；²School of Biological, Earth and Environmental Sciences, University College Cork, Cork, Ireland；³Sustainability Institute, University College Cork, Cork, Ireland</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>地球历史上大多数重大生物灭绝事件与导致气候变暖和干燥的温室气体排放有关。研究表明，在三叠纪末期最严重的事件中，这些扰动还导致了广泛的野火和蕨类稀树草原的扩张，这可能为未来提供教训。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s41561-026-02058-2</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41561-026-02058-2">https://www.nature.com/articles/s41561-026-02058-2</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41561-026-02058-2/MediaObjects/41561_2026_2058_Fig1_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>亚马逊地区卫星衍生森林恢复力指标的生理保真度</title>
+    <link>https://www.nature.com/articles/s41559-026-03116-z</link>
+    <guid isPermaLink="false">doi:10.1038/s41559-026-03116-z</guid>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Kexin Song</dc:creator>
+    <description>在日益加剧的气候压力下，迫切需要可靠的恢复力指标来监测全球森林健康。卫星植被指数的滞后一阶时间自相关（TAC）可捕捉森林恢复速度，并广泛用作恢复力指标，但其机制基础和方法可靠性一直受到质疑。在此，我们利用亚马逊地区的Landsat观测和实地数据，研究卫星衍生的TAC如何与水力安全边际（HSM）的原位测量相关联，HSM是植物适应干旱能力的关键生理性状。我们发现HSM与恢复力代理指标（1-TAC）之间</description>
+    <category>森林恢复力</category>
+    <category>遥感</category>
+    <category>干旱</category>
+    <category>水力安全边际</category>
+    <category>亚马逊</category>
+    <content:encoded><![CDATA[<h2>亚马逊地区卫星衍生森林恢复力指标的生理保真度</h2>
+<p><em>Physiological fidelity of a satellite-derived forest resilience indicator in the Amazon</em></p>
 <ul>
 <li><strong>期刊</strong>：Nature Ecology &amp; Evolution</li>
+<li><strong>日期</strong>：2026-07-21</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
+<li><strong>标签</strong>：森林恢复力，遥感，干旱，水力安全边际，亚马逊</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Kexin Song¹, James Knighton¹, Shi Qiu¹, Xiucheng Yang¹, Ji Won Suh¹², Julia V. Tavares³, Yanlan Liu⁴, Xiaonan Tai⁵, Robert Fahey¹, Christopher S. R. Neigh⁶, Russell Callahan⁷, Falu Hong¹, Tian Li¹, Ashley Grinstead¹, Wei Ren¹, Chandi Witharana¹, S. Blair Hedges⁸, Zhiqiang Yang⁹, Rodrigo Vieira Leite⁶, Paulo R. L. Bittencourt¹⁰, Zhe Zhu¹</li>
+<li><strong>作者单位</strong>：¹Department of Natural Resources and the Environment, University of Connecticut, Storrs, USA；²Department of Geography, University of Victoria, Victoria, Canada；³School of Geography, University of Leeds, Leeds, UK；⁴Department of Geography, University of California, Los Angeles, Los Angeles, USA；⁵Department of Biological Sciences, New Jersey Institute of Technology, Newark, USA；⁶Biospheric Sciences Laboratory, NASA Goddard Space Flight Center, Greenbelt, USA；⁷Department of Earth Sciences, University of Connecticut, Storrs, USA；⁸Center for Biodiversity, Temple University, Philadelphia, USA；⁹US Forest Service, Rocky Mountain Research Station, Corvallis, USA；¹⁰School of Earth and Environment Sciences, Cardiff University, Cardiff, UK</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>在日益加剧的气候压力下，迫切需要可靠的恢复力指标来监测全球森林健康。卫星植被指数的滞后一阶时间自相关（TAC）可捕捉森林恢复速度，并广泛用作恢复力指标，但其机制基础和方法可靠性一直受到质疑。在此，我们利用亚马逊地区的Landsat观测和实地数据，研究卫星衍生的TAC如何与水力安全边际（HSM）的原位测量相关联，HSM是植物适应干旱能力的关键生理性状。我们发现HSM与恢复力代理指标（1-TAC）之间存在强直接相关性（R²高达0.57，P=0.0116），证明森林恢复速度受抗旱能力制约。结合HSM和累积水分亏缺的模型解释了恢复力中高达83%的方差，表明水力策略和局部气候共同构成森林恢复力的主要轴心。重要的是，我们表明这种关系取决于选定的植被指数、卫星观测的时间频率和滚动窗口大小。综上所述，我们的研究结果确立了TAC作为森林恢复力指标的生理保真度，并提供了方法论指导。该分析表明，广泛使用的基于卫星的生态系统恢复力指标是一个真实信号，与植物对水分亏缺的生理响应相关联，前提是评估基于适当的方法选择。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s41559-026-03116-z</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41559-026-03116-z">https://www.nature.com/articles/s41559-026-03116-z</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41559-026-03116-z/MediaObjects/41559_2026_3116_Fig1_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>利用吸附剂实现下一代直接空气捕获的路径</title>
+    <link>https://www.cell.com/joule/fulltext/S2542-4351(26)00271-0?rss=yes</link>
+    <guid isPermaLink="false">10.1016/j.joule.2026.102587</guid>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Yifei Xu</dc:creator>
+    <description>随着极端天气事件日益频繁，碳去除技术的紧迫性显而易见。尽管直接空气捕获（DAC）在大规模碳去除方面最有前景，但其部署面临着重大工程障碍。本综述总结了DAC规模化中的四个关键瓶颈，涵盖接触器设计、热管理、水管理和系统耦合。这些瓶颈最终通过技术经济分析相互关联，有助于确定加速DAC实现其碳捕获目标的关键路径。</description>
+    <category>直接空气捕获</category>
+    <category>DAC</category>
+    <category>碳去除</category>
+    <category>吸附剂</category>
+    <category>技术经济分析</category>
+    <content:encoded><![CDATA[<h2>利用吸附剂实现下一代直接空气捕获的路径</h2>
+<p><em>A pathway to next-generation direct air capture using adsorbents</em></p>
+<ul>
+<li><strong>期刊</strong>：Joule</li>
+<li><strong>日期</strong>：2026-07-21</li>
+<li><strong>类型</strong>：review</li>
+<li><strong>建议关注</strong>：油气-电力组（碳管理与CCUS）</li>
+<li><strong>标签</strong>：直接空气捕获，DAC，碳去除，吸附剂，技术经济分析</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Yifei Xu, Qiyuan Li, Bingqiao Xie, Zixin Zhang, Man Zhang, Ruzhu Wang, Rose Amal, Xuancan Zhu</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>随着极端天气事件日益频繁，碳去除技术的紧迫性显而易见。尽管直接空气捕获（DAC）在大规模碳去除方面最有前景，但其部署面临着重大工程障碍。本综述总结了DAC规模化中的四个关键瓶颈，涵盖接触器设计、热管理、水管理和系统耦合。这些瓶颈最终通过技术经济分析相互关联，有助于确定加速DAC实现其碳捕获目标的关键路径。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：10.1016/j.joule.2026.102587</li>
+<li><strong>链接</strong>：<a href="https://www.cell.com/joule/fulltext/S2542-4351(26)00271-0?rss=yes">https://www.cell.com/joule/fulltext/S2542-4351(26)00271-0?rss=yes</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>振动膜生物反应器增强市政污水处理中的营养物去除和能源效率</title>
+    <link>https://doi.org/10.1038/s41467-026-75747-6</link>
+    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-75747-6</guid>
+    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Weichen Lin</dc:creator>
+    <description>摘要：膜生物反应器广泛用于市政污水处理，但高能耗和膜污染限制了其应用。本文报告了约800天的全规模并行运行振动膜生物反应器与传统曝气膜生物反应器，比较了污染物去除、长期过滤稳定性、膜污染机制和全生命周期环境影响。结果表明，振动膜生物反应器在营养物去除、抗污染性和能耗方面具有优势，碳足迹降低30%。验证了振动膜生物反应器是一种可扩展、节能可持续的污水处理技术。</description>
+    <category>膜生物反应器</category>
+    <category>污水处理</category>
+    <category>能源效率</category>
+    <category>碳足迹</category>
+    <content:encoded><![CDATA[<h2>振动膜生物反应器增强市政污水处理中的营养物去除和能源效率</h2>
+<p><em>Vibrating membrane bioreactors enhance nutrient removal and energy efficiency in municipal wastewater treatment</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Communications</li>
 <li><strong>日期</strong>：2026-07-20</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性、水环境与水处理）</li>
-<li><strong>标签</strong>：蓝藻水华，有毒代谢物，富营养化，生态位，因果推断</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）</li>
+<li><strong>标签</strong>：膜生物反应器，污水处理，能源效率，碳足迹</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Pinelopi Ntetsika¹, Stefanie Eyring¹, Ewa Merz¹², Marta Reyes¹, Benno Käch¹, Stephan B. Munch³, Stuart R. Dennis⁴, Marco Baity-Jesi⁵, Francesco Pomati¹</li>
-<li><strong>作者单位</strong>：¹Department of Aquatic Ecology, Swiss Federal Institute of Aquatic Science and Technology (Eawag), Dübendorf, Switzerland；²Integrative Oceanography Division, Scripps Institution of Oceanography, University of California San Diego, La Jolla, USA；³Department of Applied Mathematics, University of California, Santa Cruz, USA；⁴Scientific IT, Swiss Federal Institute of Aquatic Science and Technology (Eawag), Dübendorf, Switzerland；⁵Department of Systems Analysis, Integrated Assessment and Modelling, Swiss Federal Institute of Aquatic Science and Technology (Eawag), Dübendorf, Switzerland</li>
+<li><strong>作者</strong>：Weichen Lin, Tao Xue, Haojie Ding, Ziwei Liu, Caiyun Zhang, Kang Xiao, Chunsheng Chen, Xia Huang</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>蓝藻水华日益威胁着重要的淡水生态系统，气候变化和富营养化加剧了其有害影响。蓝藻产生有毒代谢物，其浓度随生物量积累而增加，对饮用水、水生生态系统和娱乐用途构成直接风险，并产生巨大的经济成本。尽管对温度和营养盐效应进行了广泛研究，但我们的解释和预测能力仍然有限。我们认为，这种局限性源于对生物和非生物因素如何相互作用以改变蓝藻净生长进而影响生物量积累的理解不足。在这里，我们利用富营养化湖泊五年的每日监测数据，通过状态空间重建模型进行因果推断，表明与共存浮游生物类群的相互作用从根本上重塑了水华形成蓝藻在环境梯度上的实际生态位。在有毒的微囊藻科和拟柱孢藻属中，生物相互作用将净生长的温度边界改变了高达13°C，磷需求改变了超过20 μg l⁻¹。牧食抑制了各种蓝藻类群的水华形成，而其他浮游植物的促进作用可能使水华在异常低的温度和磷酸盐浓度下发生。这些发现解决了一个基本研究空白——生物相互作用如何塑造自然生态系统中的实际生态位——同时为有害藻华管理提供了实用见解。利用五年的每日湖泊浮游生物监测数据和经验动态模型，本研究表明牧食、竞争和促进作用重塑了有毒蓝藻水华所需的温度和营养条件。</p>
+</details><p><strong>中文摘要</strong><br>摘要：膜生物反应器广泛用于市政污水处理，但高能耗和膜污染限制了其应用。本文报告了约800天的全规模并行运行振动膜生物反应器与传统曝气膜生物反应器，比较了污染物去除、长期过滤稳定性、膜污染机制和全生命周期环境影响。结果表明，振动膜生物反应器在营养物去除、抗污染性和能耗方面具有优势，碳足迹降低30%。验证了振动膜生物反应器是一种可扩展、节能可持续的污水处理技术。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：doi:10.1038/s41559-026-03131-0</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41559-026-03131-0">https://www.nature.com/articles/s41559-026-03131-0</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-75747-6">https://doi.org/10.1038/s41467-026-75747-6</a></li>
 </ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41559-026-03131-0/MediaObjects/41559_2026_3131_Fig1_HTML.png" alt=""></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>气候心理学对错误信息研究的启示</title>
-    <link>https://www.nature.com/articles/s41562-026-02530-4</link>
-    <guid isPermaLink="false">doi:10.1038/s41562-026-02530-4</guid>
+    <title>轮作农业作为自组织社会生态系统</title>
+    <link>https://doi.org/10.1073/pnas.2619020123</link>
+    <guid isPermaLink="false">https://doi.org/10.1073/pnas.2619020123</guid>
     <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Tobia Spampatti</dc:creator>
-    <description>气候变化和错误信息是相互关联的全球危机，由个体、集体和既得利益之间的紧张关系塑造。本文借鉴气候心理学，提炼出六点见解，以加强错误信息研究的政策相关性、系统思维和对攻击的抵御能力。</description>
-    <category>climate psychology</category>
-    <category>misinformation</category>
-    <category>policy relevance</category>
-    <content:encoded><![CDATA[<h2>气候心理学对错误信息研究的启示</h2>
-<p><em>Insights from climate psychology for misinformation research</em></p>
+    <dc:creator>Ole Mertz</dc:creator>
+    <description></description>
+    <category>轮作农业</category>
+    <category>社会-生态系统</category>
+    <category>自组织</category>
+    <content:encoded><![CDATA[<h2>轮作农业作为自组织社会生态系统</h2>
+<p><em>Shifting cultivation as a self-organizing social–ecological system</em></p>
 <ul>
-<li><strong>期刊</strong>：Nature Human Behaviour</li>
+<li><strong>期刊</strong>：Proceedings of the National Academy of Sciences</li>
 <li><strong>日期</strong>：2026-07-20</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：未分类</li>
-<li><strong>标签</strong>：climate psychology，misinformation，policy relevance</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（土地利用与农业）</li>
+<li><strong>标签</strong>：轮作农业，社会-生态系统，自组织</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Tobia Spampatti¹², Bojana Većkalov³, Sandra J. Geiger⁴, Sander van der Linden⁵, Stephan Lewandowsky⁶⁷, Matthew J. Hornsey⁸</li>
-<li><strong>作者单位</strong>：¹Center for Adaptive Rationality, Max Planck Institute for Human Development, Berlin, Germany；²Department of Psychobiology and Methodology of Health Sciences, Universitat Autònoma de Barcelona, Bellaterra, Spain；³Department of Political Science, Radboud University Nijmegen, Nijmegen, The Netherlands；⁴Andlinger Center for Energy and the Environment, Princeton University, Princeton, USA；⁵Department of Psychology, School of the Biological Sciences, University of Cambridge, Cambridge, UK；⁶School of Psychological Science, University of Bristol, Bristol, UK；⁷Department of Psychology, University of Potsdam, Potsdam, Germany；⁸School of Business, University of Queensland, Brisbane, Australia</li>
+<li><strong>作者</strong>：Ole Mertz¹</li>
+<li><strong>作者单位</strong>：¹University of Copenhagen</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>气候变化和错误信息是相互关联的全球危机，由个体、集体和既得利益之间的紧张关系塑造。本文借鉴气候心理学，提炼出六点见解，以加强错误信息研究的政策相关性、系统思维和对攻击的抵御能力。</p>
-<p><strong>资源信息</strong>  </p>
+</details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：doi:10.1038/s41562-026-02530-4</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41562-026-02530-4">https://www.nature.com/articles/s41562-026-02530-4</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1073/pnas.2619020123">https://doi.org/10.1073/pnas.2619020123</a></li>
 </ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41562-026-02530-4/MediaObjects/41562_2026_2530_Figa_HTML.png" alt=""></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>北极寒冷大气中缺失的新粒子来源：卤素含氧酸的协同成核</title>
-    <link>https://doi.org/10.1021/acs.est.6c04194</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c04194</guid>
-    <pubDate>Sun, 19 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Xurong Bai</dc:creator>
-    <description>三元成核是活跃卤素化学海洋环境中新粒子形成的关键途径，为理解海洋含氯组分的源、汇和气候影响提供了基础理论依据。</description>
-    <category>new particle formation</category>
-    <category>nucleation</category>
-    <category>halogen</category>
-    <category>aerosol</category>
+    <title>2026年美国西部雪旱因气候变化可能性增加约四倍</title>
+    <link>https://doi.org/10.1073/pnas.2612961123</link>
+    <guid isPermaLink="false">https://doi.org/10.1073/pnas.2612961123</guid>
+    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Adrienne Marshall</dc:creator>
+    <description>2026年春季，美国西部异常的少雪条件威胁冬季娱乐和水供应。本文研究：自工业前时期以来，这次雪旱在多大程度上可归因于已经发生的气候变化？我们发现，当前气候下美国西部出现如此严重的雪旱的可能性约为工业前时期的4.4倍[95%置信区间：2.6，9.4]。在上科罗拉多河流域，雪旱的可能性约为14倍[0.09, 4300]。鉴于在中等高排放变暖情景下，至少如此严重的雪旱频率预计增加，这一事件的实际经历可能</description>
+    <category>雪旱</category>
+    <category>气候变化归因</category>
+    <category>美国西部</category>
+    <category>科罗拉多河</category>
+    <content:encoded><![CDATA[<h2>2026年美国西部雪旱因气候变化可能性增加约四倍</h2>
+<p><em>The 2026 western US snow drought was about four times more likely due to climate change</em></p>
+<ul>
+<li><strong>期刊</strong>：Proceedings of the National Academy of Sciences</li>
+<li><strong>日期</strong>：2026-07-20</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）</li>
+<li><strong>标签</strong>：雪旱，气候变化归因，美国西部，科罗拉多河</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Adrienne Marshall¹, Marianne Cowherd², Stefan Rahimi³, Yuhong Ye³</li>
+<li><strong>作者单位</strong>：¹Colorado School of Mines；²Montana State University；³University of Wyoming</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>2026年春季，美国西部异常的少雪条件威胁冬季娱乐和水供应。本文研究：自工业前时期以来，这次雪旱在多大程度上可归因于已经发生的气候变化？我们发现，当前气候下美国西部出现如此严重的雪旱的可能性约为工业前时期的4.4倍[95%置信区间：2.6，9.4]。在上科罗拉多河流域，雪旱的可能性约为14倍[0.09, 4300]。鉴于在中等高排放变暖情景下，至少如此严重的雪旱频率预计增加，这一事件的实际经历可能有助于科学家、资源管理者和公众思考如果温室气体排放不积极减少，美国西部积雪可能会是什么样子。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1073/pnas.2612961123">https://doi.org/10.1073/pnas.2612961123</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>生物质制甲醇、废物制甲醇还是PtX？——使用生命周期评估、技术经济分析和多准则决策分析量化替代甲醇生产路径的可持续性</title>
+    <link>https://doi.org/10.1021/acs.est.5c16391</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.5c16391</guid>
+    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Raoul Voss</dc:creator>
+    <description></description>
+    <category>life cycle assessment</category>
+    <category>techno-economic analysis</category>
+    <category>multi-criteria decision analysis</category>
+    <category>methanol</category>
+    <category>sustainability</category>
+    <category>biofuel</category>
+    <content:encoded><![CDATA[<h2>生物质制甲醇、废物制甲醇还是PtX？——使用生命周期评估、技术经济分析和多准则决策分析量化替代甲醇生产路径的可持续性</h2>
+<p><em>Biomass-to-Methanol, Waste-to-Methanol, or PtX?─Quantifying the Sustainability of Alternative Methanol Production Pathways Using Life Cycle Assessment, Techno-Economic Analysis, and Multi-Criteria Decision Analysis</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-07-20</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：SDG-建模组（LCA与足迹分析、脱碳路径与情景）；经济学组（能源经济与市场）；资源循环组（资源回收与再利用）</li>
+<li><strong>标签</strong>：life cycle assessment，techno-economic analysis，multi-criteria decision analysis，methanol，sustainability，biofuel</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Raoul Voss¹², Antonia Helf³, Georg Weig², Florian Keller³⁴, Roh Pin Lee⁵, Magnus Fröhling², Martin Gräbner³⁴</li>
+<li><strong>作者单位</strong>：¹Capgemini (Netherlands)；²Stadtwerke Straubing (Germany)；³TU Bergakademie Freiberg；⁴Fraunhofer Institute for Ceramic Technologies and Systems；⁵Brandenburg University of Technology Cottbus-Senftenberg</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.5c16391">https://doi.org/10.1021/acs.est.5c16391</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>2025年和2026年创纪录的低海冰范围使北极冬季海冰衰退趋势重现</title>
+    <link>https://doi.org/10.1073/pnas.2614134123</link>
+    <guid isPermaLink="false">https://doi.org/10.1073/pnas.2614134123</guid>
+    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Duo Chan</dc:creator>
+    <description>最近的分析表明，北极冬季海冰范围减少的十年速率在2020年代初有所减弱，20年趋势变得统计上不显著。本文利用更新的观测数据表明，异常低的2025年和2026年冬季海冰范围扭转了这一局面，增长期和峰值期的海冰范围重回创纪录低点，20年下降趋势再次显著。进一步对CMIP6模型类比的分析表明，观测到的2025年下降虽然不同寻常，但在相当的北极增温条件下物理上是合理的，且与持续的冬季海冰减少比回归2020</description>
+    <category>sea ice</category>
     <category>Arctic</category>
-    <content:encoded><![CDATA[<h2>北极寒冷大气中缺失的新粒子来源：卤素含氧酸的协同成核</h2>
-<p><em>A Missing Source of New Particles in the Cold Arctic Atmosphere: The Synergistic Nucleation of Halogen Oxyacids</em></p>
+    <category>climate change</category>
+    <category>CMIP6</category>
+    <category>trend</category>
+    <content:encoded><![CDATA[<h2>2025年和2026年创纪录的低海冰范围使北极冬季海冰衰退趋势重现</h2>
+<p><em>Record-low 2025 and 2026 ice extents restore Arctic winter sea-ice decline</em></p>
+<ul>
+<li><strong>期刊</strong>：Proceedings of the National Academy of Sciences</li>
+<li><strong>日期</strong>：2026-07-20</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+<li><strong>标签</strong>：sea ice，Arctic，climate change，CMIP6，trend</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Duo Chan¹, Alessandro Silvano¹, Simon A. Josey¹²</li>
+<li><strong>作者单位</strong>：¹National Oceanography Centre；²National Institute of Oceanography</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>最近的分析表明，北极冬季海冰范围减少的十年速率在2020年代初有所减弱，20年趋势变得统计上不显著。本文利用更新的观测数据表明，异常低的2025年和2026年冬季海冰范围扭转了这一局面，增长期和峰值期的海冰范围重回创纪录低点，20年下降趋势再次显著。进一步对CMIP6模型类比的分析表明，观测到的2025年下降虽然不同寻常，但在相当的北极增温条件下物理上是合理的，且与持续的冬季海冰减少比回归2020年代初的值更为一致。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1073/pnas.2614134123">https://doi.org/10.1073/pnas.2614134123</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>源限制导致热带次生林恢复缓慢</title>
+    <link>https://doi.org/10.1073/pnas.2510678123</link>
+    <guid isPermaLink="false">https://doi.org/10.1073/pnas.2510678123</guid>
+    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Luísa Genes</dc:creator>
+    <description>热带森林在干扰后能迅速恢复多样性、结构和功能，但植物组成恢复即使在数十年后仍不完全。本研究利用哥斯达黎加森林长期数据，分析了树木、种子、幼苗和幼树的物种组成以及食草和叶片病原菌损伤，发现源限制是中期至晚期演替阶段恢复延迟的主要驱动因素，强调了定向富集种植加速完全恢复的潜力。</description>
+    <category>tropical forest</category>
+    <category>secondary forest</category>
+    <category>restoration</category>
+    <category>seed dispersal</category>
+    <category>source limitation</category>
+    <content:encoded><![CDATA[<h2>源限制导致热带次生林恢复缓慢</h2>
+<p><em>Source limitation drives slow compositional recovery in tropical secondary forests</em></p>
+<ul>
+<li><strong>期刊</strong>：Proceedings of the National Academy of Sciences</li>
+<li><strong>日期</strong>：2026-07-20</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
+<li><strong>标签</strong>：tropical forest，secondary forest，restoration，seed dispersal，source limitation</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Luísa Genes¹²³, Amanda Wendt⁴, Bryan Finegan⁵, Cristina Barber⁶, Diego Delgado⁵, Marta Peláez³⁷, Nohemi Huanca Nunez⁸, Richard K. Kobe⁶, Rodolfo Dirzo³, Robin L. Chazdon⁹¹⁰¹¹</li>
+<li><strong>作者单位</strong>：¹Marine Megafauna Foundation；²Red Universitaria Nacional；³Stanford University；⁴Earth University；⁵Centro Agronomico Tropical de Investigacion y Ensenanza Catie；⁶Department of Forestry；⁷Fundación Biodiversidad；⁸Yale University；⁹University of Connecticut；¹⁰University of the Sunshine Coast；¹¹Forest Research</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>热带森林在干扰后能迅速恢复多样性、结构和功能，但植物组成恢复即使在数十年后仍不完全。本研究利用哥斯达黎加森林长期数据，分析了树木、种子、幼苗和幼树的物种组成以及食草和叶片病原菌损伤，发现源限制是中期至晚期演替阶段恢复延迟的主要驱动因素，强调了定向富集种植加速完全恢复的潜力。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1073/pnas.2510678123">https://doi.org/10.1073/pnas.2510678123</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>城市废水宏基因组揭示微生物群落与抗性组动态</title>
+    <link>https://doi.org/10.1038/s41467-026-75771-6</link>
+    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-75771-6</guid>
+    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Zhiying Xu</dc:creator>
+    <description>城市废水系统连接医院、居民区、交通枢纽和污水处理厂，为微生物和抗生素抗性基因（ARGs）的传播创造了机会。本研究在中国厦门进行了为期三个月的全市废水宏基因组调查，包括来自7个医院站点、16个污水处理厂站点、27个居民区站点以及国际航班的252个样本。基因组解析分析揭示了不同废水来源中源特异的微生物群落结构、抗性组谱、谱系共享模式以及ARGs与可移动遗传元件的关联。医院废水含有最多样化的抗性组，而国</description>
+    <category>废水宏基因组</category>
+    <category>抗生素抗性基因</category>
+    <category>微生物群落</category>
+    <category>城市废水</category>
+    <content:encoded><![CDATA[<h2>城市废水宏基因组揭示微生物群落与抗性组动态</h2>
+<p><em>Citywide metagenomics reveals microbial community and resistome dynamics in urban wastewater</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Communications</li>
+<li><strong>日期</strong>：2026-07-20</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）</li>
+<li><strong>标签</strong>：废水宏基因组，抗生素抗性基因，微生物群落，城市废水</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Zhiying Xu¹, Jiabao Xing², X Y Zeng³, Yuqing Wu¹, Yao Wang⁴, He Yl¹, Xialu Lin³, Haiyan Huang³, Zeyu Zhao¹, Hua Wu⁵, Zhinan Guo³, Tianmu Chen¹</li>
+<li><strong>作者单位</strong>：¹Xiamen University；²Fudan University；³Xian Center for Disease Control and Prevention；⁴Chengdu Medical College；⁵Henan Agricultural University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>城市废水系统连接医院、居民区、交通枢纽和污水处理厂，为微生物和抗生素抗性基因（ARGs）的传播创造了机会。本研究在中国厦门进行了为期三个月的全市废水宏基因组调查，包括来自7个医院站点、16个污水处理厂站点、27个居民区站点以及国际航班的252个样本。基因组解析分析揭示了不同废水来源中源特异的微生物群落结构、抗性组谱、谱系共享模式以及ARGs与可移动遗传元件的关联。医院废水含有最多样化的抗性组，而国际航班废水引入了当地废水网络中不存在的微生物类群和ARGs。污水处理厂从多个上游来源积累ARGs，表现出频繁的谱系共享和潜在水平基因转移信号。与环境内共享相比，跨环境谱系共享与较低的核苷酸多样性相关，可能反映了遗传瓶颈。在潜在相关因子中，pH与微生物多样性和抗性组组成呈现强非线性关联。这些发现表明城市废水系统作为微生物和ARGs传播的互联网络，并确定了针对性的抗菌素耐药性监测的潜在热点。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-75771-6">https://doi.org/10.1038/s41467-026-75771-6</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>利用机制信息与少样本数据驱动的液体神经网络解析湖泊中的微塑料</title>
+    <link>https://doi.org/10.1021/acs.est.6c05904</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c05904</guid>
+    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Yihan Li</dc:creator>
+    <description></description>
+    <category>微塑料</category>
+    <category>湖泊</category>
+    <category>塑料污染</category>
+    <content:encoded><![CDATA[<h2>利用机制信息与少样本数据驱动的液体神经网络解析湖泊中的微塑料</h2>
+<p><em>Unraveling Microplastics in Lakes with a Mechanism-Informed, Few-Shot Data-Driven Liquid Neural Networks</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-07-20</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源循环组（塑料污染与治理）</li>
+<li><strong>标签</strong>：微塑料，湖泊，塑料污染</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Yihan Li¹, H Wang¹, Yichuan Zeng¹, Dongfang Liang², Pengfei Ji¹, Yuting Yan¹</li>
+<li><strong>作者单位</strong>：¹Hohai University；²University of Cambridge</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c05904">https://doi.org/10.1021/acs.est.6c05904</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>一步向前，两步后退：2025–2030年美国膳食指南对地球健康影响的初步审视</title>
+    <link>https://doi.org/10.1073/pnas.2617208123</link>
+    <guid isPermaLink="false">https://doi.org/10.1073/pnas.2617208123</guid>
+    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Nicole Tichenor Blackstone</dc:creator>
+    <description></description>
+    <category>膳食指南</category>
+    <category>地球健康</category>
+    <category>环境影响</category>
+    <category>农业</category>
+    <category>食品系统</category>
+    <content:encoded><![CDATA[<h2>一步向前，两步后退：2025–2030年美国膳食指南对地球健康影响的初步审视</h2>
+<p><em>One step forward, two steps back: A first look at the planetary health implications of the 2025–2030 Dietary Guidelines for Americans</em></p>
+<ul>
+<li><strong>期刊</strong>：Proceedings of the National Academy of Sciences</li>
+<li><strong>日期</strong>：2026-07-20</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：SDG-建模组（LCA与足迹分析）；矿产生态组（土地利用与农业）</li>
+<li><strong>标签</strong>：膳食指南，地球健康，环境影响，农业，食品系统</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Nicole Tichenor Blackstone¹</li>
+<li><strong>作者单位</strong>：¹Tufts University</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1073/pnas.2617208123">https://doi.org/10.1073/pnas.2617208123</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>植物氮获取策略的全球变化及其对氮可用性下降的响应</title>
+    <link>https://doi.org/10.1038/s41467-026-75889-7</link>
+    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-75889-7</guid>
+    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Jiaqiang Liao</dc:creator>
+    <description></description>
+    <category>nitrogen cycling</category>
+    <category>plant ecology</category>
+    <category>global change</category>
+    <content:encoded><![CDATA[<h2>植物氮获取策略的全球变化及其对氮可用性下降的响应</h2>
+<p><em>Global variation of plant nitrogen acquisition strategies and their responses to decreasing nitrogen availability</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Communications</li>
+<li><strong>日期</strong>：2026-07-20</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
+<li><strong>标签</strong>：nitrogen cycling，plant ecology，global change</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Jiaqiang Liao, J. Mao, Jinlong Peng, Yiqi Luo, Mianhai Zheng, 吕松 Lü Song, Chen Chen, Lingli Liu, Shuli Niu</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-75889-7">https://doi.org/10.1038/s41467-026-75889-7</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>煮沸饮用水中碘化消毒副产物的残留毒性</title>
+    <link>https://doi.org/10.1021/acs.est.6c03527</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c03527</guid>
+    <pubDate>Sun, 19 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Yang Wz</dc:creator>
+    <description>消毒副产物（DBPs）是安全饮用水供给中的持久挑战。虽然煮沸饮用水已被证实可降低人体对DBPs的暴露风险，但其残留风险（尤其是在含碘水中）被低估了。本文研究了挥发和热加速转化如何改变煮沸水中优先DBPs的分布。我们全面评估了煮沸前后样品的毒性，结果表明煮沸后仍有40-70%的细胞毒性和59-89%的遗传毒性残留。非靶向分析揭示酚类碘化DBPs（I-DBPs）累积并对剩余总有机碘贡献显著。其中，3,</description>
+    <category>disinfection byproducts</category>
+    <category>water treatment</category>
+    <category>drinking water</category>
+    <category>toxicity</category>
+    <content:encoded><![CDATA[<h2>煮沸饮用水中碘化消毒副产物的残留毒性</h2>
+<p><em>Residual Toxicity of Iodinated Disinfection Byproducts in Boiled Drinking Water</em></p>
 <ul>
 <li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
 <li><strong>日期</strong>：2026-07-19</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：矿产生态组（大气污染与空气质量）</li>
-<li><strong>标签</strong>：new particle formation，nucleation，halogen，aerosol，Arctic</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）</li>
+<li><strong>标签</strong>：disinfection byproducts，water treatment，drinking water，toxicity</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Xurong Bai¹², Yongjian Lian¹², Ruoying Yuan¹², Jinsheng Zhang³, Chunyu Wang⁴, Jianfei Peng¹², Hongjun Mao¹², Shuai Jiang¹²</li>
-<li><strong>作者单位</strong>：¹Nankai University；²California Environmental Protection Agency；³Tianjin University of Technology；⁴Chaohu University</li>
+<li><strong>作者</strong>：Yang Wz¹²³, Shengkun Dong⁴, Chao Fang¹²³, Yingying Zhou¹²³, Songhang Du⁵, Wenhai Chu¹²³</li>
+<li><strong>作者单位</strong>：¹Tongji University；²State Key Laboratory of Pollution Control and Resource Reuse；³Shanghai Institute of Pollution Control and Ecological Security；⁴Southern Water (United Kingdom)；⁵Harbin Institute of Technology</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>三元成核是活跃卤素化学海洋环境中新粒子形成的关键途径，为理解海洋含氯组分的源、汇和气候影响提供了基础理论依据。</p>
+</details><p><strong>中文摘要</strong><br>消毒副产物（DBPs）是安全饮用水供给中的持久挑战。虽然煮沸饮用水已被证实可降低人体对DBPs的暴露风险，但其残留风险（尤其是在含碘水中）被低估了。本文研究了挥发和热加速转化如何改变煮沸水中优先DBPs的分布。我们全面评估了煮沸前后样品的毒性，结果表明煮沸后仍有40-70%的细胞毒性和59-89%的遗传毒性残留。非靶向分析揭示酚类碘化DBPs（I-DBPs）累积并对剩余总有机碘贡献显著。其中，3,5-二碘水杨酸和2,4,6-三碘苯酚在煮沸过程中浓度分别增加124.8%和139.0%，这可能归因于大分子前体的热加速反应以及这些I-DBPs的低挥发性。此外，持续煮沸、添加维生素C和小苏打被证明有效减轻毒性和抗煮沸的酚类I-DBPs，I-DBPs降解率在1.1%至33.8%之间。总之，我们强调了热稳定DBPs在煮沸过程中的产生和转化，为缓解煮沸饮用水中的残留风险提供了重要见解。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c04194">https://doi.org/10.1021/acs.est.6c04194</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c03527">https://doi.org/10.1021/acs.est.6c03527</a></li>
 </ul>
 ]]></content:encoded>
   </item>
