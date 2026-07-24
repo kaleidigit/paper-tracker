@@ -8,34 +8,65 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>食物浪费税有效吗？来自韩国准实验的证据</title>
-    <link>https://doi.org/10.1162/rest.a.1839</link>
-    <guid isPermaLink="false">https://doi.org/10.1162/rest.a.1839</guid>
-    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Seunghoon Lee</dc:creator>
-    <description>摘要：全球范围内，三分之一的食物被丢弃，产生的生命周期温室气体排放与公路运输相当。此外，废物管理是全球市政预算中最大的项目之一。利用韩国基于单位的食物浪费税（外生性）的扩展，我发现该税通过抑制过度购买食品显著减少了食物浪费。尽管购买量减少，家庭仍维持食物摄入量，但代价是增加了膳食准备时间。非金钱动机似乎是政策有效性的核心，该税很可能改善福利，因为更有效的食物使用不仅减少了外部性，还抵消了时间成本。</description>
-    <category>食物浪费税</category>
-    <category>食物浪费</category>
-    <category>环境政策</category>
-    <category>韩国</category>
-    <content:encoded><![CDATA[<h2>食物浪费税有效吗？来自韩国准实验的证据</h2>
-<p><em>Does a Food Waste Tax Work? Evidence from Quasi-Experiments in South Korea</em></p>
+    <title>电池整合对澳大利亚国家电力市场中可变可再生能源的影响</title>
+    <link>https://doi.org/10.1177/01956574261466883</link>
+    <guid isPermaLink="false">https://doi.org/10.1177/01956574261466883</guid>
+    <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Parna Imannezhad</dc:creator>
+    <description>澳大利亚的可再生能源项目通常依赖购电协议或差价合约来管理市场风险并确保收入稳定。本研究考察了锂离子电池是否可以作为澳大利亚国家电力市场中一个250兆瓦商业风电场的替代方案。使用技术和财务模型，在能源、衍生品和频率控制辅助服务市场评估了组合表现。情景考虑了25兆瓦和50兆瓦的电池容量，每种容量有2小时和4小时的存储时长。结果表明，商业风电场面临资金缺口和收入波动，但电池整合缓解了这些问题。在50兆瓦</description>
+    <category>电池储能</category>
+    <category>风能</category>
+    <category>电力市场</category>
+    <category>可再生能源整合</category>
+    <category>风险对冲</category>
+    <content:encoded><![CDATA[<h2>电池整合对澳大利亚国家电力市场中可变可再生能源的影响</h2>
+<p><em>The Implications of Battery Integration for Variable Renewables in the Australian National Electricity Market</em></p>
 <ul>
-<li><strong>期刊</strong>：The Review of Economics and Statistics</li>
-<li><strong>日期</strong>：2026-07-21</li>
+<li><strong>期刊</strong>：The Energy Journal</li>
+<li><strong>日期</strong>：2026-07-22</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：食物浪费税，食物浪费，环境政策，韩国</li>
+<li><strong>建议关注</strong>：能源经济</li>
+<li><strong>标签</strong>：电池储能，风能，电力市场，可再生能源整合，风险对冲</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Seunghoon Lee¹</li>
-<li><strong>作者单位</strong>：¹University of Missouri</li>
+<li><strong>作者</strong>：Parna Imannezhad¹, Magnus Soederberg¹, Phillip Wild¹</li>
+<li><strong>作者单位</strong>：¹Griffith University</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>摘要：全球范围内，三分之一的食物被丢弃，产生的生命周期温室气体排放与公路运输相当。此外，废物管理是全球市政预算中最大的项目之一。利用韩国基于单位的食物浪费税（外生性）的扩展，我发现该税通过抑制过度购买食品显著减少了食物浪费。尽管购买量减少，家庭仍维持食物摄入量，但代价是增加了膳食准备时间。非金钱动机似乎是政策有效性的核心，该税很可能改善福利，因为更有效的食物使用不仅减少了外部性，还抵消了时间成本。</p>
+</details><p><strong>中文摘要</strong><br>澳大利亚的可再生能源项目通常依赖购电协议或差价合约来管理市场风险并确保收入稳定。本研究考察了锂离子电池是否可以作为澳大利亚国家电力市场中一个250兆瓦商业风电场的替代方案。使用技术和财务模型，在能源、衍生品和频率控制辅助服务市场评估了组合表现。情景考虑了25兆瓦和50兆瓦的电池容量，每种容量有2小时和4小时的存储时长。结果表明，商业风电场面临资金缺口和收入波动，但电池整合缓解了这些问题。在50兆瓦情景下，在理想预测基准下实现了经调整自由现金流为正的净现值。这表明电池可以提高组合可行性并减少对购电协议和差价合约的依赖，尽管这些结果代表最佳情景，一旦引入价格不确定性，盈利能力会显著下降。JEL Classification: C61, Optimisation Techniques; Programming Models; Dynamic Analysis; L11, Production, Pricing, and Market Structure; Size Distribution of Firms; L94, Electric Utilities; Q40, Energy: General</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1162/rest.a.1839">https://doi.org/10.1162/rest.a.1839</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261466883">https://doi.org/10.1177/01956574261466883</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>权衡资源开采博弈中的增长不确定性和体制转换风险</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109171</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109171</guid>
+    <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Bruno Nkuiya</dc:creator>
+    <description></description>
+    <category>资源开采</category>
+    <category>不确定性</category>
+    <category>体制转换</category>
+    <category>博弈论</category>
+    <content:encoded><![CDATA[<h2>权衡资源开采博弈中的增长不确定性和体制转换风险</h2>
+<p><em>Weighing growth uncertainty and regime shift risk in a resource extraction game</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-07-22</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：资源开采，不确定性，体制转换，博弈论</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Bruno Nkuiya</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109171">https://doi.org/10.1016/j.ecolecon.2026.109171</a></li>
 </ul>
 ]]></content:encoded>
   </item>
