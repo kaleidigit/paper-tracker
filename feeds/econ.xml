@@ -8,65 +8,196 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>电池整合对澳大利亚国家电力市场中可变可再生能源的影响</title>
-    <link>https://doi.org/10.1177/01956574261466883</link>
-    <guid isPermaLink="false">https://doi.org/10.1177/01956574261466883</guid>
-    <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Parna Imannezhad</dc:creator>
-    <description>澳大利亚的可再生能源项目通常依赖购电协议或差价合约来管理市场风险并确保收入稳定。本研究考察了锂离子电池是否可以作为澳大利亚国家电力市场中一个250兆瓦商业风电场的替代方案。使用技术和财务模型，在能源、衍生品和频率控制辅助服务市场评估了组合表现。情景考虑了25兆瓦和50兆瓦的电池容量，每种容量有2小时和4小时的存储时长。结果表明，商业风电场面临资金缺口和收入波动，但电池整合缓解了这些问题。在50兆瓦</description>
-    <category>电池储能</category>
-    <category>风能</category>
-    <category>电力市场</category>
-    <category>可再生能源整合</category>
-    <category>风险对冲</category>
-    <content:encoded><![CDATA[<h2>电池整合对澳大利亚国家电力市场中可变可再生能源的影响</h2>
-<p><em>The Implications of Battery Integration for Variable Renewables in the Australian National Electricity Market</em></p>
+    <title>从稀缺到战略：设计干草市场以缓解饲料短缺和收入冲击</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109172</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109172</guid>
+    <pubDate>Sat, 25 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Julia Kunkel</dc:creator>
+    <description>以草料为基础的饲料——如草、青贮饲料和干草——是奶牛的关键饲料来源。在向更可持续的奶业系统转型过程中，草料生产因其对生物多样性和区域韧性的贡献而日益受到重视。然而，干旱降低了草料产量并推高了饲料价格，使农民难以保障饲料供应和稳定收入。现有的应对策略，如提前屠宰或出售牲畜，可能在干旱事件之后产生长期后果。在本研究中，我们提出将干草市场作为干旱导致的饲料短缺和收入冲击的短期缓冲。我们使用一个风格化的网</description>
+    <category>饲料短缺</category>
+    <category>干草市场</category>
+    <category>干旱</category>
+    <category>收入冲击</category>
+    <category>网络模型</category>
+    <content:encoded><![CDATA[<h2>从稀缺到战略：设计干草市场以缓解饲料短缺和收入冲击</h2>
+<p><em>From scarcity to strategy: Designing hay markets to mitigate feed shortages and income shocks</em></p>
 <ul>
-<li><strong>期刊</strong>：The Energy Journal</li>
-<li><strong>日期</strong>：2026-07-22</li>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-07-25</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：能源经济</li>
-<li><strong>标签</strong>：电池储能，风能，电力市场，可再生能源整合，风险对冲</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：饲料短缺，干草市场，干旱，收入冲击，网络模型</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Parna Imannezhad¹, Magnus Soederberg¹, Phillip Wild¹</li>
-<li><strong>作者单位</strong>：¹Griffith University</li>
+<li><strong>作者</strong>：Julia Kunkel¹², Jonathan Haag¹, Robert Finger³, Sergei Schaub⁴, Jürgen Groeneveld¹⁵, Christian Klassert¹, Birgit Müller¹²⁶</li>
+<li><strong>作者单位</strong>：¹Helmholtz Centre for Environmental Research；²Brandenburg University of Technology Cottbus-Senftenberg；³ETH Zurich；⁴Agroscope；⁵Julius Kühn-Institut；⁶German Centre for Integrative Biodiversity Research</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>澳大利亚的可再生能源项目通常依赖购电协议或差价合约来管理市场风险并确保收入稳定。本研究考察了锂离子电池是否可以作为澳大利亚国家电力市场中一个250兆瓦商业风电场的替代方案。使用技术和财务模型，在能源、衍生品和频率控制辅助服务市场评估了组合表现。情景考虑了25兆瓦和50兆瓦的电池容量，每种容量有2小时和4小时的存储时长。结果表明，商业风电场面临资金缺口和收入波动，但电池整合缓解了这些问题。在50兆瓦情景下，在理想预测基准下实现了经调整自由现金流为正的净现值。这表明电池可以提高组合可行性并减少对购电协议和差价合约的依赖，尽管这些结果代表最佳情景，一旦引入价格不确定性，盈利能力会显著下降。JEL Classification: C61, Optimisation Techniques; Programming Models; Dynamic Analysis; L11, Production, Pricing, and Market Structure; Size Distribution of Firms; L94, Electric Utilities; Q40, Energy: General</p>
+</details><p><strong>中文摘要</strong><br>以草料为基础的饲料——如草、青贮饲料和干草——是奶牛的关键饲料来源。在向更可持续的奶业系统转型过程中，草料生产因其对生物多样性和区域韧性的贡献而日益受到重视。然而，干旱降低了草料产量并推高了饲料价格，使农民难以保障饲料供应和稳定收入。现有的应对策略，如提前屠宰或出售牲畜，可能在干旱事件之后产生长期后果。在本研究中，我们提出将干草市场作为干旱导致的饲料短缺和收入冲击的短期缓冲。我们使用一个风格化的网络模型，比较了在交易半径和交易伙伴方面不同的潜在交易网络的有效性、效率和可能的副作用。对于在德国县级层面聚合的农场单元，我们模拟了成本最小化的交易计划，并推导出剩余的饲料短缺和收入冲击。结果表明，在全国性干旱期间，饲料交易可以减少约三分之二的冲击，并完全缓解局部冲击。有效的缓解需要广泛的交易半径或足够的交易伙伴。然而，连接不良的全国性网络可能导致低效运输，而州级的分割可能锁定短缺并降低有效性和效率。我们还观察到了意外的副作用：交易可能将收入冲击转移到未受影响的农场单元，并增加总运输距离。总体而言，我们表明干草市场可以增强奶农的抗旱能力，但必须谨慎设计。政策制定者、农民协会和农业商会可以通过提供设计良好的市场基础设施来支持这一点。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261466883">https://doi.org/10.1177/01956574261466883</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109172">https://doi.org/10.1016/j.ecolecon.2026.109172</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>权衡资源开采博弈中的增长不确定性和体制转换风险</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109171</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109171</guid>
-    <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Bruno Nkuiya</dc:creator>
-    <description></description>
-    <category>资源开采</category>
-    <category>不确定性</category>
-    <category>体制转换</category>
-    <category>博弈论</category>
-    <content:encoded><![CDATA[<h2>权衡资源开采博弈中的增长不确定性和体制转换风险</h2>
-<p><em>Weighing growth uncertainty and regime shift risk in a resource extraction game</em></p>
+    <title>极端贫困毕业项目能否增强妇女应对天气冲击的韧性？来自埃塞俄比亚农村的证据</title>
+    <link>https://doi.org/10.1016/j.jpubeco.2026.105733</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.jpubeco.2026.105733</guid>
+    <pubDate>Fri, 24 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Kalle Hirvonen</dc:creator>
+    <description>我们评估了在埃塞俄比亚生产安全网计划（PSNP）上叠加极端贫困毕业项目是否能够保护妇女及其家庭免受局部天气冲击的影响。利用来自大型整群随机试验的面板数据，结合详细的天气记录，我们识别了社区层面遭受干旱冲击的情况。遭受干旱冲击的妇女营养状况恶化（同时家庭粮食安全和资产下降），并且亲密伴侣暴力的风险显著增加。然而，获得毕业项目完全缓冲了妇女免受亲密伴侣暴力的任何增加，并部分缓冲了妇女及其家庭免受其他不</description>
+    <category>极端贫困毕业项目</category>
+    <category>天气冲击</category>
+    <category>妇女韧性</category>
+    <category>干旱</category>
+    <category>埃塞俄比亚</category>
+    <content:encoded><![CDATA[<h2>极端贫困毕业项目能否增强妇女应对天气冲击的韧性？来自埃塞俄比亚农村的证据</h2>
+<p><em>Do ultra-poor graduation programs build women’s resilience to weather shocks? Evidence from rural Ethiopia</em></p>
 <ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-07-22</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：资源开采，不确定性，体制转换，博弈论</li>
+<li><strong>期刊</strong>：Journal of Public Economics</li>
+<li><strong>日期</strong>：2026-07-24</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：极端贫困毕业项目，天气冲击，妇女韧性，干旱，埃塞俄比亚</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Bruno Nkuiya</li>
+<li><strong>作者</strong>：Kalle Hirvonen¹, Daniel O. Gilligan¹, Jessica Leight¹, Heleene Tambet², Victor Villa³</li>
+<li><strong>作者单位</strong>：¹International Food Policy Research Institute；²Envia Systems (United States)；³International Center for Tropical Agriculture</li>
 </ul>
-</details><p><strong>资源信息</strong>  </p>
+</details><p><strong>中文摘要</strong><br>我们评估了在埃塞俄比亚生产安全网计划（PSNP）上叠加极端贫困毕业项目是否能够保护妇女及其家庭免受局部天气冲击的影响。利用来自大型整群随机试验的面板数据，结合详细的天气记录，我们识别了社区层面遭受干旱冲击的情况。遭受干旱冲击的妇女营养状况恶化（同时家庭粮食安全和资产下降），并且亲密伴侣暴力的风险显著增加。然而，获得毕业项目完全缓冲了妇女免受亲密伴侣暴力的任何增加，并部分缓冲了妇女及其家庭免受其他不利影响。进一步分析表明，改善的家庭储蓄可能是该计划保护效应的驱动力。</p>
+<p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109171">https://doi.org/10.1016/j.ecolecon.2026.109171</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.jpubeco.2026.105733">https://doi.org/10.1016/j.jpubeco.2026.105733</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>裂解价差的动态模型</title>
+    <link>https://doi.org/10.1177/01956574261467501</link>
+    <guid isPermaLink="false">https://doi.org/10.1177/01956574261467501</guid>
+    <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Hamed Ghoddusi</dc:creator>
+    <description>裂解价差是炼油厂盈利能力的核心指标，但通常被视为原油与成品油价格之间的外生差异。我们构建了一个结构性动态模型，其中裂解价差内生地产生于成品油需求、原油供应条件、凸性利用成本、炼油厂复杂性、硬产能约束以及昂贵的生产调整。模型表明，裂解价差的动态取决于冲击来源和产能压力程度。需求驱动的事件会引发成品油价格与裂解价差之间的强烈正联动，而供应驱动的事件则可能产生较弱或抵消的关系。调整摩擦进一步导致利用率变</description>
+    <category>裂解价差</category>
+    <category>动态模型</category>
+    <category>炼油厂</category>
+    <category>原油价格</category>
+    <category>成品油需求</category>
+    <content:encoded><![CDATA[<h2>裂解价差的动态模型</h2>
+<p><em>A Dynamic Model of Crack Spreads</em></p>
+<ul>
+<li><strong>期刊</strong>：The Energy Journal</li>
+<li><strong>日期</strong>：2026-07-23</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：能源经济</li>
+<li><strong>标签</strong>：裂解价差，动态模型，炼油厂，原油价格，成品油需求</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Hamed Ghoddusi¹, Sadegh Navabi</li>
+<li><strong>作者单位</strong>：¹California Polytechnic State University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>裂解价差是炼油厂盈利能力的核心指标，但通常被视为原油与成品油价格之间的外生差异。我们构建了一个结构性动态模型，其中裂解价差内生地产生于成品油需求、原油供应条件、凸性利用成本、炼油厂复杂性、硬产能约束以及昂贵的生产调整。模型表明，裂解价差的动态取决于冲击来源和产能压力程度。需求驱动的事件会引发成品油价格与裂解价差之间的强烈正联动，而供应驱动的事件则可能产生较弱或抵消的关系。调整摩擦进一步导致利用率变化与价差变化之间的短期负联动。通过一个说明性实现，数值比较静态展示了模型机制在不同波动率、调整成本和产能紧张情景下的运作方式。JEL分类：D21，企业行为：理论；D22，企业行为：实证分析</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261467501">https://doi.org/10.1177/01956574261467501</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>住房气候政策的选举影响：来自德国的证据</title>
+    <link>https://doi.org/10.1007/s10640-026-01092-3</link>
+    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01092-3</guid>
+    <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Dorothea Kistinger</dc:creator>
+    <description>摘要：向碳中和住宅供暖的转型对欧洲及其他地区的社会构成了非凡的政策挑战。本文研究了旨在逐步淘汰化石燃料供暖系统的德国建筑能源法修正案的选举后果。我们利用精细的建筑存量数据来近似家庭合规成本的异质性，并应用双重差分和三重差分模型估计其对市政层面投票份额的影响。在巴伐利亚和黑森州选举中，我们发现在模型的基础设定下，极右翼（+2.4个百分点）和保守派反对党（+6.6个百分点）相对获益，而联邦执政党则遭受</description>
+    <category>气候政策</category>
+    <category>选举影响</category>
+    <category>德国</category>
+    <category>住房供暖</category>
+    <content:encoded><![CDATA[<h2>住房气候政策的选举影响：来自德国的证据</h2>
+<p><em>The Electoral Impact of Housing Climate Policy: Evidence from Germany</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental and Resource Economics</li>
+<li><strong>日期</strong>：2026-07-23</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：气候政策，选举影响，德国，住房供暖</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Dorothea Kistinger¹, Noah Kögel¹², Nicolas Koch¹³, Matthias Kalkuhl¹²</li>
+<li><strong>作者单位</strong>：¹Potsdam Institute for Climate Impact Research；²University of Potsdam；³IZA - Institute of Labor Economics</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>摘要：向碳中和住宅供暖的转型对欧洲及其他地区的社会构成了非凡的政策挑战。本文研究了旨在逐步淘汰化石燃料供暖系统的德国建筑能源法修正案的选举后果。我们利用精细的建筑存量数据来近似家庭合规成本的异质性，并应用双重差分和三重差分模型估计其对市政层面投票份额的影响。在巴伐利亚和黑森州选举中，我们发现在模型的基础设定下，极右翼（+2.4个百分点）和保守派反对党（+6.6个百分点）相对获益，而联邦执政党则遭受损失（-2.9个百分点）。对于后两者，农村地区的效应更为显著。这些发现凸显了考虑显著且异质性成本以减轻政治反弹的整体气候政策方法的重要性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01092-3">https://doi.org/10.1007/s10640-026-01092-3</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>技术作为社会-生态（再）生产的物质“如何”：对瓦西里·列昂惕夫“经济的技术结构”的反思</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109175</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109175</guid>
+    <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Miriam Boyer</dc:creator>
+    <description>瓦西里·列昂惕夫因其在经济学中发展了一种称为投入产出（IO）的应用方法而广为人知。本文转向列昂惕夫的分析，基于他的工作重构技术概念。这一概念建立在对列昂惕夫认识论-方法论假设及其投入产出模型关于相互依赖的前提的分析之上。我们认为，列昂惕夫的技术概念在两个意义上凸显了技术的物质过程：作为经济生产中使用的物质材料的具体流动，即某种特定的“配方”；但也作为该特定“配方”在整个经济中，乃至整个社会-生态系</description>
+    <category>投入产出</category>
+    <category>技术概念</category>
+    <category>社会-生态系统</category>
+    <content:encoded><![CDATA[<h2>技术作为社会-生态（再）生产的物质“如何”：对瓦西里·列昂惕夫“经济的技术结构”的反思</h2>
+<p><em>Technology as the material ‘how’ of socio-ecological (re)production: Reflections on Wassily Leontief&#39;s ‘technological structure of the economy’</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-07-23</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：投入产出，技术概念，社会-生态系统</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Miriam Boyer¹, Carlos López-Morales², Mathis Favre¹</li>
+<li><strong>作者单位</strong>：¹Humboldt-Universität zu Berlin；²El Colegio de México</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>瓦西里·列昂惕夫因其在经济学中发展了一种称为投入产出（IO）的应用方法而广为人知。本文转向列昂惕夫的分析，基于他的工作重构技术概念。这一概念建立在对列昂惕夫认识论-方法论假设及其投入产出模型关于相互依赖的前提的分析之上。我们认为，列昂惕夫的技术概念在两个意义上凸显了技术的物质过程：作为经济生产中使用的物质材料的具体流动，即某种特定的“配方”；但也作为该特定“配方”在整个经济中，乃至整个社会-生态系统中的涌现系统效应。这与社会科学中其他将技术的物质性主要理解为物体、人工制品和基础设施的方法形成对比。我们认为，未来的研究可以受益于将列昂惕夫的方法与社会科学其他领域的工作相结合。一方面，IO对定量和系统效应的描述可以通过列昂惕夫框架中未明确涉及的方面得到补充，包括特定的社会关系（如权力）以及某些行动者或冲突的作用。另一方面，列昂惕夫对物理物质方面及其系统效应的强调也可以很好地与生态研究联系起来，甚至超越当前常见的IO模型的环境扩展。我们认为，未来的此类工作可以产生有趣的协同效应，特别是在生态经济学领域。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109175">https://doi.org/10.1016/j.ecolecon.2026.109175</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>将受威胁生物多样性纳入货币生态系统核算：选择实验与模拟交换价值</title>
+    <link>https://doi.org/10.1007/s10640-026-01102-4</link>
+    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01102-4</guid>
+    <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>José L. Oviedo</dc:creator>
+    <description>我们提出了一个价值评估框架，用于衡量与受威胁野生物种保护相关的非市场净营业盈余，以进行货币生态系统核算。我们使用模拟交换价值（SEV）方法，该方法通过选择实验模拟的需求、给定的市场供应和假定的市场结构，估算可在假设市场中内部化的最大收益。选择实验估算了在现有税收资助成本之外，为实现世界自然保护联盟红色名录定义的各类威胁物种的不同存量水平而支付的意愿（WTP）。我们将该框架应用于评估伊比利亚半岛西南</description>
+    <category>生物多样性</category>
+    <category>生态系统核算</category>
+    <category>选择实验</category>
+    <category>模拟交换价值</category>
+    <content:encoded><![CDATA[<h2>将受威胁生物多样性纳入货币生态系统核算：选择实验与模拟交换价值</h2>
+<p><em>Integrating Threatened Biodiversity in Monetary Ecosystem Accounting: Choice Experiments and Simulated Exchange Values</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental and Resource Economics</li>
+<li><strong>日期</strong>：2026-07-23</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：生物多样性，生态系统核算，选择实验，模拟交换价值</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：José L. Oviedo¹, Pablo Campo², Alejandro Caparrós²³, Gonzalo M. Arroyo⁴⁵, A. Cruz⁴⁵</li>
+<li><strong>作者单位</strong>：¹Instituto de Ciencias Marinas de Andalucía；²Consejo Superior de Investigaciones Científicas；³Durham University；⁴Universidad de Cádiz；⁵Hospital Universitario Puerto Real</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>我们提出了一个价值评估框架，用于衡量与受威胁野生物种保护相关的非市场净营业盈余，以进行货币生态系统核算。我们使用模拟交换价值（SEV）方法，该方法通过选择实验模拟的需求、给定的市场供应和假定的市场结构，估算可在假设市场中内部化的最大收益。选择实验估算了在现有税收资助成本之外，为实现世界自然保护联盟红色名录定义的各类威胁物种的不同存量水平而支付的意愿（WTP）。我们将该框架应用于评估伊比利亚半岛西南部沿海湿地中受威胁水鸟物种保护的价值。结果显示，随着受威胁物种数量的减少，WTP增加，其中极危物种产生最高的WTP，而易危和濒危物种之间没有统计学显著差异。基于我们的首选模型，我们估算出当前受威胁水鸟物种存量水平的净营业盈余SEV为每公顷每年2850欧元。相同存量水平的等价变差估计为每公顷每年4108欧元。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01102-4">https://doi.org/10.1007/s10640-026-01102-4</a></li>
 </ul>
 ]]></content:encoded>
   </item>
