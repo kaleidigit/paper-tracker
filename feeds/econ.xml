@@ -8,187 +8,132 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>气候适应政策的生物多样性效益：来自中国数百万观鸟记录的证据</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109189</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109189</guid>
-    <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Hantian Sheng</dc:creator>
+    <title>迈向低碳饮食：探究气候认知与家庭减排实践在减少肉类消费中的作用</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109188</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109188</guid>
+    <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Lan Tran</dc:creator>
     <description></description>
-    <category>climate adaptation</category>
-    <category>biodiversity</category>
-    <category>birdwatching</category>
-    <category>policy evaluation</category>
-    <content:encoded><![CDATA[<h2>气候适应政策的生物多样性效益：来自中国数百万观鸟记录的证据</h2>
-<p><em>Biodiversity benefits of the climate adaptation policy: Evidence from millions birdwatching records in China</em></p>
+    <category>低碳饮食</category>
+    <category>气候认知</category>
+    <category>家庭减排</category>
+    <category>肉类消费</category>
+    <category>行为改变</category>
+    <content:encoded><![CDATA[<h2>迈向低碳饮食：探究气候认知与家庭减排实践在减少肉类消费中的作用</h2>
+<p><em>Toward low-carbon diets: Exploring the role of climate perceptions and household mitigation practices in reducing meat consumption</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-07-27</li>
+<li><strong>日期</strong>：2026-07-28</li>
 <li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：climate adaptation，biodiversity，birdwatching，policy evaluation</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：低碳饮食，气候认知，家庭减排，肉类消费，行为改变</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Hantian Sheng¹, C N He², Wenbo Hu²</li>
-<li><strong>作者单位</strong>：¹Zhejiang University；²Peking University</li>
+<li><strong>作者</strong>：Lan Tran¹, Ye Su¹</li>
+<li><strong>作者单位</strong>：¹Lincoln University - Missouri</li>
 </ul>
 </details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109189">https://doi.org/10.1016/j.ecolecon.2026.109189</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109188">https://doi.org/10.1016/j.ecolecon.2026.109188</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>分布式备用电源与电网可靠性的变化经济学</title>
-    <link>https://doi.org/10.1177/01956574261466622</link>
-    <guid isPermaLink="false">https://doi.org/10.1177/01956574261466622</guid>
+    <title>在信贷约束与国家能力限制下重新审视庇古税</title>
+    <link>https://doi.org/10.1007/s10640-026-01105-1</link>
+    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01105-1</guid>
+    <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Mahsa Jahandideh</dc:creator>
+    <description></description>
+    <category>庇古税</category>
+    <category>信贷约束</category>
+    <category>国家能力</category>
+    <category>环境政策</category>
+    <content:encoded><![CDATA[<h2>在信贷约束与国家能力限制下重新审视庇古税</h2>
+<p><em>Revisiting Pigouvian Taxes Under Credit Constraints and State Capacity Limitations</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental and Resource Economics</li>
+<li><strong>日期</strong>：2026-07-28</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：环境经济与政策</li>
+<li><strong>标签</strong>：庇古税，信贷约束，国家能力，环境政策</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Mahsa Jahandideh¹</li>
+<li><strong>作者单位</strong>：¹Khatam University</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01105-1">https://doi.org/10.1007/s10640-026-01105-1</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>基于模型的AggregateEU机制分析：超额投标与非承诺的含义</title>
+    <link>https://doi.org/10.1177/01956574261460196</link>
+    <guid isPermaLink="false">https://doi.org/10.1177/01956574261460196</guid>
     <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Sarah Johnston</dc:creator>
-    <description>在快速变化的电力行业中，维持电网可靠性的同时管理成本已成为监管机构的关键挑战。传统的集中式可靠性规划模式正受到分布式备用电源可用性的挑战。本文记录了美国家用电池系统的采用增加以及电网可靠性的逐渐下降。它还综合了近期的经济研究，探讨备用电源系统（如电池和发电机）的广泛可用性如何影响电网可靠性与消费者福利之间的关系。研究发现，备用系统降低了电网可靠性的经济有效水平。这种降低反过来可以通过减少电费使未采</description>
-    <category>distributed backup power</category>
-    <category>grid reliability</category>
-    <category>electricity markets</category>
-    <category>regulation</category>
-    <content:encoded><![CDATA[<h2>分布式备用电源与电网可靠性的变化经济学</h2>
-<p><em>Distributed Backup Power and the Changing Economics of Grid Reliability</em></p>
+    <dc:creator>Dávid Csercsik</dc:creator>
+    <description>AggregateEU是一种新型的集中化机制，提供了不承诺平台在欧盟交易天然气。在整个咨询过程中，AggregateEU被戏称为“欧盟天然气市场的Tinder”，因为它帮助消费者和供应商找到合作伙伴，但由匹配的合作伙伴决定是否签订潜在贸易合同。不承诺的性质导致了大量的超额投标和许多未实现的匹配。我们提出了一个定量建模框架来研究AggregateEU需求聚合或联合购买机制中超额投标的影响。我们得出结</description>
+    <category>AggregateEU</category>
+    <category>天然气市场</category>
+    <category>超额投标</category>
+    <category>非承诺</category>
+    <category>集中化机制</category>
+    <content:encoded><![CDATA[<h2>基于模型的AggregateEU机制分析：超额投标与非承诺的含义</h2>
+<p><em>A Model-Based Analysis of the AggregateEU Mechanism: Implications of Overbidding and Non-Commitment</em></p>
 <ul>
 <li><strong>期刊</strong>：The Energy Journal</li>
 <li><strong>日期</strong>：2026-07-27</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：能源经济</li>
-<li><strong>标签</strong>：distributed backup power，grid reliability，electricity markets，regulation</li>
+<li><strong>标签</strong>：AggregateEU，天然气市场，超额投标，非承诺，集中化机制</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Sarah Johnston¹</li>
-<li><strong>作者单位</strong>：¹University of Calgary</li>
+<li><strong>作者</strong>：Dávid Csercsik¹²³, Borbála Takácsné Tóth⁴, Péter Kotek⁵, László Á. Kóczy¹³⁶, Anne Neumann⁷</li>
+<li><strong>作者单位</strong>：¹Eötvös Loránd University；²Pázmány Péter Catholic University；³ELTE Centre for Economic and Regional Studies；⁴Corvinus University of Budapest；⁵HUN-REN Centre for Energy Research；⁶Budapest University of Technology and Economics；⁷Norwegian University of Science and Technology</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>在快速变化的电力行业中，维持电网可靠性的同时管理成本已成为监管机构的关键挑战。传统的集中式可靠性规划模式正受到分布式备用电源可用性的挑战。本文记录了美国家用电池系统的采用增加以及电网可靠性的逐渐下降。它还综合了近期的经济研究，探讨备用电源系统（如电池和发电机）的广泛可用性如何影响电网可靠性与消费者福利之间的关系。研究发现，备用系统降低了电网可靠性的经济有效水平。这种降低反过来可以通过减少电费使未采用这些系统的家庭受益。借鉴创新经济学和公共选择经济学的见解，本文探讨了备用电源系统对可靠性规划和成本分配政策的影响。JEL分类：Q40，能源：一般；L94，电力公用事业；L51，监管经济学；H40，公共提供的商品：一般；O33，技术变革：选择与后果；扩散过程。</p>
+</details><p><strong>中文摘要</strong><br>AggregateEU是一种新型的集中化机制，提供了不承诺平台在欧盟交易天然气。在整个咨询过程中，AggregateEU被戏称为“欧盟天然气市场的Tinder”，因为它帮助消费者和供应商找到合作伙伴，但由匹配的合作伙伴决定是否签订潜在贸易合同。不承诺的性质导致了大量的超额投标和许多未实现的匹配。我们提出了一个定量建模框架来研究AggregateEU需求聚合或联合购买机制中超额投标的影响。我们得出结论，该机制容易产生超额投标，并且超额投标对贸易的影响是模糊的。根据参数的不同，超额投标可能促进贸易，但当日超额投标与交货点的协调失误相结合时，也可能导致高度低效的结果。建议的补救措施包括允许凸投标、限制超额投标或放弃部分市场非约束性特征。我们的结果表明，未来允许协调多个交货点的潜在机制可以提高天然气市场的效率。JEL分类：C72，非合作博弈；C63，计算技术；模拟建模；D40，市场结构、定价与设计：一般；Q40，能源：一般。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261466622">https://doi.org/10.1177/01956574261466622</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261460196">https://doi.org/10.1177/01956574261460196</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>基于主体模型中税收融资的绿色政策与收入不平等</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109168</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109168</guid>
+    <title>欧洲迈向净零过程中的自身与交叉蚕食</title>
+    <link>https://doi.org/10.1177/01956574261467508</link>
+    <guid isPermaLink="false">https://doi.org/10.1177/01956574261467508</guid>
     <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Lucca Gustafson Rodrigues</dc:creator>
-    <description>经济增长、收入不平等和温室气体排放之间的相互依赖动态已在脱碳战略的学术和政策讨论中引起关注。尽管这方面的工作不断增多，但理论和实证贡献强调了同时在这三个维度上取得有利结果的困难，表明存在一个涉及增长、收入分配和环境恶化的结构性三难困境。本文开发了一个基于主体模型（ABM）来探索这些权衡，并重点关注不同税收融资绿色政策的影响。融资和环境政策工具对关键宏观经济变量产生复杂影响，引发关于三难困境是否以及</description>
-    <category>agent-based model</category>
-    <category>carbon tax</category>
-    <category>green policy</category>
-    <category>income inequality</category>
-    <category>trilemma</category>
-    <content:encoded><![CDATA[<h2>基于主体模型中税收融资的绿色政策与收入不平等</h2>
-<p><em>Tax-financed green policies and income inequality in an agent-based model</em></p>
+    <dc:creator>Iacopo Savelli</dc:creator>
+    <description>本研究引入自身蚕食和交叉蚕食的概念，以更深入地分析可再生能源和电池储能系统在迈向净零过程中利润蚕食动态的共同演化。我们建立了一个高分辨率电力市场模型，涵盖2030年和2040年的三十三个欧洲国家，考虑了气候变异性、停电以及不同的可再生能源和电池储能部署水平。结果表明，可再生能源面临严重的自身蚕食挑战，容量增加10%将使可再生能源利润在2030年减少19%（2040年减少23%），而电池储能仅减少8</description>
+    <category>可再生能源</category>
+    <category>电池储能</category>
+    <category>电力市场</category>
+    <category>利润蚕食</category>
+    <category>净零排放</category>
+    <category>欧洲</category>
+    <content:encoded><![CDATA[<h2>欧洲迈向净零过程中的自身与交叉蚕食</h2>
+<p><em>Self- and Cross-Cannibalization in Europe on the Path to Net Zero</em></p>
 <ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>期刊</strong>：The Energy Journal</li>
 <li><strong>日期</strong>：2026-07-27</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：气候经济</li>
-<li><strong>标签</strong>：agent-based model，carbon tax，green policy，income inequality，trilemma</li>
+<li><strong>建议关注</strong>：能源经济</li>
+<li><strong>标签</strong>：可再生能源，电池储能，电力市场，利润蚕食，净零排放，欧洲</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Lucca Gustafson Rodrigues¹², Gilberto Tadeu Lima²³, Pedro Romero Marques²⁴</li>
-<li><strong>作者单位</strong>：¹Brazilian Development Bank；²Universidade do Oeste Paulista；³Hospital Universitário da Universidade de São Paulo；⁴Universidade Federal do ABC</li>
+<li><strong>作者</strong>：Iacopo Savelli¹</li>
+<li><strong>作者单位</strong>：¹Bocconi University</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>经济增长、收入不平等和温室气体排放之间的相互依赖动态已在脱碳战略的学术和政策讨论中引起关注。尽管这方面的工作不断增多，但理论和实证贡献强调了同时在这三个维度上取得有利结果的困难，表明存在一个涉及增长、收入分配和环境恶化的结构性三难困境。本文开发了一个基于主体模型（ABM）来探索这些权衡，并重点关注不同税收融资绿色政策的影响。融资和环境政策工具对关键宏观经济变量产生复杂影响，引发关于三难困境是否以及在何种条件下成立的问题。模拟考察了由碳税或财富税资助以下绿色政策的情景：（i）绿色价格补贴，（ii）公共非专利绿色研发，（iii）私人绿色研发补贴，以及（iv）绿色公共采购。碳税既是融资工具也是环境政策工具，而财富税主要是收入再分配机制。结果表明，政策组合是三难困境是否发生的关键决定因素。一方面，碳税在减排方面更有效，但社会和经济成本更高。另一方面，尽管促进再分配，财富税必须依赖特定的补充政策（如公共主导的绿色创新）来推动低碳经济。</p>
+</details><p><strong>中文摘要</strong><br>本研究引入自身蚕食和交叉蚕食的概念，以更深入地分析可再生能源和电池储能系统在迈向净零过程中利润蚕食动态的共同演化。我们建立了一个高分辨率电力市场模型，涵盖2030年和2040年的三十三个欧洲国家，考虑了气候变异性、停电以及不同的可再生能源和电池储能部署水平。结果表明，可再生能源面临严重的自身蚕食挑战，容量增加10%将使可再生能源利润在2030年减少19%（2040年减少23%），而电池储能仅减少8%。值得注意的是，可再生能源对电池储能的交叉蚕食效应是有利的，因为可再生能源增长10%可使电池储能利润在2030年增加15%。这可能在短期内为可再生能源投资与电池储能的配对创造战略激励，因为有利的交叉蚕食可以作为抵御可再生能源利润侵蚀的金融“对冲”，尽管这种效应到2040年将消失。最后，我们显示，可再生能源容量增加20%将使欧洲市场平均价格在2030年降低18%，2040年降低32%，而电池储能主要降低价格波动性。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109168">https://doi.org/10.1016/j.ecolecon.2026.109168</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>全球经济的脱钩转型模式：一项多区域结构分解分析</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109180</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109180</guid>
-    <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Waka Nishifuji</dc:creator>
-    <description></description>
-    <category>脱钩分析</category>
-    <category>多区域结构分解</category>
-    <category>全球经济转型</category>
-    <content:encoded><![CDATA[<h2>全球经济的脱钩转型模式：一项多区域结构分解分析</h2>
-<p><em>Decoupling transition patterns in the global economy: A multi-regional structural decomposition analysis</em></p>
-<ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-07-27</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：脱钩分析，多区域结构分解，全球经济转型</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Waka Nishifuji, Shigemi Kagawa</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109180">https://doi.org/10.1016/j.ecolecon.2026.109180</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>有运输中介的资源市场中的保护与农村收入：印度尼西亚苏拉威西蝙蝠肉市场的例子</title>
-    <link>https://doi.org/10.1086/743346</link>
-    <guid isPermaLink="false">https://doi.org/10.1086/743346</guid>
-    <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Jennifer Rushlow</dc:creator>
-    <description></description>
-    <category>野生动物贸易</category>
-    <category>资源市场</category>
-    <category>农村收入</category>
-    <category>保护政策</category>
-    <content:encoded><![CDATA[<h2>有运输中介的资源市场中的保护与农村收入：印度尼西亚苏拉威西蝙蝠肉市场的例子</h2>
-<p><em>Conservation and Rural Revenues from Resource Markets with Transportation Intermediaries: An Example from Bat Meat Markets in Sulawesi, Indonesia</em></p>
-<ul>
-<li><strong>期刊</strong>：Journal of the Association of Environmental and Resource Economists</li>
-<li><strong>日期</strong>：2026-07-27</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：野生动物贸易，资源市场，农村收入，保护政策</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Jennifer Rushlow, Heidi J. Albers, Yasha Feferholtz, Alice Latinne</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1086/743346">https://doi.org/10.1086/743346</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>产前暴露于空气污染与社交情感技能的发展</title>
-    <link>https://doi.org/10.1086/743348</link>
-    <guid isPermaLink="false">https://doi.org/10.1086/743348</guid>
-    <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Beate Thies</dc:creator>
-    <description></description>
-    <category>空气污染</category>
-    <category>产前暴露</category>
-    <category>儿童发展</category>
-    <category>社交情感技能</category>
-    <content:encoded><![CDATA[<h2>产前暴露于空气污染与社交情感技能的发展</h2>
-<p><em>Prenatal Exposure to Air Pollution and the Development of Socio-Emotional Skills</em></p>
-<ul>
-<li><strong>期刊</strong>：Journal of the Association of Environmental and Resource Economists</li>
-<li><strong>日期</strong>：2026-07-27</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：空气污染，产前暴露，儿童发展，社交情感技能</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Beate Thies</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1086/743348">https://doi.org/10.1086/743348</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261467508">https://doi.org/10.1177/01956574261467508</a></li>
 </ul>
 ]]></content:encoded>
   </item>
