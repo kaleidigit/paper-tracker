@@ -7,6 +7,38 @@
     <language>zh-CN</language>
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
-
+  <item>
+    <title>不完全电价预见下智能单向和双向电动汽车的成本节省</title>
+    <link>https://doi.org/10.1177/01956574261462545</link>
+    <guid isPermaLink="false">https://doi.org/10.1177/01956574261462545</guid>
+    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Louisa Wasmeier</dc:creator>
+    <description>智能单向和双向充电的电动汽车（EV）近年来引起了广泛关注，为能源系统提供了巨大的灵活性潜力。经常讨论的一个用例是利用这种灵活性进行套利交易。价格预测在灵活性交易中扮演重要角色，然而许多成本节省分析假设完美预见，并未考虑预测电价的必要性。在本文中，我们开发了一种方法来确定价格预测对电动汽车智能充电成本节省的影响。因此，我们能够评估完美预见假设在多大程度上简化了住宅电动汽车在不同市场上套利交易成本节省</description>
+    <category>电动汽车</category>
+    <category>智能充电</category>
+    <category>电价预测</category>
+    <category>套利交易</category>
+    <category>成本节省</category>
+    <content:encoded><![CDATA[<h2>不完全电价预见下智能单向和双向电动汽车的成本节省</h2>
+<p><em>Cost Savings of Smart Unidirectional and Bidirectional EVs Under Imperfect Foresight of Electricity Prices</em></p>
+<ul>
+<li><strong>期刊</strong>：The Energy Journal</li>
+<li><strong>日期</strong>：2026-08-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：能源经济</li>
+<li><strong>标签</strong>：电动汽车，智能充电，电价预测，套利交易，成本节省</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Louisa Wasmeier¹², Patrick Schmitt¹³</li>
+<li><strong>作者单位</strong>：¹Research Center for Energy Economics；²Fraunhofer Institute for Energy Economics and Energy System Technology；³Technical University of Munich</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>智能单向和双向充电的电动汽车（EV）近年来引起了广泛关注，为能源系统提供了巨大的灵活性潜力。经常讨论的一个用例是利用这种灵活性进行套利交易。价格预测在灵活性交易中扮演重要角色，然而许多成本节省分析假设完美预见，并未考虑预测电价的必要性。在本文中，我们开发了一种方法来确定价格预测对电动汽车智能充电成本节省的影响。因此，我们能够评估完美预见假设在多大程度上简化了住宅电动汽车在不同市场上套利交易成本节省的估计，以及评估不同预测对套利交易的适用性。我们发现，完美预见假设对日前（DA）市场交易成本节省的影响相对较小。相比之下，日内拍卖（IA）交易面临更高的风险。完美预见与预测价格之间的成本节省最大差异出现在DA和IA市场的联合交易中。我们看到不完全预见对双向充电的影响大于对智能单向充电的影响。此外，最适合最大化成本节省的预测不一定是在平均绝对误差（MAE）或均方根误差（RMSE）方面显示预测与实际价格偏差最小的那些预测，而是那些最好地预测价格极值（每日最低值和最高值）的预测。JEL分类：P18，能源；环境；D89，信息与不确定性：其他</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261462545">https://doi.org/10.1177/01956574261462545</a></li>
+</ul>
+]]></content:encoded>
+  </item>
   </channel>
 </rss>
