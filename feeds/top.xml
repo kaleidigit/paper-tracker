@@ -8,1045 +8,930 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/top.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>美洲狮是驾驶员的守护天使</title>
-    <link>https://www.nature.com/articles/d41586-026-02429-0</link>
-    <guid isPermaLink="false">doi:10.1038/d41586-026-02429-0</guid>
+    <title>退役一辆完全可运行的内燃机汽车的气候效益</title>
+    <link>https://www.science.org/doi/abs/10.1126/science.adv5441?af=R</link>
+    <guid isPermaLink="false">doi:10.1126/science.adv5441</guid>
     <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
-    <description>在美洲狮巡逻的地方，车辆撞上鹿的可能性更低。</description>
-    <category>美洲狮</category>
-    <category>鹿</category>
-    <category>道路安全</category>
-    <category>野生动物</category>
-    <category>生态系统服务</category>
-    <content:encoded><![CDATA[<h2>美洲狮是驾驶员的守护天使</h2>
-<p><em>Pumas are drivers’ guardian angels</em></p>
+    <dc:creator>J. Elliott Campbell and Roland Geyer</dc:creator>
+    <description>内燃机（ICE）汽车是大多数美国家庭二氧化碳排放的最大单一来源。尽管纯电动汽车（BEV）大幅减少了使用阶段的排放，但这一转型提出了一个根本性的生命周期优化挑战：在ICE汽车达到使用寿命之前将其退役，是否会产生净气候效益？退役一辆功能完好的ICE汽车，需要在BEV制造排放与车辆运行排放减少之间进行根本性的权衡。在本研究中，我们评估了在多种全面的退役情景下这一权衡，发现报废并更换在大多数情境下都能带来</description>
+    <category>electric vehicle</category>
+    <category>internal combustion engine</category>
+    <category>life cycle assessment</category>
+    <category>scrapping subsidy</category>
+    <category>climate mitigation</category>
+    <content:encoded><![CDATA[<h2>退役一辆完全可运行的内燃机汽车的气候效益</h2>
+<p><em>The climate benefits of retiring a fully operational internal combustion engine vehicle</em></p>
+<ul>
+<li><strong>期刊</strong>：Science</li>
+<li><strong>日期</strong>：2026-08-06</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：SDG-建模组（LCA与足迹分析）；经济学组（气候政策评估）</li>
+<li><strong>标签</strong>：electric vehicle，internal combustion engine，life cycle assessment，scrapping subsidy，climate mitigation</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：J. Elliott Campbell and Roland Geyer</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>内燃机（ICE）汽车是大多数美国家庭二氧化碳排放的最大单一来源。尽管纯电动汽车（BEV）大幅减少了使用阶段的排放，但这一转型提出了一个根本性的生命周期优化挑战：在ICE汽车达到使用寿命之前将其退役，是否会产生净气候效益？退役一辆功能完好的ICE汽车，需要在BEV制造排放与车辆运行排放减少之间进行根本性的权衡。在本研究中，我们评估了在多种全面的退役情景下这一权衡，发现报废并更换在大多数情境下都能带来持续的减排，包括退役新车的情况。尽管在当前市场条件下，报废一项功能完好的资产在经济上仍不可行，但这些结果表明，政策干预（如加强报废补贴）在解决日益耐用的ICE车队的排放问题方面具有巨大的减缓潜力。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1126/science.adv5441</li>
+<li><strong>链接</strong>：<a href="https://www.science.org/doi/abs/10.1126/science.adv5441?af=R">https://www.science.org/doi/abs/10.1126/science.adv5441?af=R</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>变暖引发的火灾和产甲烷作用导致西伯利亚甲烷排放十年翻倍</title>
+    <link>https://www.science.org/doi/abs/10.1126/science.aea5828?af=R</link>
+    <guid isPermaLink="false">doi:10.1126/science.aea5828</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Sihong Zhu</dc:creator>
+    <description>北部永久冻土区储存的碳量是大气中的两倍，且易受加速变暖的影响。永久冻土解冻产生的甲烷排放最终可能导致气候-碳反馈。我们对大气甲烷数据的分析显示，2010年至2023年间，西伯利亚生长季甲烷排放量增加了12.0 ± 1.9太克甲烷（TgCH4）（每年5%）。我们揭示了与高压系统以及显著的海-气-陆相互作用相关的西伯利亚水文对比趋势。东西伯利亚更温暖、更干燥的条件增强了与火灾相关的排放（0.7 ± 0</description>
+    <category>methane emission</category>
+    <category>permafrost</category>
+    <category>wildfire</category>
+    <category>climate feedback</category>
+    <category>atmospheric monitoring</category>
+    <content:encoded><![CDATA[<h2>变暖引发的火灾和产甲烷作用导致西伯利亚甲烷排放十年翻倍</h2>
+<p><em>Decadal doubling of Siberian methane emissions due to warming-induced fires and methanogenesis</em></p>
+<ul>
+<li><strong>期刊</strong>：Science</li>
+<li><strong>日期</strong>：2026-08-06</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（大气污染与空气质量、生态与生物多样性）</li>
+<li><strong>标签</strong>：methane emission，permafrost，wildfire，climate feedback，atmospheric monitoring</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Sihong Zhu, Yi Liu, Paul I. Palmer, Liang Feng, Dongxu Yang, Shangfeng Chen, Motoki Sasakawa, Robert J. Parker, Hartmut Boesch, Junji Cao, Ove Hermansen, Stephen M. Platt</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>北部永久冻土区储存的碳量是大气中的两倍，且易受加速变暖的影响。永久冻土解冻产生的甲烷排放最终可能导致气候-碳反馈。我们对大气甲烷数据的分析显示，2010年至2023年间，西伯利亚生长季甲烷排放量增加了12.0 ± 1.9太克甲烷（TgCH4）（每年5%）。我们揭示了与高压系统以及显著的海-气-陆相互作用相关的西伯利亚水文对比趋势。东西伯利亚更温暖、更干燥的条件增强了与火灾相关的排放（0.7 ± 0.1 TgCH4 年−2），而西西伯利亚更湿润的条件促进了与湿地相关的排放（0.4 ± 0.1 TgCH4 年−2）。温度最大值与排放之间的弱非线性关系表明，到2050年，西伯利亚较高的排放量可能抵消全球甲烷减排目标的约20%，其中东西伯利亚在预计增长中占主导地位。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1126/science.aea5828</li>
+<li><strong>链接</strong>：<a href="https://www.science.org/doi/abs/10.1126/science.aea5828?af=R">https://www.science.org/doi/abs/10.1126/science.aea5828?af=R</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>从源头遏制塑料污染</title>
+    <link>https://www.science.org/doi/abs/10.1126/science.aej6212?af=R</link>
+    <guid isPermaLink="false">doi:10.1126/science.aej6212</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Nelson Rangel-Buitrago</dc:creator>
+    <description>科学，第393卷，6811期，第572页，2026年8月。</description>
+    <category>plastic pollution</category>
+    <category>source reduction</category>
+    <category>plastic waste</category>
+    <content:encoded><![CDATA[<h2>从源头遏制塑料污染</h2>
+<p><em>Curb plastic pollution at its source</em></p>
+<ul>
+<li><strong>期刊</strong>：Science</li>
+<li><strong>日期</strong>：2026-08-06</li>
+<li><strong>类型</strong>：letter</li>
+<li><strong>建议关注</strong>：资源循环组（塑料污染与治理）</li>
+<li><strong>标签</strong>：plastic pollution，source reduction，plastic waste</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Nelson Rangel-Buitrago</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>科学，第393卷，6811期，第572页，2026年8月。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1126/science.aej6212</li>
+<li><strong>链接</strong>：<a href="https://www.science.org/doi/abs/10.1126/science.aej6212?af=R">https://www.science.org/doi/abs/10.1126/science.aej6212?af=R</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>气候极端事件暴露地下水风险</title>
+    <link>https://www.science.org/doi/abs/10.1126/science.aek2112?af=R</link>
+    <guid isPermaLink="false">doi:10.1126/science.aek2112</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Yaqiang Wei and Xinde Cao</dc:creator>
+    <description>本文探讨了气候极端事件（如干旱、洪水）对地下水系统的影响，揭示了地下水面临的风险及其在气候变化背景下的脆弱性。</description>
+    <content:encoded><![CDATA[<h2>气候极端事件暴露地下水风险</h2>
+<p><em>Climate extremes expose groundwater risks</em></p>
+<ul>
+<li><strong>期刊</strong>：Science</li>
+<li><strong>日期</strong>：2026-08-06</li>
+<li><strong>类型</strong>：letter</li>
+<li><strong>建议关注</strong>：未分类</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Yaqiang Wei and Xinde Cao</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>本文探讨了气候极端事件（如干旱、洪水）对地下水系统的影响，揭示了地下水面临的风险及其在气候变化背景下的脆弱性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1126/science.aek2112</li>
+<li><strong>链接</strong>：<a href="https://www.science.org/doi/abs/10.1126/science.aek2112?af=R">https://www.science.org/doi/abs/10.1126/science.aek2112?af=R</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>科学与政策之间的桥梁：IPBES如何重新定义全球保护政策及其社会影响路径</title>
+    <link>https://www.science.org/doi/abs/10.1126/science.aek0207?af=R</link>
+    <guid isPermaLink="false">doi:10.1126/science.aek0207</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Patricia Miloslavich</dc:creator>
+    <description>本文探讨了IPBES（生物多样性和生态系统服务政府间科学政策平台）在整合科学证据与政策制定中的作用，分析了其对全球保护政策的影响以及如何促进社会层面的实施。</description>
+    <content:encoded><![CDATA[<h2>科学与政策之间的桥梁：IPBES如何重新定义全球保护政策及其社会影响路径</h2>
+<p><em>The bridge between science and policy: How IPBES redefined global conservation policy and its path to societal impact</em></p>
+<ul>
+<li><strong>期刊</strong>：Science</li>
+<li><strong>日期</strong>：2026-08-06</li>
+<li><strong>类型</strong>：expert voices</li>
+<li><strong>建议关注</strong>：未分类</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Patricia Miloslavich</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>本文探讨了IPBES（生物多样性和生态系统服务政府间科学政策平台）在整合科学证据与政策制定中的作用，分析了其对全球保护政策的影响以及如何促进社会层面的实施。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1126/science.aek0207</li>
+<li><strong>链接</strong>：<a href="https://www.science.org/doi/abs/10.1126/science.aek0207?af=R">https://www.science.org/doi/abs/10.1126/science.aek0207?af=R</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>热浪已夺走数百万生命：科学家如何统计死亡人数</title>
+    <link>https://www.nature.com/articles/d41586-026-02430-7</link>
+    <guid isPermaLink="false">doi:10.1038/d41586-026-02430-7</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <description>《自然》杂志于2026年8月6日在线发表。两种截然不同的方法被用来估算热浪（如目前袭击亚洲和欧洲部分地区的热浪）造成的死亡人数。</description>
+    <content:encoded><![CDATA[<h2>热浪已夺走数百万生命：科学家如何统计死亡人数</h2>
+<p><em>Heat waves have killed millions. Here’s how scientists tally lives lost</em></p>
 <ul>
 <li><strong>期刊</strong>：Nature</li>
 <li><strong>日期</strong>：2026-08-06</li>
-<li><strong>类型</strong>：research highlight</li>
-<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
-<li><strong>标签</strong>：美洲狮，鹿，道路安全，野生动物，生态系统服务</li>
+<li><strong>类型</strong>：news explainer</li>
+<li><strong>建议关注</strong>：未分类</li>
 </ul>
-<p><strong>中文摘要</strong><br>在美洲狮巡逻的地方，车辆撞上鹿的可能性更低。</p>
+<p><strong>中文摘要</strong><br>《自然》杂志于2026年8月6日在线发表。两种截然不同的方法被用来估算热浪（如目前袭击亚洲和欧洲部分地区的热浪）造成的死亡人数。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：doi:10.1038/d41586-026-02429-0</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/d41586-026-02429-0">https://www.nature.com/articles/d41586-026-02429-0</a></li>
+<li><strong>DOI</strong>：doi:10.1038/d41586-026-02430-7</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/d41586-026-02430-7">https://www.nature.com/articles/d41586-026-02430-7</a></li>
 </ul>
-<p><strong>主图</strong><br><img src="https://media.nature.com/lw1200/magazine-assets/d41586-026-02429-0/d41586-026-02429-0_53058506.jpg" alt=""></p>
+<p><strong>主图</strong><br><img src="https://media.nature.com/lw1200/magazine-assets/d41586-026-02430-7/d41586-026-02430-7_53064170.jpg" alt=""></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>保护生物声学在实现全球生物多样性目标中的作用</title>
-    <link>https://www.nature.com/articles/s44358-026-00189-3</link>
-    <guid isPermaLink="false">doi:10.1038/s44358-026-00189-3</guid>
+    <title>水力性状控制变暖下山地树木的相反范围迁移</title>
+    <link>https://www.nature.com/articles/s41558-026-02726-6</link>
+    <guid isPermaLink="false">doi:10.1038/s41558-026-02726-6</guid>
     <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Santiago Perea</dc:creator>
-    <description>保护生物声学——为生物多样性保护目的而记录和分析动物声音的科学——已成为保护工具包的重要组成部分，其推动力来自于在快速变化的星球上监测物种的日益增长的需求。录音硬件、人工智能以及对动物声音和声景的生态学理解的创新，推动了生物声学研究的前进。在这篇综述中，我们探讨了保护科学使用生物声学和生态声学的主要方式，特别关注昆明-蒙特利尔全球生物多样性框架，该框架需要稳健、可扩展的生物多样性方法来实现其203</description>
-    <category>生物声学</category>
-    <category>生物多样性</category>
-    <category>监测</category>
-    <category>保护</category>
-    <category>昆明-蒙特利尔框架</category>
-    <content:encoded><![CDATA[<h2>保护生物声学在实现全球生物多样性目标中的作用</h2>
-<p><em>The role of conservation bioacoustics in achieving global biodiversity goals</em></p>
+    <dc:creator>Xianliang Zhang</dc:creator>
+    <description>山地树种正因气候变暖而经历加速的海拔范围迁移，然而驱动种间差异的机制仍不清楚。在此我们表明，水力性状可预测山地树木对变暖和干旱的相反生物地理响应。通过整合来自45个物种（121,743株个体）的半球尺度树木年轮学记录、102个物种的海拔范围迁移全球观测数据以及11项功能属性的水力性状数据，我们证明气候敏感物种倾向于迅速追踪变暖向更高海拔迁移，而耐受这些胁迫的类群则可能向下坡扩展。此外，近三分之一的</description>
+    <content:encoded><![CDATA[<h2>水力性状控制变暖下山地树木的相反范围迁移</h2>
+<p><em>Hydraulic traits govern opposing range shifts of montane trees under warming</em></p>
 <ul>
-<li><strong>期刊</strong>：Nature Reviews Biodiversity</li>
+<li><strong>期刊</strong>：Nature Climate Change</li>
+<li><strong>日期</strong>：2026-08-06</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Xianliang Zhang¹², Hongyan Liu³, Rubén D. Manzanedo⁴⁵, Justin T. Maxwell⁶, Loïc D’Orangeville⁷, Mingchao Du¹, Tim Rademacher⁸</li>
+<li><strong>作者单位</strong>：¹College of Forestry, Hebei Agricultural University, Baoding, China；²Faculty of Forestry, University of British Columbia, Vancouver, Canada；³State Key Laboratory of Vegetation Structure, Function and Construction (VegLab), College of Urban and Environmental Sciences, Peking University, Beijing, China；⁴Forest Ecology Lab, Institute of Plant Sciences, University of Bern, Bern, Switzerland；⁵Oeschger Centre for Climate Change Research, University of Bern, Bern, Switzerland；⁶Department of Geography, Indiana University, Bloomington, USA；⁷Faculty of Forestry, Geography and Geomatics, Laval University, Quebec, Canada；⁸Proctor Maple Research Center, University of Vermont, Burlington, USA</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>山地树种正因气候变暖而经历加速的海拔范围迁移，然而驱动种间差异的机制仍不清楚。在此我们表明，水力性状可预测山地树木对变暖和干旱的相反生物地理响应。通过整合来自45个物种（121,743株个体）的半球尺度树木年轮学记录、102个物种的海拔范围迁移全球观测数据以及11项功能属性的水力性状数据，我们证明气候敏感物种倾向于迅速追踪变暖向更高海拔迁移，而耐受这些胁迫的类群则可能向下坡扩展。此外，近三分之一的物种其干旱敏感性的海拔依赖性随时间发生变化，揭示了山地梯度上气候-生长关系的动态重组。这些发现确立了叶片和茎水平的水力性状作为范围动态的基本预测因子，为预测持续气候变化下山地森林的重组提供了机制基础。作者将树木年轮学记录与范围迁移相结合，表明山地树种的范围迁移与树木水力特性紧密相关。气候敏感物种追踪变暖向高海拔迁移，而抗逆物种则向下坡扩展。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s41558-026-02726-6</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41558-026-02726-6">https://www.nature.com/articles/s41558-026-02726-6</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41558-026-02726-6/MediaObjects/41558_2026_2726_Fig1_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>负排放下北冰洋酸化的持续性</title>
+    <link>https://www.nature.com/articles/s41558-026-02715-9</link>
+    <guid isPermaLink="false">doi:10.1038/s41558-026-02715-9</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Eike E. Köhn</dc:creator>
+    <description>尽管二氧化碳（CO2）的净负排放对于实现气候目标至关重要，但关于大气CO2水平下降将如何影响海洋酸化，人们知之甚少。本文通过分析八个地球系统模型在CO2水平先升后降情景下的模拟结果，考察了酸度（[H+]）和对文石的腐蚀性（ΩArag），发现北冰洋是海洋酸化延迟可逆性的热点区域。在CO2下降期间，北冰洋表层水仍相对更酸，且文石腐蚀性条件（ΩArag &lt; 1）持续存在，直到大气CO2降至比其最初在CO</description>
+    <content:encoded><![CDATA[<h2>负排放下北冰洋酸化的持续性</h2>
+<p><em>Persistence of Arctic Ocean acidification under negative emissions</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Climate Change</li>
+<li><strong>日期</strong>：2026-08-06</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Eike E. Köhn¹, Lester Kwiatkowski¹, Juliette Mignot¹, Guillaume Gastineau¹, Olivier Torres², James C. Orr³</li>
+<li><strong>作者单位</strong>：¹LOCEAN-IPSL, Laboratoire d’Océanographie et du Climat: Expérimentations et Approches Numériques, Sorbonne Université-CNRS-IRD-MNHN, Paris, France；²LMD-IPSL, Laboratoire de Météorologie Dynamique, Ecole Normale Supérieure/Université Paris Sciences et Lettres, CNRS, Ecole Polytechnique, Sorbonne Université, Paris, France；³LSCE-IPSL, Laboratoire des Science du Climat et de l’Environnement, CEA-CNRS-UVSQ, CEA Saclay, Gif-sur-Yvette, France</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>尽管二氧化碳（CO2）的净负排放对于实现气候目标至关重要，但关于大气CO2水平下降将如何影响海洋酸化，人们知之甚少。本文通过分析八个地球系统模型在CO2水平先升后降情景下的模拟结果，考察了酸度（[H+]）和对文石的腐蚀性（ΩArag），发现北冰洋是海洋酸化延迟可逆性的热点区域。在CO2下降期间，北冰洋表层水仍相对更酸，且文石腐蚀性条件（ΩArag &lt; 1）持续存在，直到大气CO2降至比其最初在CO2上升期间出现该条件时的阈值低约120 ppm的水平。这种滞后现象源于自然表层溶解无机碳亏损的侵蚀，该亏损最初由海冰限制海气气体交换所维持，而在CO2下降期间海冰恢复时并未完全恢复。因此，北冰洋不仅经历最严重的酸化，而且从负排放中获益也最晚。地球系统的变化可能在大气CO2水平下降后长期持续。本研究考察了海洋酸化及其在全球海洋区域中的持续性，并确定北冰洋是在负排放下最晚摆脱酸化的区域。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s41558-026-02715-9</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41558-026-02715-9">https://www.nature.com/articles/s41558-026-02715-9</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41558-026-02715-9/MediaObjects/41558_2026_2715_Fig1_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>全球土壤微生物遗传资源图谱揭示保护缺口</title>
+    <link>https://www.nature.com/articles/s41893-026-01914-8</link>
+    <guid isPermaLink="false">doi:10.1038/s41893-026-01914-8</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Kunkun Fan</dc:creator>
+    <description>土壤微生物组蕴藏着重要的遗传资源，包括基因丰富度和基因相异度，后者是衡量土壤微生物组基因库多样性和独特性程度的指标。这些遗传资源支撑着关键的微生物性状和酶谱，进而支持陆地生态系统的功能，包括养分循环、植物生产力和土壤健康。尽管它们很重要，但这些资源的全球格局和保护状况仍然不清楚。在这里，我们汇编了1609个土壤宏基因组，以绘制微生物功能基因丰富度和相异度的全球格局。基因相异度热点集中在热带地区，而</description>
+    <content:encoded><![CDATA[<h2>全球土壤微生物遗传资源图谱揭示保护缺口</h2>
+<p><em>A global atlas of soil microbial genetic resources exposes protection shortfalls</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Sustainability</li>
+<li><strong>日期</strong>：2026-08-06</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Kunkun Fan¹², Tadeo Sáez-Sandino³, Fernando T. Maestre⁴, Haiyan Chu¹², David J. Eldridge⁵, Antonio Gallardo⁶, Bin Ma⁷⁸, Jianming Xu⁷⁸, Yuzhuo Zhao⁷⁸, Chao Xiong³⁹, Emilio Guirado¹⁰, Nicolas Gross¹¹, Yoann Le Bagousse-Pinguet¹², Victoria Ochoa¹³, Miguel García-Gómez¹⁴, Enrique Valencia¹⁵, Juan J. Gaitán¹⁶¹⁷, Sergio Asensio¹⁸, Betty Josefina Mendoza¹⁹, Jaime Martínez-Valderrama¹⁰, Beatriz Gózalo²⁰, Juntao Wang³⁹, Jinsong Liang²¹, Samantha K. Travers⁵, Lauchlan H. Fraser²², Jay Singh²², Alex Fajardo²³²⁴²⁵, Juan P. Mora²⁶, Carlos Ivan Espinosa²⁷, Elizabeth Gusmán-Montalván²⁷, Orsolya Valkó²⁸, Balázs Deák²⁸, Eli Zaady²⁹, Bazartseren Boldgiv³⁰, Batdelger Erdenetsetseg³⁰, Niels Blaum³¹, Katja Geissler³¹³², Lixin Wang³³, Gillian Maggs-Kölling³⁴³⁵, Eugene Marais³⁴, Pierre Liancourt³⁶³⁷³⁸, Jorge Durán³⁹, Alexandra Rodríguez³⁹, Alice Nunes⁴⁰, Cristina Branquinho⁴⁰, Peter C. le Roux⁴¹, Michelle A. Louw⁴¹, Anja Linstädter³², Frances Siebert³⁵, Thulani Makhalanyane⁴², Girish R. Nair⁴², Jan Ruppert³⁷, Anthony Swemmer⁴³, Gerardo Moreno⁴⁴, María Vivas⁴⁴, Yolanda Pueyo⁴⁵, Ana Foronda⁴⁵, Pedro J. Rey⁴⁶, Antonio Manzaneda¹³⁴⁶, Matthew Bowker⁴⁷⁴⁸, Anthony Darrouzet-Nardi⁴⁹, Heather L. Throop⁵⁰⁵¹, Asunción de los Ríos⁵², José Luis Blanco Pastor⁵³, Tina Unuk Nahberger⁵⁴, Tine Grebenc⁵⁴, Miguel Berdugo⁵⁵, César Plaza⁵⁶⁵⁷, Ana Rey⁵⁸, Stephen C. Hart⁵⁹, Fernando Alfaro⁶⁰, Sebastian Abades⁶¹, Sigrid Neuhauser⁶², Mark A. Williams⁶³, Asmeret A. Berhe⁵⁹, Daniel Montesinos⁶⁴⁶⁵⁶⁶, Petr Macek⁶⁷⁶⁸, Lauri Laanisto⁶⁸, Miriam Muñoz-Rojas⁶⁹, Raúl Román⁷⁰⁷¹, Borja Rodriguez Lozano⁷², Brajesh K. Singh⁹, Manuel Delgado-Baquerizo⁶⁹</li>
+<li><strong>作者单位</strong>：¹State Key Laboratory of Soil and Sustainable Agriculture, Institute of Soil Science, Chinese Academy of Sciences, Nanjing, China；²University of Chinese Academy of Sciences, Beijing, China；³Hawkesbury Institute for the Environment, Western Sydney University, Sydney, Australia；⁴Environmental Science and Engineering, Biological and Environmental Science and Engineering Division, King Abdullah University of Science and Technology, Thuwal, Kingdom of Saudi Arabia；⁵Centre for Ecosystem Science, School of Biological, Earth and Environmental Sciences, University of New South Wales, Sydney, Australia；⁶Departamento de Sistemas Físicos, Químicos y Naturales, Universidad Pablo de Olavide, Seville, Spain；⁷State Key Laboratory of Soil Pollution Control and Safety, Zhejiang University, Hangzhou, China；⁸Zhejiang Provincial Key Laboratory of Agricultural, Resources and Environment, College of Environmental and Resource Sciences, Zhejiang University, Hangzhou, China；⁹School of Agriculture and Environment, UWA Institute of Agriculture University of Western Australia, Crawley, Australia；¹⁰Estación Experimental de Zonas Áridas, Consejo Superior de Investigaciones Científicas, Almería, Spain；¹¹Unité Mixte de Recherche Ecosystème Prairial, Université Clermont Auvergne, INRAE, VetAgro Sup, Clermont-Ferrand, France；¹²Aix Marseille Univ, CNRS, Avignon Université, IRD, IMBE, Aix-en-Provence, France；¹³Instituto Universitario de Investigación en el Olivar y Aceites de Oliva-INUO, Universidad de Jaén, Jaen, Spain；¹⁴Departamento de Ingeniería y Morfología del Terreno, Escuela Técnica Superior de Ingenieros de Caminos, Canales y Puertos, Universidad Politécnica de Madrid, Madrid, Spain；¹⁵Department of Biodiversity, Ecology and Evolution, Faculty of Biology, Universidad Complutense de Madrid, Madrid, Spain；¹⁶Department of Technology, National University of Luján, Lujan, Argentina；¹⁷National Research Council of Argentina (CONICET), Buenos Aires, Argentina；¹⁸Grupo de Ecoloxía Animal (GEA), Universidade de Vigo, Vigo, Spain；¹⁹Departamento de Biología y Geología, Física y Química Inorgánica, Universidad Rey Juan Carlos, Mostoles, Spain；²⁰Instituto Multidisciplinar para el Estudio del Medio ‘Ramón Margalef’, Universidad de Alicante, Alicante, Spain；²¹School of Eco-Environment, Harbin Institute of Technology, Shenzhen, China；²²Department of Natural Resource Sciences, Thompson Rivers University, Kamloops, Canada；²³Dirección de Investigación, Vicerrectoría Académica, Universidad de Talca, Talca, Chile；²⁴Instituto de Ecología y Biodiversidad (IEB), Nunoa, Chile；²⁵Millenium Nucleus of Patagonian Limit-of-Life (LiLi), Valdivia, Chile；²⁶Doctoral Program in Sciences mention in Plant Biology and Biotechnology, Institute of Biological Sciences, Campus Talca, Universidad de Talca, Talca, Chile；²⁷Laboratorio de Ecología Tropical y Servicios Ecosistémicos-EcoSs Lab, Departamento de Ciencias Biológicas y Agropecuarias, Universidad Técnica Particular de Loja-Ecuador, Loja, Ecuador；²⁸Lendület Seed Ecology Research Group, Institute of Ecology and Botany, HUN-REN Centre for Ecological Research, Vacratot, Hungary；²⁹Katif R&amp;D Center, Ministry of Innovation, Science and Technology and The Kaye Academic College, Beer Sheva, Israel；³⁰Department of Biology, School of Arts and Sciences, National University of Mongolia, Ulaanbaatar, Mongolia；³¹Department of Plant Ecology and Nature Conservation, University of Potsdam, Potsdam, Germany；³²Department of Biodiversity Research and Systematic Botany, University of Potsdam, Potsdam, Germany；³³Department of Earth and Environmental Sciences, Indiana University Indianapolis, Indianapolis, USA；³⁴Gobabeb-Namib Research Institute, Walvis Bay, Namibia；³⁵Unit for Environmental Sciences and Management, North-West University, Potchefstroom, South Africa；³⁶State Museum of Natural History Stuttgart, Stuttgart, Germany；³⁷Plant Ecology Group, University of Tübingen, Tubingen, Germany；³⁸KomBioTa—Center for Biodiversity and Integrative Taxonomy, University of Hohenheim and State Museum of Natural History, Stuttgart, Germany；³⁹Misión Biológica de Galicia, Consejo Superior de Investigaciones Científicas, Pontevedra, Spain；⁴⁰cE3c—Centre for Ecology, Evolution and Environmental Changes and CHANGE—Global Change and Sustainability Institute, Faculdade de Ciências, Universidade de Lisboa, Lisbon, Portugal；⁴¹Department of Plant and Soil Sciences, University of Pretoria, Pretoria, South Africa；⁴²Department of Microbiology, Faculty of Science, Stellenbosch University, Stellenbosch, South Africa；⁴³South African Environmental Observation Network (SAEON), Phalaborwa, South Africa；⁴⁴Forest Research Group, INDEHESA, University of Extremadura, Plasencia, Spain；⁴⁵Instituto Pirenaico de Ecología (IPE), CSIC, Zaragoza, Spain；⁴⁶Departamento de Biología Animal, Biología Vegetal y Ecología, Universidad de Jaén, Jaen, Spain；⁴⁷Center for Ecosystem Science and Society, Northern Arizona University, Flagstaff, USA；⁴⁸School of Forestry, Northern Arizona University, Flagstaff, USA；⁴⁹University of Texas at El Paso, Department of Biological Sciences, El Paso, USA；⁵⁰School of Earth and Space Exploration, Arizona State University, Tempe, USA；⁵¹School of Life Sciences, Arizona State University, Tempe, USA；⁵²Department of Biogeochemistry and Microbial Ecology, Museo Nacional de Ciencias Naturales, CSIC, Madrid, Spain；⁵³Departamento de Biología, Instituto de Investigación Vitivinícola y Agroalimentaria (IVAGRO), Campus de Excelencia Internacional Agroalimentario (ceiA3), Universidad de Cádiz, Puerto Real, Spain；⁵⁴Department of Forest Physiology and Genetics, Slovenian Forestry Institute, Ljubljana, Slovenia；⁵⁵Departamento de Biodiversidad, Ecología y Evolución, Facultad de Ciencias Biológicas, Universidad Complutense de Madrid, Madrid, Spain；⁵⁶Instituto de Ciencias Agrarias, Consejo Superior de Investigaciones Científicas, Madrid, Spain；⁵⁷Department of Agricultural and Food Chemistry, Faculty of Sciences, Universidad Autónoma de Madrid, Madrid, Spain；⁵⁸Museo Nacional de Ciencias Naturales, Consejo Superior de Investigaciones Científicas, Madrid, Spain；⁵⁹Department of Life and Environmental Sciences and Sierra Nevada Research Institute, University of California Merced, Merced, USA；⁶⁰GEMA Center for Genomics, Ecology and Environment, Universidad Mayor, Santiago, Chile；⁶¹Líneas de Base Públicas, Ministerio del Medio Ambiente, Gobierno de Chile, Santiago, Chile；⁶²Institut für Mikrobiologie, Universität Innsbruck, Innsbruck, Austria；⁶³Department of Plant, Soil and Microbial Sciences, Michigan State University, East Lansing, USA；⁶⁴Australian Tropical Herbarium, James Cook University, Cairns, Australia；⁶⁵College of Science and Engineering, James Cook University, Cairns, Australia；⁶⁶Centre for Functional Ecology, Department of Life Sciences, University of Coimbra, Coimbra, Portugal；⁶⁷Institute of Hydrobiology, Biology Centre of the Czech Academy of Sciences, Ceske Budejovice, Czech Republic；⁶⁸Chair of Biodiversity and Nature Tourism, Institute of Agricultural and Environmental Sciences, Estonian University of Life Sciences, Tartu, Estonia；⁶⁹Laboratorio de Biodiversidad y Funcionamiento Ecosistémico, Instituto de Recursos Naturales y Agrobiología de Sevilla (IRNAS) CSIC, Seville, Spain；⁷⁰School of Life Sciences, University of Nevada, Las Vegas, USA；⁷¹Department of Agronomy, University of Almería, Almería, Spain；⁷²Centre for Applied Ecology ‘Prof. Baeta Neves’ (CEABN‑InBIO), School of Agriculture, University of Lisbon, Lisbon, Portugal</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>土壤微生物组蕴藏着重要的遗传资源，包括基因丰富度和基因相异度，后者是衡量土壤微生物组基因库多样性和独特性程度的指标。这些遗传资源支撑着关键的微生物性状和酶谱，进而支持陆地生态系统的功能，包括养分循环、植物生产力和土壤健康。尽管它们很重要，但这些资源的全球格局和保护状况仍然不清楚。在这里，我们汇编了1609个土壤宏基因组，以绘制微生物功能基因丰富度和相异度的全球格局。基因相异度热点集中在热带地区，而基因丰富度热点分布更为广泛。同时具备高丰富度和高相异度的区域很少，仅占地球陆地表面的5.5%，而旱地则成为微生物性状和酶谱的突出热点。土壤微生物遗传资源的热点中，只有不到25%位于指定保护区。值得注意的是，土壤微生物功能谱的全球格局与细菌和真菌的分类学多样性格局在很大程度上脱节，这表明基于分类群的保护政策可能无法充分保护地下遗传资源。我们的工作为将土壤微生物遗传资源纳入全球生物多样性目标和保护区规划提供了可操作的基线。土壤微生物组蕴藏着多样的遗传资源，这些资源支撑着其提供关键生态系统服务（例如养分循环）的能力。在这里，作者根据1609个土壤宏基因组绘制了土壤微生物遗传资源的全球热点图，为这些资源的保护提供了可操作的目标。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s41893-026-01914-8</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41893-026-01914-8">https://www.nature.com/articles/s41893-026-01914-8</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41893-026-01914-8/MediaObjects/41893_2026_1914_Fig1_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>负责任地使用人工智能和机器学习用于粮食安全早期预警系统</title>
+    <link>https://www.nature.com/articles/s43016-026-01400-6</link>
+    <guid isPermaLink="false">doi:10.1038/s43016-026-01400-6</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Weston Anderson</dc:creator>
+    <description>人工智能和机器学习已经在通过改进数据收集、事件监测和预测来增强粮食安全早期预警系统。然而，为避免代价高昂的错误，人工智能和机器学习应在专家监督、健全治理和透明实践的指导下选择性应用，以维持负责任且有效的人道主义决策。</description>
+    <category>AI</category>
+    <category>food security</category>
+    <category>early warning system</category>
+    <content:encoded><![CDATA[<h2>负责任地使用人工智能和机器学习用于粮食安全早期预警系统</h2>
+<p><em>Responsible use of artificial intelligence and machine learning for food security early warning systems</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Food</li>
+<li><strong>日期</strong>：2026-08-06</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：未分类</li>
+<li><strong>标签</strong>：AI，food security，early warning system</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Weston Anderson¹, Inbal Becker-Reshef¹²³, Nicholas Bodanac⁴, Bia Carneiro⁵, Dave English⁶, Andrew Hoell⁷, Tim Hoffine⁸, YanYan Liu⁹, Mélissande Machefer¹⁰, Michele Meroni¹¹, Clionadh Raleigh¹², Andrew J. Tatem¹³, Robert Trigwell², Paola Vesco¹⁴, Rob Vos⁹</li>
+<li><strong>作者单位</strong>：¹Department of Geographical Sciences, University of Maryland, College Park, USA；²AI for Good Lab, Microsoft, Strasbourg, France；³University of Strasbourg, Strasbourg, France；⁴International Organization for Migration, Geneva, Switzerland；⁵Bioversity International, Coimbra, Portugal；⁶American Institutes for Research, Arlington, USA；⁷Physical Sciences Laboratory, National Oceanic and Atmospheric Administration, Boulder, USA；⁸FEWS NET Decision Support Team, Chemonics International, Washington, DC, USA；⁹International Food Policy Research Institute, Washington, DC, USA；¹⁰Joint Research Centre, European Commission, Ispra, Italy；¹¹Seidor Consulting, Barcelona, Spain；¹²School of Global Studies, University of Sussex, Brighton, UK；¹³WorldPop, School of Geography and Environmental Science, University of Southampton, Southampton, UK；¹⁴Peace Research Institute Oslo, Oslo, Norway</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>人工智能和机器学习已经在通过改进数据收集、事件监测和预测来增强粮食安全早期预警系统。然而，为避免代价高昂的错误，人工智能和机器学习应在专家监督、健全治理和透明实践的指导下选择性应用，以维持负责任且有效的人道主义决策。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s43016-026-01400-6</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s43016-026-01400-6">https://www.nature.com/articles/s43016-026-01400-6</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs43016-026-01400-6/MediaObjects/43016_2026_1400_Fig1_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>高分辨率碳与生物多样性制图显示空间和农产品上的相关损失</title>
+    <link>https://www.nature.com/articles/s43016-026-01387-0</link>
+    <guid isPermaLink="false">doi:10.1038/s43016-026-01387-0</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Baoxiao Liu</dc:creator>
+    <description>碳储存和生物多样性受到粮食系统的严重影响。在此，我们以高空间和产品分辨率绘制并追踪全球农业供应链中土地利用导致的长期碳储存和生物多样性损失。我们发现，虽然北半球的碳损失更大，南半球的生物多样性损失更高，但碳和生物多样性损失高的地区往往位于同一地点，总损失的三分之二发生在总面积的三分之一内。食物消费导致了83%的损失，其中动物源性食品导致了59%的碳损失和71%的生物多样性损失。牛肉和牛奶占碳损失的</description>
+    <category>agricultural supply chain</category>
+    <category>carbon storage</category>
+    <category>biodiversity loss</category>
+    <category>land use</category>
+    <category>trade</category>
+    <category>food system</category>
+    <content:encoded><![CDATA[<h2>高分辨率碳与生物多样性制图显示空间和农产品上的相关损失</h2>
+<p><em>High-resolution carbon and biodiversity mapping shows correlated losses across space and agricultural products</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Food</li>
+<li><strong>日期</strong>：2026-08-06</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性、土地利用与农业）；SDG-建模组（LCA与足迹分析）；经济学组（贸易与环境）</li>
+<li><strong>标签</strong>：agricultural supply chain，carbon storage，biodiversity loss，land use，trade，food system</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Baoxiao Liu¹, Paul Behrens¹², Zhongxiao Sun³, Laura Scherer¹</li>
+<li><strong>作者单位</strong>：¹Institute of Environmental Sciences (CML), Leiden University, Leiden, the Netherlands；²Oxford Martin School, University of Oxford, Oxford, UK；³College of Land Science and Technology, China Agricultural University, Beijing, China</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>碳储存和生物多样性受到粮食系统的严重影响。在此，我们以高空间和产品分辨率绘制并追踪全球农业供应链中土地利用导致的长期碳储存和生物多样性损失。我们发现，虽然北半球的碳损失更大，南半球的生物多样性损失更高，但碳和生物多样性损失高的地区往往位于同一地点，总损失的三分之二发生在总面积的三分之一内。食物消费导致了83%的损失，其中动物源性食品导致了59%的碳损失和71%的生物多样性损失。牛肉和牛奶占碳损失的29%和生物多样性损失的41%。巴西是这两种损失的全球最大净出口国，中国是最大的净进口国，在这两种情况下，动物产品都是主要流向。针对高影响区域和产品的供需干预措施为气候和生物多样性政策的联合努力提供了机会。粮食系统对碳储存和生物多样性产生重大影响，食物消费导致农业用地五分之四的损失，特别是通过动物源性食品。针对高影响区域和产品的有针对性的干预措施为综合气候和生物多样性政策提供了机会。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：doi:10.1038/s43016-026-01387-0</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s43016-026-01387-0">https://www.nature.com/articles/s43016-026-01387-0</a></li>
+</ul>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs43016-026-01387-0/MediaObjects/43016_2026_1387_Fig1_HTML.png" alt=""></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>通过第一性原理框架推进锂分离与回收</title>
+    <link>https://www.nature.com/articles/s44359-026-00204-y</link>
+    <guid isPermaLink="false">doi:10.1038/s44359-026-00204-y</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Hongxu Chen</dc:creator>
+    <description>选择性锂分离与回收受限于低品质、成分多变的资源中的传输、去溶剂化能量学和相变。在本综述中，我们考察了锂的独特属性如何控制其在化学复杂环境和分离介质中的行为，并描述了利用这些属性实现更有效锂回收的机会。离子尺寸和电荷密度、水合结构和动力学、去溶剂化能量学、结合特异性以及化合物相行为通过决定离子-电荷和离子-溶剂相互作用、界面演化、传输现象和相偏好，并控制热力学和动力学过程，从而影响锂分离。这些属性和</description>
+    <category>lithium</category>
+    <category>separation</category>
+    <category>recovery</category>
+    <content:encoded><![CDATA[<h2>通过第一性原理框架推进锂分离与回收</h2>
+<p><em>Advancing lithium separation and recovery through first-principles frameworks</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Reviews Clean Technology</li>
 <li><strong>日期</strong>：2026-08-06</li>
 <li><strong>类型</strong>：review</li>
-<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
-<li><strong>标签</strong>：生物声学，生物多样性，监测，保护，昆明-蒙特利尔框架</li>
+<li><strong>建议关注</strong>：未分类</li>
+<li><strong>标签</strong>：lithium，separation，recovery</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Santiago Perea¹, Tessa A. Rhinehart², Léa Bouffaut³⁴, Marcelo Araya-Salas⁵, Isla K. Davidson³⁴, Luisa F. Arcila-Pérez⁶, Justin Kitzes², Zuzana Buřivalová¹</li>
-<li><strong>作者单位</strong>：¹The Nelson Institute for Environmental Studies and Department of Forest and Wildlife Ecology, University of Wisconsin-Madison, Madison, USA；²Department of Biological Sciences, University of Pittsburgh, Pittsburgh, USA；³K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology, Cornell University, New York, USA；⁴Cornell Lab of Ornithology, Cornell University, New York, USA；⁵Escuela de Biología and Centro de Investigación en Neurociencias, Universidad de Costa Rica, San José, Costa Rica；⁶Departamento de Ciencias Biológicas, Universidad de los Andes, Bogotá, Colombia</li>
+<li><strong>作者</strong>：Hongxu Chen¹², Meiqi Yang¹², Sunxiang Zheng¹², Ryan S. Kingsbury¹², Aashish S. Khandelwal¹², Rodney D. Priestley³, Zhiyong Jason Ren¹²</li>
+<li><strong>作者单位</strong>：¹Department of Civil and Environmental Engineering, Princeton University, Princeton, USA；²Andlinger Center for Energy and the Environment, Princeton University, Princeton, USA；³Department of Chemical and Biological Engineering, Princeton University, Princeton, USA</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>保护生物声学——为生物多样性保护目的而记录和分析动物声音的科学——已成为保护工具包的重要组成部分，其推动力来自于在快速变化的星球上监测物种的日益增长的需求。录音硬件、人工智能以及对动物声音和声景的生态学理解的创新，推动了生物声学研究的前进。在这篇综述中，我们探讨了保护科学使用生物声学和生态声学的主要方式，特别关注昆明-蒙特利尔全球生物多样性框架，该框架需要稳健、可扩展的生物多样性方法来实现其2030年目标。我们审查了在野外和分析过程中评估声学数据在保护科学中证据强度的主要考虑因素。本综述使保护科学家和实践者能够了解保护生物声学是否适合特定需求、它将产生什么样的结果以及存在何种不确定性。随着保护工作的全球化，涉及多样化的合作伙伴、更大的投资和对影响的宣称，生物多样性影响的证据需要在不同生态系统和地区之间具有外部可验证性和可比性。理解生物声学何时以及如何提供这种证据，对于保护工作的负责任采用至关重要。动物声音可以被记录和分析，以帮助获得生态学见解并为保护决策提供信息。在这篇综述中，Perea、Burivalova及其同事概述了保护生物声学如何帮助实现昆明-蒙特利尔全球生物多样性框架的2030年目标。</p>
+</details><p><strong>中文摘要</strong><br>选择性锂分离与回收受限于低品质、成分多变的资源中的传输、去溶剂化能量学和相变。在本综述中，我们考察了锂的独特属性如何控制其在化学复杂环境和分离介质中的行为，并描述了利用这些属性实现更有效锂回收的机会。离子尺寸和电荷密度、水合结构和动力学、去溶剂化能量学、结合特异性以及化合物相行为通过决定离子-电荷和离子-溶剂相互作用、界面演化、传输现象和相偏好，并控制热力学和动力学过程，从而影响锂分离。这些属性和过程共同与现有技术中观察到的性能限制相关，包括选择性-吞吐量权衡和在实际杂质负载下的稳定性约束。属性匹配方法可用于将材料描述符与锂特异性属性对齐，对比放大策略可放大锂与共存离子之间的差异，机制耦合可整合互补的分离步骤，为材料开发和工艺架构提供信息，在迅速扩大的全球需求下，为主资源和回收资源中稳健、可扩展和资源高效的锂回收勾勒路径。锂提取对于满足日益增长的需求是必要的，但将锂与共存元素分离可能很困难。本综述将锂离子和化合物的性质与其在分离过程中的行为联系起来，并推荐利用这些性质进行高效提取的方法。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：doi:10.1038/s44358-026-00189-3</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s44358-026-00189-3">https://www.nature.com/articles/s44358-026-00189-3</a></li>
+<li><strong>DOI</strong>：doi:10.1038/s44359-026-00204-y</li>
+<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s44359-026-00204-y">https://www.nature.com/articles/s44359-026-00204-y</a></li>
 </ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs44358-026-00189-3/MediaObjects/44358_2026_189_Fig1_HTML.png" alt=""></p>
+<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs44359-026-00204-y/MediaObjects/44359_2026_204_Fig1_HTML.png" alt=""></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>在气候变化下监测欧洲森林</title>
-    <link>https://www.nature.com/articles/s41561-026-02037-7</link>
-    <guid isPermaLink="false">doi:10.1038/s41561-026-02037-7</guid>
+    <title>种族经济集中度预测美国风暴相关伤亡（2005-2022）</title>
+    <link>https://doi.org/10.1038/s41467-026-76111-4</link>
+    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-76111-4</guid>
     <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Mirco Migliavacca</dc:creator>
-    <description>欧盟的气候目标依赖森林作为碳汇。遥感数据显示生物量损失加速，并区分了采伐和自然干扰的贡献，有助于更好地为森林政策和气候行动提供信息。</description>
-    <category>森林</category>
-    <category>碳汇</category>
-    <category>遥感</category>
-    <category>生物量</category>
-    <category>气候变化</category>
-    <category>欧洲</category>
-    <content:encoded><![CDATA[<h2>在气候变化下监测欧洲森林</h2>
-<p><em>Monitoring Europe’s forests in a changing climate</em></p>
+    <dc:creator>Jason T. H. Cheung</dc:creator>
+    <description></description>
+    <category>风暴伤亡</category>
+    <category>种族经济集中度</category>
+    <category>气候脆弱性</category>
+    <category>美国</category>
+    <category>社会不平等</category>
+    <content:encoded><![CDATA[<h2>种族经济集中度预测美国风暴相关伤亡（2005-2022）</h2>
+<p><em>Racialized economic concentration predicts storm-related injuries and deaths in the United States, 2005–2022</em></p>
 <ul>
-<li><strong>期刊</strong>：Nature Geoscience</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：editorial</li>
-<li><strong>建议关注</strong>：油气-电力组（碳管理与CCUS）；矿产生态组（生态与生物多样性）</li>
-<li><strong>标签</strong>：森林，碳汇，遥感，生物量，气候变化，欧洲</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Mirco Migliavacca¹, Alessandro Cescatti¹</li>
-<li><strong>作者单位</strong>：¹European Commission, Joint Research Centre (JRC), Ispra, Italy</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>欧盟的气候目标依赖森林作为碳汇。遥感数据显示生物量损失加速，并区分了采伐和自然干扰的贡献，有助于更好地为森林政策和气候行动提供信息。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：doi:10.1038/s41561-026-02037-7</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41561-026-02037-7">https://www.nature.com/articles/s41561-026-02037-7</a></li>
-</ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41561-026-02037-7/MediaObjects/41561_2026_2037_Fig1_HTML.png" alt=""></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>北极云凝结核增强：碘、硫和有机前体物的作用</title>
-    <link>https://www.nature.com/articles/s41561-026-02062-6</link>
-    <guid isPermaLink="false">doi:10.1038/s41561-026-02062-6</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Mao Du</dc:creator>
-    <description>新粒子形成是北极大气颗粒物和云凝结核的重要来源，但其前体来源和分子级机制仍知之甚少。本文报告了2022年5月19日至6月26日从格陵兰东南部到西部以及进入戴维斯海峡边缘海冰区的综合船基观测，旨在研究控制大气颗粒物和云凝结核的来源和过程。我们的观测提供了频繁成核事件的现场证据，这些事件由最近实验室研究确定的多组分碘含氧酸和硫酸机制驱动。在13个成核日中的8天，新形成的颗粒迅速增长超过20纳米，主要由</description>
-    <category>大气气溶胶</category>
-    <category>新粒子形成</category>
-    <category>云凝结核</category>
-    <category>北极</category>
-    <category>海冰区</category>
-    <content:encoded><![CDATA[<h2>北极云凝结核增强：碘、硫和有机前体物的作用</h2>
-<p><em>Arctic cloud condensation nuclei enhanced by iodine, sulfur and organic precursors</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Geoscience</li>
+<li><strong>期刊</strong>：Nature Communications</li>
 <li><strong>日期</strong>：2026-08-05</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：矿产生态组（大气污染与空气质量）</li>
-<li><strong>标签</strong>：大气气溶胶，新粒子形成，云凝结核，北极，海冰区</li>
+<li><strong>建议关注</strong>：经济学组（气候政策评估）</li>
+<li><strong>标签</strong>：风暴伤亡，种族经济集中度，气候脆弱性，美国，社会不平等</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Mao Du¹, James Brean¹, Douglas R. Worsnop²³, Congbo Song¹⁴, Yangmei Zhang⁵, Vipul Lal Chandani¹, Deepchandra Srivastava¹, David C. S. Beddows¹, W. Joe F. Acton¹, Darrel Baumgardner⁶, Jo Browse⁷, Anna B. Callaghan⁸, Manjula Canagaratna³, Yuqing Dai¹, Pete M. Edwards⁸⁹, Jingkun Jiang¹⁰, Thomas M. Jordan¹¹, James D. Lee⁸⁹, Roberto Sommariva¹, Harald Stark³¹², Mark D. Tarn¹³, Loren G. Temple⁸, Gavin H. Tilstone¹¹, Mingxi Yang¹¹, William J. Bloss¹, Roy M. Harrison¹¹⁴, Manuel Dall’Osto¹⁵, Zongbo Shi¹¹⁶</li>
-<li><strong>作者单位</strong>：¹School of Geography Earth and Environment Sciences, University of Birmingham, Birmingham, UK；²Institute for Atmospheric and Earth System Research/Physics, Faculty of Science, University of Helsinki, Helsinki, Finland；³Aerodyne Research, Billerica, USA；⁴National Centre for Atmospheric Science, University of Manchester, Manchester, UK；⁵State Key Laboratory of Severe Weather, Key Laboratory of Atmospheric Chemistry of CMA, Chinese Academy of Meteorological Sciences, Beijing, China；⁶Droplet Measurement Technologies, LLC, Longmont, USA；⁷Centre for Geography and Environmental Science, University of Exeter, Penryn, UK；⁸Wolfson Atmospheric Chemistry Laboratories, Department of Chemistry, University of York, York, UK；⁹National Centre for Atmospheric Science, University of York, York, UK；¹⁰State Key Laboratory of Regional Environment and Sustainability, School of Environment, Tsinghua University, Beijing, China；¹¹Plymouth Marine Laboratory, Plymouth, UK；¹²CIRES and CU Boulder, Boulder, USA；¹³School of Earth, Environment and Sustainability, University of Leeds, Leeds, UK；¹⁴Department of Environmental Sciences, Faculty of Meteorology, Environment and Arid Land Agriculture, King Abdulaziz University, Jeddah, Saudi Arabia；¹⁵Institute of Marine Science, Consejo Superior de Investigaciones Científicas, Barcelona, Spain；¹⁶Anhui Institute of Optics and Fine Mechanics, Chinese Academy of Sciences, Hefei, China</li>
+<li><strong>作者</strong>：Jason T. H. Cheung, Seleeke Flingai, Kate Burrows</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>新粒子形成是北极大气颗粒物和云凝结核的重要来源，但其前体来源和分子级机制仍知之甚少。本文报告了2022年5月19日至6月26日从格陵兰东南部到西部以及进入戴维斯海峡边缘海冰区的综合船基观测，旨在研究控制大气颗粒物和云凝结核的来源和过程。我们的观测提供了频繁成核事件的现场证据，这些事件由最近实验室研究确定的多组分碘含氧酸和硫酸机制驱动。在13个成核日中的8天，新形成的颗粒迅速增长超过20纳米，主要由醛和单萜氧化产生的含氧有机分子驱动。我们还报告了一类先前未观察到的含碘含氧有机分子，它们促进了颗粒增长并增强了云凝结核的形成。我们表明，边缘海冰区产生的前体驱动快速的新粒子形成，并使云凝结核浓度增加高达50倍。我们的发现表明，北极碘、硫和有机前体可以通过新粒子形成增强云凝结核丰度，突显了影响云量、辐射平衡和水文循环的潜在但未量化的途径。频繁的北极成核事件源于碘和硫化学的耦合，有机物驱动快速增长。船基观测显示，这一过程可使边缘海冰附近的云凝结核增加高达50倍。</p>
-<p><strong>资源信息</strong>  </p>
+</details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：doi:10.1038/s41561-026-02062-6</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41561-026-02062-6">https://www.nature.com/articles/s41561-026-02062-6</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-76111-4">https://doi.org/10.1038/s41467-026-76111-4</a></li>
 </ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41561-026-02062-6/MediaObjects/41561_2026_2062_Fig1_HTML.png" alt=""></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>加速欧洲森林干扰造成的生物量损失</title>
-    <link>https://www.nature.com/articles/s41561-026-02032-y</link>
-    <guid isPermaLink="false">doi:10.1038/s41561-026-02032-y</guid>
+    <title>温暖的上新世晚期热带大西洋N2固定减少</title>
+    <link>https://doi.org/10.1038/s41467-026-75846-4</link>
+    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-75846-4</guid>
     <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Katja Kowalski</dc:creator>
-    <description>由于气候变化和土地利用压力，全球森林干扰正在加剧，削弱了陆地碳汇。然而，树木覆盖损失导致的地上生物量下降仍未得到充分量化，限制了我们对于干扰在全球碳动态中作用的理解。本文利用卫星遥感，对欧洲2.16亿公顷森林中自然干扰和采伐造成的地上生物量损失进行了空间显式估算。从1985年到2023年，地上生物量总损失达6.5±0.8 Pg。其中，18%由高强度自然干扰造成，而皆伐作业占82%。自2018年起，</description>
-    <category>森林干扰</category>
-    <category>生物量损失</category>
-    <category>碳汇</category>
-    <category>卫星遥感</category>
-    <category>欧洲</category>
-    <content:encoded><![CDATA[<h2>加速欧洲森林干扰造成的生物量损失</h2>
-<p><em>Accelerating biomass loss from forest disturbances across Europe</em></p>
+    <dc:creator>Maayan Yehudai</dc:creator>
+    <description>水体脱氮作用（海洋氮（N）的主要汇）在过去比现在更温暖的气候下有所减少，但N2固定（海洋氮的主要源）的响应仍不确定。这里，我们利用来自热带大西洋的有孔虫结合氮同位素记录来填补这一空白，时间跨度覆盖温暖的上新世晚期，这是预计21世纪变暖的地质类似物。我们的记录显示，在上新世晚期，热带北大西洋的N2固定减少，到更新世晚期已显著增加，这可能是由于水体脱氮作用的增加，这一过程在全球范围内产生贫氮、含磷的（</description>
+    <category>氮固定</category>
+    <category>热带大西洋</category>
+    <category>上新世</category>
+    <category>古气候</category>
+    <category>海洋生态</category>
+    <content:encoded><![CDATA[<h2>温暖的上新世晚期热带大西洋N2固定减少</h2>
+<p><em>Reduced N2 fixation in the tropical Atlantic Ocean during the warm late Pliocene</em></p>
 <ul>
-<li><strong>期刊</strong>：Nature Geoscience</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：analysis</li>
-<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性、土地利用与农业）</li>
-<li><strong>标签</strong>：森林干扰，生物量损失，碳汇，卫星遥感，欧洲</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Katja Kowalski¹, Alba Viana-Soto¹, Martin Brandt², Philippe Ciais³, Wanda De Keersmaecker⁴, Rasmus Fensholt², Thomas A. M. Pugh⁵⁶⁷, Yidi Xu³, Cornelius Senf¹</li>
-<li><strong>作者单位</strong>：¹Technical University of Munich, School of Life Sciences, Earth Observation for Ecosystem Management, Freising, Germany；²Department of Geosciences and Natural Resource Management, University of Copenhagen, Copenhagen, Denmark；³Laboratoire des Sciences du Climat et de l’Environnement, CEA/CNRS/UVSQ/Université Paris Saclay, Gif-sur-Yvette, France；⁴Vlaamse Instelling Voor Technologisch Onderzoek (VITO), Mol, Belgium；⁵Department of Earth and Environmental Sciences, Lund University, Lund, Sweden；⁶School of Geography, Earth and Environmental Sciences, University of Birmingham, Birmingham, UK；⁷Birmingham Institute of Forest Research, University of Birmingham, Birmingham, UK</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>由于气候变化和土地利用压力，全球森林干扰正在加剧，削弱了陆地碳汇。然而，树木覆盖损失导致的地上生物量下降仍未得到充分量化，限制了我们对于干扰在全球碳动态中作用的理解。本文利用卫星遥感，对欧洲2.16亿公顷森林中自然干扰和采伐造成的地上生物量损失进行了空间显式估算。从1985年到2023年，地上生物量总损失达6.5±0.8 Pg。其中，18%由高强度自然干扰造成，而皆伐作业占82%。自2018年起，地上生物量损失增加了46%，年损失量达到此前四十年未见的高值。这一加速与生物量丰富的温带森林中高强度的自然干扰活动相吻合。2018年后，地上生物量损失对干扰面积的敏感性显著增加，表明即使自然干扰的小幅增加也可能导致巨大损失。随着气候驱动的自然干扰加剧，我们预计欧洲的地上生物量损失将持续存在，尽管有政策旨在到2030年增强森林碳汇。卫星观测显示，自2018年以来，欧洲森林的地上生物量损失加速，且越来越多地由自然干扰驱动。这些趋势削弱了森林碳汇，并对通过森林政策减缓气候变化的努力构成挑战。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：doi:10.1038/s41561-026-02032-y</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41561-026-02032-y">https://www.nature.com/articles/s41561-026-02032-y</a></li>
-</ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41561-026-02032-y/MediaObjects/41561_2026_2032_Fig1_HTML.png" alt=""></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>随着新世界螺旋蝇重返美国，需要重新投资</title>
-    <link>https://www.nature.com/articles/s41559-026-03157-4</link>
-    <guid isPermaLink="false">doi:10.1038/s41559-026-03157-4</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Jason R. Andrews</dc:creator>
-    <description>随着新世界螺旋蝇重返美国，需要重新投资。</description>
-    <category>新世界螺旋蝇</category>
-    <category>害虫防治</category>
-    <category>农业</category>
-    <category>生物入侵</category>
-    <content:encoded><![CDATA[<h2>随着新世界螺旋蝇重返美国，需要重新投资</h2>
-<p><em>Renewed investment is needed as the New World screwworm returns to the USA</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Ecology &amp; Evolution</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：correspondence</li>
-<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性、土地利用与农业）</li>
-<li><strong>标签</strong>：新世界螺旋蝇，害虫防治，农业，生物入侵</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Jason R. Andrews¹, J. Scott Weese², Isaac I. Bogoch³</li>
-<li><strong>作者单位</strong>：¹Division of Infectious Diseases and Geographic Medicine, Department of Medicine, Stanford University School of Medicine, Stanford, USA；²Department of Pathobiology, Ontario Veterinary College, University of Guelph, Guelph, Canada；³Department of Medicine, University of Toronto, Toronto, Canada</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>随着新世界螺旋蝇重返美国，需要重新投资。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：doi:10.1038/s41559-026-03157-4</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41559-026-03157-4">https://www.nature.com/articles/s41559-026-03157-4</a></li>
-</ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41559-026-03157-4/MediaObjects/41559_2026_3157_Fig1_HTML.png" alt=""></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>全球范围内蝴蝶因气候引起的大范围分布区迁移</title>
-    <link>https://www.nature.com/articles/s41559-026-03117-y</link>
-    <guid isPermaLink="false">doi:10.1038/s41559-026-03117-y</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Shawan Chowdhury</dc:creator>
-    <description>全球变化正导致物种广泛重新分布。对分布区迁移动态及其驱动因素的全面评估十分困难，部分原因在于不同空间和类群间分布区迁移检测的差异。在此，我们汇编了来自105个国家和地区的1758种蝴蝶的记录性分布区迁移数据，约占已知蝴蝶多样性的10%。大多数物种（80%）经历了分布区扩展，且大多数分布区迁移（79%）与气候变化和极端天气事件相关。在我们的数据集中，相当比例的物种分布区收缩（27%）或沿海拔梯度迁移</description>
-    <category>butterfly</category>
-    <category>species redistribution</category>
-    <category>climate change</category>
-    <category>biodiversity</category>
-    <content:encoded><![CDATA[<h2>全球范围内蝴蝶因气候引起的大范围分布区迁移</h2>
-<p><em>Extensive climate-induced range shifts in butterflies across the globe</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Ecology &amp; Evolution</li>
+<li><strong>期刊</strong>：Nature Communications</li>
 <li><strong>日期</strong>：2026-08-05</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
-<li><strong>标签</strong>：butterfly，species redistribution，climate change，biodiversity</li>
+<li><strong>标签</strong>：氮固定，热带大西洋，上新世，古气候，海洋生态</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Shawan Chowdhury¹, Upama Aich¹², Laura H. Antão³⁴, Stefan Pinkert⁵⁶⁷, Perpetra Akite⁸, Gilberto S. S. Almeida⁹, Tatsuya Amano¹⁰¹¹, Andras Ambrus¹², Jade A. T. Badon¹³, Seung-Yun Baek¹⁴, Maksims Balalaikins¹⁵, Michal Barták³¹⁶, Vijay Barve¹⁷, Michał Bełcik¹⁸, Timothy C. Bonebrake¹⁹, Simona Bonelli²⁰, Diana E. Bowler²¹, Michael F. Braby²²²³, Roger Caritg²⁴, Sei-Woong Choi²⁵, Wen-Chen Chu²⁶, Eloisa Clain²⁷, Steve Collins²⁸, Johnattan H. Cumplido²⁷, Leonardo Dapporto²⁹, Gideon G. Deme³⁰³¹³², Matthias Dolek³³, Aleksandra Dolezal³⁴, Fahmi Idris Firdaus³⁵, Markus Franzén³⁶, André V. L. Freitas³⁷³⁸, Richard A. Fuller¹⁰¹¹, Luisa Gensch³⁹⁴⁰⁴¹, Eliza Grames⁴², Elia Guariento⁴³, Bryan Haywood⁴⁴, Shiran Hershcovich⁴⁵, Kerstin Jantke⁴⁶, Eddie John⁴⁷, Henrik Kalivoda⁴⁸, Azadeh Karimi⁴⁹, Ryosuke Katayose⁵⁰, Akito Y. Kawahara⁵¹, Sujan Khanal⁵², Krushnamegh Kunte⁵³, Lionel L’Hoste⁵⁴, Magdalena Lenda¹⁸, Jorge L. León-Cortés⁵⁵, Da-Li Lin⁵⁶, Yuet Fung Ling¹⁹, Maria Lucia Lorini⁹, Dirk Maes⁵⁷⁵⁸, Dino Martins⁵⁹⁶⁰, Thomas Merckx⁶¹, Xavier Mestdagh⁵⁴, Yeray Monasterio⁶², Akihiro Nakamura⁶³, Rachel R. Y. Oh⁶⁴⁶⁵⁶⁶, Lars B. Pettersson⁶⁷, Jeffrey S. Pippen⁶⁸, Clara Pladevall²⁴, Ingrid L. Pollet⁶⁹, Patrice Pottier²³⁷⁰⁷¹, Muhammad A. Rafi⁷², Danielle L. Ramos⁷³, Tharindu Ranasinghe⁷⁴⁷⁵, Fanie Rautenbach⁷⁶, Martin Reith⁷⁷, Abubakar S. Ringim⁷⁸, Federico Riva⁷⁹, David B. Roy²¹⁸⁰, Nils Ryrholm⁸¹, Marjo Saastamoinen³, Josef Settele¹³⁶⁴⁶⁵, William Sidemo-Holm⁸², Piotr Skorka¹⁸, Nigel E. Stork⁸³, Sanej P. Suwal⁸⁴⁸⁵, Giedrius Švitra⁸⁶, Ann B. Swengel⁸⁷, Scott R. Swengel⁸⁷, Nicolas Titeux⁵⁴, Robert Tropek¹⁶⁸⁸, Olga Tzortzakaki⁸⁹, Chris van Swaay⁹⁰, Rudi Verovnik⁹¹, Jerome L. Wiedmann⁹², Martin Wiemers⁹³, Masaya Yago⁹⁴, Hossein Yazdandad⁹⁵, Oz B. Yehuda⁹⁶, Konstantina Zografou⁹¹, Aletta Bonn⁶⁴⁶⁵⁹⁷, Guy Pe’er⁶⁴⁶⁵, Jonathan Lenoir⁹⁸</li>
-<li><strong>作者单位</strong>：¹School of Biological Sciences, Monash University, Melbourne, Australia；²Centre for Evolutionary Biology, School of Biological Sciences, The University of Western Australia, Perth, Australia；³Department of Organismal and Evolutionary Biology, Faculty of Biological and Environmental Sciences, University of Helsinki, Helsinki, Finland；⁴Department of Biology, University of Turku, Turku, Finland；⁵Conservation Ecology, Philipps-Universität Marburg, Marburg, Germany；⁶Ecology and Evolution, Yale University, New Haven, USA；⁷Center for Biodiversity and Global Change, Yale University, New Haven, USA；⁸Department of Zoology, Entomology and Fisheries Sciences, Makerere University Kampala, Kampala, Uganda；⁹Graduate Program in Neotropical Biodiversity, Institute of Biosciences, Federal University of the State of Rio de Janeiro, UNIRIO, Rio de Janeiro, Brazil；¹⁰School of the Environment, The University of Queensland, Brisbane, Australia；¹¹Centre for Biodiversity and Conservation Science, The University of Queensland, Brisbane, Australia；¹²Independent researcher, Kópháza, Hungary；¹³Institute of Biological Sciences, University of the Philippines Los Baños, Laguna, the Philippines；¹⁴Institute of Global Innovation Research, Tokyo University of Agriculture and Technology, Fuchu, Japan；¹⁵Daugavpils University, Institute of Life Sciences and Technology, Daugavpils, Latvia；¹⁶Department of Ecology, Faculty of Science, Charles University, Prague, Czech Republic；¹⁷Natural History Museum of Los Angeles County, Los Angeles, USA；¹⁸Institute of Nature Conservation, Polish Academy of Sciences, Kraków, Poland；¹⁹School of Biological Sciences, The University of Hong Kong, Hong Kong, China；²⁰Department of Life Science and Systems Biology, University of Turin, Turin, Italy；²¹UK Centre for Ecology and Hydrology, Wallingford, UK；²²Australian National Insect Collection, National Research Collections Australia, Canberra, Australia；²³Division of Ecology and Evolution, Research School of Biology, The Australian National University, Acton, Australia；²⁴Andorra Research and Innovation, Sant Julià de Lòria, Andorra；²⁵Mokpo National University, Muan, South Korea；²⁶Taiwan Biodiversity Research Institute, Ministry of Agriculture, Jiji Town, Taiwan；²⁷Departamento de Ecología y Recursos Naturales, Facultad de Ciencias, Universidad Nacional Autónoma de México, Mexico City, Mexico；²⁸African Butterfly Research Institute, Nairobi, Kenya；²⁹Department of Biology, University of Florence, Florence, Italy；³⁰Turku Collegium for Science, Medicine and Technology, University of Turku, Turku, Finland；³¹Department of Biodiversity Sciences, University of Turku, Turku, Finland；³²Department of Zoology, Faculty of Natural Sciences, University of Jos, Jos, Nigeria；³³Büro Geyer und Dolek, Wörthsee, Germany；³⁴Department of Integrative Biology, University of Guelph, Guelph, Canada；³⁵School of Life Sciences and Technology, Institut Teknologi Bandung, Bandung, Indonesia；³⁶IFM Biology, Conservation Ecology Group, Linköping University, Linköping, Sweden；³⁷Laboratório de Ecologia e Sistemática de Borboletas, Departamento de Biologia Animal, Instituto de Biologia, Universidade Estadual de Campinas, São Paulo, Brazil；³⁸Museu de Diversidade Biológica, Instituto de Biologia, Universidade Estadual de Campinas, São Paulo, Brazil；³⁹Max Planck Institute for Meteorology, Hamburg, Germany；⁴⁰International Max Planck Research School on Earth System Modelling, Hamburg, Germany；⁴¹Research Unit Sustainability and Climate Risks, Earth and Society Research Hub (ESRAH), University of Hamburg, Hamburg, Germany；⁴²Department of Biological Sciences, Binghamton University, Binghamton, USA；⁴³Institute for Alpine Environment, Eurac Research, Bolzano, Italy；⁴⁴Nature Glenelg Trust, Mount Gambier, Australia；⁴⁵Butterfly Pavilion, Westminster, USA；⁴⁶Earth and Society Research Hub (ESRAH), University of Hamburg, Hamburg, Germany；⁴⁷Cyprus Butterfly Study Group, Nicosia, Cyprus；⁴⁸Institute of Landscape Ecology SAS, Bratislava, Slovakia；⁴⁹Department of Environment, Faculty of Natural Resources and Environment, Ferdowsi University of Mashhad, Mashhad, Iran；⁵⁰Biodiversity Division, National Institute for Environmental Studies, Tsukuba, Japan；⁵¹McGuire Center for Lepidoptera and Biodiversity, Florida Museum of Natural History, University of Florida, Gainesville, USA；⁵²Institute of Forestry, Pokhara, Nepal；⁵³National Centre for Biological Sciences (NCBS), Tata Institute of Fundamental Research (TIFR), Bengaluru, India；⁵⁴Biodiversity Monitoring and Assessment Group, Environmental Sensing and Modelling Unit, Luxembourg Institute of Science and Technology, Belvaux, Luxembourg；⁵⁵Departamento de Conservación de la Biodiversidad, El Colegio de la Frontera Sur, San Cristóbal de las Casas, Mexico；⁵⁶Institute of Ecology and Evolutionary Biology, National Taiwan University, Taipei, Taiwan；⁵⁷Research Institute for Nature and Forest (INBO), Herman Teirlinckgebouw, Brussels, Belgium；⁵⁸Radboud Institute for Biological and Environmental Sciences (RIBES), Radboud University, Nijmegen, the Netherlands；⁵⁹Mpala Research Centre, Nanyuki, Kenya；⁶⁰Department of Ecology &amp; Evolution, Stony Brook University, New York, USA；⁶¹WILD, Biology Department, Vrije Universiteit Brussel, Brussels, Belgium；⁶²Asociación Española para la Protección de las Mariposas y su Medio (ZERYNTHIA), Logroño, Spain；⁶³Yunnan Key Laboratory of Forest Ecosystem Stability and Global Change, Xishuangbanna Tropical Botanical Garden, Chinese Academy of Sciences, Mengla, China；⁶⁴Helmholtz Centre for Environmental Research (UFZ), Leipzig, Germany；⁶⁵German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig, Leipzig, Germany；⁶⁶Department of Geography, National University of Singapore, Singapore, Singapore；⁶⁷Biodiversity and Evolution, Department of Biology, Lund University, Lund, Sweden；⁶⁸Georgetown University, Washington, USA；⁶⁹Biology Department, Acadia University, Wolfville, Canada；⁷⁰Evolution and Ecology Research Centre, School of Biological, Earth and Environmental Sciences, The University of New South Wales, Sydney, Australia；⁷¹Department of Biological and Environmental Sciences, Faculty of Science, University of Gothenburg, Gothenburg, Sweden；⁷²National Insect Museum, National Agricultural Research Center, Islamabad, Pakistan；⁷³Exeter Innovation, University of Exeter, Exeter, UK；⁷⁴Butterfly Conservation Society of Sri Lanka, Yatihena, Sri Lanka；⁷⁵Wild Island Foundation, Moratuwa, Sri Lanka；⁷⁶Applied Microbial and Health Biotechnology Institute, Cape Peninsula University of Technology, Western Cape, South Africa；⁷⁷Forest Guardian Scholarships (Gadyen Forè), London, UK；⁷⁸Department of Animal and Environmental Biology, Federal University Dutse, Dutse, Nigeria；⁷⁹Department of Biology, Carleton University, Ottawa, Canada；⁸⁰Centre for Ecology and Conservation, University of Exeter, Penryn, UK；⁸¹Department of Electronics, Mathematics and Natural Sciences, Faculty of Engineering and Sustainable Development, University of Gävle, Gävle, Sweden；⁸²Department of Earth and Environmental Sciences, Lund University, Lund, Sweden；⁸³School of Environment and Sciences, Griffith University, Brisbane, Australia；⁸⁴Butterfly Watchers Nepal, Kathmandu, Nepal；⁸⁵Group of Morphology and Evolution of Beetles, Institute of Zoology, Beijing, China；⁸⁶Lithuanian Entomological Society, Vilnius, Lithuania；⁸⁷Independent researcher, Baraboo, USA；⁸⁸Institute of Entomology, Biology Centre, Czech Academy of Sciences, Ceske Budejovice, Czech Republic；⁸⁹Department of Biological Applications and Technology, University of Ioannina, Ioannina, Greece；⁹⁰De Vlinderstichting, Wageningen, the Netherlands；⁹¹Biotechnical Faculty, Department of Biology, University of Ljubljana, Ljubljana, Slovenia；⁹²Ohio Lepidopterists, Westerville, USA；⁹³Senckenberg – Leibniz Institution for Biodiversity and Earth System Research, Senckenberg German Entomological Institute, Müncheberg, Germany；⁹⁴The University Museum, The University of Tokyo, Tokyo, Japan；⁹⁵Department of Environmental Sciences and Engineering, Faculty of Natural Resources and Marine Sciences, Tarbiat Modares University, Noor, Iran；⁹⁶Achva Academic College, Shikmim, Israel；⁹⁷Institute of Biodiversity, Ecology and Evolution, Friedrich Schiller University Jena, Jena, Germany；⁹⁸UMR CNRS 7058 Ecologie et Dynamique des Systèmes Anthropisés (EDYSAN), Université de Picardie Jules Verne, Amiens, France</li>
+<li><strong>作者</strong>：Maayan Yehudai, Jesse R. Farmer, Marietta Straub, Anja S Studer, Lukas Oesch, Roger Creel, Ralf Schiebel, Alexandra Auderset, Kira Lawrence, Nazik Öğretmen, Gerald H. Haug, Daniel M. Sigman, Alfredo Martínez‐García</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>全球变化正导致物种广泛重新分布。对分布区迁移动态及其驱动因素的全面评估十分困难，部分原因在于不同空间和类群间分布区迁移检测的差异。在此，我们汇编了来自105个国家和地区的1758种蝴蝶的记录性分布区迁移数据，约占已知蝴蝶多样性的10%。大多数物种（80%）经历了分布区扩展，且大多数分布区迁移（79%）与气候变化和极端天气事件相关。在我们的数据集中，相当比例的物种分布区收缩（27%）或沿海拔梯度迁移（22%）。我们报告了热带国家普遍存在的水平分布区扩展和收缩，而海拔分布区迁移的证据较少。我们表明，只有通过不同类型数据的结合，才能更清晰地呈现分布区迁移动态，其中专家评估和非英语研究有助于减少潜在偏差。我们的研究结果揭示了气候驱动的分布区迁移，呼吁各方协同努力，改进包容性数据监测和保护工作，尤其是在热带国家，那里的人为土地利用变化施加了额外的关键压力。昆虫正日益受到气候变化的压力。在此，作者汇编了全球蝴蝶分布区迁移的证据，并呼吁各国在记录此类趋势方面加强协调努力。</p>
+</details><p><strong>中文摘要</strong><br>水体脱氮作用（海洋氮（N）的主要汇）在过去比现在更温暖的气候下有所减少，但N2固定（海洋氮的主要源）的响应仍不确定。这里，我们利用来自热带大西洋的有孔虫结合氮同位素记录来填补这一空白，时间跨度覆盖温暖的上新世晚期，这是预计21世纪变暖的地质类似物。我们的记录显示，在上新世晚期，热带北大西洋的N2固定减少，到更新世晚期已显著增加，这可能是由于水体脱氮作用的增加，这一过程在全球范围内产生贫氮、含磷的（P）表层水。大约在280万年前之后，随着冰川加剧，我们的记录显示，N2固定的强度出现了由倾斜周期控制的变化，这可能反映了海平面控制的陆架面积变化和热带大西洋西部的底栖脱氮作用，同样通过产生贫氮、含磷的表层水。这些发现表明，N2固定对海洋的氮损失过程在数百万年和轨道时间尺度上均有响应，表明在更温暖的气候下，全球海洋固定氮预算可能通过减少水体脱氮作用和N2固定而重新平衡。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：doi:10.1038/s41559-026-03117-y</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s41559-026-03117-y">https://www.nature.com/articles/s41559-026-03117-y</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-75846-4">https://doi.org/10.1038/s41467-026-75846-4</a></li>
 </ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41559-026-03117-y/MediaObjects/41559_2026_3117_Fig1_HTML.png" alt=""></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>美国西部的“食雪”热浪</title>
-    <link>https://www.science.org/doi/abs/10.1126/sciadv.aeb3361?af=R</link>
-    <guid isPermaLink="false">doi:10.1126/sciadv.aeb3361</guid>
+    <title>农耕实践对家鼠自然种群耐药组施加选择压力</title>
+    <link>https://doi.org/10.1038/s41467-026-76403-9</link>
+    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-76403-9</guid>
     <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Alan M. Rhoades</dc:creator>
-    <description>由雨雪事件或“食雪热浪”引发的突然融雪，可能导致洪水、引发或加速雪旱，并影响水资源可用性。然而，食雪热浪的特征（如范围、持续时间和频率）、影响及趋势很少受到关注。为解决这一空白，我们开发了一种识别食雪热浪的方法，并使用20世纪再分析第三版气温数据、TempestExtremes算法以及一个业务化融雪模型（SNOW-17）在1850–2015年期间估算其融雪潜力。融雪季节的食雪热浪通常持续3至5天，</description>
-    <category>rain-on-snow</category>
-    <category>snowmelt</category>
-    <category>flood</category>
-    <category>water resources</category>
-    <category>western United States</category>
-    <content:encoded><![CDATA[<h2>美国西部的“食雪”热浪</h2>
-<p><em>Snow-eater heat waves of the western United States</em></p>
+    <dc:creator>Morgane Gicquel</dc:creator>
+    <description>摘要：非驯养动物微生物组中抗菌素耐药基因（ARGs）的维持因素对于栖息在人类主导或人类影响较小景观中的物种仍不清楚。我们分析了2016年至2022年间德国农场家鼠（Mus musculus）自然种群的875个肠道宏基因组，以确定ARG发生的环境和宿主决定因素。利用联合物种分布模型，我们量化了景观、气候和小鼠相关特征对单个ARG发生及基因间性状依赖性的影响。环境变量和畜牧养殖强度解释了27%的ARG</description>
+    <category>抗菌素耐药基因</category>
+    <category>农业实践</category>
+    <category>家鼠</category>
+    <category>肠道宏基因组</category>
+    <category>耐药组</category>
+    <content:encoded><![CDATA[<h2>农耕实践对家鼠自然种群耐药组施加选择压力</h2>
+<p><em>Farming practices exert selection pressures on the resistome of natural populations of house mice</em></p>
 <ul>
-<li><strong>期刊</strong>：Science Advances</li>
+<li><strong>期刊</strong>：Nature Communications</li>
+<li><strong>日期</strong>：2026-08-05</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（土地利用与农业、生态与生物多样性）</li>
+<li><strong>标签</strong>：抗菌素耐药基因，农业实践，家鼠，肠道宏基因组，耐药组</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Morgane Gicquel¹, Aimara Planillo¹², Emanuel Heitlinger¹³, Sofia K. Forslund³⁴⁵⁶, Stephanie Kramer‐Schadt¹⁷, Susana Carolina Martins Ferreira¹²⁸, Víctor Hugo Jarquín‐Díaz³⁴</li>
+<li><strong>作者单位</strong>：¹Leibniz Institute for Zoo and Wildlife Research；²Estación Biológica de Doñana；³Humboldt-Universität zu Berlin；⁴Max Delbrück Center；⁵Innovation Cluster (Canada)；⁶German Centre for Cardiovascular Research；⁷Technische Universität Berlin；⁸University of Veterinary Medicine Vienna</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>摘要：非驯养动物微生物组中抗菌素耐药基因（ARGs）的维持因素对于栖息在人类主导或人类影响较小景观中的物种仍不清楚。我们分析了2016年至2022年间德国农场家鼠（Mus musculus）自然种群的875个肠道宏基因组，以确定ARG发生的环境和宿主决定因素。利用联合物种分布模型，我们量化了景观、气候和小鼠相关特征对单个ARG发生及基因间性状依赖性的影响。环境变量和畜牧养殖强度解释了27%的ARG变异，而宿主特征占8%。ARG性状分析表明，农业土地利用和牲畜暴露增加了潜在移动ARG的发生率。猪密度与整合子编码的磺胺类耐药基因（sul1）以及赋予四环素（tet）和β-内酰胺耐药性（cblA-1）的基因强烈相关（后验概率0.75）。一致地，小鼠耐药组具有独特的耐药组，但与牲畜粪便共享超过50%的ARGs，包括广泛存在的基因和在牲畜中促进的基因。我们在此表明，景观条件，特别是农业强度，塑造了家鼠微生物组中特定ARG和潜在移动ARG的分布。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-76403-9">https://doi.org/10.1038/s41467-026-76403-9</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>可食用植物中微塑料和纳米塑料的时间和大小依赖性吸收</title>
+    <link>https://doi.org/10.1021/acs.est.6c04806</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c04806</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Caroline M. Anastasia</dc:creator>
+    <description>摘要：使用具有宽尺寸分布并用邻苯二甲酸二丁酯（DBP）、乙醇钽或高氯酸罗丹明640标记的聚甲基丙烯酸甲酯（PMMA）微塑料和纳米塑料（MNPs），研究了可食用植物罗勒（Ocimum basilicum）对MNPs的吸收。罗勒植株在水培介质中生长，介质中含有一种标记的MNPs类型。通过GC-MS测量根和茎中的DBP浓度，作为MNP吸收的指标。MNP积累随时间增加并随植物生长，根浓度超过茎浓度两个数量</description>
+    <category>microplastic</category>
+    <category>nanoplastic</category>
+    <category>plant uptake</category>
+    <category>food safety</category>
+    <category>PMMA</category>
+    <content:encoded><![CDATA[<h2>可食用植物中微塑料和纳米塑料的时间和大小依赖性吸收</h2>
+<p><em>Temporal and SizeDependent Uptake of Micro- and NanoPlastics in an Edible Plant</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-08-05</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源循环组（塑料污染与治理）</li>
+<li><strong>标签</strong>：microplastic，nanoplastic，plant uptake，food safety，PMMA</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Caroline M. Anastasia¹², Elias Buurma¹², Carmen Villarruel³, Caroline Lee¹², James F. Ranville³, D. Howard Fairbrother¹²</li>
+<li><strong>作者单位</strong>：¹Johns Hopkins University；²Johns Hopkins University Applied Physics Laboratory；³Colorado School of Mines</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>摘要：使用具有宽尺寸分布并用邻苯二甲酸二丁酯（DBP）、乙醇钽或高氯酸罗丹明640标记的聚甲基丙烯酸甲酯（PMMA）微塑料和纳米塑料（MNPs），研究了可食用植物罗勒（Ocimum basilicum）对MNPs的吸收。罗勒植株在水培介质中生长，介质中含有一种标记的MNPs类型。通过GC-MS测量根和茎中的DBP浓度，作为MNP吸收的指标。MNP积累随时间增加并随植物生长，根浓度超过茎浓度两个数量级以上。8周后，根中DBP浓度达到2321±308 μg/g，茎中为18±8 μg/g。荧光显微镜使用罗丹明标记的颗粒确认了MNP被根组织吸收。单颗粒电感耦合等离子体质谱（spICP-MS）结合钽标记的MNP表明，较小颗粒从生长溶液到根以及从根到茎的优先吸收和转运。这些发现表明，纳米塑料比大型微塑料更容易在植物内积累和运输。还观察到MNP吸附导致溶液相DBP的易化转运，伴随植物吸收。总之，这些互补的MNP标记策略为研究植物中MNP吸收动态及相关污染物运输提供了稳健的方法。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c04806">https://doi.org/10.1021/acs.est.6c04806</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>用于废水中厌氧生物能源与生物产品回收的电活性材料：解码微生物电子传递中的三重界面</title>
+    <link>https://doi.org/10.1021/acs.est.6c06562</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c06562</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Hui Xu</dc:creator>
+    <description>摘要 通过产甲烷作用（生物能源）和链延长（生物产品）实现废水厌氧资源化是循环水经济的核心，但其从根本上受到热力学约束和缓慢的互养动力学的阻碍。尽管电活性材料（EAMs）越来越多地被用于调节微生物电子传递（MET），但目前的理解仍然零散且主要停留在现象层面。本综述建立了一个以三重界面为中心的统一多尺度机理框架。在生物-生物界面，我们展示了EAMs如何缓解热力学瓶颈以引导双向互养通量，挑战了关于直接种</description>
+    <category>anaerobic wastewater treatment</category>
+    <category>bioenergy</category>
+    <category>microbial electron transfer</category>
+    <category>electroactive materials</category>
+    <category>resource recovery</category>
+    <content:encoded><![CDATA[<h2>用于废水中厌氧生物能源与生物产品回收的电活性材料：解码微生物电子传递中的三重界面</h2>
+<p><em>ElectroactiveMaterials for Anaerobic Bioenergy andBioproduct Recovery from Wastewater: Decoding Tripartite Interfacesin Microbial Electron Transfer</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-08-05</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（水环境与水处理）；资源循环组（资源回收与再利用）</li>
+<li><strong>标签</strong>：anaerobic wastewater treatment，bioenergy，microbial electron transfer，electroactive materials，resource recovery</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Hui Xu¹²³, Qingchao Liu¹²³, Yuxin Duan¹²³, Yawen Zheng¹²³, Ming Hua¹²³, Weiming Zhang¹²³, Bingcai Pan¹²³</li>
+<li><strong>作者单位</strong>：¹Nanjing Agricultural University；²Nanjing Tech University；³Nanjing University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>摘要 通过产甲烷作用（生物能源）和链延长（生物产品）实现废水厌氧资源化是循环水经济的核心，但其从根本上受到热力学约束和缓慢的互养动力学的阻碍。尽管电活性材料（EAMs）越来越多地被用于调节微生物电子传递（MET），但目前的理解仍然零散且主要停留在现象层面。本综述建立了一个以三重界面为中心的统一多尺度机理框架。在生物-生物界面，我们展示了EAMs如何缓解热力学瓶颈以引导双向互养通量，挑战了关于直接种间电子传递的过度简化因果观点。在材料-生物界面，我们将EAMs从静态生物导体重新定义为动态介体，分析了其固有的固态物理和表面氧化还原化学如何控制界面电荷动力学。在胞内-胞外界面，我们揭示了EAMs如何调节跨膜电子通量以重新编程中心碳代谢路由，并施加一种生物合成权衡——即EAMs替代生物传导通道以节约细胞能量。进一步揭示了关键的知识空白，涵盖生物/非生物导电性混杂、Geobacter分类学上的过度估计以及材料的地球化学衰变。最后，本文提出了一条路线图，倡导自修复EAMs的合理设计、合成电遗传微生物组工程、人工智能驱动的反应器强化以及生命周期可持续性评估。本综述将EAMs概念化为主动的、适应性的物理化学调节器，为可编程的材料-微生物生物杂交体奠定基础。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c06562">https://doi.org/10.1021/acs.est.6c06562</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>一种评估氢在低碳卡车运输中作用的部门耦合模型</title>
+    <link>https://doi.org/10.1021/acs.est.6c02848</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c02848</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Andrew J. Moffat</dc:creator>
+    <description>摘要：全球能源系统必须尽快深度脱碳，以避免气候变化最严重的后果，包括占全球排放量23%的交通运输部门。为脱碳柴油重型车辆，已提出多种技术方案，包括氢燃料电池卡车和电池电动卡车。本研究在一个部门耦合发电扩展规划模型中，模拟了零排放重型车辆与电网之间新发现的相互依存关系，以实现2050年净零排放。我们证明，在考虑零排放卡车的电网影响时，电池卡车提供了成本最优的方法，与氢替代方案相比节省高达47%。我们</description>
+    <category>hydrogen trucks</category>
+    <category>sector coupling</category>
+    <category>grid expansion planning</category>
+    <category>net-zero emissions</category>
+    <category>battery electric vehicles</category>
+    <category>fuel cell vehicles</category>
+    <content:encoded><![CDATA[<h2>一种评估氢在低碳卡车运输中作用的部门耦合模型</h2>
+<p><em>ASector-Coupling Model to Evaluate the Role of Hydrogenin Low-Carbon Trucking</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-08-05</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：SDG-建模组（能源系统建模、脱碳路径与情景）；油气-电力组（氢能与燃料电池、电力系统与电网）</li>
+<li><strong>标签</strong>：hydrogen trucks，sector coupling，grid expansion planning，net-zero emissions，battery electric vehicles，fuel cell vehicles</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Andrew J. Moffat¹², Ahmed Abdulla¹²</li>
+<li><strong>作者单位</strong>：¹Carleton College；²Carleton University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>摘要：全球能源系统必须尽快深度脱碳，以避免气候变化最严重的后果，包括占全球排放量23%的交通运输部门。为脱碳柴油重型车辆，已提出多种技术方案，包括氢燃料电池卡车和电池电动卡车。本研究在一个部门耦合发电扩展规划模型中，模拟了零排放重型车辆与电网之间新发现的相互依存关系，以实现2050年净零排放。我们证明，在考虑零排放卡车的电网影响时，电池卡车提供了成本最优的方法，与氢替代方案相比节省高达47%。我们还表明，当前氢价格目标过高，无法通过氢燃料电池卡车实现脱碳；只有当消费者氢价格低于1美元/公斤时，才能与电池实现平价。我们表明，减排成本在当前碳定价方案范围内，柴油价格必须上涨20-50美分/升，以促进重型卡车（BET和HFCT）的脱碳。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c02848">https://doi.org/10.1021/acs.est.6c02848</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>化学修饰寡核苷酸治疗药物是否需要环境风险评估？</title>
+    <link>https://doi.org/10.1021/acs.est.6c05885</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c05885</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Thomas B. Hofstetter</dc:creator>
+    <description>合成修饰寡核苷酸是一类快速发展的核酸类药物，其市场批准率预计将增加。它们被设计为在患者体内抵抗酶降解，其生物效应源于化学修饰和序列依赖现象，与生物活性遗传物质相似。这些特性以及缺乏关于进入水环境的寡核苷酸存在和影响的实验证据，引发了对环境风险评估必要性的疑问。本文评估了（i）批准的药物中提出的化学修饰，（ii）与排放情景相关的药代动力学排泄数据，（iii）环境基质中寡核苷酸的定量分析方法，（iv）</description>
+    <content:encoded><![CDATA[<h2>化学修饰寡核苷酸治疗药物是否需要环境风险评估？</h2>
+<p><em>Do Chemically ModifiedOligonucleotide TherapeuticsRequire Environmental Risk Assessment?</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-08-05</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Thomas B. Hofstetter¹², Inga Scheidat², Cresten Mansfeldt³⁴, Serina L. Robinson¹², Michael Sander¹², Helmut Bürgmann²</li>
+<li><strong>作者单位</strong>：¹ETH Zurich；²Swiss Federal Institute of Aquatic Science and Technology；³University of Colorado Boulder；⁴University of Colorado System</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>合成修饰寡核苷酸是一类快速发展的核酸类药物，其市场批准率预计将增加。它们被设计为在患者体内抵抗酶降解，其生物效应源于化学修饰和序列依赖现象，与生物活性遗传物质相似。这些特性以及缺乏关于进入水环境的寡核苷酸存在和影响的实验证据，引发了对环境风险评估必要性的疑问。本文评估了（i）批准的药物中提出的化学修饰，（ii）与排放情景相关的药代动力学排泄数据，（iii）环境基质中寡核苷酸的定量分析方法，（iv）预期的分布和转化过程，以及（v）寡核苷酸的潜在（生态）毒理学效应谱。我们提出聚焦化学修饰可以实现对工程和自然水生系统中寡核苷酸暴露的更通用评估方法。相反，效应评估需要对寡核苷酸产品中的化学修饰和核苷酸序列进行具体案例研究。我们建议通过新开发的分析方法监测废水中的寡核苷酸，以及实验室模型系统中决定其暴露和效应的过程实验，来解决环境风险评估的需求。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c05885">https://doi.org/10.1021/acs.est.6c05885</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>概率情景揭示中国能源系统净零转型对水-能源-食物纽带的影响</title>
+    <link>https://doi.org/10.1021/acs.est.6c03030</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c03030</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Shu Zhang</dc:creator>
+    <description>中国面向碳中和的能源转型加剧了水-能源-食物（WEF）纽带之间的相互作用，放大了以往评估中未能充分捕捉的系统性不确定性。本研究开发了一个概率集成框架，将中国WEF系统的自下而上模型与跨技术、政策和行为不确定性维度的蒙特卡洛模拟相结合。通过探索4000多个不确定性案例，该框架不仅量化了中位轨迹，还量化了结果的完整谱系以及与多维不确定性相关的尾部风险。结果表明概率空间存在很大异质性：虽然中位路径到20</description>
+    <content:encoded><![CDATA[<h2>概率情景揭示中国能源系统净零转型对水-能源-食物纽带的影响</h2>
+<p><em>ProbabilisticScenariosReveal the Impacts of China’sEnergy System Net-Zero Transition on the Water–Energy–FoodNexus</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-08-05</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Shu Zhang¹, Wenying Chen¹</li>
+<li><strong>作者单位</strong>：¹Tsinghua University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>中国面向碳中和的能源转型加剧了水-能源-食物（WEF）纽带之间的相互作用，放大了以往评估中未能充分捕捉的系统性不确定性。本研究开发了一个概率集成框架，将中国WEF系统的自下而上模型与跨技术、政策和行为不确定性维度的蒙特卡洛模拟相结合。通过探索4000多个不确定性案例，该框架不仅量化了中位轨迹，还量化了结果的完整谱系以及与多维不确定性相关的尾部风险。结果表明概率空间存在很大异质性：虽然中位路径到2060年实现深度脱碳，可再生能源供应超过60%的一次能源，但2060年实现碳中和的可能性对碳捕集与封存部署、可再生能源扩张速度以及跨WEF系统资源约束高度敏感。早期减缓行动，如加速煤电退出和快速扩大低碳燃料，显著减少了对负排放技术的依赖，并压缩了结果不确定性。可持续导向的措施，包括提高用水效率和改变饮食结构，实质性地缓解了WEF约束。这些发现为政策制定者提供了可操作的诊断信息，以设计与中国的净零目标和长期WEF可持续性相协调的脱碳战略。该方法框架可推广到其他国家情境，其中纽带相互作用和深度不确定性主导着转型可行性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c03030">https://doi.org/10.1021/acs.est.6c03030</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>被忽视的土壤酸度导致增强风化中碳封存被显著高估</title>
+    <link>https://doi.org/10.1021/acs.est.6c05139</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c05139</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Chenxia Su</dc:creator>
+    <description>增强风化（ERW）是一种有前景的二氧化碳去除（CDR）策略，然而当前估算通常假设阳离子释放直接反映CO2封存量。我们利用柱实验研究了跨越宽pH范围的农业土壤中的硅灰石风化与碳封存。风化程度随土壤pH升高而降低，在pH 4、6和8时，硅灰石分别溶解了63%、48%和30%。然而，基于阳离子释放估算的CDR比实测的无机碳形成量高出1.5–3.1倍，其中酸性土壤差异最大。电荷平衡分析表明，在酸性条件下，</description>
+    <content:encoded><![CDATA[<h2>被忽视的土壤酸度导致增强风化中碳封存被显著高估</h2>
+<p><em>OverlookedSoil Acidity Leads to Significant Overestimationof Carbon Sequestration in Enhanced Rock Weathering</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-08-05</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Chenxia Su¹²³, Ronghua Kang¹²³⁴, Charles T. Driscoll⁵⁶, Weixing Zhu⁷, Daniel S. Goll⁸, Wentao Huang⁹, Ang Wang¹²³, Yunting Fang¹²³</li>
+<li><strong>作者单位</strong>：¹Chinese Academy of Engineering；²International Isotopes (United States)；³University of Chinese Academy of Sciences；⁴Modern Academy；⁵Carnegie Hall；⁶Syracuse University；⁷State University of New York；⁸CEA Grenoble；⁹Shenyang Agricultural University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>增强风化（ERW）是一种有前景的二氧化碳去除（CDR）策略，然而当前估算通常假设阳离子释放直接反映CO2封存量。我们利用柱实验研究了跨越宽pH范围的农业土壤中的硅灰石风化与碳封存。风化程度随土壤pH升高而降低，在pH 4、6和8时，硅灰石分别溶解了63%、48%和30%。然而，基于阳离子释放估算的CDR比实测的无机碳形成量高出1.5–3.1倍，其中酸性土壤差异最大。电荷平衡分析表明，在酸性条件下，释放的阳离子伴随强酸阴离子以及可交换H+/Al3+的降低，而非碳酸氢盐形成，导致每摩尔二价阳离子释放仅固定0.63–1.30 mol CO2，远低于理论值2.0。硅灰石还通过原生碳酸盐溶解和土壤有机碳（SOC）矿化促进了酸性土壤中的CO2排放。在考虑这些排放后，净CDR为0.06–0.46 g C kg⁻¹土壤，并随土壤pH升高而增加。这些结果表明，土壤pH通过电荷平衡、岩石碳酸盐溶解和SOC矿化调控ERW效率，应将其纳入CDR核算，以避免大幅高估碳封存潜力。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c05139">https://doi.org/10.1021/acs.est.6c05139</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>AMOC-海表温度关系的状态转换</title>
+    <link>https://doi.org/10.1038/s41467-026-76149-4</link>
+    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-76149-4</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Yifei Fan</dc:creator>
+    <description>大西洋经向翻转环流（AMOC）在调节气候中起关键作用，副极地北大西洋海表温度（SST）模式被广泛用于推断其强度的变化。然而，它们关系的平稳性仍不清楚。在此，我们使用涵盖多种气候状态的社区地球系统模型模拟和多模型集合，表明这种关系是状态依赖的。我们确定了三个不同的状态：强AMOC具有典型的偶极指纹；中等AMOC具有放大的副极地SST异常；弱AMOC具有减弱的北大西洋信号。这些状态主要产生于大气辐射过</description>
+    <category>AMOC</category>
+    <category>sea surface temperature</category>
+    <category>climate state transition</category>
+    <category>climate modeling</category>
+    <content:encoded><![CDATA[<h2>AMOC-海表温度关系的状态转换</h2>
+<p><em>Regime shifts of AMOC-sea surface temperature relationship</em></p>
+<ul>
+<li><strong>期刊</strong>：Nature Communications</li>
+<li><strong>日期</strong>：2026-08-05</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+<li><strong>标签</strong>：AMOC，sea surface temperature，climate state transition，climate modeling</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Yifei Fan¹, Duo Chan², Gökhan Danabasoglu³⁴, Who M. Kim³⁴, Pengfei Zhang⁵, Laifang Li¹</li>
+<li><strong>作者单位</strong>：¹Pennsylvania State University；²University of Southampton；³NSF National Center for Atmospheric Research；⁴U.S. National Science Foundation；⁵Ocean University of China</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>大西洋经向翻转环流（AMOC）在调节气候中起关键作用，副极地北大西洋海表温度（SST）模式被广泛用于推断其强度的变化。然而，它们关系的平稳性仍不清楚。在此，我们使用涵盖多种气候状态的社区地球系统模型模拟和多模型集合，表明这种关系是状态依赖的。我们确定了三个不同的状态：强AMOC具有典型的偶极指纹；中等AMOC具有放大的副极地SST异常；弱AMOC具有减弱的北大西洋信号。这些状态主要产生于大气辐射过程的变化，而海洋过程通过海气相互作用间接贡献。AMOC-SST敏感性峰值年份可预测向弱AMOC状态的转变以及北大西洋增暖洞的消退，为气候预测中的模型不确定性提供了基于物理的约束。我们的发现也意味着基于SST的AMOC指标必须考虑状态依赖性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-76149-4">https://doi.org/10.1038/s41467-026-76149-4</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>众包、社区参与的弗吉尼亚州布里斯托尔固体废物填埋场附近挥发性有机化合物监测与源解析</title>
+    <link>https://doi.org/10.1021/acs.est.6c04657</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c04657</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Xiaoying Li</dc:creator>
+    <description>城市固体废物填埋场可排放复杂的挥发性有机化合物（VOCs）混合物，但社区暴露难以表征，因为浓度在空间和时间上变化，并可能受偶发性气味事件、气象和非填埋源影响。社区参与的研究方法有助于应对这些挑战，同时将居民的当地知识和关切纳入监测研究设计。我们开展了一项社区参与的公民科学研究，使用改进型超声波个人空气采样器，按照美国环保署方法TO-17操作，评估弗吉尼亚州布里斯托尔固体废物填埋场附近的室外VOCs</description>
+    <category>VOCs</category>
+    <category>landfill</category>
+    <category>citizen science</category>
+    <category>air monitoring</category>
+    <content:encoded><![CDATA[<h2>众包、社区参与的弗吉尼亚州布里斯托尔固体废物填埋场附近挥发性有机化合物监测与源解析</h2>
+<p><em>Crowdsourced, Community-EngagedVolatile Organic CompoundMonitoring and Source Apportionment near the Bristol Virginia SolidWaste Landfill</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-08-05</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源循环组（固废管理与处理）；矿产生态组（大气污染与空气质量）</li>
+<li><strong>标签</strong>：VOCs，landfill，citizen science，air monitoring</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Xiaoying Li¹, Marie J. Andales¹, Joshua Rudd², Timothy Hilbert³, Abigail M. Fizer⁴, Patrick Ryan⁵, Joel Kellogg⁶, Becky Evenden⁶, Candace Brancato³, Erin N. Haynes³, John Volckens¹</li>
+<li><strong>作者单位</strong>：¹Colorado State University；²The King&#39;s University；³University of Kentucky；⁴Smith College；⁵Cincinnati Children&#39;s Hospital Medical Center；⁶Bristol Hospital</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>城市固体废物填埋场可排放复杂的挥发性有机化合物（VOCs）混合物，但社区暴露难以表征，因为浓度在空间和时间上变化，并可能受偶发性气味事件、气象和非填埋源影响。社区参与的研究方法有助于应对这些挑战，同时将居民的当地知识和关切纳入监测研究设计。我们开展了一项社区参与的公民科学研究，使用改进型超声波个人空气采样器，按照美国环保署方法TO-17操作，评估弗吉尼亚州布里斯托尔固体废物填埋场附近的室外VOCs。采样期间苯、甲苯、乙苯和二甲苯（BTEX）浓度低于美国环保署参考浓度，但在“臭”夜显著较高，表明在气味相关时段某些VOCs水平升高。然而，测得的VOCs并不能完全解释气味感知，可能是因为气味活性的含硫化合物未被捕获，且气味事件在空间和时间上具有变异性。源解析表明，除填埋场相关排放外，交通相关源对室外BTEX贡献显著。估算的非致癌和致癌风险处于低健康关注水平。这些结果证明了通过创新采样技术赋能社区参与框架，开展更具可扩展性、成本效益更高的近参考监测的可行性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c04657">https://doi.org/10.1021/acs.est.6c04657</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>气团影响、辐射和消融季节动态共同塑造青藏高原冰川径流中溶解有机物组成和放射性碳年龄</title>
+    <link>https://doi.org/10.1021/acs.est.6c06257</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c06257</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Chen Huang</dc:creator>
+    <description>冰川融化日益向源头水体输送具有生物可利用性但放射性碳亏损的溶解有机物（DOM），但青藏高原DOM分子组成和放射性碳特征的控制因素仍不清楚。我们将超高分辨率质谱与来自16个冰川径流的30个样品的Δ14C测量相结合，包括三个不同气候背景下消融季节时间序列。DOC浓度普遍较低，但DOM组成高度异质。多变量分析确定经度和短波辐射为主要区域相关因素，而相邻出口之间的显著差异表明强烈的局地控制。季节性DOM模</description>
+    <category>glacier runoff</category>
+    <category>dissolved organic matter</category>
+    <category>radiocarbon</category>
+    <category>Qinghai-Tibet Plateau</category>
+    <content:encoded><![CDATA[<h2>气团影响、辐射和消融季节动态共同塑造青藏高原冰川径流中溶解有机物组成和放射性碳年龄</h2>
+<p><em>Air-MassInfluence,Radiation, and Melt-Season DynamicsJointly Shape Dissolved Organic Matter Composition and RadiocarbonAge in Glacier Outflows on the Tibetan Plateau</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
 <li><strong>日期</strong>：2026-08-05</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：矿产生态组（水环境与水处理）</li>
-<li><strong>标签</strong>：rain-on-snow，snowmelt，flood，water resources，western United States</li>
+<li><strong>标签</strong>：glacier runoff，dissolved organic matter，radiocarbon，Qinghai-Tibet Plateau</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Alan M. Rhoades, Joshua Snowball North, William Rudisill, Benjamin J. Hatchett, Mark Risser, Areidy Beltran-Peña, Anne Heggli, Scott Hotaling, Laurie S. Huning, Andrew Joros, Matthew LaPlante, Ankur Mahesh, Adrienne M. Marshall, Rachel McCrary, Daniel McEvoy, Stefan Rahimi, Mark S. Raleigh, Calen Randall, Abhishekh Srivastava, Michael Wehner, Yang Zhou, Andrew D. Jones</li>
+<li><strong>作者</strong>：Chen Huang¹, Mo Wang²³, Xiaolong Zhang²³, Frank-Thomas Koch¹, Christoph Gerbig¹, Hongxing Jiang⁴, Baiqing Xu²³, Gerd Gleixner¹</li>
+<li><strong>作者单位</strong>：¹Max Planck Institute for Biogeochemistry；²Chinese Academy of Engineering；³University of Chinese Academy of Sciences；⁴Fudan University</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>由雨雪事件或“食雪热浪”引发的突然融雪，可能导致洪水、引发或加速雪旱，并影响水资源可用性。然而，食雪热浪的特征（如范围、持续时间和频率）、影响及趋势很少受到关注。为解决这一空白，我们开发了一种识别食雪热浪的方法，并使用20世纪再分析第三版气温数据、TempestExtremes算法以及一个业务化融雪模型（SNOW-17）在1850–2015年期间估算其融雪潜力。融雪季节的食雪热浪通常持续3至5天，出现三至五次事件，使融雪速率翻倍。结果表明，11次春季特大洪水中，有7次与食雪热浪同时发生。自1850年代以来，食雪热浪的面积和频率增加，持续时间缩短，并且出现时间在融雪季节中提前。将食雪热浪的影响纳入SNOW-17模型可增强极端融雪估算，改进水资源管理支持工具。</p>
+</details><p><strong>中文摘要</strong><br>冰川融化日益向源头水体输送具有生物可利用性但放射性碳亏损的溶解有机物（DOM），但青藏高原DOM分子组成和放射性碳特征的控制因素仍不清楚。我们将超高分辨率质谱与来自16个冰川径流的30个样品的Δ14C测量相结合，包括三个不同气候背景下消融季节时间序列。DOC浓度普遍较低，但DOM组成高度异质。多变量分析确定经度和短波辐射为主要区域相关因素，而相邻出口之间的显著差异表明强烈的局地控制。季节性DOM模式因地点而异：在受季风影响的珠穆朗玛峰北坡绒布冰川，随着无机沉积物指示物增加，DOM从富含脂质转变为更富含木质素、单宁和芳香族化合物，与增强的外源影响一致；然而，Δ14C在季节内变得更现代。相比之下，受西风影响、高辐射的雄才冰川DOM组成相对稳定，但肽样信号升高且动态变化。在Δ14C子集（n=23）中，Δ14C与脂质样贡献呈负相关，揭示了一个未被充分认识的“老但潜在不稳定”组分。这些结果表明，区域气候、局地集水区环境以及消融季节进展共同控制着新旧、不稳定和组成复杂DOM混合物的输出。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：doi:10.1126/sciadv.aeb3361</li>
-<li><strong>链接</strong>：<a href="https://www.science.org/doi/abs/10.1126/sciadv.aeb3361?af=R">https://www.science.org/doi/abs/10.1126/sciadv.aeb3361?af=R</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c06257">https://doi.org/10.1021/acs.est.6c06257</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>1750年代草原生产力下降促成了天花爆发与最后一个游牧帝国的崩溃</title>
-    <link>https://www.science.org/doi/abs/10.1126/sciadv.aee4285?af=R</link>
-    <guid isPermaLink="false">doi:10.1126/sciadv.aee4285</guid>
+    <title>冈田酸类毒素的全球分布、环境归趋和毒理效应</title>
+    <link>https://doi.org/10.1021/acs.est.6c00701</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c00701</guid>
     <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Wanru Tang</dc:creator>
-    <description>1750年代准噶尔汗国的崩溃标志着世界上最后一个游牧帝国的终结，并重塑了欧亚大陆的地缘政治。然而，环境与社会因素是否相互作用并促成了其崩溃仍不清楚。在此，我们基于极端生长比率，利用441条树木年轮序列重建了自1625年以来准噶尔腹地草原生产力的变化。我们的记录显示，汗国的崩溃恰逢1751–1761年间草原生产力处于过去四个世纪的最低水平。社会韧性逐渐减弱并接近临界点，加剧了草原生产力快速下降的影响</description>
-    <category>grassland productivity</category>
-    <category>tree-ring reconstruction</category>
-    <category>nomadic empire</category>
-    <category>smallpox</category>
-    <category>climate change</category>
-    <content:encoded><![CDATA[<h2>1750年代草原生产力下降促成了天花爆发与最后一个游牧帝国的崩溃</h2>
-<p><em>Steppe productivity decline contributed to smallpox outbreak and the collapse of the last nomadic empire in the 1750s</em></p>
-<ul>
-<li><strong>期刊</strong>：Science Advances</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性、土地利用与农业）</li>
-<li><strong>标签</strong>：grassland productivity，tree-ring reconstruction，nomadic empire，smallpox，climate change</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Wanru Tang, Keyan Fang, Hans W. Linderholm, Étienne Boucher, Zepeng Mei, Jinbao Li, Shuheng Lin, Feifei Zhou, J. Julio Camarero, Heikki Seppä, Fahu Chen</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>1750年代准噶尔汗国的崩溃标志着世界上最后一个游牧帝国的终结，并重塑了欧亚大陆的地缘政治。然而，环境与社会因素是否相互作用并促成了其崩溃仍不清楚。在此，我们基于极端生长比率，利用441条树木年轮序列重建了自1625年以来准噶尔腹地草原生产力的变化。我们的记录显示，汗国的崩溃恰逢1751–1761年间草原生产力处于过去四个世纪的最低水平。社会韧性逐渐减弱并接近临界点，加剧了草原生产力快速下降的影响，进而引发饥荒、冲突和贸易中断。随后天花重新出现并升级为灾难性流行病，将环境危机转变为准噶尔汗国的崩溃。我们的研究结果强调，随着气候压力加剧和跨境流行病威胁升级，亟需加强草原地区的牧业韧性和疫情监测。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：doi:10.1126/sciadv.aee4285</li>
-<li><strong>链接</strong>：<a href="https://www.science.org/doi/abs/10.1126/sciadv.aee4285?af=R">https://www.science.org/doi/abs/10.1126/sciadv.aee4285?af=R</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>岛屿特有陆栖脊椎动物灭绝风险的全球格局与驱动因素</title>
-    <link>https://www.science.org/doi/abs/10.1126/sciadv.aef9781?af=R</link>
-    <guid isPermaLink="false">doi:10.1126/sciadv.aef9781</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Yuyang Zhang</dc:creator>
-    <description>岛屿特有陆栖脊椎动物，在长期隔离和生态特化的塑造下，在人类世特别容易受到灭绝压力的影响。然而，跨类群的灭绝格局及其驱动因素仍知之甚少。在此，我们汇编了一个包含31,865种陆栖脊椎动物的全球数据集，其中包括超过7500种岛屿特有种，以评估岛屿特有种灭绝风险的格局和驱动因素，并与大陆特有种和双分布物种进行比较。我们发现，岛屿特有种面临的灭绝风险显著高于非岛屿特有种，自公元1500年以来，有3.1%已</description>
-    <category>island endemic</category>
-    <category>extinction risk</category>
-    <category>biodiversity</category>
-    <category>vertebrates</category>
-    <content:encoded><![CDATA[<h2>岛屿特有陆栖脊椎动物灭绝风险的全球格局与驱动因素</h2>
-<p><em>Global patterns and drivers of extinction risk in island endemic terrestrial vertebrates</em></p>
-<ul>
-<li><strong>期刊</strong>：Science Advances</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
-<li><strong>标签</strong>：island endemic，extinction risk，biodiversity，vertebrates</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Yuyang Zhang, Jiang Wang, Yanxia Li, Chuanwu Chen, Yanping Wang</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>岛屿特有陆栖脊椎动物，在长期隔离和生态特化的塑造下，在人类世特别容易受到灭绝压力的影响。然而，跨类群的灭绝格局及其驱动因素仍知之甚少。在此，我们汇编了一个包含31,865种陆栖脊椎动物的全球数据集，其中包括超过7500种岛屿特有种，以评估岛屿特有种灭绝风险的格局和驱动因素，并与大陆特有种和双分布物种进行比较。我们发现，岛屿特有种面临的灭绝风险显著高于非岛屿特有种，自公元1500年以来，有3.1%已经灭绝，34%目前受到威胁。岛屿特有种的灭绝风险分布不均且具有分类学结构，与入侵物种、过度开发和气候变化密切相关。与大陆特有种和双分布物种相比，它们的高风险与小分布范围和栖息地特化密切相关，而生物特性、气候和人为压力也产生类群特异性影响。这些发现解释了岛屿特有陆栖脊椎动物的独特脆弱性，并为岛屿生态系统的保护优先事项提供了信息。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：doi:10.1126/sciadv.aef9781</li>
-<li><strong>链接</strong>：<a href="https://www.science.org/doi/abs/10.1126/sciadv.aef9781?af=R">https://www.science.org/doi/abs/10.1126/sciadv.aef9781?af=R</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>中国西北伊吾侏罗纪森林的定量重建与中侏罗世高森林生产力</title>
-    <link>https://www.science.org/doi/abs/10.1126/sciadv.aeh1682?af=R</link>
-    <guid isPermaLink="false">doi:10.1126/sciadv.aeh1682</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Xu-Dong Gou</dc:creator>
-    <description>森林构成主要的陆地生态系统，并在全球碳循环中发挥关键作用。然而，由于保存有详细且生理上重要的解剖特征的原地化石森林稀缺，地质历史时期森林结构和功能的变化仍知之甚少。基于中国新疆伊吾侏罗纪森林中78个原地矿化针叶树树桩，我们利用古植物学观察和生态学分析定量重建了该森林。我们发现该化石森林具有随机树木分布，平均密度为每公顷126棵树，显示出有限的建群后竞争性稀疏；其估算冠层高度范围为10.47至43.</description>
-    <category>Jurassic forest</category>
-    <category>forest productivity</category>
-    <category>carbon cycle</category>
-    <category>paleoecology</category>
-    <content:encoded><![CDATA[<h2>中国西北伊吾侏罗纪森林的定量重建与中侏罗世高森林生产力</h2>
-<p><em>Quantitative reconstruction of the Yiwu Jurassic Forest in Northwest China and high forest productivity in the Middle Jurassic</em></p>
-<ul>
-<li><strong>期刊</strong>：Science Advances</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
-<li><strong>标签</strong>：Jurassic forest，forest productivity，carbon cycle，paleoecology</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Xu-Dong Gou, Yun Guo, Tao Zhao, Stephen McLoughlin, Zhuo Feng</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>森林构成主要的陆地生态系统，并在全球碳循环中发挥关键作用。然而，由于保存有详细且生理上重要的解剖特征的原地化石森林稀缺，地质历史时期森林结构和功能的变化仍知之甚少。基于中国新疆伊吾侏罗纪森林中78个原地矿化针叶树树桩，我们利用古植物学观察和生态学分析定量重建了该森林。我们发现该化石森林具有随机树木分布，平均密度为每公顷126棵树，显示出有限的建群后竞争性稀疏；其估算冠层高度范围为10.47至43.95米，林分生物量为每公顷276,192至386,946千克，净初级生产力显著，为21.11至31.9吨/公顷·年，是现代温带针叶林的3倍。中侏罗世升高的温度和大气CO2分压可能促成了这种高生产力。我们的研究表明，到中侏罗世，与现代森林相当的树木密度、冠层高度和生物量已经出现，并且森林正作为主要的陆地碳汇发挥作用。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：doi:10.1126/sciadv.aeh1682</li>
-<li><strong>链接</strong>：<a href="https://www.science.org/doi/abs/10.1126/sciadv.aeh1682?af=R">https://www.science.org/doi/abs/10.1126/sciadv.aeh1682?af=R</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>针对产量限制因素的土壤碳策略</title>
-    <link>https://www.nature.com/articles/s43016-026-01406-0</link>
-    <guid isPermaLink="false">doi:10.1038/s43016-026-01406-0</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Renske Hijbeek</dc:creator>
-    <description>田间试验中观察到的增加土壤碳的产量效益在农民田地上要小得多。厘清土壤有机质何时何地能够解决产量限制因素，将有助于我们最佳地利用有机资源。</description>
-    <category>soil carbon</category>
-    <category>yield limitation</category>
-    <category>soil organic matter</category>
-    <category>agriculture</category>
-    <content:encoded><![CDATA[<h2>针对产量限制因素的土壤碳策略</h2>
-<p><em>Targeting yield constraints with soil carbon</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Food</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：editorial</li>
-<li><strong>建议关注</strong>：矿产生态组（土地利用与农业）</li>
-<li><strong>标签</strong>：soil carbon，yield limitation，soil organic matter，agriculture</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Renske Hijbeek¹</li>
-<li><strong>作者单位</strong>：¹Plant Production Systems group, Wageningen University and Research, Wageningen, the Netherlands</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>田间试验中观察到的增加土壤碳的产量效益在农民田地上要小得多。厘清土壤有机质何时何地能够解决产量限制因素，将有助于我们最佳地利用有机资源。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：doi:10.1038/s43016-026-01406-0</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s43016-026-01406-0">https://www.nature.com/articles/s43016-026-01406-0</a></li>
-</ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs43016-026-01406-0/MediaObjects/43016_2026_1406_Fig1_HTML.png" alt=""></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>田间试验中土壤有机碳与玉米产量的有益关系并未转化为中国东北实际农场的增产效果</title>
-    <link>https://www.nature.com/articles/s43016-026-01401-5</link>
-    <guid isPermaLink="false">doi:10.1038/s43016-026-01401-5</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Shuaixiang Zhao</dc:creator>
-    <description>农业土壤碳封存是实现气候和粮食协同效益的经济可行途径，但目前在田间试验中观察到的土壤有机碳（SOC）与产量之间的正相关关系是否适用于实际农场仍不清楚。我们利用多种因果推断方法，分析了中国东北1246个田间试验和192个农场的玉米产量对SOC的响应。我们发现，在田间试验中，SOC的增加持续提高了玉米产量，但在农场中未检测到显著影响。田间试验显示，在土壤SOC达到30–40 g kg−1的阈值之前，产</description>
-    <content:encoded><![CDATA[<h2>田间试验中土壤有机碳与玉米产量的有益关系并未转化为中国东北实际农场的增产效果</h2>
-<p><em>The beneficial relation between soil organic carbon and maize yield in field trials does not translate to real-world farms in Northeast China</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Food</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Shuaixiang Zhao¹, Susanne Schmidt², Zhi Quan³, Fenglan Li⁴, Shuqi Qin¹, Yunting Fang³, Feng Zhou¹⁵</li>
-<li><strong>作者单位</strong>：¹Institute of Carbon Neutrality, Laboratory for Earth Surface Processes, College of Urban and Environmental Sciences, Sino-France Institute of Earth System Science, Peking University, Beijing, China；²School of Agriculture and Food Sustainability, The University of Queensland, Brisbane, Australia；³Institute of Applied Ecology, Chinese Academy of Sciences, Shenyang, China；⁴College of Life Sciences, Northeast Agricultural University, Harbin, China；⁵Southwest United Graduate School, Kunming, China</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>农业土壤碳封存是实现气候和粮食协同效益的经济可行途径，但目前在田间试验中观察到的土壤有机碳（SOC）与产量之间的正相关关系是否适用于实际农场仍不清楚。我们利用多种因果推断方法，分析了中国东北1246个田间试验和192个农场的玉米产量对SOC的响应。我们发现，在田间试验中，SOC的增加持续提高了玉米产量，但在农场中未检测到显著影响。田间试验显示，在土壤SOC达到30–40 g kg−1的阈值之前，产量显著增加8%–13%。然而，在农场中，随着SOC增加到10.0 g kg−1的阈值，产量仅上升最多5%，随后又下降至接近初始产量。在实际农场中，产量对SOC的正响应缺失主要归因于过量施用氮肥，以及农民知识有限和基础设施不足，阻碍了土壤保护措施的有效采用。我们的研究结果强调，需要将施肥、土壤保护策略和农民支持相结合，以充分发挥SOC对产量的潜在效益。土壤有机碳（SOC）被广泛认为具有提高农业生产力和减缓气候变化的潜力，但其在实际农业生产中的效益仍不确定。本研究表明，尽管在受控田间试验中增加SOC显著提高了玉米产量，但在中国东北的实际农场产量中其影响微乎其微，主要原因是过量施用氮肥以及土壤保护措施采用不足。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：doi:10.1038/s43016-026-01401-5</li>
-<li><strong>链接</strong>：<a href="https://www.nature.com/articles/s43016-026-01401-5">https://www.nature.com/articles/s43016-026-01401-5</a></li>
-</ul>
-<p><strong>主图</strong><br><img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs43016-026-01401-5/MediaObjects/43016_2026_1401_Fig1_HTML.png" alt=""></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>实现全球生物多样性和气候承诺的协同与权衡</title>
-    <link>https://doi.org/10.1038/s41467-026-76324-7</link>
-    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-76324-7</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Zhongde Huang</dc:creator>
-    <description></description>
-    <content:encoded><![CDATA[<h2>实现全球生物多样性和气候承诺的协同与权衡</h2>
-<p><em>Synergies and trade-offs for reaching global biodiversity and climate commitments</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Communications</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Zhongde Huang, Zhou Fang, Alexandre Antonelli, Daniele Silvestro, Jie Wang, Yunhong Tan, Jianwu Li, Shishun Zhou, Maroof Ali, Xue Lu, Ruibo Wang, Shi Xue, Qin Zhou, Changgao Cheng, Qiying Wang, Lu Chen, Yang Bai</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-76324-7">https://doi.org/10.1038/s41467-026-76324-7</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>连续气旋簇对北极海冰的相关性</title>
-    <link>https://doi.org/10.1038/s41467-026-76245-5</link>
-    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-76245-5</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Lars Aue</dc:creator>
-    <description>北极海冰浓度（SIC）的短期变化主要由天气驱动，强烈的冰损失通常发生在强北极气旋期间，这些气旋带来异常温暖和多风暴的条件。当多个气旋迅速连续出现时，这种条件会持续。本文利用1979-2024年的卫星观测和再分析数据，分析了此类连续气旋簇期间SIC的变化。尽管气旋通常相对于非气旋条件降低SIC，但气旋簇对冰的影响时间约为单个气旋的2.5倍，并导致约两倍强度的总体SIC降低。气旋簇造成的SIC损失量与</description>
-    <content:encoded><![CDATA[<h2>连续气旋簇对北极海冰的相关性</h2>
-<p><em>On the relevance of serial cyclone clustering for Arctic sea ice</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Communications</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Lars Aue, Sofie Tiedeck, Peter M. Finocchio, Timo Vihma, Petteri Uotila, Gunnar Spreen, Annette Rinke</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>北极海冰浓度（SIC）的短期变化主要由天气驱动，强烈的冰损失通常发生在强北极气旋期间，这些气旋带来异常温暖和多风暴的条件。当多个气旋迅速连续出现时，这种条件会持续。本文利用1979-2024年的卫星观测和再分析数据，分析了此类连续气旋簇期间SIC的变化。尽管气旋通常相对于非气旋条件降低SIC，但气旋簇对冰的影响时间约为单个气旋的2.5倍，并导致约两倍强度的总体SIC降低。气旋簇造成的SIC损失量与其强度和成簇气旋数量成比例，且与1979-1999年相比，2004-2024年即使在固定的SIC类别内，SIC损失也加剧。这些发现强调了成簇天气事件的累积效应对北极海冰变率的相关性，并强调需要了解北极连续气旋簇的驱动因素。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-76245-5">https://doi.org/10.1038/s41467-026-76245-5</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>消费、碳价格与公平之间的全球权衡</title>
-    <link>https://doi.org/10.1038/s41467-026-75815-x</link>
-    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-75815-x</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Mengyu Li</dc:creator>
-    <description></description>
-    <category>carbon pricing</category>
-    <category>equity</category>
-    <category>consumption</category>
-    <category>global trade-off</category>
-    <content:encoded><![CDATA[<h2>消费、碳价格与公平之间的全球权衡</h2>
-<p><em>Global trade-offs between consumption, carbon prices and equity</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Communications</li>
-<li><strong>日期</strong>：2026-08-05</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：经济学组（碳定价与碳市场、气候政策评估）</li>
-<li><strong>标签</strong>：carbon pricing，equity，consumption，global trade-off</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Mengyu Li, Jarmo Kikstra, Lorenz Keyßer, Jason Hickel, Keywan Riahi, Manfred Lenzen</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-75815-x">https://doi.org/10.1038/s41467-026-75815-x</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>通过添加灰分提高热解中的生物炭产率</title>
-    <link>https://doi.org/10.1021/acs.est.5c14739</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.5c14739</guid>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Jannis Grafmüller</dc:creator>
-    <description>木灰添加剂通过碱金属和碱土金属的催化作用提高热解中的生物炭产率。然而，灰分和生物质特性如何决定这种催化效应的幅度仍不清楚。在此，我们在500–550 °C下对颗粒状和灰分改良的木本和禾本科生物质进行热解。在中试规模下，添加5%（w/w）不同灰分使木本原料的无灰干基生物炭产率（ydaf）提高13–37%，碳产率（yC）提高2–33%，但使草或秸秆的产率降低5–6%。相应地，以递增比例将草与软木混合会</description>
-    <category>pyrolysis</category>
-    <category>biochar</category>
-    <category>ash additive</category>
-    <category>catalysis</category>
-    <content:encoded><![CDATA[<h2>通过添加灰分提高热解中的生物炭产率</h2>
-<p><em>Increasing BiocharYield in Pyrolysis by Adding Ash</em></p>
+    <dc:creator>Guangyao Wu</dc:creator>
+    <description>在全球气候变化和人为活动的影响下，产毒微藻和藻毒素的分布正在迅速扩大，可能威胁海洋生态系统健康和人类健康。冈田酸类毒素（OAs）是一类主要由鳍藻属和原甲藻属产生的亲脂性聚醚化合物，在全球广泛分布，影响海洋生物的生长和发育以及海产品消费安全。目前，已在产毒微藻和贝类中检测到60多种OA衍生物，包括各种二醇酯、硫酸化二酯和7-O-酰基酯。这些毒素广泛存在于海水、悬浮颗粒物、沉积物、孔隙水和海浪气溶胶中</description>
+    <category>冈田酸类毒素</category>
+    <category>海洋生态</category>
+    <category>藻毒素</category>
+    <category>环境归趋</category>
+    <content:encoded><![CDATA[<h2>冈田酸类毒素的全球分布、环境归趋和毒理效应</h2>
+<p><em>GlobalOccurrence, Environmental Fate, and ToxicologicalEffects of Okadaic Acid Group Toxins</em></p>
 <ul>
 <li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
 <li><strong>日期</strong>：2026-08-05</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-<li><strong>标签</strong>：pyrolysis，biochar，ash additive，catalysis</li>
+<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
+<li><strong>标签</strong>：冈田酸类毒素，海洋生态，藻毒素，环境归趋</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Jannis Grafmüller¹²³, Michael Tobler⁴, Philipp Vögelin⁵, Thomas D. Bucheli⁶, Hans‐Peter Schmidt¹², Nikolas Hagemann¹²⁶</li>
-<li><strong>作者单位</strong>：¹Ithaka Harbors；²Ithaka Institute for Carbon Strategies；³Offenburg University of Applied Sciences；⁴BH Consulting (Ireland)；⁵Institut d&#39;Économie Industrielle；⁶Agroscope</li>
+<li><strong>作者</strong>：Guangyao Wu¹, Jiangbing Qiu¹², Guixiang Wang¹, Ying Ji¹, Aifeng Li¹²</li>
+<li><strong>作者单位</strong>：¹Ocean University of China；²Kementerian Pendidikan Malaysia</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>木灰添加剂通过碱金属和碱土金属的催化作用提高热解中的生物炭产率。然而，灰分和生物质特性如何决定这种催化效应的幅度仍不清楚。在此，我们在500–550 °C下对颗粒状和灰分改良的木本和禾本科生物质进行热解。在中试规模下，添加5%（w/w）不同灰分使木本原料的无灰干基生物炭产率（ydaf）提高13–37%，碳产率（yC）提高2–33%，但使草或秸秆的产率降低5–6%。相应地，以递增比例将草与软木混合会降低添加灰分的效果。产率增加取决于生物质类型，而非生物质固有的灰分含量，因为即使对灰分含量相对较高的木本原料也观察到了积极效果，这与禾本科生物质不同。不同添加灰分观察到的产率增加与灰分性质不相关，有待进一步研究。生物炭中未检测到来自灰分添加剂的有毒六价铬，表明其在生物炭生产过程中被还原为无毒的Cr(III)。在工业规模下，向绿化木材中添加4%灰分使ydaf增加11%，yC增加6%，证明了木灰使用的可扩展性。向木本原料中添加灰分提高了生物炭产量、热解经济性和碳汇潜力。</p>
+</details><p><strong>中文摘要</strong><br>在全球气候变化和人为活动的影响下，产毒微藻和藻毒素的分布正在迅速扩大，可能威胁海洋生态系统健康和人类健康。冈田酸类毒素（OAs）是一类主要由鳍藻属和原甲藻属产生的亲脂性聚醚化合物，在全球广泛分布，影响海洋生物的生长和发育以及海产品消费安全。目前，已在产毒微藻和贝类中检测到60多种OA衍生物，包括各种二醇酯、硫酸化二酯和7-O-酰基酯。这些毒素广泛存在于海水、悬浮颗粒物、沉积物、孔隙水和海浪气溶胶中。在海洋环境中，自然太阳辐射是触发OAs降解的主要因素，而温度在一定程度上影响OA类似物鳍藻毒素1（DTX1）的稳定性，微生物的作用相对较小。通过食物链，OAs可在不同营养级生物（包括贝类、蟹类、鱼类和海洋哺乳动物）中累积，其中贝类是主要生物累积者。接触OAs，无论是溶解态还是通过摄入其产毒微藻，都会对海洋生物产生多种毒性效应，包括氧化应激、免疫破坏、DNA损伤、细胞凋亡、发育异常和行为改变。本综述总结了OAs的化学多样性、环境分布、归趋、生物累积和毒理效应，并指出了主要局限和未来研究方向。未来的研究应在环境和生物调查中纳入更多OA衍生物，阐明OAs在海浪气溶胶中的分布和行为，并评估环境相关浓度OAs对海洋生物的慢性效应。还应系统评估OAs与新污染物联合毒性，为海洋生态系统风险管理提供更可靠的依据。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.5c14739">https://doi.org/10.1021/acs.est.5c14739</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c00701">https://doi.org/10.1021/acs.est.6c00701</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>解析可再生能源的化学足迹</title>
-    <link>https://doi.org/10.1021/acs.est.5c17593</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.5c17593</guid>
-    <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Tasneem Tawalbeh</dc:creator>
-    <description>可再生能源技术预计将在应对气候变化方面得到大幅增长和发展。然而，它们目前的制造、部署、运营和生命周期末端管理涉及许多危险化学品，这些化学品可能在其生命周期的各个阶段释放，对人类健康和环境构成重大风险，并可能削弱可再生能源技术的整体可持续性效益。鉴于可再生能源技术基础设施的长寿命，此类化学影响可能持续数十年，这凸显出随着部署规模的扩大，迫切需要解决各种技术生命周期中现有和未来的风险。基于跨可再生能源</description>
-    <category>renewable energy</category>
-    <category>chemical footprint</category>
-    <category>life cycle assessment</category>
-    <category>hazardous chemicals</category>
-    <content:encoded><![CDATA[<h2>解析可再生能源的化学足迹</h2>
-<p><em>Deciphering theChemical Footprint of Renewables</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
-<li><strong>日期</strong>：2026-08-04</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：SDG-建模组（LCA与足迹分析）</li>
-<li><strong>标签</strong>：renewable energy，chemical footprint，life cycle assessment，hazardous chemicals</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Tasneem Tawalbeh¹, Zhanyun Wang²³⁴, Kathrin Fenner³⁵⁶⁷, Yuxin Wang¹</li>
-<li><strong>作者单位</strong>：¹Binghamton University；²University of Southern Denmark；³Institute of Catalysis and Petrochemistry；⁴Swiss Federal Laboratories for Materials Science and Technology；⁵University of Zurich；⁶University Hospital Zurich；⁷Swiss Federal Institute of Aquatic Science and Technology</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>可再生能源技术预计将在应对气候变化方面得到大幅增长和发展。然而，它们目前的制造、部署、运营和生命周期末端管理涉及许多危险化学品，这些化学品可能在其生命周期的各个阶段释放，对人类健康和环境构成重大风险，并可能削弱可再生能源技术的整体可持续性效益。鉴于可再生能源技术基础设施的长寿命，此类化学影响可能持续数十年，这凸显出随着部署规模的扩大，迫切需要解决各种技术生命周期中现有和未来的风险。基于跨可再生能源技术的新兴证据，我们强调其环境效益应在最大限度地降低对人类和生态系统健康风险的同时实现。为促进可持续能源转型，应更加关注嵌入的化学足迹。这包括改进可再生能源技术开发中化学影响的测量、透明度和早期考虑，并识别和解决现有技术中的化学影响热点。实现这一目标需要可再生能源和储能行业及其他领域的合作努力。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.5c17593">https://doi.org/10.1021/acs.est.5c17593</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>美国电力和工业部门中小型模块化反应堆的技术经济竞争力</title>
-    <link>https://doi.org/10.1038/s41467-026-76077-3</link>
-    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-76077-3</guid>
-    <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Marisol Garrouste</dc:creator>
-    <description></description>
-    <category>小型模块化反应堆</category>
-    <category>技术经济分析</category>
-    <category>核电竞争力</category>
-    <category>美国电力部门</category>
-    <category>工业部门</category>
-    <content:encoded><![CDATA[<h2>美国电力和工业部门中小型模块化反应堆的技术经济竞争力</h2>
-<p><em>Technoeconomic competitiveness of small modular reactors across U.S. power and industrial sectors</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Communications</li>
-<li><strong>日期</strong>：2026-08-04</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：经济学组（能源经济与市场）</li>
-<li><strong>标签</strong>：小型模块化反应堆，技术经济分析，核电竞争力，美国电力部门，工业部门</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Marisol Garrouste, Brendan Kochunas, Max Vanatta, Michael Craig</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-76077-3">https://doi.org/10.1038/s41467-026-76077-3</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>耦合的海气相互作用驱动并维持了2013-2016年北太平洋海洋热浪</title>
-    <link>https://doi.org/10.1038/s41467-026-76096-0</link>
-    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-76096-0</guid>
-    <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Wenrui Jiang</dc:creator>
-    <description>2013-2016年东北太平洋海洋热浪是有记录以来最强烈的中纬度海洋增暖事件之一。其复杂演化过程使人们难以理解预测未来海洋热浪所必需的关键动力学机制。本研究通过闭合的三维拉格朗日热量收支追踪海洋热浪，量化了驱动其演化的过程。三维粒子轨迹将海洋热浪分为北部和南部两个部分，并揭示它们具有不同的运动学起源。定量证据表明，平流（而非表面强迫）在维持海洋热浪热量含量方面起主导作用。北部部分由北太平洋海流中埃</description>
-    <category>海洋热浪</category>
-    <category>北太平洋</category>
-    <category>海气相互作用</category>
-    <category>拉格朗日热量收支</category>
-    <category>埃克曼输运</category>
-    <content:encoded><![CDATA[<h2>耦合的海气相互作用驱动并维持了2013-2016年北太平洋海洋热浪</h2>
-<p><em>Coupled air–sea interactions drove and sustained the 2013–2016 North Pacific marine heatwave</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Communications</li>
-<li><strong>日期</strong>：2026-08-04</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-<li><strong>标签</strong>：海洋热浪，北太平洋，海气相互作用，拉格朗日热量收支，埃克曼输运</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Wenrui Jiang, Gaël Forget, Yuanyuan Song, Thomas W. N. Haine</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>2013-2016年东北太平洋海洋热浪是有记录以来最强烈的中纬度海洋增暖事件之一。其复杂演化过程使人们难以理解预测未来海洋热浪所必需的关键动力学机制。本研究通过闭合的三维拉格朗日热量收支追踪海洋热浪，量化了驱动其演化的过程。三维粒子轨迹将海洋热浪分为北部和南部两个部分，并揭示它们具有不同的运动学起源。定量证据表明，平流（而非表面强迫）在维持海洋热浪热量含量方面起主导作用。北部部分由北太平洋海流中埃克曼热输送减弱以及冬季表面热损失减少所维持；南部部分则是由加利福尼亚海流上沿岸风减弱导致的埃克曼上升流减弱所致。进一步研究发现，中太平洋持续存在的海平面气压异常改变了风型，将热量和水分向极地重新分配，最终驱动了海洋热浪的两个部分。相反，升高的海表温度又放大了这一气压异常，形成正反馈循环，使该事件持续多年。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-76096-0">https://doi.org/10.1038/s41467-026-76096-0</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>持续气候-碳体制之间的转变与显生宙生物圈脆弱性升高同步</title>
-    <link>https://doi.org/10.1038/s41467-026-75655-9</link>
-    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-75655-9</guid>
-    <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Ivan Sudakow</dc:creator>
-    <description>将非生物强迫与显生宙时间尺度上的生物协同响应联系起来仍然难以量化，因为环境驱动力和生物动态都是异质的、不规则采样的，并且受代用指标和地质年代不确定性的影响。在这里，我们引入一种基于体制的气候-碳系统描述，其中显生宙演化被组织为少量重复出现的、长寿命的巨型气候状态，并由相对尖锐的转变分隔。利用成对的碳和氧稳定同位素记录的循环诊断以及互补的早期预警指标，我们识别出五个持久体制及其边界。我们用概念性气候</description>
-    <category>气候-碳系统</category>
-    <category>显生宙</category>
-    <category>生物圈脆弱性</category>
-    <category>体制转换</category>
-    <category>稳定性</category>
-    <content:encoded><![CDATA[<h2>持续气候-碳体制之间的转变与显生宙生物圈脆弱性升高同步</h2>
-<p><em>Transitions between persistent climate–carbon regimes coincide with elevated Phanerozoic biosphere vulnerability</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Communications</li>
-<li><strong>日期</strong>：2026-08-04</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-<li><strong>标签</strong>：气候-碳系统，显生宙，生物圈脆弱性，体制转换，稳定性</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Ivan Sudakow¹², Corinne Myers³, Andrej Spiridonov⁴, Robertas Stankevič⁴, Georg Feulner⁵⁶⁷, Valerie Livina⁸</li>
-<li><strong>作者单位</strong>：¹The Open University；²Search for Extraterrestrial Intelligence；³University of New Mexico；⁴Vilnius University；⁵University of Potsdam；⁶Leibniz Association；⁷Potsdam Institute for Climate Impact Research；⁸National Physical Laboratory</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>将非生物强迫与显生宙时间尺度上的生物协同响应联系起来仍然难以量化，因为环境驱动力和生物动态都是异质的、不规则采样的，并且受代用指标和地质年代不确定性的影响。在这里，我们引入一种基于体制的气候-碳系统描述，其中显生宙演化被组织为少量重复出现的、长寿命的巨型气候状态，并由相对尖锐的转变分隔。利用成对的碳和氧稳定同位素记录的循环诊断以及互补的早期预警指标，我们识别出五个持久体制及其边界。我们用概念性气候-碳循环模型解释所得结构，该模型允许多个共存平衡，为在变化的环境强迫和扰动下在稳定吸引子之间切换的状态变化提供了机制基础。我们将这些结果与结合生物更替和样本标准化全球多样性的生物圈脆弱性指标联系起来，表明在主要体制转变附近脆弱性系统性升高。这些结果表明，持久气候-碳吸引子之间的转变为解释为什么某些扰动区间与生物圈压力升高同时发生提供了动力学背景，这超出了仅从渐进背景环境变化所能预期的范围。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-75655-9">https://doi.org/10.1038/s41467-026-75655-9</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>量化基于氮的作物重组的环境协同效益及其对印度邦际贸易网络的影响</title>
-    <link>https://doi.org/10.1038/s41467-026-75905-w</link>
-    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-75905-w</guid>
-    <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Shekhar Goyal</dc:creator>
-    <description>应对粮食系统内的可持续性因其多面性而具有挑战性。在这里，我们通过整合养分、水、温室气体、经济和邦际贸易网络核算，评估了印度农业系统的作物重组路径。我们表明，以氮为重点的作物重组策略将氮盈余减少13.4%，用水量减少18.6%。这种方法维持了基准卡路里产量，缩小了基准谷物净收益缺口，并减少了8.7%的温室气体排放。相对于以水为重点的重组，以氮为重点的策略产生了大约4.6倍的更大互惠协同效益，导致与氮</description>
-    <content:encoded><![CDATA[<h2>量化基于氮的作物重组的环境协同效益及其对印度邦际贸易网络的影响</h2>
-<p><em>Quantifying environmental co-benefits of nitrogen-based crop restructuring and its implications on India’s interstate trade network</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Communications</li>
-<li><strong>日期</strong>：2026-08-04</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Shekhar Goyal, Rohini Kumar, Udit Bhatia</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>应对粮食系统内的可持续性因其多面性而具有挑战性。在这里，我们通过整合养分、水、温室气体、经济和邦际贸易网络核算，评估了印度农业系统的作物重组路径。我们表明，以氮为重点的作物重组策略将氮盈余减少13.4%，用水量减少18.6%。这种方法维持了基准卡路里产量，缩小了基准谷物净收益缺口，并减少了8.7%的温室气体排放。相对于以水为重点的重组，以氮为重点的策略产生了大约4.6倍的更大互惠协同效益，导致与氮污染相关的社会-环境成本减少了约11.9亿美元。由此产生的农业重组显著扩大了邦际贸易网络中的替代谷物贸易。总体而言，我们的分析表明，将养分管理纳入作物重组策略可以支持印度和其他资源受限农业系统的粮食系统可持续性。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-75905-w">https://doi.org/10.1038/s41467-026-75905-w</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>全基因组复制后的进化比全基因组复制本身更能驱动同源多倍体草本植物的表型和转录组差异</title>
-    <link>https://doi.org/10.1073/pnas.2533430123</link>
-    <guid isPermaLink="false">https://doi.org/10.1073/pnas.2533430123</guid>
-    <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Sandra Grünig</dc:creator>
-    <description>全基因组复制（WGD）是植物物种形成的主要驱动力，常被认为能促进对新环境条件的快速适应。然而，WGD本身在多大程度上促进表型和转录组新颖性，以及WGD诱导的变化与WGD后进化对细胞型间性状分化的相对贡献仍不清楚。本研究通过比较二倍体、合成同源四倍体和自然同源四倍体（约24000至7000代前起源）在中等日温差（稳定）和每日热胁迫（变化）条件下的表型和转录组后果，探讨了Biscutella laev</description>
-    <content:encoded><![CDATA[<h2>全基因组复制后的进化比全基因组复制本身更能驱动同源多倍体草本植物的表型和转录组差异</h2>
-<p><em>Evolution after whole-genome duplication (WGD) drives phenotypic and transcriptomic divergence more than WGD in an autopolyploid herb</em></p>
+    <title>北美葡萄属物种间渐渗与平行适应的动态</title>
+    <link>https://doi.org/10.1073/pnas.2607754123</link>
+    <guid isPermaLink="false">https://doi.org/10.1073/pnas.2607754123</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Tianpeng Wang</dc:creator>
+    <description>物种间的杂交可以促进平行适应事件。然而，渐渗的普遍性很少在多个物种间进行测量，这意味着它很少与景观尺度过程整合或与适应重复性联系起来。在这里，我们分析了代表48个葡萄属物种的639个种质的全基因组重测序数据。葡萄属以栽培葡萄（Vitis vinifera）和多个具有经济重要性的北美物种而闻名，同时也是一个温带适应性辐射的典范。我们重建了该属的个体和物种水平系统发育框架，并对19个物种进行了种群遗传</description>
+    <category>葡萄属</category>
+    <category>渐渗</category>
+    <category>平行适应</category>
+    <category>基因组</category>
+    <content:encoded><![CDATA[<h2>北美葡萄属物种间渐渗与平行适应的动态</h2>
+<p><em>The dynamics of introgression and parallel adaptation across North American <i>Vitis</i> species</em></p>
 <ul>
 <li><strong>期刊</strong>：Proceedings of the National Academy of Sciences</li>
-<li><strong>日期</strong>：2026-08-04</li>
+<li><strong>日期</strong>：2026-08-05</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：未分类</li>
+<li><strong>标签</strong>：葡萄属，渐渗，平行适应，基因组</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Sandra Grünig¹²³, Rimjhim Roy Choudhury¹²³, Christian Parisod¹²³</li>
-<li><strong>作者单位</strong>：¹University of Bern；²University of Fribourg；³Institute of Plant Biology</li>
+<li><strong>作者</strong>：Tianpeng Wang, Christopher J. Fiscus, Jacob B. Landis¹, Noé Cochetel, Abraham Morales‐Cruz²³, Dario Cantù, Jonás A. Aguirre‐Liguori⁴, Brandon S. Gaut</li>
+<li><strong>作者单位</strong>：¹Cornell University；²Lawrence Berkeley National Laboratory；³Joint Genome Institute；⁴Autonomous University of Yucatán</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>全基因组复制（WGD）是植物物种形成的主要驱动力，常被认为能促进对新环境条件的快速适应。然而，WGD本身在多大程度上促进表型和转录组新颖性，以及WGD诱导的变化与WGD后进化对细胞型间性状分化的相对贡献仍不清楚。本研究通过比较二倍体、合成同源四倍体和自然同源四倍体（约24000至7000代前起源）在中等日温差（稳定）和每日热胁迫（变化）条件下的表型和转录组后果，探讨了Biscutella laevigata 二倍体-同源四倍体复合体中WGD及后续进化的影响。WGD导致比叶面积减小和莲座生长减慢，但对生物量无显著影响。WGD后进化对WGD诱导的变化作用方向相反，要么使性状恢复至二倍体样值，要么在自然同源四倍体中维持变化。总体而言，WGD诱导的适合度下降被WGD后进化所缓解，导致自然同源四倍体在变化条件下具有与二倍体相似或更高的适合度。虽然遗传背景调节了WGD的影响，但细胞型水平转录组分析显示，在稳定条件下WGD的即时效应有限，尽管热胁迫在不同细胞型间诱导了不同响应。总之，我们的结果突显了WGD即时效应与后续进化在表型和转录组水平上的复杂相互作用，支持WGD后进化在B. laevigata当前细胞型分化和同源四倍体适应性进化中的主导作用。</p>
+</details><p><strong>中文摘要</strong><br>物种间的杂交可以促进平行适应事件。然而，渐渗的普遍性很少在多个物种间进行测量，这意味着它很少与景观尺度过程整合或与适应重复性联系起来。在这里，我们分析了代表48个葡萄属物种的639个种质的全基因组重测序数据。葡萄属以栽培葡萄（Vitis vinifera）和多个具有经济重要性的北美物种而闻名，同时也是一个温带适应性辐射的典范。我们重建了该属的个体和物种水平系统发育框架，并对19个物种进行了种群遗传学分析。分析揭示了广泛的渐渗证据，约占平均葡萄属基因组的14%。渐渗与物种间的地理分布相关，高度混合的个体更频繁地出现在生态位边缘附近。遗传分析进一步表明，先前公认的杂交类群Vitis x doaniana和Vitis x champinii可能代表了持续的杂交种群，而非独立的谱系。我们对8个种群采样较密的物种进行了适应重复性的评估。在8个物种中的6个中，检测到的大多数选择性清除与其他物种中的清除重叠；平均而言，分化时间较近的物种共享更多的重叠清除。一种基于融合的复合似然方法推断，平行清除事件主要由渐渗驱动，尽管相当大的一部分（约40%）归因于对祖先群变异的自然选择。通过整合多个物种的种群基因组数据，这项研究突显了共享遗传变异——以及杂交的驱动力——在适应性辐射中的核心作用。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1073/pnas.2533430123">https://doi.org/10.1073/pnas.2533430123</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1073/pnas.2607754123">https://doi.org/10.1073/pnas.2607754123</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>人类废水污染驱动加拉帕戈斯海洋生态系统中多重耐药细菌的出现</title>
-    <link>https://doi.org/10.1038/s41467-026-74899-9</link>
-    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-74899-9</guid>
+    <title>中国家庭洗衣产生的微塑料排放</title>
+    <link>https://doi.org/10.1021/acs.est.6c05773</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c05773</guid>
     <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Arnav Lal</dc:creator>
-    <description>抗菌素耐药性对全球公共卫生构成威胁。移动微生物实验室可以在偏远和资源有限的地区（如加拉帕戈斯群岛）进行抗菌素耐药性的环境监测。本研究报道了一种移动实验室的开发，用于监测该群岛第二人口多的圣克里斯托瓦尔岛周边海洋环境中的抗菌素耐药性，该岛经历了快速城市化和密集的国际旅游压力。对废水污染的海洋站点进行现场宏基因组测序显示，与未受污染的海洋站点相比，微生物属发生了显著变化，抗菌素耐药基因数量更高，与当地</description>
-    <content:encoded><![CDATA[<h2>人类废水污染驱动加拉帕戈斯海洋生态系统中多重耐药细菌的出现</h2>
-<p><em>Human wastewater contamination drives the emergence of multidrug-resistant bacteria in the Galápagos marine ecosystem</em></p>
+    <dc:creator>Chunhui Wang</dc:creator>
+    <description>家庭洗衣是微塑料纤维（MPFs）的主要来源，但国家清单很少结合中国特有的手洗行为、空间明确的废水处理以及流域受体分配。我们通过整合机器和手洗脱落曲线、人口和社会经济栅格以及2486个活跃污水处理厂，开发了一个约1km×1km网格化的中国家庭合成纺织纤维排放模型。我们预测了五种共享社会经济路径情景下到2050年的未来原始排放。2020年，家庭洗衣产生了2130万公斤MPFs（四分位距：1380万–3</description>
+    <category>微塑料</category>
+    <category>家庭洗衣</category>
+    <category>废水处理</category>
+    <category>排放清单</category>
+    <category>流域分配</category>
+    <content:encoded><![CDATA[<h2>中国家庭洗衣产生的微塑料排放</h2>
+<p><em>Microplastic Emissionsfrom Domestic Laundry in China</em></p>
 <ul>
-<li><strong>期刊</strong>：Nature Communications</li>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
 <li><strong>日期</strong>：2026-08-04</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
+<li><strong>建议关注</strong>：资源循环组（塑料污染与治理）；矿产生态组（水环境与水处理）</li>
+<li><strong>标签</strong>：微塑料，家庭洗衣，废水处理，排放清单，流域分配</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Arnav Lal¹²³, Jade C. Riopelle²³, Katherine Villarin²³, Maya Mathur²³, Lia Enriquez²³⁴, Rui Xiao³, Naomi Phemister-Jimenez²³, Katherine Gilbert²³, Stephen D. Cole³, Maddie Tilyou³⁴, K. Kennedy³⁴, Ernesto Vaca⁵⁶, Wilson Castillo⁵⁶, Michael Weisberg³⁴⁷, Lisa M. Mattei³, Daniel P. Beiting³</li>
-<li><strong>作者单位</strong>：¹Harvard University；²Treatment Research Institute；³University of Pennsylvania；⁴University of the Arts；⁵Charles Darwin Foundation；⁶Galapagos (Belgium)；⁷Philadelphia University</li>
+<li><strong>作者</strong>：Chunhui Wang¹²³⁴⁵, Jing Song³⁴⁵, Guofeng Shen¹², Zhongyao Liang⁶⁷, Gang Li³⁴⁵</li>
+<li><strong>作者单位</strong>：¹King University；²Peking University；³Chinese Academy of Engineering；⁴Center for Innovation；⁵University of Chinese Academy of Sciences；⁶Xiamen University；⁷Xiamen University of Technology</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>抗菌素耐药性对全球公共卫生构成威胁。移动微生物实验室可以在偏远和资源有限的地区（如加拉帕戈斯群岛）进行抗菌素耐药性的环境监测。本研究报道了一种移动实验室的开发，用于监测该群岛第二人口多的圣克里斯托瓦尔岛周边海洋环境中的抗菌素耐药性，该岛经历了快速城市化和密集的国际旅游压力。对废水污染的海洋站点进行现场宏基因组测序显示，与未受污染的海洋站点相比，微生物属发生了显著变化，抗菌素耐药基因数量更高，与当地未经处理污水的宏基因组结果一致。直接从污水或废水排放口附近海洋环境收集的乳糖发酵肠杆菌科分离株中，超过40%表现出多重耐药性。对多重耐药大肠杆菌的细菌基因组和质粒进行长读长测序和从头组装，揭示抗菌素耐药基因在质粒上的频繁快速重组，在该岛上形成多样且功能性的耐药组。这项研究不仅为在资源匮乏环境中开展抗菌素耐药性研究提供了框架，还强调了废水污染对环境抗菌素耐药性景观的影响，并突显了对人类和动物健康的潜在威胁。加拉帕戈斯群岛是一个以独特生物多样性著称的偏远地区。本文作者使用移动实验室识别出未处理废水是海洋近岸水域多重耐药细菌的来源，强调需要管理城市化加剧对公共卫生和生物多样性的影响。</p>
+</details><p><strong>中文摘要</strong><br>家庭洗衣是微塑料纤维（MPFs）的主要来源，但国家清单很少结合中国特有的手洗行为、空间明确的废水处理以及流域受体分配。我们通过整合机器和手洗脱落曲线、人口和社会经济栅格以及2486个活跃污水处理厂，开发了一个约1km×1km网格化的中国家庭合成纺织纤维排放模型。我们预测了五种共享社会经济路径情景下到2050年的未来原始排放。2020年，家庭洗衣产生了2130万公斤MPFs（四分位距：1380万–3110万公斤）；废水处理去除了其中47.53%的质量，剩余1117万公斤（四分位距：718万–1617万公斤）进入环境。在假设的纤维几何形状下，这一处理后负荷对应于约5.2×10^15至1.0×10^17根纤维。前15个河流系统接收了处理后排放量的69.05%。到2050年，全国原始产生量预计达到6130万–9830万公斤/年，中西部省份增长最快。这些发现为优先升级区域污水处理基础设施和制定有针对性的减缓政策以减少日益增加的微塑料排放建立了时空基线。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-74899-9">https://doi.org/10.1038/s41467-026-74899-9</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c05773">https://doi.org/10.1021/acs.est.6c05773</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>浅积云中高度局域化的液滴聚集</title>
-    <link>https://doi.org/10.1073/pnas.2602976123</link>
-    <guid isPermaLink="false">https://doi.org/10.1073/pnas.2602976123</guid>
+    <title>城市尺度、源解析甲烷清单揭示中国城市的排放驱动因素与减排路径</title>
+    <link>https://doi.org/10.1021/acs.est.5c18654</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.5c18654</guid>
     <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Birte Thiede</dc:creator>
-    <description>暖云中水滴的大小和空间聚集影响云的演化和辐射特性，因此对地球能量平衡和水循环至关重要。一些提出的暖云中液滴增长和降水启动机制需要强烈的液滴聚集。在亚厘米尺度上解析这种聚集仍然是一个挑战。从飞机收集的最详细的观测显示，层积云中毫米尺度的液滴聚集在公里尺度上平均较弱。这里我们展示了来自系留浮空器的空间分辨原位全息测量，证明浅积云中的聚集比以前认为的显著更强且更加局域化。这些发现挑战了当前的云微物理框架</description>
-    <category>cloud microphysics</category>
-    <category>droplet clustering</category>
-    <category>warm cloud</category>
-    <category>shallow cumulus</category>
-    <category>remote sensing</category>
-    <content:encoded><![CDATA[<h2>浅积云中高度局域化的液滴聚集</h2>
-<p><em>Highly localized droplet clustering in shallow cumulus clouds</em></p>
+    <dc:creator>Li Zhang</dc:creator>
+    <description>中国需要城市尺度、源解析的甲烷（CH4）清单，因为地级市在能源系统、农业活动和废弃物管理方面存在差异，导致主导排放源和减排需求不同。然而，涵盖能源、农业和废弃物部门的城市级甲烷清单仍然稀缺，限制了政策设计、目标制定和评估。本研究编制了2018-2024年中国339个地级市统一、逐年一致、多部门、源解析的甲烷清单，并利用对数平均迪氏指数（LMDI）驱动因素归因和情景分析，考察近期排放驱动因素并探索可</description>
+    <category>甲烷排放</category>
+    <category>城市清单</category>
+    <category>LMDI分解</category>
+    <category>减排路径</category>
+    <content:encoded><![CDATA[<h2>城市尺度、源解析甲烷清单揭示中国城市的排放驱动因素与减排路径</h2>
+<p><em>City-Scale, Source-ResolvedMethane Inventories RevealDrivers and Mitigation Pathways Across China’s Cities</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-08-04</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：矿产生态组（大气污染与空气质量）；SDG-建模组（脱碳路径与情景）</li>
+<li><strong>标签</strong>：甲烷排放，城市清单，LMDI分解，减排路径</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Li Zhang¹²³, Y.-C Chen⁴, Ke Wang⁵⁶, Jing Guo⁷, Sen Liang⁸, Pengcheng Wu⁹¹⁰¹¹, Haoyu Zhang¹²¹³, Jingyi Wu¹⁴, Ying Cui¹⁵, Chen Lyu¹⁶, Hui Xu²³, Qunwei Wang¹⁶, Bofeng Cai⁷, Jinnan Wang⁷, Linyan Li⁴</li>
+<li><strong>作者单位</strong>：¹Jiangsu University；²Jiangxi Academy of Environmental Sciences；³Jiangxi Academy of Sciences；⁴City University of Hong Kong；⁵China University of Geosciences；⁶China University of Geosciences (Beijing)；⁷Chinese Academy for Environmental Planning；⁸Chinese Academy of Engineering；⁹National Sun Yat-sen University；¹⁰Sun Yat-sen University；¹¹Sun Yat-sen Memorial Hospital；¹²Electric Power Research Institute；¹³State Grid Corporation of China (China)；¹⁴Shanghai Jiao Tong University；¹⁵Shanghai University of Electric Power；¹⁶Nanjing University of Aeronautics and Astronautics</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>中国需要城市尺度、源解析的甲烷（CH4）清单，因为地级市在能源系统、农业活动和废弃物管理方面存在差异，导致主导排放源和减排需求不同。然而，涵盖能源、农业和废弃物部门的城市级甲烷清单仍然稀缺，限制了政策设计、目标制定和评估。本研究编制了2018-2024年中国339个地级市统一、逐年一致、多部门、源解析的甲烷清单，并利用对数平均迪氏指数（LMDI）驱动因素归因和情景分析，考察近期排放驱动因素并探索可能的减排路径。在此期间，全国人为甲烷排放量增加了2.61%，区域异质性由能源依赖、畜牧业管理和废弃物处理的差异决定。LMDI分解识别出经济活动是主要的正向驱动因素，排放强度效应在减排和加剧之间交替，结构效应较小，人口效应随空间和时间变化。情景模拟表明，多部门综合战略可使全国甲烷排放量从2024年的61.69兆吨降至2030年的51.26兆吨和2060年的22.26兆吨，对应削减63.9%。这些减排主要由能源部门措施驱动，辅以农业和废弃物管理的改进。该数据集和归因分析为城市特定减排规划和源目标设定提供信息，支持监测、报告和核查，并为评估国家甲烷目标进展提供基线。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.5c18654">https://doi.org/10.1021/acs.est.5c18654</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>潮汐沼泽土壤中Fe(III)-(II)矿物转化及有机质稳定化过程</title>
+    <link>https://doi.org/10.1021/acs.est.6c05347</link>
+    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c05347</guid>
+    <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Jan Jagode</dc:creator>
+    <description>铁（Fe）矿物是土壤中有机碳（OC）稳定化的关键介质，但在潮汐沼泽波动的氧化还原条件下，其功能尤其是Fe(II)相的作用尚不明确。我们在德国易北河一条潮汐沼泽剖面进行了为期六个月的人工矿物聚合体原位培养实验，以探究动态氧化还原条件下Fe(III)-Fe(II)矿物与OC的相互作用。在四个深度（15-60 cm）处安装了含有合成水铁矿、菱铁矿或黄铁矿聚合体（含黏土和沙）的膜圆柱体。一部分样品添加了吸</description>
+    <category>土壤碳循环</category>
+    <category>铁矿物</category>
+    <category>有机质稳定化</category>
+    <category>潮汐沼泽</category>
+    <content:encoded><![CDATA[<h2>潮汐沼泽土壤中Fe(III)-(II)矿物转化及有机质稳定化过程</h2>
+<p><em>Fe(III)-(II) MineralTransformation and AssociatedOrganic Matter Stabilization Processes in a Tidal Marsh Soil</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
+<li><strong>日期</strong>：2026-08-04</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+<li><strong>标签</strong>：土壤碳循环，铁矿物，有机质稳定化，潮汐沼泽</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Jan Jagode¹, Jannis F. Carstens², Hamed Kashi³, Dörthe Holthusen⁴, Kevin Tran¹, Heiner Fleige³, Jana Carus⁵, Elmar Fuchs⁴, Franz Renz¹, Sandra Spielvogel³, Georg Guggenberger¹</li>
+<li><strong>作者单位</strong>：¹Leibniz University Hannover；²Clausthal University of Technology；³Christian-Albrechts-Universität zu Kiel；⁴Federal Institute of Hydrology；⁵Technische Universität Berlin</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>铁（Fe）矿物是土壤中有机碳（OC）稳定化的关键介质，但在潮汐沼泽波动的氧化还原条件下，其功能尤其是Fe(II)相的作用尚不明确。我们在德国易北河一条潮汐沼泽剖面进行了为期六个月的人工矿物聚合体原位培养实验，以探究动态氧化还原条件下Fe(III)-Fe(II)矿物与OC的相互作用。在四个深度（15-60 cm）处安装了含有合成水铁矿、菱铁矿或黄铁矿聚合体（含黏土和沙）的膜圆柱体。一部分样品添加了吸附的13C标记芦苇（Phragmites australis）溶解态和颗粒态有机质，以追踪OC的保留和再分配。连续Fe提取和穆斯堡尔光谱分析显示，在深层缺氧层中水铁矿逐渐还原并同时形成菱铁矿。有机质增强了Fe(III)还原，并调节了还原区域中向Fe(II)矿物的矿物转化。在氧化层中，水铁矿通过经典表面吸附稳定了添加的芦苇来源OC，而菱铁矿和黄铁矿在深层缺氧层中保留了相当或更高比例的矿物结合态OC，主要保留在聚合体内，并部分再分配到周围土壤中。这些结果表明，Fe(II)矿物在还原条件下对OC稳定化具有不可忽视的贡献，而随着海平面上升，这一机制可能会加剧。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c05347">https://doi.org/10.1021/acs.est.6c05347</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>一种真菌，两种本领：代谢广度将杀虫能力与植物共生联系起来</title>
+    <link>https://doi.org/10.1073/pnas.2621880123</link>
+    <guid isPermaLink="false">https://doi.org/10.1073/pnas.2621880123</guid>
+    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Michael Bidochka</dc:creator>
+    <description></description>
+    <category>真菌</category>
+    <category>代谢</category>
+    <category>杀虫</category>
+    <category>植物共生</category>
+    <content:encoded><![CDATA[<h2>一种真菌，两种本领：代谢广度将杀虫能力与植物共生联系起来</h2>
+<p><em>One fungus, two trades: Metabolic breadth couples the ability to kill insects to plant symbiosis</em></p>
 <ul>
 <li><strong>期刊</strong>：Proceedings of the National Academy of Sciences</li>
-<li><strong>日期</strong>：2026-08-04</li>
-<li><strong>类型</strong>：article</li>
+<li><strong>日期</strong>：2026-08-03</li>
+<li><strong>类型</strong>：comment</li>
 <li><strong>建议关注</strong>：未分类</li>
-<li><strong>标签</strong>：cloud microphysics，droplet clustering，warm cloud，shallow cumulus，remote sensing</li>
+<li><strong>标签</strong>：真菌，代谢，杀虫，植物共生</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Birte Thiede¹², Michael L. Larsen³⁴, Freja Nordsiek¹, Oliver Schlenczek¹, Yewon Kim¹, Eberhard Bodenschatz¹²⁵, Gholamhossein Bagheri¹</li>
-<li><strong>作者单位</strong>：¹Max Planck Institute for Dynamics and Self-Organization；²University of Göttingen；³Michigan Technological University；⁴College of Charleston；⁵Cornell University</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>暖云中水滴的大小和空间聚集影响云的演化和辐射特性，因此对地球能量平衡和水循环至关重要。一些提出的暖云中液滴增长和降水启动机制需要强烈的液滴聚集。在亚厘米尺度上解析这种聚集仍然是一个挑战。从飞机收集的最详细的观测显示，层积云中毫米尺度的液滴聚集在公里尺度上平均较弱。这里我们展示了来自系留浮空器的空间分辨原位全息测量，证明浅积云中的聚集比以前认为的显著更强且更加局域化。这些发现挑战了当前的云微物理框架，对降水启动和云模拟具有重要意义。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1073/pnas.2602976123">https://doi.org/10.1073/pnas.2602976123</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>可生物降解微塑料多样性通过噬菌体增强的细菌降解难降解化合物驱动土壤碳不稳定性</title>
-    <link>https://doi.org/10.1021/acs.est.6c04389</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c04389</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Lihong Xie</dc:creator>
-    <description>微塑料污染威胁土壤碳稳定性，但多种微塑料（尤其是可生物降解微塑料）对土壤碳循环的影响及相关微生物机制仍知之甚少。本研究设置微塑料多样性梯度，结合多组学分析探究其对土壤溶解性有机质化学多样性的影响，并揭示细菌与病毒耦合的代谢策略。结果表明，微塑料多样性增加提高了新产生溶解性有机质中低分子量化合物的比例，降低了其芳香性和稳定性。与难降解有机化合物降解相关的基因富集，而能量代谢基因丰度下降，表明以细菌增</description>
-    <category>microplastic</category>
-    <category>biodegradable plastic</category>
-    <category>soil carbon</category>
-    <category>soil organic matter</category>
-    <category>phage-bacteria interaction</category>
-    <content:encoded><![CDATA[<h2>可生物降解微塑料多样性通过噬菌体增强的细菌降解难降解化合物驱动土壤碳不稳定性</h2>
-<p><em>Biodegradable MicroplasticDiversity Drives Soil CarbonLability via Phage-Boosted Bacterial Degradation of Recalcitrant Compounds</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
-<li><strong>日期</strong>：2026-08-03</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：资源循环组（塑料污染与治理）</li>
-<li><strong>标签</strong>：microplastic，biodegradable plastic，soil carbon，soil organic matter，phage-bacteria interaction</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Lihong Xie¹, Lu Wang², Da Lin², Yi Zhou¹, Tiangui Cai², Yifei Wang², Xiaochao Zhou¹, Xiujin Li¹, Dong Zhu²³, Tingting Zhang¹</li>
-<li><strong>作者单位</strong>：¹Beijing University of Chemical Technology；²Institute of Urban Environment；³Center for Innovation</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>微塑料污染威胁土壤碳稳定性，但多种微塑料（尤其是可生物降解微塑料）对土壤碳循环的影响及相关微生物机制仍知之甚少。本研究设置微塑料多样性梯度，结合多组学分析探究其对土壤溶解性有机质化学多样性的影响，并揭示细菌与病毒耦合的代谢策略。结果表明，微塑料多样性增加提高了新产生溶解性有机质中低分子量化合物的比例，降低了其芳香性和稳定性。与难降解有机化合物降解相关的基因富集，而能量代谢基因丰度下降，表明以细菌增殖为代价提高了生物加工效率，促进溶解性有机质向生物可利用形式转化。此外，微塑料多样性显著增加了土壤噬菌体多样性并强化了噬菌体-宿主互作，可能反映噬菌体-宿主的共适应。噬菌体编码的辅助代谢基因（尤其是与难降解有机物降解相关的基因）丰度增加，可能增强宿主细菌对难降解溶解性有机质的利用。这些发现增进了对多样化微塑料暴露下碳动态的细菌机制的理解，并强调了噬菌体-宿主互作在该过程中的关键作用。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c04389">https://doi.org/10.1021/acs.est.6c04389</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>揭示污染物对生物多样性的跨空间、时间和生物尺度影响：宏观生态毒理学视角</title>
-    <link>https://doi.org/10.1021/acs.est.6c05561</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c05561</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Gabriel M. Moulatlet</dc:creator>
-    <description>随着污染物在全球范围内的扩散，生态系统日益暴露于不同生物组织水平的污染物中。生态毒理学已广泛研究多种污染物对个体的影响，但理解物种响应在类群和生态系统间的普遍性仍是重大挑战。宏观生态毒理学作为整合生态毒理学与宏观生态学核心原则的分支学科，利用前沿进展可将个体敏感性响应扩展至物种分布和生态系统响应的更广阔模式，为快速变化世界中生物多样性变化的预测框架提供支持。</description>
-    <category>macroeotoxicology</category>
-    <category>pollutants</category>
-    <category>biodiversity</category>
-    <category>ecosystem</category>
-    <category>species distribution</category>
-    <content:encoded><![CDATA[<h2>揭示污染物对生物多样性的跨空间、时间和生物尺度影响：宏观生态毒理学视角</h2>
-<p><em>UnravelingContaminant Effects on Biodiversity acrossSpatial, Temporal, and Biological Scales: The Macroecotoxicology Perspective</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
-<li><strong>日期</strong>：2026-08-03</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：矿产生态组（生态与生物多样性）</li>
-<li><strong>标签</strong>：macroeotoxicology，pollutants，biodiversity，ecosystem，species distribution</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Gabriel M. Moulatlet¹, Mariana V. Capparelli², Daniela M. Truchet³, Andreu Rico⁴, Fabricio Villalobos¹</li>
-<li><strong>作者单位</strong>：¹Instituto de Ecología；²IMDEA Water；³Ecosystèmes, Biodiversité, Evolution；⁴Parc Científic de la Universitat de València</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>随着污染物在全球范围内的扩散，生态系统日益暴露于不同生物组织水平的污染物中。生态毒理学已广泛研究多种污染物对个体的影响，但理解物种响应在类群和生态系统间的普遍性仍是重大挑战。宏观生态毒理学作为整合生态毒理学与宏观生态学核心原则的分支学科，利用前沿进展可将个体敏感性响应扩展至物种分布和生态系统响应的更广阔模式，为快速变化世界中生物多样性变化的预测框架提供支持。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c05561">https://doi.org/10.1021/acs.est.6c05561</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>碎屑输入调控森林土壤中浓缩芳香碳的持久性</title>
-    <link>https://doi.org/10.1021/acs.est.6c05973</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c05973</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Xinyue Shen</dc:creator>
-    <description>浓缩芳香碳（ConAC）被广泛认为是土壤有机质中化学难降解的组分。然而，在森林土壤中其储量及可能转化为溶解性浓缩芳香碳（dConAC）的过程，可能会因环境变化改变森林凋落物产量而受到干扰。利用温带森林中三十年的碎屑输入与去除处理，我们采用苯多羧酸方法研究了土壤剖面中的整体ConAC和dConAC。加倍凋落物输入并未增加ConAC含量或储量，反而促进了表层土壤（0-10厘米）中ConAC氧化为dCo</description>
-    <content:encoded><![CDATA[<h2>碎屑输入调控森林土壤中浓缩芳香碳的持久性</h2>
-<p><em>DetritalInputs Regulate Condensed Aromatic CarbonPersistence in Forest Soils</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
-<li><strong>日期</strong>：2026-08-03</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Xinyue Shen¹, Gege Yin¹, Yi-Wen Cao¹, Zongxiao Zhang¹, Huiyuan Lu¹, Ying‐Hui Wang¹, Richard D. Bowden², Isla Wrightson³⁴, Myrna J. Simpson³⁴, Kate Lajtha⁵, Junjian Wang¹</li>
-<li><strong>作者单位</strong>：¹Southern University of Science and Technology；²Allegheny College；³University of Toronto；⁴Military University；⁵Jefferson State Community College</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>浓缩芳香碳（ConAC）被广泛认为是土壤有机质中化学难降解的组分。然而，在森林土壤中其储量及可能转化为溶解性浓缩芳香碳（dConAC）的过程，可能会因环境变化改变森林凋落物产量而受到干扰。利用温带森林中三十年的碎屑输入与去除处理，我们采用苯多羧酸方法研究了土壤剖面中的整体ConAC和dConAC。加倍凋落物输入并未增加ConAC含量或储量，反而促进了表层土壤（0-10厘米）中ConAC氧化为dConAC，这通过较高的苯六甲酸与苯五甲酸比率以及ConAC和溶解性有机碳库中dConAC比例的增加得以证实。去除凋落物及其与根系排除的组合处理降低了表层土壤ConAC，这与携带ConAC的地上凋落物输入减少一致；无输入处理降低了0-50厘米剖面的ConAC储量，可能是由于底物限制下微生物对ConAC的利用加剧。总体而言，森林土壤ConAC储量对碎屑输入变化相对抵抗，但ConAC向dConAC转化的增强突显了陆地-水生ConAC通量增加的路径，对未来气候和土地利用变化下的ConAC循环具有意义。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c05973">https://doi.org/10.1021/acs.est.6c05973</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>全氟辛烷磺酸（PFOS）不可忽视的来源：前体物的生化归宿与代谢活化</title>
-    <link>https://doi.org/10.1021/acs.est.6c04547</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c04547</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Weitian Tang</dc:creator>
-    <description>PFOS前体物在环境和人体基质中的广泛检出引发了新一轮健康担忧。然而，它们在哺乳动物中的吸收、分布、代谢和排泄（ADME）归宿以及毒性特征在很大程度上仍未被探索。本研究通过整合小鼠毒代动力学建模、大鼠肝微粒体代谢和肝细胞毒性实验，研究了三种前体物N-MeFOSA、N-EtFOSA和N-EtFOSAA的毒代动力学、代谢转化和毒性。N-MeFOSA和N-EtFOSA在体内被快速清除，并在肝微粒体中表现</description>
-    <content:encoded><![CDATA[<h2>全氟辛烷磺酸（PFOS）不可忽视的来源：前体物的生化归宿与代谢活化</h2>
-<p><em>Non-Negligible Sourceof PFOS: Biochemical Fate andMetabolic Activation of Precursors</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
-<li><strong>日期</strong>：2026-08-03</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Weitian Tang¹, Xiangyu Wang¹, Jia Lv¹, Jiayue Hu¹, Yiqun Chen¹, De‐Xiang Xu¹, Lin Tao¹, Adrian Covaci², Yichao Huang¹</li>
-<li><strong>作者单位</strong>：¹Anhui Medical University；²University of Antwerp</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>PFOS前体物在环境和人体基质中的广泛检出引发了新一轮健康担忧。然而，它们在哺乳动物中的吸收、分布、代谢和排泄（ADME）归宿以及毒性特征在很大程度上仍未被探索。本研究通过整合小鼠毒代动力学建模、大鼠肝微粒体代谢和肝细胞毒性实验，研究了三种前体物N-MeFOSA、N-EtFOSA和N-EtFOSAA的毒代动力学、代谢转化和毒性。N-MeFOSA和N-EtFOSA在体内被快速清除，并在肝微粒体中表现出向传统PFAS转化的高效率，超过了其他前体物在哺乳动物中通常较低的转化率。值得注意的是，N-MeFOSA显示出最大的代谢转化潜力（3小时内产生25%的传统PFAS和22%的PFOS）。此外，在肝细胞毒性实验中，这两种前体物对其代谢产物（PFOS和FOSA）表现出较弱的直接代谢扰动，表明它们的毒性主要通过代谢活化增强。相比之下，N-EtFOSAA在体内外表现出持久性和稳定性，诱导了与PFOS相当的脂质积累，并对细胞能量代谢有更强的抑制作用。总之，我们的研究提供了关键的ADME数据，确定N-烷基-FOSA型前体物是不可忽视的内源性PFOS来源，并强调了一种双重风险模式：毒性要么由代谢活化驱动，要么由母体化合物固有毒性驱动。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c04547">https://doi.org/10.1021/acs.est.6c04547</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>基于众包开放数据的全球移动通信基础设施气候灾害脆弱性评估</title>
-    <link>https://doi.org/10.1038/s41467-026-76197-w</link>
-    <guid isPermaLink="false">https://doi.org/10.1038/s41467-026-76197-w</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Edward J. Oughton</dc:creator>
-    <description>气候变化正在加剧沿海洪水、河流洪水和热带气旋，然而尽管社会对数字连接的依赖日益增加，电信基础设施面临的风险仍缺乏量化。我们提出一个全球性的、基于事件的地球空间评估方法，用于评估移动蜂窝基础设施的脆弱性，将开放的众包资产数据与历史条件和未来情景（RCP4.5和RCP8.5）下的全球气候灾害模型相结合。我们分析了全球约1700万个移动基站，估算极端事件重现期内的暴露度和直接损害。在RCP8.5情景下，</description>
-    <content:encoded><![CDATA[<h2>基于众包开放数据的全球移动通信基础设施气候灾害脆弱性评估</h2>
-<p><em>Global vulnerability assessment of mobile telecommunications infrastructure to climate hazards using crowdsourced open data</em></p>
-<ul>
-<li><strong>期刊</strong>：Nature Communications</li>
-<li><strong>日期</strong>：2026-08-03</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Edward J. Oughton¹, Tom Russell², Jeongjin Oh³, Sara Ballan³, Jim W. Hall²</li>
-<li><strong>作者单位</strong>：¹George Mason University；²University of Oxford；³World Bank</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>气候变化正在加剧沿海洪水、河流洪水和热带气旋，然而尽管社会对数字连接的依赖日益增加，电信基础设施面临的风险仍缺乏量化。我们提出一个全球性的、基于事件的地球空间评估方法，用于评估移动蜂窝基础设施的脆弱性，将开放的众包资产数据与历史条件和未来情景（RCP4.5和RCP8.5）下的全球气候灾害模型相结合。我们分析了全球约1700万个移动基站，估算极端事件重现期内的暴露度和直接损害。在RCP8.5情景下，到2050年，概率为0.1%的热带气旋事件预计影响约370万个基站，造成42.2亿美元的直接损失。在RCP8.5情景下，到2080年，同等程度的沿海洪水影响26.8万个基站，造成64.4亿美元的损失。河流洪水影响全球更多资产，约280万个，但损失大致稳定在460-470亿美元。因此，电信基础设施资产应系统性地纳入气候风险评估。移动网络面临来自气候灾害日益增长的风险。研究发现，洪水和热带气旋可能影响全球数百万个基站，并造成数十亿美元的损失。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1038/s41467-026-76197-w">https://doi.org/10.1038/s41467-026-76197-w</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>基于自然的生物矿化策略对抗自然灾害：沙尘暴控制与生态恢复的协同方法</title>
-    <link>https://doi.org/10.1021/acs.est.6c08155</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c08155</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Linchang Miao</dc:creator>
-    <description></description>
-    <content:encoded><![CDATA[<h2>基于自然的生物矿化策略对抗自然灾害：沙尘暴控制与生态恢复的协同方法</h2>
-<p><em>Nature-BasedBiomineralization Strategy to CombatNatural Disasters: A Synergistic Approach for Sand and Dust StormControl and Ecological Restoration</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
-<li><strong>日期</strong>：2026-08-03</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Linchang Miao¹, Hengxing Wang², Yong Wang³, Edward Kavazanjian⁴, Yang Xiao⁵, Xiaohao Sun²</li>
-<li><strong>作者单位</strong>：¹Southeast University；²Hong Kong Polytechnic University；³University of Bristol；⁴Arizona State University；⁵Chongqing University</li>
+<li><strong>作者</strong>：Michael Bidochka¹</li>
+<li><strong>作者单位</strong>：¹Brock University</li>
 </ul>
 </details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c08155">https://doi.org/10.1021/acs.est.6c08155</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>面向采矿活动的特定场地生命周期评估：方法论框架及在加拿大35个生产场地的应用</title>
-    <link>https://doi.org/10.1021/acs.est.6c01701</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c01701</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Marin Pellan</dc:creator>
-    <description>金属对广泛战略行业至关重要，其需求预计将迅速增长，同时带来相关环境影响。然而，生命周期评估（LCA）指导可持续决策的能力仍受限于生命周期清单（LCI）数据的不完整以及时间、技术和地理上的代表性不足，往往无法捕捉场址特定性。本研究基于加拿大采矿和冶金活动的高分辨率数据集MetalliCan，提出一个模块化框架，为采矿产品构建特定场地和生产加权清单。该框架整合设施级环境数据，采用分层数据驱动策略，优先</description>
-    <content:encoded><![CDATA[<h2>面向采矿活动的特定场地生命周期评估：方法论框架及在加拿大35个生产场地的应用</h2>
-<p><em>Toward Site-SpecificLife-Cycle Assessment for MiningActivities: Methodological Framework and Application to 35 ProductionSites in Canada</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
-<li><strong>日期</strong>：2026-08-03</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Marin Pellan¹, Titouan Greffe²³, Guillaume Majeau‐Bettez¹, Anne de Bortoli¹²⁴</li>
-<li><strong>作者单位</strong>：¹Polytechnique Montréal；²Computer Professionals for Social Responsibility；³Imam Sadiq University；⁴École nationale des ponts et chaussées</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>金属对广泛战略行业至关重要，其需求预计将迅速增长，同时带来相关环境影响。然而，生命周期评估（LCA）指导可持续决策的能力仍受限于生命周期清单（LCI）数据的不完整以及时间、技术和地理上的代表性不足，往往无法捕捉场址特定性。本研究基于加拿大采矿和冶金活动的高分辨率数据集MetalliCan，提出一个模块化框架，为采矿产品构建特定场地和生产加权清单。该框架整合设施级环境数据，采用分层数据驱动策略，优先进行场址特定参数化，并辅以基于原型推断和文献代理数据。特定场地清单进一步与区域化背景供应链和空间显式环境流整合。利用该方法，为金-银、铜、镍、铀、钼和锌采矿构建了35个特定场地清单，并在Brightway2中实施。使用IMPACT World+ 2.1方法进行生命周期影响评估。结果显示显著的场址级异质性，生产相同产品的设施间潜在影响差异可达13倍，与背景代理数据集相比差异达6倍，表明依赖通用清单可能掩盖关键差异。总体而言，这项工作强调了细粒度清单对于稳健环境评估和科学政策的重要性。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c01701">https://doi.org/10.1021/acs.est.6c01701</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>非正规电子垃圾回收中稀土元素的释放、跨介质迁移及滞留清单</title>
-    <link>https://doi.org/10.1021/acs.est.5c18591</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.5c18591</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Zhunan Xiong</dc:creator>
-    <description>稀土元素（REEs）对现代电子产品至关重要，并日益进入电子垃圾流。非正规回收可能将REEs释放到环境中，但其来源、迁移途径和滞留清单仍缺乏量化。本文结合微观颗粒表征、钕（Nd）同位素、贝叶斯源解析和三级稳态多介质等价比（SMA）模型，刻画了中国贵屿地区REEs的来源、跨介质迁移和滞留清单。REEs浓度在历史回收点附近的空间聚集，以及球形和角状颗粒，支持了热处理和机械破碎的人为输入。同位素混合模型估</description>
-    <content:encoded><![CDATA[<h2>非正规电子垃圾回收中稀土元素的释放、跨介质迁移及滞留清单</h2>
-<p><em>Release,Cross-MediaTransport, and Retained Inventoryof Rare Earth Elements from Informal Electronic Waste Recycling</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
-<li><strong>日期</strong>：2026-08-03</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Zhunan Xiong¹², Lingqing Wang¹², Qian Zhang¹, Xiao Yang¹, Jing Wang¹², Mingyuan Wang¹², Peter E. Holm²³, Tao Liang¹²</li>
-<li><strong>作者单位</strong>：¹Institute of Geographic Sciences and Natural Resources Research；²University of Chinese Academy of Sciences；³IT University of Copenhagen</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>稀土元素（REEs）对现代电子产品至关重要，并日益进入电子垃圾流。非正规回收可能将REEs释放到环境中，但其来源、迁移途径和滞留清单仍缺乏量化。本文结合微观颗粒表征、钕（Nd）同位素、贝叶斯源解析和三级稳态多介质等价比（SMA）模型，刻画了中国贵屿地区REEs的来源、跨介质迁移和滞留清单。REEs浓度在历史回收点附近的空间聚集，以及球形和角状颗粒，支持了热处理和机械破碎的人为输入。同位素混合模型估计，地质成因贡献仍占主导，而电子垃圾贡献分别占土壤、道路扬尘和沉积物中REEs负荷的21.4%、16.4%和33.6%。飞灰和废水污泥是主要的人为端元，指向燃烧和酸浸途径。多介质模型识别出陆地向河流的输出是主导的跨介质途径，土壤径流和地表冲刷是进入水生系统的主要载体。模拟的固体隔室（包括土壤、道路扬尘和沉积物）中的滞留清单估计为1.68 × 10³ t ΣREE，不确定度范围为0.555 × 10³至4.74 × 10³ t。至2030年的情景外推预测，在历史回收强度下，年REEs释放量为3.98 × 10³ t，在规范化管理下为1.32 × 10³ t。这些发现表明，非正规电子垃圾回收可将可回收的REEs转化为持久性环境储库，使二次再迁移成为除直接排放之外的额外关注点。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.5c18591">https://doi.org/10.1021/acs.est.5c18591</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>数字基础设施与被忽视的化学足迹：迈向数据中心整体环境框架</title>
-    <link>https://doi.org/10.1021/acs.est.6c06362</link>
-    <guid isPermaLink="false">https://doi.org/10.1021/acs.est.6c06362</guid>
-    <pubDate>Sun, 02 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Indranil Chowdhury</dc:creator>
-    <description></description>
-    <category>数据中心</category>
-    <category>化学足迹</category>
-    <category>环境足迹</category>
-    <category>生命周期评估</category>
-    <content:encoded><![CDATA[<h2>数字基础设施与被忽视的化学足迹：迈向数据中心整体环境框架</h2>
-<p><em>DigitalInfrastructure and the Overlooked ChemicalFootprint: Toward a Holistic Environmental Framework for Data Centers</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental Science &amp; Technology</li>
-<li><strong>日期</strong>：2026-08-02</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：SDG-建模组（LCA与足迹分析）</li>
-<li><strong>标签</strong>：数据中心，化学足迹，环境足迹，生命周期评估</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Indranil Chowdhury¹², Nirupam Aich³</li>
-<li><strong>作者单位</strong>：¹Washington State University Vancouver；²Washington State University；³University of Nebraska–Lincoln</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1021/acs.est.6c06362">https://doi.org/10.1021/acs.est.6c06362</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1073/pnas.2621880123">https://doi.org/10.1073/pnas.2621880123</a></li>
 </ul>
 ]]></content:encoded>
   </item>
