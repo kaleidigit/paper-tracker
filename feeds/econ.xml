@@ -8,162 +8,70 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>充足性在协调欧洲主权与锂价值链可持续性中的作用</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109182</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109182</guid>
+    <title>揭示力量：电力市场波动性与天然气价格——来自印度的证据</title>
+    <link>https://doi.org/10.1177/01956574261469477</link>
+    <guid isPermaLink="false">https://doi.org/10.1177/01956574261469477</guid>
+    <pubDate>Sun, 09 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Pratik Biswas</dc:creator>
+    <description>本研究调查了印度天然气价格与电力价格波动之间的复杂关系。为此，我们使用2012年4月至2024年5月的印度每日市场数据，考察能源市场指标之间的非对称关联。通过观察天然气的现货和期货价格，我们揭示了这些指标在不同时间段内相互关联的详细见解。我们的研究结果表明，电力市场收益波动的上升和下降对天然气现货和期货价格产生显著且不同的影响，凸显了天然气价格对电力市场波动的高度非对称敏感性。然而，对天然气交易量</description>
+    <category>电力市场</category>
+    <category>天然气价格</category>
+    <category>波动性</category>
+    <category>印度</category>
+    <category>能源价格</category>
+    <content:encoded><![CDATA[<h2>揭示力量：电力市场波动性与天然气价格——来自印度的证据</h2>
+<p><em>Unveiling Forces: Electricity Market Volatility and Natural Gas Prices—Evidence from India</em></p>
+<ul>
+<li><strong>期刊</strong>：The Energy Journal</li>
+<li><strong>日期</strong>：2026-08-09</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：能源经济</li>
+<li><strong>标签</strong>：电力市场，天然气价格，波动性，印度，能源价格</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Pratik Biswas¹, Chandan Sharma¹</li>
+<li><strong>作者单位</strong>：¹Indian Institute of Management Lucknow</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>本研究调查了印度天然气价格与电力价格波动之间的复杂关系。为此，我们使用2012年4月至2024年5月的印度每日市场数据，考察能源市场指标之间的非对称关联。通过观察天然气的现货和期货价格，我们揭示了这些指标在不同时间段内相互关联的详细见解。我们的研究结果表明，电力市场收益波动的上升和下降对天然气现货和期货价格产生显著且不同的影响，凸显了天然气价格对电力市场波动的高度非对称敏感性。然而，对天然气交易量的影响则更为复杂。收益波动率的增加减少了交易量，表明市场参与者的风险厌恶情绪上升。JEL分类：Q41, Q42, Q43, C19。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261469477">https://doi.org/10.1177/01956574261469477</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>海平面上升与保险激励下的住宅搬迁决策：法国离散选择实验研究</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109190</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109190</guid>
     <pubDate>Sat, 08 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Pauline Bucciarelli</dc:creator>
-    <description></description>
-    <category>锂</category>
-    <category>价值链</category>
-    <category>可持续性</category>
-    <category>欧洲</category>
-    <category>主权</category>
-    <content:encoded><![CDATA[<h2>充足性在协调欧洲主权与锂价值链可持续性中的作用</h2>
-<p><em>The role of sufficiency in aligning European sovereignty and sustainability in the lithium value chain</em></p>
+    <dc:creator>Moongyeom Kim</dc:creator>
+    <description>本研究通过离散选择实验，考察了法国本土家庭在面对未来沿海洪水风险时选择留守还是搬迁的偏好。通过将保护动机理论（PMT）嵌入混合logit模型，我们同时考虑了住宅决策的经济和认知驱动因素。洪水频率、海滩设施、保险费率和当地经济前景显著影响留守偏好，而自我效能、房屋所有权和社会网络也发挥着关键作用。相比之下，感知洪水概率、一般风险厌恶和收入没有显著影响。在我们的反事实模拟中，我们发现基于保险的激励措施</description>
+    <category>海平面上升</category>
+    <category>沿海洪水</category>
+    <category>住宅搬迁</category>
+    <category>保险激励</category>
+    <category>离散选择实验</category>
+    <category>法国</category>
+    <category>气候变化适应</category>
+    <content:encoded><![CDATA[<h2>海平面上升与保险激励下的住宅搬迁决策：法国离散选择实验研究</h2>
+<p><em>Residential relocation decisions under sea level rise and incentives from insurance: A discrete choice experiment study of France</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
 <li><strong>日期</strong>：2026-08-08</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：锂，价值链，可持续性，欧洲，主权</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Pauline Bucciarelli, Vincent d’Herbemont</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109182">https://doi.org/10.1016/j.ecolecon.2026.109182</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>气候灾害与住房可负担性：将环境风险与全球房地产市场联系起来</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109194</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109194</guid>
-    <pubDate>Fri, 07 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Carlos Giraldo</dc:creator>
-    <description></description>
-    <category>气候灾害</category>
-    <category>住房可负担性</category>
-    <category>环境风险</category>
-    <category>房地产市场</category>
-    <category>全球</category>
-    <content:encoded><![CDATA[<h2>气候灾害与住房可负担性：将环境风险与全球房地产市场联系起来</h2>
-<p><em>Climate hazards meet housing affordability: Linking environmental risks to real estate markets across the globe</em></p>
-<ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-08-07</li>
-<li><strong>类型</strong>：comment</li>
+<li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：气候经济</li>
-<li><strong>标签</strong>：气候灾害，住房可负担性，环境风险，房地产市场，全球</li>
+<li><strong>标签</strong>：海平面上升，沿海洪水，住宅搬迁，保险激励，离散选择实验，法国，气候变化适应</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Carlos Giraldo¹, Iader Giraldo¹, Jose E. Gomez-Gonzalez²³, Jorge M. Uribe⁴</li>
-<li><strong>作者单位</strong>：¹Fondo de Acción Urgente América Latina y el Caribe；²Universidad de La Sabana；³Lehman College；⁴Universitat Oberta de Catalunya</li>
+<li><strong>作者</strong>：Moongyeom Kim¹, Sem Duijndam¹, J.C.J.H. Aerts¹², Jens de Bruijn, Veronica Lupi¹, W. J. Wouter Botzen¹</li>
+<li><strong>作者单位</strong>：¹Vrije Universiteit Amsterdam；²Deltares</li>
 </ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109194">https://doi.org/10.1016/j.ecolecon.2026.109194</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>保险保障能否减轻自然灾害的不平等效应？一项面板门槛分析</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109193</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109193</guid>
-    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Warunya Chaitarin</dc:creator>
-    <description></description>
-    <category>保险保障</category>
-    <category>自然灾害</category>
-    <category>不平等</category>
-    <category>面板门槛分析</category>
-    <content:encoded><![CDATA[<h2>保险保障能否减轻自然灾害的不平等效应？一项面板门槛分析</h2>
-<p><em>Does insurance protection mitigate the inequality effects of natural disasters? A panel threshold analysis</em></p>
-<ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-08-06</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：保险保障，自然灾害，不平等，面板门槛分析</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Warunya Chaitarin¹, Vijit Praphong², Chatchai Khiewngamdee²</li>
-<li><strong>作者单位</strong>：¹University of Phayao；²Chiang Mai University</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109193">https://doi.org/10.1016/j.ecolecon.2026.109193</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>宗教节日期间的空气污染：来自台湾客家扫墓节的证据</title>
-    <link>https://doi.org/10.1086/743452</link>
-    <guid isPermaLink="false">https://doi.org/10.1086/743452</guid>
-    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Howard F. Chang</dc:creator>
-    <description>宗教节日与日常生活的改变和特殊的宗教仪式相关，这些可能加剧空气污染。以台湾的客家扫墓节为例，我们发现宗教活动使整体空气质量下降10.8%，并使特定污染物水平上升9.8%至18.6%。与之前研究认为空气污染加剧源于焚烧香、纸钱和烟花不同，我们识别出机动车使用增加和行驶速度下降是主要机制。交通变化还导致机动车事故受伤人数增加16%。在铁路服务覆盖的客家地区，扫墓节期间空气污染和受伤人数没有增加，这凸显</description>
-    <category>空气污染</category>
-    <category>宗教节日</category>
-    <category>交通</category>
-    <category>台湾</category>
-    <category>公共交通</category>
-    <content:encoded><![CDATA[<h2>宗教节日期间的空气污染：来自台湾客家扫墓节的证据</h2>
-<p><em>Air Pollution during Religious Holidays: Evidence from Tomb-Sweeping Day</em></p>
-<ul>
-<li><strong>期刊</strong>：Journal of the Association of Environmental and Resource Economists</li>
-<li><strong>日期</strong>：2026-08-06</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：空气污染，宗教节日，交通，台湾，公共交通</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Howard F. Chang¹, Yu‐You Liou¹, Chad D. Meyerhoefer²</li>
-<li><strong>作者单位</strong>：¹National Taiwan University；²Lehigh University</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>宗教节日与日常生活的改变和特殊的宗教仪式相关，这些可能加剧空气污染。以台湾的客家扫墓节为例，我们发现宗教活动使整体空气质量下降10.8%，并使特定污染物水平上升9.8%至18.6%。与之前研究认为空气污染加剧源于焚烧香、纸钱和烟花不同，我们识别出机动车使用增加和行驶速度下降是主要机制。交通变化还导致机动车事故受伤人数增加16%。在铁路服务覆盖的客家地区，扫墓节期间空气污染和受伤人数没有增加，这凸显了公共交通在满足假期出行需求方面的益处。</p>
+</details><p><strong>中文摘要</strong><br>本研究通过离散选择实验，考察了法国本土家庭在面对未来沿海洪水风险时选择留守还是搬迁的偏好。通过将保护动机理论（PMT）嵌入混合logit模型，我们同时考虑了住宅决策的经济和认知驱动因素。洪水频率、海滩设施、保险费率和当地经济前景显著影响留守偏好，而自我效能、房屋所有权和社会网络也发挥着关键作用。相比之下，感知洪水概率、一般风险厌恶和收入没有显著影响。在我们的反事实模拟中，我们发现基于保险的激励措施比单纯提供信息更能有效地促使搬迁。此外，高收入群体更有可能在各种政策情景下留在高风险地区，尽管支付意愿估计显示收入分层有限。然而，法国CatNat系统当前的统一定价结构可能无意中强化了富裕家庭在高风险地区的集中，同时将日益增加的未来成本转嫁给公共部门。我们还发现了风险共担保险与安全发展悖论之间的相似之处。作为补救措施，我们提出更精细的基于风险的定价作为改革方向。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1086/743452">https://doi.org/10.1086/743452</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>作物保险与灌溉行为：抽水成本的调节作用</title>
-    <link>https://doi.org/10.1002/ajae.70088</link>
-    <guid isPermaLink="false">https://doi.org/10.1002/ajae.70088</guid>
-    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Sungmin Cheu</dc:creator>
-    <description>灌溉过度用水会加速水资源枯竭，削弱农业对天气相关冲击的韧性。理解农民如何做出用水决策对于制定有效的水资源管理政策至关重要。本研究利用特定作物的灌溉数据和地下水抽取的单位抽水成本，考察了高平原含水层地区作物保险参与对用水的影响。在Deryugina &amp; Konar和Sloggy等人研究的基础上，我们考察投入使用中的道德风险问题，分析用水对保险参与的反应如何随地下水抽水成本的变化而变化。为解决用水与保</description>
-    <category>作物保险</category>
-    <category>灌溉</category>
-    <category>地下水</category>
-    <category>水资源</category>
-    <category>道德风险</category>
-    <content:encoded><![CDATA[<h2>作物保险与灌溉行为：抽水成本的调节作用</h2>
-<p><em>Crop insurance and irrigation behavior: The conditional role of pumping costs</em></p>
-<ul>
-<li><strong>期刊</strong>：American Journal of Agricultural Economics</li>
-<li><strong>日期</strong>：2026-08-06</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：作物保险，灌溉，地下水，水资源，道德风险</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Sungmin Cheu¹, Molly Sears²</li>
-<li><strong>作者单位</strong>：¹Montana State University；²Michigan State University</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>灌溉过度用水会加速水资源枯竭，削弱农业对天气相关冲击的韧性。理解农民如何做出用水决策对于制定有效的水资源管理政策至关重要。本研究利用特定作物的灌溉数据和地下水抽取的单位抽水成本，考察了高平原含水层地区作物保险参与对用水的影响。在Deryugina &amp; Konar和Sloggy等人研究的基础上，我们考察投入使用中的道德风险问题，分析用水对保险参与的反应如何随地下水抽水成本的变化而变化。为解决用水与保险参与之间的内生性，我们使用基础保费率作为工具变量，该费率在农场做出生产和保险决策之前就已确定。我们发现，保险参与增加了每英亩用水量，但这种效应的幅度随抽水成本上升而下降。在平均抽水成本下，保险参与率每提高一个百分点，每英亩用水量增加0.4%。在抽水成本的第95百分位数处，保险参与的边际效应可忽略不计，接近于零。我们的结果表明，水价政策应考虑通过保险参与产生的间接效应，以避免水资源利用效率低下。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1002/ajae.70088">https://doi.org/10.1002/ajae.70088</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109190">https://doi.org/10.1016/j.ecolecon.2026.109190</a></li>
 </ul>
 ]]></content:encoded>
   </item>
