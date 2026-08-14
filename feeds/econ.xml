@@ -7,67 +7,6 @@
     <language>zh-CN</language>
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
-  <item>
-    <title>循环经济的宏观动态：一个存量-流量一致模型</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109198</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109198</guid>
-    <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Marcelo Villena</dc:creator>
-    <description></description>
-    <category>循环经济</category>
-    <category>宏观动态</category>
-    <category>存量-流量模型</category>
-    <category>可持续性</category>
-    <content:encoded><![CDATA[<h2>循环经济的宏观动态：一个存量-流量一致模型</h2>
-<p><em>On the macroeconomic dynamics of the circular economy: A stock-flow consistent model</em></p>
-<ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-08-11</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：循环经济，宏观动态，存量-流量模型，可持续性</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Marcelo Villena, C.P. Pabon Pereira</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109198">https://doi.org/10.1016/j.ecolecon.2026.109198</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>噬菌体处理虹鳟鱼的支付意愿：丹麦与德国的比较研究</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109191</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109191</guid>
-    <pubDate>Mon, 10 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Miho Maezono</dc:creator>
-    <description></description>
-    <category>支付意愿</category>
-    <category>噬菌体处理</category>
-    <category>虹鳟鱼</category>
-    <category>比较研究</category>
-    <category>丹麦</category>
-    <category>德国</category>
-    <content:encoded><![CDATA[<h2>噬菌体处理虹鳟鱼的支付意愿：丹麦与德国的比较研究</h2>
-<p><em>Willingness-to-pay for bacteriophage-treated rainbow trout: A comparative study of Denmark and Germany</em></p>
-<ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-08-10</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：支付意愿，噬菌体处理，虹鳟鱼，比较研究，丹麦，德国</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Miho Maezono, Julia Bronnmann, Rasmus Nielsen, Max Nielsen</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109191">https://doi.org/10.1016/j.ecolecon.2026.109191</a></li>
-</ul>
-]]></content:encoded>
-  </item>
+
   </channel>
 </rss>
