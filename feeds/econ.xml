@@ -7,6 +7,70 @@
     <language>zh-CN</language>
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
-
+  <item>
+    <title>对温和气候的异质性个体估值</title>
+    <link>https://doi.org/10.1007/s10640-026-01110-4</link>
+    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01110-4</guid>
+    <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Jan K. Brueckner</dc:creator>
+    <description>摘要：本文使用传统的Rosen-Roback实证框架，探讨了工人对一项重要舒适性——气候温和度的异质性估值。具体而言，在包含房价指标的hedonic工资回归中，引入了舒适性与工人特征的交互项。结果表明，非年轻工人（中年和老年组）比年轻工人更看重温和气候，这与通常认为的耐寒性随年龄增长而下降的观点一致。研究还发现，与高教育水平的工人类似，低教育水平的工人也高度看重温和气候，而中等教育水平的工人估值较</description>
+    <category>气候舒适度</category>
+    <category>异质性偏好</category>
+    <category>hedonic工资回归</category>
+    <category>Rosen-Roback模型</category>
+    <content:encoded><![CDATA[<h2>对温和气候的异质性个体估值</h2>
+<p><em>Heterogeneous Individual Valuations of a Mild Climate</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental and Resource Economics</li>
+<li><strong>日期</strong>：2026-08-17</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：气候舒适度，异质性偏好，hedonic工资回归，Rosen-Roback模型</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Jan K. Brueckner¹²</li>
+<li><strong>作者单位</strong>：¹University of California, Irvine；²UC Irvine Health</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>摘要：本文使用传统的Rosen-Roback实证框架，探讨了工人对一项重要舒适性——气候温和度的异质性估值。具体而言，在包含房价指标的hedonic工资回归中，引入了舒适性与工人特征的交互项。结果表明，非年轻工人（中年和老年组）比年轻工人更看重温和气候，这与通常认为的耐寒性随年龄增长而下降的观点一致。研究还发现，与高教育水平的工人类似，低教育水平的工人也高度看重温和气候，而中等教育水平的工人估值较低。这些发现与只有较富裕人群才关心舒适性的观点相矛盾，可能反映了低教育程度工人从事体力劳动在温和天气下负担较轻。除呈现这些实证发现外，本文还通过为具有个体异质性的Rosen-Roback模型提供新的分析进一步做出了贡献。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01110-4">https://doi.org/10.1007/s10640-026-01110-4</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>共益公司与使命公司的绿色资质：产权与漂绿防范</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109201</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109201</guid>
+    <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Alejandro Agafonow</dc:creator>
+    <description>本研究探讨美国共益公司（BCs）和法国使命公司（SaMs）的产权模板是否能对漂绿行为提供可信的防范。通过剖析其独特的法律结构（B Lab称之为“法律DNA”），我们试图发现这些公司的环境和社会声明是否真正得到稳健公司治理的支持。其重要性在于环境和社会声明的“信任品”性质，这使得验证变得困难，同时增加了欺诈的可能性。模糊的使命以及BCs和SaMs自由选择并支付审计师所导致的第三方评估削弱，进一步加剧</description>
+    <category>漂绿</category>
+    <category>共益公司</category>
+    <category>使命公司</category>
+    <category>公司治理</category>
+    <category>绿色声明</category>
+    <content:encoded><![CDATA[<h2>共益公司与使命公司的绿色资质：产权与漂绿防范</h2>
+<p><em>The green credentials of benefit corporations and sociétés à mission: Property rights and the prevention of greenwashing</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-08-17</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：环境经济与政策</li>
+<li><strong>标签</strong>：漂绿，共益公司，使命公司，公司治理，绿色声明</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Alejandro Agafonow¹, Marybel Pérez¹, Ana Cristina O. Siqueira²</li>
+<li><strong>作者单位</strong>：¹ESSCA School of Management；²William Paterson University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>本研究探讨美国共益公司（BCs）和法国使命公司（SaMs）的产权模板是否能对漂绿行为提供可信的防范。通过剖析其独特的法律结构（B Lab称之为“法律DNA”），我们试图发现这些公司的环境和社会声明是否真正得到稳健公司治理的支持。其重要性在于环境和社会声明的“信任品”性质，这使得验证变得困难，同时增加了欺诈的可能性。模糊的使命以及BCs和SaMs自由选择并支付审计师所导致的第三方评估削弱，进一步加剧了这种脆弱性。本研究植根于制度生态经济学传统，通过基于机制的方方法论强调制度现实主义。定性制度数据来源于示范共益公司立法、使命公司法律地位、判例法和公司文件，随后使用符合ISO/IEC 21838-1标准的基本形式本体论（BFO）进行显式编码分析。研究结果揭示了BCs和SaMs中有利于股东的议价能力根本失衡，非股权利益相关者只有有限的制衡力量（如高昂的退出成本、无投票权、无效的法律追索）。正式的利益相关者保护被证明是无效的，导致实际问责薄弱，使命履行严重依赖所有者的利他主义。这意味着要确保对漂绿的可信防范，必须对BCs和SaMs进行根本性的结构重新设计。这涉及将议价能力向利益相关者转移，并建立独立于无私所有者的治理，从而创造必要的可信承诺。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109201">https://doi.org/10.1016/j.ecolecon.2026.109201</a></li>
+</ul>
+]]></content:encoded>
+  </item>
   </channel>
 </rss>
