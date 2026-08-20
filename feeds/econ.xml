@@ -8,67 +8,133 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>对温和气候的异质性个体估值</title>
-    <link>https://doi.org/10.1007/s10640-026-01110-4</link>
-    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01110-4</guid>
-    <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Jan K. Brueckner</dc:creator>
-    <description>摘要：本文使用传统的Rosen-Roback实证框架，探讨了工人对一项重要舒适性——气候温和度的异质性估值。具体而言，在包含房价指标的hedonic工资回归中，引入了舒适性与工人特征的交互项。结果表明，非年轻工人（中年和老年组）比年轻工人更看重温和气候，这与通常认为的耐寒性随年龄增长而下降的观点一致。研究还发现，与高教育水平的工人类似，低教育水平的工人也高度看重温和气候，而中等教育水平的工人估值较</description>
-    <category>气候舒适度</category>
-    <category>异质性偏好</category>
-    <category>hedonic工资回归</category>
-    <category>Rosen-Roback模型</category>
-    <content:encoded><![CDATA[<h2>对温和气候的异质性个体估值</h2>
-<p><em>Heterogeneous Individual Valuations of a Mild Climate</em></p>
+    <title>环境价值观、气候意识与绿色储蓄支付意愿：感知绿色洗白的直接与调节效应</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109195</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109195</guid>
+    <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Maxime Merli</dc:creator>
+    <description></description>
+    <category>环境价值观</category>
+    <category>气候意识</category>
+    <category>绿色储蓄</category>
+    <category>支付意愿</category>
+    <category>绿色洗白</category>
+    <content:encoded><![CDATA[<h2>环境价值观、气候意识与绿色储蓄支付意愿：感知绿色洗白的直接与调节效应</h2>
+<p><em>Environmental values, climate awareness and willingness to pay for green savings: The direct and moderating effect of perceived greenwashing</em></p>
 <ul>
-<li><strong>期刊</strong>：Environmental and Resource Economics</li>
-<li><strong>日期</strong>：2026-08-17</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：气候经济</li>
-<li><strong>标签</strong>：气候舒适度，异质性偏好，hedonic工资回归，Rosen-Roback模型</li>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-08-18</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：环境经济与政策</li>
+<li><strong>标签</strong>：环境价值观，气候意识，绿色储蓄，支付意愿，绿色洗白</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Jan K. Brueckner¹²</li>
-<li><strong>作者单位</strong>：¹University of California, Irvine；²UC Irvine Health</li>
+<li><strong>作者</strong>：Maxime Merli¹, Tristan Roger²³</li>
+<li><strong>作者单位</strong>：¹EM Strasbourg Business School；²Centre Européen de Recherche en Economie Financière et Gestion des Entreprises；³Université de Lorraine</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>摘要：本文使用传统的Rosen-Roback实证框架，探讨了工人对一项重要舒适性——气候温和度的异质性估值。具体而言，在包含房价指标的hedonic工资回归中，引入了舒适性与工人特征的交互项。结果表明，非年轻工人（中年和老年组）比年轻工人更看重温和气候，这与通常认为的耐寒性随年龄增长而下降的观点一致。研究还发现，与高教育水平的工人类似，低教育水平的工人也高度看重温和气候，而中等教育水平的工人估值较低。这些发现与只有较富裕人群才关心舒适性的观点相矛盾，可能反映了低教育程度工人从事体力劳动在温和天气下负担较轻。除呈现这些实证发现外，本文还通过为具有个体异质性的Rosen-Roback模型提供新的分析进一步做出了贡献。</p>
-<p><strong>资源信息</strong>  </p>
+</details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01110-4">https://doi.org/10.1007/s10640-026-01110-4</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109195">https://doi.org/10.1016/j.ecolecon.2026.109195</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>共益公司与使命公司的绿色资质：产权与漂绿防范</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109201</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109201</guid>
-    <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Alejandro Agafonow</dc:creator>
-    <description>本研究探讨美国共益公司（BCs）和法国使命公司（SaMs）的产权模板是否能对漂绿行为提供可信的防范。通过剖析其独特的法律结构（B Lab称之为“法律DNA”），我们试图发现这些公司的环境和社会声明是否真正得到稳健公司治理的支持。其重要性在于环境和社会声明的“信任品”性质，这使得验证变得困难，同时增加了欺诈的可能性。模糊的使命以及BCs和SaMs自由选择并支付审计师所导致的第三方评估削弱，进一步加剧</description>
-    <category>漂绿</category>
-    <category>共益公司</category>
-    <category>使命公司</category>
-    <category>公司治理</category>
-    <category>绿色声明</category>
-    <content:encoded><![CDATA[<h2>共益公司与使命公司的绿色资质：产权与漂绿防范</h2>
-<p><em>The green credentials of benefit corporations and sociétés à mission: Property rights and the prevention of greenwashing</em></p>
+    <title>脱碳与循环经济战略的宏观经济和生物物理影响：奥地利情景分析</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109187</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109187</guid>
+    <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Meyer Ina</dc:creator>
+    <description></description>
+    <category>脱碳</category>
+    <category>循环经济</category>
+    <category>宏观经济影响</category>
+    <category>生物物理影响</category>
+    <category>情景分析</category>
+    <category>奥地利</category>
+    <content:encoded><![CDATA[<h2>脱碳与循环经济战略的宏观经济和生物物理影响：奥地利情景分析</h2>
+<p><em>The macroeconomic and biophysical impacts of decarbonization and circular economy strategies. A scenario analysis for Austria</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-08-17</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：漂绿，共益公司，使命公司，公司治理，绿色声明</li>
+<li><strong>日期</strong>：2026-08-18</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：可持续发展</li>
+<li><strong>标签</strong>：脱碳，循环经济，宏观经济影响，生物物理影响，情景分析，奥地利</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Alejandro Agafonow¹, Marybel Pérez¹, Ana Cristina O. Siqueira²</li>
-<li><strong>作者单位</strong>：¹ESSCA School of Management；²William Paterson University</li>
+<li><strong>作者</strong>：Meyer Ina¹, Sommer Mark¹, Baumgart André², Eisenmenger Nina², Virag Doris², Kratena Kurt³, Haas Willi²</li>
+<li><strong>作者单位</strong>：¹Austrian Institute of Economic Research；²BOKU University；³Economic Research Centre</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>本研究探讨美国共益公司（BCs）和法国使命公司（SaMs）的产权模板是否能对漂绿行为提供可信的防范。通过剖析其独特的法律结构（B Lab称之为“法律DNA”），我们试图发现这些公司的环境和社会声明是否真正得到稳健公司治理的支持。其重要性在于环境和社会声明的“信任品”性质，这使得验证变得困难，同时增加了欺诈的可能性。模糊的使命以及BCs和SaMs自由选择并支付审计师所导致的第三方评估削弱，进一步加剧了这种脆弱性。本研究植根于制度生态经济学传统，通过基于机制的方方法论强调制度现实主义。定性制度数据来源于示范共益公司立法、使命公司法律地位、判例法和公司文件，随后使用符合ISO/IEC 21838-1标准的基本形式本体论（BFO）进行显式编码分析。研究结果揭示了BCs和SaMs中有利于股东的议价能力根本失衡，非股权利益相关者只有有限的制衡力量（如高昂的退出成本、无投票权、无效的法律追索）。正式的利益相关者保护被证明是无效的，导致实际问责薄弱，使命履行严重依赖所有者的利他主义。这意味着要确保对漂绿的可信防范，必须对BCs和SaMs进行根本性的结构重新设计。这涉及将议价能力向利益相关者转移，并建立独立于无私所有者的治理，从而创造必要的可信承诺。</p>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109187">https://doi.org/10.1016/j.ecolecon.2026.109187</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>国内碳市场能否缓冲欧盟边境税的影响？印度能源密集型行业脱碳成本的随机前沿分析</title>
+    <link>https://doi.org/10.1177/01956574261473489</link>
+    <guid isPermaLink="false">https://doi.org/10.1177/01956574261473489</guid>
+    <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Cheshta Grover</dc:creator>
+    <description>本研究考察了印度能源密集且贸易暴露（EITE）行业对欧盟碳边境调节机制（CBAM）的脆弱性，并评估国内排放交易体系（ETS）能否缓解这些风险。利用2015至2022年年度工业调查数据，我们使用随机前沿超越对数双曲距离函数估计部门层面的边际减排成本（MACs）。结果显示，技术效率随时间下降，各行业减排成本存在显著异质性，影子价格从水泥的54.8美元/吨CO2到焦炉的453.9美元/吨CO2不等（平均</description>
+    <category>碳边境调节机制</category>
+    <category>国内排放交易体系</category>
+    <category>边际减排成本</category>
+    <category>随机前沿分析</category>
+    <category>印度</category>
+    <category>能源密集型行业</category>
+    <content:encoded><![CDATA[<h2>国内碳市场能否缓冲欧盟边境税的影响？印度能源密集型行业脱碳成本的随机前沿分析</h2>
+<p><em>Can Domestic Carbon Markets Buffer the Impact of EU Border Taxes? A Stochastic Frontier Analysis of Decarbonization Costs in India’s Energy-Intensive Industries</em></p>
+<ul>
+<li><strong>期刊</strong>：The Energy Journal</li>
+<li><strong>日期</strong>：2026-08-18</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：碳边境调节机制，国内排放交易体系，边际减排成本，随机前沿分析，印度，能源密集型行业</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Cheshta Grover¹, Ram Ranjan¹</li>
+<li><strong>作者单位</strong>：¹Shiv Nadar University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>本研究考察了印度能源密集且贸易暴露（EITE）行业对欧盟碳边境调节机制（CBAM）的脆弱性，并评估国内排放交易体系（ETS）能否缓解这些风险。利用2015至2022年年度工业调查数据，我们使用随机前沿超越对数双曲距离函数估计部门层面的边际减排成本（MACs）。结果显示，技术效率随时间下降，各行业减排成本存在显著异质性，影子价格从水泥的54.8美元/吨CO2到焦炉的453.9美元/吨CO2不等（平均238.3美元/吨CO2）。MACs与碳强度呈负相关，但正式检验仅提供有限的统计显著非线性关系证据。在替代脱碳路径下，预计MACs到2030年保持相对稳定。为评估贸易相关风险，我们使用碳强度、贸易暴露和经济依赖构建综合CBAM脆弱性指数。铝成为最脆弱部门，其次是钢铁，而水泥和化学品暴露相对有限。ETS模拟表明，随着碳价格上升，低成本部门成为配额供应者。研究结果表明，设计良好的国内碳市场，辅以对脆弱行业的针对性支持，可以降低脱碳总成本、增强竞争力，并提升对新兴碳相关贸易措施的韧性。JEL分类：Q52，污染控制采用与成本；分配效应；就业效应；Q54，气候；自然灾害及其管理；全球变暖；Q58，环境经济学：政府政策。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109201">https://doi.org/10.1016/j.ecolecon.2026.109201</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261473489">https://doi.org/10.1177/01956574261473489</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>风险偏好与感知产量分布如何影响农户对气候变化的适应</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109197</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109197</guid>
+    <pubDate>Sun, 16 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Natalie R. Loduca</dc:creator>
+    <description>农业生产者的风险偏好和对气候变化风险的感知在塑造其适应决策中发挥作用。本研究引出农户主观作物产量分布，并将农户风险偏好和主观信念与天气变化下的适应决策联系起来。基于对密歇根州44名玉米种植者的详细访谈，这项探索性研究发现，在没有水分管理实践且作物遗传特性保持不变的情况下，农户预期玉米产量的均值和方差都会增加。他们预期采用灌溉以及程度较轻的暗管排水将进一步提高平均产量。相比之下，采用抗旱种子品种只会</description>
+    <category>农户适应</category>
+    <category>风险偏好</category>
+    <category>产量分布</category>
+    <category>气候变化</category>
+    <content:encoded><![CDATA[<h2>风险偏好与感知产量分布如何影响农户对气候变化的适应</h2>
+<p><em>How risk preferences and perceived yield distributions affect farmer adaptation to climate change</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-08-16</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：农户适应，风险偏好，产量分布，气候变化</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Natalie R. Loduca¹², Scott M. Swinton³⁴</li>
+<li><strong>作者单位</strong>：¹University of Illinois Urbana-Champaign；²Urbana University；³Michigan Department of Agriculture and Rural Development；⁴Michigan State University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>农业生产者的风险偏好和对气候变化风险的感知在塑造其适应决策中发挥作用。本研究引出农户主观作物产量分布，并将农户风险偏好和主观信念与天气变化下的适应决策联系起来。基于对密歇根州44名玉米种植者的详细访谈，这项探索性研究发现，在没有水分管理实践且作物遗传特性保持不变的情况下，农户预期玉米产量的均值和方差都会增加。他们预期采用灌溉以及程度较轻的暗管排水将进一步提高平均产量。相比之下，采用抗旱种子品种只会略微提高均值，同时降低方差。尽管所有接受采访的农户都是风险厌恶的，但在选择适应天气风险的水分管理技术时，他们更倾向于那些能带来感知产量收益的技术。作物产量方差的减少和风险厌恶程度只起次要作用。这些发现表明，推广气候适应技术的政策和推广计划应优先强调潜在产量收益，而非生产风险降低。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109197">https://doi.org/10.1016/j.ecolecon.2026.109197</a></li>
 </ul>
 ]]></content:encoded>
   </item>
