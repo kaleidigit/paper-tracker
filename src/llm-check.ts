@@ -40,7 +40,7 @@ async function main(): Promise<void> {
     body: JSON.stringify({
       model,
       temperature: 0,
-      max_tokens: 128,
+      max_tokens: 1200,
       response_format: { type: "json_object" },
       messages: [
         { role: "system", content: "你是翻译助手，只输出JSON。" },
