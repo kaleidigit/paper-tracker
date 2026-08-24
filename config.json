@@ -25,12 +25,12 @@
   "ai": {
     "provider": "deepseek",
     "api_style": "openai-compatible",
-    "base_url": "https://api.deepseek.com",
-    "model": "deepseek-v4-flash",
+    "base_url": "https://models.sjtu.edu.cn/api/v1",
+    "model": "deepseek-reasoner",
     "api_key_env": "OPENAI_COMPATIBLE_API_KEY",
     "translation": {
       "enabled": true,
-      "model": "deepseek-v4-flash",
+      "model": "deepseek-reasoner",
       "api_key_env": "OPENAI_COMPATIBLE_API_KEY",
       "required": true
     },
@@ -43,7 +43,7 @@
     "filter": {
       "enabled": true,
       "mode": "rescue_keyword_miss",
-      "model": "deepseek-v4-flash",
+      "model": "deepseek-reasoner",
       "temperature": 0.0,
       "max_tokens": 500,
       "min_confidence": 0.5,
