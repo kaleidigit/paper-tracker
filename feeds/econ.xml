@@ -8,193 +8,35 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>农业环境计划中集中与分散决策的成本效益：生态经济模型的启示</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109179</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109179</guid>
-    <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Caterina De Petris</dc:creator>
-    <description>农业环境计划（AES）的成本效益除其他因素外还取决于空间维度。关于如何激励栖息地连通性的研究已大量开展，但关于决策的空间层级如何影响AES结果的研究却少得多。本文通过分析集中化和分散化两种决策层级下多种AES的成本效益，为填补这一研究空白做出贡献。为此，我们开发了一个通用的生态经济模型。该模型考虑两个区域、两个决策层级、两个物种和两个AES，每个AES针对所考虑的两个物种之一。我们分析了不同的政策</description>
-    <category>农业环境计划</category>
-    <category>生态经济模型</category>
-    <category>决策层级</category>
-    <category>成本效益</category>
-    <content:encoded><![CDATA[<h2>农业环境计划中集中与分散决策的成本效益：生态经济模型的启示</h2>
-<p><em>Cost-effectiveness of centralized versus decentralized decision-making in agri-environment schemes for biodiversity conservation: Insights from an ecological-economic model</em></p>
+    <title>农业食品供应链中的风险管理外部性</title>
+    <link>https://doi.org/10.1002/ajae.70091</link>
+    <guid isPermaLink="false">https://doi.org/10.1002/ajae.70091</guid>
+    <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Jeffrey Hadachek</dc:creator>
+    <description>摘要 从社会规划者的角度看，企业可能在风险管理上投资不足或过度，从而对供应链中的其他经济主体产生负外部性。风险管理的外部性对农业食品供应链尤为重要，这些供应链经常遭受中断，并在防止因粮食不安全导致的重大社会损失中发挥主要作用。外部性的大小取决于供应链的结构。我们构建了一个理论模型来描述美国食品供应链中的此类外部性，其中中间商企业选择产出数量并进行风险管理投资。该模型允许灵活的市场结构和企业间风险管</description>
+    <category>风险管理</category>
+    <category>外部性</category>
+    <category>农业食品供应链</category>
+    <category>市场结构</category>
+    <category>风险相互依赖</category>
+    <content:encoded><![CDATA[<h2>农业食品供应链中的风险管理外部性</h2>
+<p><em>Risk management externalities in agrifood supply chains</em></p>
 <ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-08-22</li>
+<li><strong>期刊</strong>：American Journal of Agricultural Economics</li>
+<li><strong>日期</strong>：2026-08-23</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：农业环境计划，生态经济模型，决策层级，成本效益</li>
+<li><strong>标签</strong>：风险管理，外部性，农业食品供应链，市场结构，风险相互依赖</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Caterina De Petris, Martin Drechsler¹², Frank Wätzold²</li>
-<li><strong>作者单位</strong>：¹Helmholtz Centre for Environmental Research；²Brandenburg University of Technology Cottbus-Senftenberg</li>
+<li><strong>作者</strong>：Jeffrey Hadachek¹, Meilin Ma²</li>
+<li><strong>作者单位</strong>：¹University of Wisconsin–Madison；²Purdue University West Lafayette</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>农业环境计划（AES）的成本效益除其他因素外还取决于空间维度。关于如何激励栖息地连通性的研究已大量开展，但关于决策的空间层级如何影响AES结果的研究却少得多。本文通过分析集中化和分散化两种决策层级下多种AES的成本效益，为填补这一研究空白做出贡献。为此，我们开发了一个通用的生态经济模型。该模型考虑两个区域、两个决策层级、两个物种和两个AES，每个AES针对所考虑的两个物种之一。我们分析了不同的政策情景：中央政府既可以实施统一政策，即两个区域对相同的保护措施提供相同的补偿支付，也可以协调各区域，使每个区域针对一个物种，利用各区域的相对成本优势。在分散化下，AES完全由区域层面管理，即区域独立设计其AES。本研究旨在识别不同的生态和经济参数如何影响不同决策层级下AES的相对成本效益。我们的模型表明，成本效益最优的决策层级高度依赖于生态和经济背景。我们特别发现，集中式方法可能更适合保护具有相似环境要求的物种组合，而分散式方法可能更适合保护具有不同环境要求的物种组合。</p>
+</details><p><strong>中文摘要</strong><br>摘要 从社会规划者的角度看，企业可能在风险管理上投资不足或过度，从而对供应链中的其他经济主体产生负外部性。风险管理的外部性对农业食品供应链尤为重要，这些供应链经常遭受中断，并在防止因粮食不安全导致的重大社会损失中发挥主要作用。外部性的大小取决于供应链的结构。我们构建了一个理论模型来描述美国食品供应链中的此类外部性，其中中间商企业选择产出数量并进行风险管理投资。该模型允许灵活的市场结构和企业间风险管理的相互依赖。风险相互依赖捕捉了农业食品供应链中生物危害（例如动植物疾病）的独特特征，即企业风险管理的有效性取决于同行企业的行为。我们提供了关于风险相互依赖在不同市场结构下驱动风险管理外部性作用的新见解。我们表明，在完全竞争下，私营企业的投资低于社会最优水平，但风险相互依赖和市场力量引入了降低风险投资的复杂激励，从而塑造了外部性。特别是，当企业间的投资是互补的，且企业在生产中拥有强大的市场力量但在风险管理上协调有限时，私人投资可能等于甚至超过社会最优水平。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109179">https://doi.org/10.1016/j.ecolecon.2026.109179</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>基于自然的解决方案的绿色债务：协调市政预算与银行实践</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109204</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109204</guid>
-    <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Axelle Vincent</dc:creator>
-    <description></description>
-    <category>绿色债务</category>
-    <category>基于自然的解决方案</category>
-    <category>市政预算</category>
-    <category>银行实践</category>
-    <content:encoded><![CDATA[<h2>基于自然的解决方案的绿色债务：协调市政预算与银行实践</h2>
-<p><em>Green debt for nature-based solutions: aligning municipal budgeting and banking practices</em></p>
-<ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-08-20</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：绿色债务，基于自然的解决方案，市政预算，银行实践</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Axelle Vincent¹, Tara Op de Beeck, Heleen Van Hecke, Tine Compernolle¹², Jan Cools¹, Tom Coppens¹</li>
-<li><strong>作者单位</strong>：¹University of Antwerp；²Institute of Natural Sciences</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109204">https://doi.org/10.1016/j.ecolecon.2026.109204</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>工业用地定价中的逐底竞争动态：中国2009年价格下限调整政策的非对称效应</title>
-    <link>https://doi.org/10.1016/j.jdeveco.2026.103910</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.jdeveco.2026.103910</guid>
-    <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Ran Tao</dc:creator>
-    <description></description>
-    <category>工业用地</category>
-    <category>逐底竞争</category>
-    <category>价格下限</category>
-    <category>中国政策</category>
-    <content:encoded><![CDATA[<h2>工业用地定价中的逐底竞争动态：中国2009年价格下限调整政策的非对称效应</h2>
-<p><em>Race-to-the-bottom dynamics in industrial land pricing: Asymmetric effects of China’s 2009 price floor adjustment policy</em></p>
-<ul>
-<li><strong>期刊</strong>：Journal of Development Economics</li>
-<li><strong>日期</strong>：2026-08-20</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：工业用地，逐底竞争，价格下限，中国政策</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Ran Tao¹, Jialin Yu²³, Zhejin Zhao⁴</li>
-<li><strong>作者单位</strong>：¹Chinese University of Hong Kong, Shenzhen；²Chinese Academy of Social Sciences；³Rural Development Institute；⁴Harbin Institute of Technology</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.jdeveco.2026.103910">https://doi.org/10.1016/j.jdeveco.2026.103910</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>气候治理的生态外部性：太阳能土地利用损害鸟类生物多样性的证据</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109203</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109203</guid>
-    <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Xi Ji</dc:creator>
-    <description></description>
-    <category>太阳能</category>
-    <category>土地利用</category>
-    <category>生物多样性</category>
-    <category>生态外部性</category>
-    <category>气候治理</category>
-    <content:encoded><![CDATA[<h2>气候治理的生态外部性：太阳能土地利用损害鸟类生物多样性的证据</h2>
-<p><em>The ecological externalities of climate governance: Evidence that solar land use harms bird biodiversity</em></p>
-<ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-08-20</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：气候经济</li>
-<li><strong>标签</strong>：太阳能，土地利用，生物多样性，生态外部性，气候治理</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Xi Ji¹², Jie Lin¹³, Pengfei Liu⁴, Xiaoxue Zong¹</li>
-<li><strong>作者单位</strong>：¹Peking University；²Nano Carbon (Poland)；³Jilin Province Development and Reform Commission；⁴University of Rhode Island</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109203">https://doi.org/10.1016/j.ecolecon.2026.109203</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>从参与意愿到需求：数字产品护照中绿色消费者信息的行为实验</title>
-    <link>https://doi.org/10.1007/s10640-026-01107-z</link>
-    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01107-z</guid>
-    <pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Zack Dorner</dc:creator>
-    <description>现有证据表明，消费者愿意为带有标签的环境属性付费。然而，关于消费者是否有意愿参与（WTE）详细信息的提供，仍存在空白。欧盟的循环经济行动计划规定了新的数字产品护照（DPP），其中包含嵌入排放、组件和材料、化学物质以及维修、拆卸和可持续处置说明等信息。在我们的理论中，绿色消费者在考虑认知或时间成本的情况下，决定多大程度地参与帮助他们减轻消费造成的环境损害的信息。我们通过一项实验室实验来检验该模型，其</description>
-    <category>数字产品护照</category>
-    <category>消费者行为</category>
-    <category>绿色消费</category>
-    <category>循环经济</category>
-    <category>实验</category>
-    <content:encoded><![CDATA[<h2>从参与意愿到需求：数字产品护照中绿色消费者信息的行为实验</h2>
-<p><em>From Willingness to Engage to Demand: A Behavioral Experiment on Green Consumer Information in a Digital Product Passport</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental and Resource Economics</li>
-<li><strong>日期</strong>：2026-08-19</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：可持续发展</li>
-<li><strong>标签</strong>：数字产品护照，消费者行为，绿色消费，循环经济，实验</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Zack Dorner¹, Steven Tucker², Abraham Zhang³, Anna Heuber⁴</li>
-<li><strong>作者单位</strong>：¹Lincoln University；²University of Waikato；³University of Glasgow；⁴BOKU University</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>现有证据表明，消费者愿意为带有标签的环境属性付费。然而，关于消费者是否有意愿参与（WTE）详细信息的提供，仍存在空白。欧盟的循环经济行动计划规定了新的数字产品护照（DPP），其中包含嵌入排放、组件和材料、化学物质以及维修、拆卸和可持续处置说明等信息。在我们的理论中，绿色消费者在考虑认知或时间成本的情况下，决定多大程度地参与帮助他们减轻消费造成的环境损害的信息。我们通过一项实验室实验来检验该模型，其中商品的环境属性仅可通过DPP获取。我们发现，关于DPP目的的教育是提高对DPP的显现WTE的关键。这主要是由那些声明WTE较低的消费者驱动的；声明WTE较高的参与者无论是否教育都会与DPP互动。与DPP的互动增加了知识水平和支付意愿（WTP），因为DPP揭示了有利的环境信息。我们没有发现DPP带来正向溢出效应的证据（环境取向无进一步转变或后续行为无增加），但我们发现，由于DPP导致的WTP增加以及接触DPP，会引致后续行为（环保捐赠）的负向溢出效应。我们进一步提出了陈述性和显现性WTE的新测量方法，并展示了它们在理论上知情地理解消费者行为方面的价值。我们的研究为DPP或类似工具的现场测试和推广提供了见解。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01107-z">https://doi.org/10.1007/s10640-026-01107-z</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>通往韧性之路：洪水、公路与印度非正规制造业</title>
-    <link>https://doi.org/10.1016/j.jdeveco.2026.103912</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.jdeveco.2026.103912</guid>
-    <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Dixit Poudel</dc:creator>
-    <description></description>
-    <category>洪水</category>
-    <category>基础设施</category>
-    <category>非正规制造业</category>
-    <category>韧性</category>
-    <category>印度</category>
-    <content:encoded><![CDATA[<h2>通往韧性之路：洪水、公路与印度非正规制造业</h2>
-<p><em>Road to resilience: Floods, highways and Indian informal manufacturing</em></p>
-<ul>
-<li><strong>期刊</strong>：Journal of Development Economics</li>
-<li><strong>日期</strong>：2026-08-18</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：洪水，基础设施，非正规制造业，韧性，印度</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Dixit Poudel¹, Munisamy Gopinath</li>
-<li><strong>作者单位</strong>：¹University of California, Davis</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.jdeveco.2026.103912">https://doi.org/10.1016/j.jdeveco.2026.103912</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1002/ajae.70091">https://doi.org/10.1002/ajae.70091</a></li>
 </ul>
 ]]></content:encoded>
   </item>
