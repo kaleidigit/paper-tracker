@@ -8,32 +8,130 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>女性参与决策能否促进可持续渔业管理？来自渔民及其妻子的选择实验证据</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109220</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109220</guid>
-    <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Krishanthan Gnanapragasam</dc:creator>
-    <description></description>
-    <category>渔业管理</category>
-    <category>女性参与</category>
-    <category>可持续渔业</category>
-    <category>选择实验</category>
-    <content:encoded><![CDATA[<h2>女性参与决策能否促进可持续渔业管理？来自渔民及其妻子的选择实验证据</h2>
-<p><em>Can women&#39;s participation in decision making promote sustainable fisheries management? Evidence from a choice experiment with fishermen and their wives</em></p>
+    <title>电气化的效益是否仅在长期实现？来自印度农村的证据</title>
+    <link>https://doi.org/10.1177/01956574261473495</link>
+    <guid isPermaLink="false">https://doi.org/10.1177/01956574261473495</guid>
+    <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Suryadeepto Nag</dc:creator>
+    <description>实验研究发现电气化的效益小于观测研究。这是因为后者通常观察到更长时间后的效益吗？利用印度人类发展概况和印度家庭发展调查的三轮农村家庭数据，我们量化了短期（0-7年）和长期（7-17年）电力接入对家庭福祉的影响。我们采用倾向得分加权双重差分设计控制溢出效应，发现电力接入在长期增加了消费和教育，减少了女性收集燃料的时间，但未发现对农业收入、农业土地持有和煤油消费的显著影响。长期通电组的人均消费在七年内</description>
+    <category>电气化</category>
+    <category>印度农村</category>
+    <category>长期效益</category>
+    <category>家庭福祉</category>
+    <category>倾向得分加权双重差分</category>
+    <content:encoded><![CDATA[<h2>电气化的效益是否仅在长期实现？来自印度农村的证据</h2>
+<p><em>Are the Benefits of Electrification Realized Only in the Long Run? Evidence from Rural India</em></p>
 <ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-08-24</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：渔业管理，女性参与，可持续渔业，选择实验</li>
+<li><strong>期刊</strong>：The Energy Journal</li>
+<li><strong>日期</strong>：2026-08-25</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：能源经济</li>
+<li><strong>标签</strong>：电气化，印度农村，长期效益，家庭福祉，倾向得分加权双重差分</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Krishanthan Gnanapragasam, Shyama Ratnasiri, Christopher Fleming</li>
+<li><strong>作者</strong>：Suryadeepto Nag¹², David I. Stern³</li>
+<li><strong>作者单位</strong>：¹Indian Institute of Science Education and Research Pune；²University of Lausanne；³Australian National University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>实验研究发现电气化的效益小于观测研究。这是因为后者通常观察到更长时间后的效益吗？利用印度人类发展概况和印度家庭发展调查的三轮农村家庭数据，我们量化了短期（0-7年）和长期（7-17年）电力接入对家庭福祉的影响。我们采用倾向得分加权双重差分设计控制溢出效应，发现电力接入在长期增加了消费和教育，减少了女性收集燃料的时间，但未发现对农业收入、农业土地持有和煤油消费的显著影响。长期通电组的人均消费在七年内比对照组增长18个百分点。短期效应较小且对所有结果变量均不显著。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261473495">https://doi.org/10.1177/01956574261473495</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>农民对泥炭地恢复背景下集聚奖金设计的偏好</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109206</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109206</guid>
+    <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Nils L. Langanke</dc:creator>
+    <description>本文研究了集聚奖金的设计如何影响农民参与一个典型泥炭地恢复计划。对德国110名农民进行的离散选择实验结果表明，与土地使用限制相比，奖金的影响有限。在混合logit和潜在类别估计中，奖金在统计上不显著，并且在决策过程中大多被忽略。只有当偏好根据属性非关注进行调整时，奖金才提高了参与意愿和计划的成本效益。总体而言，自愿计划似乎不足以实现雄心勃勃的泥炭地恢复目标，表明需要以监管措施补充激励。</description>
+    <category>泥炭地恢复</category>
+    <category>集聚奖金</category>
+    <category>农民偏好</category>
+    <category>离散选择实验</category>
+    <category>德国</category>
+    <content:encoded><![CDATA[<h2>农民对泥炭地恢复背景下集聚奖金设计的偏好</h2>
+<p><em>Farmers&#39; preferences for the design of an agglomeration bonus in the context of peatland restoration</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-08-25</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：泥炭地恢复，集聚奖金，农民偏好，离散选择实验，德国</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Nils L. Langanke, Michael H. Grunenberg, Uwe Latacz-Lohmann</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>本文研究了集聚奖金的设计如何影响农民参与一个典型泥炭地恢复计划。对德国110名农民进行的离散选择实验结果表明，与土地使用限制相比，奖金的影响有限。在混合logit和潜在类别估计中，奖金在统计上不显著，并且在决策过程中大多被忽略。只有当偏好根据属性非关注进行调整时，奖金才提高了参与意愿和计划的成本效益。总体而言，自愿计划似乎不足以实现雄心勃勃的泥炭地恢复目标，表明需要以监管措施补充激励。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109206">https://doi.org/10.1016/j.ecolecon.2026.109206</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>环境条件与中国经济和社会资源向主观幸福感的转化</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109217</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109217</guid>
+    <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Mengdie Ruan</dc:creator>
+    <description></description>
+    <category>环境条件</category>
+    <category>主观幸福感</category>
+    <category>中国经济</category>
+    <category>社会资源</category>
+    <content:encoded><![CDATA[<h2>环境条件与中国经济和社会资源向主观幸福感的转化</h2>
+<p><em>Environmental conditions and the conversion of economic and relational resources into subjective well-being in China</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-08-25</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：环境经济与政策</li>
+<li><strong>标签</strong>：环境条件，主观幸福感，中国经济，社会资源</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Mengdie Ruan¹</li>
+<li><strong>作者单位</strong>：¹University of Malaya</li>
 </ul>
 </details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109220">https://doi.org/10.1016/j.ecolecon.2026.109220</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109217">https://doi.org/10.1016/j.ecolecon.2026.109217</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>碳定价的有效性：一项全球评估</title>
+    <link>https://doi.org/10.1007/s10640-026-01108-y</link>
+    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01108-y</guid>
+    <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Suphi Şen</dc:creator>
+    <description>摘要 我们估计了1990年至2017年间全球各国交错采用碳定价政策对化石燃料燃烧人均CO2排放的影响。我们使用了近期对处理效应异质性稳健的计量经济学技术。我们的动态处理效应估计表明，实施后逐步调整，10年后CO2排放减少19%至23%。这些效应主要由资源替代而非能源效率改善驱动，且并非由对碳价格的短期反应所致。我们的结果在控制可再生能源政策的潜在影响后依然稳健。这些结果凸显了碳定价政策在引导中期预</description>
+    <category>碳定价</category>
+    <category>CO2排放</category>
+    <category>政策评估</category>
+    <category>全球评估</category>
+    <content:encoded><![CDATA[<h2>碳定价的有效性：一项全球评估</h2>
+<p><em>The Effectiveness of Carbon Pricing: A Global Evaluation</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental and Resource Economics</li>
+<li><strong>日期</strong>：2026-08-24</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：碳定价，CO2排放，政策评估，全球评估</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Suphi Şen¹², Serhan Sadikoğlu³, Changjing Ji⁴, Edwin van der Werf¹⁵</li>
+<li><strong>作者单位</strong>：¹Ifo Institute for Economic Research；²Wageningen University &amp; Research；³Tilburg University；⁴ShanghaiTech University；⁵Netherlands Environmental Assessment Agency</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>摘要 我们估计了1990年至2017年间全球各国交错采用碳定价政策对化石燃料燃烧人均CO2排放的影响。我们使用了近期对处理效应异质性稳健的计量经济学技术。我们的动态处理效应估计表明，实施后逐步调整，10年后CO2排放减少19%至23%。这些效应主要由资源替代而非能源效率改善驱动，且并非由对碳价格的短期反应所致。我们的结果在控制可再生能源政策的潜在影响后依然稳健。这些结果凸显了碳定价政策在引导中期预期和补充气候政策组合中的作用。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01108-y">https://doi.org/10.1007/s10640-026-01108-y</a></li>
 </ul>
 ]]></content:encoded>
   </item>
