@@ -8,91 +8,34 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>参与建立信任，而非框架：来自国家能源转型实验的见解</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109232</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109232</guid>
-    <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Kevin Goes</dc:creator>
-    <description></description>
-    <category>能源转型</category>
-    <category>信任</category>
-    <category>实验</category>
-    <content:encoded><![CDATA[<h2>参与建立信任，而非框架：来自国家能源转型实验的见解</h2>
-<p><em>Participation builds trust, not framing: insights from a national energy-transition experiment</em></p>
+    <title>超越循环：循环经济的拓扑与时间限制</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109235</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109235</guid>
+    <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Nicolás Merveille</dc:creator>
+    <description>循环经济已确立为一种主导的可持续性范式，但其基础隐喻“圆”的形式属性仍未得到检验。本文识别了主导循环想象中嵌入的两个分析上不同的约束。第一个是拓扑性的：当操作隐喻作为一个单一闭环运作时，它再现了循环图，这是一种零冗余、最小韧性的一维结构。第二个是时间性的：与循环性相关的评估工具在定量、顺序时间（chronos）内运作，而使定性的、异质的时间性（kairos）在结构上不可见。这里辩护的主张是具体的。</description>
+    <category>循环经济</category>
+    <category>拓扑限制</category>
+    <category>时间限制</category>
+    <category>可持续性范式</category>
+    <content:encoded><![CDATA[<h2>超越循环：循环经济的拓扑与时间限制</h2>
+<p><em>Beyond circularity: Topological and temporal limits of the circular economy</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-09-10</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：能源经济</li>
-<li><strong>标签</strong>：能源转型，信任，实验</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Kevin Goes, Louison Thépaut, Niek Mouter, Emile Chappin, Sjoerd Kluiving</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109232">https://doi.org/10.1016/j.ecolecon.2026.109232</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>介于工具包与理论之间：社会代谢的批判性综述</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109230</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109230</guid>
-    <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Manuel González de Molina</dc:creator>
-    <description></description>
-    <category>社会代谢</category>
-    <category>批判性综述</category>
-    <content:encoded><![CDATA[<h2>介于工具包与理论之间：社会代谢的批判性综述</h2>
-<p><em>Between toolkit and theory: A critical review of social metabolism</em></p>
-<ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-09-10</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：社会代谢，批判性综述</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Manuel González de Molina, Juan Infante-Amate, V.M Toledo</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109230">https://doi.org/10.1016/j.ecolecon.2026.109230</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>当网络连接不可观测时估计电池的拥堵效益</title>
-    <link>https://doi.org/10.1177/01956574261469461</link>
-    <guid isPermaLink="false">https://doi.org/10.1177/01956574261469461</guid>
-    <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
-    <dc:creator>A. Justin Kirkpatrick</dc:creator>
-    <description>我估算了2010年至2017年期间在加州运营的126.3兆瓦电池储能容量对电网的影响。我发现，1兆瓦的储能装置使安装点的晚间峰值电价降低1.11美元/兆瓦时，而非峰值电价并未上升。利用一种反映电网约束优化定价过程的双池LASSO估计量，揭示了不可观测的网络结构，并估算了电网其他位置的价格效应。结果表明，每兆瓦每年可降低123,700美元的供电成本，这一数额与套利的私人收入相当。总体而言，我发现加州</description>
-    <category>电池储能</category>
-    <category>拥堵效益</category>
-    <category>电价</category>
-    <category>电网</category>
-    <content:encoded><![CDATA[<h2>当网络连接不可观测时估计电池的拥堵效益</h2>
-<p><em>Estimating the Congestion Benefits of Batteries When Network Connections Are Unobserved</em></p>
-<ul>
-<li><strong>期刊</strong>：The Energy Journal</li>
-<li><strong>日期</strong>：2026-09-09</li>
+<li><strong>日期</strong>：2026-09-11</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：能源经济</li>
-<li><strong>标签</strong>：电池储能，拥堵效益，电价，电网</li>
+<li><strong>建议关注</strong>：可持续发展</li>
+<li><strong>标签</strong>：循环经济，拓扑限制，时间限制，可持续性范式</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：A. Justin Kirkpatrick¹</li>
-<li><strong>作者单位</strong>：¹Michigan State University</li>
+<li><strong>作者</strong>：Nicolás Merveille¹</li>
+<li><strong>作者单位</strong>：¹Université du Québec à Montréal</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>我估算了2010年至2017年期间在加州运营的126.3兆瓦电池储能容量对电网的影响。我发现，1兆瓦的储能装置使安装点的晚间峰值电价降低1.11美元/兆瓦时，而非峰值电价并未上升。利用一种反映电网约束优化定价过程的双池LASSO估计量，揭示了不可观测的网络结构，并估算了电网其他位置的价格效应。结果表明，每兆瓦每年可降低123,700美元的供电成本，这一数额与套利的私人收入相当。总体而言，我发现加州早期的储能强制要求部分通过降低供电成本得到合理证明，且当零碳太阳能发电渗透率增加给电网带来更高成本时，这种效应最为显著。这些模式可能适用于任何非峰值供应相对缺乏弹性的电网环境。JEL分类：Q41，能源：需求与供给；价格；Q48，能源：政府政策；L14，交易关系；合同与声誉；网络；H23，税收与补贴：外部性；再分配效应；环境税与补贴。</p>
+</details><p><strong>中文摘要</strong><br>循环经济已确立为一种主导的可持续性范式，但其基础隐喻“圆”的形式属性仍未得到检验。本文识别了主导循环想象中嵌入的两个分析上不同的约束。第一个是拓扑性的：当操作隐喻作为一个单一闭环运作时，它再现了循环图，这是一种零冗余、最小韧性的一维结构。第二个是时间性的：与循环性相关的评估工具在定量、顺序时间（chronos）内运作，而使定性的、异质的时间性（kairos）在结构上不可见。这里辩护的主张是具体的。可持续性范式通常将时间视为一个开放问题；循环经济的创始隐喻将时间视为已解决（回归、循环、再生），而其工具仅操作chronos。这种盲目不是一般的无知，而是表现性矛盾。来自三大洲（非洲太阳能项目、墨西哥循环评估、秘鲁采掘业）的经验证据证实了这一诊断。我们提出一个多节奏的完成结构，形如车轮，以甜甜圈经济学为轮缘，再生为轮毂，ArtefactKairos（时间构成的制度装置）为辐条，通过时间构成诊断（TCD）——一个四步治理协议——来操作。TCD被应用于一个已发表的甜菜浆生物精炼评估，该评估将原料建模为固定日输入而未考虑维持它的季节性收获，然后针对秘鲁安塔米纳矿区进行事前校准。在这两种情境中，它揭示了标准评估无法检测到的东西，并具体说明了它将产生的制度条款。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261469461">https://doi.org/10.1177/01956574261469461</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109235">https://doi.org/10.1016/j.ecolecon.2026.109235</a></li>
 </ul>
 ]]></content:encoded>
   </item>
