@@ -8,54 +8,34 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>外出迁移对当地森林砍伐的影响：来自缅甸农村的证据</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109215</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109215</guid>
-    <pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Wentian Jiang</dc:creator>
-    <description>本研究利用一个新颖的面板数据集，该数据集将家庭层面的迁移调查与2000年至2015年的高分辨率遥感观测相结合，考察了缅甸孟邦农村外出迁移与当地森林砍伐之间的关系。采用动态面板估计方法，并以1000米缓冲区捕捉当地森林变化，我们发现了强有力的证据表明，外出迁移在这一超本地尺度上显著减缓了森林砍伐，每增加一名迁移者，每年与减少超过5平方米的森林损失相关。广泛的稳健性检验，包括证伪检验和反向因果评估，进</description>
-    <content:encoded><![CDATA[<h2>外出迁移对当地森林砍伐的影响：来自缅甸农村的证据</h2>
-<p><em>Effects of out-migration on local deforestation: Evidence from rural Myanmar</em></p>
-<ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-09-14</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Wentian Jiang¹, Mateusz Filipski²³, Susana Ferreira³</li>
-<li><strong>作者单位</strong>：¹Fudan University；²International Food Policy Research Institute；³University of Georgia</li>
-</ul>
-</details><p><strong>中文摘要</strong><br>本研究利用一个新颖的面板数据集，该数据集将家庭层面的迁移调查与2000年至2015年的高分辨率遥感观测相结合，考察了缅甸孟邦农村外出迁移与当地森林砍伐之间的关系。采用动态面板估计方法，并以1000米缓冲区捕捉当地森林变化，我们发现了强有力的证据表明，外出迁移在这一超本地尺度上显著减缓了森林砍伐，每增加一名迁移者，每年与减少超过5平方米的森林损失相关。广泛的稳健性检验，包括证伪检验和反向因果评估，进一步增强了我们研究结果的可信度。在探索潜在机制时，我们提供了提示性证据，表明汇款收入促进了家庭能源从生物质燃料向电力的转型，从而可能减少对薪柴和木炭的依赖，缓解当地森林砍伐压力。通过识别迁移可能促进环境可持续性的一个新的能源转型渠道，本研究为迁移-环境文献贡献了新的实证证据，并表明外出迁移的环境效应超越了家庭规模变化，重塑了农村前沿地区的家庭能源使用和土地可持续性路径。</p>
-<p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109215">https://doi.org/10.1016/j.ecolecon.2026.109215</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>欧洲循环生物经济的障碍与创新路径：来自43个多行动者研讨会的基层利益相关者见解</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109233</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109233</guid>
-    <pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Bas Paris</dc:creator>
+    <title>将经济增长与环境退化脱钩：土地、水和排放的全球分析</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109224</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109224</guid>
+    <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Maksym Chepeliev</dc:creator>
     <description></description>
-    <content:encoded><![CDATA[<h2>欧洲循环生物经济的障碍与创新路径：来自43个多行动者研讨会的基层利益相关者见解</h2>
-<p><em>Barriers and innovation pathways for Europe&#39;s circular bioeconomy: grassroots stakeholder insights from 43 multi-actor workshops</em></p>
+    <category>经济增长</category>
+    <category>环境退化</category>
+    <category>脱钩</category>
+    <category>土地利用</category>
+    <category>水资源</category>
+    <category>碳排放</category>
+    <content:encoded><![CDATA[<h2>将经济增长与环境退化脱钩：土地、水和排放的全球分析</h2>
+<p><em>Decoupling economic growth from environmental degradation: a global analysis of land, water, and emissions</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-09-14</li>
+<li><strong>日期</strong>：2026-09-15</li>
 <li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：未分类</li>
+<li><strong>建议关注</strong>：环境经济与政策</li>
+<li><strong>标签</strong>：经济增长，环境退化，脱钩，土地利用，水资源，碳排放</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Bas Paris, Athanasios Τ. Balafoutis, Clio Christopoulou, João Santos, Natasha Ristovska, Luka Juvančič, Maja Berden Zrimec, Boglárka Vajda, Dimitris Michas, George Papadakis</li>
+<li><strong>作者</strong>：Maksym Chepeliev, Ebad Ebadi, Richard Damania, Farzad Taheripour, Esha Zaveri, Jason Russ</li>
 </ul>
 </details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109233">https://doi.org/10.1016/j.ecolecon.2026.109233</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109224">https://doi.org/10.1016/j.ecolecon.2026.109224</a></li>
 </ul>
 ]]></content:encoded>
   </item>
