@@ -8,34 +8,91 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>将经济增长与环境退化脱钩：土地、水和排放的全球分析</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109224</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109224</guid>
-    <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Maksym Chepeliev</dc:creator>
+    <title>保护补偿计划中交易成本的纳入——以老虎为例</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109239</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109239</guid>
+    <pubDate>Sat, 19 Sep 2026 00:00:00 GMT</pubDate>
+    <dc:creator>V. Prakash</dc:creator>
     <description></description>
-    <category>经济增长</category>
-    <category>环境退化</category>
-    <category>脱钩</category>
-    <category>土地利用</category>
-    <category>水资源</category>
-    <category>碳排放</category>
-    <content:encoded><![CDATA[<h2>将经济增长与环境退化脱钩：土地、水和排放的全球分析</h2>
-<p><em>Decoupling economic growth from environmental degradation: a global analysis of land, water, and emissions</em></p>
+    <category>保护补偿</category>
+    <category>交易成本</category>
+    <category>老虎</category>
+    <category>生态补偿</category>
+    <content:encoded><![CDATA[<h2>保护补偿计划中交易成本的纳入——以老虎为例</h2>
+<p><em>The inclusion of transaction costs in conservation compensation schemes as illustrated with tigers</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-09-15</li>
+<li><strong>日期</strong>：2026-09-19</li>
 <li><strong>类型</strong>：comment</li>
 <li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：经济增长，环境退化，脱钩，土地利用，水资源，碳排放</li>
+<li><strong>标签</strong>：保护补偿，交易成本，老虎，生态补偿</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Maksym Chepeliev, Ebad Ebadi, Richard Damania, Farzad Taheripour, Esha Zaveri, Jason Russ</li>
+<li><strong>作者</strong>：V. Prakash, Y. Zhang, R.A. Gitzen, C.A. Lepczyk</li>
 </ul>
 </details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109224">https://doi.org/10.1016/j.ecolecon.2026.109224</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109239">https://doi.org/10.1016/j.ecolecon.2026.109239</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>巴西亚马逊地区的碳价格、森林保护与再造林</title>
+    <link>https://doi.org/10.1086/744117</link>
+    <guid isPermaLink="false">https://doi.org/10.1086/744117</guid>
+    <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Juliano Assuncao</dc:creator>
+    <description></description>
+    <category>碳价格</category>
+    <category>森林保护</category>
+    <category>再造林</category>
+    <category>亚马逊</category>
+    <content:encoded><![CDATA[<h2>巴西亚马逊地区的碳价格、森林保护与再造林</h2>
+<p><em>Carbon Prices, Forest Conservation and Reforestation in the Brazilian Amazon</em></p>
+<ul>
+<li><strong>期刊</strong>：Journal of Political Economy</li>
+<li><strong>日期</strong>：2026-09-18</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：碳价格，森林保护，再造林，亚马逊</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Juliano Assuncao, Lars Peter Hansen, Todd Munson, José A. Scheinkman</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1086/744117">https://doi.org/10.1086/744117</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>财富税能否减少欧洲的二氧化碳排放？</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109231</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109231</guid>
+    <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Alexander Guschanski</dc:creator>
+    <description></description>
+    <category>财富税</category>
+    <category>二氧化碳排放</category>
+    <category>欧洲</category>
+    <content:encoded><![CDATA[<h2>财富税能否减少欧洲的二氧化碳排放？</h2>
+<p><em>Can a wealth tax reduce CO2 emissions in Europe?</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-09-18</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：财富税，二氧化碳排放，欧洲</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Alexander Guschanski, Rafael Wildauer</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109231">https://doi.org/10.1016/j.ecolecon.2026.109231</a></li>
 </ul>
 ]]></content:encoded>
   </item>
