@@ -8,130 +8,101 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>权衡与转型：后增长干预中结构性与话语性权力的范围综述</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109259</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109259</guid>
-    <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Christopher Martin</dc:creator>
-    <description></description>
-    <category>后增长</category>
-    <category>权力</category>
-    <category>转型</category>
-    <content:encoded><![CDATA[<h2>权衡与转型：后增长干预中结构性与话语性权力的范围综述</h2>
-<p><em>Trade-offs and transitions: A scoping review of structural and discursive power in post-growth interventions</em></p>
+    <title>再分配与脱碳的交汇：通过生态宏观经济综合评估模型探索普遍基本收入</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109252</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109252</guid>
+    <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Iñaki Arto</dc:creator>
+    <description>气候变化与日益加剧的不平等这一双重挑战，要求政策能够同时实现生态可持续性与社会公平。在生态宏观经济学（EM）领域，具有生物物理和社会经济联系的综合评估模型（IAM）为事前探索政策权衡提供了一种有前景的方法。本文通过采用Within Limits综合评估模型（WILIAM）为该文献做出贡献，该模型是一种EM-IAM，将多区域投入产出的宏观经济结构与能源和物质流、生物物理约束以及气候损害的显式表征相结</description>
+    <category>生态宏观经济学</category>
+    <category>综合评估模型</category>
+    <category>普遍基本收入</category>
+    <category>碳税</category>
+    <category>公正转型</category>
+    <content:encoded><![CDATA[<h2>再分配与脱碳的交汇：通过生态宏观经济综合评估模型探索普遍基本收入</h2>
+<p><em>Redistribution meets decarbonisation: Exploring universal basic income through an ecological macroeconomic integrated assessment model</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-09-28</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：未分类</li>
-<li><strong>标签</strong>：后增长，权力，转型</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Christopher Martin, Hiroe Ishihara</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109259">https://doi.org/10.1016/j.ecolecon.2026.109259</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>灾难性流离失所：滑坡的长期影响</title>
-    <link>https://doi.org/10.1257/app.20240759</link>
-    <guid isPermaLink="false">https://doi.org/10.1257/app.20240759</guid>
-    <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Travis Baseler</dc:creator>
-    <description>自然灾害每年使数百万人流离失所，但当受影响人口分散时，其经济影响难以研究。本文估算了乌干达六次滑坡对几乎全部受影响人口的长期影响。分析利用了滑坡路径沿线住户与同坡面但路径外住户之间的清晰边界。滑坡发生数年后，受影响住户收入减少50%，对生活感到满意的可能性低18个百分点。进一步分析指出社会资本是灾后成功恢复的决定因素。</description>
-    <category>滑坡</category>
-    <category>自然灾害</category>
-    <category>长期影响</category>
-    <category>社会资本</category>
-    <category>乌干达</category>
-    <content:encoded><![CDATA[<h2>灾难性流离失所：滑坡的长期影响</h2>
-<p><em>Disastrous Displacement: The Long-Run Impacts of Landslides</em></p>
-<ul>
-<li><strong>期刊</strong>：American Economic Journal Applied Economics</li>
-<li><strong>日期</strong>：2026-09-28</li>
+<li><strong>日期</strong>：2026-10-04</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-<li><strong>标签</strong>：滑坡，自然灾害，长期影响，社会资本，乌干达</li>
+<li><strong>建议关注</strong>：环境经济与政策</li>
+<li><strong>标签</strong>：生态宏观经济学，综合评估模型，普遍基本收入，碳税，公正转型</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Travis Baseler¹, Jakob Hennig</li>
-<li><strong>作者单位</strong>：¹University of Rochester</li>
+<li><strong>作者</strong>：Iñaki Arto¹, María Victoria Román¹, Simone D’Alessandro², Kurt Kratena, Guilherme Spinato Morlin², Manuel Tomás¹, Paola López-Muñoz³, Ignacio Cazcarro¹⁴, Ole van Allen</li>
+<li><strong>作者单位</strong>：¹Basque Centre for Climate Change；²University of Pisa；³Universidad de Valladolid；⁴Fundacion Agencia Aragonesa para la Investigacion y el Desarrollo</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>自然灾害每年使数百万人流离失所，但当受影响人口分散时，其经济影响难以研究。本文估算了乌干达六次滑坡对几乎全部受影响人口的长期影响。分析利用了滑坡路径沿线住户与同坡面但路径外住户之间的清晰边界。滑坡发生数年后，受影响住户收入减少50%，对生活感到满意的可能性低18个百分点。进一步分析指出社会资本是灾后成功恢复的决定因素。</p>
+</details><p><strong>中文摘要</strong><br>气候变化与日益加剧的不平等这一双重挑战，要求政策能够同时实现生态可持续性与社会公平。在生态宏观经济学（EM）领域，具有生物物理和社会经济联系的综合评估模型（IAM）为事前探索政策权衡提供了一种有前景的方法。本文通过采用Within Limits综合评估模型（WILIAM）为该文献做出贡献，该模型是一种EM-IAM，将多区域投入产出的宏观经济结构与能源和物质流、生物物理约束以及气候损害的显式表征相结合。我们评估了一项旨在支持21个欧洲国家2025–2050年公正低碳转型的政策组合，包括通过财富税融资的普遍基本收入（UBI），以及旨在内化温室气体（GHG）排放外部成本的碳税。我们在一个考虑家庭异质性、经济刚性和生态限制的统一建模框架内，考察了再分配与排放之间的相互作用。结果表明，该政策组合显著降低了收入不平等并改善了社会结果。然而，UBI的引入通过增加消费产生了反弹效应，而碳定价的存在可以部分缓解这种效应。这些发现凸显了公平与环境目标之间潜在的权衡。我们讨论了驱动这些动态的机制，并探讨了政策设计启示，包括补充措施在将福祉与物质吞吐量脱钩方面的作用。本文展示了EM-IAM在分析复杂政策互动以及推进宏观经济建模中社会与生态维度整合方面的价值。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1257/app.20240759">https://doi.org/10.1257/app.20240759</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109252">https://doi.org/10.1016/j.ecolecon.2026.109252</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>利用进入前后数据识别乙醇工厂进入对玉米价格空间格局的影响：印第安纳州研究</title>
-    <link>https://doi.org/10.1002/ajae.70099</link>
-    <guid isPermaLink="false">https://doi.org/10.1002/ajae.70099</guid>
-    <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Jinho Jung</dc:creator>
-    <description>我们使用一个结合匹配与固定效应的长视界双重差分框架，明确考虑处理强度和空间异质性，估计乙醇工厂进入对当地玉米价格的长期影响。我们发现，相对于当地玉米供应具有平均产能的乙醇工厂进入，会使附近玉米价格每蒲式耳提高约17美分。处理效应在不同工厂间差异显著：产能低于平均水平的工厂之间价格效应差异很小，但随着工厂产能相对于当地玉米供应上升，价格效应急剧增加。价格效应还延伸至进入者30英里以外，凸显了在评估局</description>
-    <category>乙醇工厂</category>
-    <category>玉米价格</category>
-    <category>双重差分</category>
-    <category>空间异质性</category>
-    <category>生物燃料</category>
-    <content:encoded><![CDATA[<h2>利用进入前后数据识别乙醇工厂进入对玉米价格空间格局的影响：印第安纳州研究</h2>
-<p><em>Using pre‐ and post‐entry data to identify the effect of ethanol plant entry on the spatial pattern of corn prices: A study in Indiana</em></p>
+    <title>生产力不确定的公共池资源收入分享机制</title>
+    <link>https://doi.org/10.1002/ajae.70098</link>
+    <guid isPermaLink="false">https://doi.org/10.1002/ajae.70098</guid>
+    <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Claudia Kelsall</dc:creator>
+    <description>摘要：我们探讨了自然公共池资源使用中的外部性与环境不确定性对风险厌恶型资源使用者的不利影响这两个相互关联的问题。我们建立了一个简单的分析模型，并推导出通过收入分享机制提供保险能够缓解外部性从而实现社会最优结果的条件。我们表明，要实现这一目标，分享规则必须对个人贡献足够敏感，并特别指出，简单的按比例分享规则既能激励对收入池的有效贡献，也能激励对资源系统的有效利用。</description>
+    <category>公共池资源</category>
+    <category>收入分享机制</category>
+    <category>保险</category>
+    <category>外部性</category>
+    <category>不确定性</category>
+    <content:encoded><![CDATA[<h2>生产力不确定的公共池资源收入分享机制</h2>
+<p><em>Income sharing for common pool resources with uncertain productivity</em></p>
 <ul>
 <li><strong>期刊</strong>：American Journal of Agricultural Economics</li>
-<li><strong>日期</strong>：2026-09-28</li>
+<li><strong>日期</strong>：2026-10-02</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：未分类</li>
-<li><strong>标签</strong>：乙醇工厂，玉米价格，双重差分，空间异质性，生物燃料</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：公共池资源，收入分享机制，保险，外部性，不确定性</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Jinho Jung¹, Juan Sesmero², Ralph Siebert²</li>
-<li><strong>作者单位</strong>：¹Pohang University of Science and Technology；²Purdue University West Lafayette</li>
+<li><strong>作者</strong>：Claudia Kelsall¹²³⁴⁵, Martin F. Quaas²⁵, Nicolas Quérou³⁴⁶⁷</li>
+<li><strong>作者单位</strong>：¹University of California, Santa Barbara；²German Centre for Integrative Biodiversity Research；³Institut National de Recherche pour l&#39;Agriculture, l&#39;Alimentation et l&#39;Environnement；⁴Center for Environmental Economics - Montpellier；⁵Leipzig University；⁶Centre National de la Recherche Scientifique；⁷Institut Agro Montpelier</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>我们使用一个结合匹配与固定效应的长视界双重差分框架，明确考虑处理强度和空间异质性，估计乙醇工厂进入对当地玉米价格的长期影响。我们发现，相对于当地玉米供应具有平均产能的乙醇工厂进入，会使附近玉米价格每蒲式耳提高约17美分。处理效应在不同工厂间差异显著：产能低于平均水平的工厂之间价格效应差异很小，但随着工厂产能相对于当地玉米供应上升，价格效应急剧增加。价格效应还延伸至进入者30英里以外，凸显了在评估局部需求冲击时考虑空间异质性的重要性。结果对基于处理前工厂选址决定因素的匹配、排除高价格离群县以及统计推断中处理空间依赖性的替代方法均保持稳健。</p>
+</details><p><strong>中文摘要</strong><br>摘要：我们探讨了自然公共池资源使用中的外部性与环境不确定性对风险厌恶型资源使用者的不利影响这两个相互关联的问题。我们建立了一个简单的分析模型，并推导出通过收入分享机制提供保险能够缓解外部性从而实现社会最优结果的条件。我们表明，要实现这一目标，分享规则必须对个人贡献足够敏感，并特别指出，简单的按比例分享规则既能激励对收入池的有效贡献，也能激励对资源系统的有效利用。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1002/ajae.70099">https://doi.org/10.1002/ajae.70099</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1002/ajae.70098">https://doi.org/10.1002/ajae.70098</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>平稳操作？受限配电网中的电动汽车整合管理</title>
-    <link>https://doi.org/10.1177/01956574261487100</link>
-    <guid isPermaLink="false">https://doi.org/10.1177/01956574261487100</guid>
-    <pubDate>Sun, 27 Sep 2026 00:00:00 GMT</pubDate>
-    <dc:creator>David S. Rapson</dc:creator>
-    <description>配电网络约束可能最终限制交通电气化的步伐。本文考察了电动汽车（EV）普及对配电网带来的未被充分认识的挑战。虽然先前研究聚焦于大宗电力与私人服务升级，我们强调局部配电容量如何因小规模聚合的负荷多样性降低而承压。我们提出两种替代昂贵基础设施扩建的方案：（1）基于需求的电价，更有效地分配稀缺配电容量；（2）管理充电项目，在局部限制内协调电动汽车负荷。虽然管理充电可减少变压器过载并平滑负荷曲线，但消费者参</description>
-    <category>电动汽车</category>
-    <category>配电网</category>
-    <category>需求响应</category>
-    <category>充电管理</category>
-    <category>电价设计</category>
-    <content:encoded><![CDATA[<h2>平稳操作？受限配电网中的电动汽车整合管理</h2>
-<p><em>Smooth Operator? Managing Electric Vehicle Integration in Constrained Distribution Networks</em></p>
+    <title>全球纺织服装价值链中CO₂排放的受益原则核算</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109265</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109265</guid>
+    <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Lila Ballav Bhusal</dc:creator>
+    <description>现有排放核算框架将CO₂责任归于生产者或最终消费者，但未识别双边贸易流中的要素提供者受益方。本研究通过引入全球纺织服装（T&amp;C）价值链的贸易模式分解，扩展了受益原则排放（BPE）核算。利用多区域投入产出表，该框架区分了生产者、要素提供者、最终生产者和消费者，并分离了最终品贸易、中间品贸易和全球价值链（GVC）贸易。消费经济体在其自身T&amp;C BPE中保留最大的单一份额。发达经济体的要素提供者通常获得</description>
+    <category>排放核算</category>
+    <category>受益原则</category>
+    <category>全球价值链</category>
+    <category>纺织服装</category>
+    <category>多区域投入产出</category>
+    <content:encoded><![CDATA[<h2>全球纺织服装价值链中CO₂排放的受益原则核算</h2>
+<p><em>Benefit-principle accounting of CO₂ emissions in the global textile and clothing value chain</em></p>
 <ul>
-<li><strong>期刊</strong>：The Energy Journal</li>
-<li><strong>日期</strong>：2026-09-27</li>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-10-02</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：能源经济</li>
-<li><strong>标签</strong>：电动汽车，配电网，需求响应，充电管理，电价设计</li>
+<li><strong>建议关注</strong>：环境经济与政策</li>
+<li><strong>标签</strong>：排放核算，受益原则，全球价值链，纺织服装，多区域投入产出</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：David S. Rapson¹, Blake Shaffer²</li>
-<li><strong>作者单位</strong>：¹University of California, Davis；²University of Calgary</li>
+<li><strong>作者</strong>：Lila Ballav Bhusal¹</li>
+<li><strong>作者单位</strong>：¹Yokohama National University</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>配电网络约束可能最终限制交通电气化的步伐。本文考察了电动汽车（EV）普及对配电网带来的未被充分认识的挑战。虽然先前研究聚焦于大宗电力与私人服务升级，我们强调局部配电容量如何因小规模聚合的负荷多样性降低而承压。我们提出两种替代昂贵基础设施扩建的方案：（1）基于需求的电价，更有效地分配稀缺配电容量；（2）管理充电项目，在局部限制内协调电动汽车负荷。虽然管理充电可减少变压器过载并平滑负荷曲线，但消费者参与仍是障碍。经济学家可通过设计将用户激励与局部网络约束对齐的费率结构，并在电气化推进中评估消费者对这些解决方案的接受度，发挥关键作用。JEL分类：Q40，能源：一般；Q50，环境经济学：一般</p>
+</details><p><strong>中文摘要</strong><br>现有排放核算框架将CO₂责任归于生产者或最终消费者，但未识别双边贸易流中的要素提供者受益方。本研究通过引入全球纺织服装（T&amp;C）价值链的贸易模式分解，扩展了受益原则排放（BPE）核算。利用多区域投入产出表，该框架区分了生产者、要素提供者、最终生产者和消费者，并分离了最终品贸易、中间品贸易和全球价值链（GVC）贸易。消费经济体在其自身T&amp;C BPE中保留最大的单一份额。发达经济体的要素提供者通常获得高于其经济体内消费端排放（CBE）的BPE，而与生产相关的发展中经济体提供者则低于CBE。孟加拉国作为全球第二大服装出口国，尽管承担组装角色，仅占欧盟27国消费者T&amp;C BPE的0.13%。在GVC相关贸易中，外国要素提供者的归属份额上升，组装经济体每美元要素提供者增加值所对应的CO₂排放高于直接最终品贸易。尽管最终需求针对T&amp;C产品，但排放的BPE集中于电力、燃气和水供应部门，将消费产品与排放部门分离。孟加拉国及部分发展中经济体对的总体BPE-CBE比率接近1，而大多数双边对中GVC特定BPE超过CBE。孟加拉国经济整体BPE比其领土排放高19%，表明部门价值捕获与经济整体平衡可能对同一经济体给出不同分类。仅基于排放地点或最终产品原产地的碳边境工具，可能将合规成本强加于捕获有限要素提供者收益的行为体。受益原则指标为边境调节设计、产品层面披露、收入循环和气候融资分配提供了额外诊断工具。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261487100">https://doi.org/10.1177/01956574261487100</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109265">https://doi.org/10.1016/j.ecolecon.2026.109265</a></li>
 </ul>
 ]]></content:encoded>
   </item>
