@@ -8,35 +8,61 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>自然灾害与政治信念</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109260</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109260</guid>
-    <pubDate>Sat, 17 Oct 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Costanza Naguib-Stettler</dc:creator>
-    <description>本文考察了当地极端天气暴露是否影响瑞士对国家气候和能源政策的支持。我们构建了一个市政-公投面板，将高分辨率的MeteoSwiss极端高温和强降水数据与联邦公投中的市政投票结果联系起来。使用交错双重差分设计和Callaway–Sant&apos;Anna事件研究估计量，我们将首次遭受极端天气冲击的市政与尚未受处理的市政进行比较。结果几乎没有证据表明极端天气会增加对环境政策的支持。如果有的话，估计值指向相反方向</description>
-    <category>自然灾害</category>
-    <category>极端天气</category>
-    <category>气候政策支持</category>
-    <category>公投</category>
-    <category>瑞士</category>
-    <content:encoded><![CDATA[<h2>自然灾害与政治信念</h2>
-<p><em>Natural disasters and political beliefs</em></p>
+    <title>可再生自然资源、制度变迁与滞后性</title>
+    <link>https://doi.org/10.1007/s10640-026-01120-2</link>
+    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01120-2</guid>
+    <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Ted To</dc:creator>
+    <description></description>
+    <category>可再生自然资源</category>
+    <category>制度变迁</category>
+    <category>滞后性</category>
+    <content:encoded><![CDATA[<h2>可再生自然资源、制度变迁与滞后性</h2>
+<p><em>Renewable Natural Resources, Regime Shift and Hysteresis</em></p>
 <ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-10-17</li>
+<li><strong>期刊</strong>：Environmental and Resource Economics</li>
+<li><strong>日期</strong>：2026-10-19</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：自然灾害，极端天气，气候政策支持，公投，瑞士</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：可再生自然资源，制度变迁，滞后性</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Costanza Naguib-Stettler¹, Beatrice Palmieri¹</li>
-<li><strong>作者单位</strong>：¹University of Bern</li>
+<li><strong>作者</strong>：Ted To</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>本文考察了当地极端天气暴露是否影响瑞士对国家气候和能源政策的支持。我们构建了一个市政-公投面板，将高分辨率的MeteoSwiss极端高温和强降水数据与联邦公投中的市政投票结果联系起来。使用交错双重差分设计和Callaway–Sant&#39;Anna事件研究估计量，我们将首次遭受极端天气冲击的市政与尚未受处理的市政进行比较。结果几乎没有证据表明极端天气会增加对环境政策的支持。如果有的话，估计值指向相反方向：在选定的降雨规格中，极端冲击后环境支持率下降约2.7-2.8个百分点。这些估计基于较小且地理集中的处理组，因此应解释为特定队列的效应。研究结果与以下观点一致：显著的局部冲击可能减少支持昂贵环境政策的意愿，而不是产生有利于气候行动的经验性更新。</p>
-<p><strong>资源信息</strong>  </p>
+</details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109260">https://doi.org/10.1016/j.ecolecon.2026.109260</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01120-2">https://doi.org/10.1007/s10640-026-01120-2</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>混合工作安排将如何影响自然资源需求？——以城市用水需求为例</title>
+    <link>https://doi.org/10.1007/s10640-026-01123-z</link>
+    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01123-z</guid>
+    <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Juan Carlos Lopez</dc:creator>
+    <description></description>
+    <category>混合工作安排</category>
+    <category>自然资源需求</category>
+    <category>城市用水</category>
+    <content:encoded><![CDATA[<h2>混合工作安排将如何影响自然资源需求？——以城市用水需求为例</h2>
+<p><em>How Will Hybrid Work Schedules Impact the Demand for Natural Resources? The Case of Urban Water Demand</em></p>
+<ul>
+<li><strong>期刊</strong>：Environmental and Resource Economics</li>
+<li><strong>日期</strong>：2026-10-19</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：混合工作安排，自然资源需求，城市用水</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Juan Carlos Lopez¹</li>
+<li><strong>作者单位</strong>：¹University of Denver</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01123-z">https://doi.org/10.1007/s10640-026-01123-z</a></li>
 </ul>
 ]]></content:encoded>
   </item>
