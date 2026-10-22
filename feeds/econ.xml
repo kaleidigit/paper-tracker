@@ -8,61 +8,35 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>可再生自然资源、制度变迁与滞后性</title>
-    <link>https://doi.org/10.1007/s10640-026-01120-2</link>
-    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01120-2</guid>
-    <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Ted To</dc:creator>
-    <description></description>
-    <category>可再生自然资源</category>
-    <category>制度变迁</category>
-    <category>滞后性</category>
-    <content:encoded><![CDATA[<h2>可再生自然资源、制度变迁与滞后性</h2>
-<p><em>Renewable Natural Resources, Regime Shift and Hysteresis</em></p>
+    <title>材料使用及其与人均收入的关系：全球层面的面板数据分析</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109282</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109282</guid>
+    <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Tommaso Luzzati</dc:creator>
+    <description>近几十年来，全球材料使用量显著增加，引发了广泛的环境和社会问题。本研究利用联合国全球物质流数据库的最新数据，对147个国家的两种广泛使用的物质流指标——国内材料消费量和材料足迹——检验环境库兹涅茨曲线（EKC）假说。使用半参数和参数方法，研究期限比以往任何研究都长（1970-2019年），我们发现没有证据支持EKC假说。一个令人担忧的结果是，1989年之后的材料-收入弹性更高，这意味着情况并未改善</description>
+    <category>材料使用</category>
+    <category>人均收入</category>
+    <category>环境库兹涅茨曲线</category>
+    <category>物质足迹</category>
+    <category>面板数据</category>
+    <content:encoded><![CDATA[<h2>材料使用及其与人均收入的关系：全球层面的面板数据分析</h2>
+<p><em>Material use and its relationship with per capita income. A panel data analysis at the global level</em></p>
 <ul>
-<li><strong>期刊</strong>：Environmental and Resource Economics</li>
-<li><strong>日期</strong>：2026-10-19</li>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-10-20</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：可再生自然资源，制度变迁，滞后性</li>
+<li><strong>标签</strong>：材料使用，人均收入，环境库兹涅茨曲线，物质足迹，面板数据</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Ted To</li>
+<li><strong>作者</strong>：Tommaso Luzzati¹, Emilio Padilla, Bhavesh Gulati¹², Vicente Ríos¹, Angela Parenti¹, Stefan Giljum³</li>
+<li><strong>作者单位</strong>：¹University of Pisa；²Istituto Universitario di Studi Superiori di Pavia；³Vienna University of Economics and Business</li>
 </ul>
-</details><p><strong>资源信息</strong>  </p>
+</details><p><strong>中文摘要</strong><br>近几十年来，全球材料使用量显著增加，引发了广泛的环境和社会问题。本研究利用联合国全球物质流数据库的最新数据，对147个国家的两种广泛使用的物质流指标——国内材料消费量和材料足迹——检验环境库兹涅茨曲线（EKC）假说。使用半参数和参数方法，研究期限比以往任何研究都长（1970-2019年），我们发现没有证据支持EKC假说。一个令人担忧的结果是，1989年之后的材料-收入弹性更高，这意味着情况并未改善。我们得出结论，收入-材料使用关系尚未发生重大变化，仍需强有力的政策措施来减少材料消费。</p>
+<p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01120-2">https://doi.org/10.1007/s10640-026-01120-2</a></li>
-</ul>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>混合工作安排将如何影响自然资源需求？——以城市用水需求为例</title>
-    <link>https://doi.org/10.1007/s10640-026-01123-z</link>
-    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01123-z</guid>
-    <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Juan Carlos Lopez</dc:creator>
-    <description></description>
-    <category>混合工作安排</category>
-    <category>自然资源需求</category>
-    <category>城市用水</category>
-    <content:encoded><![CDATA[<h2>混合工作安排将如何影响自然资源需求？——以城市用水需求为例</h2>
-<p><em>How Will Hybrid Work Schedules Impact the Demand for Natural Resources? The Case of Urban Water Demand</em></p>
-<ul>
-<li><strong>期刊</strong>：Environmental and Resource Economics</li>
-<li><strong>日期</strong>：2026-10-19</li>
-<li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：混合工作安排，自然资源需求，城市用水</li>
-</ul>
-<details>
-<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Juan Carlos Lopez¹</li>
-<li><strong>作者单位</strong>：¹University of Denver</li>
-</ul>
-</details><p><strong>资源信息</strong>  </p>
-<ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01123-z">https://doi.org/10.1007/s10640-026-01123-z</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109282">https://doi.org/10.1016/j.ecolecon.2026.109282</a></li>
 </ul>
 ]]></content:encoded>
   </item>
