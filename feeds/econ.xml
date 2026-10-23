@@ -8,35 +8,96 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>材料使用及其与人均收入的关系：全球层面的面板数据分析</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109282</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109282</guid>
-    <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Tommaso Luzzati</dc:creator>
-    <description>近几十年来，全球材料使用量显著增加，引发了广泛的环境和社会问题。本研究利用联合国全球物质流数据库的最新数据，对147个国家的两种广泛使用的物质流指标——国内材料消费量和材料足迹——检验环境库兹涅茨曲线（EKC）假说。使用半参数和参数方法，研究期限比以往任何研究都长（1970-2019年），我们发现没有证据支持EKC假说。一个令人担忧的结果是，1989年之后的材料-收入弹性更高，这意味着情况并未改善</description>
-    <category>材料使用</category>
-    <category>人均收入</category>
-    <category>环境库兹涅茨曲线</category>
-    <category>物质足迹</category>
-    <category>面板数据</category>
-    <content:encoded><![CDATA[<h2>材料使用及其与人均收入的关系：全球层面的面板数据分析</h2>
-<p><em>Material use and its relationship with per capita income. A panel data analysis at the global level</em></p>
+    <title>基于土地的气候政策、土地价格与绿色转型三难困境：来自玻利维亚的证据</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109281</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109281</guid>
+    <pubDate>Thu, 22 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Guilherme Magacho</dc:creator>
+    <description>森林资源丰富的发展中经济体的基于土地的气候政策通常被单独评估，忽视了土地稀缺性、土地价格和宏观约束对可行性的影响。本文考察了玻利维亚可持续农业与森林保护的宏观金融挑战，该国森林砍伐严重，财政和外部约束紧绑。我们开发了生态经济模型中结构性转型暴露的动态版本（D-ESTEEM），以联合分析玻利维亚国家自主贡献（NDC）中森林保护和农业生产力政策。该本地校准的环境扩展投入产出模型结合了连续时间货币系统动</description>
+    <category>气候政策</category>
+    <category>土地价格</category>
+    <category>森林保护</category>
+    <category>绿色转型</category>
+    <category>玻利维亚</category>
+    <content:encoded><![CDATA[<h2>基于土地的气候政策、土地价格与绿色转型三难困境：来自玻利维亚的证据</h2>
+<p><em>Land-based climate policy, land prices, and the green transition trilemma: Evidence from Bolivia</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-10-20</li>
+<li><strong>日期</strong>：2026-10-22</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：材料使用，人均收入，环境库兹涅茨曲线，物质足迹，面板数据</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：气候政策，土地价格，森林保护，绿色转型，玻利维亚</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Tommaso Luzzati¹, Emilio Padilla, Bhavesh Gulati¹², Vicente Ríos¹, Angela Parenti¹, Stefan Giljum³</li>
-<li><strong>作者单位</strong>：¹University of Pisa；²Istituto Universitario di Studi Superiori di Pavia；³Vienna University of Economics and Business</li>
+<li><strong>作者</strong>：Guilherme Magacho¹², Isabella Rodrigues de Brito, Danilo Spinola¹³</li>
+<li><strong>作者单位</strong>：¹Agence française de développement；²Universidade Federal do ABC；³Birmingham City University</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>近几十年来，全球材料使用量显著增加，引发了广泛的环境和社会问题。本研究利用联合国全球物质流数据库的最新数据，对147个国家的两种广泛使用的物质流指标——国内材料消费量和材料足迹——检验环境库兹涅茨曲线（EKC）假说。使用半参数和参数方法，研究期限比以往任何研究都长（1970-2019年），我们发现没有证据支持EKC假说。一个令人担忧的结果是，1989年之后的材料-收入弹性更高，这意味着情况并未改善。我们得出结论，收入-材料使用关系尚未发生重大变化，仍需强有力的政策措施来减少材料消费。</p>
+</details><p><strong>中文摘要</strong><br>森林资源丰富的发展中经济体的基于土地的气候政策通常被单独评估，忽视了土地稀缺性、土地价格和宏观约束对可行性的影响。本文考察了玻利维亚可持续农业与森林保护的宏观金融挑战，该国森林砍伐严重，财政和外部约束紧绑。我们开发了生态经济模型中结构性转型暴露的动态版本（D-ESTEEM），以联合分析玻利维亚国家自主贡献（NDC）中森林保护和农业生产力政策。该本地校准的环境扩展投入产出模型结合了连续时间货币系统动态、内生土地价格以及小型开放经济中的需求主导调整。森林保护降低了环境压力，但推高了土地价格，削弱了土地密集型活动的竞争力，并加剧了财政和国际收支压力。农业生产力措施缓解了土地压力并支持产出，但依赖进口投入，强化了外部依赖。总体而言，NDC改善了经济活动与环境结果，但恶化了财政和贸易失衡。财政整顿和汇率调整缓解了部分失衡，但带来通胀压力或导致产出和就业下降。因此，环境收益可能以宏观脆弱性为代价。本文展示了保护引发的土地稀缺和土地价格动态如何与财政和国际收支约束相互作用，从而决定资源依赖型经济体中基于土地转型的可行性。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109282">https://doi.org/10.1016/j.ecolecon.2026.109282</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109281">https://doi.org/10.1016/j.ecolecon.2026.109281</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>通过微型电网实现电气化的家庭效应：来自坦桑尼亚的证据</title>
+    <link>https://doi.org/10.1177/01956574261470351</link>
+    <guid isPermaLink="false">https://doi.org/10.1177/01956574261470351</guid>
+    <pubDate>Thu, 22 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Federico M. Accursi</dc:creator>
+    <description>微型电网正成为解决电力接入不足社区用电问题的关键方案，但其在改善能源获取和家庭福利方面的有效性仍未得到充分研究。本文提供了来自坦桑尼亚的新证据，该国自2008年以来的一项政策改革使微型电网数量翻了一番。利用距离微型电网远近的家庭所面临的空间与时间差异以及电网部署的时间安排，并结合两份不同的全国代表性调查数据，我们发现微型电网使当地电气化率提高了10至23个百分点——这一结果与新部署项目附近夜间灯光</description>
+    <category>微型电网</category>
+    <category>电气化</category>
+    <category>家庭福利</category>
+    <category>坦桑尼亚</category>
+    <content:encoded><![CDATA[<h2>通过微型电网实现电气化的家庭效应：来自坦桑尼亚的证据</h2>
+<p><em>Household Effects of Electrification Through Mini-Grids: Evidence from Tanzania</em></p>
+<ul>
+<li><strong>期刊</strong>：The Energy Journal</li>
+<li><strong>日期</strong>：2026-10-22</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：能源经济</li>
+<li><strong>标签</strong>：微型电网，电气化，家庭福利，坦桑尼亚</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Federico M. Accursi¹, Raúl Bajo‐Buenestado²³</li>
+<li><strong>作者单位</strong>：¹Austral University；²Rice University；³Universidad de Navarra</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>微型电网正成为解决电力接入不足社区用电问题的关键方案，但其在改善能源获取和家庭福利方面的有效性仍未得到充分研究。本文提供了来自坦桑尼亚的新证据，该国自2008年以来的一项政策改革使微型电网数量翻了一番。利用距离微型电网远近的家庭所面临的空间与时间差异以及电网部署的时间安排，并结合两份不同的全国代表性调查数据，我们发现微型电网使当地电气化率提高了10至23个百分点——这一结果与新部署项目附近夜间灯光强度的激增相互印证。我们还表明，微型电网减少了对污染性燃料照明的依赖，并推动了电动设备的使用。粗略计算表明，可再生微型电网产生的盈余几乎抵消了其成本。JEL分类：L94，电力公用事业；O13，经济发展：农业；自然资源；能源；环境；其他初级产品；Q48，能源：政府政策；Q58，环境经济学：政府政策。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261470351">https://doi.org/10.1177/01956574261470351</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>灾害咬得更浅，但并未停止：越南四十年结构性转型与灾害敏感性</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109279</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109279</guid>
+    <pubDate>Thu, 22 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Duc Huu Nguyen</dc:creator>
+    <description></description>
+    <category>自然灾害</category>
+    <category>结构性转型</category>
+    <category>越南</category>
+    <content:encoded><![CDATA[<h2>灾害咬得更浅，但并未停止：越南四十年结构性转型与灾害敏感性</h2>
+<p><em>Disasters bite less deeply, but they do not stop biting: four decades of structural transformation and disaster sensitivity in Vietnam</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-10-22</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：环境经济与政策</li>
+<li><strong>标签</strong>：自然灾害，结构性转型，越南</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Duc Huu Nguyen, Nguyen Huan Huu, Tam Ha Minh Nguyen</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109279">https://doi.org/10.1016/j.ecolecon.2026.109279</a></li>
 </ul>
 ]]></content:encoded>
   </item>
