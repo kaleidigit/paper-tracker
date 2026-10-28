@@ -7,6 +7,39 @@
     <language>zh-CN</language>
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
-
+  <item>
+    <title>盐碱化与发展</title>
+    <link>https://doi.org/10.1093/jeea/jvag066</link>
+    <guid isPermaLink="false">https://doi.org/10.1093/jeea/jvag066</guid>
+    <pubDate>Mon, 26 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Hanh My Le</dc:creator>
+    <description>摘要 气候变化加剧的海水入侵造成了淡水短期短缺和土壤持续退化的双重冲击。我们研究了其对越南湄公河三角洲（主要大米出口地）农业生产的影响。结合河流盐度观测和详细的运河网络数据来绘制局部水文冲击图，我们发现盐度降低了水稻产量，但导致产出和收入出现不成比例的更大下降。这些损失是由耕地面积收缩和对耐盐作物的替代有限所驱动的，表明短期适应受到制约。利用家庭和企业数据，我们进一步记录了自有农场就业的减少以及向</description>
+    <category>盐碱化</category>
+    <category>海水入侵</category>
+    <category>农业适应</category>
+    <category>越南湄公河三角洲</category>
+    <category>水稻产量</category>
+    <category>劳动力调整</category>
+    <content:encoded><![CDATA[<h2>盐碱化与发展</h2>
+<p><em>Salinization and Development,</em></p>
+<ul>
+<li><strong>期刊</strong>：Journal of the European Economic Association</li>
+<li><strong>日期</strong>：2026-10-26</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：盐碱化，海水入侵，农业适应，越南湄公河三角洲，水稻产量，劳动力调整</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Hanh My Le¹, Markus Ludwig¹</li>
+<li><strong>作者单位</strong>：¹Technische Universität Braunschweig</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>摘要 气候变化加剧的海水入侵造成了淡水短期短缺和土壤持续退化的双重冲击。我们研究了其对越南湄公河三角洲（主要大米出口地）农业生产的影响。结合河流盐度观测和详细的运河网络数据来绘制局部水文冲击图，我们发现盐度降低了水稻产量，但导致产出和收入出现不成比例的更大下降。这些损失是由耕地面积收缩和对耐盐作物的替代有限所驱动的，表明短期适应受到制约。利用家庭和企业数据，我们进一步记录了自有农场就业的减少以及向非农业部门转移的极少情况，表明劳动力调整存在摩擦。除了恩格尔曲线预测的收入效应外，家庭还将支出重新分配到医疗保健和儿童教育上。教育支出的增加是由参与率上升驱动的，可能反映了机会成本的变化，尽管我们不能排除前瞻性反应。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1093/jeea/jvag066">https://doi.org/10.1093/jeea/jvag066</a></li>
+</ul>
+]]></content:encoded>
+  </item>
   </channel>
 </rss>
