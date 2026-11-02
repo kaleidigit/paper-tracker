@@ -8,127 +8,415 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>在减少资源使用和排放的同时享受更多年的美好生活？1990-2019年全球面板分析</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109292</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109292</guid>
-    <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Helmut Haberl</dc:creator>
+    <title>使用混合投入产出模型估算全经济范围的矿产品消费：萤石案例研究</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109285</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109285</guid>
+    <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Miriam Stevens</dc:creator>
+    <description>随着产业和各国政府寻求为关键矿产建立安全供应链，同时减轻负面社会与环境影响，理解全经济范围物质流动日益重要。为推进将全经济范围物质流核算与经济影响分析相结合的研究，我们采用集成混合投入产出分析框架，构建美国矿产品加工的混合单位模型。作为测试案例，我们将该方法应用于萤石及衍生氟基化学品，提出了少数萤石国内供应链模型之一。随后，我们估算由两种新兴技术——半导体和锂离子电池——的预期销售所引致的这种关键</description>
+    <category>萤石</category>
+    <category>关键矿产</category>
+    <category>混合投入产出模型</category>
+    <category>供应链</category>
+    <category>物质流核算</category>
+    <content:encoded><![CDATA[<h2>使用混合投入产出模型估算全经济范围的矿产品消费：萤石案例研究</h2>
+<p><em>Estimating economy-wide mineral commodity consumption using hybrid input-output modeling: a case study of fluorspar</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-10-31</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：萤石，关键矿产，混合投入产出模型，供应链，物质流核算</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Miriam Stevens¹²³, Elisa Alonso¹³, David Pineault¹³, Nedal Nassar¹³, Shweta Singh²</li>
+<li><strong>作者单位</strong>：¹United States Geological Survey；²Purdue University West Lafayette；³National Minerals Information Center</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>随着产业和各国政府寻求为关键矿产建立安全供应链，同时减轻负面社会与环境影响，理解全经济范围物质流动日益重要。为推进将全经济范围物质流核算与经济影响分析相结合的研究，我们采用集成混合投入产出分析框架，构建美国矿产品加工的混合单位模型。作为测试案例，我们将该方法应用于萤石及衍生氟基化学品，提出了少数萤石国内供应链模型之一。随后，我们估算由两种新兴技术——半导体和锂离子电池——的预期销售所引致的这种关键矿产需求；预计这两种技术将大幅推动需求增长。我们发现，近期美国用于半导体（而非锂离子电池）的萤石及其衍生物需求可能超过这些材料近期的全经济范围国内消费量。按照已宣布目标模拟美国先进芯片产量增加，会使萤石年需求较基线增加1%至5%。全局敏感性分析展示了一种应用于实物投入产出表（PIOT）构建的因素优先级排序方法。我们发现，实物流动数据不确定性的两个主要来源——用于将全国使用量分配到各行业的比例，以及用于将出口划分为国内和国外成分的假设——对产出不确定性的贡献大致相当。然而，我们还发现，在若干编制分配比例的方法之间进行选择的不确定性，导致总实物产出的最大不确定性。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109285">https://doi.org/10.1016/j.ecolecon.2026.109285</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>生产网络中的企业适应：来自巴基斯坦极端天气事件的证据</title>
+    <link>https://doi.org/10.1257/aer.20241027</link>
+    <guid isPermaLink="false">https://doi.org/10.1257/aer.20241027</guid>
+    <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Clare Balboni</dc:creator>
+    <description>本文考察私人适应能在多大程度上降低未来对气候风险的脆弱性。使用巴基斯坦企业间月度交易数据，我们发现受洪水影响的企业更可能迁往更安全地点，并将采购转向位于更不易受洪水影响地区、且通过更不易受洪水影响道路到达的供应商。结果表明，企业对洪水风险的信息不完全，并在洪水后更新其信念。我们使用内生生产网络形成的空间模型量化总体影响。研究结果表明，企业的学习将塑造日益频繁的气候相关灾害的经济影响。（JEL D2</description>
+    <category>企业适应</category>
+    <category>极端天气</category>
+    <category>生产网络</category>
+    <category>气候风险</category>
+    <category>巴基斯坦</category>
+    <content:encoded><![CDATA[<h2>生产网络中的企业适应：来自巴基斯坦极端天气事件的证据</h2>
+<p><em>Firm Adaptation in Production Networks: Evidence from Extreme Weather Events in Pakistan</em></p>
+<ul>
+<li><strong>期刊</strong>：American Economic Review</li>
+<li><strong>日期</strong>：2026-10-30</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：企业适应，极端天气，生产网络，气候风险，巴基斯坦</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Clare Balboni¹, Johannes Boehm², Mazhar Waseem</li>
+<li><strong>作者单位</strong>：¹London School of Economics and Political Science；²University of Geneva</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>本文考察私人适应能在多大程度上降低未来对气候风险的脆弱性。使用巴基斯坦企业间月度交易数据，我们发现受洪水影响的企业更可能迁往更安全地点，并将采购转向位于更不易受洪水影响地区、且通过更不易受洪水影响道路到达的供应商。结果表明，企业对洪水风险的信息不完全，并在洪水后更新其信念。我们使用内生生产网络形成的空间模型量化总体影响。研究结果表明，企业的学习将塑造日益频繁的气候相关灾害的经济影响。（JEL D22, L14, O13, O14, Q54, R32）</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1257/aer.20241027">https://doi.org/10.1257/aer.20241027</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>碳定价的不平等经济后果</title>
+    <link>https://doi.org/10.1257/aer.20230448</link>
+    <guid isPermaLink="false">https://doi.org/10.1257/aer.20230448</guid>
+    <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Diego R. Känzig</dc:creator>
+    <description>本文研究碳定价的经济影响。利用欧洲碳市场的制度特征和高频数据，我识别了碳政策冲击并追踪其动态效应。限制性碳政策冲击会提高能源价格、减少排放、刺激绿色创新，但会降低经济活动——不成比例地加重贫困家庭的负担。穷人不仅因能源支出占比更高而受影响更大，还面临更大的收入损失。这些通过收入和就业传导的间接一般均衡效应在碳定价政策的传导中发挥重要作用，约占总体消费反应的2/3。(JEL E23, E24, O4</description>
+    <category>碳定价</category>
+    <category>不平等</category>
+    <category>欧洲碳市场</category>
+    <category>碳政策冲击</category>
+    <category>一般均衡</category>
+    <content:encoded><![CDATA[<h2>碳定价的不平等经济后果</h2>
+<p><em>The Unequal Economic Consequences of Carbon Pricing</em></p>
+<ul>
+<li><strong>期刊</strong>：American Economic Review</li>
+<li><strong>日期</strong>：2026-10-30</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：碳定价，不平等，欧洲碳市场，碳政策冲击，一般均衡</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Diego R. Känzig¹²</li>
+<li><strong>作者单位</strong>：¹Northwestern University；²Center for Economic and Policy Research</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>本文研究碳定价的经济影响。利用欧洲碳市场的制度特征和高频数据，我识别了碳政策冲击并追踪其动态效应。限制性碳政策冲击会提高能源价格、减少排放、刺激绿色创新，但会降低经济活动——不成比例地加重贫困家庭的负担。穷人不仅因能源支出占比更高而受影响更大，还面临更大的收入损失。这些通过收入和就业传导的间接一般均衡效应在碳定价政策的传导中发挥重要作用，约占总体消费反应的2/3。(JEL E23, E24, O44, Q41, Q54, Q55, Q58)</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1257/aer.20230448">https://doi.org/10.1257/aer.20230448</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>最后手段保险：野火与崩溃市场的监管</title>
+    <link>https://doi.org/10.1086/744732</link>
+    <guid isPermaLink="false">https://doi.org/10.1086/744732</guid>
+    <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Reid Taylor</dc:creator>
     <description></description>
-    <category>资源使用</category>
-    <category>排放</category>
-    <category>福利</category>
-    <category>全球面板分析</category>
-    <content:encoded><![CDATA[<h2>在减少资源使用和排放的同时享受更多年的美好生活？1990-2019年全球面板分析</h2>
-<p><em>Enjoying more years of good life while reducing resource use and emissions? A global panel analysis 1990–2019</em></p>
+    <category>野火</category>
+    <category>保险</category>
+    <category>市场监管</category>
+    <category>环境监管</category>
+    <content:encoded><![CDATA[<h2>最后手段保险：野火与崩溃市场的监管</h2>
+<p><em>Last Resort Insurance: Wildfires and the Regulation of a Crashing Market</em></p>
+<ul>
+<li><strong>期刊</strong>：Journal of the Association of Environmental and Resource Economists</li>
+<li><strong>日期</strong>：2026-10-30</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：环境经济与政策</li>
+<li><strong>标签</strong>：野火，保险，市场监管，环境监管</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Reid Taylor, Madeline Turland, Joakim Weill</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1086/744732">https://doi.org/10.1086/744732</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>公平调整的社会碳成本</title>
+    <link>https://doi.org/10.1086/744731</link>
+    <guid isPermaLink="false">https://doi.org/10.1086/744731</guid>
+    <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Johannes Emmerling</dc:creator>
+    <description></description>
+    <category>社会碳成本</category>
+    <category>公平</category>
+    <category>碳定价</category>
+    <content:encoded><![CDATA[<h2>公平调整的社会碳成本</h2>
+<p><em>The Equity-Adjusted Social Cost of Carbon</em></p>
+<ul>
+<li><strong>期刊</strong>：Journal of the Association of Environmental and Resource Economists</li>
+<li><strong>日期</strong>：2026-10-30</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：社会碳成本，公平，碳定价</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Johannes Emmerling, Ben Groom, Rick van der Ploeg</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1086/744731">https://doi.org/10.1086/744731</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>宽容的力量：首次环境违规豁免与空气质量</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109291</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109291</guid>
+    <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Shiyi Chen</dc:creator>
+    <description></description>
+    <category>环境执法</category>
+    <category>空气质量</category>
+    <category>违规豁免</category>
+    <content:encoded><![CDATA[<h2>宽容的力量：首次环境违规豁免与空气质量</h2>
+<p><em>The power of tolerance: First environmental violation exemption and air quality</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-10-30</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：环境经济与政策</li>
+<li><strong>标签</strong>：环境执法，空气质量，违规豁免</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Shiyi Chen¹, Juan Lu¹², Jidan Yao²</li>
+<li><strong>作者单位</strong>：¹Fudan University；²Nanjing Agricultural University</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109291">https://doi.org/10.1016/j.ecolecon.2026.109291</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>谁为住宅脱碳买单？</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109277</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109277</guid>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Teresa Lackner</dc:creator>
+    <description>住宅建筑部门的脱碳需要在供暖系统更换和热力翻新方面进行大量前期投资，这些投资不成比例地落在低收入家庭身上。面对碳定价和技术强制令的政治约束，投资补贴已成为主要政策工具。本文分析了这一政策方法对奥地利的分配效应和财政成本。我们开发了一个静态微观模拟模型，将家庭层面的投资需求与房东财富分布联系起来，在统一的经验框架内将补贴和财政负担的归宿分配给房主和房东。我们发现，到2040年的转型期内，总投资需求达</description>
+    <category>住宅脱碳</category>
+    <category>投资补贴</category>
+    <category>分配效应</category>
+    <category>财政成本</category>
+    <category>碳定价</category>
+    <category>热力翻新</category>
+    <category>奥地利</category>
+    <category>微观模拟</category>
+    <content:encoded><![CDATA[<h2>谁为住宅脱碳买单？</h2>
+<p><em>Who pays for decarbonizing homes?</em></p>
+<ul>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-10-29</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+<li><strong>标签</strong>：住宅脱碳，投资补贴，分配效应，财政成本，碳定价，热力翻新，奥地利，微观模拟</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Teresa Lackner¹²³, Stefan Nabernegg³</li>
+<li><strong>作者单位</strong>：¹Austrian Institute of Economic Research；²Universität für Weiterbildung Krems；³University of Graz</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>住宅建筑部门的脱碳需要在供暖系统更换和热力翻新方面进行大量前期投资，这些投资不成比例地落在低收入家庭身上。面对碳定价和技术强制令的政治约束，投资补贴已成为主要政策工具。本文分析了这一政策方法对奥地利的分配效应和财政成本。我们开发了一个静态微观模拟模型，将家庭层面的投资需求与房东财富分布联系起来，在统一的经验框架内将补贴和财政负担的归宿分配给房主和房东。我们发现，到2040年的转型期内，总投资需求达950-1090亿欧元（每年占GDP的1.1%-1.3%），在2023年补贴计划下意味着410-480亿欧元的财政成本。尽管有针对低收入群体的组成部分，约45%的补贴支出流向了收入最高的三个十分位组。当需要进行热力翻新时，净投资负担仍然具有强烈的累退性，对普通低收入独户住宅房主而言，负担相当于其四年收入。我们进一步记录了收入群体内部显著的横向差异，并认为奥地利分散的住房法是公寓（租赁）部门投资可行性的首要决定因素。在财政约束下解决分配和可行性问题，可能需要结合强制令、收入或有转移、流动性支持工具和住房法改革的政策组合。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109277">https://doi.org/10.1016/j.ecolecon.2026.109277</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>国家能力与野火缓解：来自中国国家主导森林保护的经验证据</title>
+    <link>https://doi.org/10.1016/j.jpubeco.2026.105814</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.jpubeco.2026.105814</guid>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Rong Ma</dc:creator>
+    <description></description>
+    <category>森林保护</category>
+    <category>野火缓解</category>
+    <category>国家能力</category>
+    <category>中国</category>
+    <content:encoded><![CDATA[<h2>国家能力与野火缓解：来自中国国家主导森林保护的经验证据</h2>
+<p><em>State capacity and wildfire mitigation: Evidence from state-led forest conservation in China</em></p>
+<ul>
+<li><strong>期刊</strong>：Journal of Public Economics</li>
+<li><strong>日期</strong>：2026-10-29</li>
+<li><strong>类型</strong>：comment</li>
+<li><strong>建议关注</strong>：未分类</li>
+<li><strong>标签</strong>：森林保护，野火缓解，国家能力，中国</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Rong Ma¹, Wenhui Chen², Zhang Bo³</li>
+<li><strong>作者单位</strong>：¹China Agricultural University；²Beijing Forestry University；³Xiamen University</li>
+</ul>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.jpubeco.2026.105814">https://doi.org/10.1016/j.jpubeco.2026.105814</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>受污染的IPO</title>
+    <link>https://doi.org/10.1257/pol.20240900</link>
+    <guid isPermaLink="false">https://doi.org/10.1257/pol.20240900</guid>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Meng Miao</dc:creator>
+    <description>中国公司在进行首次公开募股（IPO）前必须经过监管机构任命委员会的审核。我们发现，企业——尤其是无政治关联的企业——在污染日（即PM2.5水平高时）更可能通过该审核。该效应似乎由审核者认知能力下降驱动，反映为审核会议中提出的问题更少且更简单。值得注意的是，在污染日获批的企业在IPO后三年内与其他企业相比没有显著业绩差异。研究结果表明，污染引发的认知疲劳可能悖论性地减少政治影响审批过程中的扭曲。（J</description>
+    <category>IPO</category>
+    <category>空气污染</category>
+    <category>PM2.5</category>
+    <category>审批</category>
+    <category>认知能力</category>
+    <content:encoded><![CDATA[<h2>受污染的IPO</h2>
+<p><em>Polluted IPOs</em></p>
+<ul>
+<li><strong>期刊</strong>：American Economic Journal Economic Policy</li>
+<li><strong>日期</strong>：2026-10-29</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：未分类</li>
+<li><strong>标签</strong>：IPO，空气污染，PM2.5，审批，认知能力</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Meng Miao¹, Wei Wang², Zhengyu Zuo³⁴</li>
+<li><strong>作者单位</strong>：¹Renmin University of China；²Queen&#39;s University；³Shanghai University of Finance and Economics；⁴Shanghai Jiao Tong University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>中国公司在进行首次公开募股（IPO）前必须经过监管机构任命委员会的审核。我们发现，企业——尤其是无政治关联的企业——在污染日（即PM2.5水平高时）更可能通过该审核。该效应似乎由审核者认知能力下降驱动，反映为审核会议中提出的问题更少且更简单。值得注意的是，在污染日获批的企业在IPO后三年内与其他企业相比没有显著业绩差异。研究结果表明，污染引发的认知疲劳可能悖论性地减少政治影响审批过程中的扭曲。（JEL D22, G24, G32, K22, P28, P31, Q52）</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1257/pol.20240900">https://doi.org/10.1257/pol.20240900</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>美洲豹对野生动物群落的营养级影响对农民重要吗？农民对美洲豹相关收益与成本的分歧偏好</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109283</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109283</guid>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Alejandro M. Bellon</dc:creator>
+    <description></description>
+    <category>美洲豹</category>
+    <category>农民偏好</category>
+    <category>野生动物管理</category>
+    <category>收益成本分析</category>
+    <content:encoded><![CDATA[<h2>美洲豹对野生动物群落的营养级影响对农民重要吗？农民对美洲豹相关收益与成本的分歧偏好</h2>
+<p><em>Do the trophic impacts which jaguars have on wildlife communities matter to farmers? Diverging farmer preferences for jaguar-associated benefits and costs</em></p>
 <ul>
 <li><strong>期刊</strong>：Ecological Economics</li>
 <li><strong>日期</strong>：2026-10-29</li>
 <li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：可持续发展</li>
-<li><strong>标签</strong>：资源使用，排放，福利，全球面板分析</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：美洲豹，农民偏好，野生动物管理，收益成本分析</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Helmut Haberl, Duro, Juan Antonio; Galiana, Pau; Soldevila, M. Victòria; Piñol, Josep M.; Martín, Mónica; Sardà, Jordi; Ponce-Alifonso, Xavier; Farré Albendea, Fco Javier, Benedikt Grammer, Alejandro Pérez-Laborda, Paul E. Brockway, Matthew Kuperus Heun, Shonali Pachauri, Claudia Reiter, Erich Striessnig, Fridolin Krausmann, Jan Streeck, Dominik Wiedenhofer</li>
+<li><strong>作者</strong>：Alejandro M. Bellon¹</li>
+<li><strong>作者单位</strong>：¹Arizona State University</li>
 </ul>
 </details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109292">https://doi.org/10.1016/j.ecolecon.2026.109292</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109283">https://doi.org/10.1016/j.ecolecon.2026.109283</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>土地、财富与税收</title>
-    <link>https://doi.org/10.1257/mic.20240094</link>
-    <guid isPermaLink="false">https://doi.org/10.1257/mic.20240094</guid>
-    <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Roberto Brunetti</dc:creator>
-    <description>本文考察土地在财富动态中的作用及其对效率和不平等的影响。我们关注在一个模型中，代理人竞标区位、抵押贷款市场不完善和遗产之间的相互作用，其中代理人将金融遗产和住房财富留给继承人。借贷约束产生了住房回报溢价和空间财富分层，这转化为持续的财富不平等。由于利他主义和借贷约束扭曲了土地价格形成，我们表明对代际间转移的土地租金征税是最优的。土地税不能与代际财富转移税分开。 (JEL D31, D64, H71</description>
-    <category>土地</category>
-    <category>财富不平等</category>
-    <category>土地税</category>
-    <category>代际转移</category>
-    <category>借贷约束</category>
-    <content:encoded><![CDATA[<h2>土地、财富与税收</h2>
-<p><em>Land, Wealth, and Taxation</em></p>
+    <title>中国全国二氧化碳排放交易体系：一般均衡评估</title>
+    <link>https://doi.org/10.1257/pol.20240652</link>
+    <guid isPermaLink="false">https://doi.org/10.1257/pol.20240652</guid>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Lawrence H. Goulder</dc:creator>
+    <description>中国的二氧化碳排放交易体系是全球最大的，旨在显著减少二氧化碳排放。该体系是一种可交易绩效标准（TPS），与总量控制与交易（C&amp;T）不同。我们提供了一个动态一般均衡评估，独特地考虑了中国影响政策成本和分配效应的制度与财政特征。主要发现：TPS的环境收益超过其成本五倍或更多。与财政体系的相互作用减少或消除了TPS相对于C&amp;T的成本劣势。引入拍卖作为配额供应的补充来源可以将成本降低30%。</description>
+    <category>碳排放交易体系</category>
+    <category>一般均衡评估</category>
+    <category>中国</category>
+    <category>可交易绩效标准</category>
+    <content:encoded><![CDATA[<h2>中国全国二氧化碳排放交易体系：一般均衡评估</h2>
+<p><em>China’s Nationwide CO 2 Emissions Trading System: A General Equilibrium Assessment</em></p>
 <ul>
-<li><strong>期刊</strong>：American Economic Journal Microeconomics</li>
-<li><strong>日期</strong>：2026-10-28</li>
+<li><strong>期刊</strong>：American Economic Journal Economic Policy</li>
+<li><strong>日期</strong>：2026-10-29</li>
 <li><strong>类型</strong>：article</li>
-<li><strong>建议关注</strong>：资源与生态经济</li>
-<li><strong>标签</strong>：土地，财富不平等，土地税，代际转移，借贷约束</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：碳排放交易体系，一般均衡评估，中国，可交易绩效标准</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Roberto Brunetti¹²³, Carl Gaigné⁴⁵⁶, Fabien Moizeau²⁷⁸</li>
-<li><strong>作者单位</strong>：¹Université Paris-Panthéon-Assas；²Centre de Recherche en Économie et Management；³Groupe d&#39;Analyse et de Théorie Economique Lyon St Etienne；⁴Institut National de Recherche pour l&#39;Agriculture, l&#39;Alimentation et l&#39;Environnement；⁵Université Laval；⁶Structures et marchés agricoles, ressources et territoires；⁷Centre National de la Recherche Scientifique；⁸Université de Rennes</li>
+<li><strong>作者</strong>：Lawrence H. Goulder¹²³, Xianling Long⁴, Chenfei Qu⁵, Da Zhang⁵</li>
+<li><strong>作者单位</strong>：¹National Bureau of Economic Research；²Resources For The Future；³Stanford University；⁴Peking University；⁵Tsinghua University</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>本文考察土地在财富动态中的作用及其对效率和不平等的影响。我们关注在一个模型中，代理人竞标区位、抵押贷款市场不完善和遗产之间的相互作用，其中代理人将金融遗产和住房财富留给继承人。借贷约束产生了住房回报溢价和空间财富分层，这转化为持续的财富不平等。由于利他主义和借贷约束扭曲了土地价格形成，我们表明对代际间转移的土地租金征税是最优的。土地税不能与代际财富转移税分开。 (JEL D31, D64, H71, Q24, R23, R31, R52)</p>
+</details><p><strong>中文摘要</strong><br>中国的二氧化碳排放交易体系是全球最大的，旨在显著减少二氧化碳排放。该体系是一种可交易绩效标准（TPS），与总量控制与交易（C&amp;T）不同。我们提供了一个动态一般均衡评估，独特地考虑了中国影响政策成本和分配效应的制度与财政特征。主要发现：TPS的环境收益超过其成本五倍或更多。与财政体系的相互作用减少或消除了TPS相对于C&amp;T的成本劣势。引入拍卖作为配额供应的补充来源可以将成本降低30%。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1257/mic.20240094">https://doi.org/10.1257/mic.20240094</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1257/pol.20240652">https://doi.org/10.1257/pol.20240652</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>煤炭地区需求冲击的地方经济与福利后果</title>
-    <link>https://doi.org/10.1086/743935</link>
-    <guid isPermaLink="false">https://doi.org/10.1086/743935</guid>
-    <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Daniel Kraynak</dc:creator>
-    <description></description>
-    <category>煤炭</category>
-    <category>需求冲击</category>
-    <category>地方经济</category>
-    <category>福利</category>
-    <content:encoded><![CDATA[<h2>煤炭地区需求冲击的地方经济与福利后果</h2>
-<p><em>The Local Economic and Welfare Consequences of Demand Shocks for Coal Country</em></p>
+    <title>时变电价的分配影响：一种估算家庭收入的新方法</title>
+    <link>https://doi.org/10.1093/jeea/jvag068</link>
+    <guid isPermaLink="false">https://doi.org/10.1093/jeea/jvag068</guid>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Mar Reguant</dc:creator>
+    <description>随着人们对气候政策分配效应的兴趣日益增加，设计既高效又公平的电价变得至关重要。效率通常倾向于从固定电价转向分时电价（ToU）或实时电价（RTP），但这种转变可能产生分配影响。我们开发了一个框架来评估这些影响及其传导渠道。我们方法的核心是一种新方法，通过结合邮政编码层面的收入数据与家庭层面的电力消费来推断单个家庭收入。我们在西班牙背景下展示了该方法的价值。首先，我们表明使用更精细的收入估算会对电价的</description>
+    <category>时变电价</category>
+    <category>分配影响</category>
+    <category>家庭收入估算</category>
+    <category>西班牙</category>
+    <content:encoded><![CDATA[<h2>时变电价的分配影响：一种估算家庭收入的新方法</h2>
+<p><em>The Distributional Impacts of Time-Varying Electricity Pricing: A Novel Approach to Estimating Household Income,</em></p>
 <ul>
-<li><strong>期刊</strong>：Journal of the Association of Environmental and Resource Economists</li>
-<li><strong>日期</strong>：2026-10-28</li>
+<li><strong>期刊</strong>：Journal of the European Economic Association</li>
+<li><strong>日期</strong>：2026-10-29</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：能源经济</li>
-<li><strong>标签</strong>：煤炭，需求冲击，地方经济，福利</li>
+<li><strong>标签</strong>：时变电价，分配影响，家庭收入估算，西班牙</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Daniel Kraynak</li>
+<li><strong>作者</strong>：Mar Reguant¹², Natalia Fabra³, Jingyuan Wang⁴</li>
+<li><strong>作者单位</strong>：¹Institució Catalana de Recerca i Estudis Avançats；²Consejo Superior de Investigaciones Científicas；³Centro de Estudios Monetarios y Financieros；⁴University of Michigan</li>
 </ul>
-</details><p><strong>资源信息</strong>  </p>
+</details><p><strong>中文摘要</strong><br>随着人们对气候政策分配效应的兴趣日益增加，设计既高效又公平的电价变得至关重要。效率通常倾向于从固定电价转向分时电价（ToU）或实时电价（RTP），但这种转变可能产生分配影响。我们开发了一个框架来评估这些影响及其传导渠道。我们方法的核心是一种新方法，通过结合邮政编码层面的收入数据与家庭层面的电力消费来推断单个家庭收入。我们在西班牙背景下展示了该方法的价值。首先，我们表明使用更精细的收入估算会对电价的分配评估产生影响。其次，我们发现RTP的潜在分配影响与ToU相比非常有限。RTP最显著的影响是增加账单波动性，尤其是对低收入群体而言。</p>
+<p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1086/743935">https://doi.org/10.1086/743935</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1093/jeea/jvag068">https://doi.org/10.1093/jeea/jvag068</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>生态宏观经济学模型？买者自负</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109278</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109278</guid>
+    <title>环境政策与自动化</title>
+    <link>https://doi.org/10.1007/s10640-026-01129-7</link>
+    <guid isPermaLink="false">https://doi.org/10.1007/s10640-026-01129-7</guid>
     <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Lieke Anna Melsen</dc:creator>
-    <description>生态宏观经济综合评估模型（EM-IAMs）已成为探索后增长叙事和挑战持续经济增长主流话语的工具。其使用可能具有战略优势：通过采用在经济学中被认为具有认识论合法性的建模方法，EM-IAMs可以用其自身的工具来质疑增长范式。然而，EM-IAMs中通过量化和评价逻辑对社会-生态过程的框架化，可能干扰EM-IAMs的另一个目标：解决社会不平等和不公正。因此，EM-IAMs有可能像生态学家Langdon W</description>
-    <category>生态宏观经济学</category>
-    <category>综合评估模型</category>
-    <category>后增长</category>
-    <category>社会不平等</category>
-    <content:encoded><![CDATA[<h2>生态宏观经济学模型？买者自负</h2>
-<p><em>Ecological macroeconomics models? Caveat emptor</em></p>
+    <dc:creator>Nikolaos Charalampidis</dc:creator>
+    <description></description>
+    <category>环境政策</category>
+    <category>自动化</category>
+    <category>技术变革</category>
+    <content:encoded><![CDATA[<h2>环境政策与自动化</h2>
+<p><em>Environmental Policy and Automation</em></p>
 <ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>期刊</strong>：Environmental and Resource Economics</li>
 <li><strong>日期</strong>：2026-10-28</li>
 <li><strong>类型</strong>：article</li>
 <li><strong>建议关注</strong>：环境经济与政策</li>
-<li><strong>标签</strong>：生态宏观经济学，综合评估模型，后增长，社会不平等</li>
+<li><strong>标签</strong>：环境政策，自动化，技术变革</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Lieke Anna Melsen¹, Andrea Saltelli²³⁴</li>
-<li><strong>作者单位</strong>：¹Wageningen University &amp; Research；²Universitat Pompeu Fabra；³UPF Barcelona School of Management；⁴University of Bergen</li>
+<li><strong>作者</strong>：Nikolaos Charalampidis¹, Justine Guillochon¹</li>
+<li><strong>作者单位</strong>：¹Université Laval</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>生态宏观经济综合评估模型（EM-IAMs）已成为探索后增长叙事和挑战持续经济增长主流话语的工具。其使用可能具有战略优势：通过采用在经济学中被认为具有认识论合法性的建模方法，EM-IAMs可以用其自身的工具来质疑增长范式。然而，EM-IAMs中通过量化和评价逻辑对社会-生态过程的框架化，可能干扰EM-IAMs的另一个目标：解决社会不平等和不公正。因此，EM-IAMs有可能像生态学家Langdon Winner所创造的“概念特洛伊木马”那样运作。我们质疑EM-IAMs是否真正能提供“探索替代未来情景的稳健建模工具，从而能够对政策在福祉、就业和生态系统方面的直接和间接影响进行事前评估”（Ecological Economics, 2025）。我们的疑虑基于以下方面：不能减少不确定性的复杂性、模型简化的政治性、EM-IAM模型在抗拒量化的方面的局限性、历史权力不平衡的强化，以及最终模型本身的表演性效应。我们建议，与其扩展EM-IAMs以纳入福祉分析，不如采用一种不同的建模方法，从生态价值中学习；欣赏多样性、时空变异性、自我调节和纠缠性。</p>
-<p><strong>资源信息</strong>  </p>
+</details><p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109278">https://doi.org/10.1016/j.ecolecon.2026.109278</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1007/s10640-026-01129-7">https://doi.org/10.1007/s10640-026-01129-7</a></li>
 </ul>
 ]]></content:encoded>
   </item>
