@@ -8,66 +8,133 @@
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>女性赋权与家庭对气候压力的韧性：来自孟加拉国的证据</title>
-    <link>https://doi.org/10.1016/j.ecolecon.2026.109289</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109289</guid>
-    <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
-    <dc:creator>Mkupete Jaah Mkupete</dc:creator>
-    <description></description>
-    <category>女性赋权</category>
-    <category>气候韧性</category>
-    <category>家庭适应</category>
-    <category>孟加拉国</category>
-    <content:encoded><![CDATA[<h2>女性赋权与家庭对气候压力的韧性：来自孟加拉国的证据</h2>
-<p><em>Women&#39;s empowerment and household resilience to climate stressors: evidence from Bangladesh</em></p>
+    <title>极端野火暴露对能源贫困的影响：来自澳大利亚黑色星期六丛林大火的证据</title>
+    <link>https://doi.org/10.1002/ajae.70106</link>
+    <guid isPermaLink="false">https://doi.org/10.1002/ajae.70106</guid>
+    <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Yitian Wang</dc:creator>
+    <description>本研究评估了2009年黑色星期六丛林大火（BSB）对家庭能源贫困的影响，该火灾主要发生在维多利亚州农村地区，是澳大利亚历史上最致命的丛林大火事件。利用匹配的纵向家庭和地理数据，采用线性面板事件研究、熵平衡事件研究和交错双重差分（DID）设计，我们的结果表明，居住在野火区域15公里以内的家庭经历能源贫困的可能性显著增加。具体而言，与2005-2007年参考期相比，在各项设定中，直接受火灾影响的家庭在</description>
+    <category>野火</category>
+    <category>能源贫困</category>
+    <category>澳大利亚</category>
+    <category>双重差分</category>
+    <category>家庭福利</category>
+    <content:encoded><![CDATA[<h2>极端野火暴露对能源贫困的影响：来自澳大利亚黑色星期六丛林大火的证据</h2>
+<p><em>The effect of extreme wildfire exposure on energy poverty: Evidence from Australia&#39;s Black Saturday bushfires</em></p>
 <ul>
-<li><strong>期刊</strong>：Ecological Economics</li>
-<li><strong>日期</strong>：2026-11-03</li>
-<li><strong>类型</strong>：comment</li>
-<li><strong>建议关注</strong>：气候经济</li>
-<li><strong>标签</strong>：女性赋权，气候韧性，家庭适应，孟加拉国</li>
+<li><strong>期刊</strong>：American Journal of Agricultural Economics</li>
+<li><strong>日期</strong>：2026-11-04</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：能源经济</li>
+<li><strong>标签</strong>：野火，能源贫困，澳大利亚，双重差分，家庭福利</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：Mkupete Jaah Mkupete¹</li>
-<li><strong>作者单位</strong>：¹University of Dar es Salaam</li>
+<li><strong>作者</strong>：Yitian Wang¹, Russell Smyth¹</li>
+<li><strong>作者单位</strong>：¹Monash University</li>
 </ul>
-</details><p><strong>资源信息</strong>  </p>
+</details><p><strong>中文摘要</strong><br>本研究评估了2009年黑色星期六丛林大火（BSB）对家庭能源贫困的影响，该火灾主要发生在维多利亚州农村地区，是澳大利亚历史上最致命的丛林大火事件。利用匹配的纵向家庭和地理数据，采用线性面板事件研究、熵平衡事件研究和交错双重差分（DID）设计，我们的结果表明，居住在野火区域15公里以内的家庭经历能源贫困的可能性显著增加。具体而言，与2005-2007年参考期相比，在各项设定中，直接受火灾影响的家庭在2010年陷入能源贫困的可能性增加9.9-11.3个百分点，在2011年增加13.2-16.7个百分点。我们发现数据在统计上与以下结论一致：生活满意度、感知安全和生活质量完全中介了BSB暴露对2010年能源贫困的影响，而感知安全完全中介了2011年的关系。我们还发现，采取长期财务规划缓解了BSB暴露对能源贫困的不利影响。</p>
+<p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109289">https://doi.org/10.1016/j.ecolecon.2026.109289</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1002/ajae.70106">https://doi.org/10.1002/ajae.70106</a></li>
 </ul>
 ]]></content:encoded>
   </item>
   <item>
-    <title>能源冲击与气候转型</title>
-    <link>https://doi.org/10.1016/j.jeem.2026.103438</link>
-    <guid isPermaLink="false">https://doi.org/10.1016/j.jeem.2026.103438</guid>
-    <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-    <dc:creator>David Comerford</dc:creator>
-    <description>我们提出了一个两部门增长模型，其中代表性代理人投资于化石燃料能源和可再生能源。这两类投资在资本密集度和项目持续时间上有所不同：化石燃料投资需要较低的前期投资且持续时间较短，而可再生能源则资本密集度更高且资产寿命更长。我们表明，负面经济冲击（如能源供应冲击或衰退）会导致总投资削减，并使剩余投资的构成转向化石燃料项目。即使可再生能源在平准化成本基础上具有成本效益，这也会推迟清洁能源转型，这意味着在衰退</description>
-    <category>能源冲击</category>
-    <category>可再生能源投资</category>
-    <category>化石燃料</category>
-    <category>气候转型</category>
-    <category>增长模型</category>
-    <content:encoded><![CDATA[<h2>能源冲击与气候转型</h2>
-<p><em>Energy shocks and the climate transition</em></p>
+    <title>美国玉米带燃料市场改革与结构性土地利用锁定</title>
+    <link>https://doi.org/10.1016/j.ecolecon.2026.109294</link>
+    <guid isPermaLink="false">https://doi.org/10.1016/j.ecolecon.2026.109294</guid>
+    <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Elvis Kwame Ofori</dc:creator>
+    <description></description>
+    <category>燃料市场</category>
+    <category>土地利用</category>
+    <category>玉米带</category>
+    <category>政策改革</category>
+    <category>锁定效应</category>
+    <content:encoded><![CDATA[<h2>美国玉米带燃料市场改革与结构性土地利用锁定</h2>
+<p><em>Fuel-market reform and structural land-use lock-in in the U.S. Corn Belt</em></p>
 <ul>
-<li><strong>期刊</strong>：Journal of Environmental Economics and Management</li>
-<li><strong>日期</strong>：2026-11-01</li>
-<li><strong>类型</strong>：article</li>
+<li><strong>期刊</strong>：Ecological Economics</li>
+<li><strong>日期</strong>：2026-11-04</li>
+<li><strong>类型</strong>：comment</li>
 <li><strong>建议关注</strong>：能源经济</li>
-<li><strong>标签</strong>：能源冲击，可再生能源投资，化石燃料，气候转型，增长模型</li>
+<li><strong>标签</strong>：燃料市场，土地利用，玉米带，政策改革，锁定效应</li>
 </ul>
 <details>
 <summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
-<li><strong>作者</strong>：David Comerford¹, Alessandro Spiganti²³⁴</li>
-<li><strong>作者单位</strong>：¹University of Strathclyde；²RFF-CMCC European Institute on Economics and the Environment；³CMCC Foundation - Euro-Mediterranean Center on Climate Change；⁴University of Genoa</li>
+<li><strong>作者</strong>：Elvis Kwame Ofori¹</li>
+<li><strong>作者单位</strong>：¹Ollscoil na Gaillimhe – University of Galway</li>
 </ul>
-</details><p><strong>中文摘要</strong><br>我们提出了一个两部门增长模型，其中代表性代理人投资于化石燃料能源和可再生能源。这两类投资在资本密集度和项目持续时间上有所不同：化石燃料投资需要较低的前期投资且持续时间较短，而可再生能源则资本密集度更高且资产寿命更长。我们表明，负面经济冲击（如能源供应冲击或衰退）会导致总投资削减，并使剩余投资的构成转向化石燃料项目。即使可再生能源在平准化成本基础上具有成本效益，这也会推迟清洁能源转型，这意味着在衰退期间需要政策来维持清洁投资。我们讨论了这一机制如何被更高的利率、顺周期的气候政策、感知风险和金融摩擦放大，并将我们的发现与近期经验事件（如2022-23年能源危机和2008年后衰退）联系起来。</p>
+</details><p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.ecolecon.2026.109294">https://doi.org/10.1016/j.ecolecon.2026.109294</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>奶牛是否被过早替换？来自结构模型和奶牛层面数据的证据</title>
+    <link>https://doi.org/10.1002/ajae.70103</link>
+    <guid isPermaLink="false">https://doi.org/10.1002/ajae.70103</guid>
+    <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Jared Hutchins</dc:creator>
+    <description>在过去的动物替换决策分析中，研究声称奶牛场往往过早替换奶牛，而这并非为了最大化利润。我估计了一个资产替换的结构模型，以确定奶牛提前替换背后的动机。我特别检验了因健康问题导致的非计划提前淘汰（即奶牛提前离群）的成本，是否能解释先前研究认为不盈利的奶牛场的替换年龄。利用威斯康星州1000多个奶牛场的数据，我发现一头奶牛提前离群每次造成2300美元的成本，在样本期内总计损失7500万美元的利润。这一成本</description>
+    <category>奶牛</category>
+    <category>替换决策</category>
+    <category>结构模型</category>
+    <category>利润</category>
+    <category>环境外部性</category>
+    <content:encoded><![CDATA[<h2>奶牛是否被过早替换？来自结构模型和奶牛层面数据的证据</h2>
+<p><em>Are dairy cows replaced too early? Evidence from a structural model and cow‐level data</em></p>
+<ul>
+<li><strong>期刊</strong>：American Journal of Agricultural Economics</li>
+<li><strong>日期</strong>：2026-11-04</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：奶牛，替换决策，结构模型，利润，环境外部性</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Jared Hutchins¹</li>
+<li><strong>作者单位</strong>：¹University of Illinois Urbana-Champaign</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>在过去的动物替换决策分析中，研究声称奶牛场往往过早替换奶牛，而这并非为了最大化利润。我估计了一个资产替换的结构模型，以确定奶牛提前替换背后的动机。我特别检验了因健康问题导致的非计划提前淘汰（即奶牛提前离群）的成本，是否能解释先前研究认为不盈利的奶牛场的替换年龄。利用威斯康星州1000多个奶牛场的数据，我发现一头奶牛提前离群每次造成2300美元的成本，在样本期内总计损失7500万美元的利润。这一成本比先前假设的更大，尤其是对少于200头奶牛的奶牛场而言，这表明替换率看似不盈利是因为先前分析低估了这些成本。奶牛场可能受益于优先考虑奶牛寿命和健康而非生产力，从而既削减成本又应对奶牛养殖带来的环境外部性。这些结果凸显了美国奶牛场牛群健康状况不佳造成的经济损失，以及通过提高奶牛对导致意外淘汰条件的韧性可能带来的成本节约程度。</p>
 <p><strong>资源信息</strong>  </p>
 <ul>
-<li><strong>DOI</strong>：<a href="https://doi.org/10.1016/j.jeem.2026.103438">https://doi.org/10.1016/j.jeem.2026.103438</a></li>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1002/ajae.70103">https://doi.org/10.1002/ajae.70103</a></li>
+</ul>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>欧盟的碳边境调节机制（CBAM）还是CBAM前气候政策的组合？</title>
+    <link>https://doi.org/10.1177/01956574261498623</link>
+    <guid isPermaLink="false">https://doi.org/10.1177/01956574261498623</guid>
+    <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Kevin R. Kaushal</dc:creator>
+    <description>单边二氧化碳减排政策可能引发碳泄漏。在欧盟排放交易体系（ETS）下，电力密集型且贸易暴露（PITE）行业被授予免费排放配额，同时部分成员国还采用可选的二氧化碳间接成本补偿，以缓解这一风险。随着欧盟引入碳边境调节机制（CBAM），这些措施正在逐步退出；CBAM根据PITE商品的隐含碳排放对其进口征税。本文考察了CBAM和CBAM前反泄漏政策组合的福利效应。理论分析表明，在特定条件下，两种政策都能改善</description>
+    <category>碳边境调节机制</category>
+    <category>碳泄漏</category>
+    <category>欧盟排放交易体系</category>
+    <category>福利效应</category>
+    <category>反泄漏政策</category>
+    <content:encoded><![CDATA[<h2>欧盟的碳边境调节机制（CBAM）还是CBAM前气候政策的组合？</h2>
+<p><em>EU’s Carbon Border Adjustment Mechanism (CBAM) or a Combination of Pre-CBAM Climate Policies?</em></p>
+<ul>
+<li><strong>期刊</strong>：The Energy Journal</li>
+<li><strong>日期</strong>：2026-11-03</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：气候经济</li>
+<li><strong>标签</strong>：碳边境调节机制，碳泄漏，欧盟排放交易体系，福利效应，反泄漏政策</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Kevin R. Kaushal¹, Lars Lindholt¹, Hidemichi Yonezawa¹</li>
+<li><strong>作者单位</strong>：¹Statistics Norway</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>单边二氧化碳减排政策可能引发碳泄漏。在欧盟排放交易体系（ETS）下，电力密集型且贸易暴露（PITE）行业被授予免费排放配额，同时部分成员国还采用可选的二氧化碳间接成本补偿，以缓解这一风险。随着欧盟引入碳边境调节机制（CBAM），这些措施正在逐步退出；CBAM根据PITE商品的隐含碳排放对其进口征税。本文考察了CBAM和CBAM前反泄漏政策组合的福利效应。理论分析表明，在特定条件下，两种政策都能改善区域和全球福利。在欧盟ETS背景下的数值模拟表明，CBAM产生的区域福利收益大于免费配额和二氧化碳补偿的最优组合。然而，这些收益部分反映了将福利从非欧盟地区转移的贸易条件效应。由于这种转移在全球范围内相互抵消，CBAM和CBAM前政策产生的全球福利结果相当。JEL分类：D61，配置效率；成本效益分析；F18，贸易与环境；H23，税收与补贴：外部性；再分配效应；环境税与补贴；Q54，气候；自然灾害及其管理；全球变暖。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1177/01956574261498623">https://doi.org/10.1177/01956574261498623</a></li>
 </ul>
 ]]></content:encoded>
   </item>
