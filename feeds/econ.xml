@@ -7,6 +7,38 @@
     <language>zh-CN</language>
     <ttl>60</ttl>
     <atom:link href="https://kaleidigit.github.io/paper-tracker/feeds/econ.xml" rel="self" type="application/rss+xml"/>
-
+  <item>
+    <title>资源驱动的农业集群：High Plains含水层的协同集聚效应</title>
+    <link>https://doi.org/10.1002/ajae.70105</link>
+    <guid isPermaLink="false">https://doi.org/10.1002/ajae.70105</guid>
+    <pubDate>Sun, 08 Nov 2026 00:00:00 GMT</pubDate>
+    <dc:creator>Kihwan Yu</dc:creator>
+    <description>量化作物生产的区域经济影响对于评估自然资源获取和政府政策的更广泛意义至关重要。然而，大多数现有估计依赖于具有限制性假设的投入产出模型，而相互竞争的经济机制理论对影响方向或大小几乎没有提供指导。我们利用二战后High Plains含水层覆盖县灌溉扩张导致作物生产大幅增加来估计地方经济溢出效应。虽然作物生产直接受到地下水获取的影响，但我们发现畜牧产品销售也显著增加，与含水层外县相比，销售额增长了235</description>
+    <category>农业集群</category>
+    <category>地下水</category>
+    <category>区域经济溢出</category>
+    <category>协同集聚</category>
+    <category>High Plains含水层</category>
+    <content:encoded><![CDATA[<h2>资源驱动的农业集群：High Plains含水层的协同集聚效应</h2>
+<p><em>Resource‐driven agricultural clusters: Coagglomeration effects of the High Plains Aquifer</em></p>
+<ul>
+<li><strong>期刊</strong>：American Journal of Agricultural Economics</li>
+<li><strong>日期</strong>：2026-11-08</li>
+<li><strong>类型</strong>：article</li>
+<li><strong>建议关注</strong>：资源与生态经济</li>
+<li><strong>标签</strong>：农业集群，地下水，区域经济溢出，协同集聚，High Plains含水层</li>
+</ul>
+<details>
+<summary><strong>作者及单位</strong> <span style="font-size:0.85em;color:#6b6a64;font-weight:400">[点击展开]</span></summary><ul>
+<li><strong>作者</strong>：Kihwan Yu¹, Nathan Hendricks¹</li>
+<li><strong>作者单位</strong>：¹Kansas State University</li>
+</ul>
+</details><p><strong>中文摘要</strong><br>量化作物生产的区域经济影响对于评估自然资源获取和政府政策的更广泛意义至关重要。然而，大多数现有估计依赖于具有限制性假设的投入产出模型，而相互竞争的经济机制理论对影响方向或大小几乎没有提供指导。我们利用二战后High Plains含水层覆盖县灌溉扩张导致作物生产大幅增加来估计地方经济溢出效应。虽然作物生产直接受到地下水获取的影响，但我们发现畜牧产品销售也显著增加，与含水层外县相比，销售额增长了235%。对非农部门的主要溢出效应是批发部门销售额的增加，这可能是由农产品相关销售驱动的。这些发现提供了协同集聚激励的证据，即农业产业集群在同一区域内生产是最优的。</p>
+<p><strong>资源信息</strong>  </p>
+<ul>
+<li><strong>DOI</strong>：<a href="https://doi.org/10.1002/ajae.70105">https://doi.org/10.1002/ajae.70105</a></li>
+</ul>
+]]></content:encoded>
+  </item>
   </channel>
 </rss>
